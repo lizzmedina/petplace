@@ -1,11 +1,13 @@
 * {
     margin: 0;
-    padding: 0;
     box-sizing: border-box;
 } 
 
 a:link, a:visited, a:active {
     text-decoration: none;
+}
+body {
+    width: 100%;
 }
 /* navbar */
 
@@ -19,7 +21,6 @@ a:link, a:visited, a:active {
     justify-content: space-between;
     align-items: center ;
 
-    background-color: rgb(200, 249, 249);
     padding: 5px;
     width: 100%;
     position: fixed;
@@ -38,7 +39,7 @@ a:link, a:visited, a:active {
     width: 284px;
 }
 .navbar-link-container p {
-    color: black;
+    color: #020202;
     padding-top: 10px
 }
 .navbar-buttons {
@@ -46,23 +47,38 @@ a:link, a:visited, a:active {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-
+    color: #ffffff;
     margin: 25px;
     width: 270px;
 }
 
 /* body */
 .home-container{
-    background-color: antiquewhite;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-around;
+    flex-direction: column;
+    background-color: #f1faee;
     margin-top: 85px;
     height: 100%;
+    
 }
 .searcher-container {
     display: flex;
-    background-color: rgb(0, 229, 153);
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center ;
+    
+    background-color: #fec601;
     padding: 20px;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
+
+}
+.searcher {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center ;
 }
 .searcher-title {
 }
@@ -77,15 +93,27 @@ a:link, a:visited, a:active {
 }
 .categories-container{
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    width: 100%;
+    
 }
+.render-cards-categories {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center ;
+    
+}
+
 .card-container{
     background-color: white;
-    height: 250px;
-    width: 250px;
+    border-radius: 10px;
+    height: 282px;
     margin: 20px;
-    border-radius: 20px;
+    width: 310px;
+
 }
 .card-image {
     display: flex;
@@ -102,14 +130,51 @@ a:link, a:visited, a:active {
     text-align: center;
 }
 .recommends-container {
-    background-color: rgb(246, 189, 189);
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: flex-start;
+    background-color: #f1faee;
+}
+.render-cards-recomends{
+    display: flex;
+    flex-direction: row;
+}
+.icono-location{
+    Width: 10px;
+    Height: 16px;
+}
+.card-recomends-container{
+    Width: 635px;
+    Height: 323.62px;
+    border-radius: 10px;
+}
+/* login y register */
+.register-section{
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    padding: 20px;
+}
+.formuser-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}
+.formuser-section{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    padding: 20px;
 }
 /* footer */
 footer {
-    background-color: aqua;
+    background-color: #006c67;
+    color: #f1faee;
     font-size: 15px;
     font-weight: 800;
     display: flex;
