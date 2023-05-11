@@ -1,5 +1,5 @@
 import { Categories } from "../routes/Categories";
-import { Recommends } from "../routes/Recommends";
+import { Recommends } from "../components/Recommends";
 import { Searcher } from "../components/Searcher";
 
 export const Home = () => {

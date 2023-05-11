@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CardRecomends } from "../components/CardRecomends";
+import { CardRecomends } from "./CardRecomends";
 
 
 export const Recommends = () => {
