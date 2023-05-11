@@ -2,7 +2,19 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
 } 
+
+/* variables */
+
+:root {
+    --color1 : #F1FAEE;   /* blanco */
+    --color2 : #E63946;   /* Rosa */
+    --color3 : #A8DADC;   /* azulClaro */
+    --color4 : #457B9D;   /* azulMedio */
+    --color5 : #1D3557;   /* azulOscuro */
+}
+
 
 /* navbar */
 
@@ -106,4 +118,25 @@ footer {
     align-self: center;
     margin-right: 5px;
     height: 10px;
+}
+
+
+/* Forms */
+
+.section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.sectionForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    padding: 3rem;
+    border: solid var(--color5);
+    border-radius: 15px;
+    margin: 2rem
 }
