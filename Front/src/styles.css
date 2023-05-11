@@ -1,0 +1,110 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} 
+
+/* navbar */
+
+.logo{
+    text-align: left;
+    height: 50px;
+}
+.navbar {
+    background-color: rgb(200, 249, 249);
+    display: flex;
+    padding: 5px;
+    width: 100%;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    z-index: 9999;
+}
+.navbar img{
+    align-self: center;
+}
+.navbar p {
+    align-self: center;
+    justify-content: left;
+    text-decoration: none;
+}
+.navbar-buttons {
+    display: flex;
+    margin: 25px;
+    padding: 0px, 30px;
+    justify-content: space-between;
+}
+
+/* body */
+.home-container{
+    background-color: antiquewhite;
+    margin-top: 85px;
+    height: 100%;
+}
+.searcher-container {
+    display: flex;
+    background-color: rgb(0, 229, 153);
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.searcher-title {
+}
+.searcher-input-location{
+
+}
+.searcher-input-date{
+
+}
+.searcher-button{
+
+}
+.categories-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card-container{
+    background-color: white;
+    height: 250px;
+    width: 250px;
+    margin: 20px;
+    border-radius: 20px;
+
+}
+.card-image {
+    display: flex;
+    justify-content: center;
+    height: 100px;
+    width: 100%;
+    
+}
+.card-title-category{
+    margin: 20px;
+    text-align: center;
+}
+.card-quantity-categories {
+    margin: 20px;
+    text-align: center;
+}
+.recommends-container {
+    background-color: rgb(246, 189, 189);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* footer */
+footer {
+    background-color: aqua;
+    font-size: 15px;
+    font-weight: 800;
+    display: flex;
+    padding: 16px;
+    width: 100%;
+    justify-content: flex-start ;
+}
+.copiryghticon{
+    align-self: center;
+    margin-right: 5px;
+    height: 10px;
+}
