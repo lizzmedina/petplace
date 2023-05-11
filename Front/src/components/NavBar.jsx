@@ -14,19 +14,10 @@ export const NavBar = () => {
         <p className='slogan-navbar'> Los alojamos como en casa </p>
       </Link> 
     
-<<<<<<< HEAD
-    <div className='navbar-buttons'>
-      <button className='add-acount-button'>
-        <Link to='/register'>Sign In</Link>
-      </button>
-      <button className='start-session-button'>Login</button>
-    </div>
-=======
       <div className ='navbar-buttons'>
-        <button className ='add-acount-button'>Crear cuenta</button>
+        <button className ='add-acount-button'><Link to='/register'>Crear Cuenta</Link></button>
         <button className ='start-session-button'>Iniciar Sesión</button>
       </div>
->>>>>>> 3953e00cda0408e6534b11d54592c3e9193e3c15
     
     </nav>
     

@@ -5,7 +5,6 @@
     font-family: 'Roboto', sans-serif;
 } 
 
-<<<<<<< HEAD
 /* variables */
 
 :root {
@@ -17,11 +16,9 @@
 }
 
 
-=======
 a:link, a:visited, a:active {
     text-decoration: none;
 }
->>>>>>> 3953e00cda0408e6534b11d54592c3e9193e3c15
 /* navbar */
 
 .logo{
