@@ -15,7 +15,7 @@ export const NavBar = () => {
       </Link> 
     
       <div className ='navbar-buttons'>
-        <button className ='add-acount-button'>Crear cuenta</button>
+        <button className ='add-acount-button'><Link to='/register'>Crear Cuenta</Link></button>
         <button className ='start-session-button'>Iniciar Sesión</button>
       </div>
     
