@@ -5,6 +5,7 @@
     font-family: 'Roboto', sans-serif;
 } 
 
+<<<<<<< HEAD
 /* variables */
 
 :root {
@@ -16,6 +17,11 @@
 }
 
 
+=======
+a:link, a:visited, a:active {
+    text-decoration: none;
+}
+>>>>>>> 3953e00cda0408e6534b11d54592c3e9193e3c15
 /* navbar */
 
 .logo{
@@ -23,11 +29,14 @@
     height: 50px;
 }
 .navbar {
-    background-color: rgb(200, 249, 249);
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center ;
+
+    background-color: rgb(200, 249, 249);
     padding: 5px;
     width: 100%;
-    justify-content: space-between;
     position: fixed;
     top: 0;
     z-index: 9999;
@@ -35,16 +44,26 @@
 .navbar img{
     align-self: center;
 }
-.navbar p {
-    align-self: center;
-    justify-content: left;
-    text-decoration: none;
+.navbar-link-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 284px;
+}
+.navbar-link-container p {
+    color: black;
+    padding-top: 10px
 }
 .navbar-buttons {
     display: flex;
-    margin: 25px;
-    padding: 0px, 30px;
+    flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+
+    margin: 25px;
+    width: 270px;
 }
 
 /* body */
@@ -82,7 +101,6 @@
     width: 250px;
     margin: 20px;
     border-radius: 20px;
-
 }
 .card-image {
     display: flex;
