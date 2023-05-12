@@ -163,15 +163,15 @@ body {
     Height: 350px;
     border-radius: 10px;
 }
-/* login y register */
-.register-section{
+/* register-formUser y login-formlogin */
+.space-section{
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
     margin-top: 100px;
 }
-.formuser-container {
+.form-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -179,13 +179,24 @@ body {
     height: 100%;
     padding: 20px;
 }
-.formuser-section{
+.form-section{
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 40%;
     height: 100%;
     padding: 20px;
 }
+input,select{
+    border-radius:5px;
+    border: 1px solid #bababa;
+    transition: .4s;
+    min-height: 1.2rem;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+input:hover {
+    border: 1px solid var(--color5);
+}
+
 /* footer */
 footer {
     background-color: #006c67;
@@ -204,33 +215,3 @@ footer {
 }
 
 
-/* Forms */
-
-.section{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-}
-
-.sectionForm{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-    padding: 1rem 3rem;
-    border: solid var(--color5);
-    border-radius: 15px;
-    margin: 2rem
-}
-
-input,select{
-    border-radius:5px;
-    border: 1px solid #bababa;
-    transition: .4s;
-    min-height: 1.2rem;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-}
-input:hover {
-    border: 1px solid var(--color5);
-}

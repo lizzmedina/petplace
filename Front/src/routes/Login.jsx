@@ -3,7 +3,7 @@ import FormLogin from '../components/FormLogin'
 
 const Login = () => {
     return (
-        <div className='section'>
+        <div className='space-section'>
             <h2>Iniciar Sesion</h2>
             <FormLogin/>
 
