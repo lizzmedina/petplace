@@ -13,8 +13,8 @@ const FormUser = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        if (user.name.length > 5) {
-            alert(`Hi ${user.name}, your account has been successfully created.`)
+        if (user.name.length > 3) {
+            alert(`Hola ${user.name}, su cuenta ha sido creada exitosamente.`)
             setUser({
                 name:'',
                 lastName:'',
@@ -24,15 +24,14 @@ const FormUser = () => {
                 password:'',
                 type:''
             })
-            console.log(user);
         } else {
-            alert('Please check the information provided')
+            alert('Por favor verifica la informacion suministrada')
         }
     }
 
     return (
-        <div className="formuser-container">
-            <form className="formuser-section" onSubmit={handleSubmit}>
+        <div className="form-container">
+            <form className="form-section" onSubmit={handleSubmit}>
                 <label>Nombre: </label>
                 <input type="text" value={user.name} onChange={(e) => setUser({...user, name: e.target.value})}/>
                 <br/>
@@ -59,7 +58,7 @@ const FormUser = () => {
                 </select>
 
                 <br/>
-                <button>Send</button>
+                <button>Enviar</button>
             </form>
         </div>
     );
