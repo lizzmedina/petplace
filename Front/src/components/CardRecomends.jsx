@@ -1,5 +1,5 @@
 
-export const CardRecomends = ({image, category, rating, ratingText, servicio1, servicio2, iconoLocation, location, description,}) => {
+export const CardRecomends = ({image, category, name, rating, ratingText, servicio1, servicio2, iconoLocation, location, description,}) => {
     return (
         <div className="card-recomends-container">
             <img 
@@ -7,11 +7,13 @@ export const CardRecomends = ({image, category, rating, ratingText, servicio1, s
                 src={image} 
                 alt={category} 
             />
+            <h3 className="card-title-name">{name}</h3>
             <p className="card-title-category">{category}</p>
             <span>
                 <p className="rating"> {rating} </p>
                 <p> {ratingText} </p>
             </span>
+
             <img 
                 className="icono-servicio1" 
                 src={servicio1} 

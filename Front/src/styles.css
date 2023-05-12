@@ -1,7 +1,7 @@
 * {
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Quicksand', sans-serif;
 } 
 
 /* variables */
@@ -188,7 +188,7 @@ input,select{
     border-radius:5px;
     border: 1px solid #bababa;
     transition: .4s;
-    min-height: 1.2rem;
+    min-height: 1.8rem;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 input:hover {
