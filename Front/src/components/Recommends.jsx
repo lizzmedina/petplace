@@ -20,7 +20,7 @@ export const Recommends = () => {
     {
       id: 36576,
       category: 'casa de familia',
-      image: './images/finca1.jpg',
+      image: './images/casa1.jpg',
       rating: 10,
       ratingText: 'muy bueno',
       location: 'A 940 m del centro MOSTRAR EN EL MAPA',
@@ -31,7 +31,7 @@ export const Recommends = () => {
     {
       id: 654689,
       category: 'guardería multiple',
-      image: './images/finca1.jpg',
+      image: './images/guarderia1.jpg',
       rating: 10,
       ratingText: 'muy bueno',
       location: 'A 940 m del centro MOSTRAR EN EL MAPA',
