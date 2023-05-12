@@ -4,7 +4,8 @@ export const Searcher = () => {
   return (
     <div className="searcher-container">
       <h2 className="searcher-title"> Busca el alojamiento ideal para tu mascota</h2>
-      <input 
+      <div className="searcher">
+        <input 
         className="searcher-input-location"
         type="text" 
         placeholder="ciudad, Pais"
@@ -15,6 +16,8 @@ export const Searcher = () => {
         placeholder="CheckIn - CheckOut"
       />
     <button className="searcher-button">Buscar</button>
+      </div>
+      
     </div>
   )
 }

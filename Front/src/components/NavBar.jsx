@@ -7,7 +7,7 @@ export const NavBar = () => {
     
       <Link className = 'navbar-link-container' to = "/"> 
         <img 
-          src='./images/pet-house.png'  
+          src='./images/pet-houseblanco.png'  
           alt="icono"
           className="logo"
         /> 
@@ -15,8 +15,8 @@ export const NavBar = () => {
       </Link> 
     
       <div className ='navbar-buttons'>
-        <button className ='add-acount-button'>Crear cuenta</button>
-        <button className ='start-session-button'>Iniciar Sesión</button>
+        <button className ='add-acount-button'><Link to='/register'>Crear Cuenta</Link></button>
+        <button className ='start-session-button'><Link to='/login'>Iniciar Sesión</Link></button>
       </div>
     
     </nav>
