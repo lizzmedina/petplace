@@ -30,8 +30,8 @@ const FormUser = () => {
     }
 
     return (
-        <div>
-            <form className="sectionForm" onSubmit={handleSubmit}>
+        <div className="formuser-container">
+            <form className="formuser-section" onSubmit={handleSubmit}>
                 <label>Nombre: </label>
                 <input type="text" value={user.name} onChange={(e) => setUser({...user, name: e.target.value})}/>
                 <br/>

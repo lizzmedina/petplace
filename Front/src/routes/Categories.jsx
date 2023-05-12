@@ -10,17 +10,17 @@ export const Categories = ({categories}) => {
   const [places, setPlaaces] = useState([
     {
       category: 'finca',
-      image: './images/field.png',
+      image: './images/finca1.jpg',
       quantity: 10,
     },
     {
       category: 'casa De Familia',
-      image: './images/house.png',
+      image: './images/casa1.jpg',
       quantity: 20,
     },
     {
       category: 'guardería multiple',
-      image: './images/building.png',
+      image: './images/guarderia1.jpg',
       quantity: 5,
     }
   ])
@@ -28,6 +28,7 @@ export const Categories = ({categories}) => {
   return (
     <div className="categories-container">
       <h3>Buscar por tipo de alojamiento </h3>
+    <div className="render-cards-categories">
       {places.map(place => (
         <Card 
           key={place.image}
@@ -36,6 +37,8 @@ export const Categories = ({categories}) => {
           quantity={place.quantity}
         />
       ))}
+    </div>
+      
     </div>
   )
 }
