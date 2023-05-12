@@ -2,6 +2,7 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import { NavBar } from "./components/NavBar";
 import { Home } from "./routes/Home";
 import Register from "./routes/Register";
+import Login from "./routes/Login";
 import { Footer } from "./components/footer";
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/register" element={<Register/>}/>
+                <Route path="/login" element={<Login/>}/>
             </Routes>
             <Footer/>
         </div>
