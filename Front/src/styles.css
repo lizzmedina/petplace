@@ -117,6 +117,7 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: center ;
+    margin: auto;
 }
 
 .card-container{
@@ -146,20 +147,32 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    background-color: #f1faee;
+    width: 100%;
+    /* background-color: violet; */
 }
 .render-cards-recomends{
+    
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
 }
+
+
+.card-recomends{
+    height: auto;
+    margin: 20px;
+    width: 310px;
+    border-radius: 10px;
+    background-color: #fff;
+    
+}
+
+
 .icono-location{
     Width: 10px;
     Height: 16px;
-}
-.card-recomends-container{
-    Width: 500px;
-    Height: 350px;
-    border-radius: 10px;
 }
 /* register-formUser y login-formlogin */
 .space-section{
