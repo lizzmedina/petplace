@@ -8,10 +8,11 @@
 
 :root {
     --color1 : #F1FAEE;   /* blanco */
-    --color2 : #E63946;   /* Rosa */
-    --color3 : #A8DADC;   /* azulClaro */
-    --color4 : #457B9D;   /* azulMedio */
-    --color5 : #1D3557;   /* azulOscuro */
+    --color2 : #9E6EAF;   /* MoradoClaro */
+    --color3 : #8ED1B9;   /* verde */
+    --color4 : #FBC02D;   /* amarilloPrincipal */
+    --color5 : #EAFFF7;   /* verdeClaro */
+    --color6 : #31363F;   /* DB color negro */
 }
 
 
