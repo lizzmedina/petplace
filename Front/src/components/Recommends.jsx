@@ -6,8 +6,9 @@ export const Recommends = () => {
 
   const [recommends, setRecommends] = useState([
     {
-      id: 123456,
+      id: 1,
       category: 'finca',
+      name: "El ensueño",
       image: './images/finca1.jpg',
       rating: 10,
       ratingText: 'muy bueno',
@@ -18,9 +19,10 @@ export const Recommends = () => {
       description: 'En el corazón de San Telmo, disfruta de un albergue inspirado en las pasiones de Buenos Aires. más...',
     },
     {
-      id: 36576,
+      id: 2,
       category: 'casa de familia',
-      image: './images/finca1.jpg',
+      name: "Los Peréz",
+      image: './images/casa1.jpg',
       rating: 10,
       ratingText: 'muy bueno',
       location: 'A 940 m del centro MOSTRAR EN EL MAPA',
@@ -29,26 +31,74 @@ export const Recommends = () => {
       description: 'En el corazón de San Telmo, disfruta de un albergue inspirado en las pasiones de Buenos Aires. más...',
     },
     {
-      id: 654689,
+      id: 3,
       category: 'guardería multiple',
-      image: './images/finca1.jpg',
+      name: "Mi amigo fiel",
+      image: './images/guarderia1.jpg',
       rating: 10,
       ratingText: 'muy bueno',
       location: 'A 940 m del centro MOSTRAR EN EL MAPA',
       service1: './images/iconoServicioBaño.png',
       service2: './images/iconoServicioPisina.png',
       description: 'En el corazón de San Telmo, disfruta de un albergue inspirado en las pasiones de Buenos Aires. más...',
-    }
+    },
+    {
+      id: 4,
+      category: 'Finca',
+      name: "Claroluna",
+      image: './images/hotel1.jpg',
+      rating: 9,
+      ratingText: 'muy bueno',
+      location: 'A 2 km del centro MOSTRAR EN EL MAPA',
+      service1: './images/iconoServicioDesayuno.png',
+      service2: './images/iconoServicioGym.png',
+      description: 'Hermoso hotel en la costa de Cancún, con vistas espectaculares y servicios de primera calidad.',
+    },
+    {
+      id: 5,
+      category: 'Casa de familia',
+      name: "Los Spano",
+      image: './images/apartamento1.jpg',
+      rating: 8,
+      ratingText: 'bueno',
+      location: 'A 500 m del centro MOSTRAR EN EL MAPA',
+      service1: './images/iconoServicioCocina.png',
+      service2: './images/iconoServicioLavanderia.png',
+      description: 'Amplio apartamento con todas las comodidades, ideal para grupos y familias. Excelente ubicación en el centro de la ciudad.',
+    },
+    {
+      id: 6,
+      category: 'Gueraderia multiple',
+      name: "Gorditos y bonitos",
+      image: './images/hostal1.jpg',
+      rating: 7,
+      ratingText: 'bueno',
+      location: 'A 1 km del centro MOSTRAR EN EL MAPA',
+      service1: './images/iconoServicioWifi.png',
+      service2: './images/iconoServicioRecepcion24.png',
+      description: 'Acogedor hostal con ambiente joven y divertido. Buena ubicación y excelente relación calidad-precio.',
+    },
   ])
+
+  function shuffleArray(array) {
+    // funcion para ordenar aleatoriamente el array
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+
 
   return (
     <div className="recommends-container">
       <h3>Recomendaciones </h3>
     <div className="render-cards-recomends">
-      {recommends.map(recommend => (
+      {shuffleArray(recommends).slice(0, 3).map(recommend => (
         <CardRecomends
           key={recommend.id}
           category={recommend.category}
+          name={recommend.name}
           image={recommend.image}
           quantity={recommend.quantity}
           rating = {recommend.rating}

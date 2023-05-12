@@ -84,7 +84,6 @@ body {
     align-items: center ;
     
     background-color: #fec601;
-    padding: 20px;
     width: 100%;
 
 }
@@ -118,7 +117,6 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: center ;
-    
 }
 
 .card-container{
@@ -169,7 +167,6 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    margin-top: 100px;
 }
 .form-container {
     display: flex;
