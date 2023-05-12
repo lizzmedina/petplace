@@ -93,25 +93,26 @@ export const Recommends = () => {
   return (
     <div className="recommends-container">
       <h3>Recomendaciones </h3>
-    <div className="render-cards-recomends">
-      {shuffleArray(recommends).slice(0, 3).map(recommend => (
-        <CardRecomends
-          key={recommend.id}
-          category={recommend.category}
-          name={recommend.name}
-          image={recommend.image}
-          quantity={recommend.quantity}
-          rating = {recommend.rating}
-          ratingText= {recommend.ratingText}
-          iconoLocation = {recommend.iconoLocation}
-          location = {recommend.location}
-          service1 = {recommend.service1}
-          service2 = {recommend.service2}
-          description = {recommend.description}
-        />
-      ))}
-    </div>
       
+      <div className="render-cards-recomends">
+        {shuffleArray(recommends).slice(0, 3).map(recommend => (
+          <CardRecomends
+            key={recommend.id}
+            category={recommend.category}
+            name={recommend.name}
+            image={recommend.image}
+            quantity={recommend.quantity}
+            rating={recommend.rating}
+            ratingText={recommend.ratingText}
+            iconoLocation={recommend.iconoLocation}
+            location={recommend.location}
+            service1={recommend.service1}
+            service2={recommend.service2}
+            description={recommend.description}
+          />
+        ))}
+      </div>
+
     </div>
   )
 }
