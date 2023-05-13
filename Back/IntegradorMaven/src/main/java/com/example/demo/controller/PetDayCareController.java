@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/dcare")
+@RequestMapping("/api/v1")
 public class PetDayCareController {
      private PetDayCareService service; // me traigo las funcionalidades creadas en el servicio
 

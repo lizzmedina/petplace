@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.entity.Pet;
 import com.example.demo.entity.PetDayCare;
+import com.example.demo.exception.PetNotFoundException;
 import com.example.demo.repository.PetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,15 +36,12 @@ public class PetService {
 
     }
 
-    public boolean delete(Integer id){
+    public void delete(Integer id){
         Optional<Pet> petOpt = petRepository.findById(id);
         if(petOpt.isPresent()){
             petRepository.delete(petOpt.get());
-            return true;
-        }else{
-            return false;
         }
-
+        throw new PetNotFoundException(id);
     }
 
 }
