@@ -1,4 +1,4 @@
-import { useState, React } from 'react'
+import { useEffect, useState, React } from 'react'
 import Paginate from '../components/Paginate'
 import { useContextGlobal } from '../components/utils/global.constext'
 
@@ -6,10 +6,29 @@ const CategoryFinca = () => {
     const {dataCategory, setDataCategory, items, setItems, currentPage, setCurrentPage,
         prevHandler, nextHandler, startHandler, endHandler} = useContextGlobal()
 
+    // ++++++++++++++++++++++++++++++++++++++
     //esta sera la logica para filtrar los productos bajo esta categoria y finalizar en un setDataCategory
-    const dataCategory2 = "datosAPI"
+    const datosFiltradosAPI = Array.from({length:40}, (value, index) => {
+        return {id: index, title: `Item #${index}`}
+    })
 
-    
+    // ------Nota el feth se deberia hacer en context y luego aqui en componente 
+    // filtrarlo para luego meter el array en el use effect
+
+    // const url = "https://jsonplaceholder.typicode.com/users/"
+    // useEffect(() => {
+    //     fetch(url)                                      
+    //     .then(res => res.json())    
+    //     .then(data => setOdontologos(data)) 
+    //     ;
+    // }, [])
+
+    useEffect(()=>{
+        setDataCategory(datosFiltradosAPI)
+    }, [])
+
+    // ++++++++++++++++++++++++++++++++++++++++++
+
 
     return (
         <div className='space-section'>

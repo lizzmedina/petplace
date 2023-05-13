@@ -45,7 +45,8 @@ const ContextProvider = ({children}) => {
     }
 
     const endHandler = () => {
-        const lastPage = Math.floor(dataCategory.length /  itemsPerPage)
+        const lastPage = dataCategory.length % itemsPerPage ===0 
+            ? Math.floor(dataCategory.length/itemsPerPage) -1 : Math.floor(dataCategory.length/itemsPerPage)
         const firstIndex = lastPage * itemsPerPage;
 
         setItems([...dataCategory].splice(firstIndex, itemsPerPage))

@@ -8,7 +8,7 @@ const Paginate = (props) => {
 
     return (
         <div>
-            <h2>Items:</h2>
+            <h4>Items:</h4>
 
             <ul>
                 {items}
