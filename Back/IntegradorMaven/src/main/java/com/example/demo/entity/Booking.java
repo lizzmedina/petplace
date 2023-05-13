@@ -1,7 +1,6 @@
 package com.example.demo.entity;
 
-import com.example.demo.model.Customer;
-import com.example.demo.model.PetDayCare;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -16,8 +15,8 @@ public class Booking {
     @Column(name = "idBooking")
     private Integer idBooking;
 
-    @Column(name ="petDayCare")
-    private PetDayCare petDayCare;
+//    @Column(name ="petDayCare")
+//    private PetDayCare petDayCare;
 
     @Column(name = "checkIn")
     private Date checkIn;
@@ -25,18 +24,20 @@ public class Booking {
     @Column(name = "checkOut")
     private Date checkOut;
 
-    @Column(name = "customer")
-    private Customer customer;
+//    @Column(name = "customer")
+//    private Customer customer;
 
     @Column(name = "totalPrice")
     private double totalPrice;
 
-    public Booking(Integer idBooking, PetDayCare petDayCare, Date checkIn, Date checkOut, Customer customer, double totalPrice) {
+    public Booking(Integer idBooking, double totalPrice, Date checkIn, Date checkOut
+//                   ,Customer customer, PetDayCare petDayCare
+    ) {
         this.idBooking = idBooking;
-        this.petDayCare = petDayCare;
+//        this.petDayCare = petDayCare;
         this.checkIn = checkIn;
         this.checkOut = checkOut;
-        this.customer = customer;
+//        this.customer = customer;
         this.totalPrice = totalPrice;
     }
 
@@ -51,13 +52,13 @@ public class Booking {
         this.idBooking = idBooking;
     }
 
-    public PetDayCare getPetDayCare() {
-        return petDayCare;
-    }
-
-    public void setPetDayCare(PetDayCare petDayCare) {
-        this.petDayCare = petDayCare;
-    }
+//    public PetDayCare getPetDayCare() {
+//        return petDayCare;
+//    }
+//
+//    public void setPetDayCare(PetDayCare petDayCare) {
+//        this.petDayCare = petDayCare;
+//    }
 
     public Date getCheckIn() {
         return checkIn;
@@ -75,13 +76,13 @@ public class Booking {
         this.checkOut = checkOut;
     }
 
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
+//    public Customer getCustomer() {
+//        return customer;
+//    }
+//
+//    public void setCustomer(Customer customer) {
+//        this.customer = customer;
+//    }
 
     public double getTotalPrice() {
         return totalPrice;

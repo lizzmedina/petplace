@@ -9,7 +9,7 @@ export const Recommends = () => {
       id: 1,
       category: 'finca',
       name: "El ensueño",
-      image: './images/finca1.jpg',
+      image: './images/hermoso-labrador.avif',
       rating: 10,
       ratingText: 'muy bueno',
       iconoLocation: './images/iconolocation.png',
@@ -22,7 +22,7 @@ export const Recommends = () => {
       id: 2,
       category: 'casa de familia',
       name: "Los Peréz",
-      image: './images/casa1.jpg',
+      image: './images/hermoso-labrador.avif',
       rating: 10,
       ratingText: 'muy bueno',
       location: 'A 940 m del centro MOSTRAR EN EL MAPA',
@@ -34,7 +34,7 @@ export const Recommends = () => {
       id: 3,
       category: 'guardería multiple',
       name: "Mi amigo fiel",
-      image: './images/guarderia1.jpg',
+      image: './images/hermoso-labrador.avif',
       rating: 10,
       ratingText: 'muy bueno',
       location: 'A 940 m del centro MOSTRAR EN EL MAPA',
@@ -46,7 +46,7 @@ export const Recommends = () => {
       id: 4,
       category: 'Finca',
       name: "Claroluna",
-      image: './images/guarderia2.jpg',
+      image: './images/hermoso-labrador.avif',
       rating: 9,
       ratingText: 'muy bueno',
       location: 'A 2 km del centro MOSTRAR EN EL MAPA',
@@ -58,7 +58,7 @@ export const Recommends = () => {
       id: 5,
       category: 'Casa de familia',
       name: "Los Spano",
-      image: './images/casa2.jpg',
+      image: './images/hermoso-labrador.avif',
       rating: 8,
       ratingText: 'bueno',
       location: 'A 500 m del centro MOSTRAR EN EL MAPA',
@@ -70,7 +70,7 @@ export const Recommends = () => {
       id: 6,
       category: 'Gueraderia multiple',
       name: "Gorditos y bonitos",
-      image: './images/guarderia3.jpg',
+      image: './images/hermoso-labrador.avif',
       rating: 7,
       ratingText: 'bueno',
       location: 'A 1 km del centro MOSTRAR EN EL MAPA',
@@ -92,10 +92,10 @@ export const Recommends = () => {
 
   return (
     <div className="recommends-container">
-      <h3>Recomendaciones </h3>
+      <h2>Recomendaciones </h2>
       
       <div className="render-cards-recomends">
-        {shuffleArray(recommends).slice(0, 3).map(recommend => (
+        {shuffleArray(recommends).slice(0, 2).map(recommend => (
           <CardRecomends
             key={recommend.id}
             category={recommend.category}
