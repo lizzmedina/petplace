@@ -277,9 +277,15 @@ input:hover {
 }
 
 /* Paginate */
+.paginate-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 5px;
+}
 
 .paginate-button-container{
     display: flex;
+    justify-content: center;
     margin: 1rem;
 }
 

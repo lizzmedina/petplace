@@ -1,18 +1,30 @@
 import React from 'react'
+import { CardRecomends } from "./CardRecomends";
 
 const Paginate = (props) => {
 
-    const items = props.items.map((item, index) => {
-        return <li key={item.id}>esto es una card {item.title} </li>
+    const items = props.items.map((item) => {
+        return <CardRecomends
+            key={item.id}
+            category={item.category}
+            name={item.name}
+            image={item.image}
+            quantity={item.quantity}
+            rating={item.rating}
+            ratingText={item.ratingText}
+            iconoLocation={item.iconoLocation}
+            location={item.location}
+            service1={item.service1}
+            service2={item.service2}
+            description={item.description}
+        />
     })
 
     return (
         <div>
-            <h4>Items:</h4>
-
-            <ul>
+            <div className='paginate-container'>
                 {items}
-            </ul>
+            </div>
 
             <div className='paginate-button-container'>
                 <button onClick={props.startHandler}> Inic </button>
