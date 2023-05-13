@@ -1,9 +1,9 @@
 import { Children, createContext, useContext, useState } from "react";
 
-export const ContextGlobal = createContext(undefined);
+const ContextGlobal = createContext();
 
 
-export const ContextProvider = ({children}) => {
+const ContextProvider = ({children}) => {
 
     // const imagesCategories = useState[
     //     {
@@ -19,11 +19,21 @@ export const ContextProvider = ({children}) => {
     //     }
     // ]
 
+
+    const prevHandler = () => {
+        console.log("prev");
+    }
+
+    const nextHandler = () => {
+        console.log("next");
+    }
+
     return (
-        <ContextGlobal.Provider value={{}}>
-            {Children}
+        <ContextGlobal.Provider value={{prevHandler, nextHandler}}>
+            {children}
         </ContextGlobal.Provider>
     )
 }
+
 export default ContextProvider;
 export const useContextGlobal = () => useContext(ContextGlobal)
