@@ -7,7 +7,7 @@ export const NavBar = () => {
     
       <Link className = 'navbar-link-container' to = "/"> 
         <img 
-          src='./images/pet-houseblanco.png'  
+          src='./images/pet-house.png'  
           alt="icono"
           className="logo"
         /> 
