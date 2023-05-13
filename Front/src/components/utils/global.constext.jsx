@@ -5,21 +5,7 @@ const ContextGlobal = createContext();
 
 const ContextProvider = ({children}) => {
 
-    // const imagesCategories = useState[
-    //     {
-    //         finca: 'finca',
-    //         url: './images/field.png',
-    //     },
-    //     {casaDeFamilia: 'casa De Familia',
-    //     url: './images/house.png',
-    //     },
-    //     {
-    //         guarderiaMultiple: 'guardería multiple',
-    //         url: './images/building.png'
-    //     }
-    // ]
-
-
+    
     const prevHandler = () => {
         console.log("prev");
     }
