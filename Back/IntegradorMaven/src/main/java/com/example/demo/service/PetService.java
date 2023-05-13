@@ -1,13 +1,11 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.Pet;
-import com.example.demo.entity.PetDayCare;
-import com.example.demo.exception.PetNotFoundException;
+import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.PetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,17 +29,15 @@ public class PetService {
         }
     }
 
-    public List<Pet> findAll(){
+    public List<Pet> findAll() {
         return petRepository.findAll();
-
     }
 
-    public void delete(Integer id){
+    public void delete(Integer id) {
         Optional<Pet> petOpt = petRepository.findById(id);
-        if(petOpt.isPresent()){
+        if (petOpt.isPresent()) {
             petRepository.delete(petOpt.get());
         }
-        throw new PetNotFoundException(id);
+        throw new ResourceNotFoundException("No existe una mascota con el id: " + id);
     }
-
 }
