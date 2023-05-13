@@ -8,16 +8,19 @@ const Paginate = (props) => {
 
     return (
         <div>
-            <h3>Pagina: {props.currentPage}</h3>
-
-            <button onClick={props.prevHandler}> Prev </button>
-            <button onClick={props.nextHandler}> Next </button>
-
-            <h2>Items:</h2>
+            <h4>Items:</h4>
 
             <ul>
                 {items}
             </ul>
+
+            <div className='paginate-button-container'>
+                <button onClick={props.startHandler}> Inic </button>
+                <button onClick={props.prevHandler}> Prev </button>
+                <h6> Pagina: {props.currentPage} </h6>
+                <button onClick={props.nextHandler}> Sig </button>
+                <button onClick={props.endHandler}> Fin </button>
+            </div>
 
         </div>
     )
