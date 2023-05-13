@@ -1,7 +1,7 @@
 
 export const CardRecomends = ({ image, category, name, rating, ratingText, servicio1, servicio2, iconoLocation, location, description, }) => {
     return (
-<<<<<<< Updated upstream
+
         <div className="card-recomends">
            
                 <img
