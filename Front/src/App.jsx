@@ -4,6 +4,8 @@ import { Home } from "./routes/Home";
 import Register from "./routes/Register";
 import Login from "./routes/Login";
 import CategoryFinca from "./routes/CategoryFinca";
+import CategoryCasa from "./routes/CategoryCasa";
+import CategoryGuarderia from "./routes/CategoryGuarderia";
 import { Footer } from "./components/footer";
 
 function App() {
@@ -17,6 +19,8 @@ function App() {
                 <Route path="/register" element={<Register/>}/>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/finca" element={<CategoryFinca/>}/>
+                <Route path="/casa" element={<CategoryCasa/>}/>
+                <Route path="/guarderia" element={<CategoryGuarderia/>}/>
             </Routes>
             </div>
             <Footer/>

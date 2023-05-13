@@ -16,13 +16,13 @@ export const Categories = ({categories}) => {
     },
     {
       id: 2,
-      category: 'casa De Familia',
+      category: 'casa',
       image: './images/hermoso-labrador.avif',
       quantity: 20,
     },
     {
       id: 3,
-      category: 'guardería multiple',
+      category: 'guarderia',
       image: './images/hermoso-labrador.avif',
       quantity: 5,
     }
