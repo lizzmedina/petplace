@@ -95,7 +95,7 @@ export const Recommends = () => {
       <h3>Recomendaciones </h3>
       
       <div className="render-cards-recomends">
-        {shuffleArray(recommends).slice(0, 3).map(recommend => (
+        {shuffleArray(recommends).slice(0, 2).map(recommend => (
           <CardRecomends
             key={recommend.id}
             category={recommend.category}

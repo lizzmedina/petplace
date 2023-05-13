@@ -135,6 +135,7 @@ a:link, a:visited, a:active {
     justify-content: space-between;
     align-items: center ;
     margin: auto;
+    max-width: 80%;
 }
 
 .card-container{
@@ -161,6 +162,8 @@ a:link, a:visited, a:active {
     margin: 20px;
     text-align: center;
 }
+
+/* Style for recommends section */
 .recommends-container {
     display: flex;
     flex-wrap: wrap;
@@ -178,17 +181,37 @@ a:link, a:visited, a:active {
     margin: auto;
 }
 
-
 .card-recomends{
-    height: auto;
-    margin: 20px;
-    width: 310px;
+    margin: 48px 20px;
+    display: flex;
     border-radius: 10px;
-    background-color: #fff;
-    
-    
+    overflow: hidden;
+    background-color: rebeccapurple;
+    max-height: 164px;
+    max-width: 500px;
+}
+.card-content{
+    display: flex;
+    background-color: #FBC02D;
 }
 
+.left-card-content, 
+.right-card-content{
+    width: 100%;
+}
+.card-recommends-image {
+    display: flex;
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-style: none;
+    
+}
+.left-card-content{
+    background: black;
+    color: white;
+    padding: 0px;
+}
 
 
 .icono-location{
@@ -206,7 +229,7 @@ a:link, a:visited, a:active {
     Width: 620px;
 }
 
-.ver-mas-button {
+.ver-mas-button{
     background: var(--color2);
     border-color: var(--color2);
     border-radius: 5px;
@@ -297,22 +320,44 @@ footer {
         padding: 24px 10px 10px 10px;
     }
     .searcher-container{
-        margin-top: 355px;
+        margin-top: 0px;
+    }
+    .home-container {
+        margin-top: 0px;
+    }
+    .categories-container{
+        align-items: center;
+        padding: 20px 0px;
     }
     .render-cards-categories{
         flex-wrap: wrap;
+    }
+    .card-container{
+        margin: 10px 0px;
     }
     .render-cards-recomends {
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
     }
-    .card-recomends-container{
-        Height: 500px;
-        Width: 350px;
-    }
+   
     .recommends-container {
         display: flex;
         align-items: center;
+        padding: 20px 0px;
+    }
+
+    .card-recomends{
+        margin: 10px 0px;
+        max-width: 350px;
+        min-height: 350px;
+    }
+    .card-content{
+        flex-direction: column;
+    }
+    footer {
+        
+        position:fixed;
+        bottom: 0;
     }
 }
