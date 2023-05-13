@@ -1,10 +1,7 @@
 package com.example.demo.entity;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.Date;
 
@@ -30,6 +27,13 @@ public class Booking {
     @Column(name = "totalPrice")
     private double totalPrice;
 
+    @ManyToOne
+    private Customer customer;
+
+    @ManyToOne
+    private PetDayCare petDayCare;
+
+    //building methods
     public Booking(Integer idBooking, double totalPrice, Date checkIn, Date checkOut
 //                   ,Customer customer, PetDayCare petDayCare
     ) {
@@ -44,6 +48,9 @@ public class Booking {
     public Booking() {
     }
 
+
+
+    //Getters and Setters
     public Integer getIdBooking() {
         return idBooking;
     }

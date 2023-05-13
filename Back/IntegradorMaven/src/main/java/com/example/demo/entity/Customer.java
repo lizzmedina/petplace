@@ -1,34 +1,43 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name = "customer")
+@Table(name = "customers")
 public class Customer {
     @Id
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@Column(name = "id")
     private Integer id;
 
-    @Column(name = "name")
+    //@Column(name = "name")
+
     private String name;
 
-    @Column(name = "lastName")
+    //@Column(name = "lastName")
     private String lastName;
 
-    @Column(name = "email")
+    //@Column(name = "email")
     private String email;
 
-    @Column(name="passwork")
+    //@Column(name="passwork")
     private String passwork;
 
-    @Column(name= "cellPhone")
+    //@Column(name= "cellPhone")
     private String cellPhone;
 
-    @Column(name=" address")
+    //@Column(name=" address")
     private String address;
 
-    @Column(name="type")
+    //@Column(name="type")
     private String type;
+
+    @OneToMany(mappedBy = "customer")
+    List<Pet> pets;
+
+    @OneToMany(mappedBy = "customer")
+    List<Booking> bookings;
 
     //CORREGIR RELACION
 //    @OneToMany
@@ -36,6 +45,8 @@ public class Customer {
 //    private Pet pet;
 
 
+
+    //building methods
     public Customer(Integer id, String name, String lastName, String email, String passwork, String cellPhone, String address, String type//, Pet pet
         ) {
         this.id = id;
@@ -52,6 +63,7 @@ public class Customer {
     public Customer() {
     }
 
+    //Getters and Setters
     public Integer getId() {
         return id;
     }
