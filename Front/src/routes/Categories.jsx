@@ -30,7 +30,7 @@ export const Categories = ({categories}) => {
 
   return (
     <div className="categories-container">
-      <h3>Buscar por tipo de alojamiento </h3>
+      <h2>Buscar por tipo de alojamiento </h2>
     <div className="render-cards-categories">
       {places.map(place => (
         <Card 

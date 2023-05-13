@@ -92,10 +92,10 @@ export const Recommends = () => {
 
   return (
     <div className="recommends-container">
-      <h3>Recomendaciones </h3>
+      <h2>Recomendaciones </h2>
       
       <div className="render-cards-recomends">
-        {shuffleArray(recommends).slice(0, 3).map(recommend => (
+        {shuffleArray(recommends).slice(0, 2).map(recommend => (
           <CardRecomends
             key={recommend.id}
             category={recommend.category}
