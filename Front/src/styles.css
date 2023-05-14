@@ -204,21 +204,9 @@ a:link, a:visited, a:active {
 
 .card-recommends-image {
     display: flex;
-<<<<<<< HEAD
-    border-bottom-left-radius: 10px;
-    border-style: none;
-    border-top-left-radius: 10px;
-    width: 100%;
-}
-.left-card-content{
-    background: black;
-    color: white;
-    padding: 0px;
-=======
     width: 50%;
     border-top-left-radius: 10px;
     border-style: none;
->>>>>>> 9cc3121dd03d19b2f302ab59e078da3eea52c812
 }
 
 .icono-location{
