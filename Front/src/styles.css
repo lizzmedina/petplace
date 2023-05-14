@@ -144,12 +144,15 @@ a:link, a:visited, a:active {
 .card-title-category{
     color: var(--color6);
     font-size: 1rem;
-    margin: 20px;
+    margin: 8px;
+    margin-bottom: 5px;
 }
 .card-quantity-categories {
     color: var(--color6);
     font-size: 0.5rem;
-    margin: 20px;
+    margin: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
 }
 
 /* Style for recommends section */
