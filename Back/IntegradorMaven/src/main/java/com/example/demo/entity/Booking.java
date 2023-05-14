@@ -30,10 +30,10 @@ public class Booking {
     @Column(name = "totalPrice")
     private double totalPrice;
 
-    public Booking(Integer idBooking, double totalPrice, Date checkIn, Date checkOut
+    public Booking( double totalPrice, Date checkIn, Date checkOut
 //                   ,Customer customer, PetDayCare petDayCare
     ) {
-        this.idBooking = idBooking;
+//        this.idBooking = idBooking;
 //        this.petDayCare = petDayCare;
         this.checkIn = checkIn;
         this.checkOut = checkOut;

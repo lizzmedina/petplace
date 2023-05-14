@@ -1,5 +1,17 @@
 package com.example.demo.service;
 
+import com.example.demo.DTO.BookingDTO;
+import com.example.demo.entity.Booking;
+import com.example.demo.entity.Customer;
+import com.example.demo.entity.PetDayCare;
+import com.example.demo.repository.BookingRepository;
+import com.example.demo.repository.CustomerRepository;
+import com.example.demo.repository.PetDayCareRepository;
+
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
+
 //andrea vivi
 
 
@@ -16,53 +28,67 @@ import java.util.Date;
 @Service
 public class BookingService {
 
-    private BookingRepository repository;
+    private List<Booking> bookingList;
+    private BookingRepository bookingRepository;
+    private CustomerRepository customerRepository;
+    private PetDayCareRepository petDayCareRepository;
 
-    @Autowired
-
-    public BookingService(BookingRepository repository) {
-        this.repository = repository;
+    public BookingService(List<Booking> bookingList, BookingRepository bookingRepository, CustomerRepository customerRepository, PetDayCareRepository petDayCareRepository) {
+        this.bookingList = bookingList;
+        this.bookingRepository = bookingRepository;
+        this.customerRepository = customerRepository;
+        this.petDayCareRepository = petDayCareRepository;
     }
 
-    public Booking saveBooking(Booking booking){
-        return repository.save(booking);
+    public Booking save(BookingDTO bookingDTO){
+
+        Optional<Customer> customer = this.customerRepository.findById(bookingDTO.getCustomerId());
+        Optional<PetDayCare> petDayCare = this.petDayCareRepository.findById(bookingDTO.getPetDayCareId());
+
+        if(!customer.isPresent() && !petDayCare.isPresent()){
+            throw  new RuntimeException("Verifique que el cliente o la guarderia existan");
+        }
+
+        double totalpriceBooking = calculatePrice(bookingDTO.getCheckIn(), bookingDTO.getCheckOut(), petDayCare.get().getBasicPrice());
+
+        Booking newBooking = new Booking(
+                totalpriceBooking,
+                bookingDTO.getCheckIn(),
+                bookingDTO.getCheckOut()
+             //   customer,
+             //   petDayCare
+        );
+
+        return bookingRepository.save(newBooking);
     }
 
-    public double calculatePrice(Date checkIn, Date checkOut, double totalPrice){
 
-        //calculating the days
+    public double calculatePrice(Date checkIn, Date checkOut, double basicPrice){
+
         long startTime = checkIn.getTime() ;
         long endTime = checkOut.getTime();
         long daysSince = (long) Math.floor(startTime / (1000*60*60*24)); // convert to days, so that time changes do not affect
         long daysUntil = (long) Math.floor(endTime / (1000*60*60*24)); // convert to days, so that time changes do not affect
         long totalDays = daysUntil-daysSince;
 
-        //calculating the total price according to the days
-        double total = (totalDays * totalPrice);
+                double total = (totalDays * basicPrice);
 
-        //return totalPrice;
         return total;
     }
 
-    public String bookingDetail(String customer, String petDayCare, String addresPetDayCare, String cityPetDayCare, double totalPrice, Date checkIn, Date checkOut){
+    public Booking detail(Integer id){
+        Optional<Booking> booking = bookingRepository.findById(id);
 
-        return "DETALLE DE LA RESERVA: " + "\n" +
-                "La reserva esta realizada a nombre de: " + customer + "." + "\n" +
-                "La reserva se ha realizado en : " + petDayCare + "." + "\n" +
-                "En la dirección: " + addresPetDayCare + " de la ciudad de " + cityPetDayCare + "." + "\n" +
-                "La fecha de la reserva es: " + "Desde " + checkIn + " hasta " + checkOut + "\n" +
-                "El precio total es: " + totalPrice + "\n" +
-                "¡Muchas gracias por su reserva!";
+        if(!booking.isPresent()){
+            throw new RuntimeException("la reserva no existe, verifique el numero de id");
+        }
 
+        Booking bookingDetail = new Booking(
+                booking.get().getTotalPrice(),
+                booking.get().getCheckIn(),
+                booking.get().getCheckOut()
+        );
+
+        return bookingDetail;
     }
-
-    /*public String bookingDetail(Customer customer, PetDayCare petDayCare, double totalPrice, Date checkIn, Date checkOut){
-        String detail = new String("DETALLE DE LA RESERVA: " + "\n" +
-                "La reserva se ha realizado en : " + petDayCare.getName() + "\n" +
-                "En la dirección: " + petDayCare.getAddress() + " de la ciudad de " + petDayCare.getCity() + "\n" +
-                "La fecha de la reserva es: " + "Desde " + checkIn + " hasta " + checkOut + "\n" +
-                "El precio total es: " + totalPrice + "\n" +
-                "¡Muchas gracias por su reserva!");
-        return detail;
-    }*/
 }
