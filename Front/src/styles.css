@@ -196,26 +196,29 @@ a:link, a:visited, a:active {
     max-width: 500px;
 }
 .card-content{
-    display: flex;
+    display:flex;
     background-color: var(--color7);
 }
 
-.left-card-content, 
-.right-card-content{
+.left-card-content, .right-card-content{
     width: 100%;
 }
+
+.right-card-content{
+    padding-left: 10px;
+
+}
+
+.left-card-content {
+    
+    display:contents;
+}
+
 .card-recommends-image {
     display: flex;
-    width: 100%;
+    width: 50%;
     border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
     border-style: none;
-    
-}
-.left-card-content{
-    background: black;
-    color: white;
-    padding: 0px;
 }
 
 
@@ -252,7 +255,6 @@ a:link, a:visited, a:active {
     display: flex;
     align-items: center;
     flex-direction: column;
-
     height: 100%;
     padding: 20px;
     width: 100%;
@@ -377,6 +379,11 @@ footer {
     .categories-container h2{
         margin: auto;
         text-align: center;
+    }
+    .card-recommends-image {
+        
+        width: 100%;
+        
     }
     
 }
