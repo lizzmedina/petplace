@@ -18,14 +18,15 @@
 a:link, a:visited, a:active {
     text-decoration: none;
 }
-.App {
-    
-    
+
+/* chicos, por fa revisar si a ustedes estos les cambia lago, porque según yo esto no hace nada. notificar para borrarlo sí es el caso*/
+
+/* .App {
     height: 100vh;
     min-height:400px;
     width: 100%;
     margin-bottom: 0;
-}
+} */
 
 /* navbar */
 
@@ -103,14 +104,7 @@ a:link, a:visited, a:active {
     width: 50%;
     justify-content: space-between;
 }
-.searcher-title {
-}
-.searcher-input-location{
 
-}
-.searcher-input-date{
-
-}
 .searcher-button{
     background-color: var(--color3);
     color: var(--color7);
@@ -121,8 +115,6 @@ a:link, a:visited, a:active {
 .categories-container{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
     padding-top: 20px ;
     background-color: var(--color1);
     width: 100%;
@@ -132,36 +124,32 @@ a:link, a:visited, a:active {
 }
 .render-cards-categories {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center ;
+
     margin: auto;
     max-width: 80%;
 }
 
 .card-container{
     background-color: var(--color7);
-    border-radius: 10px;
-    height: 282px;
     margin: 20px;
-    width: 310px;
     border-radius: 20px;
 }
 .card-image {
     display: flex;
     justify-content: center;
-    height: 100px;
-    width: 100%;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
+    width: 100%;
 }
 .card-title-category{
+    color: var(--color6);
+    font-size: 1rem;
     margin: 20px;
-    text-align: center;
 }
 .card-quantity-categories {
+    color: var(--color6);
+    font-size: 0.5rem;
     margin: 20px;
-    text-align: center;
 }
 
 /* Style for recommends section */
@@ -170,30 +158,30 @@ a:link, a:visited, a:active {
     flex-wrap: wrap;
     flex-direction: column;
     align-items: flex-start;
-    width: 100%;
     background-color: var(--color1);
     padding-top: 20px;
+    width: 100%;
 }
 .recommends-container h2{
     margin-left: 10vw;
 }
 .render-cards-recomends{
-    max-width: 80%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin: auto;
+    margin: auto; 
+    max-width: 80%;
 }
 
 .card-recomends{
-    margin: 20px;
     display: flex;
-    border-radius: 10px;
-    overflow: hidden;
     background-color: red;
+    border-radius: 10px;
+    margin: 20px;
     max-height: 164px;
     max-width: 500px;
+    overflow: hidden;
 }
 .card-content{
     display: flex;
@@ -206,18 +194,16 @@ a:link, a:visited, a:active {
 }
 .card-recommends-image {
     display: flex;
-    width: 100%;
-    border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     border-style: none;
-    
+    border-top-left-radius: 10px;
+    width: 100%;
 }
 .left-card-content{
     background: black;
     color: white;
     padding: 0px;
 }
-
 
 .icono-location{
     Width: 10px;
@@ -241,6 +227,7 @@ a:link, a:visited, a:active {
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
     color: var(--color7);
 }
+
 /* register-formUser y login-formlogin */
 .space-section{
     display: flex;

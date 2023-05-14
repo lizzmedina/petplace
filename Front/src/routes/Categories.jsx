@@ -10,21 +10,21 @@ export const Categories = ({categories}) => {
   const [places, setPlaaces] = useState([
     {
       id: 1,
-      category: 'finca',
+      category: 'Finca',
       image: './images/hermoso-labrador.avif',
-      quantity: 10,
+      quantity: '20 Fincas',
     },
     {
       id: 2,
-      category: 'casa',
+      category: 'Casa',
       image: './images/hermoso-labrador.avif',
-      quantity: 20,
+      quantity: '20 Casas',
     },
     {
       id: 3,
-      category: 'guarderia',
+      category: 'Guarderia',
       image: './images/hermoso-labrador.avif',
-      quantity: 5,
+      quantity: '20 Guarderias',
     }
   ])
 
