@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/manager")
+@RequestMapping("/api/v1/manager")
 public class ManagerController {
     private ManagerService service;
 
@@ -18,23 +18,18 @@ public class ManagerController {
         this.service = service;
     }
 
-    @GetMapping("/pruebaManager")//localhost:8080/api/manager/pruebaManager
-    public String prueba(){
-        return "conectando manager";
-    }
-
-    @PostMapping("/aManager")//localhost:8080/api/manager/aManager
+    @PostMapping()//localhost:8080/api/v1/manager
     public Manager saveManager(@RequestBody Manager manager){
         return service.saveManager(manager);
     }
 
-    @GetMapping("/aManager") //localhost:8080/api/manager/aManager
+    @GetMapping() //localhost:8080/api/v1/manager
     public Manager findManager(Integer id){
         return service.findManager(id);
     }
 
-    @DeleteMapping("/aManager")
-    public String deleteManager(Integer id){ //localhost:8080/api/manager/aManager
+    @DeleteMapping()
+    public String deleteManager(Integer id){ //localhost:8080/api/v1/manager
         return service.deleteManager(id);
     }
 
