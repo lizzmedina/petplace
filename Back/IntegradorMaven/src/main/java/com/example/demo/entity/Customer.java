@@ -1,6 +1,9 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "customer")
@@ -18,16 +21,17 @@ public class Customer {
     @Column(name = "email")
     private String email;
 
-    @Column(name="passwork")
-    private String passwork;
+    @Column(name = "password")
 
-    @Column(name= "cellPhone")
+    private String password;
+
+    @Column(name = "cellPhone")
     private String cellPhone;
 
-    @Column(name=" address")
+    @Column(name = " address")
     private String address;
 
-    @Column(name="type")
+    @Column(name = "type")
     private String type;
 
     //CORREGIR RELACION
@@ -36,13 +40,15 @@ public class Customer {
 //    private Pet pet;
 
 
-    public Customer(Integer id, String name, String lastName, String email, String passwork, String cellPhone, String address, String type//, Pet pet
-        ) {
+    public Customer(Integer id, String name,
+                    String lastName, String email,
+                    String password, String cellPhone,
+                    String address, String type /*, Pet pet*/) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
         this.email = email;
-        this.passwork = passwork;
+        this.password = password;
         this.cellPhone = cellPhone;
         this.address = address;
         this.type = type;
@@ -84,12 +90,12 @@ public class Customer {
         this.email = email;
     }
 
-    public String getPasswork() {
-        return passwork;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPasswork(String passwork) {
-        this.passwork = passwork;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getCellPhone() {
@@ -116,11 +122,4 @@ public class Customer {
         this.type = type;
     }
 
-//    public Pet getPet() {
-//        return pet;
-//    }
-//
-//    public void setPet(Pet pet) {
-//        this.pet = pet;
-//    }
 }
