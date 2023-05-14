@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 
 import com.example.demo.entity.Customer;
+import com.example.demo.entity.Pet;
 import com.example.demo.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -21,8 +22,8 @@ public class CustomerController {
     }
 
     @PostMapping()
-    public Customer save(@RequestBody Customer customer) {
-        return service.save(customer);
+    public Customer save(@RequestBody Customer customer,@RequestBody List<Pet> petList) {
+        return service.save(customer, petList);
     }
 
     @GetMapping("/all")
