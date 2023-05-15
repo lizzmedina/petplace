@@ -14,19 +14,10 @@
     --color6 : #31363F;   /* DB color negro */
     --color7 : #F3F1ED ;  /* blancoParaFondoCards */
 }
-
+/* desactivar el subrayado de los enlaces/rutas*/
 a:link, a:visited, a:active {
     text-decoration: none;
 }
-
-/* chicos, por fa revisar si a ustedes estos les cambia lago, porque según yo esto no hace nada. notificar para borrarlo sí es el caso*/
-
-/* .App {
-    height: 100vh;
-    min-height:400px;
-    width: 100%;
-    margin-bottom: 0;
-} */
 
 /* navbar */
 
@@ -104,7 +95,10 @@ a:link, a:visited, a:active {
     width: 50%;
     justify-content: space-between;
 }
-
+.searcher input select {
+    flex: 1;
+    margin-right: 10px;
+}
 .searcher-button{
     background-color: var(--color3);
     color: var(--color7);
@@ -133,6 +127,7 @@ a:link, a:visited, a:active {
     background-color: var(--color7);
     margin: 20px;
     border-radius: 20px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .card-image {
     display: flex;
