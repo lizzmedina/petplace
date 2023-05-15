@@ -19,6 +19,23 @@ a:link, a:visited, a:active {
     text-decoration: none;
 }
 
+.button-1{
+    border-color: var(--color2);
+    background-color: var(--color1);
+    color: var(--color2);
+    padding: 0.3rem;
+    border-radius: 5px;
+}
+
+/* chicos, por fa revisar si a ustedes estos les cambia lago, porque según yo esto no hace nada. notificar para borrarlo sí es el caso*/
+
+/* .App {
+    height: 100vh;
+    min-height:400px;
+    width: 100%;
+    margin-bottom: 0;
+} */
+
 /* navbar */
 
 .logo{
@@ -60,12 +77,6 @@ a:link, a:visited, a:active {
     align-items: center;
     margin: 25px;
     width: 270px;
-}
-.navbar-buttons button {
-    border-color: var(--color2);
-    background-color: var(--color1);
-    border-radius: 10px;
-    border-width: 2.5px;
 }
 
 /* body */
@@ -237,6 +248,9 @@ a:link, a:visited, a:active {
     flex-direction: column;
     padding: 3rem 0;
 }
+.space-section h2{
+    color: var(--color2);
+}
 .form-container {
     display: flex;
     align-items: center;
@@ -250,9 +264,32 @@ a:link, a:visited, a:active {
     flex-direction: column;
 
     height: 100%;
-    padding: 20px;
+    padding: 1rem;
     width: 40%;
 }
+.form-section-name{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.box{
+    width: 45%;
+}
+.box input{
+    width: 100%;
+}
+.section-button{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.section-button .button-1{
+    width: 90px;
+    align-items: center;
+    background-color: var(--color2);
+    color: var(--color1);
+}
+
 input,select{
     border-radius:5px;
     border: 1px solid #bababa;
