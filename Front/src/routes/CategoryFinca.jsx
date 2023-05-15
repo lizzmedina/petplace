@@ -15,12 +15,9 @@ const CategoryFinca = () => {
     // ------Nota el feth se deberia hacer en context y luego aqui en componente 
     // filtrarlo para luego meter el array en el use effect
 
-    // const url = "https://jsonplaceholder.typicode.com/users/"
     // useEffect(() => {
-    //     fetch(url)                                      
-    //     .then(res => res.json())    
-    //     .then(data => setOdontologos(data)) 
-    //     ;
+    //     const datosFiltradosAPI = dataCategory.filter(producto => producto.type === 'Finca')
+    //     setDataCategory(datosFiltradosAPI)
     // }, [])
 
     useEffect(()=>{
