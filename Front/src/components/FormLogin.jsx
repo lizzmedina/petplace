@@ -30,7 +30,9 @@ const FormLogin = () => {
                 <br/>
 
                 <br/>
-                <button className="button-1">Ingresar</button>
+                <div className="section-button">
+                    <button className="button-1">Ingresar</button>
+                </div>
             </form>
         </div>
     );

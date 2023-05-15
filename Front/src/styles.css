@@ -244,6 +244,9 @@ a:link, a:visited, a:active {
     flex-direction: column;
     padding: 3rem 0;
 }
+.space-section h2{
+    color: var(--color2);
+}
 .form-container {
     display: flex;
     align-items: center;
@@ -257,9 +260,32 @@ a:link, a:visited, a:active {
     flex-direction: column;
 
     height: 100%;
-    padding: 20px;
+    padding: 1rem;
     width: 40%;
 }
+.form-section-name{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.box{
+    width: 45%;
+}
+.box input{
+    width: 100%;
+}
+.section-button{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.section-button .button-1{
+    width: 90px;
+    align-items: center;
+    background-color: var(--color2);
+    color: var(--color1);
+}
+
 input,select{
     border-radius:5px;
     border: 1px solid #bababa;
