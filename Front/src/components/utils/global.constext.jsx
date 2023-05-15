@@ -6,7 +6,7 @@ const ContextGlobal = createContext();
 const ContextProvider = ({children}) => {
 
     // simulacion de llamada a la API para obtener productos
-    const datosAPI = Array.from({length:55}, (value, index) => {
+    const datosAPI = Array.from({length:60}, (value, index) => {
         return {id: index, title: `Item #${index}`}
     })
 

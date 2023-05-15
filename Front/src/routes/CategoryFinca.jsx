@@ -16,14 +16,14 @@ const CategoryFinca = () => {
     //     const datosFiltradosAPI = dataCategory.filter(producto => producto.type === 'Finca')
     //     setDataCategory(datosFiltradosAPI)
     // }, [])
-
     const datosFiltradosAPI = Array.from({length:40}, (value, index) => {
         return {id: index, name: `Item #${index}`}
     })
-    useEffect(()=>{
+    
+    useEffect(()=>{     
         setDataCategory(datosFiltradosAPI)
     }, [])
-
+    
     // ++++++++++++++++++++++++++++++++++++++++++
 
 
