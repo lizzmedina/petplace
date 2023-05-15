@@ -11,6 +11,7 @@ public class Booking {
     private Customer customer;
     private double totalPrice;
 
+
     public Booking(Integer idBooking, PetDayCare petDayCare, Date checkIn, Date checkOut, Customer customer, double totalPrice) {
         this.idBooking = idBooking;
         this.petDayCare = petDayCare;

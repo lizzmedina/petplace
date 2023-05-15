@@ -1,15 +1,14 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name = "customer")
+@Table(name = "customers")
 public class Customer {
     @Id
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@Column(name = "id")
     private Integer id;
 
     @Column(name = "name")
@@ -28,11 +27,17 @@ public class Customer {
     @Column(name = "cellPhone")
     private String cellPhone;
 
-    @Column(name = " address")
+    @Column(name = "address")
     private String address;
 
     @Column(name = "type")
     private String type;
+
+    @OneToMany(mappedBy = "customer")
+    List<Pet> pets;
+
+    @OneToMany(mappedBy = "customer")
+    List<Booking> bookings;
 
     //CORREGIR RELACION
 //    @OneToMany
@@ -58,6 +63,7 @@ public class Customer {
     public Customer() {
     }
 
+    //Getters and Setters
     public Integer getId() {
         return id;
     }
