@@ -2,9 +2,12 @@ package com.example.demo.controller;
 
 import com.example.demo.DTO.BookingDTO;
 import com.example.demo.entity.Booking;
+import com.example.demo.entity.Pet;
 import com.example.demo.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 // ANDREA VIVI
 @RestController
@@ -26,5 +29,10 @@ public class BookingController {
     @GetMapping("/{id}")
     public Booking detail (@PathVariable("id") Integer id){
         return service.detail(id);
+    }
+
+    @GetMapping("/all")
+    public List<Booking> petList(){
+        return service.findAll();
     }
 }

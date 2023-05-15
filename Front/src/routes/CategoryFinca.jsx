@@ -8,21 +8,18 @@ const CategoryFinca = () => {
 
     // ++++++++++++++++++++++++++++++++++++++
     //esta sera la logica para filtrar los productos bajo esta categoria y finalizar en un setDataCategory
-    const datosFiltradosAPI = Array.from({length:40}, (value, index) => {
-        return {id: index, title: `Item #${index}`}
-    })
 
     // ------Nota el feth se deberia hacer en context y luego aqui en componente 
     // filtrarlo para luego meter el array en el use effect
 
-    // const url = "https://jsonplaceholder.typicode.com/users/"
     // useEffect(() => {
-    //     fetch(url)                                      
-    //     .then(res => res.json())    
-    //     .then(data => setOdontologos(data)) 
-    //     ;
+    //     const datosFiltradosAPI = dataCategory.filter(producto => producto.type === 'Finca')
+    //     setDataCategory(datosFiltradosAPI)
     // }, [])
 
+    const datosFiltradosAPI = Array.from({length:40}, (value, index) => {
+        return {id: index, name: `Item #${index}`}
+    })
     useEffect(()=>{
         setDataCategory(datosFiltradosAPI)
     }, [])
