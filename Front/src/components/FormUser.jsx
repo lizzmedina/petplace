@@ -32,11 +32,18 @@ const FormUser = () => {
     return (
         <div className="form-container">
             <form className="form-section" onSubmit={handleSubmit}>
-                <label>Nombre: </label>
-                <input type="text" value={user.name} onChange={(e) => setUser({...user, name: e.target.value})}/>
-                <br/>
-                <label>Apellido: </label>
-                <input type="text" value={user.lastName} onChange={(e) => setUser({...user, lastName: e.target.value})}/>
+                <div className="form-section-name">
+                    <div className="box">
+                        <label>Nombre: </label><br/>
+                        <input type="text" value={user.name} onChange={(e) => setUser({...user, name: e.target.value})}/>
+                        <br/>
+                    </div>
+                    <div className="box">
+                        <label>Apellido: </label><br/>
+                        <input type="text" value={user.lastName} onChange={(e) => setUser({...user, lastName: e.target.value})}/>
+                        <br/>
+                    </div>
+                </div>
                 <br/>
                 <label>Celular: </label>
                 <input type="text" value={user.cellPhone} onChange={(e) => setUser({...user, cellPhone: e.target.value})}/>
@@ -58,7 +65,10 @@ const FormUser = () => {
                 </select>
 
                 <br/>
-                <button>Enviar</button>
+                <div className="section-button">
+                    <button className="button-1">Enviar</button>
+                </div>
+                
             </form>
         </div>
     );

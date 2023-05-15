@@ -7,16 +7,16 @@ export const NavBar = () => {
     
       <Link className = 'navbar-link-container' to = "/"> 
         <img 
-          src='./images/pet-house.png'  
+          src='./images/DbLogo.png'  
           alt="icono"
           className="logo"
         /> 
-        <p className='slogan-navbar'> Los alojamos como en casa </p>
+        <p className='slogan-navbar'>   Los cuidamos como en casa </p>
       </Link> 
     
       <div className ='navbar-buttons'>
-        <button className ='add-acount-button'><Link to='/register'>Crear Cuenta</Link></button>
-        <button className ='start-session-button'><Link to='/login'>Iniciar Sesión</Link></button>
+        <button className ='button-1'><Link to='/register'>Crear Cuenta</Link></button>
+        <button className ='button-1'><Link to='/login'>Iniciar Sesión</Link></button>
       </div>
     
     </nav>

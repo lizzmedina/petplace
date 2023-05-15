@@ -34,10 +34,9 @@ public class Booking {
     private PetDayCare petDayCare;
 
     //building methods
-    public Booking(Integer idBooking, double totalPrice, Date checkIn, Date checkOut
+    public Booking(double totalPrice, Date checkIn, Date checkOut
 //                   ,Customer customer, PetDayCare petDayCare
     ) {
-        this.idBooking = idBooking;
 //        this.petDayCare = petDayCare;
         this.checkIn = checkIn;
         this.checkOut = checkOut;
