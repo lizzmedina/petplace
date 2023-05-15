@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from 'react-router-dom';
 
 const FormLogin = () => {
     const [userLog, setUserLog] = useState({
@@ -33,6 +34,7 @@ const FormLogin = () => {
                 <div className="section-button">
                     <button className="button-1">Ingresar</button>
                 </div>
+                <div className="section-redirection">¿Aun no tienes cuenta? <Link to='/register'>Iniciar Sesión</Link></div>
             </form>
         </div>
     );

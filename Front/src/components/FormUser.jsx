@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from 'react-router-dom';
 
 const FormUser = () => {
     const [user, setUser] = useState({
@@ -68,7 +69,7 @@ const FormUser = () => {
                 <div className="section-button">
                     <button className="button-1">Enviar</button>
                 </div>
-                
+                <div className="section-redirection">¿Ya tienes una cuenta? <Link to='/login'>Iniciar Sesión</Link></div>
             </form>
         </div>
     );

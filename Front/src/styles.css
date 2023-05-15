@@ -286,7 +286,12 @@ a:link, a:visited, a:active {
     background-color: var(--color2);
     color: var(--color1);
 }
-
+.section-redirection{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: small
+}
 input,select{
     border-radius:5px;
     border: 1px solid #bababa;
