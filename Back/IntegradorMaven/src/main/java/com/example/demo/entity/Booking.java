@@ -1,10 +1,7 @@
 package com.example.demo.entity;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.Date;
 
@@ -30,10 +27,16 @@ public class Booking {
     @Column(name = "totalPrice")
     private double totalPrice;
 
-    public Booking( double totalPrice, Date checkIn, Date checkOut
+    @ManyToOne
+    private Customer customer;
+
+    @ManyToOne
+    private PetDayCare petDayCare;
+
+    //building methods
+    public Booking(double totalPrice, Date checkIn, Date checkOut
 //                   ,Customer customer, PetDayCare petDayCare
     ) {
-//        this.idBooking = idBooking;
 //        this.petDayCare = petDayCare;
         this.checkIn = checkIn;
         this.checkOut = checkOut;
@@ -44,6 +47,9 @@ public class Booking {
     public Booking() {
     }
 
+
+
+    //Getters and Setters
     public Integer getIdBooking() {
         return idBooking;
     }
