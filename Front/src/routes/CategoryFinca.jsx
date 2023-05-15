@@ -9,7 +9,7 @@ const CategoryFinca = () => {
     // ++++++++++++++++++++++++++++++++++++++
     //esta sera la logica para filtrar los productos bajo esta categoria y finalizar en un setDataCategory
     const datosFiltradosAPI = Array.from({length:40}, (value, index) => {
-        return {id: index, title: `Item #${index}`}
+        return {id: index, name: `Item #${index}`}
     })
 
     // ------Nota el feth se deberia hacer en context y luego aqui en componente 

@@ -58,7 +58,7 @@ const FormUser = () => {
                 </select>
 
                 <br/>
-                <button>Enviar</button>
+                <button className="button-1">Enviar</button>
             </form>
         </div>
     );

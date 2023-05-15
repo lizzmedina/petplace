@@ -19,6 +19,14 @@ a:link, a:visited, a:active {
     text-decoration: none;
 }
 
+.button-1{
+    border-color: var(--color2);
+    background-color: var(--color1);
+    color: var(--color2);
+    padding: 0.3rem;
+    border-radius: 5px;
+}
+
 /* chicos, por fa revisar si a ustedes estos les cambia lago, porque según yo esto no hace nada. notificar para borrarlo sí es el caso*/
 
 /* .App {
@@ -69,12 +77,6 @@ a:link, a:visited, a:active {
     align-items: center;
     margin: 25px;
     width: 270px;
-}
-.navbar-buttons button {
-    border-color: var(--color2);
-    background-color: var(--color1);
-    border-radius: 10px;
-    border-width: 2.5px;
 }
 
 /* body */

@@ -30,7 +30,7 @@ const FormLogin = () => {
                 <br/>
 
                 <br/>
-                <button>Ingresar</button>
+                <button className="button-1">Ingresar</button>
             </form>
         </div>
     );
