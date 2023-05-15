@@ -3,6 +3,11 @@
 export const Searcher = () => {
   return (
     <div className="searcher-container">
+      <img 
+          src='./images/PpLogo.png'  
+          alt="icono"
+          className="searcherLogo"
+        /> 
       <h2 className="searcher-title"> Busca el alojamiento ideal para tu mascota</h2>
       <div className="searcher">
         <input 

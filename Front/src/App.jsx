@@ -6,6 +6,7 @@ import Login from "./routes/Login";
 import CategoryFinca from "./routes/CategoryFinca";
 import CategoryCasa from "./routes/CategoryCasa";
 import CategoryGuarderia from "./routes/CategoryGuarderia";
+import ProductRegister from "./routes/ProductRegister";
 import { Footer } from "./components/footer";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
                 <Route path="/finca" element={<CategoryFinca/>}/>
                 <Route path="/casa" element={<CategoryCasa/>}/>
                 <Route path="/guarderia" element={<CategoryGuarderia/>}/>
+                <Route path="/ProductRegister" element={<ProductRegister/>}/>
             </Routes>
             </div>
             <Footer/>

@@ -33,6 +33,13 @@ a:link, a:visited, a:active {
     text-align: left;
     height: 50px;
 }
+.searcherLogo{
+    align-self: left;
+    height: 70px;
+    display: inline;
+    position: fixed;
+    left: 5%;
+}
 .navbar {
     display: flex;
     flex-direction: row;
@@ -217,6 +224,7 @@ a:link, a:visited, a:active {
 .card-recommends-image {
     display: flex;
     width: 50%;
+    height: 181px;
     border-top-left-radius: 10px;
     border-style: none;
 }
