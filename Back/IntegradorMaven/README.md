@@ -8,32 +8,19 @@ Las principales dependencias utilizadas son:
 - Spring Web (Construye aplicaciones web, incluyendo RESTful, utilizando Spring MVC. Utiliza Apache Tomcat como contenedor integrado predeterminado.)
 - JUnit (Testeo de pruebas unitarias)
 
+# _________________________________________
 
 ## :computer: Endpoints:
 
 ### Endpoint de creación de producto :hotel:
 
-#### POST: localhost:8080/api/v1/petDayCare
+#### :new: POST: localhost:8080/api/v1/petDayCare
 
 Crea un nuevo producto "Guarderia" en la base de datos con la información proporcionada en el cuerpo de la solicitud.
 
 ##### Parámetros de entrada:
 
 Ejemplo de solicitud:
-
-```java
-{
-        "id": 1,
-        "name": "Huellas de amor",
-        "type": "Campestre",
-        "capacity": 50,
-        "city": "Cali",
-        "address": "Calle 3, via Yumbo",
-        "detail": " somo una guarderia campestre con amplias zonas verdes para tu peludo",
-        "image": "/images.png",
-        "basicPrice": 30.000
-}
-```
 
 La API devolverá el nuevo producto creado en formato JSON:
 ```java
@@ -52,7 +39,7 @@ La API devolverá el nuevo producto creado en formato JSON:
 
 ### Endpoint de listar productos "Guarderias" :hotel:
 
-#### GET: localhost:8080/api/v1/petDayCare/all
+#### :scroll: GET: localhost:8080/api/v1/petDayCare/all
 
 La API devolverá el nuevo producto creado en formato JSON:
 ```java
@@ -84,20 +71,11 @@ La API devolverá el nuevo producto creado en formato JSON:
 
 ```
 
-### Endpoint de eliminar  productos "Guarderias" :hotel:
-
-#### DELETE: localhost:8080/api/v1/petDayCare/{id}
-
-La API devolverá el siguiente mensaje tipo String:
-
-```java
-"El producto fue eliminado "
-```
 
 
 ### Endpoint de filtrar por categoria de productos "perro, gato, canario, conejo" :hotel:
 
-#### GET: localhost:8080/api/v1/petDayCare/{categoria}
+#### :mag_right: GET: localhost:8080/api/v1/petDayCare/{categoria}
 
 La API devolverá una lista con un array con los objetos que corresponden a la categoria "gato":
 
@@ -129,9 +107,9 @@ La API devolverá una lista con un array con los objetos que corresponden a la c
 
 ```
 
-### Endpoint demostrat el detalle del producto según el id  :hotel:
+### Endpoint de mostrar el detalle del producto según el id  :hotel:
 
-#### GET: localhost:8080/api/v1/petDayCare/detail/{id}
+#### :mag_right: GET: localhost:8080/api/v1/petDayCare/detail/{id}
 
 La API devolverá un objeto con la guardería encontrada, por ejemplo utilizando el id=11:
 
@@ -150,47 +128,31 @@ La API devolverá un objeto con la guardería encontrada, por ejemplo utilizando
 
 ```
 
+### Endpoint de eliminar  productos "Guarderias" :hotel:
+
+#### :x: DELETE: localhost:8080/api/v1/petDayCare/{id}
+
+La API devolverá el siguiente mensaje tipo String:
+
+```java
+"El producto fue eliminado "
+```
 
 
-### Endpoint de creación de Cliente y Mascotas :hotel:
+# _____________________________________________________
 
-#### POST: localhost:8080/api/v1/customer
+### Endpoint de creación de Cliente :raising_hand: y Mascotas :feet:
 
-Crea un nuevo cliente con sus mascotas que buscan es servicio de guarderia en la base de datos con la información proporcionada en el cuerpo de la solicitud.
+#### :new: POST: localhost:8080/api/v1/customer
+
+Crea un nuevo cliente con sus mascotas con la información proporcionada en el cuerpo de la solicitud.
 
 ##### Parámetros de entrada:
 
 Ejemplo de solicitud:
 
-```java
-{
+La API devolverá el nuevo cliente creado en formato JSON:
 
-        "id": 123,
-        "address": "av 123",
-        "cell_phone": "1223",
-        "email": "vivi@gmail.com",
-        "last_name": "guzman",
-        "name": "vivi",
-        "password": "123",
-        "type": "cliente",
-        "pets": [
-            {
-            "id": 1,
-            "petName": "paca",
-            "petSize": "mediano",
-            "petType": "gato"
-            },
-            {
-            "id": 2,
-            "petName": "Leon",
-            "petSize": "pequeno",
-            "petType": "perro"
-            }
-            ]
-}
-```
-
-La API devolverá el nuevo producto creado en formato JSON:
 ```java
 {
         "id": 123,
@@ -218,43 +180,54 @@ La API devolverá el nuevo producto creado en formato JSON:
 }
 ```
 
-### Endpoint de listar productos "Guarderias" :hotel:
+### Endpoint de listar clientes :people_holding_hands:
 
-#### GET: localhost:8080/api/v1/petDayCareList
+#### :scroll: GET: localhost:8080/api/v1/petDayCareList
 
-La API devolverá el nuevo producto creado en formato JSON:
+La API devolverá una array de los clientes en formato JSON:
 ```java
-{
-
-        "id": 123,
-        "address": "av 123",
-        "cellPhone": "1223",
-        "email": "vivi@gmail.com",
-        "lastName": "guzman",
+[
+        {
+        "id": 3,
         "name": "vivi",
+        "lastName": null,
+        "email": "vivi@gmail.com",
         "password": "123",
+        "cellPhone": null,
+        "address": "av 123",
         "type": "cliente",
-        "pets": [
-            {
-            "id": 1,
-            "petName": "paca",
-            "petSize": "mediano",
-            "petType": "gato"
-            },
-            {
-            "id": 2,
-            "petName": "Leon",
-            "petSize": "pequeno",
-            "petType": "perro"
-            }
-        ]
-}
-
+        "pets": []
+        },
+        {
+        "id": 4,
+        "name": "vivi",
+        "lastName": "guzman",
+        "email": "vivi@gmail.com",
+        "password": "123",
+        "cellPhone": "1223",
+        "address": "av 123",
+        "type": "cliente",
+        "pets": []
+        }
+]
 ```
 
-### Endpoint de crear un Administrador :
+### Endpoint de eliminar un Cliente  :raising_hand:
 
-#### POST: localhost:8080/api/v1/manager
+#### :x: DELETE: localhost:8080/api/v1/customer/{id}
+
+La API devolverá el siguiente mensaje tipo String:
+
+```java
+"El cliente fue eliminado"
+```
+
+# ___________________________________________
+
+
+### Endpoint de crear un Administrador :man_technologist:
+
+#### :new: POST: localhost:8080/api/v1/manager
 
 ##### Parámetros de entrada:
 
@@ -288,10 +261,9 @@ La API devolverá el nuevo Manager creado en formato JSON:
         }
 ```
 
+### Endpoint de buscar un Administrador :man_technologist:
 
-### Endpoint de buscar un Administrador:
-
-#### GET: localhost:8080/api/v1/manager/{id}
+#### :mag_right: GET: localhost:8080/api/v1/manager/{id}
 
 La API devolverá el nuevo producto encontrado por id, que sería la cédula, por ejemplo utilizando como id=12999899, en formato JSON:
 ```java
@@ -308,9 +280,9 @@ La API devolverá el nuevo producto encontrado por id, que sería la cédula, po
 
 ```
 
-### Endpoint de eliminar un Administrador:hotel:
+### Endpoint de eliminar un Administrador :man_technologist:
 
-#### DELETE: localhost:8080/api/v1/manager/{id}
+#### :x: DELETE: localhost:8080/api/v1/manager/{id}
 
 La API devolverá el siguiente mensaje tipo String:
 
