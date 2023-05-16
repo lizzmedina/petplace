@@ -180,7 +180,7 @@ La API devolverá el nuevo cliente creado en formato JSON:
 }
 ```
 
-### Endpoint de listar clientes :people_holding_hands:
+### Endpoint de listar clientes :raising_hand:
 
 #### :scroll: GET: localhost:8080/api/v1/petDayCareList
 
@@ -225,7 +225,7 @@ La API devolverá el siguiente mensaje tipo String:
 # 
 
 
-### Endpoint de crear un Administrador :key: :raising_hand_man:
+### Endpoint de crear un Administrador :key: 
 
 #### :new: POST: localhost:8080/api/v1/manager
 
@@ -261,7 +261,7 @@ La API devolverá el nuevo Manager creado en formato JSON:
         }
 ```
 
-### Endpoint de buscar un Administrador :key: :raising_hand_man:
+### Endpoint de buscar un Administrador :key: 
 
 #### :mag_right: GET: localhost:8080/api/v1/manager/{id}
 
@@ -280,7 +280,7 @@ La API devolverá el nuevo producto encontrado por id, que sería la cédula, po
 
 ```
 
-### Endpoint de eliminar un Administrador :key: :raising_hand_man:
+### Endpoint de eliminar un Administrador :key:
 
 #### :x: DELETE: localhost:8080/api/v1/manager/{id}
 
