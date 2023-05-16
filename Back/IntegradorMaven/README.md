@@ -139,7 +139,7 @@ La API devolverá el siguiente mensaje tipo String:
 ```
 
 
-# _____________________________________________________
+# 
 
 ### Endpoint de creación de Cliente :raising_hand: y Mascotas :feet:
 
@@ -222,7 +222,7 @@ La API devolverá el siguiente mensaje tipo String:
 "El cliente fue eliminado"
 ```
 
-# ___________________________________________
+# 
 
 
 ### Endpoint de crear un Administrador :man_technologist:
