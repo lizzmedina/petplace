@@ -225,7 +225,7 @@ La API devolverá el siguiente mensaje tipo String:
 # 
 
 
-### Endpoint de crear un Administrador :man_technologist:
+### Endpoint de crear un Administrador :key: :raising_hand_man:
 
 #### :new: POST: localhost:8080/api/v1/manager
 
@@ -261,7 +261,7 @@ La API devolverá el nuevo Manager creado en formato JSON:
         }
 ```
 
-### Endpoint de buscar un Administrador :man_technologist:
+### Endpoint de buscar un Administrador :key: :raising_hand_man:
 
 #### :mag_right: GET: localhost:8080/api/v1/manager/{id}
 
@@ -280,7 +280,7 @@ La API devolverá el nuevo producto encontrado por id, que sería la cédula, po
 
 ```
 
-### Endpoint de eliminar un Administrador :man_technologist:
+### Endpoint de eliminar un Administrador :key: :raising_hand_man:
 
 #### :x: DELETE: localhost:8080/api/v1/manager/{id}
 
