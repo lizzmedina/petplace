@@ -2,7 +2,7 @@ import { useEffect, useState, React } from 'react'
 import Paginate from '../components/Paginate'
 import { useContextGlobal } from '../components/utils/global.constext'
 
-const CategoryFinca = () => {
+const CategoryPerros = () => {
     const {dataCategory, setDataCategory, items, setItems, currentPage, setCurrentPage,
         prevHandler, nextHandler, startHandler, endHandler} = useContextGlobal()
 
@@ -17,4 +17,4 @@ const CategoryFinca = () => {
     )
 }
 
-export default CategoryFinca
+export default CategoryPerros

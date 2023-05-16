@@ -376,9 +376,8 @@ input:hover {
 
 /* Paginate */
 .paginate-container{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 5px;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .paginate-button-container{
