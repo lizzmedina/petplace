@@ -102,9 +102,9 @@ La API devolverá el nuevo producto creado en formato JSON:
 
 ### Endpoint de filtrar por categoria de productos "perro, gato, canario, conejo" :hotel:
 
-#### :mag_right: GET: localhost:8080/api/v1/petDayCare/{categoria}
+#### :mag_right: GET: localhost:8080/api/v1/petDayCare/category/{categoria}
 
-La API devolverá una lista con un array con los objetos que corresponden a la categoria "gato":
+La API devolverá una lista con un array con los objetos que corresponden a la categoria=gatos:
 
 ```java
 [
@@ -151,7 +151,7 @@ La API devolverá un objeto con la guardería encontrada, por ejemplo utilizando
         "detail": " somo una guarderia campestre con amplias zonas verdes para tu peludo",
         "image": "/images.png",
         "basicPrice": 30.0
-        }
+}
 
 ```
 
@@ -271,7 +271,7 @@ Ejemplo de solicitud:
         "cellPhone": "321654987",
         "address": "Carrera A # b-c",
         "type": "Administrador"
-        }
+}
 ```
 
 La API devolverá el nuevo Manager creado en formato JSON:
@@ -285,7 +285,7 @@ La API devolverá el nuevo Manager creado en formato JSON:
         "cellPhone": "321654987",
         "address": "Carrera A # b-c",
         "type": "Administrador"
-        }
+}
 ```
 
 ### Endpoint de buscar un Administrador :key: 
@@ -303,7 +303,7 @@ La API devolverá el nuevo producto encontrado por id, que sería la cédula, po
         "cellPhone": "321654987",
         "address": "Carrera A # b-c",
         "type": "Administrador"
-        }
+}
 
 ```
 
