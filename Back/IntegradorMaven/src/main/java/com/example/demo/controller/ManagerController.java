@@ -23,13 +23,13 @@ public class ManagerController {
         return service.saveManager(manager);
     }
 
-    @GetMapping() //localhost:8080/api/v1/manager
-    public Manager findManager(Integer id){
+    @GetMapping("/{id}") //localhost:8080/api/v1/manager
+    public Manager findManager(@PathVariable("id") Integer id){
         return service.findManager(id);
     }
 
-    @DeleteMapping()
-    public String deleteManager(Integer id){ //localhost:8080/api/v1/manager
+    @DeleteMapping("/{id}")
+    public String deleteManager(@PathVariable("id")Integer id){ //localhost:8080/api/v1/manager
         return service.deleteManager(id);
     }
 

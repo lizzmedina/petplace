@@ -50,9 +50,9 @@ La API devolverá el nuevo producto creado en formato JSON:
 }
 ```
 
-### Endpoint de listar  productos "Guarderias" :hotel:
+### Endpoint de listar productos "Guarderias" :hotel:
 
-#### GET: localhost:8080/api/v1/petDayCareList
+#### GET: localhost:8080/api/v1/petDayCare/all
 
 La API devolverá el nuevo producto creado en formato JSON:
 ```java
@@ -93,6 +93,64 @@ La API devolverá el siguiente mensaje tipo String:
 ```java
 "El producto fue eliminado "
 ```
+
+
+### Endpoint de filtrar por categoria de productos "perro, gato, canario, conejo" :hotel:
+
+#### GET: localhost:8080/api/v1/petDayCare/{categoria}
+
+La API devolverá una lista con un array con los objetos que corresponden a la categoria "gato":
+
+```java
+[
+        {
+        "id": 4,
+        "name": "Huellas de amor",
+        "type": "gato",
+        "capacity": 50,
+        "city": "Cali",
+        "address": "Calle 3, via Yumbo",
+        "detail": " somo una guarderia campestre con amplias zonas verdes para tu peludo",
+        "image": "/images.png",
+        "basicPrice": 30.0
+        },
+        {
+        "id": 8,
+        "name": "Huellas de amor",
+        "type": "gato",
+        "capacity": 50,
+        "city": "Cali",
+        "address": "Calle 3, via Yumbo",
+        "detail": " somo una guarderia campestre con amplias zonas verdes para tu peludo",
+        "image": "/images.png",
+        "basicPrice": 30.0
+        }
+        ]
+
+```
+
+### Endpoint demostrat el detalle del producto según el id  :hotel:
+
+#### GET: localhost:8080/api/v1/petDayCare/detail/{id}
+
+La API devolverá un objeto con la guardería encontrada, por ejemplo utilizando el id=11:
+
+```java
+{
+        "id": 11,
+        "name": "Huellas de amor",
+        "type": "conejo",
+        "capacity": 50,
+        "city": "Cali",
+        "address": "Calle 3, via Yumbo",
+        "detail": " somo una guarderia campestre con amplias zonas verdes para tu peludo",
+        "image": "/images.png",
+        "basicPrice": 30.0
+        }
+
+```
+
+
 
 ### Endpoint de creación de Cliente y Mascotas :hotel:
 
@@ -160,7 +218,7 @@ La API devolverá el nuevo producto creado en formato JSON:
 }
 ```
 
-### Endpoint de listar  productos "Guarderias" :hotel:
+### Endpoint de listar productos "Guarderias" :hotel:
 
 #### GET: localhost:8080/api/v1/petDayCareList
 
@@ -194,14 +252,68 @@ La API devolverá el nuevo producto creado en formato JSON:
 
 ```
 
-### Endpoint de eliminar  productos "Guarderias" :hotel:
+### Endpoint de crear un Administrador :
 
-#### DELETE: localhost:8080/api/v1/petDayCare/{id}
+#### POST: localhost:8080/api/v1/manager
+
+##### Parámetros de entrada:
+
+
+Ejemplo de solicitud:
+
+```java
+{
+        "id":12999899,
+        "name":"Andrea",
+        "lastName": "Bedoya",
+        "email":"abaaaaa@gmail.com",
+        "passwork": "1233345",
+        "cellPhone": "321654987",
+        "address": "Carrera A # b-c",
+        "type": "Administrador"
+        }
+```
+
+La API devolverá el nuevo Manager creado en formato JSON:
+```java
+{
+        "id": 12999899,
+        "name": "Andrea",
+        "lastName": "Bedoya",
+        "email": "abaaaaa@gmail.com",
+        "passwork": "1233345",
+        "cellPhone": "321654987",
+        "address": "Carrera A # b-c",
+        "type": "Administrador"
+        }
+```
+
+
+### Endpoint de buscar un Administrador:
+
+#### GET: localhost:8080/api/v1/manager/{id}
+
+La API devolverá el nuevo producto encontrado por id, que sería la cédula, por ejemplo utilizando como id=12999899, en formato JSON:
+```java
+{
+        "id": 12999899,
+        "name": "Andrea",
+        "lastName": "Bedoya",
+        "email": "abaaaaa@gmail.com",
+        "passwork": "1233345",
+        "cellPhone": "321654987",
+        "address": "Carrera A # b-c",
+        "type": "Administrador"
+        }
+
+```
+
+### Endpoint de eliminar un Administrador:hotel:
+
+#### DELETE: localhost:8080/api/v1/manager/{id}
 
 La API devolverá el siguiente mensaje tipo String:
 
 ```java
-"El producto fue eliminado "
+"El Administrador fue eliminado"
 ```
-
-

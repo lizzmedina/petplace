@@ -6,6 +6,7 @@ import com.example.demo.repository.PetDayCareRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -44,4 +45,40 @@ public class PetDayCareService {
         return "El producto fue eliminado ";
 
     }
+
+    public List<PetDayCare> findByCategory(String type){
+
+        String normalizacion = type.toLowerCase();
+
+        if (!normalizacion.equals("perro") && !normalizacion.equals("gato") && !normalizacion.equals("canario") && !normalizacion.equals("conejo")) {
+            throw new RuntimeException("La categoria no es válida, cerciorarse de que sea perro, gato, canario o conejo");
+        }
+
+        return repository.findByCategory(normalizacion).stream().collect(Collectors.toList());
+
+    }
+
+    public PetDayCare detail(Integer id){
+        Optional<PetDayCare> petDayCare = this.repository.findById(id);
+
+        if(!petDayCare.isPresent()){ //si no esta presente, manda una excepcion
+            throw new RuntimeException("La guarderia no fue encontrada");
+        };
+
+        PetDayCare detailPetDatCare = new PetDayCare(petDayCare.get().getId(),
+                petDayCare.get().getName(),
+                petDayCare.get().getType(),
+                petDayCare.get().getCapacity(),
+                petDayCare.get().getCity(),
+                petDayCare.get().getAddress(),
+                petDayCare.get().getDetail(),
+                petDayCare.get().getImage(),
+                petDayCare.get().getBasicPrice()
+        );
+
+
+         return detailPetDatCare;
+
+    }
+
 }
