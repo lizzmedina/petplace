@@ -50,9 +50,10 @@ const FormProduct = () => {
                 <label>Tipo de alojamiento: </label>
                 <select name="type" onChange={(e) => setProduct({...product, type: e.target.value})}>
                     <option selected hidden>- Elige una opción -</option>
-                    <option value="farm">Finca</option>
-                    <option value="house">Casa</option>
-                    <option value="playgroup">Guarderia</option>
+                    <option value="Perros">Perros</option>
+                    <option value="Gatos">Gatos</option>
+                    <option value="Canarios">Canarios</option>
+                    <option value="Conejos">Conejos</option>
                 </select>
                 <br/>
                 
