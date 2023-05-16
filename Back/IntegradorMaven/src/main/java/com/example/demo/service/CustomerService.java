@@ -65,12 +65,14 @@ public class CustomerService {
 
     }
 
-    public void delete(Integer id) {
+    public String  delete(Integer id) {
         Optional<Customer> customerOpt = customerRepository.findById(id);
         if (customerOpt.isPresent()) {
             customerRepository.delete(customerOpt.get());
+            return "El cliente fue eliminado";
         }
         throw new ResourceNotFoundException("No existe un cliente con id: " + id);
+
     }
 
 

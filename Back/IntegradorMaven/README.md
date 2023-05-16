@@ -32,7 +32,7 @@ Ejemplo de solicitud:
         "detail": " somo una guarderia campestre con amplias zonas verdes para tu peludo",
         "image": "/images.png",
         "basicPrice": 30.000
-        }
+}
 ```
 
 La API devolverá el nuevo producto creado en formato JSON:
@@ -47,7 +47,7 @@ La API devolverá el nuevo producto creado en formato JSON:
         "detail": " somo una guarderia campestre con amplias zonas verdes para tu peludo",
         "image": "/images.png",
         "basicPrice": 30.0
-        }
+}
 ```
 
 ### Endpoint de listar  productos "Guarderias" :hotel:
@@ -93,4 +93,115 @@ La API devolverá el siguiente mensaje tipo String:
 ```java
 "El producto fue eliminado "
 ```
+
+### Endpoint de creación de Cliente y Mascotas :hotel:
+
+#### POST: localhost:8080/api/v1/customer
+
+Crea un nuevo cliente con sus mascotas que buscan es servicio de guarderia en la base de datos con la información proporcionada en el cuerpo de la solicitud.
+
+##### Parámetros de entrada:
+
+Ejemplo de solicitud:
+
+```java
+{
+
+        "id": 123,
+        "address": "av 123",
+        "cell_phone": "1223",
+        "email": "vivi@gmail.com",
+        "last_name": "guzman",
+        "name": "vivi",
+        "password": "123",
+        "type": "cliente",
+        "pets": [
+            {
+            "id": 1,
+            "petName": "paca",
+            "petSize": "mediano",
+            "petType": "gato"
+            },
+            {
+            "id": 2,
+            "petName": "Leon",
+            "petSize": "pequeno",
+            "petType": "perro"
+            }
+            ]
+}
+```
+
+La API devolverá el nuevo producto creado en formato JSON:
+```java
+{
+        "id": 123,
+        "address": "av 123",
+        "cellPhone": "1223",
+        "email": "vivi@gmail.com",
+        "lastName": "guzman",
+        "name": "vivi",
+        "password": "123",
+        "type": "cliente",
+        "pets": [
+            {
+            "id": 1,
+            "petName": "paca",
+            "petSize": "mediano",
+            "petType": "gato"
+            },
+            {
+            "id": 2,
+            "petName": "Leon",
+            "petSize": "pequeno",
+            "petType": "perro"
+            }
+        ]
+}
+```
+
+### Endpoint de listar  productos "Guarderias" :hotel:
+
+#### GET: localhost:8080/api/v1/petDayCareList
+
+La API devolverá el nuevo producto creado en formato JSON:
+```java
+{
+
+        "id": 123,
+        "address": "av 123",
+        "cellPhone": "1223",
+        "email": "vivi@gmail.com",
+        "lastName": "guzman",
+        "name": "vivi",
+        "password": "123",
+        "type": "cliente",
+        "pets": [
+            {
+            "id": 1,
+            "petName": "paca",
+            "petSize": "mediano",
+            "petType": "gato"
+            },
+            {
+            "id": 2,
+            "petName": "Leon",
+            "petSize": "pequeno",
+            "petType": "perro"
+            }
+        ]
+}
+
+```
+
+### Endpoint de eliminar  productos "Guarderias" :hotel:
+
+#### DELETE: localhost:8080/api/v1/petDayCare/{id}
+
+La API devolverá el siguiente mensaje tipo String:
+
+```java
+"El producto fue eliminado "
+```
+
 
