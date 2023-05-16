@@ -50,8 +50,8 @@ public class PetDayCareService {
 
         String normalizacion = type.toLowerCase();
 
-        if (!normalizacion.equals("perro") && !normalizacion.equals("gato") && !normalizacion.equals("canario") && !normalizacion.equals("conejo")) {
-            throw new RuntimeException("La categoria no es válida, cerciorarse de que sea perro, gato, canario o conejo");
+        if (!normalizacion.equals("perros") && !normalizacion.equals("gatos") && !normalizacion.equals("canarios") && !normalizacion.equals("conejos")) {
+            throw new RuntimeException("La categoria no es válida, cerciorarse de que sea perros, gatos, canarios o conejos");
         }
 
         return repository.findByCategory(normalizacion).stream().collect(Collectors.toList());
