@@ -34,7 +34,7 @@ const FormLogin = () => {
                 <div className="section-button">
                     <button className="button-1">Ingresar</button>
                 </div>
-                <div className="section-redirection">¿Aun no tienes cuenta? <Link to='/register'>Iniciar Sesión</Link></div>
+                <div className="section-redirection">¿Aun no tienes cuenta? <Link to='/register'>Registrate</Link></div>
             </form>
         </div>
     );
