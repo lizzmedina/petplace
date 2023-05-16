@@ -1,4 +1,4 @@
-# API REST de reservas de Guarderia para mascotas PetPlace :hotel: :paw_prints:
+# API REST de reservas de Guarderia para mascotas PetPlace :hotel: :feet:
 
 <div align= "rigth">Esta API REST de reservas de habitación de hotel es una aplicación Spring Boot que te permite gestionar reservas de guarderia para mascotas. El proyecto esta construido con la versión de '3.0.6' de Spring Boot, un gestor de dependecias con  Maven compatible con Java 17 :coffee:, con un motor de base de datos en MySQL y persistencia de datos co JPA e Hibernate.
 
@@ -8,7 +8,7 @@ Las principales dependencias utilizadas son:
 - Spring Web (Construye aplicaciones web, incluyendo RESTful, utilizando Spring MVC. Utiliza Apache Tomcat como contenedor integrado predeterminado.)
 - JUnit (Testeo de pruebas unitarias)
 
-# _________________________________________
+
 
 ## :computer: Endpoints:
 
