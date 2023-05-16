@@ -27,6 +27,7 @@ a:link, a:visited, a:active {
     border-radius: 5px;
 }
 
+
 /* navbar */
 
 .logo{
@@ -34,12 +35,7 @@ a:link, a:visited, a:active {
     height: 60px;
     margin-left: 15px;
 }
-/* .searcherLogo{
-    align-self: left;
-    height: 70px;
-    display: inline;
-    left: 5%;
-} */
+
 .navbar {
     display: flex;
     flex-direction: row;
@@ -84,7 +80,7 @@ a:link, a:visited, a:active {
     justify-content: space-between;
     flex-direction: column;
     background-color: var(--color1);
-    
+    width: 100vw;
 }
 .searcher-container {
     display: flex;
@@ -102,7 +98,8 @@ a:link, a:visited, a:active {
     flex-direction: row;
     justify-content: space-between;
     align-items: center ;
-    width: 50%;
+    width: 70%;
+    flex-wrap: wrap;
 }
 .searcher input select {
     flex: 1;
@@ -123,14 +120,17 @@ a:link, a:visited, a:active {
     width: 100%;
 }
 .categories-container h2{
-    margin-left: calc(50% - 520px);
+    margin-left: 20px;
 }
 .render-cards-categories {
     display: flex;
-
-    margin: auto;
-    max-width: 1080px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: auto; 
 }
+
 
 .card-container{
     background-color: var(--color7);
@@ -143,7 +143,8 @@ a:link, a:visited, a:active {
     justify-content: center;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-    width: 100%;
+    width: 50%;
+    height: 181px;
 }
 .card-title-category{
     color: var(--color6);
@@ -172,12 +173,13 @@ a:link, a:visited, a:active {
     width: 100%;
 }
 .recommends-container h2{
-    margin-left: calc(50% - 520px);
+    margin-left: 20px;
 }
 .render-cards-recomends{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
     margin: auto; 
     max-width: 1080px;
@@ -227,7 +229,6 @@ a:link, a:visited, a:active {
     right: 25px;
     width: 15px;
     height: 15px
-    
 }
 
 .card-image {
@@ -421,10 +422,6 @@ footer {
         font-size: 19px;
         padding: 7px;
     }
-    .home-container{
-        margin-top: 420px;
-        margin-bottom: 1250px;
-    }
     .searcher {
         display: flex;
         flex-direction: column;
@@ -487,4 +484,11 @@ footer {
         display: none;
     }
     
+}
+@media only screen and  (min-width: 451px)  and  (max-width: 900px){
+
+}
+
+@media only screen and  (min-width: 901px) {
+
 }

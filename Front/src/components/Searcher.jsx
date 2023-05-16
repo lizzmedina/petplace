@@ -8,19 +8,13 @@ export const Searcher = () => {
   return (
     <div className="searcher-container">
       
-        <h2 className="searcher-title"> Busca el alojamiento ideal para tu mascota</h2>
+      <h2 className="searcher-title"> Busca el alojamiento ideal para tu mascota</h2>
       
-    <div className="searchercontainer2">
-        <div className="searcherLogo-container">
-          
-      </div>
       <div className="searcher">
         <SearcherByLocation/>
         <ReservationCalendar/>
         <button className="searcher-button">Buscar</button>
       </div>
-    </div>
-      
     </div>
   )
 }
