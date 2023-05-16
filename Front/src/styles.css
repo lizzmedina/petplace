@@ -105,6 +105,7 @@ a:link, a:visited, a:active {
     width: 100%;
     padding: 15px;
 }
+
 .searcher {
     display: flex;
     flex-direction: row;
@@ -132,13 +133,13 @@ a:link, a:visited, a:active {
     width: 100%;
 }
 .categories-container h2{
-    margin-left: 10vw;
+    margin-left: calc(50% - 520px);
 }
 .render-cards-categories {
     display: flex;
 
     margin: auto;
-    max-width: 80%;
+    max-width: 1080px;
 }
 
 .card-container{
@@ -156,17 +157,19 @@ a:link, a:visited, a:active {
 }
 .card-title-category{
     color: var(--color6);
-    font-size: 1rem;
+    font-size: 0.5rem;
     margin: 8px;
     margin-bottom: 5px;
+    
 }
 .card-quantity-categories {
     color: var(--color6);
-    font-size: 0.5rem;
+    font-size: 0.4rem;
     margin: 10px;
     margin-top: 5px;
     margin-bottom: 15px;
 }
+
 
 /* Style for recommends section */
 .recommends-container {
@@ -179,7 +182,7 @@ a:link, a:visited, a:active {
     width: 100%;
 }
 .recommends-container h2{
-    margin-left: 10vw;
+    margin-left: calc(50% - 520px);
 }
 .render-cards-recomends{
     display: flex;
@@ -187,7 +190,7 @@ a:link, a:visited, a:active {
     justify-content: space-between;
     align-items: center;
     margin: auto; 
-    max-width: 80%;
+    max-width: 1080px;
 }
 
 .card-recomends{
@@ -198,18 +201,20 @@ a:link, a:visited, a:active {
     max-height: 164px;
     max-width: 500px;
     overflow: hidden;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .card-content{
     display:flex;
     background-color: var(--color7);
 }
 
-.left-card-content, .right-card-content{
+/* .left-card-content, .right-card-content{
     width: 100%;
-}
+} */
 
 .right-card-content{
-    padding-left: 10px;
+    padding-left: 0px;
+    padding-top: 10px;
 
 }
 
@@ -218,30 +223,95 @@ a:link, a:visited, a:active {
     display:contents;
 }
 
-.card-recommends-image {
+.card-image-recommends {
     display: flex;
     width: 50%;
     height: 181px;
     border-top-left-radius: 10px;
     border-style: none;
 }
-
-.icono-location{
-    Width: 10px;
-    Height: 16px;
+.card-like-recommends {
+    position: relative;
+    z-index: 1;
+    top: 10px;
+    right: 25px;
+    width: 15px;
+    height: 15px
+    
 }
+
+.card-image {
+    display: flex;
+    justify-content: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    width: 100%;
+}
+.card-title-recommends{
+    color: var(--color6);
+    font-size: 0.8rem;
+    display: inline;
+}
+
+.card-category-recommends {
+    color: var(--color6);
+    font-size: 0.8rem;
+    margin-left: 0px;
+    display: block;
+}
+
+.card-descrption-recommends {
+    color: var(--color6);
+    font-size: 0.6rem;
+    margin: 5px 17px 0px 0;
+    
+}
+
+a.see-more-link{
+    display:inline-flex;
+    font-size: 0.6rem;
+    color: var(--color2);
+}
+
+.card-location-recommends{
+    color: var(--color6);
+    font-size: 0.5rem;
+    margin: 10px 10px 10px 0;
+}
+
+.card-location-recommends:before {
+    content: "";
+    display: block;
+    background: url("./images/pinLocation.png") no-repeat;
+    width: 10px;
+    height: 10px;
+    float: left;
+    margin: 0 3px 0 0;
+    padding: -3px 0 0 0;
+}
+
+.card-quantity-recommends {
+    color: var(--color6);
+    font-size: 0.4rem;
+    margin: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+
+
 .card-recomends-container{
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-
     background-color: var(--color7);
     border-radius: 10px;
     Height: 350px;
     Width: 620px;
 }
 
-.ver-mas-button{
+
+a.ver-mas-recommends{
     background: var(--color2);
     border-color: var(--color2);
     border-radius: 5px;
@@ -379,6 +449,7 @@ footer {
     }
     .render-cards-categories{
         flex-wrap: wrap;
+        max-width: 85%;
     }
     .card-container{
         margin: 10px 0px;
@@ -387,12 +458,17 @@ footer {
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
+        max-width: 85%;
     }
    
     .recommends-container {
         display: flex;
         align-items: center;
         padding: 20px 0px;
+    }
+    .right-card-content{
+        padding-left: 15px;
+        padding-top: 0;   
     }
 
     .card-recomends{
@@ -411,10 +487,14 @@ footer {
         margin: auto;
         text-align: center;
     }
-    .card-recommends-image {
+    .card-image-recommends {
         
         width: 100%;
         
+    }
+    
+    .searcherLogo{
+        display: none;
     }
     
 }

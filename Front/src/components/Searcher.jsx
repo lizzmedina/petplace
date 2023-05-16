@@ -22,7 +22,7 @@ export const Searcher = () => {
         <div className="search-by-location">
           <label htmlFor="opciones"/>
           <select id="opciones" value={opcionSeleccionada} onChange={handleSeleccionarOpcion}>
-            <option value="" disabled hidden>¿dónde estarás? </option>
+            <option value="" disabled hidden>¿Donde cuaidarlo? </option>
             {opciones.map((opcion) => (
               <option key={opcion} value={opcion}>
                 {opcion}
