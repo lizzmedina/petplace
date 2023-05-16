@@ -22,8 +22,8 @@ public class CustomerController {
     }
 
     @PostMapping()
-    public Customer save(@RequestBody Customer customer,@RequestBody List<Pet> petList) {
-        return service.save(customer, petList);
+    public Customer save(@RequestBody Customer customer) {
+        return service.save(customer);
     }
 
     @GetMapping("/all")

@@ -1,6 +1,8 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -39,16 +41,10 @@ public class Customer {
     @OneToMany(mappedBy = "customer")
     List<Booking> bookings;
 
-    //CORREGIR RELACION
-//    @OneToMany
-//    @JoinColumn(name = "id")
-//    private Pet pet;
-
-
     public Customer(Integer id, String name,
                     String lastName, String email,
                     String password, String cellPhone,
-                    String address, String type /*, Pet pet*/) {
+                    String address, String type, List<Pet> pets) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
@@ -57,7 +53,7 @@ public class Customer {
         this.cellPhone = cellPhone;
         this.address = address;
         this.type = type;
-        //this.pet = pet;
+       this.pets = new ArrayList<>();
     }
 
     public Customer() {
@@ -128,4 +124,11 @@ public class Customer {
         this.type = type;
     }
 
+    public List<Pet> getPets() {
+        return pets;
+    }
+
+    public void setPets(List<Pet> pets) {
+        this.pets = pets;
+    }
 }
