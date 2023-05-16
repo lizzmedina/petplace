@@ -22,8 +22,8 @@ public class CustomerController {
     }
 
     @PostMapping()
-    public Customer save(@RequestBody Customer customer,@RequestBody List<Pet> petList) {
-        return service.save(customer, petList);
+    public Customer save(@RequestBody Customer customer) {
+        return service.save(customer);
     }
 
     @GetMapping("/all")
@@ -32,8 +32,8 @@ public class CustomerController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable("id") Integer id) {
-        service.delete(id);
-        return ResponseEntity.ok().build();
+    public String delete(@PathVariable("id") Integer id) {
+      return service.delete(id);
+
     }
 }

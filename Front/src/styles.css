@@ -27,15 +27,6 @@ a:link, a:visited, a:active {
     border-radius: 5px;
 }
 
-/* chicos, por fa revisar si a ustedes estos les cambia lago, porque según yo esto no hace nada. notificar para borrarlo sí es el caso*/
-
-/* .App {
-    height: 100vh;
-    min-height:400px;
-    width: 100%;
-    margin-bottom: 0;
-} */
-
 /* navbar */
 
 .logo{
@@ -47,7 +38,6 @@ a:link, a:visited, a:active {
     align-self: left;
     height: 70px;
     display: inline;
-    position: fixed;
     left: 5%;
 } */
 .navbar {
@@ -113,7 +103,6 @@ a:link, a:visited, a:active {
     justify-content: space-between;
     align-items: center ;
     width: 50%;
-    justify-content: space-between;
 }
 .searcher input select {
     flex: 1;
@@ -368,7 +357,12 @@ a.ver-mas-recommends{
     background-color: var(--color2);
     color: var(--color1);
 }
-
+.section-redirection{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: small
+}
 input,select{
     border-radius:5px;
     border: 1px solid #bababa;
@@ -439,9 +433,6 @@ footer {
         padding: 24px 10px 10px 10px;
     }
     .searcher-container{
-        margin-top: 0px;
-    }
-    .home-container {
         margin-top: 0px;
     }
     .categories-container{

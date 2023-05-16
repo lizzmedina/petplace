@@ -29,10 +29,10 @@ public class CustomerService {
 
 
 
-    public Customer save(Customer customer, List<Pet> petList) {
-        if (customer != null && petList != null) {
+    public Customer save(Customer customer) {
+        if (customer != null) {
 
-            petList.forEach((pet) -> {Pet newPet = new Pet(
+         customer.getPets().forEach((pet) -> {Pet newPet = new Pet(
                     pet.getId(),
                     pet.getPetName(),
                     pet.getPetType(),
@@ -40,6 +40,7 @@ public class CustomerService {
                 );
                 petRepository.save(newPet);
             });
+
 
             Customer newCustomer = new Customer(
                     customer.getId(),
@@ -49,8 +50,8 @@ public class CustomerService {
                     customer.getPassword(),
                     customer.getCellPhone(),
                     customer.getAddress(),
-                    customer.getType()
-                    //petList
+                    customer.getType(),
+                    customer.getPets()
             );
 
             return customerRepository.save(customer);
@@ -64,12 +65,14 @@ public class CustomerService {
 
     }
 
-    public void delete(Integer id) {
+    public String  delete(Integer id) {
         Optional<Customer> customerOpt = customerRepository.findById(id);
         if (customerOpt.isPresent()) {
             customerRepository.delete(customerOpt.get());
+            return "El cliente fue eliminado";
         }
         throw new ResourceNotFoundException("No existe un cliente con id: " + id);
+
     }
 
 

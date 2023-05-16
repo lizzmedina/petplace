@@ -1,12 +1,10 @@
 import { useState } from "react";
 import { Card } from "../components/CardCategories";
-//import { useContextGlobal } from "../components/utils/global.constext";
+
 
 
 export const Categories = ({categories}) => {
 
-  // const {categories, images} = useContextGlobal();
-  //const categories = useState['finca', 'casa De Familia', 'guardería multiple' ];
   const [places, setPlaaces] = useState([
     {
       id: 1,

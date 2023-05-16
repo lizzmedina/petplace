@@ -1,9 +1,8 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "petDayCare")
@@ -37,6 +36,13 @@ public class PetDayCare {
     @Column(name = "basicPrice")
     private double basicPrice;
 
+    @ManyToOne
+    private Manager manager;
+
+    @OneToMany(mappedBy = "petDayCare")
+    List<Booking> bookings;
+
+    //building methods
     public PetDayCare(Integer id, String name, String type, Integer capacity, String city, String address, String detail, String image, double basicPrice) {
         this.id = id;
         this.name = name;
@@ -52,6 +58,7 @@ public class PetDayCare {
     public PetDayCare() {
     }
 
+    //Getters and Setters
     public Integer getId() {
         return id;
     }

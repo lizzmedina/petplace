@@ -1,15 +1,16 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name = "customer")
+@Table(name = "customers")
 public class Customer {
     @Id
-    @Column(name = "id")
+   // @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@Column(name = "id")
     private Integer id;
 
     @Column(name = "name")
@@ -28,22 +29,22 @@ public class Customer {
     @Column(name = "cellPhone")
     private String cellPhone;
 
-    @Column(name = " address")
+    @Column(name = "address")
     private String address;
 
     @Column(name = "type")
     private String type;
 
-    //CORREGIR RELACION
-//    @OneToMany
-//    @JoinColumn(name = "id")
-//    private Pet pet;
+    @OneToMany(mappedBy = "customer")
+    List<Pet> pets;
 
+    @OneToMany(mappedBy = "customer")
+    List<Booking> bookings;
 
     public Customer(Integer id, String name,
                     String lastName, String email,
                     String password, String cellPhone,
-                    String address, String type /*, Pet pet*/) {
+                    String address, String type, List<Pet> pets) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
@@ -52,12 +53,13 @@ public class Customer {
         this.cellPhone = cellPhone;
         this.address = address;
         this.type = type;
-        //this.pet = pet;
+       this.pets = new ArrayList<>();
     }
 
     public Customer() {
     }
 
+    //Getters and Setters
     public Integer getId() {
         return id;
     }
@@ -122,4 +124,11 @@ public class Customer {
         this.type = type;
     }
 
+    public List<Pet> getPets() {
+        return pets;
+    }
+
+    public void setPets(List<Pet> pets) {
+        this.pets = pets;
+    }
 }
