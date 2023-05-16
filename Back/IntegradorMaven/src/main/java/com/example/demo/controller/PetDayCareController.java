@@ -28,17 +28,17 @@ public class PetDayCareController {
         return service.findAll();
     }
 
-    @DeleteMapping("/{id}") //la ruta para borrar es igual que la de crear , lo cambia es el metodo http que usamos que ya no es post sino delete.. cuidado al hacer las pruebas con esto
+    @DeleteMapping("/{id}") //localhost:8080/api/v1/petDayCare/{id} la ruta para borrar es igual que la de crear , lo cambia es el metodo http que usamos que ya no es post sino delete.. cuidado al hacer las pruebas con esto
     public String delete(@PathVariable("id") Integer id){ // importante la anotacion PathVariable que es la que me llega en la ruta para buscar por id y poder borrar
         return service.delete(id);
     }
 
-    @GetMapping("/category/{category}")
+    @GetMapping("/category/{category}")//localhost:8080/api/v1/petDayCare/category/{category}
     public List<PetDayCare> findByCategory(@PathVariable("category") String type){
         return service.findByCategory(type);
     };
 
-    @GetMapping("/detail/{id}")
+    @GetMapping("/detail/{id}")//localhost:8080/api/v1/petDayCare/detail/{id}
     public PetDayCare detail(@PathVariable("id") Integer id){
         return service.detail(id);
     }
