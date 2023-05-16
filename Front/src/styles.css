@@ -40,15 +40,16 @@ a:link, a:visited, a:active {
 
 .logo{
     text-align: left;
-    height: 50px;
+    height: 60px;
+    margin-left: 15px;
 }
-.searcherLogo{
+/* .searcherLogo{
     align-self: left;
     height: 70px;
     display: inline;
     position: fixed;
     left: 5%;
-}
+} */
 .navbar {
     display: flex;
     flex-direction: row;
