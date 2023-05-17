@@ -497,35 +497,36 @@ footer {
         display: none;
     }
 }
-@media only screen and  (min-width: 451px)  and  (max-width: 900px){
+@media only screen and  (min-width: 451px)  and  (max-width: 1200px){
     
     .navbar-link-container p{
         display: none;
     }
     .logo {
-        margin-left: 40px;
+        margin-left: 2.5rem;
     }
     .navbar-buttons{
-        width: 40vw;
+        width: 50vw;
         justify-content: space-around;
     }
     .navbar-buttons button {
-        font-size: 18px;
-        padding: 5px ;
-        margin: 10px;
+        font-size: 1rem;
+        padding: 0.3rem ;
     }
     .searcher {
         justify-content: center;
         width: 100%;
     }
     .searcher-container{
-        padding-left: 15px;
+        padding-left: 0.2rem;
         align-items: center;
+        text-align: center;
     }
     .search-width{
-        margin: 20px 5px;
-        min-width: 190px;
+        margin: 1.25rem 0.3rem;
+        min-width: 15rem;
     }
+    
     .categories-container{
         align-items: center;
         padding: 20px 0px;
