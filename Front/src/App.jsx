@@ -8,6 +8,7 @@ import CategoryGatos from "./routes/CategoryGatos";
 import CategoryCanarios from "./routes/CategoryCanarios";
 import CategoryConejos from "./routes/CategoryConejos";
 import ProductRegister from "./routes/ProductRegister";
+import Details from "./routes/Details";
 import { Footer } from "./components/footer";
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
                 <Route path="/Canarios" element={<CategoryCanarios/>}/>
                 <Route path="/Conejos" element={<CategoryConejos/>}/>
                 <Route path="/Admin" element={<ProductRegister/>}/>
+                <Route path="/Detail" element={<Details/>}/>
             </Routes>
             <Footer/>
         </div>

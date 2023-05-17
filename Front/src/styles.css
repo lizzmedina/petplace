@@ -1,6 +1,3 @@
-body {
-   width: 100%;
-}  
 
 * {
     margin: 0;
@@ -8,6 +5,10 @@ body {
     font-family: 'Quicksand', sans-serif;
     overflow-x: hidden;
 } 
+body {
+    width: 100%;
+}  
+
 /* variables */
 
 :root {
@@ -19,11 +20,12 @@ body {
     --color6 : #31363F;   /* DB color negro */
     --color7 : #F3F1ED ;  /* blancoParaFondoCards */
 }
+
 /* desactivar el subrayado de los enlaces/rutas*/
 a:link, a:visited, a:active {
     text-decoration: none;
 }
-
+/*Estilos generales para botones*/
 .button-1{
     border-color: var(--color2);
     background-color: var(--color1);
@@ -32,38 +34,34 @@ a:link, a:visited, a:active {
     border-radius: 5px;
 }
 
-
 /* navbar */
-
-.logo{
-    text-align: left;
-    height: 60px;
-    margin-left: 15px;
-}
 
 .navbar {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center ;
-
     background-color: var(--color1);
     padding: 5px;
     width: 100%;
     position:sticky;
     top: 0;
 }
-
-.navbar img{
+.logo{
+    text-align: left;
+    height: 60px;
+    margin-left: 15px;
     align-self: center;
 }
-.navbar-link-container{
+.slogan-navbar{
+    margin:2rem;
+}
+.navbar-link-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
-
-    width: 284px;
+    width: 30vw;
+    justify-content: space-evenly;
 }
 .navbar-link-container p {
     color: var(--color6);
@@ -95,11 +93,10 @@ a:link, a:visited, a:active {
     align-items:flex-start ;
     background-color: var(--color2);
     width: 100%;
-    min-height: 100px;
-    padding: 15px;
+    min-height: 6.26rem;
+    padding: 0.93rem;
     padding-left: 15vw;
 }
-
 .searcher {
     display: flex;
     flex-direction: row;
@@ -107,9 +104,7 @@ a:link, a:visited, a:active {
     align-items: center;
     flex-wrap: wrap;
     width: 60vw;
-    overflow-x: hidden;
 }
-
 .searcher-button{
     background-color: var(--color3);
     color: var(--color7);
@@ -126,10 +121,7 @@ a:link, a:visited, a:active {
     background-color: var(--color1);
     width: 100%;
 }
-.categories-container h2{
-    margin-left: 20px;
-}
-.render-cards-categories {
+.render-cards-categories{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -143,7 +135,7 @@ a:link, a:visited, a:active {
     border-radius: 20px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-.card-image {
+.card-image{
     display: flex;
     justify-content: center;
     border-top-left-radius: 20px;
@@ -158,7 +150,7 @@ a:link, a:visited, a:active {
     margin-bottom: 5px;
     
 }
-.card-quantity-categories {
+.card-quantity-categories{
     color: var(--color6);
     font-size: 0.4rem;
     margin: 10px;
@@ -168,6 +160,7 @@ a:link, a:visited, a:active {
 
 
 /* Style for recommends section */
+
 .recommends-container {
     display: flex;
     flex-wrap: wrap;
@@ -189,20 +182,29 @@ a:link, a:visited, a:active {
     margin: auto; 
     max-width: 1080px;
 }
-
 .card-recomends{
     display: flex;
-    background-color: red;
+    flex-direction: column;
+    background-color: var(--color7);
     border-radius: 10px;
-    margin: 20px;
-    max-height: 164px;
+    margin: 10px 20px 20px 0;
+    max-height: 184px;
     max-width: 500px;
     overflow: hidden;
+    width: 68vh;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .card-content{
     display:flex;
     background-color: var(--color7);
+    width: 30rem;
+}
+.recommends-container {
+    align-items: center;
+    width: 100%;
+    }
+.card-image-recommends {
+    height: 100%;
 }
 
 /* .left-card-content, .right-card-content{
@@ -210,16 +212,15 @@ a:link, a:visited, a:active {
 } */
 
 .right-card-content{
-    padding-left: 0px;
+    padding-left: 10px;
     padding-top: 10px;
 
 }
-
 .left-card-content {
     
     display:contents;
+    width: 50%;
 }
-
 .card-image-recommends {
     display: flex;
     width: 50%;
@@ -235,7 +236,6 @@ a:link, a:visited, a:active {
     width: 15px;
     height: 15px
 }
-
 .card-image {
     display: flex;
     justify-content: center;
@@ -248,33 +248,27 @@ a:link, a:visited, a:active {
     font-size: 0.8rem;
     display: inline;
 }
-
 .card-category-recommends {
     color: var(--color6);
     font-size: 0.8rem;
     margin-left: 0px;
     display: block;
 }
-
 .card-descrption-recommends {
     color: var(--color6);
     font-size: 0.6rem;
     margin: 5px 17px 0px 0;
-    
 }
-
 a.see-more-link{
     display:inline-flex;
     font-size: 0.6rem;
     color: var(--color2);
 }
-
 .card-location-recommends{
     color: var(--color6);
     font-size: 0.5rem;
     margin: 10px 10px 10px 0;
 }
-
 .card-location-recommends:before {
     content: "";
     display: block;
@@ -285,7 +279,6 @@ a.see-more-link{
     margin: 0 3px 0 0;
     padding: -3px 0 0 0;
 }
-
 .card-quantity-recommends {
     color: var(--color6);
     font-size: 0.4rem;
@@ -293,18 +286,6 @@ a.see-more-link{
     margin-top: 5px;
     margin-bottom: 15px;
 }
-
-.card-recomends-container{
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    background-color: var(--color7);
-    border-radius: 10px;
-    Height: 350px;
-    Width: 620px;
-}
-
-
 a.ver-mas-recommends{
     background: var(--color2);
     border-color: var(--color2);
@@ -314,6 +295,7 @@ a.ver-mas-recommends{
 }
 
 /* register-formUser y login-formlogin */
+
 .space-section{
     display: flex;
     align-items: center;
@@ -367,34 +349,122 @@ a.ver-mas-recommends{
     justify-content: center;
     font-size: small
 }
-
 input,select {
     border-radius:5px;
     border: 1px solid #bababa;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     min-height: 1.8rem;
-
     transition: .4s;
 }
-
 input:hover {
     border: 1px solid var(--color2);
 }
 
 /* Paginate */
+
 .paginate-container{
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
 }
-
 .paginate-button-container{
     display: flex;
     justify-content: center;
     margin: 1rem;
 }
 
+/* Detelle del alojamiento */
+
+.detail-container {
+    width: 100%;
+    margin: auto;
+}
+
+.path {
+    position: absolute;
+    background-color: #fff;
+    z-index: 5;
+    height: 25px;
+    top: -25px;
+    float: left;
+}
+.product-container {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 900px;
+    height: 400px;
+    background: var(--color2);
+    margin: 90px auto 20px auto;
+    border-radius: 10px;
+}
+.product-info-container {
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 40px;
+    background-color: var(--color7);
+    border-radius: 0px 10px 10px 0px;
+}
+.product-info {
+    display: block;
+    width: 50%;
+}
+.product-image {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 75%;
+    align-self: center;
+    background-color: var(--color1);
+}
+.buttonDetail {
+    position: absolute;
+    background-color: var(--color2);
+    color: var(--color1);
+    border: none;
+    outline: none;
+    padding: 15px 20px;
+    margin-top: 5px;
+    bottom: 20px;
+    font-size: 16px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-radius: 40px;
+    float: right;
+}
+.text-info {
+    margin: 5px auto 5px auto;
+}
+.city-info {
+    margin: 5px auto 5px auto;
+}
+.price-info {
+    margin: 5px auto 5px auto;
+    font-size: 1.2em;
+}
+.detail-info {
+    margin: 25px auto 5px auto;
+    font-size: 1.2em;
+}
+.city-info::before {
+    content: "";
+    display: block;
+    background: url("./images/pinLocation.png") no-repeat;
+    width: 10px;
+    height: 10px;
+    float: left;
+    margin: 5px 3px 0 0;
+    padding: 3px 0 0 0;
+}
+
 /* footer */
+
 footer {
     display: flex;
     justify-content: flex-start ;
@@ -412,84 +482,68 @@ footer {
     height: 10px;
 }
 
-@media only screen and  (max-width: 450px){
+/* MEDIA QUERIES */
+
+@media only screen and  (max-width: 500px){
     .navbar{
         display: flex;
-        font-size: 10px;
+        font-size: 0.62rem;
         justify-content:space-between;
     }
     .navbar-link-container{
-        width: 50px;
-        justify-content: flex-start;
+        width: 3.12rem;
     }
     .navbar-link-container p{
         display: none;
     }
     .navbar-buttons button {
-        font-size: 19px;
-        padding: 7px;
+        font-size: 1.1rem;
+        padding: 0.43rem;
     }
     .searcher {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
         width: 100%;
     }
     .search-width{
         width: 100%;
-        margin: 5px;
+        margin: 0.31rem;
     }
     .searcher-container{
-        margin-top: 0px;
-        justify-content: space-evenly;
-        align-items: center;
-        padding-left: 15px;
+        padding-left: 0.93rem;
     }
     .searcher-title{
-        margin:20px;
+        margin: 1.25rem 0.31rem;
         text-align: center;
-        font-size: 28px;
+        font-size: 1.75rem;
     }
     .categories-container{
         align-items: center;
-        padding: 20px 0px;
+        padding: 1.25rem 0rem;
     }
-    .render-cards-categories{
-        flex-wrap: wrap;
-        max-width: 85%;
+    .home-titles{
+        margin-left: 0.4rem;
     }
     .card-container{
-        margin: 10px 0px;
-    }
-    .render-cards-recomends {
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        max-width: 85%;
-    }
+        margin: 0.6rem 0rem;
+    }    
     .recommends-container {
-        display: flex;
-        align-items: center;
-        padding: 20px 0px;
+        padding: 1.5rem 0rem;
     }
     .right-card-content{
-        padding-left: 15px;
+        padding: 0.9rem;
         padding-top: 0;   
     }
+    .left-card-content {
+    
+        display:flex;
+        width: 50%;
+    }
     .card-recomends{
-        margin: 10px 0px;
-        max-width: 350px;
-        min-height: 350px;
+        margin: 1.5rem 0rem;
+        max-width: 15rem;
+        min-height: 21rem;
     }
     .card-content{
         flex-direction: column;
-    }
-    .recommends-container h2{
-        margin: auto;
-        text-align: center;
-    }
-    .categories-container h2{
-        text-align: center;
     }
     .card-image-recommends {
         width: 100%;
@@ -498,49 +552,196 @@ footer {
         display: none;
     }
 }
-@media only screen and  (min-width: 451px)  and  (max-width: 900px){
+@media only screen and  (min-width: 501px)  and  (max-width: 600px){
+    .navbar-link-container p{
+        display: none;
+    }
+    .navbar-buttons{
+        width: 50vw;
+        justify-content: space-around;
+    }
+    .navbar-buttons button {
+        font-size: 1rem;
+        padding: 0.3rem ;
+    }
+    .searcher {
+        width: 100%;
+    }
+    .search-width{
+        width: 100%;
+        margin: 0.31rem;
+    }
+    .searcher-container{
+        padding-left: 0.93rem;
+    }
+    .searcher-title{
+        margin: 1.25rem 0.31rem;
+        text-align: center;
+        font-size: 1.75rem;
+    }
+    .home-titles{
+        margin: 1rem;
+    }
+    .card-container{
+        width: 40%;
+    }
+    .card-recomends{
+        width: 90%;
+    }
+}
+@media only screen and  (min-width: 601px)  and  (max-width: 767px){
     
     .navbar-link-container p{
         display: none;
     }
     .logo {
-        margin-left: 40px;
+        margin-left: 2.5rem;
+    }
+    .navbar-buttons{
+        width: 40vw;
+    }
+    .buttons-navbar {
+        font-size: 0.8rem;
+        padding: 0.3rem ;
+    }
+    .searcher-container{
+        padding-left: 0.2rem;
+        align-items: center;
+        text-align: center;
+    }
+    .searcher {
+        justify-content: center;
+        width: 100%;
+        margin: 0.5rem 0rem;
+    }
+    .search-width{
+        width: 30%;
+        margin: 5px;
+    }   
+    .categories-container{
+        padding: 20px 0px;
+    }
+    .render-cards-categories {
+        justify-content: space-around;
+        min-width: 80px;
+    }
+    .card-container{
+        width: 40%;
+    }
+    .recommends-container {
+    align-items: center;
+    width: 100%;
+    }
+    .card-content{
+        width: 30rem;
+    } 
+    .card-recomends{
+        width: 90vw;
+    }
+    .card-image-recommends {
+        height: 100%;
+    }
+}
+@media only screen and  (min-width: 768px)  and  (max-width: 799px){
+    
+    .search-width{
+        width: 12rem;
+        margin: 5px;
+    }   
+    .logo {
+        margin-left: 2.5rem;
+    }
+    .slogan-navbar{
+        margin-left: 1rem;
     }
     .navbar-buttons{
         width: 40vw;
         justify-content: space-around;
     }
-    .navbar-buttons button {
-        font-size: 18px;
-        padding: 5px ;
-        margin: 10px;
+    .buttons-navbar {
+        font-size: 0.8rem;
+        padding: 0.3rem ;
+    }
+    .searcher-container{
+        padding-left: 0.2rem;
+        align-items: center;
+        text-align: center;
     }
     .searcher {
         justify-content: center;
         width: 100%;
-    }
-    .searcher-container{
-        padding-left: 15px;
-        align-items: center;
-    }
-    .search-width{
-        margin: 20px 5px;
-        min-width: 190px;
-    }
+        margin: 0.5rem 0rem;
+    } 
     .categories-container{
-        align-items: center;
         padding: 20px 0px;
     }
     .render-cards-categories {
         justify-content: space-around;
-        
         min-width: 80px;
     }
     .card-container{
-        width: 325px;
+        width: 40%;
+    }
+    .recommends-container {
+    align-items: center;
+    width: 100%;
+    }
+    .card-content{
+        width: 30rem;
+    } 
+    .card-recomends{
+        width: 90vw;
+    }
+    .card-image-recommends {
+        height: 100%;
+    }
+
+    .product-container {
+        display: block;
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 100vw;
+        height: 400px;
+        background: var(--color2);
+        margin: 90px auto 20px auto;
+        border-radius: 10px;
+
+    }
+
+    .detail-container {
+        width: 50%;
+        margin: auto;
     }
 }
-
-@media only screen and  (min-width: 901px) {
-
+@media only screen and  (min-width: 800px)  and  (max-width: 1024px){
+    .slogan-navbar{
+        margin-left: 1rem;
+    }
+    .searcher-container{
+        padding-left: 0.2rem;
+        align-items: flex-start;
+    }
+    .searcher {
+        justify-content: center;
+        width: 100%;
+        margin: 0.5rem 0rem;
+    }
+    .searcher-title{
+        margin-left: 1rem;
+    }
+    .search-width{
+        width: 12rem;
+        margin: 5px;
+    }   
+    .card-content{
+        width: 30rem;
+    } 
+    .card-recomends{
+        width: 90vw;
+    }
+    .card-image-recommends {
+        height: 100%;
+    }
 }
