@@ -158,7 +158,9 @@ a:link, a:visited, a:active {
     margin-bottom: 15px;
 }
 
-
+.home-titles{
+    margin-left: 5rem;
+}
 /* Style for recommends section */
 
 .recommends-container {
@@ -170,9 +172,7 @@ a:link, a:visited, a:active {
     padding-top: 20px;
     width: 100%;
 }
-.recommends-container h2{
-    margin-left: 20px;
-}
+
 .render-cards-recomends{
     display: flex;
     flex-direction: row;
@@ -197,10 +197,7 @@ a:link, a:visited, a:active {
     background-color: var(--color7);
     width: 30rem;
 }
-.recommends-container {
-    align-items: center;
-    width: 100%;
-    }
+
 .card-image-recommends {
     height: 100%;
 }
