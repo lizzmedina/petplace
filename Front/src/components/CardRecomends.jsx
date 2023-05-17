@@ -17,9 +17,7 @@ export const CardRecomends = ({ image, type, name, rating, ratingText, servicio1
                     <h3 className="card-title-recommends">{name}</h3>
                     <p className="card-category-recommends">Habilitado para: {type}</p>
                     <p className="card-category-recommends">Capacidad: {capacity}</p>
-
                     <p className="card-location-recommends">{city}, {address}</p>
-
                     <p className="card-descrption-recommends">{detail}</p>
                     <a className="see-more-link" href="">...Leer más</a>
                     <span >
@@ -27,12 +25,8 @@ export const CardRecomends = ({ image, type, name, rating, ratingText, servicio1
                         <p> {ratingText} </p>
                     </span>
                     <p>${basicPrice}</p>
-
                 </div>
             </div>
-
-
         </div>
     )
-
 }
