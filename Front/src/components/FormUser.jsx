@@ -12,7 +12,7 @@ const FormUser = () => {
         type:''
     })
 
-    const handlerSubmit = (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault()
         if (user.name.length > 3) {
             alert(`Hola ${user.name}, su cuenta ha sido creada exitosamente.`)
@@ -32,7 +32,7 @@ const FormUser = () => {
 
     return (
         <div className="form-container">
-            <form className="form-section" onSubmit={handlerSubmit}>
+            <form className="form-section" onSubmit={handleSubmit}>
                 <div className="form-section-name">
                     <div className="box">
                         <label>Nombre: </label><br/>

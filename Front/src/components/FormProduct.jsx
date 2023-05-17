@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 const FormProduct = () => {
     const [product, setProduct] = useState({
-        id: '',
         name: '',
         type: '',
         capacity: '',
@@ -17,22 +16,21 @@ const FormProduct = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
 
-    const handlerSubmit = (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault()
         if (product.name.length > 2 && product.detail.length> 5) {
             setIsLoading(true);
-            // setProduct({
-            //     id: '',
-            //     name: '',
-            //     type: '',
-            //     capacity: '',
-            //     city: '',
-            //     address: '',
-            //     detail: '',
-            //     image: '',
-            //     services: [],
-            //     basicPrice: ''
-            // })
+            setProduct({
+                name: '',
+                type: '',
+                capacity: '',
+                city: '',
+                address: '',
+                detail: '',
+                image: '',
+                services: [],
+                basicPrice: ''
+            })
             console.log(product);
 
             fetch("http://127.0.0.1:8080/api/v1/petDayCare", {
@@ -47,7 +45,6 @@ const FormProduct = () => {
                         setIsSuccess(true);
                         alert(`El alojamiento ${product.name} ha sido creado exitosamente.`);
                         setProduct({
-                            id: '',
                             name: '',
                             type: '',
                             capacity: '',
@@ -80,7 +77,7 @@ const FormProduct = () => {
 
     return (
         <div className="form-container">
-            <form className="form-section" onSubmit={handlerSubmit}>
+            <form className="form-section" onSubmit={handleSubmit}>
                 <div className="form-section-name">
                     <div className="box">
                         <label>Nombre: </label><br/>
@@ -107,7 +104,7 @@ const FormProduct = () => {
                 </div><br/>
                 <label>Tipo de alojamiento: </label>
                 <select name="type" onChange={(e) => setProduct({...product, type: e.target.value})}>
-                    <option selected hidden>- Elige una opción -</option>
+                    <option selected hidden>--- Elige una opción ---</option>
                     <option value="Perros">Perros</option>
                     <option value="Gatos">Gatos</option>
                     <option value="Canarios">Canarios</option>
