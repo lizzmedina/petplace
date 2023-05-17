@@ -43,8 +43,7 @@ public class PetDayCare {
     @OneToMany(mappedBy = "petDayCare")
     List<Booking> bookings;
 
-      public PetDayCare(Integer id, String name, String type, Integer capacity, String city, String address, String detail, String image, double basicPrice) {
-        this.id = id;
+      public PetDayCare(String name, String type, Integer capacity, String city, String address, String detail, String image, double basicPrice) {
         this.name = name;
         this.type = type;
         this.capacity = capacity;
