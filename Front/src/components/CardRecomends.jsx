@@ -1,4 +1,5 @@
-export const CardRecomends = ({ image, type, name, rating, ratingText, servicio1, servicio2, iconoLocation, city, address, detail, }) => {
+export const CardRecomends = ({ image, type, name, rating, ratingText, servicio1, servicio2, 
+    iconoLocation, city, address, detail, capacity, basicPrice, }) => {
 
     return (
 
@@ -14,7 +15,8 @@ export const CardRecomends = ({ image, type, name, rating, ratingText, servicio1
                 </div>
                 <div className="right-card-content">
                     <h3 className="card-title-recommends">{name}</h3>
-                    <p className="card-category-recommends">{type}</p>
+                    <p className="card-category-recommends">Habilitado para: {type}</p>
+                    <p className="card-category-recommends">Capacidad: {capacity}</p>
 
                     <p className="card-location-recommends">{city}, {address}</p>
 
@@ -24,6 +26,7 @@ export const CardRecomends = ({ image, type, name, rating, ratingText, servicio1
                         <p className="rating"> {rating} </p>
                         <p> {ratingText} </p>
                     </span>
+                    <p>${basicPrice}</p>
 
                 </div>
             </div>
