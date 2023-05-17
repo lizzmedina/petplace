@@ -9,7 +9,7 @@ const CategoryPerros = () => {
 
         useEffect(() => {
             setUrl("http://localhost:8080/api/v1/petDayCare/category/Perros")
-        },[items])
+        },[setUrl])
 
     return (
         <div className='space-section'>
