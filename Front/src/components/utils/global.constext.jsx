@@ -1,4 +1,4 @@
-import { Children, createContext, useContext, useState } from "react";
+import { Children, createContext, useContext, useState, useEffect } from "react";
 
 const ContextGlobal = createContext();
 
@@ -9,11 +9,18 @@ const ContextProvider = ({children}) => {
     const datosAPI = Array.from({length:60}, (value, index) => {
         return {id: index, title: `Item #${index}`}
     })
+    const url = "http://localhost:8080/api/v1/petDayCare/all"
 
 
     // Estados y funciones para paginado
 
-    const [dataCategory, setDataCategory] = useState(datosAPI)
+    const [dataCategory, setDataCategory] = useState([])
+    useEffect(() => {
+        fetch(url)                                      
+        .then(res => res.json())    
+        .then(data => setDataCategory(data)) 
+        ;
+    }, [])
 
     const itemsPerPage = 10
     const[items, setItems] = useState([...dataCategory].splice(0, itemsPerPage)) 

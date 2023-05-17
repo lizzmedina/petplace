@@ -8,7 +8,7 @@ const CategoryPerros = () => {
 
     return (
         <div className='space-section'>
-            <h2>Finca</h2>
+            <h2>Perros</h2>
             <p>A continuacion nuestras opciones de guarderia en esta categoria</p>
             
             <Paginate currentPage={currentPage} items={items} 

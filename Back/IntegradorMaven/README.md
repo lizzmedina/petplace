@@ -8,7 +8,34 @@ Las principales dependencias utilizadas son:
 - Spring Web (Construye aplicaciones web, incluyendo RESTful, utilizando Spring MVC. Utiliza Apache Tomcat como contenedor integrado predeterminado.)
 - JUnit (Testeo de pruebas unitarias)
 
+# Prerequisitos
 
+Debemos tener en cuenta que para poder ejecutar nuestro proyecto, se tiene que contar con el siguiente entorno configurado.
+
+1. Java 17+
+2. Maven
+3. MySQL, una instancia de MySQL corriendo en `localhost` en el puerto `3306`
+
+# Guía de ejecución
+
+Para ejecutar el programa, debemos clonar el repositorio mediante el siguiente comando:
+
+```sh
+git clone https://gitlab.ctd.academy/ctd/hispanos/proyecto-integrador-1/proyecto-integrador-0523/1021pt-c3/equipo-02.git
+```
+
+Una vez termine la ejecución, nos dirigimos a la carpeta donde se encuentra el código fuente y para ejecutar el servicio, realizamos los siguientes comandos:
+
+```sh
+cd equipo-02/Back/IntegradorMaven
+mvn clean install
+mvn spring-boot:run --spring.datasource.password=${DB_PASSWORD}
+```
+**Teniendo en cuenta que debemos reemplazar la variable `DB_PASSWORD` por el valor que hayamos asignado en la instancia de MySQL**
+
+Una vez ejecutemos los comandos, accedemos a nuestro Swagger para ver las APIs creadas mediante la URL:
+
+http://localhost:8080/swagger-ui/index.html
 
 ## :computer: Endpoints:
 
@@ -75,9 +102,9 @@ La API devolverá el nuevo producto creado en formato JSON:
 
 ### Endpoint de filtrar por categoria de productos "perro, gato, canario, conejo" :hotel:
 
-#### :mag_right: GET: localhost:8080/api/v1/petDayCare/{categoria}
+#### :mag_right: GET: localhost:8080/api/v1/petDayCare/category/{categoria}
 
-La API devolverá una lista con un array con los objetos que corresponden a la categoria "gato":
+La API devolverá una lista con un array con los objetos que corresponden a la categoria=gatos:
 
 ```java
 [
@@ -124,7 +151,7 @@ La API devolverá un objeto con la guardería encontrada, por ejemplo utilizando
         "detail": " somo una guarderia campestre con amplias zonas verdes para tu peludo",
         "image": "/images.png",
         "basicPrice": 30.0
-        }
+}
 
 ```
 
@@ -244,7 +271,7 @@ Ejemplo de solicitud:
         "cellPhone": "321654987",
         "address": "Carrera A # b-c",
         "type": "Administrador"
-        }
+}
 ```
 
 La API devolverá el nuevo Manager creado en formato JSON:
@@ -258,7 +285,7 @@ La API devolverá el nuevo Manager creado en formato JSON:
         "cellPhone": "321654987",
         "address": "Carrera A # b-c",
         "type": "Administrador"
-        }
+}
 ```
 
 ### Endpoint de buscar un Administrador :key: 
@@ -276,7 +303,7 @@ La API devolverá el nuevo producto encontrado por id, que sería la cédula, po
         "cellPhone": "321654987",
         "address": "Carrera A # b-c",
         "type": "Administrador"
-        }
+}
 
 ```
 

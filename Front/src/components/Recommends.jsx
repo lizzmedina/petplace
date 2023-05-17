@@ -98,17 +98,18 @@ export const Recommends = () => {
         {shuffleArray(recommends).slice(0, 2).map(recommend => (
           <CardRecomends
             key={recommend.id}
-            category={recommend.category}
+            type={recommend.type}
             name={recommend.name}
             image={recommend.image}
             quantity={recommend.quantity}
             rating={recommend.rating}
             ratingText={recommend.ratingText}
             iconoLocation={recommend.iconoLocation}
-            location={recommend.location}
+            city={recommend.city}
+            address={recommend.address}
             service1={recommend.service1}
             service2={recommend.service2}
-            description={recommend.description}
+            detail={recommend.detail}
           />
         ))}
       </div>
