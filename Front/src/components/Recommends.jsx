@@ -1,84 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { CardRecomends } from "./CardRecomends";
 
 
 export const Recommends = () => {
 
-  const [recommends, setRecommends] = useState([
-    {
-      id: 1,
-      category: 'finca',
-      name: "El ensueño",
-      image: './images/hermoso-labrador.avif',
-      rating: 10,
-      ratingText: 'muy bueno',
-      iconoLocation: './images/iconolocation.png',
-      location: 'A 940 m del centro',
-      service1: './images/iconoServicioBano.png',
-      service2: './images/iconoServicioPisina.png',
-      description: 'En el corazón de San Telmo, disfruta de un albergue inspirado en las pasiones de Buenos Aires. más...',
-    },
-    {
-      id: 2,
-      category: 'casa de familia',
-      name: "Los Peréz",
-      image: './images/hermoso-labrador.avif',
-      rating: 10,
-      ratingText: 'muy bueno',
-      location: 'A 940 m del centro',
-      service1: './images/iconoServicioBaño.png',
-      service2: './images/iconoServicioPisina.png',
-      description: 'En el corazón de San Telmo, disfruta de un albergue inspirado en las pasiones de Buenos Aires. más...',
-    },
-    {
-      id: 3,
-      category: 'guardería multiple',
-      name: "Mi amigo fiel",
-      image: './images/hermoso-labrador.avif',
-      rating: 10,
-      ratingText: 'muy bueno',
-      location: 'A 940 m del centro',
-      service1: './images/iconoServicioBaño.png',
-      service2: './images/iconoServicioPisina.png',
-      description: 'En el corazón de San Telmo, disfruta de un albergue inspirado en las pasiones de Buenos Aires. más...',
-    },
-    {
-      id: 4,
-      category: 'Finca',
-      name: "Claroluna",
-      image: './images/hermoso-labrador.avif',
-      rating: 9,
-      ratingText: 'muy bueno',
-      location: 'A 2 km del centro',
-      service1: './images/iconoServicioPiscina.png',
-      service2: './images/iconoServicioBano.png',
-      description: 'Hermoso hotel en la costa de Cancún, con vistas espectaculares y servicios de primera calidad.',
-    },
-    {
-      id: 5,
-      category: 'Casa de familia',
-      name: "Los Spano",
-      image: './images/hermoso-labrador.avif',
-      rating: 8,
-      ratingText: 'bueno',
-      location: 'A 500 m del centro',
-      service1: './images/iconoServicioCocina.png',
-      service2: './images/iconoServicioLavanderia.png',
-      description: 'Amplio apartamento con todas las comodidades, ideal para grupos y familias. Excelente ubicación en el centro de la ciudad.',
-    },
-    {
-      id: 6,
-      category: 'Gueraderia multiple',
-      name: "Gorditos y bonitos",
-      image: './images/hermoso-labrador.avif',
-      rating: 7,
-      ratingText: 'bueno',
-      location: 'A 1 km del centro',
-      service1: './images/iconoServicioWifi.png',
-      service2: './images/iconoServicioRecepcion24.png',
-      description: 'Acogedor hostal con ambiente joven y divertido. Buena ubicación y excelente relación calidad-precio.',
-    },
-  ])
+  const url = "http://localhost:8080/api/v1/petDayCare/all"
+
+  // Estados y funciones para paginado
+  const [recommends, setRecommends] = useState([])
+  useEffect(() => {
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        setRecommends(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching recommends:", error);
+      });
+  }, []);
 
   function shuffleArray(array) {
     // funcion para ordenar aleatoriamente el array
@@ -95,7 +34,7 @@ export const Recommends = () => {
       <h2>Recomendaciones </h2>
       
       <div className="render-cards-recomends">
-        {shuffleArray(recommends).slice(0, 2).map(recommend => (
+        {shuffleArray(recommends).slice(0, 8).map(recommend => (
           <CardRecomends
             key={recommend.id}
             type={recommend.type}
