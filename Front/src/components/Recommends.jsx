@@ -92,8 +92,7 @@ export const Recommends = () => {
 
   return (
     <div className="recommends-container">
-      <h2>Recomendaciones </h2>
-      
+      <h2 className="home-titles">Recomendaciones </h2>
       <div className="render-cards-recomends">
         {shuffleArray(recommends).slice(0, 2).map(recommend => (
           <CardRecomends
@@ -114,7 +113,6 @@ export const Recommends = () => {
           />
         ))}
       </div>
-
     </div>
   )
 }

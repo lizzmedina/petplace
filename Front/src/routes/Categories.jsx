@@ -31,19 +31,18 @@ export const Categories = ({categories}) => {
   ])
 
   return (
-    <div className="categories-container">
-      <h2>Buscar por tipo de alojamiento </h2>
-    <div className="render-cards-categories">
-      {places.map(place => (
-        <Card 
-          key={place.id}
-          category={place.category}
-          image={place.image}
-          quantity={place.quantity}
-        />
-      ))}
-    </div>
-      
+    <div className = "categories-container">
+      <h2 className="home-titles">Buscar según el tipo de mascota </h2>
+      <div className = "render-cards-categories">
+        {places.map(place => (
+          <Card 
+            key={place.id}
+            category={place.category}
+            image={place.image}
+            quantity={place.quantity}
+          />
+        ))}
+      </div>
     </div>
   )
 }
