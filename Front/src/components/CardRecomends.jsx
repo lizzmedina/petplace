@@ -11,7 +11,7 @@ export const CardRecomends = ({ image, type, name, rating, ratingText, servicio1
                         src={image}
                         alt={type}
                     />
-                    <a href=""><img className="card-like-recommends" src="./images/unlike.png" alt="" /></a>
+                    
                 </div>
                 <div className="right-card-content">
                     <h3 className="card-title-recommends">{name}</h3>
