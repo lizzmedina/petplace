@@ -9,6 +9,7 @@ import java.util.List;
 public class PetDayCare {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
@@ -42,8 +43,7 @@ public class PetDayCare {
     @OneToMany(mappedBy = "petDayCare")
     List<Booking> bookings;
 
-    //building methods
-    public PetDayCare(Integer id, String name, String type, Integer capacity, String city, String address, String detail, String image, double basicPrice) {
+      public PetDayCare(Integer id, String name, String type, Integer capacity, String city, String address, String detail, String image, double basicPrice) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -58,7 +58,6 @@ public class PetDayCare {
     public PetDayCare() {
     }
 
-    //Getters and Setters
     public Integer getId() {
         return id;
     }
