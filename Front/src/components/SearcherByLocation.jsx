@@ -9,16 +9,13 @@ export const SearcherByLocation = () => {
     setOpcionSeleccionada(event.target.value);
   };
     return (
-        <div className="search-by-location">
-            <label htmlFor="opciones"/>
-            <select id="opciones" value={opcionSeleccionada} onChange={handleSeleccionarOpcion}>
-                <option value="" disabled hidden>¿dónde estarás? </option>
-                {opciones.map((opcion) => (
-                    <option key={opcion} value={opcion}>
-                        {opcion}
-                    </option>
-                ))}
-            </select>
-        </div>
+        <select id="opciones" className = "search-width" value={opcionSeleccionada} onChange={handleSeleccionarOpcion}>
+            <option value="" disabled hidden>¿dónde estarás? </option>
+            {opciones.map((opcion) => (
+                <option key={opcion} value={opcion}>
+                    {opcion}
+                </option>
+            ))}
+        </select>
     )
 }

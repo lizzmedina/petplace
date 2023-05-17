@@ -13,7 +13,7 @@ export const Searcher = () => {
       <div className="searcher">
         <SearcherByLocation/>
         <ReservationCalendar/>
-        <button className="searcher-button">Buscar</button>
+        <button className="searcher-button search-width">Buscar</button>
       </div>
     </div>
   )
