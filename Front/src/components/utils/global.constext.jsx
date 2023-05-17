@@ -14,8 +14,10 @@ const ContextProvider = ({children}) => {
     useEffect(() => {
         fetch(url)                                      
         .then(res => res.json())    
-        .then(data => setDataCategory(data)) 
-        ;
+        .then((data) => {
+            setDataCategory(data);
+            setItems(data.slice(0, itemsPerPage));
+        });
     }, [url])
 
     const itemsPerPage = 10
