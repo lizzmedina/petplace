@@ -394,6 +394,112 @@ input:hover {
     margin: 1rem;
 }
 
+
+/* Detelle del alojamiento */
+
+.detail-container {
+    width: 100%;
+    margin: auto;
+
+}
+
+.path {
+
+    position: absolute;
+
+    background-color: #fff;
+    z-index: 5;
+    height: 25px;
+    top: -25px;
+    float: left;
+}
+
+.product-container {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 900px;
+    height: 400px;
+    background: var(--color2);
+    margin: 90px auto 20px auto;
+    border-radius: 10px;
+}
+
+.product-info-container {
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 40px;
+    background-color: var(--color7);
+    border-radius: 0px 10px 10px 0px;
+}
+
+.product-info {
+    display: block;
+    width: 50%;
+}
+
+.product-image {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 75%;
+    align-self: center;
+    background-color: var(--color1);
+}
+
+
+.buttonDetail {
+    position: absolute;
+    background-color: var(--color2);
+    color: var(--color1);
+    border: none;
+    outline: none;
+    padding: 15px 20px;
+    margin-top: 5px;
+    bottom: 20px;
+    font-size: 16px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-radius: 40px;
+    float: right;
+}
+
+.text-info {
+    margin: 5px auto 5px auto;
+}
+
+.city-info {
+    margin: 5px auto 5px auto;
+}
+
+.price-info {
+    margin: 5px auto 5px auto;
+    font-size: 1.2em;
+}
+
+.detail-info {
+    margin: 25px auto 5px auto;
+    font-size: 1.2em;
+}
+
+.city-info::before {
+    content: "";
+    display: block;
+    background: url("./images/pinLocation.png") no-repeat;
+    width: 10px;
+    height: 10px;
+    float: left;
+    margin: 5px 3px 0 0;
+    padding: 3px 0 0 0;
+}
+
+
 /* footer */
 footer {
     display: flex;
@@ -538,6 +644,25 @@ footer {
     }
     .card-container{
         width: 325px;
+    }
+
+    .product-container {
+        display: block;
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 100vw;
+        height: 400px;
+        background: var(--color2);
+        margin: 90px auto 20px auto;
+        border-radius: 10px;
+
+    }
+
+    .detail-container {
+        width: 50%;
+        margin: auto;
     }
 }
 
