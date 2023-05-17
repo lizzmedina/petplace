@@ -52,7 +52,6 @@ Ejemplo de solicitud:
 La API devolverá el nuevo producto creado en formato JSON:
 ```java
 {
-        "id": 1,
         "name": "Huellas de amor",
         "type": "Campestre",
         "capacity": 50,

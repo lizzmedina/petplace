@@ -6,11 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "customers")
+@Table(name = "customer")
 public class Customer {
     @Id
-   // @GeneratedValue(strategy = GenerationType.IDENTITY)
-    //@Column(name = "id")
     private Integer id;
 
     @Column(name = "name")

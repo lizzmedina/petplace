@@ -65,7 +65,7 @@ public class PetDayCareService {
             throw new RuntimeException("La guarderia no fue encontrada");
         };
 
-        PetDayCare detailPetDatCare = new PetDayCare(petDayCare.get().getId(),
+        PetDayCare detailPetDatCare = new PetDayCare(
                 petDayCare.get().getName(),
                 petDayCare.get().getType(),
                 petDayCare.get().getCapacity(),

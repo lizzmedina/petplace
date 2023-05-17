@@ -3,29 +3,25 @@ package com.example.demo.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "pets")
+@Table(name = "pet")
 public class Pet {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    //@Column(name = "id")
     private Integer id;
 
-    //@Column(name = "petName")
+    @Column(name = "petName")
     private String petName;
 
-    //@Column(name = "petType")
+    @Column(name = "petType")
     private String petType;
 
-    //@Column(name = "petSize")
+    @Column(name = "petSize")
     private String petSize;
 
     @ManyToOne
     private Customer customer;
 
-
-
-    //building methods
     public Pet() {
     }
 
@@ -37,7 +33,6 @@ public class Pet {
 
     }
 
-    //Getters and Setters
     public Integer getId() {
         return id;
     }

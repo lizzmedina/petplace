@@ -22,11 +22,6 @@ public class PetController {
         this.service = service;
     }
 
-    @PostMapping()
-    public Pet save(@RequestBody Pet pet){
-        return service.save(pet);
-    }
-
     @GetMapping("/all")
     public List<Pet> petList(){
         return service.findAll();
