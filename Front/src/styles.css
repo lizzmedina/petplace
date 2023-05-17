@@ -87,30 +87,32 @@ a:link, a:visited, a:active {
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    align-items: center ;
+    align-items:flex-start ;
     background-color: var(--color2);
     width: 100%;
+    min-height: 100px;
     padding: 15px;
+    padding-left: 10vw;
 }
 
 .searcher {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center ;
-    width: 70%;
+    align-items: center;
     flex-wrap: wrap;
+    width: 60vw;
+    overflow-x: hidden;
 }
-.searcher input select {
-    flex: 1;
-    margin-right: 10px;
-}
+
 .searcher-button{
     background-color: var(--color3);
     color: var(--color7);
     border-color: var(--color3);
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
     border-radius: 5px;
+    padding: 5px;
+    text-align: center;
 }
 .categories-container{
     display: flex;
@@ -289,8 +291,6 @@ a.see-more-link{
     margin-bottom: 15px;
 }
 
-
-
 .card-recomends-container{
     display: flex;
     flex-direction: row;
@@ -364,13 +364,16 @@ a.ver-mas-recommends{
     justify-content: center;
     font-size: small
 }
-input,select{
+
+input,select {
     border-radius:5px;
     border: 1px solid #bababa;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     min-height: 1.8rem;
+    min-width: 225px;
     transition: .4s;
 }
+
 input:hover {
     border: 1px solid var(--color2);
 }
@@ -425,10 +428,17 @@ footer {
     .searcher {
         display: flex;
         flex-direction: column;
-        padding: 24px 10px 10px 10px;
+        justify-content: flex-start;
     }
     .searcher-container{
         margin-top: 0px;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    
+    .searcher-title{
+        margin:20px;
+        text-align: center;
     }
     .categories-container{
         align-items: center;
@@ -447,7 +457,6 @@ footer {
         flex-wrap: wrap;
         max-width: 85%;
     }
-   
     .recommends-container {
         display: flex;
         align-items: center;
@@ -457,7 +466,6 @@ footer {
         padding-left: 15px;
         padding-top: 0;   
     }
-
     .card-recomends{
         margin: 10px 0px;
         max-width: 350px;
@@ -470,23 +478,30 @@ footer {
         margin: auto;
         text-align: center;
     }
+    
     .categories-container h2{
-        margin: auto;
         text-align: center;
     }
     .card-image-recommends {
-        
         width: 100%;
-        
     }
-    
     .searcherLogo{
         display: none;
     }
+    .searcher-button{
+    }
     
+    .searcher-input-date-container {
+    }
+
 }
 @media only screen and  (min-width: 451px)  and  (max-width: 900px){
-
+    .searcher {
+        justify-content: center;
+    }
+    input, select {
+        min-width: 180px;
+    }
 }
 
 @media only screen and  (min-width: 901px) {

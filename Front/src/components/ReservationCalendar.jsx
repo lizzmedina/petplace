@@ -2,7 +2,7 @@
 export const ReservationCalendar = () => {
 
     return (
-        <div>
+        <div className="searcher-input-date-container">
             <input 
                 className = "searcher-input-date"
                 type = "text"
