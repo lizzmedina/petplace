@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { Card } from "../components/CardCategories";
 
-
-
 export const Categories = ({categories}) => {
 
   const [places, setPlaaces] = useState([

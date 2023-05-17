@@ -9,7 +9,7 @@ const Paginate = (props) => {
             type={recommend.type}
             name={recommend.name}
             image={recommend.image}
-            quantity={recommend.quantity}
+            capacity={recommend.capacity}
             rating={recommend.rating}
             ratingText={recommend.ratingText}
             iconoLocation={recommend.iconoLocation}
@@ -18,6 +18,7 @@ const Paginate = (props) => {
             service1={recommend.service1}
             service2={recommend.service2}
             detail={recommend.detail}
+            basicPrice={recommend.basicPrice}
         />
     })
 

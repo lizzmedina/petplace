@@ -6,11 +6,7 @@ const ContextGlobal = createContext();
 const ContextProvider = ({children}) => {
 
     // simulacion de llamada a la API para obtener productos
-    const datosAPI = Array.from({length:60}, (value, index) => {
-        return {id: index, title: `Item #${index}`}
-    })
-    const url = "http://localhost:8080/api/v1/petDayCare/all"
-
+    const[url, setUrl] = useState("http://localhost:8080/api/v1/petDayCare/all")
 
     // Estados y funciones para paginado
 
@@ -20,7 +16,7 @@ const ContextProvider = ({children}) => {
         .then(res => res.json())    
         .then(data => setDataCategory(data)) 
         ;
-    }, [])
+    }, [url])
 
     const itemsPerPage = 10
     const[items, setItems] = useState([...dataCategory].splice(0, itemsPerPage)) 
@@ -60,10 +56,8 @@ const ContextProvider = ({children}) => {
         setCurrentPage(lastPage)
     }
 
-
-
     return (
-        <ContextGlobal.Provider value={{dataCategory, setDataCategory, items, setItems, currentPage, setCurrentPage, prevHandler, nextHandler, startHandler, endHandler}}>
+        <ContextGlobal.Provider value={{url, setUrl, dataCategory, setDataCategory, items, setItems, currentPage, setCurrentPage, prevHandler, nextHandler, startHandler, endHandler}}>
             {children}
         </ContextGlobal.Provider>
     )
