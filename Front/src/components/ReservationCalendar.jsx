@@ -2,12 +2,10 @@
 export const ReservationCalendar = () => {
 
     return (
-        <div>
-            <input 
-                className = "searcher-input-date"
-                type = "text"
-                placeholder = "CheckIn - CheckOut"
-            /> 
-        </div>
+        <input 
+            className = "searcher-input-date search-width"
+            type = "text"
+            placeholder = "CheckIn - CheckOut"
+        />
     );
 }

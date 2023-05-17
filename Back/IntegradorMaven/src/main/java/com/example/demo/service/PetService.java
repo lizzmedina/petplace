@@ -21,13 +21,6 @@ public class PetService {
         this.petRepository = petRepository;
     }
 
-    public Pet save(Pet pet) {
-        if (pet != null) {
-            return petRepository.save(pet);
-        } else {
-            return null;
-        }
-    }
 
     public List<Pet> findAll() {
         return petRepository.findAll();
