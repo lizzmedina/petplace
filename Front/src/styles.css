@@ -144,14 +144,14 @@ a:link, a:visited, a:active {
 }
 .card-title-category{
     color: var(--color6);
-    font-size: 0.5rem;
+    font-size: 0.8rem;
     margin: 8px;
     margin-bottom: 5px;
 
 }
 .card-quantity-categories{
     color: var(--color6);
-    font-size: 0.4rem;
+    font-size: 0.7rem;
     margin: 10px;
     margin-top: 5px;
     margin-bottom: 15px;
@@ -364,67 +364,86 @@ input:hover {
 /* Detelle del alojamiento */
 
 .detail-container {
-    width: 100%;
-    margin: auto;
-}
-
-.path {
-    position: absolute;
-    background-color: #fff;
-    z-index: 5;
-    height: 25px;
-    top: -25px;
-    float: left;
-}
-.product-container {
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    width: 900px;
-    height: 400px;
-    background: var(--color2);
-    margin: 90px auto 20px auto;
+    width: 80%;
+    max-width: 75rem;
+    margin: 1.5rem auto;
+    background-color: var(--color7);
     border-radius: 10px;
 }
+
+.product-container {
+    width: 100%;
+}
+
+.product-header{
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem 1.5rem;
+    flex-wrap: wrap-reverse;
+}
+
+.product-location::before {
+    content: "";
+    display: block;
+    background: url("./images/pinLocation.png") no-repeat;
+    width: 10px;
+    height: 10px;
+    float: left;
+    margin: 5px 3px 0 0;
+    padding: 3px 0 0 0;
+}
+.product-section-image {
+    width: 100%;
+    height: 400px;
+    position: relative;
+}
+
+.product-image{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%; /* Ajusta el tamaño máximo de la imagen */
+  max-height: 100%; /* Ajusta la altura máxima de la imagen */
+}
+
+
+
 .product-info-container {
-    display: inline-block;
-    width: 50%;
-    height: 100%;
+    display: flex;
+    width: 100%;
+    height: auto;
     box-sizing: border-box;
     padding: 40px;
     background-color: var(--color7);
     border-radius: 0px 10px 10px 0px;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
-.product-info {
-    display: block;
-    width: 50%;
+.product-info-left {
+    
+    width: 40rem;
 }
-.product-image {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50%;
-    height: 75%;
-    align-self: center;
-    background-color: var(--color1);
+.product-info-rigth {
+    
+    width: 20rem;
+   
 }
+
 .buttonDetail {
-    position: absolute;
+    display: block;
     background-color: var(--color2);
     color: var(--color1);
     border: none;
     outline: none;
     padding: 15px 20px;
-    margin-top: 5px;
-    bottom: 20px;
+    margin-top: 25px;
     font-size: 16px;
     letter-spacing: 1px;
     text-transform: uppercase;
     font-weight: 600;
     border-radius: 40px;
-    float: right;
+    /* float:right; */
 }
 .text-info {
     margin: 5px auto 5px auto;
@@ -440,6 +459,23 @@ input:hover {
     margin: 25px auto 5px auto;
     font-size: 1.2em;
 }
+
+
+
+/* 
+.path {
+    position: absolute;
+    background-color: #fff;
+    z-index: 5;
+    height: 25px;
+    top: -25px;
+    float: left;
+} */
+.back-icon{
+    height: 1.2rem;
+}
+
+
 .city-info::before {
     content: "";
     display: block;
@@ -692,24 +728,7 @@ footer {
         height: 100%;
     }
 
-    .product-container {
-        display: block;
-        position: relative;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        width: 100vw;
-        height: 400px;
-        background: var(--color2);
-        margin: 90px auto 20px auto;
-        border-radius: 10px;
-
-    }
-
-    .detail-container {
-        width: 50%;
-        margin: auto;
-    }
+    
 }
 @media only screen and  (min-width: 800px)  and  (max-width: 1024px){
     .slogan-navbar{
