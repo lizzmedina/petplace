@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { CardRecomends } from "./CardRecomends";
-
+import { Link } from 'react-router-dom'
 
 export const Recommends = () => {
 
@@ -34,22 +34,24 @@ export const Recommends = () => {
       <h2 className="home-titles">Recomendaciones </h2>
       <div className="render-cards-recomends">
         {shuffleArray(recommends).slice(0, 8).map(recommend => (
-          <CardRecomends
-            key={recommend.id}
-            type={recommend.type}
-            name={recommend.name}
-            image={recommend.image}
-            capacity={recommend.capacity}
-            rating={recommend.rating}
-            ratingText={recommend.ratingText}
-            iconoLocation={recommend.iconoLocation}
-            city={recommend.city}
-            address={recommend.address}
-            service1={recommend.service1}
-            service2={recommend.service2}
-            detail={recommend.detail}
-            basicPrice={recommend.basicPrice}
-          />
+          <Link key={recommend.id} to={'/Detail/' + recommend.id}>
+            <CardRecomends
+              key={recommend.id}
+              type={recommend.type}
+              name={recommend.name}
+              image={recommend.image}
+              capacity={recommend.capacity}
+              rating={recommend.rating}
+              ratingText={recommend.ratingText}
+              iconoLocation={recommend.iconoLocation}
+              city={recommend.city}
+              address={recommend.address}
+              service1={recommend.service1}
+              service2={recommend.service2}
+              detail={recommend.detail}
+              basicPrice={recommend.basicPrice}
+            />
+          </Link>
         ))}
       </div>
     </div>
