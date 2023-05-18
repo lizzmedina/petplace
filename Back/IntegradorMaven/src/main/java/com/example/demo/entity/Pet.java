@@ -29,8 +29,7 @@ public class Pet {
         this.id = id;
         this.petName = petName;
         this.petType = petType;
-        this.petSize = petSize;
-
+        this.petSize = petSize; // pendiente customer id
     }
 
     public Integer getId() {
