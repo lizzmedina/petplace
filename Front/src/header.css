@@ -1,0 +1,157 @@
+
+/* *{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    font-family: Roboto, sans-serif;
+} */
+
+header{
+    display: flex;
+    justify-content: space-between;
+    background-color: #ffcc29;
+}
+
+header a{
+    color: black;
+   
+}
+
+.item a:hover{
+    text-decoration: underline;
+    text-decoration-color:#9E6EAF;
+}
+
+
+.burgermenu input[type="checkbox"], .burgermenu .fa-bars, .burgermenu .fa-times {
+    position: absolute;  
+    right: 0;
+    top: 0; 
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0; 
+    width: 50px;
+    height: 50px;
+    color: #8ED1B9;  
+    font-size: 20px;
+  }
+   
+  .burgermenu .fa-bars{
+    pointer-events: none;
+    width: 80px;
+  }
+
+ .burgermenu .fa-times {
+    pointer-events: none;
+    width: 30px;
+  }
+   
+  .burgermenu input[type="checkbox"] {
+    opacity: 0; 
+  
+  }
+   
+   
+  .burgermenu nav {
+    display: none;
+    color:aquamarine;
+  }
+
+  .burgermenu nav ul{
+      list-style-type: none;
+  }
+   
+  .burgermenu input:checked ~ nav {
+    display: block;
+    position: absolute;
+    left: 10px;
+    top: 50px;
+    background-color: white ;
+    z-index: 3;
+    line-height: 25px;
+  }
+   
+  .burgermenu input:checked ~ .fa-bars {
+    display: none;
+  }
+   
+  .burgermenu input:not(:checked) ~ .fa-times {
+    display: none;
+  }
+
+
+
+#burger-menu{
+    padding-top: 20px;
+    padding-left: 20px;
+    display: inline-block;
+    color: #8ED1B9; 
+}
+
+/* ------------------------------------------ */
+
+
+@media only screen and  (min-width: 600px) {
+
+    
+
+    header ul{
+        list-style-type: none;
+    }
+    
+    header a {
+        text-decoration: none;
+        color: black;
+       
+    }
+    
+    #burger-menu{
+        display: none;
+    }
+        
+    .burgermenu .navbar{
+        display: flex;
+        justify-content: left;
+      
+    }
+    
+    #menu{
+        font-size: 14px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        justify-content: space-evenly;
+        text-align: center;
+        align-items: center;
+    }
+    
+    .item a{
+        padding-left: 10px;
+        padding-right: 10px;
+        text-decoration: none;
+        color: black;
+    }
+    
+
+/*     
+    header{
+        display: flex;
+        flex-direction: row;
+        background-color: #ffcc29;
+        flex-wrap: nowrap;
+    }
+     */
+
+}
+
+    @media(min-width:769px) {
+        .item{
+            font-size: 14px;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        
+    
+    }

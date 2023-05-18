@@ -24,6 +24,7 @@ body {
 /* desactivar el subrayado de los enlaces/rutas*/
 a:link, a:visited, a:active {
     text-decoration: none;
+    color:#31363F
 }
 /*Estilos generales para botones*/
 .button-1{
@@ -36,6 +37,18 @@ a:link, a:visited, a:active {
 
 /* navbar */
 
+.home-titles{
+    color:#31363F;
+    font-size:large;
+}
+.searcher-title{
+    color: #fff;
+    font-size: xx-large;
+    padding-top: 25px;
+    padding-bottom: 18px;
+}
+
+
 .navbar {
     display: flex;
     flex-direction: row;
@@ -44,7 +57,7 @@ a:link, a:visited, a:active {
     background-color: var(--color1);
     padding: 5px;
     width: 100%;
-    position:sticky;
+    /* position:sticky; */
     top: 0;
 }
 .logo{
@@ -106,6 +119,7 @@ a:link, a:visited, a:active {
     width: 60vw;
 }
 .searcher-button{
+    width: 15%;
     background-color: var(--color3);
     color: var(--color7);
     border-color: var(--color3);
@@ -341,6 +355,7 @@ a.ver-mas-recommends{
     font-size: small
 }
 input,select {
+    width: 40%;
     border-radius:5px;
     border: 1px solid #bababa;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
@@ -466,11 +481,13 @@ footer {
     padding: 16px;
     width: 100%;
     bottom: 0;
+    color: #fff;
 }
 .copiryghticon{
     align-self: center;
     margin-right: 5px;
     height: 10px;
+    color: #fff;
 }
 
 /* MEDIA QUERIES */
@@ -478,7 +495,7 @@ footer {
 @media only screen and  (max-width: 500px){
     .navbar{
         display: flex;
-        font-size: 0.62rem;
+        font-size: 14px;
         justify-content:space-between;
     }
     .navbar-link-container{
@@ -720,7 +737,7 @@ footer {
         margin: 0.5rem 0rem;
     }
     .searcher-title{
-        margin-left: 1rem;
+        margin-left: 7rem;
     }
     .search-width{
         width: 12rem;
