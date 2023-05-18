@@ -1,15 +1,15 @@
-import { BackLink } from "./BackLink.jsx";
+import { useNavigate} from 'react-router-dom'
 
 
 export const Product = ({ id, name, type, capacity, city, address, detail, image, basicPrice, }) => {
     
-    
+    const navigate = useNavigate()
 
     return (
 
         <div key={id} className="product-container">
             <div className="product-header">
-                <span className="product-location">{city}, {address}</span> <span className="product-back"><BackLink/></span>
+                <span className="product-location">{city}, {address}</span> <button onClick={() => navigate(-1)}>🔙</button>
             </div>
             <div className="product-section-image"> <img src={image} alt={name} className="product-image" /></div>
 
