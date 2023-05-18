@@ -1,10 +1,11 @@
 import React from 'react'
 import { CardRecomends } from "./CardRecomends";
+import { Link } from 'react-router-dom'
 
 const Paginate = (props) => {
 
     const items = props.items.map((recommend) => {
-        return <CardRecomends
+        return <Link key={recommend.id} to={'/Detail/' + recommend.id}><CardRecomends
             key={recommend.id}
             type={recommend.type}
             name={recommend.name}
@@ -19,7 +20,7 @@ const Paginate = (props) => {
             service2={recommend.service2}
             detail={recommend.detail}
             basicPrice={recommend.basicPrice}
-        />
+        /></Link>
     })
 
     return (

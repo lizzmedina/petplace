@@ -24,7 +24,7 @@ function App() {
                 <Route path="/Canarios" element={<CategoryCanarios/>}/>
                 <Route path="/Conejos" element={<CategoryConejos/>}/>
                 <Route path="/Admin" element={<ProductRegister/>}/>
-                <Route path="/Detail" element={<Details/>}/>
+                <Route path="/Detail/:id" element={<Details/>}/>
             </Routes>
             <Footer/>
         </div>

@@ -3,8 +3,7 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Quicksand', sans-serif;
-    overflow-x: hidden;
-}
+} 
 body {
     width: 100%;
 }
@@ -44,7 +43,7 @@ a:link, a:visited, a:active {
     background-color: var(--color1);
     padding: 5px;
     width: 100%;
-    position:sticky;
+    position: sticky;
     top: 0;
 }
 .logo{
@@ -140,7 +139,7 @@ a:link, a:visited, a:active {
     justify-content: center;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-    width: 50%;
+    width: 14rem;
     height: 181px;
 }
 .card-title-category{
@@ -231,13 +230,7 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     width: 15px;
     height: 15px
 }
-.card-image {
-    display: flex;
-    justify-content: center;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    width: 100%;
-}
+
 .card-title-recommends{
     color: var(--color6);
     font-size: 0.8rem;
@@ -484,7 +477,7 @@ footer {
         display: flex;
         font-size: 0.62rem;
         justify-content:space-between;
-    }
+    }    
     .navbar-link-container{
         width: 3.12rem;
     }
