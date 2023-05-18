@@ -6,7 +6,6 @@ export const Recommends = () => {
 
   const url = "http://localhost:8080/api/v1/petDayCare/all"
 
-  // Estados y funciones para paginado
   const [recommends, setRecommends] = useState([])
   useEffect(() => {
     fetch(url)
