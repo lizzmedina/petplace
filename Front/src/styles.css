@@ -6,7 +6,7 @@
 } 
 body {
     width: 100%;
-}  
+}
 
 /* variables */
 
@@ -126,7 +126,7 @@ a:link, a:visited, a:active {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin: auto; 
+    margin: auto;
 }
 .card-container{
     background-color: var(--color7);
@@ -147,7 +147,7 @@ a:link, a:visited, a:active {
     font-size: 0.5rem;
     margin: 8px;
     margin-bottom: 5px;
-    
+
 }
 .card-quantity-categories{
     color: var(--color6);
@@ -178,30 +178,27 @@ a:link, a:visited, a:active {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin: auto; 
-    max-width: 1080px;
+    margin: auto;
+    max-width: 1246px;
 }
 .card-recomends{
     display: flex;
     flex-direction: column;
     background-color: var(--color7);
     border-radius: 10px;
-    margin: 10px 20px 20px 0;
-    max-height: 184px;
-    max-width: 500px;
+    margin: 20px 20px;
+    max-height: 15.6rem;
+    max-width: 34.3rem;
     overflow: hidden;
-    width: 68vh;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .card-content{
     display:flex;
     background-color: var(--color7);
-    width: 30rem;
+    width: 100%;
+    height: 15rem;
 }
 
-.card-image-recommends {
-    height: 100%;
-}
 
 /* .left-card-content, .right-card-content{
     width: 100%;
@@ -210,17 +207,18 @@ a:link, a:visited, a:active {
 .right-card-content{
     padding-left: 10px;
     padding-top: 10px;
+    width: 50%;
 
 }
 .left-card-content {
-    
+
     display:contents;
     width: 50%;
 }
 .card-image-recommends {
     display: flex;
     width: 50%;
-    height: 181px;
+    height: 100%;
     border-top-left-radius: 10px;
     border-style: none;
 }
@@ -518,26 +516,31 @@ footer {
     }
     .card-container{
         margin: 0.6rem 0rem;
-    }    
+    }
     .recommends-container {
         padding: 1.5rem 0rem;
     }
     .right-card-content{
         padding: 0.9rem;
-        padding-top: 0;   
+        padding-top: 0;
+        width: 100%;
+        height: 255px;
     }
     .left-card-content {
-    
+
         display:flex;
-        width: 50%;
+        width: 100%;
+        height: 255px;
     }
     .card-recomends{
         margin: 1.5rem 0rem;
         max-width: 15rem;
-        min-height: 21rem;
+        min-height: 410px;
     }
     .card-content{
         flex-direction: column;
+        height: 560px;
+        
     }
     .card-image-recommends {
         width: 100%;
@@ -582,9 +585,12 @@ footer {
     .card-recomends{
         width: 90%;
     }
+    .card-content {
+        width: 100%;
+    }
 }
 @media only screen and  (min-width: 601px)  and  (max-width: 767px){
-    
+
     .navbar-link-container p{
         display: none;
     }
@@ -611,7 +617,7 @@ footer {
     .search-width{
         width: 30%;
         margin: 5px;
-    }   
+    }
     .categories-container{
         padding: 20px 0px;
     }
@@ -626,9 +632,9 @@ footer {
     align-items: center;
     width: 100%;
     }
-    .card-content{
-        width: 30rem;
-    } 
+    .card-content {
+        width: 100%;
+    }
     .card-recomends{
         width: 90vw;
     }
@@ -637,11 +643,11 @@ footer {
     }
 }
 @media only screen and  (min-width: 768px)  and  (max-width: 799px){
-    
+
     .search-width{
         width: 12rem;
         margin: 5px;
-    }   
+    }
     .logo {
         margin-left: 2.5rem;
     }
@@ -665,7 +671,7 @@ footer {
         justify-content: center;
         width: 100%;
         margin: 0.5rem 0rem;
-    } 
+    }
     .categories-container{
         padding: 20px 0px;
     }
@@ -680,9 +686,9 @@ footer {
     align-items: center;
     width: 100%;
     }
-    .card-content{
-        width: 30rem;
-    } 
+    .card-content {
+        width: 100%;
+    }
     .card-recomends{
         width: 90vw;
     }
@@ -728,14 +734,17 @@ footer {
     .search-width{
         width: 12rem;
         margin: 5px;
-    }   
+    }
     .card-content{
         width: 30rem;
-    } 
+    }
     .card-recomends{
         width: 90vw;
     }
     .card-image-recommends {
         height: 100%;
+    }
+    .card-content {
+        width: 100%;
     }
 }
