@@ -27,7 +27,7 @@ const FormProduct = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const result = allProducts.find((item) => item.name === product.name);
+        const result = allProducts.find((item) => item.name.toLowerCase() === product.name.toLowerCase());
         console.log(result);
         if (result === undefined) {
             if (product.name.length > 2 && product.detail.length > 5) {
