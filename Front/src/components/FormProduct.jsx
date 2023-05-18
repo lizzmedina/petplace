@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const FormProduct = () => {
     const [product, setProduct] = useState({
@@ -13,63 +13,70 @@ const FormProduct = () => {
         basicPrice: ''
     })
 
-    const [isLoading, setIsLoading] = useState(false);
-    const [isSuccess, setIsSuccess] = useState(false);
+    const url = "http://localhost:8080/api/v1/petDayCare/all"
+    const [allProducts, setAllProducts] = useState([])
+    useEffect(() => {
+        fetch(url)
+            .then((res) => res.json())
+            .then((data) => {
+                setAllProducts(data);
+            })
+    }, []);
+    console.log(allProducts);
+    
 
     const handleSubmit = (event) => {
-        event.preventDefault()
-        if (product.name.length > 2 && product.detail.length> 5) {
-            setIsLoading(true);
-            setProduct({
-                name: '',
-                type: '',
-                capacity: '',
-                city: '',
-                address: '',
-                detail: '',
-                image: '',
-                services: [],
-                basicPrice: ''
-            })
-            console.log(product);
-
-            fetch("http://127.0.0.1:8080/api/v1/petDayCare", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(product)
-            })
-                .then((response) => {
-                    if (response.ok) {
-                        setIsSuccess(true);
-                        alert(`El alojamiento ${product.name} ha sido creado exitosamente.`);
-                        setProduct({
-                            name: '',
-                            type: '',
-                            capacity: '',
-                            city: '',
-                            address: '',
-                            detail: '',
-                            image: '',
-                            services: [],
-                            basicPrice: ''
-                        });
-                    } else {
-                        throw new Error("Error en la solicitud");
-                    }
-                })
-                .catch((error) => {
-                    console.error(error);
-                    alert("Parece que algo va mal, verifica la información.");
-                })
-                .finally(() => {
-                    setIsLoading(false);
+        event.preventDefault();
+        const result = allProducts.find((item) => item.name === product.name);
+        console.log(result);
+        if (result === undefined) {
+            if (product.name.length > 2 && product.detail.length > 5) {
+                setProduct({
+                    name: "",
+                    type: "",
+                    capacity: "",
+                    city: "",
+                    address: "",
+                    detail: "",
+                    image: "",
+                    services: [],
+                    basicPrice: "",
                 });
+
+                fetch("http://127.0.0.1:8080/api/v1/petDayCare", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(product),
+                })
+                    .then((response) => {
+                        if (response.ok) {
+                            alert(
+                                `El alojamiento ${product.name} ha sido creado exitosamente.`
+                            );
+                            setProduct({
+                                name: "",
+                                type: "",
+                                capacity: "",
+                                city: "",
+                                address: "",
+                                detail: "",
+                                image: "",
+                                services: [],
+                                basicPrice: "",
+                            });
+                        } else {
+                            throw new Error("Error en la solicitud");
+                        }
+                    })
+            } else {
+                alert("Parece que algo salió mal, recuerda llenar los campos.");
+            }
         } else {
-            alert("Parece que algo va mal, verifica la información.");
+            alert("Ese nombre ya está tomado, intenta con uno nuevo.");
         }
-    }
+    };
 
     const handleOnChange = () => {
         setIsChecked(!isChecked);
@@ -126,7 +133,7 @@ const FormProduct = () => {
 
                 <br/>
                 <div className="section-button">
-                    <button className="button-1">Ingresar</button>
+                    <button className="button-1">Crear</button>
                 </div>
             </form>
         </div>

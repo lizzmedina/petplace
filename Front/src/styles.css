@@ -431,6 +431,10 @@ input:hover {
 .text-info {
     margin: 5px auto 5px auto;
 }
+.name-info {
+    display: flex;
+    justify-content: space-between;
+}
 .city-info {
     margin: 5px auto 5px auto;
 }
