@@ -3,7 +3,6 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Quicksand', sans-serif;
-    overflow-x: hidden;
 } 
 body {
     width: 100%;
@@ -44,7 +43,7 @@ a:link, a:visited, a:active {
     background-color: var(--color1);
     padding: 5px;
     width: 100%;
-    position:sticky;
+    position: sticky;
     top: 0;
 }
 .logo{
@@ -480,7 +479,7 @@ footer {
         display: flex;
         font-size: 0.62rem;
         justify-content:space-between;
-    }
+    }    
     .navbar-link-container{
         width: 3.12rem;
     }
