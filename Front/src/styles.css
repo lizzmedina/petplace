@@ -53,7 +53,7 @@ a:link, a:visited, a:active {
     align-self: center;
 }
 .slogan-navbar{
-    margin:2rem;
+    margin:1rem;
 }
 .navbar-link-container {
     display: flex;
@@ -62,10 +62,7 @@ a:link, a:visited, a:active {
     width: 30vw;
     justify-content: space-evenly;
 }
-.navbar-link-container p {
-    color: var(--color6);
-    padding-top: 10px
-}
+
 .navbar-buttons {
     display: flex;
     flex-direction: row;
@@ -99,10 +96,14 @@ a:link, a:visited, a:active {
 .searcher {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     flex-wrap: wrap;
-    width: 60vw;
+    width: 100%;
+}
+.search-width{
+    width: 12rem;
+    margin: 5px;
 }
 .searcher-button{
     background-color: var(--color3);
@@ -188,7 +189,7 @@ a:link, a:visited, a:active {
     border-radius: 10px;
     margin: 20px 20px;
     max-height: 15.6rem;
-    max-width: 34.3rem;
+    max-width: 27.2rem;
     overflow: hidden;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
@@ -481,7 +482,7 @@ footer {
     .navbar-link-container{
         width: 3.12rem;
     }
-    .navbar-link-container p{
+    .slogan-navbar{
         display: none;
     }
     .navbar-buttons button {
@@ -531,12 +532,11 @@ footer {
     .card-recomends{
         margin: 1.5rem 0rem;
         max-width: 15rem;
-        min-height: 410px;
+        min-height: 25rem;
     }
     .card-content{
         flex-direction: column;
-        height: 560px;
-        
+        height: 20rem;
     }
     .card-image-recommends {
         width: 100%;
@@ -546,7 +546,7 @@ footer {
     }
 }
 @media only screen and  (min-width: 501px)  and  (max-width: 600px){
-    .navbar-link-container p{
+    .slogan-navbar{
         display: none;
     }
     .navbar-buttons{
@@ -587,7 +587,7 @@ footer {
 }
 @media only screen and  (min-width: 601px)  and  (max-width: 767px){
 
-    .navbar-link-container p{
+    .slogan-navbar{
         display: none;
     }
     .logo {
@@ -645,13 +645,17 @@ footer {
         margin: 5px;
     }
     .logo {
-        margin-left: 2.5rem;
-    }
-    .slogan-navbar{
         margin-left: 1rem;
     }
+    .slogan-navbar{
+        margin: 0rem;
+        margin-left: 0.5rem;
+    }
+    .navbar-link-container {
+        width: 50vw;
+    }
     .navbar-buttons{
-        width: 40vw;
+        width: 45vw;
         justify-content: space-around;
     }
     .buttons-navbar {
@@ -691,21 +695,16 @@ footer {
     .card-image-recommends {
         height: 100%;
     }
-
     .product-container {
         display: block;
         position: relative;
-        display: flex;
-        flex-wrap: wrap;
         justify-content: space-between;
         width: 100vw;
         height: 400px;
         background: var(--color2);
         margin: 90px auto 20px auto;
         border-radius: 10px;
-
     }
-
     .detail-container {
         width: 50%;
         margin: auto;
@@ -740,7 +739,7 @@ footer {
     .card-image-recommends {
         height: 100%;
     }
-    .card-content {
-        width: 100%;
+    .navbar-link-container {
+        width: 50vw;
     }
 }
