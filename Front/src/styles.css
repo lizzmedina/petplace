@@ -73,6 +73,11 @@ a:link, a:visited, a:active {
 }
 
 /* body */
+
+.searcher-title{
+color:#fff;
+}
+
 .home-container{
     display: flex;
     align-items: stretch;
@@ -729,6 +734,7 @@ footer {
     }
     .searcher-title{
         margin-left: 1rem;
+        color:#fff;
     }
     .search-width{
         width: 12rem;
