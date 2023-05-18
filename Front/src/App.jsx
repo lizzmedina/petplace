@@ -10,6 +10,7 @@ import CategoryConejos from "./routes/CategoryConejos";
 import ProductRegister from "./routes/ProductRegister";
 import Details from "./routes/Details";
 import { Footer } from "./components/footer";
+import './styles.css';
 
 function App() {
     return (

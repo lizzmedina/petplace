@@ -2,6 +2,8 @@ import { BackLink } from "./BackLink.jsx";
 
 
 export const Product = ({ id, name, type, capacity, city, address, detail, image, basicPrice, }) => {
+    
+    const navigate = useNavigate()
 
     return (
 

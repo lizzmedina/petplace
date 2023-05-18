@@ -53,7 +53,7 @@ a:link, a:visited, a:active {
     align-self: center;
 }
 .slogan-navbar{
-    margin:2rem;
+    margin:1rem;
 }
 .navbar-link-container {
     display: flex;
@@ -62,10 +62,7 @@ a:link, a:visited, a:active {
     width: 30vw;
     justify-content: space-evenly;
 }
-.navbar-link-container p {
-    color: var(--color6);
-    padding-top: 10px
-}
+
 .navbar-buttons {
     display: flex;
     flex-direction: row;
@@ -76,6 +73,11 @@ a:link, a:visited, a:active {
 }
 
 /* body */
+
+.searcher-title{
+color:#fff;
+}
+
 .home-container{
     display: flex;
     align-items: stretch;
@@ -99,10 +101,14 @@ a:link, a:visited, a:active {
 .searcher {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     flex-wrap: wrap;
-    width: 60vw;
+    width: 100%;
+}
+.search-width{
+    width: 12rem;
+    margin: 5px;
 }
 .searcher-button{
     background-color: var(--color3);
@@ -187,8 +193,8 @@ a:link, a:visited, a:active {
     background-color: var(--color7);
     border-radius: 10px;
     margin: 20px 20px;
-    max-height: 220px;
-    max-width: 550px;
+    max-height: 15.6rem;
+    max-width: 27.2rem;
     overflow: hidden;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
@@ -196,7 +202,7 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     display:flex;
     background-color: var(--color7);
     width: 100%;
-    height: 220px;
+    height: 15rem;
 }
 
 
@@ -448,6 +454,10 @@ input:hover {
 .text-info {
     margin: 5px auto 5px auto;
 }
+.name-info {
+    display: flex;
+    justify-content: space-between;
+}
 .city-info {
     margin: 5px auto 5px auto;
 }
@@ -493,7 +503,7 @@ footer {
     display: flex;
     justify-content: flex-start ;
     background-color: var(--color3);
-    color: var(--color6);
+    color: var(--color1);
     font-size: 15px;
     font-weight: 800;
     padding: 16px;
@@ -517,7 +527,7 @@ footer {
     .navbar-link-container{
         width: 3.12rem;
     }
-    .navbar-link-container p{
+    .slogan-navbar{
         display: none;
     }
     .navbar-buttons button {
@@ -567,12 +577,11 @@ footer {
     .card-recomends{
         margin: 1.5rem 0rem;
         max-width: 15rem;
-        min-height: 410px;
+        min-height: 25rem;
     }
     .card-content{
         flex-direction: column;
-        height: 560px;
-        
+        height: 20rem;
     }
     .card-image-recommends {
         width: 100%;
@@ -582,7 +591,7 @@ footer {
     }
 }
 @media only screen and  (min-width: 501px)  and  (max-width: 600px){
-    .navbar-link-container p{
+    .slogan-navbar{
         display: none;
     }
     .navbar-buttons{
@@ -611,9 +620,6 @@ footer {
     .home-titles{
         margin: 1rem;
     }
-    .card-container{
-        width: 40%;
-    }
     .card-recomends{
         width: 90%;
     }
@@ -623,7 +629,7 @@ footer {
 }
 @media only screen and  (min-width: 601px)  and  (max-width: 767px){
 
-    .navbar-link-container p{
+    .slogan-navbar{
         display: none;
     }
     .logo {
@@ -657,9 +663,6 @@ footer {
         justify-content: space-around;
         min-width: 80px;
     }
-    .card-container{
-        width: 40%;
-    }
     .recommends-container {
     align-items: center;
     width: 100%;
@@ -681,13 +684,17 @@ footer {
         margin: 5px;
     }
     .logo {
-        margin-left: 2.5rem;
-    }
-    .slogan-navbar{
         margin-left: 1rem;
     }
+    .slogan-navbar{
+        margin: 0rem;
+        margin-left: 0.5rem;
+    }
+    .navbar-link-container {
+        width: 50vw;
+    }
     .navbar-buttons{
-        width: 40vw;
+        width: 45vw;
         justify-content: space-around;
     }
     .buttons-navbar {
@@ -710,9 +717,6 @@ footer {
     .render-cards-categories {
         justify-content: space-around;
         min-width: 80px;
-    }
-    .card-container{
-        width: 40%;
     }
     .recommends-container {
     align-items: center;
@@ -745,6 +749,7 @@ footer {
     }
     .searcher-title{
         margin-left: 1rem;
+        color:#fff;
     }
     .search-width{
         width: 12rem;
@@ -759,7 +764,7 @@ footer {
     .card-image-recommends {
         height: 100%;
     }
-    .card-content {
-        width: 100%;
+    .navbar-link-container {
+        width: 50vw;
     }
 }

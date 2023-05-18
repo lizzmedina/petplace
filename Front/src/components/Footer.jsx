@@ -5,7 +5,7 @@ export const Footer = () => {
     <footer>
       <img 
         src="./images/copyright.png" 
-        alt="copiryght icon"
+        alt = "copiryght icon"
         className="copiryghticon" 
       />
       <p> 2023 Digital Booking </p> 

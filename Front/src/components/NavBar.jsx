@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
 import '.././styles.css';
+import '.././header.css';
 
 export const NavBar = () => {
   return (
-    <nav className = 'navbar'>
+    <div className = 'navbar'>
     
       <Link className = 'navbar-link-container' to = "/"> 
         <img 
@@ -13,13 +14,19 @@ export const NavBar = () => {
         /> 
         <p className='slogan-navbar'>   Los cuidamos como en casa </p>
       </Link> 
-    
-      <div className ='navbar-buttons'>
-        <button className ='buttons-navbar'><Link to='/register'>Crear Cuenta</Link></button>
-        <button className ='buttons-navbar'><Link to='/login'>Iniciar Sesión</Link></button>
+
+      <div class="burgermenu">
+        <input type="checkbox"/>
+        <i className = "fas fa-bars" id="burger-menu"></i>
+        <i className = "fas fa-times"></i>
+        <nav class="navbar">
+          <ul id="menu">
+            <li className = "item"> < a className = "change-button "  href="/productList"><Link to='/register'>Crear Cuenta</Link></a></li>
+            <li className = "item"> < a className = "change-button"  href="/productList"><Link to='/login'>Iniciar Sesión</Link></a></li>
+          </ul>
+        </nav>
       </div>
-    
-    </nav>
+    </div>
     
   )
 }
