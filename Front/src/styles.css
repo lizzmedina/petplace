@@ -140,7 +140,7 @@ a:link, a:visited, a:active {
     justify-content: center;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-    width: 50%;
+    width: 14rem;
     height: 181px;
 }
 .card-title-category{
@@ -233,13 +233,7 @@ a:link, a:visited, a:active {
     width: 15px;
     height: 15px
 }
-.card-image {
-    display: flex;
-    justify-content: center;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    width: 100%;
-}
+
 .card-title-recommends{
     color: var(--color6);
     font-size: 0.8rem;

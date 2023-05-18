@@ -15,9 +15,7 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
                 <p className="detail-info">{detail}</p>
                 <button className="buttonDetail button-1">Reservar</button>
             </div>
-            
         </div>
-
     )
 
 }
