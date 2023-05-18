@@ -314,8 +314,8 @@ a.ver-mas-recommends{
     flex-direction: column;
 
     height: 100%;
-    padding: 1rem;
-    width: 40%;
+    padding-top: 1rem;
+    width: 60%;
 }
 .form-section-name{
     display: flex;
