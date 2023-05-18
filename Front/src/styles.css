@@ -467,7 +467,7 @@ footer {
     display: flex;
     justify-content: flex-start ;
     background-color: var(--color3);
-    color: var(--color6);
+    color: var(--color1);
     font-size: 15px;
     font-weight: 800;
     padding: 16px;
@@ -584,9 +584,6 @@ footer {
     .home-titles{
         margin: 1rem;
     }
-    .card-container{
-        width: 40%;
-    }
     .card-recomends{
         width: 90%;
     }
@@ -629,9 +626,6 @@ footer {
     .render-cards-categories {
         justify-content: space-around;
         min-width: 80px;
-    }
-    .card-container{
-        width: 40%;
     }
     .recommends-container {
     align-items: center;
@@ -687,9 +681,6 @@ footer {
     .render-cards-categories {
         justify-content: space-around;
         min-width: 80px;
-    }
-    .card-container{
-        width: 40%;
     }
     .recommends-container {
     align-items: center;

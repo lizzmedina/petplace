@@ -83,30 +83,22 @@ header a{
 /* ------------------------------------------ */
 
 
-@media only screen and  (min-width: 600px) {
-
-    
+@media only screen and  (min-width: 601px) {   
 
     header ul{
         list-style-type: none;
-    }
-    
+    }    
     header a {
         text-decoration: none;
         color: black;
-       
     }
-    
     #burger-menu{
         display: none;
     }
-        
     .burgermenu .navbar{
         display: flex;
         justify-content: left;
-      
     }
-    
     #menu{
         font-size: 14px;
         display: flex;
@@ -118,32 +110,23 @@ header a{
         text-align: center;
         align-items: center;
     }
-    
     .item a{
-        padding-left: 10px;
-        padding-right: 10px;
         text-decoration: none;
         color: black;
     }
-    
-
-/*     
-    header{
-        display: flex;
-        flex-direction: row;
-        background-color: #ffcc29;
-        flex-wrap: nowrap;
+    .item {
+        background-color: var(--color3);
+        color: var(--color1);
+        padding: 0.5rem 0.1rem;
+        margin: 1rem;
+        text-decoration: none;
+        font-size: 1rem;
     }
-     */
-
 }
-
     @media(min-width:769px) {
         .item{
             font-size: 14px;
             padding-left: 15px;
             padding-right: 15px;
         }
-        
-    
     }
