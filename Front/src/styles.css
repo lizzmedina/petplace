@@ -3,7 +3,6 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Quicksand', sans-serif;
-    overflow-x: hidden;
 } 
 body {
     width: 100%;
@@ -34,20 +33,16 @@ a:link, a:visited, a:active {
     padding: 0.3rem;
     border-radius: 5px;
 }
+.item {
+    background-color: var(--color3);
+    color: var(--color1);
+    padding: 0.5rem 0.1rem;
+    margin: 1rem;
+    text-decoration: none;
+    font-size: 1rem;
+}
 
 /* navbar */
-
-.home-titles{
-    color:#31363F;
-    font-size:large;
-}
-.searcher-title{
-    color: #fff;
-    font-size: xx-large;
-    padding-top: 25px;
-    padding-bottom: 18px;
-}
-
 
 .navbar {
     display: flex;
@@ -57,17 +52,29 @@ a:link, a:visited, a:active {
     background-color: var(--color1);
     padding: 5px;
     width: 100%;
-    /* position:sticky; */
+    position:sticky; 
     top: 0;
+}
+.home-titles{
+    color:#31363F;
+    margin-left: 5rem;
+}
+.searcher-title{
+    color: var(--color1);
+    font-size: 2rem;
+    padding-top: 25px;
+    padding-bottom: 18px;
 }
 .logo{
     text-align: left;
     height: 60px;
-    margin-left: 15px;
+    margin-left: 2rem;
     align-self: center;
 }
 .slogan-navbar{
-    margin:2rem;
+    margin: 1rem;
+    color: var(--color6);
+    padding-top: 10px
 }
 .navbar-link-container {
     display: flex;
@@ -76,10 +83,10 @@ a:link, a:visited, a:active {
     width: 30vw;
     justify-content: space-evenly;
 }
-.navbar-link-container p {
-    color: var(--color6);
-    padding-top: 10px
-}
+.search-width{
+    width: 12rem;
+    margin: 5px;
+}  
 .navbar-buttons {
     display: flex;
     flex-direction: row;
@@ -116,10 +123,9 @@ a:link, a:visited, a:active {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    width: 60vw;
+    width: 100%;
 }
 .searcher-button{
-    width: 15%;
     background-color: var(--color3);
     color: var(--color7);
     border-color: var(--color3);
@@ -172,9 +178,7 @@ a:link, a:visited, a:active {
     margin-bottom: 15px;
 }
 
-.home-titles{
-    margin-left: 5rem;
-}
+
 /* Style for recommends section */
 
 .recommends-container {
@@ -194,29 +198,26 @@ a:link, a:visited, a:active {
     justify-content: center;
     align-items: center;
     margin: auto; 
-    max-width: 1080px;
+    max-width: 77.8rem;
 }
 .card-recomends{
     display: flex;
     flex-direction: column;
     background-color: var(--color7);
-    border-radius: 10px;
-    margin: 10px 20px 20px 0;
-    max-height: 184px;
-    max-width: 500px;
+    border-radius: 0.6rem;
+    margin: 20px 20px;
+    max-height: 15.6rem;
+    max-width: 27.2rem;
     overflow: hidden;
-    width: 68vh;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .card-content{
     display:flex;
     background-color: var(--color7);
-    width: 30rem;
+    width: 100%;
+    height: 15rem;
 }
 
-.card-image-recommends {
-    height: 100%;
-}
 
 /* .left-card-content, .right-card-content{
     width: 100%;
@@ -225,17 +226,18 @@ a:link, a:visited, a:active {
 .right-card-content{
     padding-left: 10px;
     padding-top: 10px;
+    width: 50%;
 
 }
 .left-card-content {
-    
     display:contents;
-    width: 50%;
+    width: 100%;
+    height: 255px;
 }
 .card-image-recommends {
     display: flex;
     width: 50%;
-    height: 181px;
+    height: 100%;
     border-top-left-radius: 10px;
     border-style: none;
 }
@@ -355,7 +357,6 @@ a.ver-mas-recommends{
     font-size: small
 }
 input,select {
-    /* width: 40%; */
     border-radius:5px;
     border: 1px solid #bababa;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
@@ -364,14 +365,6 @@ input,select {
 }
 input:hover {
     border: 1px solid var(--color2);
-}
-
-option.search-width, .search-width{
-    width: 40%;
-}
-
-button.search-width{
-    width: 15%;
 }
 
 
@@ -484,19 +477,17 @@ footer {
     display: flex;
     justify-content: flex-start ;
     background-color: var(--color3);
-    color: var(--color6);
+    color: var(--color1);
     font-size: 15px;
     font-weight: 800;
     padding: 16px;
     width: 100%;
     bottom: 0;
-    color: #fff;
 }
 .copiryghticon{
     align-self: center;
     margin-right: 5px;
     height: 10px;
-    color: #fff;
 }
 
 /* MEDIA QUERIES */
@@ -504,18 +495,14 @@ footer {
 @media only screen and  (max-width: 500px){
     .navbar{
         display: flex;
-        font-size: 14px;
+        font-size: 0.62rem;
         justify-content:space-between;
     }
     .navbar-link-container{
         width: 3.12rem;
     }
-    .navbar-link-container p{
+    .slogan-navbar{
         display: none;
-    }
-    .navbar-buttons button {
-        font-size: 1.1rem;
-        padding: 0.43rem;
     }
     .searcher {
         width: 100%;
@@ -528,7 +515,7 @@ footer {
         padding-left: 0.93rem;
     }
     .searcher-title{
-        margin: 1.25rem 0.31rem;
+        margin: 1.25rem 0rem;
         text-align: center;
         font-size: 1.75rem;
     }
@@ -538,29 +525,34 @@ footer {
     }
     .home-titles{
         margin-left: 0.4rem;
+        font-size: 1.5rem;
     }
+    
     .card-container{
         margin: 0.6rem 0rem;
-    }    
+    }
     .recommends-container {
         padding: 1.5rem 0rem;
     }
     .right-card-content{
         padding: 0.9rem;
         padding-top: 0;   
+        width: 100%;
+        height: 255px;
     }
     .left-card-content {
-    
         display:flex;
-        width: 50%;
+        width: 100%;
+        height: 255px;
     }
     .card-recomends{
         margin: 1.5rem 0rem;
         max-width: 15rem;
-        min-height: 21rem;
+        min-height: 25rem;
     }
     .card-content{
         flex-direction: column;
+        height: 20rem;
     }
     .card-image-recommends {
         width: 100%;
@@ -570,16 +562,12 @@ footer {
     }
 }
 @media only screen and  (min-width: 501px)  and  (max-width: 600px){
-    .navbar-link-container p{
+    .slogan-navbar{
         display: none;
     }
-    .navbar-buttons{
+    .searcher-button{
         width: 50vw;
         justify-content: space-around;
-    }
-    .navbar-buttons button {
-        font-size: 1rem;
-        padding: 0.3rem ;
     }
     .searcher {
         width: 100%;
@@ -605,22 +593,20 @@ footer {
     .card-recomends{
         width: 90%;
     }
+    .card-content {
+        width: 100%;
+    }
+
 }
 @media only screen and  (min-width: 601px)  and  (max-width: 767px){
     
-    .navbar-link-container p{
+    .slogan-navbar{
         display: none;
     }
     .logo {
         margin-left: 2.5rem;
     }
-    .navbar-buttons{
-        width: 40vw;
-    }
-    .buttons-navbar {
-        font-size: 0.8rem;
-        padding: 0.3rem ;
-    }
+    
     .searcher-container{
         padding-left: 0.2rem;
         align-items: center;
@@ -650,7 +636,7 @@ footer {
     width: 100%;
     }
     .card-content{
-        width: 30rem;
+        width: 100%;
     } 
     .card-recomends{
         width: 90vw;
@@ -658,6 +644,7 @@ footer {
     .card-image-recommends {
         height: 100%;
     }
+    
 }
 @media only screen and  (min-width: 768px)  and  (max-width: 799px){
     
@@ -666,18 +653,14 @@ footer {
         margin: 5px;
     }   
     .logo {
-        margin-left: 2.5rem;
-    }
-    .slogan-navbar{
         margin-left: 1rem;
     }
-    .navbar-buttons{
-        width: 40vw;
-        justify-content: space-around;
+    .slogan-navbar{
+        margin: 0rem;
+        margin-left: 0.5rem;
     }
-    .buttons-navbar {
-        font-size: 0.8rem;
-        padding: 0.3rem ;
+    .navbar-link-container {
+        width: 50vw;
     }
     .searcher-container{
         padding-left: 0.2rem;
@@ -703,9 +686,9 @@ footer {
     align-items: center;
     width: 100%;
     }
-    .card-content{
-        width: 30rem;
-    } 
+    .card-content {
+        width: 100%;
+    }
     .card-recomends{
         width: 90vw;
     }
@@ -715,18 +698,13 @@ footer {
 
     .product-container {
         display: block;
-        position: relative;
-        display: flex;
-        flex-wrap: wrap;
         justify-content: space-between;
         width: 100vw;
         height: 400px;
         background: var(--color2);
         margin: 90px auto 20px auto;
         border-radius: 10px;
-
     }
-
     .detail-container {
         width: 50%;
         margin: auto;
@@ -745,9 +723,6 @@ footer {
         width: 100%;
         margin: 0.5rem 0rem;
     }
-    .searcher-title{
-        margin-left: 7rem;
-    }
     .search-width{
         width: 12rem;
         margin: 5px;
@@ -761,4 +736,6 @@ footer {
     .card-image-recommends {
         height: 100%;
     }
+    
+
 }

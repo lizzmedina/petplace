@@ -17,18 +17,15 @@ export const NavBar = () => {
 
       <div class="burgermenu">
         <input type="checkbox"/>
-        <i class="fas fa-bars" id="burger-menu"></i>
-        <i class="fas fa-times"></i>
+        <i className = "fas fa-bars" id="burger-menu"></i>
+        <i className = "fas fa-times"></i>
         <nav class="navbar">
           <ul id="menu">
-            <li class="item"><a href="/productList"><Link to='/register'>Crear Cuenta</Link></a></li>
-            <li class="item"><a href="/productList"><Link to='/login'>Iniciar Sesión</Link></a></li>
+            <li className = "item"> < a className = "change-button "  href="/productList"><Link to='/register'>Crear Cuenta</Link></a></li>
+            <li className = "item"> < a className = "change-button"  href="/productList"><Link to='/login'>Iniciar Sesión</Link></a></li>
           </ul>
-          
         </nav>
-
       </div>
- 
     </div>
     
   )
