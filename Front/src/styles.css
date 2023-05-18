@@ -3,11 +3,10 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Quicksand', sans-serif;
-    overflow-x: hidden;
 } 
 body {
     width: 100%;
-}  
+}
 
 /* variables */
 
@@ -57,7 +56,11 @@ a:link, a:visited, a:active {
     background-color: var(--color1);
     padding: 5px;
     width: 100%;
+<<<<<<< HEAD
     /* position:sticky; */
+=======
+    position: sticky;
+>>>>>>> 27d307f0ff0a61769917b17bfcf200a8af7ffb17
     top: 0;
 }
 .logo{
@@ -67,7 +70,7 @@ a:link, a:visited, a:active {
     align-self: center;
 }
 .slogan-navbar{
-    margin:2rem;
+    margin:1rem;
 }
 .navbar-link-container {
     display: flex;
@@ -76,10 +79,7 @@ a:link, a:visited, a:active {
     width: 30vw;
     justify-content: space-evenly;
 }
-.navbar-link-container p {
-    color: var(--color6);
-    padding-top: 10px
-}
+
 .navbar-buttons {
     display: flex;
     flex-direction: row;
@@ -113,10 +113,14 @@ a:link, a:visited, a:active {
 .searcher {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     flex-wrap: wrap;
-    width: 60vw;
+    width: 100%;
+}
+.search-width{
+    width: 12rem;
+    margin: 5px;
 }
 .searcher-button{
     width: 15%;
@@ -141,7 +145,7 @@ a:link, a:visited, a:active {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin: auto; 
+    margin: auto;
 }
 .card-container{
     background-color: var(--color7);
@@ -162,7 +166,7 @@ a:link, a:visited, a:active {
     font-size: 0.5rem;
     margin: 8px;
     margin-bottom: 5px;
-    
+
 }
 .card-quantity-categories{
     color: var(--color6);
@@ -193,30 +197,27 @@ a:link, a:visited, a:active {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin: auto; 
-    max-width: 1080px;
+    margin: auto;
+    max-width: 1246px;
 }
 .card-recomends{
     display: flex;
     flex-direction: column;
     background-color: var(--color7);
     border-radius: 10px;
-    margin: 10px 20px 20px 0;
-    max-height: 184px;
-    max-width: 500px;
+    margin: 20px 20px;
+    max-height: 15.6rem;
+    max-width: 27.2rem;
     overflow: hidden;
-    width: 68vh;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .card-content{
     display:flex;
     background-color: var(--color7);
-    width: 30rem;
+    width: 100%;
+    height: 15rem;
 }
 
-.card-image-recommends {
-    height: 100%;
-}
 
 /* .left-card-content, .right-card-content{
     width: 100%;
@@ -225,17 +226,18 @@ a:link, a:visited, a:active {
 .right-card-content{
     padding-left: 10px;
     padding-top: 10px;
+    width: 50%;
 
 }
 .left-card-content {
-    
+
     display:contents;
     width: 50%;
 }
 .card-image-recommends {
     display: flex;
     width: 50%;
-    height: 181px;
+    height: 100%;
     border-top-left-radius: 10px;
     border-style: none;
 }
@@ -447,6 +449,10 @@ input:hover {
 .text-info {
     margin: 5px auto 5px auto;
 }
+.name-info {
+    display: flex;
+    justify-content: space-between;
+}
 .city-info {
     margin: 5px auto 5px auto;
 }
@@ -497,11 +503,11 @@ footer {
         display: flex;
         font-size: 14px;
         justify-content:space-between;
-    }
+    }    
     .navbar-link-container{
         width: 3.12rem;
     }
-    .navbar-link-container p{
+    .slogan-navbar{
         display: none;
     }
     .navbar-buttons button {
@@ -532,26 +538,30 @@ footer {
     }
     .card-container{
         margin: 0.6rem 0rem;
-    }    
+    }
     .recommends-container {
         padding: 1.5rem 0rem;
     }
     .right-card-content{
         padding: 0.9rem;
-        padding-top: 0;   
+        padding-top: 0;
+        width: 100%;
+        height: 255px;
     }
     .left-card-content {
-    
+
         display:flex;
-        width: 50%;
+        width: 100%;
+        height: 255px;
     }
     .card-recomends{
         margin: 1.5rem 0rem;
         max-width: 15rem;
-        min-height: 21rem;
+        min-height: 25rem;
     }
     .card-content{
         flex-direction: column;
+        height: 20rem;
     }
     .card-image-recommends {
         width: 100%;
@@ -561,7 +571,7 @@ footer {
     }
 }
 @media only screen and  (min-width: 501px)  and  (max-width: 600px){
-    .navbar-link-container p{
+    .slogan-navbar{
         display: none;
     }
     .navbar-buttons{
@@ -596,10 +606,13 @@ footer {
     .card-recomends{
         width: 90%;
     }
+    .card-content {
+        width: 100%;
+    }
 }
 @media only screen and  (min-width: 601px)  and  (max-width: 767px){
-    
-    .navbar-link-container p{
+
+    .slogan-navbar{
         display: none;
     }
     .logo {
@@ -625,7 +638,7 @@ footer {
     .search-width{
         width: 30%;
         margin: 5px;
-    }   
+    }
     .categories-container{
         padding: 20px 0px;
     }
@@ -640,9 +653,9 @@ footer {
     align-items: center;
     width: 100%;
     }
-    .card-content{
-        width: 30rem;
-    } 
+    .card-content {
+        width: 100%;
+    }
     .card-recomends{
         width: 90vw;
     }
@@ -651,19 +664,23 @@ footer {
     }
 }
 @media only screen and  (min-width: 768px)  and  (max-width: 799px){
-    
+
     .search-width{
         width: 12rem;
         margin: 5px;
-    }   
-    .logo {
-        margin-left: 2.5rem;
     }
-    .slogan-navbar{
+    .logo {
         margin-left: 1rem;
     }
+    .slogan-navbar{
+        margin: 0rem;
+        margin-left: 0.5rem;
+    }
+    .navbar-link-container {
+        width: 50vw;
+    }
     .navbar-buttons{
-        width: 40vw;
+        width: 45vw;
         justify-content: space-around;
     }
     .buttons-navbar {
@@ -679,7 +696,7 @@ footer {
         justify-content: center;
         width: 100%;
         margin: 0.5rem 0rem;
-    } 
+    }
     .categories-container{
         padding: 20px 0px;
     }
@@ -694,30 +711,25 @@ footer {
     align-items: center;
     width: 100%;
     }
-    .card-content{
-        width: 30rem;
-    } 
+    .card-content {
+        width: 100%;
+    }
     .card-recomends{
         width: 90vw;
     }
     .card-image-recommends {
         height: 100%;
     }
-
     .product-container {
         display: block;
         position: relative;
-        display: flex;
-        flex-wrap: wrap;
         justify-content: space-between;
         width: 100vw;
         height: 400px;
         background: var(--color2);
         margin: 90px auto 20px auto;
         border-radius: 10px;
-
     }
-
     .detail-container {
         width: 50%;
         margin: auto;
@@ -742,14 +754,17 @@ footer {
     .search-width{
         width: 12rem;
         margin: 5px;
-    }   
+    }
     .card-content{
         width: 30rem;
-    } 
+    }
     .card-recomends{
         width: 90vw;
     }
     .card-image-recommends {
         height: 100%;
+    }
+    .navbar-link-container {
+        width: 50vw;
     }
 }
