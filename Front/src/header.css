@@ -22,6 +22,9 @@ header a{
     text-decoration-color:#9E6EAF;
 }
 
+.searcher-title{
+ color: #fff;
+}
 
 .burgermenu input[type="checkbox"], .burgermenu .fa-bars, .burgermenu .fa-times {
     position: absolute;  
