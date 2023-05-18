@@ -55,6 +55,7 @@ a:link, a:visited, a:active {
 }
 .slogan-navbar{
     margin:1rem;
+    color: #31363F;
 }
 .navbar-link-container {
     display: flex;
