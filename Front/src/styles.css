@@ -166,7 +166,7 @@ color:#fff;
 }
 
 .home-titles{
-    margin-left: 5rem;
+    margin-left: calc(50% - 510px);
 }
 /* Style for recommends section */
 
@@ -658,6 +658,9 @@ footer {
         width: 30%;
         margin: 5px;
     }
+    .home-titles{
+        margin-left: 1rem;
+    }
     .categories-container{
         padding: 20px 0px;
     }
@@ -713,6 +716,9 @@ footer {
         width: 100%;
         margin: 0.5rem 0rem;
     }
+    .home-titles{
+        margin-left: 0.4rem;
+    }
     .categories-container{
         padding: 20px 0px;
     }
@@ -756,6 +762,9 @@ footer {
     .search-width{
         width: 12rem;
         margin: 5px;
+    }
+    .home-titles{
+        margin-left: 1rem;
     }
     .card-content{
         width: 30rem;
