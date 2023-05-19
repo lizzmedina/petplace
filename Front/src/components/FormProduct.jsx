@@ -13,6 +13,9 @@ const FormProduct = () => {
         basicPrice: ''
     })
 
+    const [isLoading, setIsLoading] = useState(false);
+    const [isSuccess, setIsSuccess] = useState(false);
+
     const url = "http://localhost:8080/api/v1/petDayCare/all"
     const [allProducts, setAllProducts] = useState([])
     useEffect(() => {
@@ -27,10 +30,12 @@ const FormProduct = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const result = allProducts.find((item) => item.name.toLowerCase() === product.name.toLowerCase());
+        const result = allProducts.find((item) => item.name === product.name);
         console.log(result);
         if (result === undefined) {
+            // El nombre no existe en allProducts, proceder con el envío del formulario
             if (product.name.length > 2 && product.detail.length > 5) {
+                setIsLoading(true);
                 setProduct({
                     name: "",
                     type: "",
@@ -52,6 +57,7 @@ const FormProduct = () => {
                 })
                     .then((response) => {
                         if (response.ok) {
+                            setIsSuccess(true);
                             alert(
                                 `El alojamiento ${product.name} ha sido creado exitosamente.`
                             );
@@ -70,6 +76,13 @@ const FormProduct = () => {
                             throw new Error("Error en la solicitud");
                         }
                     })
+                    .catch((error) => {
+                        console.error(error);
+                        alert("Parece que algo va mal, verifica la información.");
+                    })
+                    .finally(() => {
+                        setIsLoading(false);
+                    });
             } else {
                 alert("Parece que algo salió mal, recuerda llenar los campos.");
             }
