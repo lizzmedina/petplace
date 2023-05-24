@@ -36,7 +36,5 @@ deploy:
     - ssh ec2-user@$DEPLOY_SERVER_IP export DB_USERNAME=$DB_USERNAME>>~/.profile
     - ssh ec2-user@$DEPLOY_SERVER_IP export DB_PASSWORD=$DB_PASSWORD>>~/.bashrc
     - ssh ec2-user@$DEPLOY_SERVER_IP export DB_PASSWORD=$DB_PASSWORD>>~/.profile
-    - ssh ec2-user@$DEPLOY_SERVER_IP sudo source ~/.bashrc
-    - ssh ec2-user@$DEPLOY_SERVER_IP sudo source ~/.profile
     - ssh ec2-user@$DEPLOY_SERVER_IP "sudo systemctl start java-backend.service"
     - echo "Finished deploying the app."
