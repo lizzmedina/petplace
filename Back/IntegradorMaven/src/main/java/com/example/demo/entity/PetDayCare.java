@@ -32,37 +32,33 @@ public class PetDayCare {
     private String detail;
 
     @Column(name = "image")
-    private String image;
+    private List<String> images ;
+
+    @Column(name = "characteristic")
+    private List<String> characteristics;
 
     @Column(name = "basicPrice")
     private double basicPrice;
 
     @ManyToOne
-    private Manager manager;
+    private User user;
 
     @OneToMany(mappedBy = "petDayCare")
     List<Booking> bookings;
 
-      public PetDayCare(String name, String type, Integer capacity, String city, String address, String detail, String image, double basicPrice) {
+    public PetDayCare(String name, String type, Integer capacity, String city, String address, String detail, List<String> images, List<String> characteristics, double basicPrice) {
         this.name = name;
         this.type = type;
         this.capacity = capacity;
         this.city = city;
         this.address = address;
         this.detail = detail;
-        this.image = image;
+        this.images = images;
+        this.characteristics = characteristics;
         this.basicPrice = basicPrice;
     }
 
     public PetDayCare() {
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -113,12 +109,20 @@ public class PetDayCare {
         this.detail = detail;
     }
 
-    public String getImage() {
-        return image;
+    public List<String> getImages() {
+        return images;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setImages(List<String> images) {
+        this.images = images;
+    }
+
+    public List<String> getCharacteristics() {
+        return characteristics;
+    }
+
+    public void setCharacteristics(List<String> characteristics) {
+        this.characteristics = characteristics;
     }
 
     public double getBasicPrice() {
