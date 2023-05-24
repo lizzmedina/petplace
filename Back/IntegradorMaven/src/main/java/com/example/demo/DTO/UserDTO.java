@@ -1,48 +1,18 @@
-package com.example.demo.entity;
+package com.example.demo.DTO;
 
-import jakarta.persistence.*;
+public class UserDTO {
 
-import java.util.List;
-
-@Entity
-@Table(name = "user")
-public class User {
-
-    @Id
-    @Column(name = "id")
     private Integer id;
-
-    @Column(name = "name")
     private String name;
-
-    @Column(name = "lastName")
     private String lastName;
-
-    @Column(name = "email")
     private String email;
-
-    @Column(name="password")
     private String password;
-
-    @Column(name= "cellPhone")
     private String cellPhone;
-
-    @Column(name=" address")
     private String address;
-
-    @Column(name="type")
     private String type;
 
-    @OneToMany(mappedBy = "user")
-    List<PetDayCare> petDayCares;
-
-
-    @OneToMany(mappedBy = "user")
-    List<Booking> bookings;
-
-
-    public User(Integer id, String name, String lastName, String email, String password, String cellPhone, String address, String type) {
-        this.id = id;
+    public UserDTO(Integer id, String name, String lastName, String email, String password, String cellPhone, String address, String type) {
+       this.id = id;
         this.name = name;
         this.lastName = lastName;
         this.email = email;
@@ -52,16 +22,16 @@ public class User {
         this.type = type;
     }
 
-    public User() {
-    }
 
-    //Getters and Setters
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public UserDTO() {
     }
 
     public String getName() {

@@ -4,9 +4,12 @@ package com.example.demo.service;
 
 import com.example.demo.entity.User;
 import com.example.demo.repository.UserRepository;
+import com.example.demo.DTO.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -39,6 +42,19 @@ public class UserService {
         repository.delete(manager.get());
         return "El Administrador fue eliminado ";
 
+    }
+
+    public List<UserDTO> getAllUsers(){
+        List<User> usersFromDatabase = repository.findAll();
+        List<UserDTO> listOfUserDtos = new ArrayList<>();
+
+        for(int i= 0; i < usersFromDatabase.size(); i++){
+            User manager = usersFromDatabase.get(i);
+            UserDTO userDTO = new UserDTO(manager.getId(), manager.getName(), manager.getLastName(), manager.getEmail(), manager.getPassword(), manager.getCellPhone(), manager.getAddress(), manager.getType());
+            listOfUserDtos.add(userDTO);
+        }
+
+        return listOfUserDtos;
     }
 
 

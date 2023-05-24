@@ -2,6 +2,7 @@ package com.example.demo.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -33,7 +34,10 @@ public class PetDayCare {
     private String detail;
 
     @Column(name = "image")
-    private String image;
+    private List<String> images ;
+
+    @Column(name = "characteristic")
+    private List<String> characteristics;
 
 //    @OneToOne
 //    private Category category;
@@ -47,14 +51,19 @@ public class PetDayCare {
     @OneToMany(mappedBy = "petDayCare")
     List<Booking> bookings;
 
-      public PetDayCare(String name, Category type, Integer capacity, String city, String address, String detail, String image, double basicPrice) {
-        this.name = name;
+//<<<<<<< HEAD
+//      public PetDayCare(String name, Category type, Integer capacity, String city, String address, String detail, String image, double basicPrice) {
+//=======
+    public PetDayCare(String name, Category type, Integer capacity, String city, String address, String detail, List<String> images, List<String> characteristics, double basicPrice) {
+//>>>>>>> b09c34b8f771be17bf00a49baac4e7a42de3c84d
+       this.name = name;
         this.type = type;
         this.capacity = capacity;
         this.city = city;
         this.address = address;
         this.detail = detail;
-        this.image = image;
+        this.images = new ArrayList<>();
+        this.characteristics = new ArrayList<>();
         this.basicPrice = basicPrice;
     }
 
@@ -117,12 +126,20 @@ public class PetDayCare {
         this.detail = detail;
     }
 
-    public String getImage() {
-        return image;
+    public List<String> getImages() {
+        return images;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setImages(List<String> images) {
+        this.images = images;
+    }
+
+    public List<String> getCharacteristics() {
+        return characteristics;
+    }
+
+    public void setCharacteristics(List<String> characteristics) {
+        this.characteristics = characteristics;
     }
 
     public double getBasicPrice() {
@@ -131,5 +148,21 @@ public class PetDayCare {
 
     public void setBasicPrice(double basicPrice) {
         this.basicPrice = basicPrice;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
     }
 }
