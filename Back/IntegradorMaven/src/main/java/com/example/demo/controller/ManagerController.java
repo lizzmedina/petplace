@@ -2,10 +2,13 @@ package com.example.demo.controller;
 
 // ANDREA
 
+import com.example.demo.DTO.ManagerDTO;
 import com.example.demo.entity.Manager;
 import com.example.demo.service.ManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/manager")
@@ -31,6 +34,12 @@ public class ManagerController {
     @DeleteMapping("/{id}")
     public String deleteManager(@PathVariable("id")Integer id){ //localhost:8080/api/v1/manager
         return service.deleteManager(id);
+    }
+
+    @GetMapping
+    public List<ManagerDTO> getAllManagers(){
+        List<ManagerDTO> managerDTO = service.getAllManagers();
+        return managerDTO;
     }
 
 

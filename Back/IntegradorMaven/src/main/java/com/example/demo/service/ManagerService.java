@@ -1,27 +1,27 @@
 package com.example.demo.service;
 
-//ANDREA
 
+import com.example.demo.DTO.ManagerDTO;
 import com.example.demo.entity.Manager;
 import com.example.demo.repository.ManagerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
 public class ManagerService {
-    //ATRIBUTES
+
     private ManagerRepository repository;
 
     @Autowired
 
-    //CONTROLLER
     public ManagerService(ManagerRepository repository) {
         this.repository = repository;
     }
 
-    //METHODS
     public Manager saveManager(Manager manager){ // Save a manager
         return repository.save(manager);
     }
@@ -39,6 +39,19 @@ public class ManagerService {
         repository.delete(manager.get());
         return "El Administrador fue eliminado ";
 
+    }
+
+    public List<ManagerDTO> getAllManagers(){
+        List<Manager> managersFromDatabase = repository.findAll();
+        List<ManagerDTO> listOfManagerDtos = new ArrayList<>();
+
+        for(int i= 0; i < managersFromDatabase.size(); i++){
+            Manager manager = managersFromDatabase.get(i);
+            ManagerDTO managerDTO = new ManagerDTO(manager.getId(), manager.getName(), manager.getLastName(), manager.getEmail(), manager.getPassword(), manager.getCellPhone(), manager.getAddress(), manager.getType());
+            listOfManagerDtos.add(managerDTO);
+        }
+
+        return listOfManagerDtos;
     }
 
 

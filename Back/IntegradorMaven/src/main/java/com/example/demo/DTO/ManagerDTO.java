@@ -1,43 +1,21 @@
-package com.example.demo.entity;
+package com.example.demo.DTO;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Id;
 
-import java.util.List;
+public class ManagerDTO {
 
-@Entity
-@Table(name = "manager")
-public class Manager {
-
-    @Id
-    @Column(name = "id")
     private Integer id;
-
-    @Column(name = "name")
     private String name;
-
-    @Column(name = "lastName")
     private String lastName;
-
-    @Column(name = "email")
     private String email;
-
-    @Column(name="password")
     private String password;
-
-    @Column(name= "cellPhone")
     private String cellPhone;
-
-    @Column(name=" address")
     private String address;
-
-    @Column(name="type")
     private String type;
 
-    @OneToMany(mappedBy = "manager")
-    List<PetDayCare> petDayCares;
-
-    public Manager(Integer id, String name, String lastName, String email, String password, String cellPhone, String address, String type) {
-        this.id = id;
+    public ManagerDTO(Integer id,String name, String lastName, String email, String password, String cellPhone, String address, String type) {
+       this.id = id;
         this.name = name;
         this.lastName = lastName;
         this.email = email;
@@ -47,16 +25,16 @@ public class Manager {
         this.type = type;
     }
 
-    public Manager() {
-    }
 
-    //Getters and Setters
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public ManagerDTO() {
     }
 
     public String getName() {
