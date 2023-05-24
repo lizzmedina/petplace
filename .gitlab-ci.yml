@@ -30,8 +30,8 @@ deploy:
     - echo "Deploying started..."
     - ssh ec2-user@$DEPLOY_SERVER_IP "sudo systemctl stop java-backend.service"
     - scp Back/IntegradorMaven/target/java-backend.service.jar ec2-user@$DEPLOY_SERVER_IP:~/java-backend/
-    - ssh ec2-user@$DEPLOY_SERVER_IP "export DB_URL=$DB_URL"
-    - ssh ec2-user@$DEPLOY_SERVER_IP "export DB_USERNAME=$DB_USERNAME"
-    - ssh ec2-user@$DEPLOY_SERVER_IP "export DB_PASSWORD=$DB_PASSWORD"
+    - ssh ec2-user@$DEPLOY_SERVER_IP export DB_URL=$DB_URL
+    - ssh ec2-user@$DEPLOY_SERVER_IP export DB_USERNAME=$DB_USERNAME
+    - ssh ec2-user@$DEPLOY_SERVER_IP export DB_PASSWORD=$DB_PASSWORD
     - ssh ec2-user@$DEPLOY_SERVER_IP "sudo systemctl start java-backend.service"
     - echo "Finished deploying the app."
