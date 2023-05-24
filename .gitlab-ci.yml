@@ -29,6 +29,6 @@ deploy:
   script:
     - echo "Deploying started..."
     - ssh ec2-user@$DEPLOY_SERVER_IP "sudo systemctl stop java-backend.service"
-    - scp Back/IntegradorMaven/target/java-backend.service.jar ec2-user@$DEPLOY_SERVER_IP:~/java-backend.service/
+    - scp Back/IntegradorMaven/target/java-backend.service.jar ec2-user@$DEPLOY_SERVER_IP:~/java-backend/
     - ssh ec2-user@$DEPLOY_SERVER_IP "sudo systemctl start java-backend.service"
     - echo "Finished deploying the app."
