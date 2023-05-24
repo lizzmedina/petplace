@@ -11,4 +11,6 @@ import java.util.List;
 public interface PetDayCareRepository extends JpaRepository<PetDayCare, Integer> {
     @Query(value= "SELECT * FROM petplace.pet_day_care where type=:category", nativeQuery = true)
     public List<PetDayCare> findByCategory(@Param("category") String category);
+
+
 }

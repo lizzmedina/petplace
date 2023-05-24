@@ -16,8 +16,9 @@ public class PetDayCare {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "type")
-    private String type;
+    @OneToOne
+//    @Column(name = "type")
+    private Category type;
 
     @Column(name = "capacity")
     private Integer capacity;
@@ -34,6 +35,9 @@ public class PetDayCare {
     @Column(name = "image")
     private String image;
 
+//    @OneToOne
+//    private Category category;
+
     @Column(name = "basicPrice")
     private double basicPrice;
 
@@ -43,7 +47,7 @@ public class PetDayCare {
     @OneToMany(mappedBy = "petDayCare")
     List<Booking> bookings;
 
-      public PetDayCare(String name, String type, Integer capacity, String city, String address, String detail, String image, double basicPrice) {
+      public PetDayCare(String name, Category type, Integer capacity, String city, String address, String detail, String image, double basicPrice) {
         this.name = name;
         this.type = type;
         this.capacity = capacity;
@@ -73,11 +77,11 @@ public class PetDayCare {
         this.name = name;
     }
 
-    public String getType() {
+    public Category getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(Category type) {
         this.type = type;
     }
 
