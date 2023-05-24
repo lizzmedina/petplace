@@ -72,7 +72,8 @@ public class PetDayCareService {
                 petDayCare.get().getCity(),
                 petDayCare.get().getAddress(),
                 petDayCare.get().getDetail(),
-                petDayCare.get().getImage(),
+                petDayCare.get().getImages(),
+                petDayCare.get().getCharacteristics(),
                 petDayCare.get().getBasicPrice()
         );
 
