@@ -1,9 +1,6 @@
 package com.example.demo.DTO;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Id;
-
-public class ManagerDTO {
+public class UserDTO {
 
     private Integer id;
     private String name;
@@ -14,7 +11,7 @@ public class ManagerDTO {
     private String address;
     private String type;
 
-    public ManagerDTO(Integer id,String name, String lastName, String email, String password, String cellPhone, String address, String type) {
+    public UserDTO(Integer id, String name, String lastName, String email, String password, String cellPhone, String address, String type) {
        this.id = id;
         this.name = name;
         this.lastName = lastName;
@@ -34,7 +31,7 @@ public class ManagerDTO {
         this.id = id;
     }
 
-    public ManagerDTO() {
+    public UserDTO() {
     }
 
     public String getName() {

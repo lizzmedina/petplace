@@ -5,8 +5,8 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "manager")
-public class Manager {
+@Table(name = "user")
+public class User {
 
     @Id
     @Column(name = "id")
@@ -33,10 +33,15 @@ public class Manager {
     @Column(name="type")
     private String type;
 
-    @OneToMany(mappedBy = "manager")
+    @OneToMany(mappedBy = "user")
     List<PetDayCare> petDayCares;
 
-    public Manager(Integer id, String name, String lastName, String email, String password, String cellPhone, String address, String type) {
+
+    @OneToMany(mappedBy = "user")
+    List<Booking> bookings;
+
+
+    public User(Integer id, String name, String lastName, String email, String password, String cellPhone, String address, String type) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
@@ -47,7 +52,7 @@ public class Manager {
         this.type = type;
     }
 
-    public Manager() {
+    public User() {
     }
 
     //Getters and Setters

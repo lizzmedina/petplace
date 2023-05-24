@@ -38,7 +38,7 @@ public class PetDayCare {
     private double basicPrice;
 
     @ManyToOne
-    private Manager manager;
+    private User user;
 
     @OneToMany(mappedBy = "petDayCare")
     List<Booking> bookings;

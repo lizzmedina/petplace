@@ -2,7 +2,7 @@ package com.example.demo.model;
 
 import java.util.List;
 
-public class Customer extends Person{
+public class Customer extends User {
 
     private List<Pet> pets;
 
