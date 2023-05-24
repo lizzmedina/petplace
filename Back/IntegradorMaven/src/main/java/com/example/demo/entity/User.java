@@ -2,13 +2,14 @@ package com.example.demo.entity;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "customer")
-public class Customer {
+@Table(name = "user")
+public class User {
+
     @Id
+    @Column(name = "id")
     private Integer id;
 
     @Column(name = "name")
@@ -20,29 +21,27 @@ public class Customer {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "password")
-
+    @Column(name="password")
     private String password;
 
-    @Column(name = "cellPhone")
+    @Column(name= "cellPhone")
     private String cellPhone;
 
-    @Column(name = "address")
+    @Column(name=" address")
     private String address;
 
-    @Column(name = "type")
+    @Column(name="type")
     private String type;
 
-    @OneToMany(mappedBy = "customer")
-    List<Pet> pets;
+    @OneToMany(mappedBy = "user")
+    List<PetDayCare> petDayCares;
 
-    @OneToMany(mappedBy = "customer")
+
+    @OneToMany(mappedBy = "user")
     List<Booking> bookings;
 
-    public Customer(Integer id, String name,
-                    String lastName, String email,
-                    String password, String cellPhone,
-                    String address, String type, List<Pet> pets) {
+
+    public User(Integer id, String name, String lastName, String email, String password, String cellPhone, String address, String type) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
@@ -51,10 +50,9 @@ public class Customer {
         this.cellPhone = cellPhone;
         this.address = address;
         this.type = type;
-       this.pets = new ArrayList<>();
     }
 
-    public Customer() {
+    public User() {
     }
 
     //Getters and Setters
@@ -94,7 +92,7 @@ public class Customer {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(String passwork) {
         this.password = password;
     }
 
@@ -120,13 +118,5 @@ public class Customer {
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    public List<Pet> getPets() {
-        return pets;
-    }
-
-    public void setPets(List<Pet> pets) {
-        this.pets = pets;
     }
 }

@@ -1,6 +1,6 @@
 package com.example.demo.model;
 
-public class Person {
+public class User {
 
     private Integer id;
     private String name;
@@ -11,7 +11,7 @@ public class Person {
     private String address;
     private String type;
 
-    public Person(Integer id, String name, String lastName, String email, String passwork, String cellPhone, String address, String type) {
+    public User(Integer id, String name, String lastName, String email, String passwork, String cellPhone, String address, String type) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;

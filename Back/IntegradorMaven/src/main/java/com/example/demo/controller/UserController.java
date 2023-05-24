@@ -2,29 +2,29 @@ package com.example.demo.controller;
 
 // ANDREA
 
-import com.example.demo.entity.Manager;
-import com.example.demo.service.ManagerService;
+import com.example.demo.entity.User;
+import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/manager")
-public class ManagerController {
-    private ManagerService service;
+public class UserController {
+    private UserService service;
 
     @Autowired
 
-    public ManagerController(ManagerService service) {
+    public UserController(UserService service) {
         this.service = service;
     }
 
     @PostMapping()//localhost:8080/api/v1/manager
-    public Manager saveManager(@RequestBody Manager manager){
+    public User saveManager(@RequestBody User manager){
         return service.saveManager(manager);
     }
 
     @GetMapping("/{id}") //localhost:8080/api/v1/manager
-    public Manager findManager(@PathVariable("id") Integer id){
+    public User findManager(@PathVariable("id") Integer id){
         return service.findManager(id);
     }
 
