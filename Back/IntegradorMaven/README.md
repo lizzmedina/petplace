@@ -52,15 +52,17 @@ Ejemplo de solicitud:
 La API devolverá el nuevo producto creado en formato JSON:
 ```java
 {
+
         "name": "Huellas de amor",
-        "type": "Campestre",
+        "type": "conejos",
         "capacity": 50,
         "city": "Cali",
         "address": "Calle 3, via Yumbo",
         "detail": " somo una guarderia campestre con amplias zonas verdes para tu peludo",
-        "image": "/images.png",
-        "basicPrice": 30.0
-}
+        "images": ["url1","url2","url3"],
+        "characteristics": ["Baño","Paseo","Alimentación","Veterinaria", "Entrenamiento"],
+        "basicPrice": 30.000
+        }
 ```
 
 ### Endpoint de listar productos "Guarderias" :hotel:
