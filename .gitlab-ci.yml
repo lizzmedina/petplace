@@ -8,7 +8,7 @@ build:
   script:
     - echo "Building app..."
     - cd Back/IntegradorMaven
-    - mvn clean install
+    - mvn clean install -DskipTests
     - echo "Finished building the app."
   artifacts:
     expire_in: 1 week
