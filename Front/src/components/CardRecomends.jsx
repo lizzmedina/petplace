@@ -9,7 +9,7 @@ export const CardRecomends = ({ image, type, name, rating, ratingText, servicio1
                 <div className="left-card-content">
                     <img
                         className="card-image-recommends"
-                        src={image[0]}
+                        src={image}
                         alt={type}
                     />
                   
