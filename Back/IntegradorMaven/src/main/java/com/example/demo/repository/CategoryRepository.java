@@ -13,7 +13,5 @@ import java.util.Optional;
 @Repository
 public interface CategoryRepository extends JpaRepository<Category, Integer> {
 
-    @Query(value= "SELECT * FROM petplace.category where name=:category", nativeQuery = true)
-    public Optional<Category> findCategory(@Param("category") String category);
-
+    Optional<Category> findByTitle(String title);
 }
