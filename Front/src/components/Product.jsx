@@ -11,7 +11,7 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
             <div className="product-header">
                 <span className="product-location">{city}, {address}</span>  <a onClick={() => navigate(-1)}><img className='back-icon' src="..\images\backRecurso 2.png" alt="" /></a>
             </div>
-            <div className="product-section-image"> <img src={image} alt={name} className="product-image" /></div>
+            <div className="product-section-image"> <img src={image[0]} alt={name} className="product-image" /></div>
 
 
             
