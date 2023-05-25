@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -18,8 +19,8 @@ public class PetDayCare {
     private String name;
 
    @OneToOne
-  // @Column(name = "type")
-    private Category type;
+   @JsonIgnore
+   private Category type;
 
     @Column(name = "capacity")
     private Integer capacity;
@@ -33,7 +34,7 @@ public class PetDayCare {
     @Column(name = "detail")
     private String detail;
 
-    @Column(name = "image")
+    @Column(name = "images")
     private List<String> images ;
 
     @Column(name = "characteristic")

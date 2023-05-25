@@ -31,28 +31,24 @@ public class PetDayCareService {
         this.categoryRepository = categoryRepository;
     }
 
+    public PetDayCareDTO save(PetDayCareDTO petDayCare){
 
-    public PetDayCareDTO save(PetDayCare newPetDayCare){
+        Optional<Category> category = this.categoryRepository.findCategory(petDayCare.getCategoryName());
 
-//        Optional<Category> category = this.categoryRepository.findCategory(petDayCare.getType().getTitle());
-//
-//        Category findCategory = new Category(
-//                category.get().getTitle(),
-//                category.get().getDescription(),
-//                category.get().getImage()
-//                );
-
-//        PetDayCare newPetDayCare = new PetDayCare(
-//                petDayCare.getName(),
-//                findCategory,
-//                petDayCare.getCapacity(),
-//                petDayCare.getCity(),
-//                petDayCare.getAddress(),
-//                petDayCare.getDetail(),
-//                petDayCare.getImages(),
-//                petDayCare.getCharacteristics(),
-//                petDayCare.getBasicPrice()
-//        );
+        if(!category.isPresent()){
+            throw new RuntimeException("La categoria no existe");
+        }
+        PetDayCare newPetDayCare = new PetDayCare(
+                petDayCare.getName(),
+                category.get(),
+                petDayCare.getCapacity(),
+                petDayCare.getCity(),
+                petDayCare.getAddress(),
+                petDayCare.getDetail(),
+                petDayCare.getImages(),
+                petDayCare.getCharacteristics(),
+                petDayCare.getBasicPrice()
+        );
 
         repository.save(newPetDayCare);
 
@@ -87,15 +83,9 @@ public class PetDayCareService {
 
     }
 
-    public List<PetDayCare> findByCategory(String type){
+    public List<PetDayCare> findByCategory(Integer type){
 
-        String normalizacion = type.toLowerCase();
-
-        if (!normalizacion.equals("perros") && !normalizacion.equals("gatos") && !normalizacion.equals("canarios") && !normalizacion.equals("conejos")) {
-            throw new RuntimeException("La categoria no es válida, cerciorarse de que sea perros, gatos, canarios o conejos");
-        }
-
-        return repository.findByCategory(normalizacion).stream().collect(Collectors.toList());
+        return repository.findByCategory(type).stream().collect(Collectors.toList());
 
     }
 

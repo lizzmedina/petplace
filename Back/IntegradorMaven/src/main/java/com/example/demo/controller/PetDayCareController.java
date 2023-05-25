@@ -20,7 +20,7 @@ public class PetDayCareController {
     }
 
     @PostMapping()
-    public PetDayCareDTO save(@RequestBody PetDayCare petDayCare){
+    public PetDayCareDTO save(@RequestBody PetDayCareDTO petDayCare){
         return service.save(petDayCare);
     }
 
@@ -35,7 +35,7 @@ public class PetDayCareController {
     }
 
     @GetMapping("/category/{category}")
-    public List<PetDayCare> findByCategory(@PathVariable("category") String type){
+    public List<PetDayCare> findByCategory(@PathVariable("category") Integer type){
         return service.findByCategory(type);
     };
 
