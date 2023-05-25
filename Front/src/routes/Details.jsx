@@ -12,12 +12,10 @@ const Details = () => {
             const res = await fetch(`http://localhost:8080/api/v1/petDayCare/detail/${id}`)
             const data = await res.json()
             setDetails(data)
-            console.log(data);
       }
 
       useEffect(()=>{
             getDetail()
-            
       }, [])
 
 
