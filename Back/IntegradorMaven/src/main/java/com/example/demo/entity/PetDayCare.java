@@ -17,8 +17,8 @@ public class PetDayCare {
     @Column(name = "name")
     private String name;
 
-    @OneToOne
-//    @Column(name = "type")
+   @OneToOne
+  // @Column(name = "type")
     private Category type;
 
     @Column(name = "capacity")
@@ -39,17 +39,14 @@ public class PetDayCare {
     @Column(name = "characteristic")
     private List<String> characteristics;
 
-//    @OneToOne
-//    private Category category;
-
     @Column(name = "basicPrice")
     private double basicPrice;
 
-    @ManyToOne
-    private User user;
+//    @ManyToOne
+//    private User user;
 
-    @OneToMany(mappedBy = "petDayCare")
-    List<Booking> bookings;
+//    @OneToMany(mappedBy = "petDayCare")
+//    List<Booking> bookings;
 
     public PetDayCare(String name, Category type, Integer capacity, String city, String address, String detail, List<String> images, List<String> characteristics, double basicPrice) {
 
@@ -59,8 +56,8 @@ public class PetDayCare {
         this.city = city;
         this.address = address;
         this.detail = detail;
-        this.images = new ArrayList<>();
-        this.characteristics = new ArrayList<>();
+        this.images = images;
+        this.characteristics = characteristics;
         this.basicPrice = basicPrice;
     }
 
@@ -90,6 +87,15 @@ public class PetDayCare {
     public void setType(Category type) {
         this.type = type;
     }
+
+
+//    public String getType() {
+//        return type;
+//    }
+//
+//    public void setType(String type) {
+//        this.type = type;
+//    }
 
     public Integer getCapacity() {
         return capacity;
@@ -147,19 +153,19 @@ public class PetDayCare {
         this.basicPrice = basicPrice;
     }
 
-    public User getUser() {
-        return user;
-    }
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public List<Booking> getBookings() {
-        return bookings;
-    }
-
-    public void setBookings(List<Booking> bookings) {
-        this.bookings = bookings;
-    }
+//    public List<Booking> getBookings() {
+//        return bookings;
+//    }
+//
+//    public void setBookings(List<Booking> bookings) {
+//        this.bookings = bookings;
+//    }
 }

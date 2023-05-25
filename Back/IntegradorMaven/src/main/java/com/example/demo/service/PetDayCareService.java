@@ -2,7 +2,9 @@ package com.example.demo.service;
 
 
 import com.example.demo.DTO.PetDayCareDTO;
+import com.example.demo.entity.Category;
 import com.example.demo.entity.PetDayCare;
+import com.example.demo.repository.CategoryRepository;
 import com.example.demo.repository.PetDayCareRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,28 +21,53 @@ public class PetDayCareService {
 
     private List<PetDayCare> petDayCareList;
 
+    private CategoryRepository categoryRepository;
+
     @Autowired
 
-    public PetDayCareService(PetDayCareRepository repository, List<PetDayCare> petDayCareList) {
+    public PetDayCareService(PetDayCareRepository repository, List<PetDayCare> petDayCareList, CategoryRepository categoryRepository) {
         this.repository = repository;
         this.petDayCareList = petDayCareList;
+        this.categoryRepository = categoryRepository;
     }
 
 
-    public PetDayCareDTO save(PetDayCare petDayCare){
+    public PetDayCareDTO save(PetDayCare newPetDayCare){
 
-        repository.save(petDayCare);
+//        Optional<Category> category = this.categoryRepository.findCategory(petDayCare.getType().getTitle());
+//
+//        Category findCategory = new Category(
+//                category.get().getTitle(),
+//                category.get().getDescription(),
+//                category.get().getImage()
+//                );
+
+//        PetDayCare newPetDayCare = new PetDayCare(
+//                petDayCare.getName(),
+//                findCategory,
+//                petDayCare.getCapacity(),
+//                petDayCare.getCity(),
+//                petDayCare.getAddress(),
+//                petDayCare.getDetail(),
+//                petDayCare.getImages(),
+//                petDayCare.getCharacteristics(),
+//                petDayCare.getBasicPrice()
+//        );
+
+        repository.save(newPetDayCare);
+
+
 
         PetDayCareDTO petDayCareDTO = new PetDayCareDTO(
-                petDayCare.getName(),
-                petDayCare.getType().getTitle(),
-                petDayCare.getCapacity(),
-                petDayCare.getCity(),
-                petDayCare.getAddress(),
-                petDayCare.getDetail(),
-                petDayCare.getImages(),
-                petDayCare.getCharacteristics(),
-                petDayCare.getBasicPrice());
+                newPetDayCare.getName(),
+                newPetDayCare.getType().getTitle(),
+                newPetDayCare.getCapacity(),
+                newPetDayCare.getCity(),
+                newPetDayCare.getAddress(),
+                newPetDayCare.getDetail(),
+                newPetDayCare.getImages(),
+                newPetDayCare.getCharacteristics(),
+                newPetDayCare.getBasicPrice());
 
         return petDayCareDTO;
     }
