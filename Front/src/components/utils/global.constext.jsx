@@ -12,13 +12,17 @@ const ContextProvider = ({children}) => {
 
     const [dataCategory, setDataCategory] = useState([])
     useEffect(() => {
-        fetch(url)                                      
-        .then(res => res.json())    
-        .then((data) => {
-            setDataCategory(data);
-            setItems(data.slice(0, itemsPerPage));
-        });
-    }, [url])
+        fetch(url)
+            .then((res) => res.json())
+            .then((data) => {
+                setDataCategory(data);
+                setItems(data.slice(0, itemsPerPage));
+            })
+            .catch((error) => {
+            // Manejo de errores aquí
+                error('Error al obtener los datos:', error);
+            });
+    }, [url]);
 
     const itemsPerPage = 10
     const[items, setItems] = useState([...dataCategory].splice(0, itemsPerPage)) 
