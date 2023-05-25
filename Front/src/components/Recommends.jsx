@@ -23,14 +23,17 @@ export const Recommends = () => {
   const isTablet = useMediaQuery('(max-width: 1024px)'); // Verifica si es una tablet
 
   // Determina la cantidad de tarjetas a mostrar en función del tamaño de la pantalla
-  let cardsPerPage;
+  let cardsPerRow;
   if (isMobile) {
-    cardsPerPage = 1;
+    cardsPerRow = 1;
   } else if (isTablet) {
-    cardsPerPage = 2;
+    cardsPerRow = 2;
   } else {
-    cardsPerPage = 4;
+    cardsPerRow = 4;
   }
+
+  // Cantidad de tarjetas por página
+  const cardsPerPage = cardsPerRow;
 
   // Número total de páginas
   const totalPages = Math.ceil(recommends.length / cardsPerPage);
