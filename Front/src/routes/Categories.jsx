@@ -4,7 +4,7 @@ import Stack from '@mui/material/Stack';
 import { Pagination, useMediaQuery } from "@mui/material";
 
 
-export const Categories = ({categories}) => {
+export const Categories = () => {
 
     const [places, setPlaces] = useState([]);
     const url = 'http://localhost:8080/api/v1/category/all';
