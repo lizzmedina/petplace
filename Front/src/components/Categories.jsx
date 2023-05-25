@@ -1,5 +1,5 @@
 import { useState, useEffect} from "react";
-import { Card } from "../components/CardCategories";
+import { Card } from "./CardCategories";
 import Stack from '@mui/material/Stack';
 import { Pagination, useMediaQuery } from "@mui/material";
 
@@ -20,8 +20,7 @@ export const Categories = () => {
             });
     }, [url]);
 
-    
-
+  
   const isMobile = useMediaQuery('(max-width: 767px)'); // Verifica si es un dispositivo móvil
   const isTablet = useMediaQuery('(max-width: 1024px)'); // Verifica si es una tablet
   
@@ -44,7 +43,7 @@ export const Categories = () => {
   const handlePageChange = (event, page) => {
     setCurrentPage(page);
   };
-
+  
   return (
 
     <div className = "categories-container">

@@ -1,4 +1,4 @@
-import { Categories } from "../routes/Categories";
+import { Categories } from "../components/Categories";
 import { Recommends } from "../components/Recommends";
 import { Searcher } from "../components/Searcher";
 
