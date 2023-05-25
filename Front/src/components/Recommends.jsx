@@ -70,7 +70,7 @@ export const Recommends = () => {
               key={recommend.id}
               type={recommend.type}
               name={recommend.name}
-              image={recommend.image}
+              image={recommend.images}
               capacity={recommend.capacity}
               rating={recommend.rating}
               ratingText={recommend.ratingText}

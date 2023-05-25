@@ -15,11 +15,11 @@ export const NavBar = () => {
         <p className='slogan-navbar'>   Los cuidamos como en casa </p>
       </Link> 
 
-      <div class="burgermenu">
+      <div className="burgermenu">
         <input type="checkbox"/>
         <i className = "fas fa-bars" id="burger-menu"></i>
         <i className = "fas fa-times"></i>
-        <nav class="navbar">
+        <nav className="navbar">
           <ul id="menu">
             <li className = "item"> < a className = "change-button "  href="/productList"><Link to='/register'>Crear Cuenta</Link></a></li>
             <li className = "item"> < a className = "change-button"  href="/productList"><Link to='/login'>Iniciar Sesión</Link></a></li>
