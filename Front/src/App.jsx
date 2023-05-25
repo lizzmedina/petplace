@@ -11,7 +11,6 @@ import ProductRegister from "./routes/ProductRegister";
 import Details from "./routes/Details";
 import { Footer } from "./components/footer";
 import './styles.css';
-import { CategoryFiltred } from "./routes/CategoryFiltred";
 
 function App() {
     return (
@@ -21,7 +20,7 @@ function App() {
                 <Route path="/" element={<Home/>}/>
                 <Route path="/register" element={<Register/>}/>
                 <Route path="/login" element={<Login/>}/>
-                <Route path="/Category/:id" element={<CategoryFiltred/>}/>
+                {/* <Route path="/Category/:id" element={<CategoryFiltred/>}/> */}
                 <Route path="/Perros" element={<CategoryPerros/>}/>
                 <Route path="/Gatos" element={<CategoryGatos/>}/>
                 <Route path="/Canarios" element={<CategoryCanarios/>}/>

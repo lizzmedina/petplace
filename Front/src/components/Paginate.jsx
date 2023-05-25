@@ -36,7 +36,6 @@ const Paginate = (props) => {
                 <button onClick={props.nextHandler}> Sig </button>
                 <button onClick={props.endHandler}> Fin </button>
             </div>
-
         </div>
     )
 }

@@ -1,11 +1,12 @@
+
 import { Link } from 'react-router-dom';
 
+export const Card = ({image, title,  description}) => {
 
-export const Card = ({image, title, description}) => {
 
     return (
         <div className="card-container">
-            <Link to= {`/category/${type_id}`}>
+            <Link to={`/${title}`}>
                 <img 
                     className="card-image"
                     src={image} 
@@ -16,4 +17,4 @@ export const Card = ({image, title, description}) => {
             </Link>
         </div>
     )
-} 
+}
