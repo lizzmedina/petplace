@@ -1,70 +1,34 @@
-package com.example.demo.entity;
+package com.example.demo.DTO;
 
-import jakarta.persistence.*;
-
-import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Table(name = "petDayCare")
-public class PetDayCare {
+public class PetDayCareDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Integer id;
-
-    @Column(name = "name")
     private String name;
-
-    @OneToOne
-//    @Column(name = "type")
-    private Category type;
-
-    @Column(name = "capacity")
+    private String categoryName;
     private Integer capacity;
-
-    @Column(name = "city")
     private String city;
-
-    @Column(name = "address")
     private String address;
-
-    @Column(name = "detail")
     private String detail;
-
-    @Column(name = "image")
-    private List<String> images ;
-
-    @Column(name = "characteristic")
+    private List<String> images;
     private List<String> characteristics;
-
-//    @OneToOne
-//    private Category category;
-
-    @Column(name = "basicPrice")
     private double basicPrice;
 
-    @ManyToOne
-    private User user;
+    public PetDayCareDTO(String name, String categoryName, Integer capacity, String city, String address, String detail, List<String> images, List<String> characteristics, double basicPrice) {
 
-    @OneToMany(mappedBy = "petDayCare")
-    List<Booking> bookings;
-
-    public PetDayCare(String name, Category type, Integer capacity, String city, String address, String detail, List<String> images, List<String> characteristics, double basicPrice) {
-
-       this.name = name;
-        this.type = type;
+        this.name = name;
+        this.categoryName = categoryName;
         this.capacity = capacity;
         this.city = city;
         this.address = address;
         this.detail = detail;
-        this.images = new ArrayList<>();
-        this.characteristics = new ArrayList<>();
+        this.images = images;
+        this.characteristics = characteristics;
         this.basicPrice = basicPrice;
     }
 
-    public PetDayCare() {
+    public PetDayCareDTO() {
     }
 
     public Integer getId() {
@@ -83,12 +47,12 @@ public class PetDayCare {
         this.name = name;
     }
 
-    public Category getType() {
-        return type;
+    public String getCategoryName() {
+        return categoryName;
     }
 
-    public void setType(Category type) {
-        this.type = type;
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
     public Integer getCapacity() {
@@ -145,21 +109,5 @@ public class PetDayCare {
 
     public void setBasicPrice(double basicPrice) {
         this.basicPrice = basicPrice;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public List<Booking> getBookings() {
-        return bookings;
-    }
-
-    public void setBookings(List<Booking> bookings) {
-        this.bookings = bookings;
     }
 }

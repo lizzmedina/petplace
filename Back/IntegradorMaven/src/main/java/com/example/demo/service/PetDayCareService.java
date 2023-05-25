@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 
+import com.example.demo.DTO.PetDayCareDTO;
 import com.example.demo.entity.PetDayCare;
 import com.example.demo.repository.PetDayCareRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,34 +15,47 @@ import java.util.stream.Collectors;
 @Service
 public class PetDayCareService {
 
-    private PetDayCareRepository repository; // me trajo las funcionalidades de JPA
+    private PetDayCareRepository repository;
 
-    private List<PetDayCare> petDayCareList; // ver que sea la entidad la que se esta importando
+    private List<PetDayCare> petDayCareList;
 
-    @Autowired //es una anotacion que me autoinstancia los atributos que tengo arriba
+    @Autowired
 
-    public PetDayCareService(PetDayCareRepository repository, List<PetDayCare> petDayCareList) { //este es un constructor
+    public PetDayCareService(PetDayCareRepository repository, List<PetDayCare> petDayCareList) {
         this.repository = repository;
         this.petDayCareList = petDayCareList;
     }
 
-    //ACA VAN LOS METODOS:
 
-    public PetDayCare save(PetDayCare petDayCare){ // metodo para guardar
-        return repository.save(petDayCare); // utiliza del jpa la funcion save,  y garda lo que le llega en el body (json), y devuelve la entidad
+    public PetDayCareDTO save(PetDayCare petDayCare){
+
+        repository.save(petDayCare);
+
+        PetDayCareDTO petDayCareDTO = new PetDayCareDTO(
+                petDayCare.getName(),
+                petDayCare.getType().getTitle(),
+                petDayCare.getCapacity(),
+                petDayCare.getCity(),
+                petDayCare.getAddress(),
+                petDayCare.getDetail(),
+                petDayCare.getImages(),
+                petDayCare.getCharacteristics(),
+                petDayCare.getBasicPrice());
+
+        return petDayCareDTO;
     }
 
     public List<PetDayCare> findAll(){ // metodo para listar todos los productos
         return repository.findAll().stream().collect(Collectors.toList());
     }
 
-    public String delete(Integer id){ // metodo para eliminar un producto
-        Optional<PetDayCare> petDayCare = this.repository.findById(id); // simulamos que existe una guarderia creada y la busca por id
+    public String delete(Integer id){
+        Optional<PetDayCare> petDayCare = this.repository.findById(id);
 
-        if(!petDayCare.isPresent()){ //si no esta presente, manda una excepcion
+        if(!petDayCare.isPresent()){
             throw new RuntimeException("La guarderia no fue encontrada");
         }
-        repository.delete(petDayCare.get()); // si si esta presente ese id eliminalo del repo y devuelve un string con un mensaje
+        repository.delete(petDayCare.get());
         return "El producto fue eliminado ";
 
     }
