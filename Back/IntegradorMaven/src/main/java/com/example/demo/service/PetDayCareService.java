@@ -4,6 +4,7 @@ package com.example.demo.service;
 import com.example.demo.DTO.PetDayCareDTO;
 import com.example.demo.entity.Category;
 import com.example.demo.entity.PetDayCare;
+import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.CategoryRepository;
 import com.example.demo.repository.PetDayCareRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,26 +22,23 @@ public class PetDayCareService {
 
     private List<PetDayCare> petDayCareList;
 
-    private CategoryRepository categoryRepository;
+    private CategoryService categoryService;
 
     @Autowired
 
-    public PetDayCareService(PetDayCareRepository repository, List<PetDayCare> petDayCareList, CategoryRepository categoryRepository) {
+    public PetDayCareService(PetDayCareRepository repository, List<PetDayCare> petDayCareList, CategoryService categoryService) {
         this.repository = repository;
         this.petDayCareList = petDayCareList;
-        this.categoryRepository = categoryRepository;
+        this.categoryService = categoryService;
     }
 
     public PetDayCareDTO save(PetDayCareDTO petDayCare){
 
-        Optional<Category> category = this.categoryRepository.findCategory(petDayCare.getCategoryName());
+        Category category = this.categoryService.findByName(petDayCare.getCategoryName());
 
-        if(!category.isPresent()){
-            throw new RuntimeException("La categoria no existe");
-        }
         PetDayCare newPetDayCare = new PetDayCare(
                 petDayCare.getName(),
-                category.get(),
+                category,
                 petDayCare.getCapacity(),
                 petDayCare.getCity(),
                 petDayCare.getAddress(),
