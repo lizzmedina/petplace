@@ -1,0 +1,394 @@
+[
+  {
+    "name": "Paw Palace",
+    "categoryName": "Conejos",
+    "capacity": 50,
+    "city": "Medellín",
+    "address": "Calle 3, via Yumbo",
+    "detail": "Un santuario rodeado de hermosos paisajes naturales, ofreciendo una experiencia tranquila y relajante para mascotas que disfrutan de paseos y relajación en la naturaleza",
+    "images": [
+      "https://bit.ly/3WNw24x",
+      "https://bit.ly/436WwQL",
+      "https://bit.ly/3Mwwxeh"
+    ],
+    "characteristics": [
+      "Baño",
+      "Alimentación",
+      "Veterinaria"
+    ],
+    "basicPrice": 30.000
+  },
+  {
+    "name": "Huellas de amor",
+    "categoryName": "Perros",
+    "capacity": 50,
+    "city": "Cali",
+    "address": "Calle 3, via Yumbo",
+    "detail": "Un acogedor hogar para mascotas con amplios jardines y áreas de juego, donde los animales pueden socializar y disfrutar de su estancia en un entorno seguro y divertido",
+    "images": [
+      "https://bit.ly/3OH29k6",
+      "https://bit.ly/3OH29k6",
+      "https://bit.ly/3MTg1p9",
+      "https://bit.ly/3oyf2lO"
+    ],
+    "characteristics": [
+      "Baño",
+      "Paseo",
+      "Alimentación",
+      "Veterinaria",
+      "Entrenamiento"
+    ],
+    "basicPrice": 30.000
+  },
+  {
+    "name": "Pet Resort",
+    "categoryName": "Gatos",
+    "capacity": 50,
+    "city": "Barranquilla",
+    "address": "Calle 3, via Yumbo",
+    "detail": "Un lujoso resort con suites privadas, piscinas y servicios de spa, donde los animales son tratados como verdaderos huéspedes VIP y disfrutan de un ambiente exclusivo y mimado",
+    "images": [
+      "https://bit.ly/3qdKOW0",
+      "https://bit.ly/3WBRs4f",
+      "https://bit.ly/3oD3TAa"
+    ],
+    "characteristics": [
+      "Alimentación",
+      "Veterinaria"
+    ],
+    "basicPrice": 30.000
+  },
+  {
+    "name": "PFurry Friends Retreat",
+    "categoryName": "Canarios",
+    "capacity": 50,
+    "city": "Cúcuta",
+    "address": "Calle 3, via Yumbo",
+    "detail": "Un alojamiento familiar donde las mascotas son recibidas con cariño y tienen la oportunidad de interactuar con otros animales, creando un ambiente cálido y amigable",
+    "images": [
+      "https://bit.ly/3IAorjS",
+      "https://bit.ly/3oygftm",
+      "https://bit.ly/3MqW4FO"
+    ],
+    "characteristics": [
+      "Baño",
+      "Alimentación",
+      "Veterinaria"
+    ],
+    "basicPrice": 30.000
+  },
+  {
+    "name": "Critter Care Center",
+    "categoryName": "Perros",
+    "capacity": 50,
+    "city": "Cartagena de Indias",
+    "address": "Calle 3, via Yumbo",
+    "detail": "Una granja con amplios espacios al aire libre y animales de granja amigables, brindando a las mascotas una experiencia educativa y divertida en un entorno rural",
+    "images": [
+      "https://bit.ly/434yZQt",
+      "https://bit.ly/3WNw24x",
+      "https://bit.ly/3BSDBNk"
+    ],
+    "characteristics": [
+      "Baño",
+      "Paseo",
+      "Alimentación",
+      "Veterinaria",
+      "Entrenamiento"
+    ],
+    "basicPrice": 30.000
+  },
+  {
+    "name": "Paws and Claws Lodge",
+    "categoryName": "Gatos",
+    "capacity": 50,
+    "city": "Bucaramanga",
+    "address": "Calle 3, via Yumbo",
+    "detail": "Un hogar acogedor con atención personalizada, paseos diarios y actividades recreativas ara mantener a las mascotas felices y activas, creando un ambiente cálido y familiar",
+    "images": [
+      "https://bit.ly/3q989YO",
+      "https://bit.ly/436RKm4",
+      "https://bit.ly/3q1y6cy"
+    ],
+    "characteristics": [
+      "Baño",
+      "Alimentación",
+      "Veterinaria"
+    ],
+    "basicPrice": 30.000
+  },
+  {
+    "name": "Happy Tails Inn",
+    "categoryName": "Conejos",
+    "capacity": 50,
+    "city": "Pereira",
+    "address": "Calle 3, via Yumbo",
+    "detail": "Un paraíso junto al mar con playas privadas, juegos acuáticos y servicios de cuidado especializados, para ofreecr a las mascotas unas vacaciones inolvidables junto a la costa",
+    "images": [
+      "https://bit.ly/3IDLnP0",
+      "https://bit.ly/3WzJTep",
+      "https://bit.ly/3Wwf7D6"
+    ],
+    "characteristics": [
+      "Baño",
+      "Alimentación",
+      "Veterinaria",
+      "Entrenamiento"
+    ],
+    "basicPrice": 30.000
+  },
+  {
+    "name": "Bark Avenue Boarding",
+    "categoryName": "Canarios",
+    "capacity": 50,
+    "city": "Santa Marta",
+    "address": "Calle 3, via Yumbo",
+    "detail": "Un refugio en medio de la naturaleza, rodeado de bosques y senderos para explorar, dondne las mascotas pueden disfrutar de aventuras al aire libre y tranquilidad en un entorno natural",
+    "images": [
+      "https://bit.ly/3ot3ArF",
+      "https://bit.ly/43kSLaB",
+      "https://bit.ly/3IAyo0D"
+    ],
+    "characteristics": [
+      "Baño",
+      "Alimentación",
+      "Veterinaria",
+      "Entrenamiento"
+    ],
+    "basicPrice": 30.000
+  },
+  {
+    "name": "The Cat's Meow Hotel",
+    "categoryName": "Gatos",
+    "capacity": 50,
+    "city": "Ibagué",
+    "address": "Calle 3, via Yumbo",
+    "detail": "Un moderno hotel con suites temáticas, áreas de juegos interactivos y cuidadores dedicados, brindando a las mascotas una estancia cómda y entretenida con un toque de estilo.",
+    "images": [
+      "https://bit.ly/45s31z4",
+      "https://bit.ly/45v5dpl",
+      "https://bit.ly/43rRUEi"
+    ],
+    "characteristics": [
+      "Baño",
+      "Alimentación",
+      "Veterinaria"
+    ],
+    "basicPrice": 30.000
+  },
+  {
+    "name": "The Dog House",
+    "categoryName": "Perros",
+    "capacity": 50,
+    "city": "Bogotá D.C",
+    "address": "Calle 3, via Yumbo",
+    "detail": "Un centro de retiro en un entorno tranquilo, ofreciendo actividades de relajación como masajes y terapia de aromaterapia para consentir a las mascotas y brindarles un ambiente sereno.",
+    "images": [
+      "https://bit.ly/3WztPt1",
+      "https://bit.ly/3q88Xgs",
+      "https://bit.ly/3OEgfTn"
+    ],
+    "characteristics": [
+      "Baño",
+      "Paseo",
+      "Alimentación",
+      "Veterinaria"
+    ],
+    "basicPrice": 30.000
+  },
+  {
+    "name": "Pet Paradise",
+    "categoryName": "Conejos",
+    "capacity": 50,
+    "city": "Medellín",
+    "address": "Calle 3, via Yumbo",
+    "detail": "Una casa de campo con amplios jardines y zonas de juegos, donde las mascotas oueden disfrutar del aire fresco y participar en actividades al aire libre en un entorno campestre.",
+    "images": [
+      "https://bit.ly/3BVSGxQ",
+      "https://bit.ly/3OEUPWf",
+      "https://bit.ly/3MXFrmJ"
+    ],
+    "characteristics": [
+      "Baño",
+      "Alimentación",
+      "Entrenamiento"
+    ],
+    "basicPrice": 30.000
+  },
+  {
+    "name": "Woof Den",
+    "categoryName": "Canarios",
+    "capacity": 50,
+    "city": "Cali",
+    "address": "Calle 3, via Yumbo",
+    "detail": "Un hotel boutique decorado con estilo y elegancia, ofreciendo servicios personalizados y atención excepcional para satisfacer las necesitades individuales de cada mascota, con un toque de distinción.",
+    "images": [
+      "https://bit.ly/420TvA9",
+      "https://bit.ly/3MyXjTx",
+      "https://bit.ly/3MSZGlq"
+    ],
+    "characteristics": [
+      "Baño",
+      "Alimentación",
+      "Veterinaria"
+    ],
+    "basicPrice": 30.000
+  },
+  {
+    "name": "Whiskers Lodge",
+    "categoryName": "Perros",
+    "capacity": 50,
+    "city": "Barranquilla",
+    "address": "Calle 3, via Yumbo",
+    "detail": "Un alojamiento en la montaña rodeado de vistas panorámicas y senderos para maninatas, brindando a las masoctas una experiencia enriquecedora en contacto con la naturaleza y aire fresco.",
+    "images": [
+      "https://bit.ly/3IEOVAI",
+      "https://bit.ly/3WzJskh",
+      "https://bit.ly/3WvrJuo"
+    ],
+    "characteristics": [
+      "Baño",
+      "Paseo",
+      "Alimentación",
+      "Entrenamiento"
+    ],
+    "basicPrice": 30.000
+  },
+  {
+    "name": "Tail Waggers Inn",
+    "categoryName": "Gatos",
+    "capacity": 50,
+    "city": "Cartagena de Indias",
+    "address": "Calle 3, via Yumbo",
+    "detail": "Una residencia con instalaciones de entrenamiento, actividades de socialización y profesionales capacitados para asegurar el bienestar y desarrollo de las mascotas en un ambiente seguro.",
+    "images": [
+      "https://bit.ly/3ICuQe4",
+      "https://bit.ly/3on7ySV",
+      "https://bit.ly/3OzfRpe"
+    ],
+    "characteristics": [
+      "Baño",
+      "Alimentación"
+    ],
+    "basicPrice": 30.000
+  },
+  {
+    "name": "Fuzzy Friends Farm",
+    "categoryName": "Conejos",
+    "capacity": 50,
+    "city": "Cúcuta",
+    "address": "Calle 3, via Yumbo",
+    "detail": "Un alojamiento ubicado en el corazón de la ciudad, son paseos por parques locales y servicios de cuidado, adaptados al ritmo de la vida urbana para que las mascotas se sientan como en casa.",
+    "images": [
+      "https://bit.ly/45s5WI3",
+      "https://bit.ly/3MXFEGx",
+      "https://bit.ly/43ckom8"
+    ],
+    "characteristics": [
+      "Baño",
+      "Alimentación",
+      "Veterinaria",
+      "Entrenamiento"
+    ],
+    "basicPrice": 30.000
+  },
+  {
+    "name": "Critter Camp",
+    "categoryName": "Canarios",
+    "capacity": 50,
+    "city": "Bucaramanga",
+    "address": "Calle 3, via Yumbo",
+    "detail": "Un Un retiro en el campo rodeado de vastos campos verdes, largos y serenos, proporcionando un ambiente tranquilo y sereno para una estancia relajante y pacífica para las mascotas.",
+    "images": [
+      "https://bit.ly/424UfUW",
+      "https://bit.ly/3MUVTUD",
+      "https://bit.ly/43n3alx"
+    ],
+    "characteristics": [
+      "Baño",
+      "Alimentación",
+      "Veterinaria",
+      "Entrenamiento"
+    ],
+    "basicPrice": 30.000
+  },
+  {
+    "name": "Purrfect Retreat",
+    "categoryName": "Perros",
+    "capacity": 50,
+    "city": "Pereira",
+    "address": "Calle 3, via Yumbo",
+    "detail": "Una casa de huespedes donde las mascotas son recibidas como parte de la familia, disfrutando de cómodas habitaciones y actividades recreativas bajo la supervisión de amantes de los animales.",
+    "images": [
+      "https://bit.ly/43mVEag",
+      "https://bit.ly/3ID7Iwd",
+      "https://bit.ly/3BVuSdt"
+    ],
+    "characteristics": [
+      "Baño",
+      "Paseo",
+      "Alimentación",
+      "Veterinaria",
+      "Entrenamiento"
+    ],
+    "basicPrice": 30.000
+  },
+  {
+    "name": "Barking Lot Lodge",
+    "categoryName": "Perros",
+    "capacity": 50,
+    "city": "Santa Marta",
+    "address": "Calle 3, via Yumbo",
+    "detail": "Un centro de bienestar que combina alojamiento de calidad con servicios de spa, alimentación saludable y programas de ejercicios para promover la salud y feicidad de las mascotas.",
+    "images": [
+      "https://bit.ly/43krcxs",
+      "https://bit.ly/3OHhfpN",
+      "https://bit.ly/3q1y6cy"
+    ],
+    "characteristics": [
+      "Paseo",
+      "Alimentación",
+      "Veterinaria"
+    ],
+    "basicPrice": 30.000
+  },
+  {
+    "name": "Animal House",
+    "categoryName": "Canarios",
+    "capacity": 50,
+    "city": "Bucaramanga",
+    "address": "Calle 3, via Yumbo",
+    "detail": "Un refugio junto al lago con acceso directo a actividades acuaticas como natación y paseos en bote, brindando diversión y aventuras en un entorno acuático para las mascotas.",
+    "images": [
+      "https://bit.ly/3IAyo0D",
+      "https://bit.ly/3WztPt1",
+      "https://bit.ly/3WvrJuo"
+    ],
+    "characteristics": [
+      "Baño",
+      "Alimentación",
+      "Veterinaria"
+    ],
+    "basicPrice": 30.000
+  },
+  {
+    "name": "Four Paws Resort",
+    "categoryName": "Perros",
+    "capacity": 50,
+    "city": "Cali",
+    "address": "Calle 3, via Yumbo",
+    "detail": "Una casa de vacaciones donde las mascotas disfrutan de amplias áreas de descanso, juegos al aire libre y la compañía de otros animales mientras sus dueños están fuera, creando un ambiente acogedor y alegre.",
+    "images": [
+      "https://bit.ly/3Mwwxeh",
+      "https://bit.ly/434yZQt",
+      "https://bit.ly/43mVEag"
+    ],
+    "characteristics": [
+      "Baño",
+      "Paseo",
+      "Alimentación",
+      "Veterinaria"
+    ],
+    "basicPrice": 30.000
+  }
+]

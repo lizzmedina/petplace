@@ -33,8 +33,8 @@ public class User {
     @Column(name="type")
     private String type;
 
-    @OneToMany(mappedBy = "user")
-    List<PetDayCare> petDayCares;
+//    @OneToMany(mappedBy = "user")
+//    List<PetDayCare> petDayCares;
 
 
     @OneToMany(mappedBy = "user")

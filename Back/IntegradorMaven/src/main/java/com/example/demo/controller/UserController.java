@@ -6,6 +6,7 @@ import com.example.demo.DTO.UserDTO;
 import com.example.demo.entity.User;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,12 +22,12 @@ public class UserController {
         this.service = service;
     }
 
-    @PostMapping()//localhost:8080/api/v1/manager
+    @PostMapping()
     public User saveUser(@RequestBody User manager){
         return service.saveManager(manager);
     }
 
-    @GetMapping("/{id}") //localhost:8080/api/v1/manager
+    @GetMapping("/{id}")
     public User findUser(@PathVariable("id") Integer id){
         return service.findManager(id);
     }
@@ -36,10 +37,16 @@ public class UserController {
         return service.deleteManager(id);
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public List<UserDTO> getAllUsers(){
         List<UserDTO> userDTO = service.getAllUsers();
         return userDTO;
+    }
+
+    @PutMapping
+    public ResponseEntity<String> updateUser(@RequestBody UserDTO userDTO){
+        service.updateUser(userDTO);
+        return ResponseEntity.ok("Usuario Actualizado correctamente");
     }
 
 

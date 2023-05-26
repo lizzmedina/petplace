@@ -1,8 +1,8 @@
 package com.example.demo.service;
 
-//ANDREA
 
 import com.example.demo.entity.User;
+import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.DTO.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,17 +14,16 @@ import java.util.Optional;
 
 @Service
 public class UserService {
-    //ATRIBUTES
+
     private UserRepository repository;
 
     @Autowired
 
-    //CONTROLLER
+
     public UserService(UserRepository repository) {
         this.repository = repository;
     }
 
-    //METHODS
     public User saveManager(User manager){ // Save a manager
         return repository.save(manager);
     }
@@ -57,5 +56,22 @@ public class UserService {
         return listOfUserDtos;
     }
 
+    public void updateUser (UserDTO userDTO){
+        Optional<User> userOpt = repository.findById(userDTO.getId());
+        if(userOpt.isPresent()){
+            User user =userOpt.get();
+            user.setId(userDTO.getId());
+            user.setName(userDTO.getName());
+            user.setLastName(userDTO.getLastName());
+            user.setEmail(userDTO.getEmail());
+            user.setPassword(userDTO.getPassword());
+            user.setCellPhone(userDTO.getCellPhone());
+            user.setAddress(userDTO.getAddress());
+            user.setType(userDTO.getType());
+            repository.save(user);
+        }else{
+            throw new ResourceNotFoundException("El usuario no existe");
+        }
+    }
 
 }

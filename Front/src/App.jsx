@@ -11,6 +11,7 @@ import ProductRegister from "./routes/ProductRegister";
 import Details from "./routes/Details";
 import { Footer } from "./components/footer";
 import './styles.css';
+import { FormNewCategory } from "./routes/FormNewCategory";
 
 function App() {
     return (
@@ -20,12 +21,14 @@ function App() {
                 <Route path="/" element={<Home/>}/>
                 <Route path="/register" element={<Register/>}/>
                 <Route path="/login" element={<Login/>}/>
+                {/* <Route path="/Category/:id" element={<CategoryFiltred/>}/> */}
                 <Route path="/Perros" element={<CategoryPerros/>}/>
                 <Route path="/Gatos" element={<CategoryGatos/>}/>
                 <Route path="/Canarios" element={<CategoryCanarios/>}/>
                 <Route path="/Conejos" element={<CategoryConejos/>}/>
                 <Route path="/Admin" element={<ProductRegister/>}/>
                 <Route path="/Detail/:id" element={<Details/>}/>
+                <Route path="/newCategory" element={<FormNewCategory/>}/>
             </Routes>
             <Footer/>
         </div>

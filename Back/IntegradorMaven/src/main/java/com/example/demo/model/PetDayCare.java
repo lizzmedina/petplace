@@ -3,7 +3,7 @@ package com.example.demo.model;
 import java.util.List;
 
 public class PetDayCare {
-    //completar clase: atributos, constructor y metodos
+
     private Integer id;
     private String name;
     private String type;

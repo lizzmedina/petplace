@@ -7,7 +7,7 @@ const CategoryConejos = () => {
     prevHandler, nextHandler, startHandler, endHandler} = useContextGlobal()
 
     useEffect(() => {
-      setUrl("http://localhost:8080/api/v1/petDayCare/category/Conejos")
+      setUrl("http://localhost:8080/api/v1/petDayCare/category/4")
   },[])
 
   return (
