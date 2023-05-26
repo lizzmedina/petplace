@@ -2,23 +2,12 @@ import { useState, useEffect} from "react";
 import { Card } from "./CardCategories";
 import Stack from '@mui/material/Stack';
 import { Pagination, useMediaQuery } from "@mui/material";
+import { useContextGlobal } from "./utils/global.constext";
 
 
 export const Categories = () => {
 
-    const [places, setPlaces] = useState([]);
-    const url = 'http://localhost:8080/api/v1/category/all';
-    useEffect(() => {
-        fetch(url)
-            .then((res) => res.json())
-            .then((data) => {
-                setPlaces(data);
-            })
-            .catch((error) => {
-            // Manejo de errores aquí
-                error('Error al obtener las categorias:', error);
-            });
-    }, [url]);
+  const {places} = useContextGlobal();
 
   
   const isMobile = useMediaQuery('(max-width: 767px)'); // Verifica si es un dispositivo móvil
