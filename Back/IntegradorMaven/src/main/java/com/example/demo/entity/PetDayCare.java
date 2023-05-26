@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "petDayCare")
+@Table(name = "pet_day_care")
 public class PetDayCare {
 
     @Id

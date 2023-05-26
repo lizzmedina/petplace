@@ -44,4 +44,10 @@ public class PetDayCareController {
         return service.detail(id);
     }
 
+    @PutMapping("/edit")
+    public PetDayCareDTO edit(@RequestBody PetDayCareDTO petDayCareDTO){
+        return service.edit(petDayCareDTO);
+    }
+
+
 }

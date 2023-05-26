@@ -1,10 +1,12 @@
 package com.example.demo.service;
 
 
+import com.example.demo.DTO.CategoryDTO;
 import com.example.demo.DTO.PetDayCareDTO;
 import com.example.demo.entity.Category;
 import com.example.demo.entity.PetDayCare;
 import com.example.demo.exception.ResourceNotFoundException;
+import com.example.demo.mapper.CategoryMapper;
 import com.example.demo.repository.CategoryRepository;
 import com.example.demo.repository.PetDayCareRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,21 +26,48 @@ public class PetDayCareService {
 
     private CategoryService categoryService;
 
-    @Autowired
+    private CategoryMapper categoryMapper;
 
-    public PetDayCareService(PetDayCareRepository repository, List<PetDayCare> petDayCareList, CategoryService categoryService) {
+    @Autowired
+    public PetDayCareService(PetDayCareRepository repository, List<PetDayCare> petDayCareList, CategoryService categoryService, CategoryMapper categoryMapper) {
         this.repository = repository;
         this.petDayCareList = petDayCareList;
         this.categoryService = categoryService;
+        this.categoryMapper = categoryMapper;
     }
+
+
+    public PetDayCareDTO edit(PetDayCareDTO petDayCareDTO){
+
+        CategoryDTO categoryDTO = this.categoryService.findByName(petDayCareDTO.getCategoryName());
+        Optional<PetDayCare> namePetDayCareEntity = this.repository.findById(petDayCareDTO.getId());
+
+        if(namePetDayCareEntity.isEmpty()){
+            throw new ResourceNotFoundException("No existe guardería con el id: " + petDayCareDTO.getId());
+        }
+
+        PetDayCare petDayCareEntity = namePetDayCareEntity.get();
+        petDayCareEntity.setName(petDayCareDTO.getName());
+        petDayCareEntity.setAddress(petDayCareDTO.getAddress());
+        petDayCareEntity.setCity(petDayCareDTO.getCity());
+        petDayCareEntity.setCapacity(petDayCareDTO.getCapacity());
+        petDayCareEntity.setCharacteristics(petDayCareDTO.getCharacteristics());
+        petDayCareEntity.setImages(petDayCareDTO.getImages());
+        petDayCareEntity.setBasicPrice(petDayCareDTO.getBasicPrice());
+
+
+        repository.save(petDayCareEntity);
+        return petDayCareDTO;
+    }
+
 
     public PetDayCareDTO save(PetDayCareDTO petDayCare){
 
-        Category category = this.categoryService.findByName(petDayCare.getCategoryName());
+        CategoryDTO categoryDTO = this.categoryService.findByName(petDayCare.getCategoryName());
 
         PetDayCare newPetDayCare = new PetDayCare(
                 petDayCare.getName(),
-                category,
+                categoryMapper.mapToEntity(categoryDTO),
                 petDayCare.getCapacity(),
                 petDayCare.getCity(),
                 petDayCare.getAddress(),
@@ -83,7 +112,7 @@ public class PetDayCareService {
 
     public List<PetDayCare> findByCategory(Integer type){
 
-        return repository.findByCategory(type).stream().collect(Collectors.toList());
+        return repository.findByType(type).stream().collect(Collectors.toList());
 
     }
 
@@ -93,6 +122,7 @@ public class PetDayCareService {
         if(!petDayCare.isPresent()){ //si no esta presente, manda una excepcion
             throw new RuntimeException("La guarderia no fue encontrada");
         };
+
 
         PetDayCare detailPetDatCare = new PetDayCare(
                 petDayCare.get().getName(),
@@ -109,6 +139,10 @@ public class PetDayCareService {
 
          return detailPetDatCare;
 
+    }
+
+    public void deleteAll(){
+        repository.findAll().stream().forEach(repository::delete);//Elimina todos los datos de la BD
     }
 
 }

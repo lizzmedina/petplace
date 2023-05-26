@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import com.example.demo.DTO.CategoryDTO;
+import com.example.demo.DTO.PetDayCareDTO;
 import com.example.demo.entity.Category;
 import com.example.demo.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,12 +21,17 @@ public class CategoryController {
     }
 
     @PostMapping()
-    public Category save(Category category){
-        return service.save(category);
+    public CategoryDTO save(@RequestBody CategoryDTO categoryDTO){
+        return service.save(categoryDTO);
     }
 
     @GetMapping("/all")
-    public List<Category> categoryList(){
+    public List<CategoryDTO> categoryList(){
         return service.findAll();
+    }
+
+    @PutMapping("/edit")
+    public CategoryDTO edit(@RequestBody CategoryDTO categoryDTO){
+        return service.edit(categoryDTO);
     }
 }
