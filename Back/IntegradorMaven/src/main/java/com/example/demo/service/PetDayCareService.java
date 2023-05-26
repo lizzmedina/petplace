@@ -112,7 +112,7 @@ public class PetDayCareService {
 
     public List<PetDayCare> findByCategory(Integer type){
 
-        return repository.findByType(type).stream().collect(Collectors.toList());
+        return repository.findByTypeId(type).stream().collect(Collectors.toList());
 
     }
 
