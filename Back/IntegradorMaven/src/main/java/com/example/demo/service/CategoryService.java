@@ -27,6 +27,13 @@ public class CategoryService {
 
 
     public CategoryDTO save(CategoryDTO categoryDTO){
+
+       Optional<Category>  categoryExist =  categoryRepository.findByTitle(categoryDTO.getTitle());
+
+       if(categoryExist.isPresent()){
+           throw new RuntimeException("la categoria"+ categoryExist.get().getTitle()+" ya existe, prueba una diferente");
+       }
+
         Category categoryEntity = categoryRepository.save(categoryMapper.mapToEntity(categoryDTO));
         categoryDTO.setId(categoryEntity.getId());
         return categoryDTO;
