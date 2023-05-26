@@ -416,12 +416,12 @@ input:hover {
 }
 
 .product-image{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 100%; /* Ajusta el tamaño máximo de la imagen */
-  max-height: 100%; /* Ajusta la altura máxima de la imagen */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%; /* Ajusta el tamaño máximo de la imagen */
+    max-height: 100%; /* Ajusta la altura máxima de la imagen */
 }
 
 
@@ -442,9 +442,7 @@ input:hover {
     width: 40rem;
 }
 .product-info-rigth {
-    
     width: 20rem;
-   
 }
 
 .buttonDetail {
@@ -481,6 +479,31 @@ input:hover {
     font-size: 1.2em;
 }
 
+/* ESTILOS DE FormNewCategory*/
+
+.form-new-category-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-new-category-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+.title-input-container{
+    margin: 2rem;
+}
+.description-input-container{
+    margin: 2rem;
+}
+.image-input-container{
+    margin: 2rem;
+}
+.button-form-new-category{
+    margin: 2rem;
+}
 
 
 /* 

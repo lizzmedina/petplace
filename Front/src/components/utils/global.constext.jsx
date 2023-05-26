@@ -5,8 +5,19 @@ const ContextGlobal = createContext();
 
 const ContextProvider = ({children}) => {
 
-    // simulacion de llamada a la API para obtener productos
-    const[url, setUrl] = useState("http://localhost:8080/api/v1/petDayCare/all")
+    const [places, setPlaces] = useState([]);
+    const getAllCategories = async()=> {
+        const res = await fetch('http://localhost:8080/api/v1/category/all');
+        const data = await res.json();
+        setPlaces(data)
+    }
+    
+    useEffect(() => {
+        getAllCategories();
+    }, []);
+
+
+const[url, setUrl] = useState("http://localhost:8080/api/v1/petDayCare/all")    
 
     // Estados y funciones para paginado
 
@@ -63,7 +74,7 @@ const ContextProvider = ({children}) => {
     }
 
     return (
-        <ContextGlobal.Provider value={{url, setUrl, dataCategory, setDataCategory, items, setItems, currentPage, setCurrentPage, prevHandler, nextHandler, startHandler, endHandler}}>
+        <ContextGlobal.Provider value={{getAllCategories, places,setPlaces, url, setUrl, dataCategory, setDataCategory, items, setItems, currentPage, setCurrentPage, prevHandler, nextHandler, startHandler, endHandler}}>
             {children}
         </ContextGlobal.Provider>
     )

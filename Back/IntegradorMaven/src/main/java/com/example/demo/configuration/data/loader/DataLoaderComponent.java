@@ -1,7 +1,9 @@
 package com.example.demo.configuration.data.loader;
 
+import com.example.demo.DTO.CategoryDTO;
 import com.example.demo.DTO.PetDayCareDTO;
 import com.example.demo.entity.Category;
+import com.example.demo.repository.PetDayCareRepository;
 import com.example.demo.service.CategoryService;
 import com.example.demo.service.PetDayCareService;
 import com.example.demo.utils.JsonHelper;
@@ -22,8 +24,8 @@ public class DataLoaderComponent {
     @Autowired
     private CategoryService categoryService;
 
-
     public void loadInitialPetDayCareData() {
+        //petDayCareService.deleteAll();//Solo para hacer pruebas
         if (petDayCareService.findAll().isEmpty()) {
             System.out.println("loading pet day care data...");
             List<PetDayCareDTO> petDayCareList = JsonHelper.readJsonFromFile("petdaycare_data.json", new TypeReference<>() {
@@ -39,7 +41,7 @@ public class DataLoaderComponent {
     public void loadInitialCategoriesData() {
         if (categoryService.findAll().isEmpty()) {
             System.out.println("loading categories data...");
-            List<Category> petDayCareList = JsonHelper.readJsonFromFile("categories_data.json", new TypeReference<>() {
+            List<CategoryDTO> petDayCareList = JsonHelper.readJsonFromFile("categories_data.json", new TypeReference<>() {
             });
             petDayCareList.forEach(categoryService::save);
         } else {

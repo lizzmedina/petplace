@@ -11,6 +11,7 @@ import ProductRegister from "./routes/ProductRegister";
 import Details from "./routes/Details";
 import { Footer } from "./components/footer";
 import './styles.css';
+import { FormNewCategory } from "./routes/FormNewCategory";
 
 function App() {
     return (
@@ -27,6 +28,7 @@ function App() {
                 <Route path="/Conejos" element={<CategoryConejos/>}/>
                 <Route path="/Admin" element={<ProductRegister/>}/>
                 <Route path="/Detail/:id" element={<Details/>}/>
+                <Route path="/newCategory" element={<FormNewCategory/>}/>
             </Routes>
             <Footer/>
         </div>

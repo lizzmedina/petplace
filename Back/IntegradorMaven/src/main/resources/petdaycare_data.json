@@ -12,11 +12,9 @@
       "https://bit.ly/3Mwwxeh"
     ],
     "characteristics": [
-      "Piscina",
-      "Caminata",
+      "Baño",
       "Alimentación",
-      "Veterinaria",
-      "Entrenamiento"
+      "Veterinaria"
     ],
     "basicPrice": 30.000
   },
@@ -34,8 +32,8 @@
       "https://bit.ly/3oyf2lO"
     ],
     "characteristics": [
-      "Cascada",
-      "Caminata",
+      "Baño",
+      "Paseo",
       "Alimentación",
       "Veterinaria",
       "Entrenamiento"
@@ -55,11 +53,8 @@
       "https://bit.ly/3oD3TAa"
     ],
     "characteristics": [
-      "Piscina",
-      "Juguetería",
       "Alimentación",
-      "Veterinaria",
-      "Entrenamiento"
+      "Veterinaria"
     ],
     "basicPrice": 30.000
   },
@@ -76,11 +71,9 @@
       "https://bit.ly/3MqW4FO"
     ],
     "characteristics": [
-      "Bosque",
       "Baño",
       "Alimentación",
-      "Veterinaria",
-      "Entrenamiento"
+      "Veterinaria"
     ],
     "basicPrice": 30.000
   },
@@ -97,8 +90,8 @@
       "https://bit.ly/3BSDBNk"
     ],
     "characteristics": [
-      "Bosque",
       "Baño",
+      "Paseo",
       "Alimentación",
       "Veterinaria",
       "Entrenamiento"
@@ -118,11 +111,9 @@
       "https://bit.ly/3q1y6cy"
     ],
     "characteristics": [
-      "Juguetería",
       "Baño",
       "Alimentación",
-      "Veterinaria",
-      "Entrenamiento"
+      "Veterinaria"
     ],
     "basicPrice": 30.000
   },
@@ -139,8 +130,7 @@
       "https://bit.ly/3Wwf7D6"
     ],
     "characteristics": [
-      "Juguetería",
-      "Mar",
+      "Baño",
       "Alimentación",
       "Veterinaria",
       "Entrenamiento"
@@ -160,7 +150,6 @@
       "https://bit.ly/3IAyo0D"
     ],
     "characteristics": [
-      "Bosque",
       "Baño",
       "Alimentación",
       "Veterinaria",
@@ -181,11 +170,9 @@
       "https://bit.ly/43rRUEi"
     ],
     "characteristics": [
-      "Naturaleza",
-      "Juguetería",
+      "Baño",
       "Alimentación",
-      "Veterinaria",
-      "Entrenamiento"
+      "Veterinaria"
     ],
     "basicPrice": 30.000
   },
@@ -202,11 +189,10 @@
       "https://bit.ly/3OEgfTn"
     ],
     "characteristics": [
-      "Lago",
-      "Caminata",
+      "Baño",
+      "Paseo",
       "Alimentación",
-      "Veterinaria",
-      "Entrenamiento"
+      "Veterinaria"
     ],
     "basicPrice": 30.000
   },
@@ -223,10 +209,8 @@
       "https://bit.ly/3MXFrmJ"
     ],
     "characteristics": [
-      "Naturaleza",
-      "Juguetería",
+      "Baño",
       "Alimentación",
-      "Veterinaria",
       "Entrenamiento"
     ],
     "basicPrice": 30.000
@@ -244,11 +228,9 @@
       "https://bit.ly/3MSZGlq"
     ],
     "characteristics": [
-      "Naturaleza",
-      "Juguetería",
+      "Baño",
       "Alimentación",
-      "Veterinaria",
-      "Entrenamiento"
+      "Veterinaria"
     ],
     "basicPrice": 30.000
   },
@@ -265,10 +247,9 @@
       "https://bit.ly/3WvrJuo"
     ],
     "characteristics": [
-      "Lago",
-      "Juguetería",
+      "Baño",
+      "Paseo",
       "Alimentación",
-      "Veterinaria",
       "Entrenamiento"
     ],
     "basicPrice": 30.000
@@ -287,10 +268,7 @@
     ],
     "characteristics": [
       "Baño",
-      "Juguetería",
-      "Alimentación",
-      "Veterinaria",
-      "Entrenamiento"
+      "Alimentación"
     ],
     "basicPrice": 30.000
   },
@@ -308,7 +286,6 @@
     ],
     "characteristics": [
       "Baño",
-      "Juguetería",
       "Alimentación",
       "Veterinaria",
       "Entrenamiento"
@@ -329,7 +306,6 @@
     ],
     "characteristics": [
       "Baño",
-      "Prado",
       "Alimentación",
       "Veterinaria",
       "Entrenamiento"
@@ -350,7 +326,7 @@
     ],
     "characteristics": [
       "Baño",
-      "Prado",
+      "Paseo",
       "Alimentación",
       "Veterinaria",
       "Entrenamiento"
@@ -370,11 +346,9 @@
       "https://bit.ly/3q1y6cy"
     ],
     "characteristics": [
-      "Baño",
-      "Lago",
+      "Paseo",
       "Alimentación",
-      "Veterinaria",
-      "Caminata"
+      "Veterinaria"
     ],
     "basicPrice": 30.000
   },
@@ -392,10 +366,8 @@
     ],
     "characteristics": [
       "Baño",
-      "Juguetería",
       "Alimentación",
-      "Veterinaria",
-      "Casa en el árbol"
+      "Veterinaria"
     ],
     "basicPrice": 30.000
   },
@@ -412,11 +384,10 @@
       "https://bit.ly/43mVEag"
     ],
     "characteristics": [
-      "Piscina",
-      "Caminata",
+      "Baño",
+      "Paseo",
       "Alimentación",
-      "Veterinaria",
-      "Bosque"
+      "Veterinaria"
     ],
     "basicPrice": 30.000
   }
