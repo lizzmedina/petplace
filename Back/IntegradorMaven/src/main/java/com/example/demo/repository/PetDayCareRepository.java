@@ -13,12 +13,7 @@ import java.util.Optional;
 
 @Repository
 public interface PetDayCareRepository extends JpaRepository<PetDayCare, Integer> {
-
-    public List<PetDayCare> findByType(Integer id);
-
-    @Query(value= "select * from petplace.pet_day_care  where type_id=:id_category", nativeQuery = true)
-    public List<PetDayCare> findByCategory(@Param("id_category") Integer id_category);
-
+    public List<PetDayCare> findByTypeId(Integer id);
 
     public List<PetDayCare> findByName(String namePetDayCare);
 
