@@ -361,6 +361,10 @@ input:hover {
     font-size: 0.7rem;
 }
 
+.avatar{
+    font-family: 'Quicksand', sans-serif;
+}
+
 /* Paginate */
 
 .paginate-container{
