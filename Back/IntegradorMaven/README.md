@@ -166,6 +166,96 @@ La API devolverá el siguiente mensaje tipo String:
 "El producto fue eliminado "
 ```
 
+### Endpoint de editar un producto :hotel:
+
+#### :new: PUT: localhost:8080/api/v1/petDayCare/edit
+
+Edita un producto existente (el cúal se busca por id en la BD) con la información proporcionada en el cuerpo de la solicitud.
+
+##### Parámetros de entrada:
+
+Ejemplo de solicitud:
+
+Producto editado en formato JSON:
+```java
+{
+        "id":20,
+        "name": "Four Paws Resort",
+        "categoryName": "gatos",
+        "capacity": 50,
+        "city": "Cali",
+        "address": "Calle 3, via Yumbo",
+        "detail": "Una casa de vacaciones donde las mascotas disfrutan de amplias áreas de descanso, juegos al aire libre y la compañía de otros animales mientras sus dueños están fuera, creando un ambiente acogedor y alegre.",
+        "images": ["https://bit.ly/3Mwwxeh","https://bit.ly/434yZQt","https://bit.ly/43mVEag"],
+        "characteristics": ["Piscina","Caminata","Alimentación","Veterinaria", "Bosque"],
+        "basicPrice": 30.000
+}
+```
+##### Parámetros de salida:
+
+La API devolverá el producto editado en formato JSON:
+
+```java
+{
+        "id": 20,
+        "name": "Four Paws Resort",
+        "categoryName": "perros",
+        "capacity": 50,
+        "city": "Cali",
+        "address": "Calle 3, via Yumbo",
+        "detail": "Una casa de vacaciones donde las mascotas disfrutan de amplias áreas de descanso, juegos al aire libre y la compañía de otros animales mientras sus dueños están fuera, creando un ambiente acogedor y alegre.",
+        "images": [
+            "https://bit.ly/3Mwwxeh",
+            "https://bit.ly/434yZQt",
+            "https://bit.ly/43mVEag"
+        ],
+        "characteristics": [
+            "Piscina",
+            "Caminata",
+            "Alimentación",
+            "Veterinaria",
+            "Bosque"
+        ],
+        "basicPrice": 30.0
+}
+```
+
+# 
+
+### Endpoint de editar una categoria:
+
+#### :new: PUT: localhost:8080/api/v1/category/edit
+
+Edita una categoria ya existente (la cual se busca por el id en la BD) con la información proporcionada en el cuerpo de la solicitud.
+
+##### Parámetros de entrada:
+
+Ejemplo de solicitud:
+
+Categoría editada en formato JSON:
+
+```java
+{
+        "id": 1,
+        "title": "Vacas",
+        "description": "Especialidados en perros",
+        "image": "https://img.freepik.com/psd-gratis/retrato-feliz-cardigan-welsh-corgi_53876-73961.jpg?w=826&t=st=1684283095~exp=1684283695~hmac=6d9fcedd5b6c105e22e2b8225143f8623e1cd77900e8cb94cd5706b5b91b90ac"
+}
+```
+
+##### Parámetros de salida:
+
+Se muestra la categoría editada en formato JSON como respuesta:
+
+```java
+{
+        "id": 1,
+        "title": "Vacas",
+        "description": "Especialidados en perros",
+        "image": "https://img.freepik.com/psd-gratis/retrato-feliz-cardigan-welsh-corgi_53876-73961.jpg?w=826&t=st=1684283095~exp=1684283695~hmac=6d9fcedd5b6c105e22e2b8225143f8623e1cd77900e8cb94cd5706b5b91b90ac"
+}
+```
+
 
 # 
 
@@ -207,6 +297,7 @@ La API devolverá el nuevo cliente creado en formato JSON:
         ]
 }
 ```
+
 
 ### Endpoint de listar clientes :raising_hand:
 
