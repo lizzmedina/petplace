@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @Repository
 public interface PetDayCareRepository extends JpaRepository<PetDayCare, Integer> {
-    public List<PetDayCare> findByType(Integer id);
+    public List<PetDayCare> findByTypeId(Integer id);
 
     public List<PetDayCare> findByName(String namePetDayCare);
 
