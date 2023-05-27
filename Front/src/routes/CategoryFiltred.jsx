@@ -1,6 +1,9 @@
+import React from 'react'
 
-export const CategoryFiltred = () => {
+function CategoryFiltred() {
   return (
     <div>CategoryFiltred</div>
   )
 }
+
+export default CategoryFiltred

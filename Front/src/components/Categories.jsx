@@ -3,7 +3,7 @@ import { Card } from "./CardCategories";
 import Stack from '@mui/material/Stack';
 import { Pagination, useMediaQuery } from "@mui/material";
 import { useContextGlobal } from "./utils/global.constext";
-
+import { Link } from 'react-router-dom';
 
 export const Categories = () => {
 
@@ -41,12 +41,14 @@ export const Categories = () => {
       <div className = "render-cards-categories">
         {
         currentCards.map(place => (
-          <Card 
-            key={place.id}
-            title={place.title}
-            image={place.image}
-            description={place.description}
-          />
+          <Link to={"/category/" + place.id}>
+            <Card 
+              key={place.id}
+              title={place.title}
+              image={place.image}
+              description={place.description}
+            />
+          </Link>
         ))}
       </div>
 

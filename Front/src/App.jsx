@@ -3,6 +3,7 @@ import { NavBar } from "./components/NavBar";
 import { Home } from "./routes/Home";
 import Register from "./routes/Register";
 import Login from "./routes/Login";
+import CategoryFiltred from "./routes/CategoryFiltred";
 import CategoryPerros from "./routes/CategoryPerros";
 import CategoryGatos from "./routes/CategoryGatos";
 import CategoryCanarios from "./routes/CategoryCanarios";
@@ -21,7 +22,7 @@ function App() {
                 <Route path="/" element={<Home/>}/>
                 <Route path="/register" element={<Register/>}/>
                 <Route path="/login" element={<Login/>}/>
-                {/* <Route path="/Category/:id" element={<CategoryFiltred/>}/> */}
+                <Route path="/category/:id" element={<CategoryFiltred/>}/>
                 <Route path="/Perros" element={<CategoryPerros/>}/>
                 <Route path="/Gatos" element={<CategoryGatos/>}/>
                 <Route path="/Canarios" element={<CategoryCanarios/>}/>
