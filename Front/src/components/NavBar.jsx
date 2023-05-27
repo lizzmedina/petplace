@@ -65,7 +65,7 @@ export const NavBar = () => {
                 aria-haspopup="true"
                 aria-expanded={open ? 'true' : undefined}
               >
-                <Avatar sx={{ width: 40, height: 40, backgroundColor: '#8ED1B9' }}>{userConnected.name[0]}{userConnected.lastName[0]}</Avatar>        
+                <Avatar sx={{ width: 40, height: 40, backgroundColor: '#8ED1B9' }}>{userConnected.name[0].toUpperCase()}{userConnected.lastName[0].toUpperCase()}</Avatar>        
               </IconButton>
             </Tooltip>
           </Box>
