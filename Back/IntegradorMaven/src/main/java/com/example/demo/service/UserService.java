@@ -1,10 +1,10 @@
 package com.example.demo.service;
 
 
+import com.example.demo.DTO.UserDTO;
 import com.example.demo.entity.User;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.UserRepository;
-import com.example.demo.DTO.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,60 +18,62 @@ public class UserService {
     private UserRepository repository;
 
     @Autowired
-
-
     public UserService(UserRepository repository) {
         this.repository = repository;
     }
 
-    public User saveManager(User manager){ // Save a manager
-        return repository.save(manager);
+    public User save(User user) { //
+        if (user == null) {
+            throw new IllegalArgumentException("El usuario no puede ser nulo");// Save a user
+        }
+        return repository.save(user);
     }
 
-    public User findManager(Integer id){//Find a Manager by CC
+    public User findById(Integer id) {//Find a Manager by CC
         return repository.findById(id).get();
     }
 
-    public String deleteManager(Integer id){
-        Optional<User> manager = this.repository.findById(id);
+    public String deleteById(Integer id) {
+        Optional<User> userOpt = this.repository.findById(id);
 
-        if(!manager.isPresent()){
-            throw new RuntimeException("El administrador no existe");
+        if (!userOpt.isPresent()) {
+            throw new ResourceNotFoundException("No existe un usuario registrado con el id: " + id);
         }
-        repository.delete(manager.get());
-        return "El Administrador fue eliminado ";
-
+        repository.delete(userOpt.get());
+        return "Se elimino exitosamente el usuario de id: " + id;
     }
 
-    public List<UserDTO> getAllUsers(){
+    public List<UserDTO> getAllUsers() {
         List<User> usersFromDatabase = repository.findAll();
         List<UserDTO> listOfUserDtos = new ArrayList<>();
 
-        for(int i= 0; i < usersFromDatabase.size(); i++){
-            User manager = usersFromDatabase.get(i);
-            UserDTO userDTO = new UserDTO(manager.getId(), manager.getName(), manager.getLastName(), manager.getEmail(), manager.getPassword(), manager.getCellPhone(), manager.getAddress(), manager.getType());
+        for (int i = 0; i < usersFromDatabase.size(); i++) {
+            User user = usersFromDatabase.get(i);
+            UserDTO userDTO = new UserDTO(user.getId(), user.getName(), user.getLastName(), user.getEmail(), user.getPassword(), user.getCellPhone(), user.getAddress(), user.getType());
             listOfUserDtos.add(userDTO);
         }
 
         return listOfUserDtos;
     }
 
-    public void updateUser (UserDTO userDTO){
-        Optional<User> userOpt = repository.findById(userDTO.getId());
-        if(userOpt.isPresent()){
-            User user =userOpt.get();
-            user.setId(userDTO.getId());
-            user.setName(userDTO.getName());
-            user.setLastName(userDTO.getLastName());
-            user.setEmail(userDTO.getEmail());
-            user.setPassword(userDTO.getPassword());
-            user.setCellPhone(userDTO.getCellPhone());
-            user.setAddress(userDTO.getAddress());
-            user.setType(userDTO.getType());
-            repository.save(user);
-        }else{
-            throw new ResourceNotFoundException("El usuario no existe");
+    public void updateUser(UserDTO userDTO) {
+        if (userDTO != null) {
+            Optional<User> userOpt = repository.findById(userDTO.getId());
+            if (userOpt.isPresent()) {
+                User user = userOpt.get();
+                user.setId(userDTO.getId());
+                user.setName(userDTO.getName());
+                user.setLastName(userDTO.getLastName());
+                user.setEmail(userDTO.getEmail());
+                user.setPassword(userDTO.getPassword());
+                user.setCellPhone(userDTO.getCellPhone());
+                user.setAddress(userDTO.getAddress());
+                user.setType(userDTO.getType());
+                repository.save(user);
+                return;
+            }
         }
+        throw new ResourceNotFoundException("El usuario no existe");
     }
 
 }

@@ -29,7 +29,7 @@ const FormUser = () => {
     const [isSuccess, setIsSuccess] = useState(false);
     const [validationErrors, setValidationErrors] = useState({});
 
-    const url = "http://localhost:8080/api/v1/user";
+    const url = "http://localhost:8080/api/v1/user/all";
     const [allUsers, setAllUsers] = useState([]);
     useEffect(() => {
         fetch(url)
@@ -44,11 +44,11 @@ const FormUser = () => {
 
         try {
             await schema.validate(user, { abortEarly: false });
-            // La validación es exitosa con Yup, se continúa con el resto
+            // Si la validación es exitosa con Yup, se continúa con el resto
 
             const result = allUsers.find((item) => item.email.toLowerCase() === user.email.toLowerCase());
             if (!result) {
-                // El email no existe, proceder con el envío del formulario
+                // Si el email no existe entonces se continua con el envío del formulario
                 setIsLoading(true);
 
                 fetch("http://127.0.0.1:8080/api/v1/user", {
@@ -97,7 +97,6 @@ const FormUser = () => {
             });
 
             setValidationErrors(validationErrors);
-            // Puedes mostrar los errores en la interfaz de usuario o realizar otras acciones según tus necesidades
         }
     };
 

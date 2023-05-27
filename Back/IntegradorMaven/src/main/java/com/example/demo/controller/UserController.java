@@ -24,17 +24,17 @@ public class UserController {
 
     @PostMapping()
     public User saveUser(@RequestBody User manager){
-        return service.saveManager(manager);
+        return service.save(manager);
     }
 
     @GetMapping("/{id}")
     public User findUser(@PathVariable("id") Integer id){
-        return service.findManager(id);
+        return service.findById(id);
     }
 
     @DeleteMapping("/{id}")
     public String deleteUser(@PathVariable("id")Integer id){ //localhost:8080/api/v1/manager
-        return service.deleteManager(id);
+        return service.deleteById(id);
     }
 
     @GetMapping("/all")

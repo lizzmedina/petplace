@@ -5,9 +5,9 @@ import { Searcher } from "../components/Searcher";
 export const Home = () => {
   return (
     <div className="home-container">
-    <Searcher/>
-    <Categories/>
-    <Recommends/>
+      <Searcher/>
+      <Categories/>
+      <Recommends/>
     </div>
   )
 }
