@@ -1,5 +1,6 @@
 package com.example.demo.repository;
 
+import com.example.demo.DTO.CategoryDTO;
 import com.example.demo.entity.Category;
 import com.example.demo.entity.PetDayCare;
 import jakarta.transaction.Transactional;
