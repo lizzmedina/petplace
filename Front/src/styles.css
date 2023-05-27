@@ -409,19 +409,59 @@ input:hover {
     margin: 5px 3px 0 0;
     padding: 3px 0 0 0;
 }
-.product-section-image {
+.product-galery {
     width: 100%;
-    height: 400px;
-    position: relative;
+    /* height: 400px; */
+    display: flex;
+}
+
+.leading-image{
+    width: 50%;
+    display: block;
+}
+.underling-images{
+    width: 50%;
+    display: grid;
+    justify-content: end;
+}
+.two-image{
+    display: block;
+    grid-column: 1/2;
+    grid-row: 1/2;
+}
+.three-image{
+    display: block;
+    grid-column: 2/3;
+    grid-row: 1/2;
+}
+.four-image{
+    display: block;
+    grid-column: 1/2;
+    grid-row: 2/3;
+}
+.five-image{
+    display: block;
+    grid-column: 2/3;
+    grid-row: 2/3;
+    
 }
 
 .product-image{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    max-width: 100%; /* Ajusta el tamaño máximo de la imagen */
-    max-height: 100%; /* Ajusta la altura máxima de la imagen */
+    width: 100%;
+    height: 100%;
+    padding: 0.1rem;
+    border-radius: 0.4rem;
+}
+
+p.more-images{
+    background-color: var(--color7);
+    color: var(--color2);
+    position:relative;
+    float: right;
+    display: block;
+    padding: 0 0.4rem;
+    margin-top: -20px;
+    
 }
 
 

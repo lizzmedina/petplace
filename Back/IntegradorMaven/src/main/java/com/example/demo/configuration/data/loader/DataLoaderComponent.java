@@ -25,7 +25,7 @@ public class DataLoaderComponent {
     private CategoryService categoryService;
 
     public void loadInitialPetDayCareData() {
-        petDayCareService.deleteAll();//Solo para hacer pruebas
+        //petDayCareService.deleteAll();//Solo para hacer pruebas
         if (petDayCareService.findAll().isEmpty()) {
             System.out.println("loading pet day care data...");
             List<PetDayCareDTO> petDayCareList = JsonHelper.readJsonFromFile("petdaycare_data.json", new TypeReference<>() {
