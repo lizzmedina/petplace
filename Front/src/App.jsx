@@ -4,10 +4,6 @@ import { Home } from "./routes/Home";
 import Register from "./routes/Register";
 import Login from "./routes/Login";
 import CategoryFiltred from "./routes/CategoryFiltred";
-import CategoryPerros from "./routes/CategoryPerros";
-import CategoryGatos from "./routes/CategoryGatos";
-import CategoryCanarios from "./routes/CategoryCanarios";
-import CategoryConejos from "./routes/CategoryConejos";
 import ProductRegister from "./routes/ProductRegister";
 import Details from "./routes/Details";
 import { Footer } from "./components/footer";
@@ -23,10 +19,6 @@ function App() {
                 <Route path="/register" element={<Register/>}/>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/category/:id" element={<CategoryFiltred/>}/>
-                <Route path="/Perros" element={<CategoryPerros/>}/>
-                <Route path="/Gatos" element={<CategoryGatos/>}/>
-                <Route path="/Canarios" element={<CategoryCanarios/>}/>
-                <Route path="/Conejos" element={<CategoryConejos/>}/>
                 <Route path="/Admin" element={<ProductRegister/>}/>
                 <Route path="/Detail/:id" element={<Details/>}/>
                 <Route path="/newCategory" element={<FormNewCategory/>}/>
