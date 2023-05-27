@@ -51,7 +51,7 @@ public class DataLoaderComponent {
 
     @EventListener
     public void onApplicationEvent(ContextRefreshedEvent event) {
-        /*loadInitialCategoriesData();
-        loadInitialPetDayCareData();*/
+        loadInitialCategoriesData();
+        loadInitialPetDayCareData();
     }
 }
