@@ -6,6 +6,7 @@ import Login from "./routes/Login";
 import CategoryFiltred from "./routes/CategoryFiltred";
 import ProductRegister from "./routes/ProductRegister";
 import Details from "./routes/Details";
+import MyAccount from "./routes/MyAccount";
 import { Footer } from "./components/footer";
 import './styles.css';
 import { FormNewCategory } from "./routes/FormNewCategory";
@@ -19,9 +20,10 @@ function App() {
                 <Route path="/register" element={<Register/>}/>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/category/:id" element={<CategoryFiltred/>}/>
-                <Route path="/Admin" element={<ProductRegister/>}/>
+                <Route path="/productRegister" element={<ProductRegister/>}/>
                 <Route path="/Detail/:id" element={<Details/>}/>
                 <Route path="/newCategory" element={<FormNewCategory/>}/>
+                <Route path="/account/:id" element={<MyAccount/>}/>
             </Routes>
             <Footer/>
         </div>

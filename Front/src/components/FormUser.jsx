@@ -90,7 +90,7 @@ const FormUser = () => {
                 );
             }
         } catch (error) {
-            // La validación falló, manejar los errores
+            // En caso de que la validacion falle con lo siguiente s emanejan los errores
             const validationErrors = {};
             error.inner.forEach((e) => {
                 validationErrors[e.path] = e.message;

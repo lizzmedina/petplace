@@ -296,6 +296,7 @@ a.ver-mas-recommends{
 .space-section{
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
     padding: 3rem 0;
 }
@@ -313,7 +314,6 @@ a.ver-mas-recommends{
 .form-section{
     display: flex;
     flex-direction: column;
-
     height: 100%;
     padding-top: 1rem;
     width: 60%;
@@ -363,6 +363,44 @@ input:hover {
 
 .avatar{
     font-family: 'Quicksand', sans-serif;
+}
+
+/* My Account */
+
+.datoUser{
+    display: flex;
+}
+.options-container{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100vw;
+    justify-content: space-around
+}
+.options{
+    display: flex;
+    flex-direction: column;
+    width: 15rem;
+    height:20rem;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    margin: 1rem;
+}
+
+.options h3{
+    color: var(--color2);
+    padding: 1rem;
+}
+
+.options button{
+    width: 60%;
+    border-color: var(--color3);
+    background-color: var(--color3);
+    color: white;
+    border-radius: 5px;
+    padding: 0.3rem;
+    margin: 1rem;
+    font-weight: bold;
 }
 
 /* Paginate */

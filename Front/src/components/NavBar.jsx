@@ -108,7 +108,7 @@ export const NavBar = () => {
           transformOrigin={{ horizontal: 'right', vertical: 'top' }}
           anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
           >
-            <MenuItem onClick={handleClose}> Mi cuenta </MenuItem>
+            <MenuItem><Link to={"/account/" + userConnected.id} style={{ color: 'inherit' }}> Mi cuenta </Link></MenuItem>
             <Divider />
             <MenuItem onClick={handleCloseSesion}> Cerrar Sesión </MenuItem>
           </Menu>
@@ -117,7 +117,7 @@ export const NavBar = () => {
 
 
       {!userConnected && (
-        <div className="burgermenu">{/*aqui modificar para que no aparezca cuando este logeado un usuario */}
+        <div className="burgermenu">
         <input type="checkbox"/>
         <i className = "fas fa-bars" id="burger-menu"></i>
         <i className = "fas fa-times"></i>
