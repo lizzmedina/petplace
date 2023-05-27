@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/api/v1/category")
@@ -33,5 +34,10 @@ public class CategoryController {
     @PutMapping("/edit")
     public CategoryDTO edit(@RequestBody CategoryDTO categoryDTO){
         return service.edit(categoryDTO);
+    }
+
+    @GetMapping("/{id}")
+    public Category finById(@PathVariable("id") Integer id){
+        return service.finById(id);
     }
 }
