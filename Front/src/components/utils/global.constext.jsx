@@ -1,24 +1,39 @@
-import { Children, createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 const ContextGlobal = createContext();
 
 
 const ContextProvider = ({children}) => {
 
-    // simulacion de llamada a la API para obtener productos
-    const[url, setUrl] = useState("http://localhost:8080/api/v1/petDayCare/all")
+    const [places, setPlaces] = useState([]);
+    const getAllCategories = async()=> {
+        const res = await fetch('http://localhost:8080/api/v1/category/all');
+        const data = await res.json();
+        setPlaces(data)
+    }
+    
+    useEffect(() => {
+        getAllCategories();
+    }, []);
+
+
+const[url, setUrl] = useState("http://localhost:8080/api/v1/petDayCare/all")    
 
     // Estados y funciones para paginado
 
     const [dataCategory, setDataCategory] = useState([])
     useEffect(() => {
-        fetch(url)                                      
-        .then(res => res.json())    
-        .then((data) => {
-            setDataCategory(data);
-            setItems(data.slice(0, itemsPerPage));
-        });
-    }, [url])
+        fetch(url)
+            .then((res) => res.json())
+            .then((data) => {
+                setDataCategory(data);
+                setItems(data.slice(0, itemsPerPage));
+            })
+            .catch((error) => {
+            // Manejo de errores aquí
+                error('Error al obtener los datos:', error);
+            });
+    }, [url]);
 
     const itemsPerPage = 10
     const[items, setItems] = useState([...dataCategory].splice(0, itemsPerPage)) 
@@ -59,7 +74,7 @@ const ContextProvider = ({children}) => {
     }
 
     return (
-        <ContextGlobal.Provider value={{url, setUrl, dataCategory, setDataCategory, items, setItems, currentPage, setCurrentPage, prevHandler, nextHandler, startHandler, endHandler}}>
+        <ContextGlobal.Provider value={{getAllCategories, places,setPlaces, url, setUrl, dataCategory, setDataCategory, items, setItems, currentPage, setCurrentPage, prevHandler, nextHandler, startHandler, endHandler}}>
             {children}
         </ContextGlobal.Provider>
     )

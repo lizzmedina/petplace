@@ -1,3 +1,7 @@
+* {
+    font-family: 'Quicksand', sans-serif;
+} 
+
 header{
     display: flex;
     justify-content: space-between;
@@ -104,8 +108,7 @@ header a{
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
-        padding-top: 20px;
-        padding-bottom: 20px;
+        padding: 10px 15px;
         justify-content: space-evenly;
         text-align: center;
         align-items: center;

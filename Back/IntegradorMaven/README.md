@@ -52,15 +52,17 @@ Ejemplo de solicitud:
 La API devolverá el nuevo producto creado en formato JSON:
 ```java
 {
+
         "name": "Huellas de amor",
-        "type": "Campestre",
+        "type": "conejos",
         "capacity": 50,
         "city": "Cali",
         "address": "Calle 3, via Yumbo",
         "detail": " somo una guarderia campestre con amplias zonas verdes para tu peludo",
-        "image": "/images.png",
-        "basicPrice": 30.0
-}
+        "images": ["url1","url2","url3"],
+        "characteristics": ["Baño","Paseo","Alimentación","Veterinaria", "Entrenamiento"],
+        "basicPrice": 30.000
+        }
 ```
 
 ### Endpoint de listar productos "Guarderias" :hotel:
@@ -164,6 +166,117 @@ La API devolverá el siguiente mensaje tipo String:
 "El producto fue eliminado "
 ```
 
+### Endpoint de editar un producto :hotel:
+
+#### :new: PUT: localhost:8080/api/v1/petDayCare/edit
+
+Edita un producto existente (el cúal se busca por id en la BD) con la información proporcionada en el cuerpo de la solicitud.
+
+##### Parámetros de entrada:
+
+Ejemplo de solicitud:
+
+Producto editado en formato JSON:
+```java
+{
+        "id":20,
+        "name": "Four Paws Resort",
+        "categoryName": "gatos",
+        "capacity": 50,
+        "city": "Cali",
+        "address": "Calle 3, via Yumbo",
+        "detail": "Una casa de vacaciones donde las mascotas disfrutan de amplias áreas de descanso, juegos al aire libre y la compañía de otros animales mientras sus dueños están fuera, creando un ambiente acogedor y alegre.",
+        "images": ["https://bit.ly/3Mwwxeh","https://bit.ly/434yZQt","https://bit.ly/43mVEag"],
+        "characteristics": ["Piscina","Caminata","Alimentación","Veterinaria", "Bosque"],
+        "basicPrice": 30.000
+}
+```
+##### Parámetros de salida:
+
+La API devolverá el producto editado en formato JSON:
+
+```java
+{
+        "id": 20,
+        "name": "Four Paws Resort",
+        "categoryName": "perros",
+        "capacity": 50,
+        "city": "Cali",
+        "address": "Calle 3, via Yumbo",
+        "detail": "Una casa de vacaciones donde las mascotas disfrutan de amplias áreas de descanso, juegos al aire libre y la compañía de otros animales mientras sus dueños están fuera, creando un ambiente acogedor y alegre.",
+        "images": [
+            "https://bit.ly/3Mwwxeh",
+            "https://bit.ly/434yZQt",
+            "https://bit.ly/43mVEag"
+        ],
+        "characteristics": [
+            "Piscina",
+            "Caminata",
+            "Alimentación",
+            "Veterinaria",
+            "Bosque"
+        ],
+        "basicPrice": 30.0
+}
+```
+
+# 
+
+### Endpoint de editar una categoria:
+
+#### :new: PUT: localhost:8080/api/v1/category/edit
+
+Edita una categoria ya existente (la cual se busca por el id en la BD) con la información proporcionada en el cuerpo de la solicitud.
+
+##### Parámetros de entrada:
+
+Ejemplo de solicitud:
+
+Categoría editada en formato JSON:
+
+```java
+{
+        "id": 1,
+        "title": "Vacas",
+        "description": "Especialidados en perros",
+        "image": "https://img.freepik.com/psd-gratis/retrato-feliz-cardigan-welsh-corgi_53876-73961.jpg?w=826&t=st=1684283095~exp=1684283695~hmac=6d9fcedd5b6c105e22e2b8225143f8623e1cd77900e8cb94cd5706b5b91b90ac"
+}
+```
+
+##### Parámetros de salida:
+
+Se muestra la categoría editada en formato JSON como respuesta:
+
+```java
+{
+        "id": 1,
+        "title": "Vacas",
+        "description": "Especialidados en perros",
+        "image": "https://img.freepik.com/psd-gratis/retrato-feliz-cardigan-welsh-corgi_53876-73961.jpg?w=826&t=st=1684283095~exp=1684283695~hmac=6d9fcedd5b6c105e22e2b8225143f8623e1cd77900e8cb94cd5706b5b91b90ac"
+}
+```
+
+### Endpoint de buscar la categoria por id:
+
+#### :new: GET: localhost:8080/api/v1/category/{id}
+
+Busca una categoria ya existente (la cual se busca por el id en la BD) con la información proporcionada en el cuerpo de la solicitud.
+
+##### Parámetros de entrada:
+
+Ejemplo de solicitud:
+
+Se ingresa un GET utilizando id=3  --> localhost:8080/api/v1/category/3
+
+##### Parámetros de salida:
+```java
+{
+        "id": 3,
+        "title": "Canarios",
+        "description": "Especialidados en canarios",
+        "image": "https://img.freepik.com/free-photo/shot-beautiful-eurasian-golden-oriole-standing-wood_181624-36344.jpg?w=996&t=st=1684283627~exp=1684284227~hmac=7f74120a1e8662d036a3e04aed611a4e8c4f35c213e2282d34c3cc619582b35d"
+}
+```
 
 # 
 
@@ -205,6 +318,7 @@ La API devolverá el nuevo cliente creado en formato JSON:
         ]
 }
 ```
+
 
 ### Endpoint de listar clientes :raising_hand:
 

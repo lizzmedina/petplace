@@ -9,7 +9,7 @@ const Paginate = (props) => {
             key={recommend.id}
             type={recommend.type}
             name={recommend.name}
-            image={recommend.image}
+            image={recommend.images}
             capacity={recommend.capacity}
             rating={recommend.rating}
             ratingText={recommend.ratingText}
@@ -36,7 +36,6 @@ const Paginate = (props) => {
                 <button onClick={props.nextHandler}> Sig </button>
                 <button onClick={props.endHandler}> Fin </button>
             </div>
-
         </div>
     )
 }

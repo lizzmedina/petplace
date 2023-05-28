@@ -4,7 +4,6 @@ import java.util.List;
 
 public class Pet {
 
-//    completar clase: atributos, contructor
     private String petName;
     private String petType;
     private String petSize;

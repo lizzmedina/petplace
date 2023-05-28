@@ -1,16 +1,20 @@
 export const CardRecomends = ({ image, type, name, rating, ratingText, servicio1, servicio2, 
     iconoLocation, city, address, detail, capacity, basicPrice, }) => {
 
+      if (!image) {
+        return image;
+    }
     return (
-
+        
         <div className="card-recomends">
             <div className="card-content">
                 <div className="left-card-content">
                     <img
                         className="card-image-recommends"
-                        src={image}
+                        src={image[0]}
                         alt={type}
                     />
+                  
                     
                 </div>
                 <div className="right-card-content">

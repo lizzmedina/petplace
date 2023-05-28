@@ -12,6 +12,7 @@ const Details = () => {
             const res = await fetch(`http://localhost:8080/api/v1/petDayCare/detail/${id}`)
             const data = await res.json()
             setDetails(data)
+            console.log(data);
       }
 
       useEffect(()=>{
@@ -26,7 +27,7 @@ const Details = () => {
                   id={details.id}
                   type={details.type}
                   name={details.name}
-                  image={details.image}
+                  image={details.images}
                   capacity={details.capacity}
                   address={details.address}
                   city={details.city}
