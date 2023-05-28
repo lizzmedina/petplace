@@ -17,7 +17,9 @@ body {
     --color4 : #FBC02D;   /* amarilloPrincipal */
     --color5 : #EAFFF7;   /* verdeClaro */
     --color6 : #31363F;   /* DB color negro */
-    --color7 : #F3F1ED ;  /* blancoParaFondoCards */
+    --color7 : #F3F1ED ;  /* blancoParaCards */
+    --color8 : #b94242 ;  /* rojoParaEliminar */
+
 }
 
 /* desactivar el subrayado de los enlaces/rutas*/
@@ -386,12 +388,10 @@ input:hover {
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     margin: 1rem;
 }
-
 .options h3{
     color: var(--color2);
     padding: 1rem;
 }
-
 .options button{
     width: 60%;
     border-color: var(--color3);
@@ -402,6 +402,41 @@ input:hover {
     margin: 1rem;
     font-weight: bold;
 }
+
+/* Products and Users */
+.ListItem{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    width: 80%;
+    border-radius: 5px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 0.4rem 1rem;
+    margin: 0.1rem;
+}
+.ListButtons{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:flex-end;
+}
+.edit-button{
+    width: 70px;
+    border-color: var(--color3);
+    background-color: var(--color3);
+    color: white;
+    border-radius: 5px;
+    margin: 0.05rem 0.3rem
+}
+.delete-button{
+    width: 70px;
+    border-color: var(--color8);
+    background-color: var(--color8);
+    color: white;
+    border-radius: 5px;
+    margin: 0.05rem 0.3rem
+}
+
+
 
 /* Paginate */
 
@@ -700,6 +735,9 @@ footer {
     }
     .searcherLogo{
         display: none;
+    }
+    .ListButtons{
+        width: 80px;
     }
 }
 @media only screen and  (min-width: 501px)  and  (max-width: 600px){
