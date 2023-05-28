@@ -77,10 +77,8 @@
 				<directory>src/main/resources</directory>
 				<includes>
 					<include>*.json</include>
+					<include>application.properties</include>
 				</includes>
-				<excludes>
-					<exclude>application.properties</exclude>
-				</excludes>
 			</resource>
 		</resources>
 	</build>
