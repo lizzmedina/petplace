@@ -1,4 +1,4 @@
-import { useState, useEffect} from "react";
+import { useState} from "react";
 import { Card } from "./CardCategories";
 import Stack from '@mui/material/Stack';
 import { Pagination, useMediaQuery } from "@mui/material";
@@ -42,7 +42,7 @@ export const Categories = () => {
         {
         currentCards.map(place => (
           <Link to={"/category/" + place.id}>
-            <Card 
+            <Card
               key={place.id}
               title={place.title}
               image={place.image}
