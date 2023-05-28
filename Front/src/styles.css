@@ -406,6 +406,16 @@ input:hover {
 }
 
 /* Products and Users */
+
+.ListItem-CreateProduct{
+    display: flex;
+    justify-content:flex-end;
+    align-items: center;
+    width: 80%;
+    border-radius: 5px;
+    padding: 0.4rem 1rem;
+    margin: 0.1rem;
+}
 .ListItem{
     display: flex;
     justify-content:space-between;
@@ -433,6 +443,14 @@ input:hover {
     width: 70px;
     border-color: var(--color8);
     background-color: var(--color8);
+    color: white;
+    border-radius: 5px;
+    margin: 0.05rem 0.3rem
+}
+.create-button{
+    width: 70px;
+    border-color: var(--color2);
+    background-color: var(--color2);
     color: white;
     border-radius: 5px;
     margin: 0.05rem 0.3rem

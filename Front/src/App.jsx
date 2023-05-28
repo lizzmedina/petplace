@@ -7,7 +7,7 @@ import CategoryFiltred from "./routes/CategoryFiltred";
 import ProductRegister from "./routes/ProductRegister";
 import Details from "./routes/Details";
 import MyAccount from "./routes/MyAccount";
-import Products from "./routes/Products";
+import EditProducts from "./routes/EditProducts";
 import { Footer } from "./components/footer";
 import './styles.css';
 import { FormNewCategory } from "./routes/FormNewCategory";
@@ -25,7 +25,7 @@ function App() {
                 <Route path="/Detail/:id" element={<Details/>}/>
                 <Route path="/newCategory" element={<FormNewCategory/>}/>
                 <Route path="/account/:id" element={<MyAccount/>}/>
-                <Route path="/products" element={<Products/>}/>
+                <Route path="/editProducts" element={<EditProducts/>}/>
             </Routes>
             <Footer/>
         </div>
