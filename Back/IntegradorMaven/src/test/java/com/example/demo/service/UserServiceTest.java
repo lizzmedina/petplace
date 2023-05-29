@@ -40,9 +40,11 @@ class UserServiceTest {
     public void save_successTest() {
         User expectedUser = this.createTestUser(1);
 
+        UserDTO userDTO = new UserDTO();
+
         Mockito.when(repository.save(expectedUser)).thenReturn(expectedUser);
 
-        User actualUser = userService.save(expectedUser);
+        User actualUser = userService.save(userDTO);
 
         Assertions.assertEquals(expectedUser, actualUser);
         Mockito.verify(repository, Mockito.times(1)).save(expectedUser);
