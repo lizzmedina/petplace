@@ -37,7 +37,6 @@ function EditProducts() {
             {allProducts.map((product) => (
                 <div className='ListItem'>   {/*El map mostrara 2 cosas: el nombre y los botones al final*/}
                     {product.name}
-                    {console.log(product.type_id)}
 
                     <div className='ListButtons'>
                         <button
@@ -53,7 +52,12 @@ function EditProducts() {
                                         '<p>Precio: </p> ' +
                                         `<input id="precio" class="swal2-input" value="${product.basic_price}" required>` +
                                         '<p>Categoria: </p> ' +
-                                        `<input id="tipo" class="swal2-input" value="${product.capacity}" required>` +
+                                        `<select name="type" value="${product.type.title}">
+                                            ${places.map((categoria) => (
+                                                `<option value="${categoria.title}">${categoria.title}</option>`
+                                            ))}
+                                        </select>` +
+
                                         '<p>Ciudad: </p> ' +
                                         `<input id="ciudad" class="swal2-input" value="${product.city}" required>` +
                                         '<p>Direccion: </p> ' +
