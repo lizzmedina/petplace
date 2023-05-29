@@ -11,8 +11,7 @@ import Products from "./routes/Products";
 import { Footer } from "./components/footer";
 import './styles.css';
 import { FormNewCategory } from "./routes/FormNewCategory";
-import { Mail } from "./routes/Mail";
-import { MailVerification } from "./routes/MailVerification";
+import {ValidationPage} from "./routes/ValidationPage";
 
 function App() {
     return (
@@ -28,8 +27,7 @@ function App() {
                 <Route path="/newCategory" element={<FormNewCategory/>}/>
                 <Route path="/account/:id" element={<MyAccount/>}/>
                 <Route path="/products" element={<Products/>}/>
-                <Route path="/mailConfirmation" element={<Mail/>}/>
-                <Route path="/mailVerifirmation" element={<MailVerification/>}/>
+                <Route path="/validationPage" element={<ValidationPage/>}/>
             </Routes>
             <Footer/>
         </div>
