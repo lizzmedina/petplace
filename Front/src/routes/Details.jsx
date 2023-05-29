@@ -21,24 +21,24 @@ const Details = () => {
 
 
 
-  return (
-      <div className="detail-container">  
+      return (
+            <div className="detail-container">  
 
-            <Product
-                  id={details.id}
-                  type={details.type}
-                  name={details.name}
-                  image={details.images}
-                  capacity={details.capacity}
-                  address={details.address}
-                  city={details.city}
-                  detail={details.detail}
-                  basicPrice={details.basicPrice}
-                  characteristics={details.characteristics}
-            />
-      
-      </div>
-  )
+                  <Product
+                        id={details.id}
+                        type={details.type}
+                        name={details.name}
+                        image={details.images}
+                        capacity={details.capacity}
+                        address={details.address}
+                        city={details.city}
+                        detail={details.detail}
+                        basicPrice={details.basicPrice}
+                        characteristics={details.characteristics}
+                  />
+            
+            </div>
+      )
 }
 
 export default Details;

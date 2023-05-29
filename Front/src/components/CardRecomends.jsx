@@ -1,13 +1,11 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShower, faPersonWalkingWithCane, faCarrot, faBaseball, faStethoscope, faLocationDot } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShower, faPersonWalkingWithCane, faCarrot, faBaseball, faStethoscope, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 
 export const CardRecomends = ({ image, type, name, rating, ratingText, characteristics, city, address, detail, capacity, basicPrice, }) => {
 
     if (!image) {
             return image;
     }
-
-
     const renderCharacteristics = () => {
         const icons = {
             Paseo: faPersonWalkingWithCane,
@@ -19,9 +17,7 @@ export const CardRecomends = ({ image, type, name, rating, ratingText, character
 
         return characteristics.map((option, index) => {
             const icon = icons[option];
-
             if (icon && (option === 'Paseo' || option === 'Baño' || option === 'Alimentación' || option === 'Veterinaria' || option === 'Entrenamiento')) {
-
                 return (
                     <span key={index}>
                         <FontAwesomeIcon icon={icon} className='card-services-recommends' />
@@ -30,8 +26,6 @@ export const CardRecomends = ({ image, type, name, rating, ratingText, character
             }
         });
     };
-
-
     return (
         
         <div className="card-recomends">
@@ -42,8 +36,6 @@ export const CardRecomends = ({ image, type, name, rating, ratingText, character
                         src={image[0]}
                         alt={type}
                     />
-                  
-                    
                 </div>
                 <div className="right-card-content">
                     <h3 className="card-title-recommends">{name}</h3>

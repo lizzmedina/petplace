@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import {CardRecomends} from "../components/CardRecomends";
 import Stack from '@mui/material/Stack';
-import { Pagination, useMediaQuery } from "@mui/material";
+import { Pagination } from "@mui/material";
 
-function CategoryFiltred() {
-  const { id } = useParams();
+export const CategoryFiltred = () =>  {
+  const { id, title, name} = useParams();
 
   const [category, setCategory] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -24,18 +24,8 @@ function CategoryFiltred() {
     getCategory();
   }, [id]);
 
-  const isMobile = useMediaQuery('(max-width: 767px)'); // Verifica si es un dispositivo móvil
-  const isTablet = useMediaQuery('(max-width: 1024px)'); // Verifica si es una tablet
-
   // Determina la cantidad de tarjetas a mostrar en función del tamaño de la pantalla
-  let cardsPerRow;
-  if (isMobile) {
-    cardsPerRow = 1;
-  } else if (isTablet) {
-    cardsPerRow = 2;
-  } else {
-    cardsPerRow = 2;
-  }
+  let cardsPerRow =10;
 
   // Cantidad de tarjetas por página
   const cardsPerPage = cardsPerRow;
@@ -57,7 +47,7 @@ function CategoryFiltred() {
 
   return (
     <div className='space-section'>
-      <h2>Categoría: {id}</h2>
+      <h2>Categoría: {name}</h2>
       <p>A continuación nuestras opciones de hospedaje en esta categoría</p>
 
       <div className="render-cards-recommends">
@@ -65,7 +55,7 @@ function CategoryFiltred() {
           <Link key={recommend.id} to={"/Detail/" + recommend.id}>
             <CardRecomends
               key={recommend.id}
-              type={recommend.type}
+              type={recommend.type.name}
               name={recommend.name}
               image={recommend.images}
               capacity={recommend.capacity}
@@ -92,4 +82,3 @@ function CategoryFiltred() {
   );
 }
 
-export default CategoryFiltred;

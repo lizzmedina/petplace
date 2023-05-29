@@ -14,6 +14,7 @@ export const Recommends = () => {
       .then((data) => {
         const shuffledData = shuffleArray(data); // Mezcla los datos aleatoriamente
         setRecommends(shuffledData);
+        console.log(data);
       })
       .catch((error) => {
         console.error("Error fetching recommends:", error);
@@ -69,7 +70,7 @@ export const Recommends = () => {
           <Link key={recommend.id} to={"/Detail/" + recommend.id}>
             <CardRecomends
               key={recommend.id}
-              type={recommend.type}
+              type={recommend.type.name}
               name={recommend.name}
               image={recommend.images}
               capacity={recommend.capacity}
