@@ -434,6 +434,16 @@ input:hover {
 }
 
 /* Products and Users */
+
+.ListItem-CreateProduct{
+    display: flex;
+    justify-content:flex-end;
+    align-items: center;
+    width: 80%;
+    border-radius: 5px;
+    padding: 0.4rem 1rem;
+    margin: 0.1rem;
+}
 .ListItem{
     display: flex;
     justify-content:space-between;
@@ -464,6 +474,26 @@ input:hover {
     color: white;
     border-radius: 5px;
     margin: 0.05rem 0.3rem
+}
+.create-button{
+    width: 70px;
+    border-color: var(--color2);
+    background-color: var(--color2);
+    color: white;
+    border-radius: 5px;
+    margin: 0.05rem 0.3rem
+}
+.my-swal-container h2{
+    color: var(--color2);
+}
+.my-swal-container p{
+    font-weight: bold;
+}
+.my-swal-container .swal2-input,
+.my-swal-container .swal2-textarea {
+    margin: 0 0 1rem 0; /* Elimina el margen */
+    height: 1rem;
+    width: 80%;
 }
 
 
