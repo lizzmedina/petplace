@@ -12,15 +12,16 @@ export const Recommends = () => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        setRecommends(data);
+        const shuffledData = shuffleArray(data); // Mezcla los datos aleatoriamente
+        setRecommends(shuffledData);
       })
       .catch((error) => {
         console.error("Error fetching recommends:", error);
       });
   }, []);
 
-  const isMobile = useMediaQuery('(max-width: 767px)'); // Verifica si es un dispositivo móvil
-  const isTablet = useMediaQuery('(max-width: 1024px)'); // Verifica si es una tablet
+  const isMobile = useMediaQuery('(max-width: 767px)'); 
+  const isTablet = useMediaQuery('(max-width: 1024px)'); 
 
   // Determina la cantidad de tarjetas a mostrar en función del tamaño de la pantalla
   let cardsPerRow;
@@ -29,7 +30,7 @@ export const Recommends = () => {
   } else if (isTablet) {
     cardsPerRow = 2;
   } else {
-    cardsPerRow = 4;
+    cardsPerRow = 2;
   }
 
   // Cantidad de tarjetas por página
