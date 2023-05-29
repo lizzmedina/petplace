@@ -75,7 +75,7 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
 
                 <span className="product-info-left">
                     <h2>{name}</h2>
-                    <p className="text-info">Aloja {type}</p>
+                    <p className="text-info">Aloja {type.title}</p>
                     <p className="detail-info">{detail}</p>
                     <div className='features'>
                         <h3>Servicios más populares</h3>
@@ -86,7 +86,7 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
                 </span>
 
                 <span className="product-info-rigth">
-                    <p className="text-info"> Capacidad: {capacity} {type}</p>
+                    <p className="text-info"> Capacidad: {capacity} {type.title}</p>
                     <p className="text-info">Precio: $ {basicPrice}</p>
                     <button className="buttonDetail button-1">Reservar</button>
                 </span>
