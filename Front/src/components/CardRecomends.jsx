@@ -1,9 +1,37 @@
-export const CardRecomends = ({ image, type, name, rating, ratingText, servicio1, servicio2, 
-    iconoLocation, city, address, detail, capacity, basicPrice, }) => {
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faShower, faPersonWalkingWithCane, faCarrot, faBaseball, faStethoscope, faLocationDot } from '@fortawesome/free-solid-svg-icons'
 
-      if (!image) {
-        return image;
+export const CardRecomends = ({ image, type, name, rating, ratingText, characteristics, city, address, detail, capacity, basicPrice, }) => {
+
+    if (!image) {
+            return image;
     }
+
+
+    const renderCharacteristics = () => {
+        const icons = {
+            Paseo: faPersonWalkingWithCane,
+            Baño: faShower,
+            Alimentación: faCarrot,
+            Veterinaria: faStethoscope,
+            Entrenamiento: faBaseball,
+        };
+
+        return characteristics.map((option, index) => {
+            const icon = icons[option];
+
+            if (icon && (option === 'Paseo' || option === 'Baño' || option === 'Alimentación' || option === 'Veterinaria' || option === 'Entrenamiento')) {
+
+                return (
+                    <span key={index}>
+                        <FontAwesomeIcon icon={icon} className='card-services-recommends' />
+                    </span>
+                );
+            }
+        });
+    };
+
+
     return (
         
         <div className="card-recomends">
@@ -19,16 +47,15 @@ export const CardRecomends = ({ image, type, name, rating, ratingText, servicio1
                 </div>
                 <div className="right-card-content">
                     <h3 className="card-title-recommends">{name}</h3>
-                    <p className="card-category-recommends">Habilitado para: {type}</p>
-                    <p className="card-category-recommends">Capacidad: {capacity}</p>
-                    <p className="card-location-recommends">{city}, {address}</p>
+                    <span className="card-category-recommends">Habilitado para: {capacity} {type} </span>
+                    <p className="card-location-recommends"><FontAwesomeIcon icon={faLocationDot} className='card-location-icon' />{city}, {address}</p>
+                    <span className='card-services-list-recommends'>{renderCharacteristics()}</span>
                     <p className="card-descrption-recommends">{detail}</p>
-                    <a className="see-more-link" href="">...Leer más</a>
-                    <span >
+                    <span>
                         <p className="rating"> {rating} </p>
                         <p> {ratingText} </p>
                     </span>
-                    <p>${basicPrice}</p>
+                    <button className='button-2'>Ver más</button>
                 </div>
             </div>
         </div>

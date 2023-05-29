@@ -20,6 +20,7 @@ const Details = () => {
       }, [])
 
 
+
   return (
       <div className="detail-container">  
 
@@ -33,6 +34,7 @@ const Details = () => {
                   city={details.city}
                   detail={details.detail}
                   basicPrice={details.basicPrice}
+                  characteristics={details.characteristics}
             />
       
       </div>

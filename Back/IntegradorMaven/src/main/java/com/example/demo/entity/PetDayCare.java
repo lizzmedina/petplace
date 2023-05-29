@@ -19,7 +19,6 @@ public class PetDayCare {
     private String name;
 
    @OneToOne
-   @JsonIgnore
    private Category type;
 
     @Column(name = "capacity")
