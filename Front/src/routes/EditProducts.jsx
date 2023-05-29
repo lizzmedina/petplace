@@ -28,7 +28,6 @@ function EditProducts() {
     }
 
 
-
     return (
         <div className='space-section'>
             <h2>Lista de Productos</h2>
@@ -38,31 +37,50 @@ function EditProducts() {
             {allProducts.map((product) => (
                 <div className='ListItem'>   {/*El map mostrara 2 cosas: el nombre y los botones al final*/}
                     {product.name}
+                    {console.log(product.type_id)}
 
                     <div className='ListButtons'>
                         <button
                             className='edit-button'
                             onClick={() => {
                                 Swal.fire({
-                                    title: 'Editar Producto',
-                                    input: 'select',
-                                    inputOptions: {
-                                        places,
-                                    },
-                                    inputPlaceholder: 'Selecciona un producto',
-                                    
+                                    title: 'Formulario de Edición',
+                                    html:
+                                        '<p>Nombre: </p> ' +
+                                        `<input id="nombre" class="swal2-input" value="${product.name}" required>` +
+                                        '<p>Capacidad: </p> ' +
+                                        `<input id="capacidad" class="swal2-input" value="${product.capacity}" required>` +
+                                        '<p>Precio: </p> ' +
+                                        `<input id="precio" class="swal2-input" value="${product.basic_price}" required>` +
+                                        '<p>Categoria: </p> ' +
+                                        `<input id="tipo" class="swal2-input" value="${product.capacity}" required>` +
+                                        '<p>Ciudad: </p> ' +
+                                        `<input id="ciudad" class="swal2-input" value="${product.city}" required>` +
+                                        '<p>Direccion: </p> ' +
+                                        `<input id="direccion" class="swal2-input" value="${product.address}" required>` +
+                                        '<p>Descripcion: </p> ' +
+                                        `<input id="descripcion" class="swal2-input" value="${product.detail}" required>`,
+                                    focusConfirm: false,
                                     showCancelButton: true,
-                                    inputValidator: (value) => {
-                                        if (!value) {
-                                            return 'Debes seleccionar un producto';
+                                    preConfirm: () => {
+                                        const nombre = document.getElementById('nombre').value;
+                                        const descripcion = document.getElementById('descripcion').value;
+                                        if (!nombre || !descripcion) {
+                                            Swal.showValidationMessage('Debes completar todos los campos');
                                         }
+                                        return { nombre, descripcion };
+                                    },
+                                    customClass: {
+                                        container: 'my-swal-container',
+                                        popup: 'my-swal-popup',
                                     },
                                 }).then((result) => {
-                                    if (result.isConfirmed) {
-                                        
-                                        Swal.fire(`Seleccionaste: ${result.value}`);
+                                    if (!result.dismiss) {
+                                        const { nombre, descripcion } = result.value;
+                                        Swal.fire(`Nuevo nombre: ${nombre}, Nueva descripción: ${descripcion}`);
                                     }
                                 });
+
                             }}
                         >
                             Editar

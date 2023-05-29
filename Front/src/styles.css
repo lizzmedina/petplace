@@ -455,6 +455,18 @@ input:hover {
     border-radius: 5px;
     margin: 0.05rem 0.3rem
 }
+.my-swal-container h2{
+    color: var(--color2);
+}
+.my-swal-container p{
+    font-weight: bold;
+}
+.my-swal-container .swal2-input,
+.my-swal-container .swal2-textarea {
+    margin: 0 0 1rem 0; /* Elimina el margen */
+    height: 1rem;
+    width: 80%;
+}
 
 
 
