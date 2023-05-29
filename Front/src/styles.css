@@ -1,4 +1,3 @@
-
 * {
     margin: 0;
     box-sizing: border-box;
@@ -17,7 +16,9 @@ body {
     --color4 : #FBC02D;   /* amarilloPrincipal */
     --color5 : #EAFFF7;   /* verdeClaro */
     --color6 : #31363F;   /* DB color negro */
-    --color7 : #F3F1ED ;  /* blancoParaFondoCards */
+    --color7 : #F3F1ED ;  /* blancoParaCards */
+    --color8 : #b94242 ;  /* rojoParaEliminar */
+
 }
 
 /* desactivar el subrayado de los enlaces/rutas*/
@@ -31,6 +32,15 @@ a:link, a:visited, a:active {
     color: var(--color2);
     padding: 0.3rem;
     border-radius: 5px;
+}
+.button-2{
+    background-color: var(--color2);
+    color: var(--color7);
+    margin: 0.5rem auto;
+    border-radius: 5px;
+    width: 90%;
+    border: none;
+    height: 1.5rem;
 }
 
 /* navbar */
@@ -62,7 +72,7 @@ a:link, a:visited, a:active {
     flex-direction: row;
     align-items: center;
     width: 30vw;
-    justify-content: space-evenly;
+    justify-content: flex-start;
 }
 
 .navbar-buttons {
@@ -132,15 +142,17 @@ color:#fff;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     margin: auto;
+    width: 100%;
 }
 .card-container{
     background-color: var(--color7);
     margin: 20px;
     border-radius: 20px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    max-width: 280px;
 }
 .card-image{
     display: flex;
@@ -242,7 +254,7 @@ color:#fff;
 
 .card-title-recommends{
     color: var(--color6);
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     display: inline;
 }
 .card-category-recommends {
@@ -253,29 +265,43 @@ color:#fff;
 }
 .card-descrption-recommends {
     color: var(--color6);
-    font-size: 0.6rem;
-    margin: 5px 17px 0px 0;
+    font-size: 0.7rem;
+    margin: 5px 17px 10px 0;
 }
-a.see-more-link{
-    display:inline-flex;
-    font-size: 0.6rem;
+.card-descrption-recommends::after {
+    content: "  más...";
     color: var(--color2);
 }
+.card-price-recommends {
+   display: flex;
+   justify-content: space-between;
+   align-items: flex-start;
+   margin-right: 1rem;
+   color: var(--color6);
+   font-weight:500;
+}
+
 .card-location-recommends{
     color: var(--color6);
-    font-size: 0.5rem;
+    font-size: 0.7rem;
     margin: 10px 10px 10px 0;
 }
-.card-location-recommends:before {
-    content: "";
-    display: block;
-    background: url("./images/pinLocation.png") no-repeat;
-    width: 10px;
-    height: 10px;
-    float: left;
-    margin: 0 3px 0 0;
-    padding: -3px 0 0 0;
+.card-location-icon{
+    color: var(--color3);
+    margin-right: 0.4rem;
 }
+.card-services-list-recommends{
+    font-size: 0.6rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 40%;
+}
+.card-services-recommends{
+    margin-right: 1rem;
+    color: var(--color6);
+}
+
 .card-quantity-recommends {
     color: var(--color6);
     font-size: 0.4rem;
@@ -296,6 +322,7 @@ a.ver-mas-recommends{
 .space-section{
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
     padding: 3rem 0;
 }
@@ -313,7 +340,6 @@ a.ver-mas-recommends{
 .form-section{
     display: flex;
     flex-direction: column;
-
     height: 100%;
     padding-top: 1rem;
     width: 60%;
@@ -322,6 +348,12 @@ a.ver-mas-recommends{
     display: flex;
     justify-content: space-between;
     width: 100%;
+}
+.space-section label{
+    font-weight: bold;
+}
+.space-section p{
+    font-weight: bold;
 }
 .box{
     width: 45%;
@@ -361,6 +393,81 @@ input:hover {
     font-size: 0.7rem;
 }
 
+.avatar{
+    font-family: 'Quicksand', sans-serif;
+}
+
+/* My Account */
+
+.datoUser{
+    display: flex;
+}
+.options-container{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100vw;
+    justify-content: space-around
+}
+.options{
+    display: flex;
+    flex-direction: column;
+    width: 15rem;
+    height:20rem;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    margin: 1rem;
+}
+.options h3{
+    color: var(--color2);
+    padding: 1rem;
+}
+.options button{
+    width: 60%;
+    border-color: var(--color3);
+    background-color: var(--color3);
+    color: white;
+    border-radius: 5px;
+    padding: 0.3rem;
+    margin: 1rem;
+    font-weight: bold;
+}
+
+/* Products and Users */
+.ListItem{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    width: 80%;
+    border-radius: 5px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 0.4rem 1rem;
+    margin: 0.1rem;
+}
+.ListButtons{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:flex-end;
+}
+.edit-button{
+    width: 70px;
+    border-color: var(--color3);
+    background-color: var(--color3);
+    color: white;
+    border-radius: 5px;
+    margin: 0.05rem 0.3rem
+}
+.delete-button{
+    width: 70px;
+    border-color: var(--color8);
+    background-color: var(--color8);
+    color: white;
+    border-radius: 5px;
+    margin: 0.05rem 0.3rem
+}
+
+
+
 /* Paginate */
 
 .paginate-container{
@@ -395,32 +502,61 @@ input:hover {
     flex-wrap: wrap-reverse;
 }
 
-.product-location::before {
-    content: "";
-    display: block;
-    background: url("./images/pinLocation.png") no-repeat;
-    width: 10px;
-    height: 10px;
-    float: left;
-    margin: 5px 3px 0 0;
-    padding: 3px 0 0 0;
-}
-.product-section-image {
+
+.product-galery {
     width: 100%;
-    height: 400px;
-    position: relative;
+    /* height: 400px; */
+    display: flex;
+}
+
+.leading-image{
+    width: 50%;
+    display: block;
+}
+.underling-images{
+    width: 50%;
+    display: grid;
+    justify-content: end;
+}
+.two-image{
+    display: block;
+    grid-column: 1/2;
+    grid-row: 1/2;
+}
+.three-image{
+    display: block;
+    grid-column: 2/3;
+    grid-row: 1/2;
+}
+.four-image{
+    display: block;
+    grid-column: 1/2;
+    grid-row: 2/3;
+}
+.five-image{
+    display: block;
+    grid-column: 2/3;
+    grid-row: 2/3;
+    
 }
 
 .product-image{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    max-width: 100%; /* Ajusta el tamaño máximo de la imagen */
-    max-height: 100%; /* Ajusta la altura máxima de la imagen */
+    width: 100%;
+    height: 100%;
+    padding: 0.1rem;
+    border-radius: 0.4rem;
 }
 
-
+p.more-images{
+    background-color: var(--color7);
+    color: var(--color2);
+    position:relative;
+    float: right;
+    display: block;
+    padding: 0 0.4rem;
+    margin-top: -20px;
+    
+}
 
 .product-info-container {
     display: flex;
@@ -439,6 +575,10 @@ input:hover {
 }
 .product-info-rigth {
     width: 20rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
 }
 
 .buttonDetail {
@@ -457,7 +597,9 @@ input:hover {
     /* float:right; */
 }
 .text-info {
-    margin: 5px auto 5px auto;
+    margin: 15px  0 ;
+    font-size: 1.1rem;
+    font-weight: bold;
 }
 .name-info {
     display: flex;
@@ -466,39 +608,77 @@ input:hover {
 .city-info {
     margin: 5px auto 5px auto;
 }
-.price-info {
-    margin: 5px auto 5px auto;
-    font-size: 1.2em;
-}
+
 .detail-info {
     margin: 25px auto 5px auto;
     font-size: 1.2em;
 }
+.features{
+    margin: 1rem 0;
+}
+.feature-list{
+    display: flex;
+    justify-content:space-between;
+    align-items: start;
+    margin-top: 1rem;
+    
+}
+.icon-service{
+    color: var(--color2);
+    /* font-size: 1.1rem; */
+    margin-right: 0.3rem;
+}
 
 /* ESTILOS DE FormNewCategory*/
 
-.form-new-category-container{
+/* .form-new-category-container{
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     align-items: center;
-}
+    width: 100%;
+    padding: 3.5rem 0;
+} */
 
-.form-new-category-container form {
+.form-new-category{
     display: flex;
     flex-direction: column;
     align-items: stretch;
+    width: 60vw;
+    
+}
+.input-category {
+    width: 100%;
+    
+}
+
+.title-form-new-category {
+    margin-bottom: 2rem;
+    text-align: center;
+    color: var(--color2);
+}
+.instructions-form-new-category{
+    text-align: center;
 }
 .title-input-container{
-    margin: 2rem;
+    margin: 1rem;
 }
 .description-input-container{
-    margin: 2rem;
+    margin: 1rem;
 }
 .image-input-container{
-    margin: 2rem;
+    margin: 1rem;
 }
-.button-form-new-category{
-    margin: 2rem;
+.button-form-new-category {
+    margin: 1rem;
+    background-color: var(--color2);
+    color: var(--color1);
+    width: 160px;
+}
+.button-new-category-container {
+    display: flex;
+    justify-content: center;
+    
 }
 
 
@@ -516,16 +696,6 @@ input:hover {
 }
 
 
-.city-info::before {
-    content: "";
-    display: block;
-    background: url("./images/pinLocation.png") no-repeat;
-    width: 10px;
-    height: 10px;
-    float: left;
-    margin: 5px 3px 0 0;
-    padding: 3px 0 0 0;
-}
 
 /* footer */
 
@@ -619,6 +789,16 @@ footer {
     .searcherLogo{
         display: none;
     }
+    .ListButtons{
+        width: 80px;
+    }
+    .instructions-form-new-category{
+        margin: 2rem;
+    }
+    .space-section {
+        padding:  0rem;
+        margin-bottom: 3rem;
+    }
 }
 @media only screen and  (min-width: 501px)  and  (max-width: 600px){
     .slogan-navbar{
@@ -655,6 +835,9 @@ footer {
     }
     .card-content {
         width: 100%;
+    }
+    .instructions-form-new-category{
+        margin: 2rem;
     }
 }
 @media only screen and  (min-width: 601px)  and  (max-width: 767px){

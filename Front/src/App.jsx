@@ -3,12 +3,11 @@ import { NavBar } from "./components/NavBar";
 import { Home } from "./routes/Home";
 import Register from "./routes/Register";
 import Login from "./routes/Login";
-import CategoryPerros from "./routes/CategoryPerros";
-import CategoryGatos from "./routes/CategoryGatos";
-import CategoryCanarios from "./routes/CategoryCanarios";
-import CategoryConejos from "./routes/CategoryConejos";
+import CategoryFiltred from "./routes/CategoryFiltred";
 import ProductRegister from "./routes/ProductRegister";
 import Details from "./routes/Details";
+import MyAccount from "./routes/MyAccount";
+import Products from "./routes/Products";
 import { Footer } from "./components/footer";
 import './styles.css';
 import { FormNewCategory } from "./routes/FormNewCategory";
@@ -21,14 +20,12 @@ function App() {
                 <Route path="/" element={<Home/>}/>
                 <Route path="/register" element={<Register/>}/>
                 <Route path="/login" element={<Login/>}/>
-                {/* <Route path="/Category/:id" element={<CategoryFiltred/>}/> */}
-                <Route path="/Perros" element={<CategoryPerros/>}/>
-                <Route path="/Gatos" element={<CategoryGatos/>}/>
-                <Route path="/Canarios" element={<CategoryCanarios/>}/>
-                <Route path="/Conejos" element={<CategoryConejos/>}/>
-                <Route path="/Admin" element={<ProductRegister/>}/>
+                <Route path="/category/:id" element={<CategoryFiltred/>}/>
+                <Route path="/productRegister" element={<ProductRegister/>}/>
                 <Route path="/Detail/:id" element={<Details/>}/>
                 <Route path="/newCategory" element={<FormNewCategory/>}/>
+                <Route path="/account/:id" element={<MyAccount/>}/>
+                <Route path="/products" element={<Products/>}/>
             </Routes>
             <Footer/>
         </div>

@@ -29,7 +29,7 @@ const FormUser = () => {
     const [isSuccess, setIsSuccess] = useState(false);
     const [validationErrors, setValidationErrors] = useState({});
 
-    const url = "http://localhost:8080/api/v1/user";
+    const url = "http://localhost:8080/api/v1/user/all";
     const [allUsers, setAllUsers] = useState([]);
     useEffect(() => {
         fetch(url)
@@ -44,60 +44,76 @@ const FormUser = () => {
 
         try {
             await schema.validate(user, { abortEarly: false });
-            // La validación es exitosa con Yup, se continúa con el resto
+            // Si la validación es exitosa con Yup, se continúa con el resto
 
             const result = allUsers.find((item) => item.email.toLowerCase() === user.email.toLowerCase());
             if (!result) {
-                // El email no existe, proceder con el envío del formulario
+                // Si el email no existe entonces se continua con el envío del formulario
                 setIsLoading(true);
 
-                fetch("http://127.0.0.1:8080/api/v1/user", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(user),
+            fetch("http://127.0.0.1:8080/api/v1/user", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(user),
                 })
-                    .then((response) => {
-                        if (response.ok) {
-                            setIsSuccess(true);
-                            alert(`El Usuario ${user.name} ha sido creado exitosamente.`);
-                            setUser({
-                                id: '',
-                                name:'',
-                                lastName:'',
-                                cellPhone:'',
-                                address:'',
-                                email:'',
-                                password:'',
-                                type:''
-                            });
-                        } else {
-                            throw new Error("Error en la solicitud");
-                        }
-                    })
-                    .catch((error) => {
-                        console.error(error);
-                        alert("Parece que algo va mal, verifica la información.");
-                    })
-                    .finally(() => {
-                        setIsLoading(false);
-                        setUser((user) => ({ ...user, type: "" })); // Restablecer el campo "type" a una cadena vacía
+            .then((response) => {
+                if (response.ok) {
+                    setIsSuccess(true);
+                    alert(`El Usuario ${user.name} ha sido creado exitosamente.`);
+
+                    // Envío del correo de validación
+                    // fetch("http://localhost:8080/api/v1/send-validation-email", {
+                    //     method: "POST",
+                    //     headers: {
+                    //     "Content-Type": "application/json",
+                    //     },
+                    //     body: JSON.stringify({ userId: response.data.userId }), // Ajusta los datos necesarios para enviar el correo
+                    // })
+                    // .then((res) => res.json())
+                    // .then((data) => {
+                    // // Manejar la respuesta del servidor después de enviar el correo
+                    //     console.log("Correo de validación enviado:", data);
+                    // })
+                    // .catch((error) => {
+                    //     console.error("Error sending validation email:", error);
+                    // });
+
+                    setUser({
+                        id: "",
+                        name: "",
+                        lastName: "",
+                        cellPhone: "",
+                        address: "",
+                        email: "",
+                        password: "",
+                        type: "",
                     });
+                } else {
+                    throw new Error("Error en la solicitud");
+                }
+            })
+            .catch((error) => {
+                console.error(error);
+                alert("Parece que algo va mal, verifica la información.");
+            })
+            .finally(() => {
+                setIsLoading(false);
+                setUser((user) => ({ ...user, type: "" })); // Restablecer el campo "type" a una cadena vacía
+            });
             } else {
                 alert(
                     "El email proporcionado ya está tomado, intenta con uno nuevo."
                 );
             }
         } catch (error) {
-            // La validación falló, manejar los errores
             const validationErrors = {};
             error.inner.forEach((e) => {
                 validationErrors[e.path] = e.message;
             });
 
             setValidationErrors(validationErrors);
-            // Puedes mostrar los errores en la interfaz de usuario o realizar otras acciones según tus necesidades
         }
     };
 

@@ -71,53 +71,58 @@ export const FormNewCategory = () => {
     };
 
     return (
-        <div className="form-new-category-container">
-        <h2 className="title-form-new-category">Crear nueva categoría</h2>
-
-        <h3 className="instructions-form-new-category">Ingrese los datos correspondientes para crearla:</h3>
-        <form onSubmit={handleSubmit} >
-            <div className="title-input-container">
-            <label>Título:</label>
-            <input
-                type="text"
-                name="title"
-                value={newCategory.title}
-                onChange={handleInputChange}
-            />
-            {errors.title && <span className="error">{errors.title}</span>}
+        <div className=" space-section">
+            <div className="titles-new-category">
+                <h2 className="title-form-new-category">Crear nueva categoría</h2>
+                <h3 className="instructions-form-new-category">Ingrese los datos correspondientes para crearla:</h3>
             </div>
-            <div className="description-input-container">
-            <label>Descripción:</label>
-            <input
-                type="text"
-                name="description"
-                value={newCategory.description}
-                onChange={handleInputChange}
-            />
-            {errors.description && (
-                <span className="error">{errors.description}</span>
-            )}
-            </div>
-            <div className="image-input-container">
-            <label>URL imagen:</label>
-            <input
-                type="text"
-                name="image"
-                value={newCategory.image}
-                onChange={handleInputChange}
-            />
-            {errors.image && <span className="error">{errors.image}</span>}
-            </div>
-            <button 
-                type="submit"
-                className="button-form-new-category"
-            >
-                Crear categoría
-            </button>
-        </form>
+        
+            <form onSubmit={handleSubmit} className="form-new-category" >
+                <div className="title-input-container">
+                    <label>Título:</label>
+                    <input
+                        className="input-category"
+                        type="text"
+                        name="title"
+                        value={newCategory.title}
+                        onChange={handleInputChange}
+                    />
+                    {errors.title && <span className="error">{errors.title}</span>}
+                </div>
+                <div className="description-input-container">
+                    <label>Descripción:</label>
+                    <input
+                        className="input-category"
+                        type="text"
+                        name="description"
+                        value={newCategory.description}
+                        onChange={handleInputChange}
+                    />
+                    {errors.description && (
+                        <span className="error">{errors.description}</span>
+                    )}
+                </div>
+                <div className="image-input-container">
+                    <label>URL imagen:</label>
+                    <input
+                        className="input-category"
+                        type="text"
+                        name="image"
+                        value={newCategory.image}
+                        onChange={handleInputChange}
+                    />
+                    {errors.image && <span className="error">{errors.image}</span>}
+                </div>
+                <div className="button-new-category-container">
+                    <button 
+                        type="submit"
+                        className="button-form-new-category button-1"
+                    >
+                        Crear categoría
+                    </button>
+                </div>
+                
+            </form>
         </div>
     );
 };
-
-
-

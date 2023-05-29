@@ -256,6 +256,27 @@ Se muestra la categoría editada en formato JSON como respuesta:
 }
 ```
 
+### Endpoint de buscar la categoria por id:
+
+#### :new: GET: localhost:8080/api/v1/category/{id}
+
+Busca una categoria ya existente (la cual se busca por el id en la BD) con la información proporcionada en el cuerpo de la solicitud.
+
+##### Parámetros de entrada:
+
+Ejemplo de solicitud:
+
+Se ingresa un GET utilizando id=3  --> localhost:8080/api/v1/category/3
+
+##### Parámetros de salida:
+```java
+{
+        "id": 3,
+        "title": "Canarios",
+        "description": "Especialidados en canarios",
+        "image": "https://img.freepik.com/free-photo/shot-beautiful-eurasian-golden-oriole-standing-wood_181624-36344.jpg?w=996&t=st=1684283627~exp=1684284227~hmac=7f74120a1e8662d036a3e04aed611a4e8c4f35c213e2282d34c3cc619582b35d"
+}
+```
 
 # 
 

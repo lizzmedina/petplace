@@ -25,7 +25,6 @@ const FormProduct = () => {
                 setAllProducts(data);
             })
     }, []);
-    console.log(allProducts);
     
 
     const handleSubmit = (event) => {

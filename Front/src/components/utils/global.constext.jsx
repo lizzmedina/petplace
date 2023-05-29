@@ -11,13 +11,13 @@ const ContextProvider = ({children}) => {
         const data = await res.json();
         setPlaces(data)
     }
-    
+
     useEffect(() => {
         getAllCategories();
     }, []);
 
 
-const[url, setUrl] = useState("http://localhost:8080/api/v1/petDayCare/all")    
+const[url, setUrl] = useState("http://localhost:8080/api/v1/petDayCare/all")
 
     // Estados y funciones para paginado
 
@@ -27,7 +27,6 @@ const[url, setUrl] = useState("http://localhost:8080/api/v1/petDayCare/all")
             .then((res) => res.json())
             .then((data) => {
                 setDataCategory(data);
-                setItems(data.slice(0, itemsPerPage));
             })
             .catch((error) => {
             // Manejo de errores aquí
@@ -35,46 +34,8 @@ const[url, setUrl] = useState("http://localhost:8080/api/v1/petDayCare/all")
             });
     }, [url]);
 
-    const itemsPerPage = 10
-    const[items, setItems] = useState([...dataCategory].splice(0, itemsPerPage)) 
-
-    const[currentPage, setCurrentPage] = useState(0)
-
-    const nextHandler = () => {
-        const totalElementos = dataCategory.length
-        const nextPage = currentPage + 1
-        const firstIndex = nextPage * itemsPerPage
-        if (firstIndex >= totalElementos) return;
-        
-        setItems([...dataCategory].splice(firstIndex, itemsPerPage))
-        setCurrentPage(nextPage)
-    }
-
-    const prevHandler = () => {
-        const prevPage = currentPage -1;
-        if (prevPage <0) return;
-        const firstIndex = prevPage * itemsPerPage;
-
-        setItems([...dataCategory].splice(firstIndex, itemsPerPage))
-        setCurrentPage(prevPage)
-    }
-
-    const startHandler = () => {
-        setItems([...dataCategory].splice(0, itemsPerPage))
-        setCurrentPage(0)
-    }
-
-    const endHandler = () => {
-        const lastPage = dataCategory.length % itemsPerPage ===0 
-            ? Math.floor(dataCategory.length/itemsPerPage) -1 : Math.floor(dataCategory.length/itemsPerPage)
-        const firstIndex = lastPage * itemsPerPage;
-
-        setItems([...dataCategory].splice(firstIndex, itemsPerPage))
-        setCurrentPage(lastPage)
-    }
-
     return (
-        <ContextGlobal.Provider value={{getAllCategories, places,setPlaces, url, setUrl, dataCategory, setDataCategory, items, setItems, currentPage, setCurrentPage, prevHandler, nextHandler, startHandler, endHandler}}>
+        <ContextGlobal.Provider value={{getAllCategories, places,setPlaces, url, setUrl, dataCategory, setDataCategory}}>
             {children}
         </ContextGlobal.Provider>
     )
