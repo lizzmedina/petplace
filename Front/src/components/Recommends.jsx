@@ -75,13 +75,11 @@ export const Recommends = () => {
               capacity={recommend.capacity}
               rating={recommend.rating}
               ratingText={recommend.ratingText}
-              iconoLocation={recommend.iconoLocation}
               city={recommend.city}
               address={recommend.address}
-              service1={recommend.service1}
-              service2={recommend.service2}
               detail={recommend.detail}
               basicPrice={recommend.basicPrice}
+              characteristics={recommend.characteristics}
             />
           </Link>
         ))}

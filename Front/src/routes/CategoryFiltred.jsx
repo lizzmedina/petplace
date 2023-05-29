@@ -71,11 +71,9 @@ function CategoryFiltred() {
               capacity={recommend.capacity}
               rating={recommend.rating}
               ratingText={recommend.ratingText}
-              iconoLocation={recommend.iconoLocation}
+              characteristics={recommend.characteristics}
               city={recommend.city}
               address={recommend.address}
-              service1={recommend.service1}
-              service2={recommend.service2}
               detail={recommend.detail}
               basicPrice={recommend.basicPrice}
             />
