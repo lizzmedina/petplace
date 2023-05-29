@@ -14,7 +14,6 @@ export const Recommends = () => {
       .then((data) => {
         const shuffledData = shuffleArray(data); // Mezcla los datos aleatoriamente
         setRecommends(shuffledData);
-        console.log(data);
       })
       .catch((error) => {
         console.error("Error fetching recommends:", error);

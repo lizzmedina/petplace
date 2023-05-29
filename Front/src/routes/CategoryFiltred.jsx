@@ -5,7 +5,7 @@ import Stack from '@mui/material/Stack';
 import { Pagination } from "@mui/material";
 
 export const CategoryFiltred = () =>  {
-  const { id, title, name} = useParams();
+  const { id} = useParams();
 
   const [category, setCategory] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -47,7 +47,7 @@ export const CategoryFiltred = () =>  {
 
   return (
     <div className='space-section'>
-      <h2>Categoría: {name}</h2>
+      <h2>Categoría: {id}</h2>
       <p>A continuación nuestras opciones de hospedaje en esta categoría</p>
 
       <div className="render-cards-recommends">

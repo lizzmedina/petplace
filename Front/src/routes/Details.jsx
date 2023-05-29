@@ -5,7 +5,6 @@ import { useParams } from 'react-router-dom'
 const Details = () => {
 
       const [details, setDetails] = useState([])
-
       const { id } = useParams()
 
       const getDetail = async()=>{
@@ -14,12 +13,9 @@ const Details = () => {
             setDetails(data)
             console.log(data);
       }
-
       useEffect(()=>{
             getDetail()
       }, [])
-
-
 
       return (
             <div className="detail-container">  
@@ -36,7 +32,6 @@ const Details = () => {
                         basicPrice={details.basicPrice}
                         characteristics={details.characteristics}
                   />
-            
             </div>
       )
 }

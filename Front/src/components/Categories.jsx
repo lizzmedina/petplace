@@ -47,7 +47,7 @@ export const Categories = () => {
       <div className = "render-cards-categories">
         {
           currentCards.map(place => (
-            <Link to={"/category/" + place.id}>
+            <Link to={"/category/" + place.id} key={place.id +'n'}>
               <Card
                 key={place.id}
                 title={place.title}
@@ -58,7 +58,6 @@ export const Categories = () => {
           ))
         }
       </div>
-      console.log(place.id);
       <Stack spacing={5} direction="row" justifyContent="center" mt={4}>
         <Pagination
           count={totalPages}
