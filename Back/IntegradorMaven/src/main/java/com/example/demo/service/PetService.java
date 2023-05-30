@@ -12,7 +12,6 @@ import java.util.Optional;
 
 @Service
 public class PetService {
-
     private PetRepository petRepository;
 
     @Autowired
@@ -21,16 +20,16 @@ public class PetService {
         this.petRepository = petRepository;
     }
 
-
     public List<Pet> findAll() {
         return petRepository.findAll();
     }
 
-    public void delete(Integer id) {
+    public void deleteById(Integer id) {
         Optional<Pet> petOpt = petRepository.findById(id);
         if (petOpt.isPresent()) {
             petRepository.delete(petOpt.get());
+        } else {
+            throw new ResourceNotFoundException("No existe una mascota con el id: " + id);
         }
-        throw new ResourceNotFoundException("No existe una mascota con el id: " + id);
     }
 }

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import * as yup from "yup";
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.css';
 
 const FormUser = () => {
     const [user, setUser] = useState({
@@ -14,13 +16,40 @@ const FormUser = () => {
         type:''
     });
 
-    const schema = yup.object().shape({
-        name: yup.string().required("El nombre es obligatorio").matches(/^[a-zA-Z]+(\s[a-zA-Z]+)*$/, "El nombre no debe contener caracteres especiales, números ni espacios en blanco al inicio o final"),
-        lastName: yup.string().required("El apellido es obligatorio").matches(/^[a-zA-Z]+(\s[a-zA-Z]+)*$/, "El apellido no debe contener caracteres especiales ni espacios en blanco al inicio o final"),
-        id: yup.string().required("El Documento de Identidad es obligatorio").matches(/^[0-9]+$/, "El Documento de identidad solo debe contener números sin puntos ni comas").min(5, "El Documento de identidad debe tener al menos 5 caracteres"),
-        cellPhone: yup.string().required("El Celular es obligatorio").matches(/^[0-9]+$/, "El Celular solo debe contener números sin puntos ni comas").min(5, "El número de celular debe tener al menos 5 caracteres"),
+        const schema = yup.object().shape({
+        name: yup
+            .string()
+            .required("El nombre es obligatorio")
+            .matches(
+                /^[a-zA-Z]+(\s[a-zA-Z]+)*$/,
+                "El nombre no debe contener caracteres especiales, números ni espacios en blanco al inicio o final"
+            ),
+        lastName: yup
+            .string()
+            .required("El apellido es obligatorio")
+            .matches(
+                /^[a-zA-Z]+(\s[a-zA-Z]+)*$/,
+                "El apellido no debe contener caracteres especiales ni espacios en blanco al inicio o final"
+            ),
+        id: yup
+            .string()
+            .required("El Documento de Identidad es obligatorio")
+            .matches(/^[0-9]+$/, "El Documento de identidad solo debe contener números sin puntos ni comas")
+            .min(5, "El Documento de identidad debe tener al menos 5 caracteres"),
+        cellPhone: yup
+            .string()
+            .required("El Celular es obligatorio")
+            .matches(/^[0-9]+$/, "El Celular solo debe contener números sin puntos ni comas")
+            .min(5, "El número de celular debe tener al menos 5 caracteres"),
         address: yup.string().required("La dirección es obligatoria"),
-        email: yup.string().email("El email no es válido").required("El email es obligatorio").matches(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, "El email no debe contener caracteres especiales, espacios en blanco y seguir un formato xxx@xxx.xxx"),
+        email: yup
+            .string()
+            .email("El email no es válido")
+            .required("El email es obligatorio")
+            .matches(
+                /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                "El email no debe contener caracteres especiales, espacios en blanco y seguir un formato xxx@xxx.xxx"
+            ),
         password: yup.string().required("La contraseña es obligatoria"),
         type: yup.string().required("El tipo de usuario es obligatorio"),
     });
@@ -51,35 +80,40 @@ const FormUser = () => {
                 // Si el email no existe entonces se continua con el envío del formulario
                 setIsLoading(true);
 
-            fetch("http://127.0.0.1:8080/api/v1/user", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(user),
-                })
-            .then((response) => {
-                if (response.ok) {
-                    setIsSuccess(true);
-                    alert(`El Usuario ${user.name} ha sido creado exitosamente.`);
-
+                fetch("http://127.0.0.1:8080/api/v1/user", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(user),
+                    })
+                .then((response) => {
+                    if (response.ok) {
+                        setIsSuccess(true);
+                        Swal.fire({
+                            title: `${user.name}`,
+                            text: "Por favor, revisa tu correo electrónico. Te hemos enviado un correo de verificación que vence en 48 horas.",
+                            icon: "success",
+                        });
+                
                     // Envío del correo de validación
-                    // fetch("http://localhost:8080/api/v1/send-validation-email", {
-                    //     method: "POST",
-                    //     headers: {
-                    //     "Content-Type": "application/json",
-                    //     },
-                    //     body: JSON.stringify({ userId: response.data.userId }), // Ajusta los datos necesarios para enviar el correo
-                    // })
-                    // .then((res) => res.json())
-                    // .then((data) => {
-                    // // Manejar la respuesta del servidor después de enviar el correo
-                    //     console.log("Correo de validación enviado:", data);
-                    // })
-                    // .catch((error) => {
-                    //     console.error("Error sending validation email:", error);
-                    // });
-
+                    fetch(`http://localhost:8080/api/v1/mail/send/${user.email}`, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(user.email), 
+                    })
+                    .then((res) => res.json())
+                    .then((data) => {
+                        // Manejar la respuesta del servidor después de enviar el correo
+                        console.log("Correo de validación enviado:", data);
+                            
+                    })
+                    .catch((error) => {
+                        console.error("Error al enviar el correo de validación:", error);
+                    });
+                    
                     setUser({
                         id: "",
                         name: "",
@@ -112,7 +146,6 @@ const FormUser = () => {
             error.inner.forEach((e) => {
                 validationErrors[e.path] = e.message;
             });
-
             setValidationErrors(validationErrors);
         }
     };

@@ -9,14 +9,21 @@ export const Categories = () => {
 
   const {places} = useContextGlobal();
 
-  
   const isMobile = useMediaQuery('(max-width: 767px)'); // Verifica si es un dispositivo móvil
   const isTablet = useMediaQuery('(max-width: 1024px)'); // Verifica si es una tablet
   
-  // Determina la cantidad de tarjetas a mostrar en función del tamaño de la pantalla
-  const cardsPerRow = isMobile ? 1 : isTablet ? 2 : 4;
-  // Cantidad de tarjetas por página
-  const cardsPerPage = isMobile ? 1 : isTablet ? 2 : 4; 
+  let cardsPerRow;
+  let cardsPerPage;
+  if (isMobile) {
+    cardsPerRow = 1;
+    cardsPerPage = 1;
+  } else if (isTablet) {
+    cardsPerRow = 2;
+    cardsPerPage = 2;
+  } else {
+    cardsPerRow = 4;
+    cardsPerPage = 4;
+  }
 // Número total de páginas
   const totalPages = Math.ceil(places.length / cardsPerPage); 
   const [currentPage, setCurrentPage] = useState(1); // Página actual
@@ -37,21 +44,20 @@ export const Categories = () => {
 
     <div className = "categories-container">
       <h2 className="home-titles">Buscar según el tipo de mascota </h2>
-
       <div className = "render-cards-categories">
         {
-        currentCards.map(place => (
-          <Link to={"/category/" + place.id}>
-            <Card
-              key={place.id}
-              title={place.title}
-              image={place.image}
-              description={place.description}
-            />
-          </Link>
-        ))}
+          currentCards.map(place => (
+            <Link to={"/category/" + place.id} key={place.id +'n'}>
+              <Card
+                key={place.id}
+                title={place.title}
+                image={place.image}
+                description={place.description}
+              />
+            </Link>
+          ))
+        }
       </div>
-
       <Stack spacing={5} direction="row" justifyContent="center" mt={4}>
         <Pagination
           count={totalPages}
@@ -59,7 +65,6 @@ export const Categories = () => {
           onChange={handlePageChange}
         />
       </Stack>
-
     </div>
   )
 }

@@ -30,7 +30,7 @@ export const Recommends = () => {
   } else if (isTablet) {
     cardsPerRow = 2;
   } else {
-    cardsPerRow = 2;
+    cardsPerRow = 10;
   }
 
   // Cantidad de tarjetas por página
@@ -69,7 +69,7 @@ export const Recommends = () => {
           <Link key={recommend.id} to={"/Detail/" + recommend.id}>
             <CardRecomends
               key={recommend.id}
-              type={recommend.type}
+              type={recommend.type.title}
               name={recommend.name}
               image={recommend.images}
               capacity={recommend.capacity}

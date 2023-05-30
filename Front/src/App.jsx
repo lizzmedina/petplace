@@ -1,16 +1,17 @@
-import { Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { NavBar } from "./components/NavBar";
 import { Home } from "./routes/Home";
 import Register from "./routes/Register";
 import Login from "./routes/Login";
-import CategoryFiltred from "./routes/CategoryFiltred";
+import {CategoryFiltred} from "./routes/CategoryFiltred";
 import ProductRegister from "./routes/ProductRegister";
 import Details from "./routes/Details";
 import MyAccount from "./routes/MyAccount";
-import Products from "./routes/Products";
+import EditProducts from "./routes/EditProducts";
 import { Footer } from "./components/footer";
 import './styles.css';
 import { FormNewCategory } from "./routes/FormNewCategory";
+import { ValidationPage } from "./routes/ValidationPage";
 
 function App() {
     return (
@@ -25,7 +26,8 @@ function App() {
                 <Route path="/Detail/:id" element={<Details/>}/>
                 <Route path="/newCategory" element={<FormNewCategory/>}/>
                 <Route path="/account/:id" element={<MyAccount/>}/>
-                <Route path="/products" element={<Products/>}/>
+                <Route path="/editProducts" element={<EditProducts/>}/>
+                <Route path="/validationPage" element={<ValidationPage/>}/>
             </Routes>
             <Footer/>
         </div>

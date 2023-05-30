@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import Swal from 'sweetalert2';
+
 export const FormNewCategory = () => {
 
     const [newCategory, setNewCategory] = useState({
@@ -55,7 +57,7 @@ export const FormNewCategory = () => {
         })
             .then((response) => response.json())
             .then(() => {
-            // Limpiar los campos del formulario
+            Swal.fire('Categoría creada exitosamente!');
             setNewCategory({
                 title: "",
                 description: "",
