@@ -40,7 +40,7 @@ class UserServiceTest {
     public void save_successTest() {
         User expectedUser = this.createTestUser(1);
 
-        UserDTO userDTO = new UserDTO();
+        UserDTO userDTO = new UserDTO(1, "Goku", "Martinez", "goku@correo.com", "goku123", "319123123", "Goku casa", "Manager");
 
         Mockito.when(repository.save(Mockito.any(User.class))).thenReturn(expectedUser);
 
@@ -96,7 +96,11 @@ class UserServiceTest {
         User userTwo = new User(2, "Maria", "Ramirez", "maria@correo.com", "maria123", "3123123", "Maria casa", "Customer", false);
         User userThree = new User(3, "Jose", "Duran", "jose@correo.com", "jose123", "423423", "Jose casa", "Customer", false);
         User userFour = new User(4, "Pedro", "Giraldo", "pedro@correo.com", "pedro123", "6786", "Pedro casa", "Customer", false);
+<<<<<<< HEAD
+        User userFive = new User(5, "Jesus", "Ronaldo", "jesus@correo.com", "jesus123", "4123", "Jesus casa", "Manager", false  );
+=======
         User userFive = new User(5, "Jesus", "Ronaldo", "jesus@correo.com", "jesus123", "4123", "Jesus casa", "Manager", false);
+>>>>>>> f512f01df4b1e756f4a39bf6151100c5c5b05668
         List<User> dbUsers = List.of(userOne, userTwo, userThree, userFour, userFive);
         Mockito.when(repository.findAll()).thenReturn(dbUsers);
 
