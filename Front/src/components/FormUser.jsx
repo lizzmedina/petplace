@@ -3,8 +3,12 @@ import { Link } from 'react-router-dom';
 import * as yup from "yup";
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.css';
+import { useContextGlobal } from "./utils/global.constext";
 
 const FormUser = () => {
+
+    const {urlGetUsers, urlPostUsers, sendEmailUrl} = useContextGlobal();
+
     const [user, setUser] = useState({
         id: '',
         name:'',
@@ -58,10 +62,10 @@ const FormUser = () => {
     const [isSuccess, setIsSuccess] = useState(false);
     const [validationErrors, setValidationErrors] = useState({});
 
-    const url = "http://localhost:8080/api/v1/user/all";
+    //const url = "http://localhost:8080/api/v1/user/all";
     const [allUsers, setAllUsers] = useState([]);
     useEffect(() => {
-        fetch(url)
+        fetch(urlGetUsers)
             .then((res) => res.json())
             .then((data) => {
                 setAllUsers(data);
@@ -80,29 +84,29 @@ const FormUser = () => {
                 // Si el email no existe entonces se continua con el envío del formulario
                 setIsLoading(true);
 
-                fetch("http://127.0.0.1:8080/api/v1/user", {
+                fetch(urlPostUsers, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
                     },
                     body: JSON.stringify(user),
-                    })
+                })
                 .then((response) => {
                     if (response.ok) {
-                        setIsSuccess(true);
-                        Swal.fire({
-                            title: `${user.name}`,
-                            text: "Por favor, revisa tu correo electrónico. Te hemos enviado un correo de verificación que vence en 48 horas.",
-                            icon: "success",
-                        });
+                    setIsSuccess(true);
+                    Swal.fire({
+                        title: `${user.name}`,
+                        text: "Por favor, revisa tu correo electrónico. Te hemos enviado un correo de verificación que vence en 48 horas.",
+                        icon: "success",
+                    });
                 
                     // Envío del correo de validación
-                    fetch(`http://localhost:8080/api/v1/mail/send/${user.email}`, {
+                    fetch(`${sendEmailUrl} ${user.email}`, {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
                         },
-                        body: JSON.stringify(user.email), 
+                        body: JSON.stringify({ email: user.email }), 
                     })
                     .then((res) => res.json())
                     .then((data) => {
@@ -127,7 +131,7 @@ const FormUser = () => {
                 } else {
                     throw new Error("Error en la solicitud");
                 }
-            })
+                })
             .catch((error) => {
                 console.error(error);
                 alert("Parece que algo va mal, verifica la información.");

@@ -50,9 +50,9 @@ public class UserController {
     }
 
     @PostMapping("/validation/{email}")
-    public ResponseEntity<String> validationUser(@PathVariable("email") String email){
+    public ResponseEntity<Void> validationUser(@PathVariable("email") String email){
         service.validation(email);
-        return  ResponseEntity.ok("El mail se ha validado correctamente");
+        return ResponseEntity.ok().build();
     }
 
 }
