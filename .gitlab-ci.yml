@@ -27,7 +27,7 @@ front:build:
   artifacts:
     expire_in: 1 week
     paths:
-      - Front/dist
+      - Front/dist/*
 
 back:deploy:
   stage: deploy
