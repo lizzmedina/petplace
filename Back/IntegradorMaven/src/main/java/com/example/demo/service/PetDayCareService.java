@@ -3,6 +3,7 @@ package com.example.demo.service;
 
 import com.example.demo.DTO.CategoryDTO;
 import com.example.demo.DTO.PetDayCareDTO;
+import com.example.demo.DTO.PetDayCareDetailDTO;
 import com.example.demo.entity.Category;
 import com.example.demo.entity.PetDayCare;
 import com.example.demo.exception.ResourceNotFoundException;
@@ -95,8 +96,10 @@ public class PetDayCareService {
         return petDayCareDTO;
     }
 
-    public List<PetDayCare> findAll(){ // metodo para listar todos los productos
-        return repository.findAll().stream().collect(Collectors.toList());
+    public List<PetDayCare> findAll(){
+
+    return repository.findAll().stream().collect(Collectors.toList());
+
     }
 
     public String delete(Integer id){
@@ -116,7 +119,7 @@ public class PetDayCareService {
 
     }
 
-    public PetDayCare detail(Integer id){
+    public PetDayCareDetailDTO detail(Integer id){
         Optional<PetDayCare> petDayCare = this.repository.findById(id);
 
         if(!petDayCare.isPresent()){ //si no esta presente, manda una excepcion
@@ -124,7 +127,7 @@ public class PetDayCareService {
         };
 
 
-        PetDayCare detailPetDatCare = new PetDayCare(
+        PetDayCareDetailDTO detailPetDatCare = new PetDayCareDetailDTO(
                 petDayCare.get().getName(),
                 petDayCare.get().getType(),
                 petDayCare.get().getCapacity(),
