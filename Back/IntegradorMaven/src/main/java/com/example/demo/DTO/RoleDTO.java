@@ -2,33 +2,33 @@ package com.example.demo.DTO;
 
 public class RoleDTO {
 
-        private String name;
-        private String id;
+    private Integer id;
+    private String name;
 
-        public RoleDTO(String name, String id) {
-            this.name = name;
-            this.id = id;
-        }
+    public RoleDTO(Integer id, String name) {
+        this.name = name;
+        this.id = id;
+    }
 
-        public RoleDTO (){
+    public RoleDTO() {
 
-        }
+    }
 
-        public String getName() {
-            return name;
-        }
+    public String getName() {
+        return name;
+    }
 
-        public void setName(String name) {
-            this.name = name;
-        }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-        public String getId() {
-            return id;
-        }
+    public Integer getId() {
+        return id;
+    }
 
-        public void setId(String id) {
-            this.id = id;
-        }
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
 
 }
