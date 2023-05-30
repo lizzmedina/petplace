@@ -51,10 +51,12 @@ back:deploy:
 
 front:deploy:
   stage: deploy
-  image: amazon/aws-cli
-  script:
-    - echo "Deploying started..."
+  image: amazon/aws-cli:latest
+  before_script:
+    - aws --version
     - aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
     - aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+  script:
+    - echo "Deploying started..."
     - aws s3 sync Front/dist/ s3://$S3_BUCKET_NAME
     - echo "Finished deploying the app."
