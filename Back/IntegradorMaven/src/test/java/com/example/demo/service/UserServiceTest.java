@@ -96,7 +96,7 @@ class UserServiceTest {
         User userTwo = new User(2, "Maria", "Ramirez", "maria@correo.com", "maria123", "3123123", "Maria casa", "Customer", false);
         User userThree = new User(3, "Jose", "Duran", "jose@correo.com", "jose123", "423423", "Jose casa", "Customer", false);
         User userFour = new User(4, "Pedro", "Giraldo", "pedro@correo.com", "pedro123", "6786", "Pedro casa", "Customer", false);
-        User userFive = new User(5, "Jesus", "Ronaldo", "jesus@correo.com", "jesus123", "4123", "Jesus casa", "Manager", false);
+        User userFive = new User(5, "Jesus", "Ronaldo", "jesus@correo.com", "jesus123", "4123", "Jesus casa", "Manager", false  );
         List<User> dbUsers = List.of(userOne, userTwo, userThree, userFour, userFive);
         Mockito.when(repository.findAll()).thenReturn(dbUsers);
 
@@ -130,11 +130,10 @@ class UserServiceTest {
         userDTO.setId(1);
         Mockito.when(repository.findById(userDTO.getId())).thenReturn(Optional.empty());
 
-        Assertions.assertThrows(ResourceNotFoundException.class,
-                () -> userService.updateUser(userDTO),
-                "El usuario no existe");
+        UserDTO actualUser = userService.updateUser(userDTO);
 
         Mockito.verify(repository, Mockito.times(1)).findById(1);
+        Assertions.assertEquals(userDTO, actualUser);
     }
 
     @Test
@@ -149,11 +148,11 @@ class UserServiceTest {
                 .thenReturn(
                         Optional.of(userEntity));
 
-        userService.updateUser(userDTO);
+        UserDTO actualUser = userService.updateUser(userDTO);
 
         Mockito.verify(repository, Mockito.times(1)).findById(1);
         Mockito.verify(repository, Mockito.times(1)).save(userEntity);
-        this.assertEqualsEntityAndDto(userEntity, userDTO);
+        this.assertEqualsEntityAndDto(userEntity, actualUser);
     }
 
     private User createTestUser(Integer id) {
