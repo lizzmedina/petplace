@@ -1,56 +1,33 @@
-package com.example.demo.entity;
+package com.example.demo.DTO;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
+import com.example.demo.entity.Category;
+import jakarta.persistence.Column;
+import jakarta.persistence.OneToOne;
 
-import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Table(name = "pet_day_care")
-public class PetDayCare {
+public class PetDayCareDetailDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Integer id;
-
-    @Column(name = "name")
     private String name;
 
-   @OneToOne
-   private Category type;
+    private Category type;
 
-    @Column(name = "capacity")
     private Integer capacity;
 
-    @Column(name = "city")
     private String city;
 
-    @Column(name = "address")
     private String address;
 
-    @Column(name = "detail")
     private String detail;
 
-    @Column(name = "images")
     private List<String> images ;
 
-    @Column(name = "characteristic")
     private List<String> characteristics;
 
-    @Column(name = "basicPrice")
     private double basicPrice;
 
-//    @ManyToOne
-//    private User user;
-
-//    @OneToMany(mappedBy = "petDayCare")
-//    List<Booking> bookings;
-
-    public PetDayCare(String name, Category type, Integer capacity, String city, String address, String detail, List<String> images, List<String> characteristics, double basicPrice) {
-
-       this.name = name;
+    public PetDayCareDetailDTO(String name, Category type, Integer capacity, String city, String address, String detail, List<String> images, List<String> characteristics, double basicPrice) {
+        this.name = name;
         this.type = type;
         this.capacity = capacity;
         this.city = city;
@@ -59,17 +36,6 @@ public class PetDayCare {
         this.images = images;
         this.characteristics = characteristics;
         this.basicPrice = basicPrice;
-    }
-
-    public PetDayCare() {
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -87,15 +53,6 @@ public class PetDayCare {
     public void setType(Category type) {
         this.type = type;
     }
-
-
-//    public String getType() {
-//        return type;
-//    }
-//
-//    public void setType(String type) {
-//        this.type = type;
-//    }
 
     public Integer getCapacity() {
         return capacity;
@@ -152,20 +109,4 @@ public class PetDayCare {
     public void setBasicPrice(double basicPrice) {
         this.basicPrice = basicPrice;
     }
-
-//    public User getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
-
-//    public List<Booking> getBookings() {
-//        return bookings;
-//    }
-//
-//    public void setBookings(List<Booking> bookings) {
-//        this.bookings = bookings;
-//    }
 }

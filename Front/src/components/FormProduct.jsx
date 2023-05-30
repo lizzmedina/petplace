@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 
-const FormProduct = () => {
-    const [product, setProduct] = useState({
-        name: '',
-        type: '',
-        capacity: '',
-        city: '',
-        address: '',
-        detail: '',
-        image: '',
-        services: [],
-        basicPrice: ''
-    })
+    const FormProduct = () => {
+        const [product, setProduct] = useState({
+            name: '',
+            type: '',
+            capacity: '',
+            city: '',
+            address: '',
+            detail: '',
+            image: '',
+            services: [],
+            basicPrice: ''
+        })
 
     const [isLoading, setIsLoading] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);

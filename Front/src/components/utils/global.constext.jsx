@@ -11,16 +11,12 @@ const ContextProvider = ({children}) => {
         const data = await res.json();
         setPlaces(data)
     }
-
     useEffect(() => {
         getAllCategories();
     }, []);
 
 
 const[url, setUrl] = useState("http://localhost:8080/api/v1/petDayCare/all")
-
-    // Estados y funciones para paginado
-
     const [dataCategory, setDataCategory] = useState([])
     useEffect(() => {
         fetch(url)
@@ -29,7 +25,6 @@ const[url, setUrl] = useState("http://localhost:8080/api/v1/petDayCare/all")
                 setDataCategory(data);
             })
             .catch((error) => {
-            // Manejo de errores aquí
                 error('Error al obtener los datos:', error);
             });
     }, [url]);

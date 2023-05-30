@@ -33,6 +33,15 @@ a:link, a:visited, a:active {
     padding: 0.3rem;
     border-radius: 5px;
 }
+.button-2{
+    background-color: var(--color2);
+    color: var(--color7);
+    margin: 0.5rem auto;
+    border-radius: 5px;
+    width: 90%;
+    border: none;
+    height: 1.5rem;
+}
 
 /* navbar */
 
@@ -63,7 +72,7 @@ a:link, a:visited, a:active {
     flex-direction: row;
     align-items: center;
     width: 30vw;
-    justify-content: space-evenly;
+    justify-content: flex-start;
 }
 
 .navbar-buttons {
@@ -245,7 +254,7 @@ color:#fff;
 
 .card-title-recommends{
     color: var(--color6);
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     display: inline;
 }
 .card-category-recommends {
@@ -256,29 +265,43 @@ color:#fff;
 }
 .card-descrption-recommends {
     color: var(--color6);
-    font-size: 0.6rem;
-    margin: 5px 17px 0px 0;
+    font-size: 0.7rem;
+    margin: 5px 17px 10px 0;
 }
-a.see-more-link{
-    display:inline-flex;
-    font-size: 0.6rem;
+.card-descrption-recommends::after {
+    content: "  más...";
     color: var(--color2);
 }
+.card-price-recommends {
+   display: flex;
+   justify-content: space-between;
+   align-items: flex-start;
+   margin-right: 1rem;
+   color: var(--color6);
+   font-weight:500;
+}
+
 .card-location-recommends{
     color: var(--color6);
-    font-size: 0.5rem;
+    font-size: 0.7rem;
     margin: 10px 10px 10px 0;
 }
-.card-location-recommends:before {
-    content: "";
-    display: block;
-    background: url("./images/pinLocation.png") no-repeat;
-    width: 10px;
-    height: 10px;
-    float: left;
-    margin: 0 3px 0 0;
-    padding: -3px 0 0 0;
+.card-location-icon{
+    color: var(--color3);
+    margin-right: 0.4rem;
 }
+.card-services-list-recommends{
+    font-size: 0.6rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 40%;
+}
+.card-services-recommends{
+    margin-right: 1rem;
+    color: var(--color6);
+}
+
 .card-quantity-recommends {
     color: var(--color6);
     font-size: 0.4rem;
@@ -411,6 +434,16 @@ input:hover {
 }
 
 /* Products and Users */
+
+.ListItem-CreateProduct{
+    display: flex;
+    justify-content:flex-end;
+    align-items: center;
+    width: 80%;
+    border-radius: 5px;
+    padding: 0.4rem 1rem;
+    margin: 0.1rem;
+}
 .ListItem{
     display: flex;
     justify-content:space-between;
@@ -441,6 +474,26 @@ input:hover {
     color: white;
     border-radius: 5px;
     margin: 0.05rem 0.3rem
+}
+.create-button{
+    width: 70px;
+    border-color: var(--color2);
+    background-color: var(--color2);
+    color: white;
+    border-radius: 5px;
+    margin: 0.05rem 0.3rem
+}
+.my-swal-container h2{
+    color: var(--color2);
+}
+.my-swal-container p{
+    font-weight: bold;
+}
+.my-swal-container .swal2-input,
+.my-swal-container .swal2-textarea {
+    margin: 0 0 1rem 0; /* Elimina el margen */
+    height: 1rem;
+    width: 80%;
 }
 
 
@@ -479,16 +532,7 @@ input:hover {
     flex-wrap: wrap-reverse;
 }
 
-.product-location::before {
-    content: "";
-    display: block;
-    background: url("./images/pinLocation.png") no-repeat;
-    width: 10px;
-    height: 10px;
-    float: left;
-    margin: 5px 3px 0 0;
-    padding: 3px 0 0 0;
-}
+
 .product-galery {
     width: 100%;
     /* height: 400px; */
@@ -544,8 +588,6 @@ p.more-images{
     
 }
 
-
-
 .product-info-container {
     display: flex;
     width: 100%;
@@ -563,6 +605,10 @@ p.more-images{
 }
 .product-info-rigth {
     width: 20rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
 }
 
 .buttonDetail {
@@ -581,7 +627,9 @@ p.more-images{
     /* float:right; */
 }
 .text-info {
-    margin: 5px auto 5px auto;
+    margin: 15px  0 ;
+    font-size: 1.1rem;
+    font-weight: bold;
 }
 .name-info {
     display: flex;
@@ -590,13 +638,25 @@ p.more-images{
 .city-info {
     margin: 5px auto 5px auto;
 }
-.price-info {
-    margin: 5px auto 5px auto;
-    font-size: 1.2em;
-}
+
 .detail-info {
     margin: 25px auto 5px auto;
     font-size: 1.2em;
+}
+.features{
+    margin: 1rem 0;
+}
+.feature-list{
+    display: flex;
+    justify-content:space-between;
+    align-items: start;
+    margin-top: 1rem;
+    
+}
+.icon-service{
+    color: var(--color2);
+    /* font-size: 1.1rem; */
+    margin-right: 0.3rem;
 }
 
 /* ESTILOS DE FormNewCategory*/
@@ -666,16 +726,6 @@ p.more-images{
 }
 
 
-.city-info::before {
-    content: "";
-    display: block;
-    background: url("./images/pinLocation.png") no-repeat;
-    width: 10px;
-    height: 10px;
-    float: left;
-    margin: 5px 3px 0 0;
-    padding: 3px 0 0 0;
-}
 
 /* footer */
 

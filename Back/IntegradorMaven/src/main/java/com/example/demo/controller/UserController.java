@@ -23,8 +23,8 @@ public class UserController {
     }
 
     @PostMapping()
-    public User saveUser(@RequestBody User manager){
-        return service.save(manager);
+    public User saveUser(@RequestBody UserDTO userDTO){
+        return service.save(userDTO);
     }
 
     @GetMapping("/{id}")
@@ -49,5 +49,10 @@ public class UserController {
         return ResponseEntity.ok("Usuario Actualizado correctamente");
     }
 
+    @PostMapping("/validation/{email}")
+    public ResponseEntity<String> validationUser(@PathVariable("email") String email){
+        service.validation(email);
+        return  ResponseEntity.ok("El mail se ha validado correctamente");
+    }
 
 }
