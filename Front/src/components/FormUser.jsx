@@ -80,51 +80,52 @@ const FormUser = () => {
                 // Si el email no existe entonces se continua con el envío del formulario
                 setIsLoading(true);
 
-            fetch("http://127.0.0.1:8080/api/v1/user", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(user),
-                })
-                .then((response) => {
-                    if (response.ok) {
-                  setIsSuccess(true);
-                  Swal.fire({
-                    title: `${user.name}`,
-                    text: "Por favor, revisa tu correo electrónico. Te hemos enviado un correo de verificación que vence en 48 horas.",
-                    icon: "success",
-                  });
-                
-                  // Envío del correo de validación
-                  fetch("http://localhost:8080/api/v1/mail/send", {
+                fetch("http://127.0.0.1:8080/api/v1/user", {
                     method: "POST",
                     headers: {
-                      "Content-Type": "application/json",
+                        "Content-Type": "application/json",
                     },
-                    body: JSON.stringify({ }), 
-                  })
-                  .then((res) => res.json())
-                  .then((data) => {
-                    // Manejar la respuesta del servidor después de enviar el correo
-                    console.log("Correo de validación enviado:", data);
-                  })
-                  .catch((error) => {
-                    console.error("Error al enviar el correo de validación:", error);
-                  });
+                    body: JSON.stringify(user),
+                    })
+                .then((response) => {
+                    if (response.ok) {
+                        setIsSuccess(true);
+                        Swal.fire({
+                            title: `${user.name}`,
+                            text: "Por favor, revisa tu correo electrónico. Te hemos enviado un correo de verificación que vence en 48 horas.",
+                            icon: "success",
+                        });
                 
-                  setUser({
-                    id: "",
-                    name: "",
-                    lastName: "",
-                    cellPhone: "",
-                    address: "",
-                    email: "",
-                    password: "",
-                    type: "",
-                  });
+                    // Envío del correo de validación
+                    fetch("http://localhost:8080/api/v1/mail/send", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(user.email), 
+                    })
+                    .then((res) => res.json())
+                    .then((data) => {
+                        // Manejar la respuesta del servidor después de enviar el correo
+                        console.log("Correo de validación enviado:", data);
+                            
+                    })
+                    .catch((error) => {
+                        console.error("Error al enviar el correo de validación:", error);
+                    });
+                    
+                    setUser({
+                        id: "",
+                        name: "",
+                        lastName: "",
+                        cellPhone: "",
+                        address: "",
+                        email: "",
+                        password: "",
+                        type: "",
+                    });
                 } else {
-                  throw new Error("Error en la solicitud");
+                    throw new Error("Error en la solicitud");
                 }
             })
             .catch((error) => {
@@ -145,7 +146,6 @@ const FormUser = () => {
             error.inner.forEach((e) => {
                 validationErrors[e.path] = e.message;
             });
-
             setValidationErrors(validationErrors);
         }
     };
