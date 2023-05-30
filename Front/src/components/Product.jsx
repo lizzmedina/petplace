@@ -93,6 +93,7 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
 
 
             </div>
+            
 
         </div>
     )
