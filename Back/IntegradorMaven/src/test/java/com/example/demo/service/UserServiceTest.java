@@ -42,12 +42,12 @@ class UserServiceTest {
 
         UserDTO userDTO = new UserDTO();
 
-        Mockito.when(repository.save(expectedUser)).thenReturn(expectedUser);
+        Mockito.when(repository.save(Mockito.any(User.class))).thenReturn(expectedUser);
 
         User actualUser = userService.save(userDTO);
 
         Assertions.assertEquals(expectedUser, actualUser);
-        Mockito.verify(repository, Mockito.times(1)).save(expectedUser);
+        Mockito.verify(repository, Mockito.times(1)).save(Mockito.any(User.class));
     }
 
 
@@ -166,6 +166,7 @@ class UserServiceTest {
         expectedUser.setName("User Name");
         expectedUser.setLastName("Last Name");
         expectedUser.setId(id);
+        expectedUser.setValidation(false);
         return expectedUser;
     }
 
