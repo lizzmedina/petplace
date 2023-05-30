@@ -2,10 +2,12 @@ package com.example.demo.configuration.data.loader;
 
 import com.example.demo.DTO.CategoryDTO;
 import com.example.demo.DTO.PetDayCareDTO;
+import com.example.demo.DTO.UserDTO;
 import com.example.demo.entity.Category;
 import com.example.demo.repository.PetDayCareRepository;
 import com.example.demo.service.CategoryService;
 import com.example.demo.service.PetDayCareService;
+import com.example.demo.service.UserService;
 import com.example.demo.utils.JsonHelper;
 import com.fasterxml.jackson.core.type.TypeReference;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,9 @@ public class DataLoaderComponent {
     @Autowired
     private CategoryService categoryService;
 
+    @Autowired
+    private UserService userService;
+
     public void loadInitialPetDayCareData() {
         //petDayCareService.deleteAll();//Solo para hacer pruebas
         if (petDayCareService.findAll().isEmpty()) {
@@ -34,8 +39,6 @@ public class DataLoaderComponent {
         } else {
             System.out.println("pet day care data already exists, skipping creation...");
         }
-
-
     }
 
     public void loadInitialCategoriesData() {
@@ -49,9 +52,22 @@ public class DataLoaderComponent {
         }
     }
 
+    public void loadInitialUserData() {
+        //petDayCareService.deleteAll();//Solo para hacer pruebas
+        if (userService.getAllUsers().isEmpty()) {
+            System.out.println("loading user data...");
+            List<UserDTO> userDTOList = JsonHelper.readJsonFromFile("user_data.json", new TypeReference<>() {
+            });
+            userDTOList.forEach(userService::save);
+        } else {
+            System.out.println("user data already exists, skipping creation...");
+        }
+    }
+
     @EventListener
     public void onApplicationEvent(ContextRefreshedEvent event) {
         loadInitialCategoriesData();
         loadInitialPetDayCareData();
+        loadInitialUserData();
     }
 }
