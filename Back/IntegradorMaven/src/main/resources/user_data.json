@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1234567890,
+    "name": "Pepito",
+    "lastName": "Pérez",
+    "email": "pepitoperez@gmail.com",
+    "password": "11111aa",
+    "cellPhone": "3003333333",
+    "address": "Carrera Z # 80 - 40",
+    "type": "Customer"
+  },
+  {
+    "id": 1876543210,
+    "name": "Juanito",
+    "lastName": "Alzate",
+    "email": "juanitoalzate@gmail.com",
+    "password": "987654aa",
+    "cellPhone": "3210000000",
+    "address": "Carrera 60 # A - V",
+    "type": "Customer"
+  },
+  {
+    "id": 1589631074,
+    "name": "Admi Pet",
+    "lastName": "Place",
+    "email": "petplace.dh@gmail.com",
+    "password": "Petplace.dh.team2",
+    "cellPhone": "3222222222",
+    "address": "Carrera A # 14 - B",
+    "type": "Manager"
+  },
+  {
+    "id": 1592634807,
+    "name": "María",
+    "lastName": "Pancha",
+    "email": "mariapancha@gmail.com",
+    "password": "88888aa",
+    "cellPhone": "3216000000",
+    "address": "Carrera 30 # 47 - 59",
+    "type": "Manager"
+  }
+]

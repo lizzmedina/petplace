@@ -26,11 +26,17 @@ public class PetService {
         return petRepository.findAll();
     }
 
-    public void delete(Integer id) {
+    public void deleteById(Integer id) {
+        /*
+           1. Optional<Pet> petOpt;
+           2. petRepository.findById(id);
+           3. petOpt = linea 2;
+         */
         Optional<Pet> petOpt = petRepository.findById(id);
         if (petOpt.isPresent()) {
             petRepository.delete(petOpt.get());
+        }else{
+            throw new ResourceNotFoundException("No existe una mascota con el id: " + id);
         }
-        throw new ResourceNotFoundException("No existe una mascota con el id: " + id);
     }
 }

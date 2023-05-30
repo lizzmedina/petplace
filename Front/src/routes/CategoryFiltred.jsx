@@ -55,7 +55,7 @@ export const CategoryFiltred = () =>  {
           <Link key={recommend.id} to={"/Detail/" + recommend.id}>
             <CardRecomends
               key={recommend.id}
-              type={recommend.type.name}
+              type={recommend.type.title}
               name={recommend.name}
               image={recommend.images}
               capacity={recommend.capacity}

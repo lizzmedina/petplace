@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 
 import com.example.demo.DTO.UserDTO;
+import com.example.demo.entity.PetDayCare;
 import com.example.demo.entity.User;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.UserRepository;
@@ -22,10 +23,22 @@ public class UserService {
         this.repository = repository;
     }
 
-    public User save(User user) { //
-        if (user == null) {
+    public User save(UserDTO userDTO) { //
+        if (userDTO == null) {
             throw new IllegalArgumentException("El usuario no puede ser nulo");// Save a user
         }
+
+        User user = new User(
+                userDTO.getId(),
+                userDTO.getName(),
+                userDTO.getLastName(),
+                userDTO.getEmail(),
+                userDTO.getPassword(),
+                userDTO.getCellPhone(),
+                userDTO.getAddress(),
+                userDTO.getType(),
+                false
+        );
         return repository.save(user);
     }
 
@@ -76,4 +89,28 @@ public class UserService {
         throw new ResourceNotFoundException("El usuario no existe");
     }
 
+
+    public User validation(String email){
+        Optional<User> user = this.repository.findByEmail(email);
+
+        if(!user.isPresent())
+            throw  new RuntimeException("el email no se encuentrra registrado aun");
+
+        user.get().setValidation(true);
+
+        User userValidated = new User(
+                user.get().getId(),
+                user.get().getName(),
+                user.get().getLastName(),
+                user.get().getEmail(),
+                user.get().getPassword(),
+                user.get().getCellPhone(),
+                user.get().getAddress(),
+                user.get().getType(),
+                true
+
+        );
+
+        return repository.save(userValidated);
+    }
 }

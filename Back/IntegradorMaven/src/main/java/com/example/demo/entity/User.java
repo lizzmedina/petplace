@@ -33,6 +33,10 @@ public class User {
     @Column(name="type")
     private String type;
 
+
+    @Column(name = "validation")
+    private boolean validation;
+
 //    @OneToMany(mappedBy = "user")
 //    List<PetDayCare> petDayCares;
 
@@ -41,7 +45,7 @@ public class User {
     List<Booking> bookings;
 
 
-    public User(Integer id, String name, String lastName, String email, String password, String cellPhone, String address, String type) {
+    public User(Integer id, String name, String lastName, String email, String password, String cellPhone, String address, String type, boolean validation) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
@@ -50,6 +54,7 @@ public class User {
         this.cellPhone = cellPhone;
         this.address = address;
         this.type = type;
+        this.validation = validation;
     }
 
     public User() {
@@ -118,5 +123,13 @@ public class User {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public boolean isValidation() {
+        return validation;
+    }
+
+    public boolean setValidation(boolean validation) {
+       return this.validation = validation;
     }
 }
