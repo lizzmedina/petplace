@@ -40,7 +40,7 @@ function MyAccount() {
                         </div>
                         <div className="options">
                             <h3>Usuarios</h3>
-                            <button>Editar Usuario</button>
+                            <button><Link to='/EditUsers' style={{ color: 'inherit' }}>Editar Producto</Link></button>
                         </div>
                     </div>
                 </div>
