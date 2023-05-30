@@ -11,7 +11,7 @@ export const ValidationPage = () => {
 
   const handlerValidation = () => {
     if (user.email) {
-      fetch(`http://localhost:8080/api/v1/user/validation/${user.email}`, {
+      fetch(`${validationUserUrl}${user.email}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -31,16 +31,15 @@ export const ValidationPage = () => {
   };
 
   return (
-    <div>
-      <h2>Pagina de validación de correo electrónico</h2>
-
+    <div className="validationpage-container space-section">
+      <h2 className="h2-validationpage">Por favor ingresa el correo registrado para validarlo:</h2>
+      
       <input
         type="email"
         className="type-1"
         value={user.email}
         onChange={(e) => setUser({ email: e.target.value })}
       />
-
       <button className="button-1" onClick={handlerValidation}>
         Validar
       </button>

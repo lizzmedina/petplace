@@ -96,7 +96,7 @@ const FormUser = () => {
                     setIsSuccess(true);
                     Swal.fire({
                         title: `${user.name}`,
-                        text: "Por favor, revisa tu correo electrónico. Te hemos enviado un correo de verificación que vence en 48 horas.",
+                        text: "Por favor, revisa tu correo electrónico. Te hemos enviado un correo de verificación.",
                         icon: "success",
                     });
                 
