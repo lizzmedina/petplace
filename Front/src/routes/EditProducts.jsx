@@ -90,40 +90,40 @@ function EditProducts() {
                                         popup: 'my-swal-popup',
                                     },
                                 }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        const { nombre, apellido, celular, categoria, direccion } = result.value;
 
+                                        if (nombre && apellido && celular && categoria && direccion) {
+                                            const updatedUser = {
+                                                id: user.id,
+                                                name: nombre,
+                                                lastName: apellido,
+                                                cellPhone: celular,
+                                                categoryName: categoria,
+                                                address: direccion,
+                                                email: user.email,
+                                                password: user.password
+                                            };
 
-                                    const { nombre, capacidad, precio, categoria, ciudad, direccion, detail } = result.value;
-                                    console.log(categoria);
-                                    console.log(detail);
-
-                                    const updatedProduct = {
-                                        id: product.id,
-                                        name: nombre,
-                                        capacity: capacidad,
-                                        basicPrice: precio,
-                                        categoryName: categoria,
-                                        city: ciudad,
-                                        address: direccion,
-                                        detail: detail,
-                                        images: product.images,
-                                        characteristics: product.characteristics,
-                                    };
-
-                                    fetch('http://127.0.0.1:8080/api/v1/petDayCare/edit', {
-                                        method: 'PUT',
-                                        headers: {
-                                            'Content-Type': 'application/json',
-                                        },
-                                        body: JSON.stringify(updatedProduct),
-                                    })
-                                        .then((response) => response.json())
-                                        .then((data) => {
-                                            Swal.fire(`Producto actualizado: ${data.name}`);
-                                            getAllProducts(); // Actualiza la lista de productos después de la edición
-                                        })
-                                        .catch((error) => {
-                                            console.error('Error:', error);
-                                        });
+                                            fetch('http://127.0.0.1:8080/api/v1/user', {
+                                                method: 'PUT',
+                                                headers: {
+                                                    'Content-Type': 'application/json',
+                                                },
+                                                body: JSON.stringify(updatedUser),
+                                            })
+                                                .then((response) => response.json())
+                                                .then((data) => {
+                                                    Swal.fire(`Usuario actualizado: ${data.name}`);
+                                                    getAllUsers(); // Actualiza la lista de usuarios después de la edición
+                                                })
+                                                .catch((error) => {
+                                                    console.error('Error:', error);
+                                                });
+                                        } else {
+                                            Swal.fire('Error', 'Debes completar todos los campos', 'error');
+                                        }
+                                    }
                                 });
                             }}
                         >
