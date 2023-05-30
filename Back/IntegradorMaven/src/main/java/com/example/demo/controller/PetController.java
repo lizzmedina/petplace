@@ -29,7 +29,7 @@ public class PetController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") Integer id){
-        service.delete(id);
+        service.deleteById(id);
         return ResponseEntity.ok().build();
     }
 }
