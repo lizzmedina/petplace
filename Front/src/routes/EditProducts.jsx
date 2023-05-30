@@ -101,7 +101,7 @@ function EditProducts() {
                                         name: nombre,
                                         capacity: capacidad,
                                         basicPrice: precio,
-                                        categoryName: "Gatos",
+                                        categoryName: categoria,
                                         city: ciudad,
                                         address: direccion,
                                         detail: detail,
