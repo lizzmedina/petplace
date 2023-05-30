@@ -69,7 +69,7 @@ public class UserService {
         return listOfUserDtos;
     }
 
-    public void updateUser(UserDTO userDTO) {
+    public UserDTO updateUser(UserDTO userDTO) {
         if (userDTO != null) {
             Optional<User> userOpt = repository.findById(userDTO.getId());
             if (userOpt.isPresent()) {
@@ -83,10 +83,11 @@ public class UserService {
                 user.setAddress(userDTO.getAddress());
                 user.setType(userDTO.getType());
                 repository.save(user);
-                return;
             }
+            return userDTO;
+        }else {
+            throw new ResourceNotFoundException("El usuario no existe");
         }
-        throw new ResourceNotFoundException("El usuario no existe");
     }
 
 
