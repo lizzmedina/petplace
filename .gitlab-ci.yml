@@ -62,3 +62,5 @@ front:deploy:
     - echo "Deploying started..."
     - aws s3 sync Front/dist/ s3://$S3_BUCKET_NAME
     - echo "Finished deploying the app."
+  only:
+    - Develop
