@@ -97,7 +97,7 @@ const FormUser = () => {
                         });
                 
                     // Envío del correo de validación
-                    fetch("http://localhost:8080/api/v1/mail/send", {
+                    fetch(`http://localhost:8080/api/v1/mail/send/${user.email}`, {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
