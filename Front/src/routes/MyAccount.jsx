@@ -31,7 +31,7 @@ function MyAccount() {
                         <div className="options">
                             <h3>Productos</h3>
                             <button><Link to='/productRegister' style={{ color: 'inherit' }}>Crear Producto</Link></button>
-                            <button><Link to='/products' style={{ color: 'inherit' }}>Editar Producto</Link></button>
+                            <button><Link to='/EditProducts' style={{ color: 'inherit' }}>Editar Producto</Link></button>
 
                         </div>
                         <div className="options">

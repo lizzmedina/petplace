@@ -5,7 +5,6 @@ import { useParams } from 'react-router-dom'
 const Details = () => {
 
       const [details, setDetails] = useState([])
-
       const { id } = useParams()
 
       const getDetail = async()=>{
@@ -14,31 +13,27 @@ const Details = () => {
             setDetails(data)
             console.log(data);
       }
-
       useEffect(()=>{
             getDetail()
       }, [])
 
+      return (
+            <div className="detail-container">  
 
-
-  return (
-      <div className="detail-container">  
-
-            <Product
-                  id={details.id}
-                  type={details.type}
-                  name={details.name}
-                  image={details.images}
-                  capacity={details.capacity}
-                  address={details.address}
-                  city={details.city}
-                  detail={details.detail}
-                  basicPrice={details.basicPrice}
-                  characteristics={details.characteristics}
-            />
-      
-      </div>
-  )
+                  <Product
+                        id={details.id}
+                        type={details.type}
+                        name={details.name}
+                        image={details.images}
+                        capacity={details.capacity}
+                        address={details.address}
+                        city={details.city}
+                        detail={details.detail}
+                        basicPrice={details.basicPrice}
+                        characteristics={details.characteristics}
+                  />
+            </div>
+      )
 }
 
 export default Details;

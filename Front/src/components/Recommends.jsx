@@ -69,7 +69,7 @@ export const Recommends = () => {
           <Link key={recommend.id} to={"/Detail/" + recommend.id}>
             <CardRecomends
               key={recommend.id}
-              type={recommend.type}
+              type={recommend.type.name}
               name={recommend.name}
               image={recommend.images}
               capacity={recommend.capacity}
