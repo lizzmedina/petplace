@@ -665,15 +665,6 @@ p.more-images{
 
 /* ESTILOS DE FormNewCategory*/
 
-/* .form-new-category-container{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
-    width: 100%;
-    padding: 3.5rem 0;
-} */
-
 .form-new-category{
     display: flex;
     flex-direction: column;
@@ -683,7 +674,6 @@ p.more-images{
 }
 .input-category {
     width: 100%;
-    
 }
 
 .title-form-new-category {
@@ -715,7 +705,26 @@ p.more-images{
     
 }
 
+/* view validationPage*/
 
+.validationpage-container{
+    flex-wrap: wrap;
+    width: 100%;
+}
+.h2-validationpage{
+    margin: 0rem 2rem 3rem 2rem;
+    text-align: center;
+}
+.type-1 {
+    display: flex;
+    width: 60%;
+    margin: 2rem 1rem;
+    text-align: center;
+}
+.validationpage-container button{
+    background-color: var(--color2);
+    color: var(--color1);
+}
 /* 
 .path {
     position: absolute;

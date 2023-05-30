@@ -44,15 +44,14 @@ public class UserController {
     }
 
     @PutMapping
-    public ResponseEntity<String> updateUser(@RequestBody UserDTO userDTO){
-        service.updateUser(userDTO);
-        return ResponseEntity.ok("Usuario Actualizado correctamente");
+    public UserDTO updateUser(@RequestBody UserDTO userDTO){
+       return service.updateUser(userDTO);
     }
 
     @PostMapping("/validation/{email}")
-    public ResponseEntity<String> validationUser(@PathVariable("email") String email){
+    public ResponseEntity<Void> validationUser(@PathVariable("email") String email){
         service.validation(email);
-        return  ResponseEntity.ok("El mail se ha validado correctamente");
+        return ResponseEntity.ok().build();
     }
 
 }

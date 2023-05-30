@@ -53,10 +53,5 @@ class PetServiceTest {
         Mockito.verify(repository, Mockito.times(1)).findById(1);
         Mockito.verify(repository, Mockito.times(1)).delete(expected);
     }
-
-
-
-    }
-
-
+}
 

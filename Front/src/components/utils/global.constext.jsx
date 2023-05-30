@@ -5,7 +5,13 @@ const ContextGlobal = createContext();
 
 const ContextProvider = ({children}) => {
 
-    const [places, setPlaces] = useState([]);
+    
+    const validationUserUrl = "http://localhost:8080/api/v1/user/validation/";
+    const sendEmailUrl = "http://localhost:8080/api/v1/mail/send/";
+    const urlGetUsers = "http://localhost:8080/api/v1/user/all";
+    const urlPostUsers = "http://127.0.0.1:8080/api/v1/user";
+
+    const [places, setPlaces] = useState([]); // categorias
     const getAllCategories = async()=> {
         const res = await fetch('http://localhost:8080/api/v1/category/all');
         const data = await res.json();
@@ -16,7 +22,7 @@ const ContextProvider = ({children}) => {
     }, []);
 
 
-const[url, setUrl] = useState("http://localhost:8080/api/v1/petDayCare/all")
+    const[url, setUrl] = useState("http://localhost:8080/api/v1/petDayCare/all") // productos/hospedajes
     const [dataCategory, setDataCategory] = useState([])
     useEffect(() => {
         fetch(url)
@@ -30,7 +36,7 @@ const[url, setUrl] = useState("http://localhost:8080/api/v1/petDayCare/all")
     }, [url]);
 
     return (
-        <ContextGlobal.Provider value={{getAllCategories, places,setPlaces, url, setUrl, dataCategory, setDataCategory}}>
+        <ContextGlobal.Provider value={{urlGetUsers, sendEmailUrl, urlPostUsers, validationUserUrl, getAllCategories, places,setPlaces, url, setUrl, dataCategory, setDataCategory}}>
             {children}
         </ContextGlobal.Provider>
     )

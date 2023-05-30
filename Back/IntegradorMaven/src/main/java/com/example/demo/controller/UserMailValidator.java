@@ -36,7 +36,7 @@ public class UserMailValidator {
                 "\n" +
                 "Sigue los pasos a continuación para completar el proceso de validación: \n" +
                 "\n" +
-                "Haz clic en el siguiente enlace de verificación: [http://127.0.0.1:5173/validation]\n" +
+                "Haz clic en el siguiente enlace de verificación: [http://localhost:5173/validationPage]\n" +
                 "\n" +
                 "Se abrirá una página de confirmación donde podrás verificar tu dirección de correo electrónico.\n" +
                 "\n" +
@@ -48,6 +48,7 @@ public class UserMailValidator {
         mail.send(email);
 
 
-      return new ResponseEntity<>(true, HttpStatus.OK);
+        return new ResponseEntity<>(true, HttpStatus.OK);
+
     }
 }
