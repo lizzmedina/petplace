@@ -41,6 +41,7 @@ public class PetDayCareService {
     public PetDayCareDTO edit(PetDayCareDTO petDayCareDTO){
 
         CategoryDTO categoryDTO = this.categoryService.findByName(petDayCareDTO.getCategoryName());
+
         Optional<PetDayCare> namePetDayCareEntity = this.repository.findById(petDayCareDTO.getId());
 
         if(namePetDayCareEntity.isEmpty()){
@@ -49,6 +50,8 @@ public class PetDayCareService {
 
         PetDayCare petDayCareEntity = namePetDayCareEntity.get();
         petDayCareEntity.setName(petDayCareDTO.getName());
+        petDayCareEntity.setType(categoryMapper.mapToEntity(categoryDTO));
+        petDayCareEntity.setDetail(petDayCareDTO.getDetail());
         petDayCareEntity.setAddress(petDayCareDTO.getAddress());
         petDayCareEntity.setCity(petDayCareDTO.getCity());
         petDayCareEntity.setCapacity(petDayCareDTO.getCapacity());

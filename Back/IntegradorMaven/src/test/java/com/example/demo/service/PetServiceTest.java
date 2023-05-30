@@ -1,10 +1,9 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.Pet;
+import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.PetRepository;
-import org.aspectj.lang.annotation.Before;
-import org.hibernate.query.SelectionQuery;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,38 +11,47 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.http.ResponseEntity;
-
 
 import java.util.Optional;
 
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
-public class PetServiceTest {
+class PetServiceTest {
+
     @Mock
-    PetRepository petRepository;
+    PetRepository repository;
 
     @InjectMocks
     PetService petService;
 
     @Test
-    @DisplayName("Esta prueba valida la eliminacion de una mascota existente")
-    public void delete_existingPetTest() {
-        // Crear una mascota de prueba
-        Pet pet = new Pet(1, "string", "string", "string");
-        pet.setId(1);
+    @DisplayName("Esta prueba valida de eliminación de una mascota que no existe")
+    public void delete_ValidIdTest() {
+        Mockito.when(repository.findById(Mockito.anyInt())).thenReturn(Optional.empty());
 
-        // Configurar el comportamiento del repositorio
-        Mockito.when(petRepository.findById(any())).thenReturn(Optional.of(pet));
-        Mockito.when(petRepository.save(pet)).thenReturn(pet);
+        Assertions.assertThrows(ResourceNotFoundException.class,
+                () -> petService.deleteById(1), "No existe una mascota creada con el id 1");
+        Mockito.verify(repository, Mockito.times(1)).findById(1);
+        Mockito.verify(repository, Mockito.times(0)).delete(Mockito.any());
+    }
 
-        // Llamar al método delete
-        petService.delete(pet.getId());
+    @Test
+    @DisplayName("Esta prueba valida de eliminacion de una mascota que si existe en la bd")
+    public void delete_ValidIdTest2() {
+        //given -> dado .... un listado de 5 perros de la manera pacos1,asd2,1234.
+        //when -> cuando .... yo elimine el perro llamado paco1
+        //then -> entonces .. el listado resultante debe ser 123,123123,
 
-        // Verificar que se haya llamado al método delete del repositorio con la mascota correcta
-        Mockito.verify(petRepository, Mockito.times(1)).delete(pet);
+        // given -> dado que en la bd existe una mascota con 1 , paco, perro, 23k
+        Pet expected = new Pet(1, "Paco", "Perro", "23k");
+        Mockito.when(repository.findById(Mockito.anyInt()))
+                .thenReturn(Optional.of(expected));
+
+        //when ... entonces cuando borre el 1 id
+        petService.deleteById(1);
+
+        // then .. entonces se ejecutaron los metodos de buscar el id 1, y eliminar por 1 id
+        Mockito.verify(repository, Mockito.times(1)).findById(1);
+        Mockito.verify(repository, Mockito.times(1)).delete(expected);
     }
 }
 
