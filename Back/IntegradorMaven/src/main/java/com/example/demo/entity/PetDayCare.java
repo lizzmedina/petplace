@@ -33,7 +33,7 @@ public class PetDayCare {
     @Column(name = "detail")
     private String detail;
 
-    @Column(name = "images")
+    @Column(name = "images", length = 2000)
     private List<String> images ;
 
     @Column(name = "characteristic")
