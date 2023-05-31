@@ -36,7 +36,7 @@ export const ValidationPage = () => {
       
       <input
         type="email"
-        className="type-1"
+        className="input-validation"
         value={user.email}
         onChange={(e) => setUser({ email: e.target.value })}
       />
