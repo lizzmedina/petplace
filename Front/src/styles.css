@@ -277,12 +277,12 @@ color:#fff;
     color: var(--color2);
 }
 .card-price-recommends {
-   display: flex;
-   justify-content: space-between;
-   align-items: flex-start;
-   margin-right: 1rem;
-   color: var(--color6);
-   font-weight:500;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-right: 1rem;
+    color: var(--color6);
+    font-weight:500;
 }
 
 .card-location-recommends{
@@ -351,6 +351,7 @@ a.ver-mas-recommends{
 .form-section-name{
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     width: 100%;
 }
 .space-section label{
@@ -500,7 +501,21 @@ input:hover {
     width: 80%;
 }
 
+/* Form Product */
+.button-AddImage{
+    border-color: var(--color2);
+    background-color: var(--color2);
+    color: var(--color1);
+    padding: 0.3rem;
+    border-radius: 5px;
+    height: 1.8rem;
+    width: 1.8rem;
+}
 
+.input-Image{
+    width: 100%;
+    margin: 0.15rem 0;
+}
 
 /* Paginate */
 
