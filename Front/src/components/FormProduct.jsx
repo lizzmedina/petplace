@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useContextGlobal } from '../components/utils/global.constext';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
 
 const FormProduct = () => {
     const { places, setPlaces } = useContextGlobal();
@@ -44,7 +47,7 @@ const FormProduct = () => {
                     address: "",
                     detail: "",
                     images: [],
-                    characteristics: [],
+                    characteristics: selectedCharacteristics,
                     basicPrice: "",
                 });console.log(product)
 
@@ -64,7 +67,7 @@ const FormProduct = () => {
                             );
                             setProduct({
                                 name: "",
-                                categoryName: "", // Agregar esta línea
+                                categoryName: "",
                                 capacity: "",
                                 city: "",
                                 address: "",
@@ -107,6 +110,21 @@ const FormProduct = () => {
             images: updatedImages,
         }));
     };
+
+    //Checkbox de servicios
+    const [selectedCharacteristics, setSelectedCharacteristics] = useState([]);
+    const handleCheckboxChange = (option) => {
+        if (selectedCharacteristics.includes(option)) {
+            // La opción ya está seleccionada, hay que removerla del array
+            setSelectedCharacteristics((prevSelected) =>
+                prevSelected.filter((selected) => selected !== option)
+            );
+        } else {
+            // La opción no está seleccionada, hay que agregarla al array
+            setSelectedCharacteristics((prevSelected) => [...prevSelected, option]);
+        }
+    };
+
 
     return (
         <div className="form-container">
@@ -161,6 +179,26 @@ const FormProduct = () => {
                 <label>Descripción: </label>
                 <textarea name="message" type="text" rows="5" value={product.detail} onChange={(e) => setProduct({ ...product, detail: e.target.value })} />
                 <br />
+                <label>Servicios: </label>
+                <FormGroup>
+                    <FormControlLabel
+                        control={<Checkbox checked={selectedCharacteristics.includes("Opcion1")} onChange={() => handleCheckboxChange("Opcion1")}/>}
+                        label="Opcion1"
+                    />
+                    <FormControlLabel
+                        control={<Checkbox checked={selectedCharacteristics.includes("Opcion2")} onChange={() => handleCheckboxChange("Opcion2")}/>}
+                        label="Opcion2"
+                    />
+                    <FormControlLabel
+                        control={<Checkbox checked={selectedCharacteristics.includes("Opcion3")} onChange={() => handleCheckboxChange("Opcion3")}/>}
+                        label="Opcion3"
+                    />
+                    <FormControlLabel
+                        control={<Checkbox checked={selectedCharacteristics.includes("Opcion4")} onChange={() => handleCheckboxChange("Opcion4")}/>}
+                        label="Opcion4"
+                    />
+                </FormGroup>
+
                 <br />
                 <div className="section-button">
                     <button className="button-1">Crear</button>

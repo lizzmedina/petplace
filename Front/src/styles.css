@@ -517,6 +517,10 @@ input:hover {
     margin: 0.15rem 0;
 }
 
+.servicios{
+    display: flex;
+}
+
 /* Paginate */
 
 .paginate-container{
