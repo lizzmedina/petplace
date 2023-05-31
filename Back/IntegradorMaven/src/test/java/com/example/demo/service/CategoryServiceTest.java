@@ -1,9 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.DTO.CategoryDTO;
-import com.example.demo.DTO.UserDTO;
 import com.example.demo.entity.Category;
-import com.example.demo.entity.User;
 import com.example.demo.mapper.CategoryMapper;
 import com.example.demo.repository.CategoryRepository;
 import org.junit.jupiter.api.Assertions;
@@ -36,29 +34,32 @@ public class CategoryServiceTest {
         Mockito.verify(repository, Mockito.times(0)).save(null);
     }
 
-//    @Test
-//    @DisplayName("Esta prueba valida la creacion de un usuario correcto")
-//    public void save_successTest() {
-//        Category expectedCategory = this.createTestCategory(1);
-//
-//        CategoryDTO categoryDTO = new CategoryDTO(1, "Hamster", "guarderia de roedores", "url.com");
-//
-//        Mockito.when(repository.save(Mockito.any(Category.class))).thenReturn(expectedCategory);
-//
-//       Category actualCategory = mapper.mapToEntity(service.save(categoryDTO));
-//
-//        Assertions.assertEquals(expectedCategory, actualCategory);
-//        Mockito.verify(repository, Mockito.times(1)).save(Mockito.eq(expectedCategory));
-//    }
+    @Test
+    @DisplayName("Esta prueba valida la creacion de un usuario correcto")
+    public void save_successTest() {
+        Category expectedCategory = this.createTestCategory(1);
 
-private Category createTestCategory(Integer id){
+        CategoryDTO categoryDTO = new CategoryDTO(1, "Hamster", "guarderia de roedores", "url.com");
+        Category mappedCategory = mapper.mapToEntity(categoryDTO);
+
+        Mockito.when(repository.save(mappedCategory)).thenReturn(expectedCategory);
+
+        CategoryDTO actualCategory = service.save(categoryDTO);
+
+        Mockito.verify(repository, Mockito.times(1)).save(mappedCategory);
+
+        Assertions.assertEquals(expectedCategory.getId(), actualCategory.getId());
+        Assertions.assertEquals(expectedCategory.getDescription(), actualCategory.getDescription());
+        Assertions.assertEquals(expectedCategory.getTitle(), actualCategory.getTitle());
+        Assertions.assertEquals(expectedCategory.getImage(), actualCategory.getImage());
+    }
+
+    private Category createTestCategory(Integer id) {
         Category expectedCategory = new Category();
-        expectedCategory.setTitle("Title");
-        expectedCategory.setDescription("Description");
-        expectedCategory.setImage("image");
+        expectedCategory.setId(id);
+        expectedCategory.setTitle("Hamster");
+        expectedCategory.setDescription("guarderia de roedores");
+        expectedCategory.setImage("url.com");
         return expectedCategory;
-}
-
-
-
+    }
 }

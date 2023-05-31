@@ -1,22 +1,22 @@
 [
   {
     "description": "Especialidados en perros",
-    "image": "https://img.freepik.com/psd-gratis/retrato-feliz-cardigan-welsh-corgi_53876-73961.jpg?w=826&t=st=1684283095~exp=1684283695~hmac=6d9fcedd5b6c105e22e2b8225143f8623e1cd77900e8cb94cd5706b5b91b90ac",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Perro1.jpg",
     "title": "Perros"
   },
   {
     "description": "Especialidados en gatos",
-    "image": "https://img.freepik.com/premium-photo/cat-with-green-eyes-black-brown-striped-body_874126-45.jpg?w=740",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Gato.jpg",
     "title": "Gatos"
   },
   {
     "description": "Especialidados en canarios",
-    "image": "https://img.freepik.com/free-photo/shot-beautiful-eurasian-golden-oriole-standing-wood_181624-36344.jpg?w=996&t=st=1684283627~exp=1684284227~hmac=7f74120a1e8662d036a3e04aed611a4e8c4f35c213e2282d34c3cc619582b35d",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Canario.jpg",
     "title": "Canarios"
   },
   {
     "description": "Especialidados en conejos",
-    "image": "https://img.freepik.com/free-photo/portrait-cute-fluffy-gray-rabbit-with-ears-natural-green_78492-3801.jpg?w=360&t=st=1684283887~exp=1684284487~hmac=5de9a82831843b4c1a644e8881e87181abd95f19b7bac61f98d30586fc3fdf80",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Conejo.jpg",
     "title": "Conejos"
   }
 ]
