@@ -60,10 +60,10 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
                         <img src={image[2]} alt="imagen scundaria 1" className="product-image" />
                     </div>
                     <div className='four-image'>
-                        <img src={image[2]} alt="imagen scundaria 1" className="product-image" />
+                        <img src={image[3]} alt="imagen scundaria 1" className="product-image" />
                     </div>
                     <div className='five-image'>
-                        <img src={image[1]} alt="imagen scundaria 1" className="product-image" />
+                        <img src={image[4]} alt="imagen scundaria 1" className="product-image" />
                     </div>
                 </div>
 
@@ -93,6 +93,7 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
 
 
             </div>
+            
 
         </div>
     )

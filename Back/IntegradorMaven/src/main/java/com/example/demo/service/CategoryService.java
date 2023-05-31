@@ -28,6 +28,10 @@ public class CategoryService {
 
     public CategoryDTO save(CategoryDTO categoryDTO){
 
+        if(categoryDTO == null){
+            throw new IllegalArgumentException("la categoria no puede ser nula");
+        }
+
        Optional<Category>  categoryExist =  categoryRepository.findByTitle(categoryDTO.getTitle());
 
        if(categoryExist.isPresent()){

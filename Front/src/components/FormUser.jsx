@@ -74,10 +74,8 @@ const FormUser = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-
         try {
-            await schema.validate(user, { abortEarly: false });
-            // Si la validación es exitosa con Yup, se continúa con el resto
+            await schema.validate(user, { abortEarly: false });// Si la validación es exitosa con Yup, se continúa con el resto
 
             const result = allUsers.find((item) => item.email.toLowerCase() === user.email.toLowerCase());
             if (!result) {
@@ -93,44 +91,44 @@ const FormUser = () => {
                 })
                 .then((response) => {
                     if (response.ok) {
-                    setIsSuccess(true);
-                    Swal.fire({
-                        title: `${user.name}`,
-                        text: "Por favor, revisa tu correo electrónico. Te hemos enviado un correo de verificación.",
-                        icon: "success",
-                    });
-                
-                    // Envío del correo de validación
-                    fetch(`${sendEmailUrl} ${user.email}`, {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify({ email: user.email }), 
-                    })
-                    .then((res) => res.json())
-                    .then((data) => {
-                        // Manejar la respuesta del servidor después de enviar el correo
-                        console.log("Correo de validación enviado:", data);
-                            
-                    })
-                    .catch((error) => {
-                        console.error("Error al enviar el correo de validación:", error);
-                    });
+                        setIsSuccess(true);
+                        Swal.fire({
+                            title: `${user.name}`,
+                            text: "Por favor, revisa tu correo electrónico. Te hemos enviado un correo de verificación.",
+                            icon: "success",
+                        });
                     
-                    setUser({
-                        id: "",
-                        name: "",
-                        lastName: "",
-                        cellPhone: "",
-                        address: "",
-                        email: "",
-                        password: "",
-                        type: "",
-                    });
-                } else {
-                    throw new Error("Error en la solicitud");
-                }
+                        // Envío del correo de validación
+                        fetch(`${sendEmailUrl} ${user.email}`, {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify({ email: user.email }), 
+                        })
+                        .then((res) => res.json())
+                        .then((data) => {
+                            // Manejar la respuesta del servidor después de enviar el correo
+                            console.log("Correo de validación enviado:", data);
+                                
+                        })
+                        .catch((error) => {
+                            console.error("Error al enviar el correo de validación:", error);
+                        });
+                        
+                        setUser({
+                            id: "",
+                            name: "",
+                            lastName: "",
+                            cellPhone: "",
+                            address: "",
+                            email: "",
+                            password: "",
+                            type: "",
+                        });
+                    } else {
+                        throw new Error("Error en la solicitud");
+                    }
                 })
             .catch((error) => {
                 console.error(error);

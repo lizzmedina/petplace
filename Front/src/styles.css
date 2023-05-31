@@ -36,11 +36,12 @@ a:link, a:visited, a:active {
 .button-2{
     background-color: var(--color2);
     color: var(--color7);
-    margin: 0.5rem auto;
+    margin: 0.2rem auto 0 auto;
     border-radius: 5px;
-    width: 90%;
+    width: 100%;
     border: none;
     height: 1.5rem;
+    
 }
 
 /* navbar */
@@ -226,9 +227,12 @@ color:#fff;
 } */
 
 .right-card-content{
-    padding-left: 10px;
-    padding-top: 10px;
+    padding: 15px ;
     width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
 
 }
 .left-card-content {
@@ -273,12 +277,12 @@ color:#fff;
     color: var(--color2);
 }
 .card-price-recommends {
-   display: flex;
-   justify-content: space-between;
-   align-items: flex-start;
-   margin-right: 1rem;
-   color: var(--color6);
-   font-weight:500;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-right: 1rem;
+    color: var(--color6);
+    font-weight:500;
 }
 
 .card-location-recommends{
@@ -347,6 +351,7 @@ a.ver-mas-recommends{
 .form-section-name{
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     width: 100%;
 }
 .space-section label{
@@ -496,7 +501,25 @@ input:hover {
     width: 80%;
 }
 
+/* Form Product */
+.button-AddImage{
+    border-color: var(--color2);
+    background-color: var(--color2);
+    color: var(--color1);
+    padding: 0.3rem;
+    border-radius: 5px;
+    height: 1.8rem;
+    width: 1.8rem;
+}
 
+.input-Image{
+    width: 100%;
+    margin: 0.15rem 0;
+}
+
+.servicios{
+    display: flex;
+}
 
 /* Paginate */
 
@@ -640,7 +663,7 @@ p.more-images{
 }
 
 .detail-info {
-    margin: 25px auto 5px auto;
+    margin: 15px auto 10px auto;
     font-size: 1.2em;
 }
 .features{
@@ -711,7 +734,7 @@ p.more-images{
     margin: 0rem 2rem 3rem 2rem;
     text-align: center;
 }
-.type-1 {
+.input-validation {
     display: flex;
     width: 60%;
     margin: 2rem 1rem;

@@ -95,7 +95,7 @@ function EditUsers() {
                                     })
                                         .then((response) => response.json())
                                         .then((data) => {
-                                            Swal.fire(`Usuario actualizado: ${data.name}`);
+                                            Swal.fire({icon: 'success',title:`Usuario ${data.name} actualizado con exito`});
                                             getAllUsers(); // Actualiza la lista de usuarios después de la edición
                                         })
                                         .catch((error) => {
