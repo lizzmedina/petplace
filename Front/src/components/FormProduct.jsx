@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from "react";
 
-    const FormProduct = () => {
-        const [product, setProduct] = useState({
-            name: '',
-            type: '',
-            capacity: '',
-            city: '',
-            address: '',
-            detail: '',
-            image: '',
-            services: [],
-            basicPrice: ''
-        })
+const FormProduct = () => {
+    const [product, setProduct] = useState({
+        id: "",
+        name: "",
+        categoryName: "",
+        capacity: "",
+        city: "",
+        address: "",
+        detail: "",
+        images: [],
+        characteristics: [],
+        basicPrice: "",
+    })
 
     const [isLoading, setIsLoading] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
@@ -25,7 +26,7 @@ import React, { useState, useEffect } from "react";
                 setAllProducts(data);
             })
     }, []);
-    
+
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -36,14 +37,15 @@ import React, { useState, useEffect } from "react";
             if (product.name.length > 2 && product.detail.length > 5) {
                 setIsLoading(true);
                 setProduct({
+                    id: "",
                     name: "",
-                    type: "",
+                    categoryName: "",
                     capacity: "",
                     city: "",
                     address: "",
                     detail: "",
-                    image: "",
-                    services: [],
+                    images: [],
+                    characteristics: [],
                     basicPrice: "",
                 });
 
@@ -61,14 +63,15 @@ import React, { useState, useEffect } from "react";
                                 `El alojamiento ${product.name} ha sido creado exitosamente.`
                             );
                             setProduct({
+                                id: "",
                                 name: "",
-                                type: "",
+                                categoryName: "",
                                 capacity: "",
                                 city: "",
                                 address: "",
                                 detail: "",
-                                image: "",
-                                services: [],
+                                images: [],
+                                characteristics: [],
                                 basicPrice: "",
                             });
                         } else {
@@ -99,51 +102,51 @@ import React, { useState, useEffect } from "react";
             <form className="form-section" onSubmit={handleSubmit}>
                 <div className="form-section-name">
                     <div className="box">
-                        <label>Nombre: </label><br/>
-                        <input type="text" value={product.name} onChange={(e) => setProduct({...product, name: e.target.value})}/>
-                        <br/>
+                        <label>Nombre: </label><br />
+                        <input type="text" value={product.name} onChange={(e) => setProduct({ ...product, name: e.target.value })} />
+                        <br />
                     </div>
                     <div className="box">
-                        <label>Capacidad: </label><br/>
-                        <input type="text" value={product.capacity} onChange={(e) => setProduct({...product, capacity: e.target.value})}/>
-                        <br/>
+                        <label>Capacidad: </label><br />
+                        <input type="text" value={product.capacity} onChange={(e) => setProduct({ ...product, capacity: e.target.value })} />
+                        <br />
                     </div>
-                </div><br/>
+                </div><br />
                 <div className="form-section-name">
                     <div className="box">
-                        <label>Imagen: </label><br/>
-                        <input type="text" value={product.image} onChange={(e) => setProduct({...product, image: e.target.value})}/>
-                        <br/>
+                        <label>Imagen: </label><br />
+                        <input type="text" value={product.images} onChange={(e) => setProduct({ ...product, images: e.target.value })} />
+                        <br />
                     </div>
                     <div className="box">
-                        <label>Precio: </label><br/>
-                        <input type="text" value={product.basicPrice} onChange={(e) => setProduct({...product, basicPrice: e.target.value})}/>
-                        <br/>
+                        <label>Precio: </label><br />
+                        <input type="text" value={product.basicPrice} onChange={(e) => setProduct({ ...product, basicPrice: e.target.value })} />
+                        <br />
                     </div>
-                </div><br/>
+                </div><br />
                 <label>Tipo de alojamiento: </label>
-                <select name="type" onChange={(e) => setProduct({...product, type: e.target.value})}>
+                <select name="type" onChange={(e) => setProduct({ ...product, categoryName: e.target.value })}>
                     {/* <option selected hidden>--- Elige una opción ---</option> */}
                     <option value="Perros">Perros</option>
                     <option value="Gatos">Gatos</option>
                     <option value="Canarios">Canarios</option>
                     <option value="Conejos">Conejos</option>
                 </select>
-                <br/>
-                
+                <br />
+
                 <label>Ciudad: </label>
-                <input type="text" value={product.city} onChange={(e) => setProduct({...product, city: e.target.value})}/>
-                <br/>
-                
+                <input type="text" value={product.city} onChange={(e) => setProduct({ ...product, city: e.target.value })} />
+                <br />
+
                 <label>Direccion: </label>
-                <input type="text" value={product.address} onChange={(e) => setProduct({...product, address: e.target.value})}/>
-                <br/>
+                <input type="text" value={product.address} onChange={(e) => setProduct({ ...product, address: e.target.value })} />
+                <br />
 
                 <label>Descripción: </label>
-                <textarea name="message" type="text" rows="5" value={product.detail} onChange={(e) => setProduct({...product, detail: e.target.value})}/>
-                <br/>
+                <textarea name="message" type="text" rows="5" value={product.detail} onChange={(e) => setProduct({ ...product, detail: e.target.value })} />
+                <br />
 
-                <br/>
+                <br />
                 <div className="section-button">
                     <button className="button-1">Crear</button>
                 </div>
