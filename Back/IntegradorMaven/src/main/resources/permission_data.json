@@ -1,0 +1,26 @@
+[
+  {
+    "name":"viewCategory"
+  },
+  {
+    "name": "createCategory"
+  },
+  {
+    "name": "updateCategory"
+  },
+  {
+    "name": "deleteCategory"
+  },
+  {
+    "name": "viewPetDayCare"
+  },
+  {
+    "name": "createPetDayCare"
+  },
+  {
+    "name": "updatePetDayCare"
+  },
+  {
+    "name": "deletePetDayCare"
+  }
+]
