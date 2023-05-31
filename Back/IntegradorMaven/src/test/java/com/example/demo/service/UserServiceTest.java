@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.DTO.UserDTO;
+import com.example.demo.entity.Role;
 import com.example.demo.entity.User;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.UserRepository;
@@ -21,7 +22,10 @@ import java.util.Optional;
 class UserServiceTest {
 
     @Mock
-    UserRepository repository;
+    UserRepository userRepository;
+
+    @Mock
+    RoleService roleService;
 
     @InjectMocks
     UserService userService;
@@ -32,7 +36,7 @@ class UserServiceTest {
         Assertions.assertThrows(IllegalArgumentException.class,
                 () -> userService.save(null), "El usuario no puede ser nulo");
 
-        Mockito.verify(repository, Mockito.times(0)).save(null);
+        Mockito.verify(userRepository, Mockito.times(0)).save(null);
     }
 
     @Test
@@ -42,38 +46,39 @@ class UserServiceTest {
 
         UserDTO userDTO = new UserDTO(1, "Goku", "Martinez", "goku@correo.com", "goku123", "319123123", "Goku casa", "Manager");
 
-        Mockito.when(repository.save(Mockito.any(User.class))).thenReturn(expectedUser);
+        Mockito.when(userRepository.save(Mockito.any(User.class))).thenReturn(expectedUser);
+        Mockito.when(roleService.findByName(Mockito.anyString())).thenReturn(new Role());
 
         User actualUser = userService.save(userDTO);
 
         Assertions.assertEquals(expectedUser, actualUser);
-        Mockito.verify(repository, Mockito.times(1)).save(Mockito.any(User.class));
+        Mockito.verify(userRepository, Mockito.times(1)).save(Mockito.any(User.class));
     }
 
 
     @Test
     @DisplayName("Esta prueba valida la elimincacion de un usuario que no existe")
     public void delete_InvalidIdTest() {
-        Mockito.when(repository.findById(Mockito.anyInt())).thenReturn(Optional.empty());
+        Mockito.when(userRepository.findById(Mockito.anyInt())).thenReturn(Optional.empty());
 
         Assertions.assertThrows(ResourceNotFoundException.class,
                 () -> userService.deleteById(1),
                 "No existe un usuario registrado con el id: 1");
 
-        Mockito.verify(repository, Mockito.times(1)).findById(1);
-        Mockito.verify(repository, Mockito.times(0)).delete(Mockito.any());
+        Mockito.verify(userRepository, Mockito.times(1)).findById(1);
+        Mockito.verify(userRepository, Mockito.times(0)).delete(Mockito.any());
     }
 
     @Test
     @DisplayName("Esta prueba valida la elimincacion de un usuario si existe en la bd")
     public void delete_validIdTest() {
         User expectedUser = this.createTestUser(1);
-        Mockito.when(repository.findById(Mockito.anyInt())).thenReturn(Optional.of(expectedUser));
+        Mockito.when(userRepository.findById(Mockito.anyInt())).thenReturn(Optional.of(expectedUser));
 
         String actualMsg = userService.deleteById(Mockito.anyInt());
 
-        Mockito.verify(repository, Mockito.times(1)).findById(Mockito.anyInt());
-        Mockito.verify(repository, Mockito.times(1)).delete(Mockito.any());
+        Mockito.verify(userRepository, Mockito.times(1)).findById(Mockito.anyInt());
+        Mockito.verify(userRepository, Mockito.times(1)).delete(Mockito.any());
 
         Assertions.assertTrue(actualMsg.contains("Se elimino exitosamente el usuario de id:"));
     }
@@ -81,11 +86,11 @@ class UserServiceTest {
     @Test
     @DisplayName("Esta prueba valida la obtencion de usuarios cuando no hay registros en la bd")
     public void findAll_emptyTest() {
-        Mockito.when(repository.findAll()).thenReturn(Collections.emptyList());
+        Mockito.when(userRepository.findAll()).thenReturn(Collections.emptyList());
 
         List<UserDTO> actualUsers = userService.getAllUsers();
 
-        Mockito.verify(repository, Mockito.times(1)).findAll();
+        Mockito.verify(userRepository, Mockito.times(1)).findAll();
         Assertions.assertTrue(actualUsers.isEmpty());
     }
 
@@ -98,11 +103,11 @@ class UserServiceTest {
         User userFour = new User(4, "Pedro", "Giraldo", "pedro@correo.com", "pedro123", "6786", "Pedro casa", "Customer", false);
         User userFive = new User(5, "Jesus", "Ronaldo", "jesus@correo.com", "jesus123", "4123", "Jesus casa", "Manager", false  );
         List<User> dbUsers = List.of(userOne, userTwo, userThree, userFour, userFive);
-        Mockito.when(repository.findAll()).thenReturn(dbUsers);
+        Mockito.when(userRepository.findAll()).thenReturn(dbUsers);
 
         List<UserDTO> actualUsers = userService.getAllUsers();
 
-        Mockito.verify(repository, Mockito.times(1)).findAll();
+        Mockito.verify(userRepository, Mockito.times(1)).findAll();
         Assertions.assertFalse(actualUsers.isEmpty());
         Assertions.assertEquals(5, actualUsers.size());
 
@@ -120,7 +125,7 @@ class UserServiceTest {
                 () -> userService.updateUser(null),
                 "El usuario no existe");
 
-        Mockito.verify(repository, Mockito.times(0)).findById(null);
+        Mockito.verify(userRepository, Mockito.times(0)).findById(null);
     }
 
     @Test
@@ -128,11 +133,11 @@ class UserServiceTest {
     public void update_invalidIdTest() {
         UserDTO userDTO = new UserDTO();
         userDTO.setId(1);
-        Mockito.when(repository.findById(userDTO.getId())).thenReturn(Optional.empty());
+        Mockito.when(userRepository.findById(userDTO.getId())).thenReturn(Optional.empty());
 
         UserDTO actualUser = userService.updateUser(userDTO);
 
-        Mockito.verify(repository, Mockito.times(1)).findById(1);
+        Mockito.verify(userRepository, Mockito.times(1)).findById(1);
         Assertions.assertEquals(userDTO, actualUser);
     }
 
@@ -144,14 +149,14 @@ class UserServiceTest {
 
         User userEntity = this.createTestUser(userDTO.getId());
 
-        Mockito.when(repository.findById(userDTO.getId()))
+        Mockito.when(userRepository.findById(userDTO.getId()))
                 .thenReturn(
                         Optional.of(userEntity));
 
         UserDTO actualUser = userService.updateUser(userDTO);
 
-        Mockito.verify(repository, Mockito.times(1)).findById(1);
-        Mockito.verify(repository, Mockito.times(1)).save(userEntity);
+        Mockito.verify(userRepository, Mockito.times(1)).findById(1);
+        Mockito.verify(userRepository, Mockito.times(1)).save(userEntity);
         this.assertEqualsEntityAndDto(userEntity, actualUser);
     }
 
