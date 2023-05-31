@@ -47,9 +47,10 @@ const FormProduct = () => {
                     address: "",
                     detail: "",
                     images: [],
-                    characteristics: selectedCharacteristics,
+                    characteristics: [],
                     basicPrice: "",
-                });console.log(product)
+                });console.log(product);
+                
 
                 fetch("http://127.0.0.1:8080/api/v1/petDayCare", {
                     method: "POST",
@@ -113,6 +114,15 @@ const FormProduct = () => {
 
     //Checkbox de servicios
     const [selectedCharacteristics, setSelectedCharacteristics] = useState([]);
+
+    useEffect(() => {
+        setProduct((prevProduct) => ({
+          ...prevProduct,
+          characteristics: selectedCharacteristics,
+        }));
+      }, [selectedCharacteristics]);
+
+
     const handleCheckboxChange = (option) => {
         if (selectedCharacteristics.includes(option)) {
             // La opción ya está seleccionada, hay que removerla del array
@@ -123,7 +133,7 @@ const FormProduct = () => {
             // La opción no está seleccionada, hay que agregarla al array
             setSelectedCharacteristics((prevSelected) => [...prevSelected, option]);
         }
-    };
+    };21
 
 
     return (
@@ -180,22 +190,26 @@ const FormProduct = () => {
                 <textarea name="message" type="text" rows="5" value={product.detail} onChange={(e) => setProduct({ ...product, detail: e.target.value })} />
                 <br />
                 <label>Servicios: </label>
-                <FormGroup>
+                <FormGroup aria-label="position" row>
                     <FormControlLabel
-                        control={<Checkbox checked={selectedCharacteristics.includes("Opcion1")} onChange={() => handleCheckboxChange("Opcion1")}/>}
-                        label="Opcion1"
+                        control={<Checkbox checked={selectedCharacteristics.includes("Alimentación")} onChange={() => handleCheckboxChange("Alimentación")}/>}
+                        label="Alimentación"
                     />
                     <FormControlLabel
-                        control={<Checkbox checked={selectedCharacteristics.includes("Opcion2")} onChange={() => handleCheckboxChange("Opcion2")}/>}
-                        label="Opcion2"
+                        control={<Checkbox checked={selectedCharacteristics.includes("Baño")} onChange={() => handleCheckboxChange("Baño")}/>}
+                        label="Baño"
                     />
                     <FormControlLabel
-                        control={<Checkbox checked={selectedCharacteristics.includes("Opcion3")} onChange={() => handleCheckboxChange("Opcion3")}/>}
-                        label="Opcion3"
+                        control={<Checkbox checked={selectedCharacteristics.includes("Entrenamiento")} onChange={() => handleCheckboxChange("Entrenamiento")}/>}
+                        label="Entrenamiento"
                     />
                     <FormControlLabel
-                        control={<Checkbox checked={selectedCharacteristics.includes("Opcion4")} onChange={() => handleCheckboxChange("Opcion4")}/>}
-                        label="Opcion4"
+                        control={<Checkbox checked={selectedCharacteristics.includes("Paseo")} onChange={() => handleCheckboxChange("Paseo")}/>}
+                        label="Paseo"
+                    />
+                    <FormControlLabel
+                        control={<Checkbox checked={selectedCharacteristics.includes("Veterinaria")} onChange={() => handleCheckboxChange("Veterinaria")}/>}
+                        label="Veterinaria"  labelPlacement="top"
                     />
                 </FormGroup>
 
