@@ -4,16 +4,14 @@ package com.example.demo.service;
 import com.example.demo.DTO.CategoryDTO;
 import com.example.demo.DTO.PetDayCareDTO;
 import com.example.demo.DTO.PetDayCareDetailDTO;
-import com.example.demo.entity.Category;
 import com.example.demo.entity.PetDayCare;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.mapper.CategoryMapper;
-import com.example.demo.repository.CategoryRepository;
 import com.example.demo.repository.PetDayCareRepository;
+import com.example.demo.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -40,32 +38,39 @@ public class PetDayCareService {
 
     public PetDayCareDTO edit(PetDayCareDTO petDayCareDTO){
 
-        CategoryDTO categoryDTO = this.categoryService.findByName(petDayCareDTO.getCategoryName());
+        if(petDayCareDTO != null){
+            CategoryDTO categoryDTO = this.categoryService.findByName(petDayCareDTO.getCategoryName());
+            Optional<PetDayCare> namePetDayCareEntity = this.repository.findById(petDayCareDTO.getId());
 
-        Optional<PetDayCare> namePetDayCareEntity = this.repository.findById(petDayCareDTO.getId());
+            if(namePetDayCareEntity.isPresent()){
+                PetDayCare petDayCareEntity = namePetDayCareEntity.get();
+                petDayCareEntity.setName(petDayCareDTO.getName());
+                petDayCareEntity.setType(categoryMapper.mapToEntity(categoryDTO));
+                petDayCareEntity.setDetail(petDayCareDTO.getDetail());
+                petDayCareEntity.setAddress(petDayCareDTO.getAddress());
+                petDayCareEntity.setCity(petDayCareDTO.getCity());
+                petDayCareEntity.setCapacity(petDayCareDTO.getCapacity());
+                petDayCareEntity.setCharacteristics(petDayCareDTO.getCharacteristics());
+                petDayCareEntity.setImages(petDayCareDTO.getImages());
+                petDayCareEntity.setBasicPrice(petDayCareDTO.getBasicPrice());
 
-        if(namePetDayCareEntity.isEmpty()){
+                repository.save(petDayCareEntity);
+            }
+            return petDayCareDTO;
+        }else if (petDayCareDTO == null){
+            throw new IllegalArgumentException("El hotel no puede ser nulo");
+        } else {
             throw new ResourceNotFoundException("No existe guardería con el id: " + petDayCareDTO.getId());
         }
 
-        PetDayCare petDayCareEntity = namePetDayCareEntity.get();
-        petDayCareEntity.setName(petDayCareDTO.getName());
-        petDayCareEntity.setType(categoryMapper.mapToEntity(categoryDTO));
-        petDayCareEntity.setDetail(petDayCareDTO.getDetail());
-        petDayCareEntity.setAddress(petDayCareDTO.getAddress());
-        petDayCareEntity.setCity(petDayCareDTO.getCity());
-        petDayCareEntity.setCapacity(petDayCareDTO.getCapacity());
-        petDayCareEntity.setCharacteristics(petDayCareDTO.getCharacteristics());
-        petDayCareEntity.setImages(petDayCareDTO.getImages());
-        petDayCareEntity.setBasicPrice(petDayCareDTO.getBasicPrice());
-
-
-        repository.save(petDayCareEntity);
-        return petDayCareDTO;
     }
 
 
     public PetDayCareDTO save(PetDayCareDTO petDayCare){
+
+        if (petDayCare == null) {
+            throw new IllegalArgumentException("El hotel no puede ser nulo");
+        }
 
         CategoryDTO categoryDTO = this.categoryService.findByName(petDayCare.getCategoryName());
 
@@ -83,8 +88,6 @@ public class PetDayCareService {
 
         repository.save(newPetDayCare);
 
-
-
         PetDayCareDTO petDayCareDTO = new PetDayCareDTO(
                 newPetDayCare.getName(),
                 newPetDayCare.getType().getTitle(),
@@ -101,7 +104,7 @@ public class PetDayCareService {
 
     public List<PetDayCare> findAll(){
 
-    return repository.findAll().stream().collect(Collectors.toList());
+        return repository.findAll().stream().collect(Collectors.toList());
 
     }
 
@@ -143,7 +146,7 @@ public class PetDayCareService {
         );
 
 
-         return detailPetDatCare;
+        return detailPetDatCare;
 
     }
 
