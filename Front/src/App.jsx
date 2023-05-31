@@ -9,7 +9,7 @@ import Details from "./routes/Details";
 import MyAccount from "./routes/MyAccount";
 import EditProducts from "./routes/EditProducts";
 import EditUsers from "./routes/EditUsers";
-import { Footer } from "./components/footer";
+import { Footer } from "./components/Footer";
 import './styles.css';
 import { FormNewCategory } from "./routes/FormNewCategory";
 import { ValidationPage } from "./routes/ValidationPage";
