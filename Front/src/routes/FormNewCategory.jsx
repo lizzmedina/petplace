@@ -3,25 +3,28 @@ import React, { useState } from "react";
 import Swal from 'sweetalert2';
 
 export const FormNewCategory = () => {
-
     const [newCategory, setNewCategory] = useState({
         title: "",
         description: "",
         image: ""
     });
-
     const [errors, setErrors] = useState({
         title: "",
         description: "",
         image: ""
     });
-
+    
     const handleInputChange = (event) => {
         const { name, value } = event.target;
-        setNewCategory({ ...newCategory, [name]: value });
-        setErrors({ ...errors, [name]: "" }); // Limpiar el error cuando se modifica el campo
+        setNewCategory((prevCategory) => ({
+            ...prevCategory,
+            [name]: value
+        }));
+        setErrors((prevErrors) => ({
+            ...prevErrors,
+            [name]: ""
+        }));
     };
-
     const handleSubmit = (event) => {
         event.preventDefault();
         const urlPost = "http://localhost:8080/api/v1/category";
@@ -47,28 +50,31 @@ export const FormNewCategory = () => {
         }
 
         if (formIsValid) {
-        // Enviar los datos de newCategory al endpoint de creación en el backend
-        fetch(urlPost, {
-            method: "POST",
-            headers: {
-            "Content-Type": "application/json"
-            },
-            body: JSON.stringify(newCategory)
-        })
+            // Enviar los datos de newCategory al endpoint de creación en el backend
+            fetch(urlPost, {
+                method: "POST",
+                headers: {
+                "Content-Type": "application/json"
+                },
+                body: JSON.stringify(newCategory)
+            })
             .then((response) => response.json())
             .then(() => {
-            Swal.fire('Categoría creada exitosamente!');
-            setNewCategory({
-                title: "",
-                description: "",
-                image: ""
-            });
+                Swal.fire( {
+                    text: "¡Categoría creada exitosamente!",
+                    icon: "success",
+                });
+                setNewCategory({
+                    title: "",
+                    description: "",
+                    image: ""
+                });
             })
             .catch((error) => {
-            console.error("Error creating category:", error);
+                console.error("Error creating category:", error);
             });
         } else {
-        setErrors(newErrors);
+            setErrors(newErrors);
         }
     };
 
@@ -81,10 +87,11 @@ export const FormNewCategory = () => {
         
             <form onSubmit={handleSubmit} className="form-new-category" >
                 <div className="title-input-container">
-                    <label>Título:</label>
+                    <label htmlFor="title">Titulo:</label>
                     <input
                         className="input-category"
                         type="text"
+                        id="title"
                         name="title"
                         value={newCategory.title}
                         onChange={handleInputChange}
@@ -92,10 +99,11 @@ export const FormNewCategory = () => {
                     {errors.title && <span className="error">{errors.title}</span>}
                 </div>
                 <div className="description-input-container">
-                    <label>Descripción:</label>
+                    <label htmlFor="description">Descripción:</label>
                     <input
                         className="input-category"
                         type="text"
+                        id="description"
                         name="description"
                         value={newCategory.description}
                         onChange={handleInputChange}
@@ -105,11 +113,12 @@ export const FormNewCategory = () => {
                     )}
                 </div>
                 <div className="image-input-container">
-                    <label>URL imagen:</label>
+                    <label htmlFor="image">URL imagen:</label>
                     <input
                         className="input-category"
                         type="text"
                         name="image"
+                        id="image"
                         value={newCategory.image}
                         onChange={handleInputChange}
                     />
@@ -119,6 +128,7 @@ export const FormNewCategory = () => {
                     <button 
                         type="submit"
                         className="button-form-new-category button-1"
+                        role="button"
                     >
                         Crear categoría
                     </button>
