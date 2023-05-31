@@ -23,7 +23,7 @@ function MyAccount() {
                 <br />
             </div>
 
-            {userConnected.type === "manager" && (
+            {userConnected.type === "Manager" && (
                 <div className='space-section'>
                     <h2>Opciones de mi cuenta</h2>
                     <br />

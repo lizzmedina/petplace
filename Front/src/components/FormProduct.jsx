@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { useContextGlobal } from '../components/utils/global.constext';
 
 const FormProduct = () => {
+    const { places, setPlaces } = useContextGlobal();
     const [product, setProduct] = useState({
-        id: "",
         name: "",
         categoryName: "",
         capacity: "",
@@ -12,21 +13,20 @@ const FormProduct = () => {
         images: [],
         characteristics: [],
         basicPrice: "",
-    })
+    });
 
     const [isLoading, setIsLoading] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
 
-    const url = "http://localhost:8080/api/v1/petDayCare/all"
-    const [allProducts, setAllProducts] = useState([])
+    const url = "http://localhost:8080/api/v1/petDayCare/all";
+    const [allProducts, setAllProducts] = useState([]);
     useEffect(() => {
         fetch(url)
             .then((res) => res.json())
             .then((data) => {
                 setAllProducts(data);
-            })
+            });
     }, []);
-
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -37,7 +37,6 @@ const FormProduct = () => {
             if (product.name.length > 2 && product.detail.length > 5) {
                 setIsLoading(true);
                 setProduct({
-                    id: "",
                     name: "",
                     categoryName: "",
                     capacity: "",
@@ -63,7 +62,6 @@ const FormProduct = () => {
                                 `El alojamiento ${product.name} ha sido creado exitosamente.`
                             );
                             setProduct({
-                                id: "",
                                 name: "",
                                 categoryName: "",
                                 capacity: "",
@@ -93,8 +91,17 @@ const FormProduct = () => {
         }
     };
 
-    const handleOnChange = () => {
-        setIsChecked(!isChecked);
+    const handleAddImage = () => {
+        setProduct((prevState) => ({...prevState,images: [...prevState.images, ""]}));
+    };
+
+    const handleImageChange = (index, value) => {
+        const updatedImages = [...product.images];
+        updatedImages[index] = value;
+        setProduct((prevState) => ({
+            ...prevState,
+            images: updatedImages,
+        }));
     };
 
     return (
@@ -102,50 +109,108 @@ const FormProduct = () => {
             <form className="form-section" onSubmit={handleSubmit}>
                 <div className="form-section-name">
                     <div className="box">
-                        <label>Nombre: </label><br />
-                        <input type="text" value={product.name} onChange={(e) => setProduct({ ...product, name: e.target.value })} />
+                        <label>Nombre: </label>
+                        <br />
+                        <input
+                            type="text"
+                            value={product.name}
+                            onChange={(e) =>
+                                setProduct({ ...product, name: e.target.value })
+                            }
+                        />
                         <br />
                     </div>
                     <div className="box">
-                        <label>Capacidad: </label><br />
-                        <input type="text" value={product.capacity} onChange={(e) => setProduct({ ...product, capacity: e.target.value })} />
+                        <label>Capacidad: </label>
+                        <br />
+                        <input
+                            type="text"
+                            value={product.capacity}
+                            onChange={(e) =>
+                                setProduct({ ...product, capacity: e.target.value })
+                            }
+                        />
                         <br />
                     </div>
-                </div><br />
+                    <div className="box">
+                        <label>Precio: </label>
+                        <br />
+                        <input
+                            type="text"
+                            value={product.basicPrice}
+                            onChange={(e) =>
+                                setProduct({ ...product, basicPrice: e.target.value })
+                            }
+                        />
+                        <br />
+                    </div>
+                </div>
+                <br />
                 <div className="form-section-name">
                     <div className="box">
-                        <label>Imagen: </label><br />
-                        <input type="text" value={product.images} onChange={(e) => setProduct({ ...product, images: e.target.value })} />
+                        <label>Imagen: </label>
+                        <br />
+                        <input
+                            type="text"
+                            value={product.images[0]}
+                            onChange={(e) => handleImageChange(0, e.target.value)}
+                        />
+                        <button type="button" onClick={handleAddImage}>
+                            Agregar Imagen
+                        </button>
                         <br />
                     </div>
-                    <div className="box">
-                        <label>Precio: </label><br />
-                        <input type="text" value={product.basicPrice} onChange={(e) => setProduct({ ...product, basicPrice: e.target.value })} />
-                        <br />
-                    </div>
-                </div><br />
+                    {product.images.slice(1).map((imageUrl, index) => (
+                        <div className="box" key={index + 1}>
+                            <label>Imagen {index + 2}: </label>
+                            <br />
+                            <input
+                                type="text"
+                                value={imageUrl}
+                                onChange={(e) => handleImageChange(index + 1, e.target.value)}
+                            />
+                            <br />
+                        </div>
+                    ))}
+                </div>
+                <br />
                 <label>Tipo de alojamiento: </label>
-                <select name="type" onChange={(e) => setProduct({ ...product, categoryName: e.target.value })}>
-                    {/* <option selected hidden>--- Elige una opción ---</option> */}
-                    <option value="Perros">Perros</option>
-                    <option value="Gatos">Gatos</option>
-                    <option value="Canarios">Canarios</option>
-                    <option value="Conejos">Conejos</option>
+                <select
+                    name="type"
+                    onChange={(e) =>
+                        setProduct({ ...product, categoryName: e.target.value })
+                    }
+                >
+                    {places.map((categoria) => (
+                        <option key={categoria.title} value={categoria.title}>
+                            {categoria.title}
+                        </option>
+                    ))}
                 </select>
                 <br />
-
                 <label>Ciudad: </label>
-                <input type="text" value={product.city} onChange={(e) => setProduct({ ...product, city: e.target.value })} />
+                <input
+                    type="text"
+                    value={product.city}
+                    onChange={(e) => setProduct({ ...product, city: e.target.value })}
+                />
                 <br />
-
                 <label>Direccion: </label>
-                <input type="text" value={product.address} onChange={(e) => setProduct({ ...product, address: e.target.value })} />
+                <input
+                    type="text"
+                    value={product.address}
+                    onChange={(e) => setProduct({ ...product, address: e.target.value })}
+                />
                 <br />
-
                 <label>Descripción: </label>
-                <textarea name="message" type="text" rows="5" value={product.detail} onChange={(e) => setProduct({ ...product, detail: e.target.value })} />
+                <textarea
+                    name="message"
+                    type="text"
+                    rows="5"
+                    value={product.detail}
+                    onChange={(e) => setProduct({ ...product, detail: e.target.value })}
+                />
                 <br />
-
                 <br />
                 <div className="section-button">
                     <button className="button-1">Crear</button>
@@ -155,4 +220,4 @@ const FormProduct = () => {
     );
 };
 
-export default FormProduct
+export default FormProduct;
