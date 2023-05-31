@@ -1,30 +1,34 @@
 package com.example.demo.DTO;
 
+import com.example.demo.entity.Permission;
+import com.example.demo.entity.Role;
+
 import java.util.List;
+import java.util.Set;
 
 public class UserAuthoritiesDTO {
 
-    private List<RoleDTO> roles;
-    private List<String> permissions;
+    private Set<String> roles;
+    private Set<String> permissions;
 
-    public UserAuthoritiesDTO(List<RoleDTO> roles, List<String> permissions) {
+    public UserAuthoritiesDTO(Set<String> roles, Set<String> permissions) {
         this.roles = roles;
         this.permissions = permissions;
     }
 
-    public List<RoleDTO> getRoles() {
+    public Set<String> getRoles() {
         return roles;
     }
 
-    public void setRoles(List<RoleDTO> roles) {
+    public void setRoles(Set<String> roles) {
         this.roles = roles;
     }
 
-    public List<String> getPermissions() {
+    public Set<String> getPermissions() {
         return permissions;
     }
 
-    public void setPermissions(List<String> permissions) {
+    public void setPermissions(Set<String> permissions) {
         this.permissions = permissions;
     }
 }

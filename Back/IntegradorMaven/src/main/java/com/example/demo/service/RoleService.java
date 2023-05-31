@@ -1,7 +1,9 @@
 package com.example.demo.service;
 
 import com.example.demo.DTO.RoleDTO;
+import com.example.demo.entity.Permission;
 import com.example.demo.entity.Role;
+import com.example.demo.entity.User;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +16,12 @@ import java.util.Optional;
 public class RoleService {
 
     private RoleRepository repository;
-
+    private PermissionService permissionService;
 
     @Autowired
-    public RoleService(RoleRepository repository) {
+    public RoleService(RoleRepository repository, PermissionService permissionService) {
         this.repository = repository;
+        this.permissionService = permissionService;
     }
 
     public Role save(RoleDTO roleDTO) { //
@@ -58,6 +61,25 @@ public class RoleService {
             }
         }
         throw new ResourceNotFoundException("El role no existe");
+    }
+
+    public void addPermissionToRole(Integer idRole, Integer idPermission) {
+        Role role = findById(idRole);
+        Permission permission = permissionService.findById(idPermission);
+
+        role.getPermissions().add(permission);
+
+        repository.save(role);
+    }
+
+    public void removePermissionFromRole(Integer idPermission, Integer idRole) {
+        Permission permission = permissionService.findById(idPermission);
+        Role role = findById(idRole);
+
+        if (permission != null && role != null) {
+            role.removePermission(permission);
+            repository.save(role);
+        }
     }
 
 }

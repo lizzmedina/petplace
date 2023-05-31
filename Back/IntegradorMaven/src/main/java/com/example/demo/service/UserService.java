@@ -2,7 +2,9 @@ package com.example.demo.service;
 
 
 import com.example.demo.DTO.UserDTO;
+import com.example.demo.entity.Permission;
 import com.example.demo.entity.PetDayCare;
+import com.example.demo.entity.Role;
 import com.example.demo.entity.User;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.UserRepository;
@@ -17,11 +19,16 @@ import java.util.Optional;
 public class UserService {
 
     private UserRepository repository;
+    private RoleService roleService;
+    private PermissionService permissionService;
 
     @Autowired
-    public UserService(UserRepository repository) {
+    public UserService(UserRepository repository, RoleService roleService, PermissionService permissionService) {
         this.repository = repository;
+        this.roleService = roleService;
+        this.permissionService = permissionService;
     }
+
 
     public User save(UserDTO userDTO) { //
         if (userDTO == null) {
@@ -113,5 +120,33 @@ public class UserService {
         );
 
         return repository.save(userValidated);
+    }
+    public void addRoleToUser(Integer idUser, Integer idRole) {
+        User user = findById(idUser);
+        Role role = roleService.findById(idRole);
+        user.getRoles().add(role);
+        repository.save(user);
+    }
+    public void removeRoleFromUser(Integer idUser, Integer idRole) {
+        User user = findById(idUser);
+        Role role = roleService.findById(idRole);
+        if (user != null && role != null) {
+            user.removeRole(role);
+            repository.save(user);
+        }
+    }
+    public void addPermissionToUser(Integer idUser, Integer idPermission){
+        User user = findById(idUser);
+        Permission permission = permissionService.findById(idPermission);
+        user.getPermissions().add(permission);
+        repository.save(user);
+    }
+    public void removePermissionFromUSer(Integer idUser, Integer idPermission){
+        User user = findById(idUser);
+        Permission permission = permissionService.findById(idPermission);
+        if(user != null && permission != null){
+            user.removePermission(permission);
+            repository.save(user);
+        }
     }
 }
