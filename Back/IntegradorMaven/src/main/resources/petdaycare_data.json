@@ -7,11 +7,11 @@
     "address": "Calle 3, via Yumbo",
     "detail": "Un santuario rodeado de hermosos paisajes naturales, ofreciendo una experiencia tranquila y relajante para mascotas que disfrutan de paseos y relajación en la naturaleza",
     "images": [
-      "https://bit.ly/3WNw24x",
-      "https://bit.ly/436WwQL",
-      "https://bit.ly/3Mwwxeh",
-      "https://tinyurl.com/4hxdfejz",
-      "https://tinyurl.com/2s4f2uyr"
+      "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/1.+Paw+Palace/httpsbit.ly3WNw24x.jpg",
+      "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/1.+Paw+Palace/httpsbit.ly436WwQL.jpg",
+      "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/1.+Paw+Palace/httpsbit.ly3Mwwxeh.jpg",
+      "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/1.+Paw+Palace/httpstinyurl.com4hxdfejz.jpg",
+      "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/1.+Paw+Palace/httpstinyurl.com2s4f2uyr.jpg"
     ],
     "characteristics": [
       "Baño",
