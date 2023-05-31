@@ -1,0 +1,10 @@
+[
+  {
+    "role": "Customer",
+    "permission": "viewCategory"
+  },
+  {
+    "role": "Customer",
+    "permission": "viewPetDayCare"
+  }
+]

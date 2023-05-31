@@ -40,6 +40,10 @@ public class RoleService {
         return repository.findById(id).get();
     }
 
+    public Role findByName(String name){
+        return repository.findByName(name).get();
+    }
+
     public String deleteById(Integer id) {
         Optional<Role> roleOpt = this.repository.findById(id);
 

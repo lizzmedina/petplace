@@ -30,7 +30,7 @@ public class SecurityController {
 
     }
 
-    @PutMapping("/link/user/{userId}/role/{roleId}")
+    @PostMapping("/link/user/{userId}/role/{roleId}")
     public void addRoleToUser(@PathVariable("userId") Integer userId, @PathVariable("roleId") Integer roleId) {
         userService.addRoleToUser(userId, roleId);
     }
@@ -40,7 +40,7 @@ public class SecurityController {
         userService.removeRoleFromUser(userId, roleId);
     }
 
-    @PutMapping("/link/permission/{permissionId}/role/{roleId}")
+    @PostMapping("/link/permission/{permissionId}/role/{roleId}")
     public void addPermissionToRole(@PathVariable("permissionId") Integer permissionId, @PathVariable("roleId") Integer roleId) {
         roleService.addPermissionToRole(roleId, permissionId);
     }
@@ -50,7 +50,7 @@ public class SecurityController {
     roleService.removePermissionFromRole(permissionId, roleId);
     }
 
-    @PutMapping("/link/permission/{permissionId}/user/{userId}")
+    @PostMapping("/link/permission/{permissionId}/user/{userId}")
     public void addPermissionToUser(@PathVariable("permissionId") Integer permissionId, @PathVariable("userId") Integer userId){
         userService.addPermissionToUser(userId, permissionId);
     }

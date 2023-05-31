@@ -46,6 +46,13 @@ public class UserService {
                 userDTO.getType(),
                 false
         );
+
+        Role userRole = roleService.findByName(userDTO.getType());
+        List userRoles = new ArrayList<>();
+
+        userRoles.add(userRole);
+        user.setRoles(userRoles);
+
         return repository.save(user);
     }
 
