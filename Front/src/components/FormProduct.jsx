@@ -3,6 +3,7 @@ import { useContextGlobal } from '../components/utils/global.constext';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import Swal from 'sweetalert2';
 
 const FormProduct = () => {
     const { places, setPlaces } = useContextGlobal();
@@ -66,9 +67,7 @@ const FormProduct = () => {
                     .then((response) => {
                         if (response.ok) {
                             setIsSuccess(true);
-                            alert(
-                                `El alojamiento ${product.name} ha sido creado exitosamente.`
-                            );
+                            Swal.fire({icon: 'success',title:`El alojamiento ${product.name} ha sido creado exitosamente.`});
                             setProduct({
                                 name: "",
                                 categoryName: "",
@@ -88,17 +87,17 @@ const FormProduct = () => {
                     })
                     .catch((error) => {
                         console.error(error);
-                        alert("Parece que algo va mal, verifica la información.");
+                        Swal.fire({icon: 'error',title:"Parece que algo va mal, verifica la información."});
                     })
                     .finally(() => {
                         setIsLoading(false);
                         setProduct((product) => ({ ...product, categoryName: "" }));
                     });
             } else {
-                alert("Parece que algo salió mal, recuerda llenar los campos.");
+                Swal.fire({icon: 'error',title:`Parece que algo salió mal, recuerda llenar los campos.`});
             }
         } else {
-            alert("Ese nombre ya está tomado, intenta con uno nuevo.");
+            Swal.fire({icon: 'warning',title:"Ese nombre ya está tomado, intenta con uno nuevo."});
         }
     };
 

@@ -132,16 +132,14 @@ const FormUser = () => {
                 })
             .catch((error) => {
                 console.error(error);
-                alert("Parece que algo va mal, verifica la información.");
+                Swal.fire({icon: 'error',title:"Parece que algo va mal, verifica la información."});
             })
             .finally(() => {
                 setIsLoading(false);
                 setUser((user) => ({ ...user, type: "" })); // Restablecer el campo "type" a una cadena vacía
             });
             } else {
-                alert(
-                    "El email proporcionado ya está tomado, intenta con uno nuevo."
-                );
+                Swal.fire({icon: 'warning',title:"El email proporcionado ya está tomado, intenta con uno nuevo."});
             }
         } catch (error) {
             const validationErrors = {};
