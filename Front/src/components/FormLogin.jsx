@@ -9,7 +9,7 @@ const FormLogin = () => {
         password: '',
     });
 
-    const urlAllUsers = "http://localhost:8080/api/v1/user/all";
+    const urlAllUsers = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/user/all`;
     const [allUsers, setAllUsers] = useState([]);
     useEffect(() => {
         fetch(urlAllUsers)
