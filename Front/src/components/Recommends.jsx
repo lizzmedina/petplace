@@ -5,7 +5,7 @@ import Stack from '@mui/material/Stack';
 import { Pagination, useMediaQuery } from "@mui/material";
 
 export const Recommends = () => {
-  const url = "http://localhost:8080/api/v1/petDayCare/all";
+  const url = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/petDayCare/all`;
 
   const [recommends, setRecommends] = useState([]);
   useEffect(() => {

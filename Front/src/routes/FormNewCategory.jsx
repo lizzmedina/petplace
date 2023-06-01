@@ -24,7 +24,7 @@ export const FormNewCategory = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const urlPost = "http://localhost:8080/api/v1/category";
+        const urlPost = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/category`;
 
         // Validar los campos antes de enviar la solicitud
         let formIsValid = true;
