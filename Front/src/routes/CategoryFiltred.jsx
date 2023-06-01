@@ -13,7 +13,7 @@ export const CategoryFiltred = () =>  {
   useEffect(() => {
     const getCategory = async () => {
       try {
-        const res = await fetch(`http://localhost:8080/api/v1/petDayCare/category/${id}`);
+        const res = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/petDayCare/category/${id}`);
         const data = await res.json();
         setCategory(data);
       } catch (error) {

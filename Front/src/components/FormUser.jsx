@@ -62,7 +62,7 @@ const FormUser = () => {
     const [isSuccess, setIsSuccess] = useState(false);
     const [validationErrors, setValidationErrors] = useState({});
 
-    //const url = "http://localhost:8080/api/v1/user/all";
+    //const url = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/user/all`;
     const [allUsers, setAllUsers] = useState([]);
     useEffect(() => {
         fetch(urlGetUsers)
@@ -132,16 +132,14 @@ const FormUser = () => {
                 })
             .catch((error) => {
                 console.error(error);
-                alert("Parece que algo va mal, verifica la información.");
+                Swal.fire({icon: 'error',title:"Parece que algo va mal, verifica la información."});
             })
             .finally(() => {
                 setIsLoading(false);
                 setUser((user) => ({ ...user, type: "" })); // Restablecer el campo "type" a una cadena vacía
             });
             } else {
-                alert(
-                    "El email proporcionado ya está tomado, intenta con uno nuevo."
-                );
+                Swal.fire({icon: 'warning',title:"El email proporcionado ya está tomado, intenta con uno nuevo."});
             }
         } catch (error) {
             const validationErrors = {};
@@ -200,8 +198,8 @@ const FormUser = () => {
                 <label>Tipo de Usuario: </label>
                 <select name="type" value={user.type} onChange={(e) => setUser({...user, type: e.target.value})}>
                     <option value="" hidden>--- Elige una Opción ---</option>
-                    <option value="customer">Cliente</option>
-                    <option value="manager">Administrador</option>
+                    <option value="Customer">Cliente</option>
+                    <option value="Manager">Administrador</option>
                 </select>
                 {validationErrors.type && (<span className="error-message">{validationErrors.type}</span>)}
                 <br/>

@@ -11,8 +11,9 @@ import EditProducts from "./routes/EditProducts";
 import EditUsers from "./routes/EditUsers";
 import { Footer } from "./components/Footer";
 import './styles.css';
-import { FormNewCategory } from "./routes/FormNewCategory";
+import { FormNewCategory } from "./components/FormNewCategory";
 import { ValidationPage } from "./routes/ValidationPage";
+import { NewCategory } from "./routes/NewCategory";
 
 function App() {
     return (
@@ -25,7 +26,7 @@ function App() {
                 <Route path="/category/:id" element={<CategoryFiltred/>}/>
                 <Route path="/productRegister" element={<ProductRegister/>}/>
                 <Route path="/Detail/:id" element={<Details/>}/>
-                <Route path="/newCategory" element={<FormNewCategory/>}/>
+                <Route path="/newCategory" element={<NewCategory/>}/>
                 <Route path="/account/:id" element={<MyAccount/>}/>
                 <Route path="/editProducts" element={<EditProducts/>}/>
                 <Route path="/editUsers" element={<EditUsers/>}/>

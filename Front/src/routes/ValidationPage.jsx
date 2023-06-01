@@ -27,6 +27,11 @@ export const ValidationPage = () => {
       .catch((error) => {
         console.error("Error al validar:", error);
       });
+    }else {
+      Swal.fire({
+        text: 'error al validar, revisa que esté bien escrito tú correo e intenta nuevamente, por favor',
+        icon: "error",
+      });
     }
   };
 
