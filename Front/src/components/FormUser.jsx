@@ -198,8 +198,8 @@ const FormUser = () => {
                 <label>Tipo de Usuario: </label>
                 <select name="type" value={user.type} onChange={(e) => setUser({...user, type: e.target.value})}>
                     <option value="" hidden>--- Elige una Opción ---</option>
-                    <option value="customer">Cliente</option>
-                    <option value="manager">Administrador</option>
+                    <option value="Customer">Cliente</option>
+                    <option value="Manager">Administrador</option>
                 </select>
                 {validationErrors.type && (<span className="error-message">{validationErrors.type}</span>)}
                 <br/>
