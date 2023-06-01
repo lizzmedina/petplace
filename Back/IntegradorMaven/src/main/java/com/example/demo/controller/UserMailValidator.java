@@ -1,14 +1,11 @@
 package com.example.demo.controller;
 
 import com.example.demo.service.UserService;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,8 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 
 @RestController
 @RequestMapping("/api/v1/mail")
@@ -34,7 +29,6 @@ public class UserMailValidator {
         MimeMessage message = mail.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
 
-        System.out.println(emailUser);
         String htmlContent = "<!DOCTYPE html>\n" +
                 "<html>\n" +
                 "<head>\n" +
