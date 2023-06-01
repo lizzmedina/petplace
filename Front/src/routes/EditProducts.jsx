@@ -11,7 +11,7 @@ function EditProducts() {
 
     const [allProducts, setAllProducts] = useState([]);
     const getAllProducts = async () => {
-        const res = await fetch('http://localhost:8080/api/v1/petDayCare/all');
+        const res = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/petDayCare/all`);
         const data = await res.json();
         setAllProducts(data);
     };
@@ -22,7 +22,7 @@ function EditProducts() {
     const deleteProduct = async (id, name) => {
         const confirmDelete = window.confirm(`¿Seguro deseas eliminar el producto ${name}?`);
         if (confirmDelete) {
-            await fetch(`http://localhost:8080/api/v1/petDayCare/${id}`, {
+            await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/petDayCare/${id}`, {
                 method: 'DELETE',
             });
             getAllProducts();

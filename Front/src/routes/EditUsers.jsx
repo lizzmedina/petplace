@@ -8,7 +8,7 @@ function EditUsers() {
 
     const [allUsers, setAllUsers] = useState([]);
     const getAllUsers = async () => {
-        const res = await fetch('http://localhost:8080/api/v1/user/all');
+        const res = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/user/all`);
         const data = await res.json();
         setAllUsers(data);
     };
@@ -19,7 +19,7 @@ function EditUsers() {
     const deleteUser = async (id, name) => {
         const confirmDelete = window.confirm(`¿Seguro deseas eliminar el usuario ${name}?`);
         if (confirmDelete) {
-            await fetch(`http://localhost:8080/api/v1/user/${id}`, {
+            await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/user/${id}`, {
                 method: 'DELETE',
             });
             getAllUsers();
