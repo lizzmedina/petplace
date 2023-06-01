@@ -1,13 +1,16 @@
 import { useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShower, faPersonWalkingWithCane, faCarrot, faBaseball, faStethoscope, faLocationDot } from '@fortawesome/free-solid-svg-icons'
+import { faChevronLeft, faShower, faPersonWalkingWithCane, faCarrot, faBaseball, faStethoscope, faLocationDot } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import ImageModal from './ImageModal';
 
 
 
 export const Product = ({ id, name, type, capacity, city, address, detail, image, basicPrice, characteristics }) => {
 
     const navigate = useNavigate()
-
+    const [isModalOpen, setModalOpen] = useState(false);
     if (!image) {
         return image;
     }
@@ -20,6 +23,8 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
             Veterinaria: faStethoscope,
             Entrenamiento: faBaseball,
         };
+        
+
 
         return characteristics.map((option, index) => {
             const icon = icons[option];
@@ -37,7 +42,12 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
         });
     };
 
-
+    const handleOpenModal = () => {
+        setModalOpen(true);
+    };
+    const handleCloseModal = () => {
+        setModalOpen(false);
+    };
 
 
 
@@ -46,7 +56,7 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
 
         <div key={id} className="product-container">
             <div className="product-header">
-            <span className="product-location"><FontAwesomeIcon icon={faLocationDot} className='icon-service' /> {city}, {address}</span>  <a onClick={() => navigate(-1)}><img className='back-icon' src="..\images\backRecurso 2.png" alt="" /></a>
+                <span className="product-location"><FontAwesomeIcon icon={faLocationDot} className='icon-service' /> {city}, {address}</span>  <a onClick={() => navigate(-1)}><FontAwesomeIcon icon={faChevronLeft} className='back-icon' /></a>
             </div>
             <div className="product-galery">
                 <div className='leading-image'>
@@ -68,7 +78,7 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
                 </div>
 
             </div>
-            <p className='more-images'> Ver más</p>
+            <Link onClick={handleOpenModal}><p className='more-images'> Ver más</p></Link>
 
 
             <div className="product-info-container">
@@ -93,7 +103,10 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
 
 
             </div>
-            
+            {isModalOpen && (
+                <ImageModal images={image} onClose={handleCloseModal} />
+                
+            )}
 
         </div>
     )

@@ -33,7 +33,7 @@ export const NavBar = () => {
 
   const theme = createTheme({
     typography: {
-      fontFamily: 'Quicksand, sans-serif',
+      fontFamily: 'Quicksand, sans-serif, ',
     },
   });
 
@@ -42,12 +42,13 @@ export const NavBar = () => {
     <div className = 'navbar'>
     
       <Link className = 'navbar-link-container' to = "/"> 
+        
         <img 
-          src='./images/PpLogo.png'  
+          src='../public/images/logoDB.png'  
           alt="icono"
           className="logo"
         /> 
-        <p className='slogan-navbar'>   Los cuidamos como en casa </p>
+        <p className='slogan-navbar'>  Los cuidamos como en casa </p>
       </Link>
 
       {/*a continuacion el menu desplegable de la libreria Mui */}

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Product } from "../components/Product.jsx";
-import { GaleryDetail } from "../components/GaleryDetail.jsx";
 import { useParams } from 'react-router-dom'
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const Details = () => {
 
@@ -33,10 +33,7 @@ const Details = () => {
                         basicPrice={details.basicPrice}
                         characteristics={details.characteristics}
                   />
-                  <GaleryDetail
-                   image={details.images}
-                  />
-                  
+                                   
                   
             </div>
       )
