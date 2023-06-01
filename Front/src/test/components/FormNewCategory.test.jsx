@@ -44,5 +44,13 @@ describe('FormNewCategory', () => {
         fireEvent.change(getByLabelText('URL imagen:'), { target: { value: 'https://example.com/image.png' } });
         expect(getByLabelText('URL imagen:').value).toBe('https://example.com/image.png');
     });
+    
+    test('should update state on field value change', () => {
+        const { getByLabelText } = render(<FormNewCategory />);
+
+        fireEvent.change(getByLabelText('Descripción:'), { target: { value: 'Nueva descripción' } });
+
+        expect(getByLabelText('Descripción:').value).toBe('Nueva descripción');
+    });
 
 })

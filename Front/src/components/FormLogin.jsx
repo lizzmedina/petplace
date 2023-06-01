@@ -39,17 +39,28 @@ const FormLogin = () => {
         } else {
             alert('El correo electrónico no está registrado.');
         }
+        passwordInput.value = '';
     };
 
 
     return (
         <div className="form-container">
             <form className="form-section" onSubmit={handleSubmit}>
-                <label>Email: </label>
-                <input type="email" className="type-1" value={userLog.email} onChange={(e) => setUserLog({ ...userLog, email: e.target.value })} />
+                <label htmlFor="emailInput">Email: </label>
+                <input 
+                    type="email" 
+                    className="type-1" 
+                    id="emailInput"
+                    value={userLog.email} 
+                    onChange={(e) => setUserLog({ ...userLog, email: e.target.value })} />
                 <br />
-                <label>Contraseña: </label>
-                <input type="password" className="type-1" value={userLog.password} onChange={(e) => setUserLog({ ...userLog, password: e.target.value })} />
+                <label htmlFor="passwordInput">Contraseña: </label>
+                <input 
+                    type="password" 
+                    className="type-1" 
+                    id="passwordInput"
+                    value={userLog.password} 
+                    onChange={(e) => setUserLog({ ...userLog, password: e.target.value })} />
                 <br />
 
                 <br />

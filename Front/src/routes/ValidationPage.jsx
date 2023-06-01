@@ -19,7 +19,7 @@ export const ValidationPage = () => {
       })
       .then(() => {
         Swal.fire({
-          html: 'Validado con éxito, ahora puedes <a href="http://localhost:5173/login">ingresar a tu cuenta</a>',
+          html: 'Validado con éxito, ahora puedes <a href="http://bucket-equipo2-frontend.s3-website.us-east-2.amazonaws.com/login">ingresar a tu cuenta</a>',
           icon: "success",
           showConfirmButton: false,
         });
