@@ -869,6 +869,7 @@ p.more-images {
 .validationpage-container {
     flex-wrap: wrap;
     width: 100%;
+    margin-bottom: 15rem;
 }
 
 .h2-validationpage {
