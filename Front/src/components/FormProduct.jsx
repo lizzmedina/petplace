@@ -6,6 +6,9 @@ import Checkbox from '@mui/material/Checkbox';
 
 const FormProduct = () => {
     const { places, setPlaces } = useContextGlobal();
+
+    const userConnected = JSON.parse(localStorage.getItem('userConnected')) || null; //Para validad el tipo de usuario, si no esta logeado no cargara la pagina
+
     const [product, setProduct] = useState({
         name: "",
         categoryName: "",
@@ -138,86 +141,88 @@ const FormProduct = () => {
 
     return (
         <div className="form-container">
-            <form className="form-section" onSubmit={handleSubmit}>
-                <div className="form-section-name">
-                    <div className="box">
-                        <label>Nombre: </label>
-                        <br />
-                        <input type="text" value={product.name} onChange={(e) => setProduct({ ...product, name: e.target.value })} />
-                        <br />
+            {userConnected.type === "Manager" && (
+                <form className="form-section" onSubmit={handleSubmit}>
+                    <div className="form-section-name">
+                        <div className="box">
+                            <label>Nombre: </label>
+                            <br />
+                            <input type="text" value={product.name} onChange={(e) => setProduct({ ...product, name: e.target.value })} />
+                            <br />
+                        </div>
+                        <div className="box">
+                            <label>Capacidad: </label>
+                            <br />
+                            <input type="text" value={product.capacity} onChange={(e) => setProduct({ ...product, capacity: e.target.value })} />
+                            <br />
+                        </div>
                     </div>
-                    <div className="box">
-                        <label>Capacidad: </label>
-                        <br />
-                        <input type="text" value={product.capacity} onChange={(e) => setProduct({ ...product, capacity: e.target.value })} />
-                        <br />
+                    <br />
+
+
+                    <div className="section-Image">
+                        <label>Agregar Imagen: </label> <button type="button" onClick={handleAddImage} className="button-AddImage"> + </button>
                     </div>
-                </div>
-                <br />
-
-
-                <div className="section-Image">
-                    <label>Agregar Imagen: </label> <button type="button" onClick={handleAddImage} className="button-AddImage"> + </button>
-                </div>
-                {product.images.map((imageUrl, index) => (
-                    <div>
-                        <input type="text" value={imageUrl} onChange={(e) => handleImageChange(index, e.target.value)} 
-                        className="input-Image" placeholder={"Imagen" + (index + 1)}/>
-                        <br />
-                    </div>
-                ))}
-
-
-                <br />
-                <label>Tipo de alojamiento: </label>
-                <select name="type" onChange={(e) => setProduct({ ...product, categoryName: e.target.options[e.target.selectedIndex].value })}>
-                <option value="" hidden>--- Elige una Opción ---</option>
-                    {places.map((categoria) => (
-                        <option key={categoria.title} value={categoria.title}> {categoria.title} </option>
+                    {product.images.map((imageUrl, index) => (
+                        <div>
+                            <input type="text" value={imageUrl} onChange={(e) => handleImageChange(index, e.target.value)} 
+                            className="input-Image" placeholder={"Imagen" + (index + 1)}/>
+                            <br />
+                        </div>
                     ))}
-                </select>
-                <br />
-                <label>Ciudad: </label>
-                <input type="text" value={product.city} onChange={(e) => setProduct({ ...product, city: e.target.value })} />
-                <br />
-                <label>Direccion: </label>
-                <input type="text" value={product.address} onChange={(e) => setProduct({ ...product, address: e.target.value })} />
-                <br />
-                <label>Precio: </label>
-                <input type="text" value={product.basicPrice} onChange={(e) => setProduct({ ...product, basicPrice: e.target.value })}/>
-                <br />
-                <label>Descripción: </label>
-                <textarea name="message" type="text" rows="5" value={product.detail} onChange={(e) => setProduct({ ...product, detail: e.target.value })} />
-                <br />
-                <label>Servicios: </label>
-                <FormGroup aria-label="position" row>
-                    <FormControlLabel
-                        control={<Checkbox checked={selectedCharacteristics.includes("Alimentación")} onChange={() => handleCheckboxChange("Alimentación")}/>}
-                        label="Alimentación"
-                    />
-                    <FormControlLabel
-                        control={<Checkbox checked={selectedCharacteristics.includes("Baño")} onChange={() => handleCheckboxChange("Baño")}/>}
-                        label="Baño"
-                    />
-                    <FormControlLabel
-                        control={<Checkbox checked={selectedCharacteristics.includes("Entrenamiento")} onChange={() => handleCheckboxChange("Entrenamiento")}/>}
-                        label="Entrenamiento"
-                    />
-                    <FormControlLabel
-                        control={<Checkbox checked={selectedCharacteristics.includes("Paseo")} onChange={() => handleCheckboxChange("Paseo")}/>}
-                        label="Paseo"
-                    />
-                    <FormControlLabel
-                        control={<Checkbox checked={selectedCharacteristics.includes("Veterinaria")} onChange={() => handleCheckboxChange("Veterinaria")}/>}
-                        label="Veterinaria"  labelPlacement="top"
-                    />
-                </FormGroup>
 
-                <br />
-                <div className="section-button">
-                    <button className="button-1">Crear</button>
-                </div>
-            </form>
+
+                    <br />
+                    <label>Tipo de alojamiento: </label>
+                    <select name="type" onChange={(e) => setProduct({ ...product, categoryName: e.target.options[e.target.selectedIndex].value })}>
+                    <option value="" hidden>--- Elige una Opción ---</option>
+                        {places.map((categoria) => (
+                            <option key={categoria.title} value={categoria.title}> {categoria.title} </option>
+                        ))}
+                    </select>
+                    <br />
+                    <label>Ciudad: </label>
+                    <input type="text" value={product.city} onChange={(e) => setProduct({ ...product, city: e.target.value })} />
+                    <br />
+                    <label>Direccion: </label>
+                    <input type="text" value={product.address} onChange={(e) => setProduct({ ...product, address: e.target.value })} />
+                    <br />
+                    <label>Precio: </label>
+                    <input type="text" value={product.basicPrice} onChange={(e) => setProduct({ ...product, basicPrice: e.target.value })}/>
+                    <br />
+                    <label>Descripción: </label>
+                    <textarea name="message" type="text" rows="5" value={product.detail} onChange={(e) => setProduct({ ...product, detail: e.target.value })} />
+                    <br />
+                    <label>Servicios: </label>
+                    <FormGroup aria-label="position" row>
+                        <FormControlLabel
+                            control={<Checkbox checked={selectedCharacteristics.includes("Alimentación")} onChange={() => handleCheckboxChange("Alimentación")}/>}
+                            label="Alimentación"
+                        />
+                        <FormControlLabel
+                            control={<Checkbox checked={selectedCharacteristics.includes("Baño")} onChange={() => handleCheckboxChange("Baño")}/>}
+                            label="Baño"
+                        />
+                        <FormControlLabel
+                            control={<Checkbox checked={selectedCharacteristics.includes("Entrenamiento")} onChange={() => handleCheckboxChange("Entrenamiento")}/>}
+                            label="Entrenamiento"
+                        />
+                        <FormControlLabel
+                            control={<Checkbox checked={selectedCharacteristics.includes("Paseo")} onChange={() => handleCheckboxChange("Paseo")}/>}
+                            label="Paseo"
+                        />
+                        <FormControlLabel
+                            control={<Checkbox checked={selectedCharacteristics.includes("Veterinaria")} onChange={() => handleCheckboxChange("Veterinaria")}/>}
+                            label="Veterinaria" 
+                        />
+                    </FormGroup>
+
+                    <br />
+                    <div className="section-button">
+                        <button className="button-1">Crear</button>
+                    </div>
+                </form>
+            )}
         </div>
     );
 };
