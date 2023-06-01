@@ -20,7 +20,7 @@ public class Pet {
     private String petSize;
 
     @ManyToOne
-    private Customer customer;
+    private Booking booking;
 
     public Pet() {
     }

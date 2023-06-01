@@ -3,7 +3,7 @@ package com.example.demo.model;
 import java.util.List;
 
 public class PetDayCare {
-    //completar clase: atributos, constructor y metodos
+
     private Integer id;
     private String name;
     private String type;
@@ -11,12 +11,13 @@ public class PetDayCare {
     private String city;
     private String address;
     private String detail;
-    private String image;
+    private List<String> images;
+    private List<String> characteristics;
     private double basicPrice;
     List<Pet> listPetsDay;
     PetDayCare petDayCare;
 
-    public PetDayCare(Integer id, String name, String type, Integer capacity, String city, String address, String detail, String image, double basicPrice) {
+    public PetDayCare(Integer id, String name, String type, Integer capacity, String city, String address, String detail, List<String> images, List<String> characteristics, double basicPrice) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -24,9 +25,11 @@ public class PetDayCare {
         this.city = city;
         this.address = address;
         this.detail = detail;
-        this.image = image;
+        this.images = images;
+        this.characteristics = characteristics;
         this.basicPrice = basicPrice;
     }
+
     public List listPetsDayCare(){
         return listPetsDay;
     }

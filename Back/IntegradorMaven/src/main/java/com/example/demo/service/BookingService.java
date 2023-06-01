@@ -2,26 +2,17 @@ package com.example.demo.service;
 
 import com.example.demo.DTO.BookingDTO;
 import com.example.demo.entity.*;
-import com.example.demo.repository.BookingRepository;
-import com.example.demo.repository.CustomerRepository;
-import com.example.demo.repository.PetDayCareRepository;
+import com.example.demo.repository.*;
 
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-
-//andrea vivi
-
-
 import com.example.demo.entity.Booking;
-import com.example.demo.entity.Customer;
 import com.example.demo.entity.PetDayCare;
 import com.example.demo.repository.BookingRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-import java.util.Date;
 import java.util.stream.Collectors;
 
 @Service
@@ -29,56 +20,69 @@ public class BookingService {
 
     private List<Booking> bookingList;
     private BookingRepository bookingRepository;
-    private CustomerRepository customerRepository;
+    private  UserRepository userRepository;
     private PetDayCareRepository petDayCareRepository;
+    private PetRepository petRepository;
 
 
-    public BookingService(List<Booking> bookingList, BookingRepository bookingRepository, CustomerRepository customerRepository, PetDayCareRepository petDayCareRepository) {
+    public BookingService(List<Booking> bookingList, BookingRepository bookingRepository, UserRepository userRepository, PetDayCareRepository petDayCareRepository, PetRepository petRepository) {
         this.bookingList = bookingList;
         this.bookingRepository = bookingRepository;
-        this.customerRepository = customerRepository;
+        this.userRepository =  userRepository;
         this.petDayCareRepository = petDayCareRepository;
+        this.petRepository = petRepository;
     }
 
     public Booking save(BookingDTO bookingDTO){
 
-        Optional<Customer> customer = this.customerRepository.findById(bookingDTO.getCustomerId());
+        Optional<User> user = this.userRepository.findById(bookingDTO.getUserId());
         Optional<PetDayCare> petDayCare = this.petDayCareRepository.findById(bookingDTO.getPetDayCareId());
 
-        if(!customer.isPresent() && !petDayCare.isPresent()){
+        if(!user.isPresent() && !petDayCare.isPresent()){
             throw  new RuntimeException("Verifique que el cliente o la guarderia existan");
         }
 
-        double totalpriceBooking = calculatePrice(bookingDTO.getCheckIn(), bookingDTO.getCheckOut(), petDayCare.get().getBasicPrice());
+        bookingDTO.getPets().forEach((pet) -> {Pet newPet = new Pet(
+                pet.getId(),
+                pet.getPetName(),
+                pet.getPetType(),
+                pet.getPetSize()
+        );
+            petRepository.save(newPet);
+        });
+
+
+        double totalpriceBooking = calculatePrice(bookingDTO.getCheckIn(), bookingDTO.getCheckOut(), petDayCare.get().getBasicPrice(), bookingDTO.getPets());
 
         Booking newBooking = new Booking(
                 totalpriceBooking,
                 bookingDTO.getCheckIn(),
-                bookingDTO.getCheckOut()
-             //   customer,
-             //   petDayCare
+                bookingDTO.getCheckOut(),
+                bookingDTO.getPets(),
+                user.get(),
+                petDayCare.get()
         );
 
         return bookingRepository.save(newBooking);
     }
 
 
-    public double calculatePrice(Date checkIn, Date checkOut, double basicPrice/*, List<Pet> petListCustomer*/){
+    public double calculatePrice(Date checkIn, Date checkOut, double basicPrice, List<Pet> petListBooking){
 
         //El precio base = si es gato, si es perro pequeño.
         //Si es perro mediano o grande, al precio base se le suma un valor 10% al mediano y 20% al grande.
-
-        /*double countPrice = 0.0;
-        for (int i = 0; i < petListCustomer.toArray().length; i++) {
-            if (petListCustomer.get(i).getPetSize() == "pequeño" && petListCustomer.get(i).getPetType() == "perro" ) {
+        
+        double countPrice = 0.0;
+        for (int i = 0; i < petListBooking.toArray().length; i++) {
+            if (petListBooking.get(i).getPetSize() == "pequeño" && petListBooking.get(i).getPetType() == "perro" ) {
                 basicPrice = basicPrice;
-            }else if (petListCustomer.get(i).getPetSize() == "mediano" && petListCustomer.get(i).getPetType() == "perro") {
+            }else if (petListBooking.get(i).getPetSize() == "mediano" && petListBooking.get(i).getPetType() == "perro") {
                 basicPrice = basicPrice + (basicPrice*0.1);
-            }else if (petListCustomer.get(i).getPetSize() == "grande" && petListCustomer.get(i).getPetType() == "perro") {
+            }else if (petListBooking.get(i).getPetSize() == "grande" && petListBooking.get(i).getPetType() == "perro") {
                 basicPrice = basicPrice + (basicPrice * 0.2);
             }
             countPrice += basicPrice;
-        }*/
+        }
 
         long startTime = checkIn.getTime() ;
         long endTime = checkOut.getTime();
@@ -102,7 +106,10 @@ public class BookingService {
         Booking bookingDetail = new Booking(
                 booking.get().getTotalPrice(),
                 booking.get().getCheckIn(),
-                booking.get().getCheckOut()
+                booking.get().getCheckOut(),
+                booking.get().getPets(),
+                booking.get().getUser(),
+                booking.get().getPetDayCare()
         );
 
         return bookingDetail;

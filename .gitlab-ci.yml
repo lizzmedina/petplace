@@ -1,0 +1,67 @@
+stages:
+  - build
+  - deploy
+
+back:build:
+  stage: build
+  image:  maven:3.8.3-openjdk-17
+  script:
+    - echo "Building app..."
+    - cd Back/IntegradorMaven
+    - mvn clean install
+    - echo "Finished building the app."
+  artifacts:
+    expire_in: 1 week
+    paths:
+      - Back/IntegradorMaven/target/java-backend.service.jar
+
+front:build:
+  stage: build
+  image:  node:20-alpine3.16
+  script:
+    - echo "Building app..."
+    - echo "VITE_REACT_APP_BACKEND_URL=http://${DEPLOY_SERVER_IP}:8080" > Front/.env
+    - cd Front
+    - npm install
+    - npm run build
+    - echo "Finished building the app."
+  artifacts:
+    expire_in: 1 week
+    paths:
+      - Front/dist/*
+
+back:deploy:
+  stage: deploy
+  image: alpine:3.11
+  before_script:
+    - apk update && apk add openssh-client bash
+    - mkdir -p ~/.ssh
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+    - touch ~/.ssh/config
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+    - ssh-keyscan -H $DEPLOY_SERVER_IP >> ~/.ssh/known_hosts
+  script:
+    - echo "Deploying started..."
+    - ssh ec2-user@$DEPLOY_SERVER_IP "sudo systemctl stop java-backend.service"
+    - scp Back/IntegradorMaven/target/java-backend.service.jar ec2-user@$DEPLOY_SERVER_IP:~/java-backend/
+    - ssh ec2-user@$DEPLOY_SERVER_IP "sudo systemctl start java-backend.service"
+    - echo "Finished deploying the app."
+  only:
+    - Develop
+
+front:deploy:
+  stage: deploy
+  image:
+    name: amazon/aws-cli:latest
+    entrypoint: [""]
+  before_script:
+    - aws --version
+    - aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+    - aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+  script:
+    - echo "Deploying started..."
+    - aws s3 sync Front/dist/ s3://$S3_BUCKET_NAME
+    - echo "Finished deploying the app."
+  only:
+    - Develop

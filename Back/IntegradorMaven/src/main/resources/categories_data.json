@@ -1,0 +1,22 @@
+[
+  {
+    "description": "Especialidados en perros",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Perro1.jpg",
+    "title": "Perros"
+  },
+  {
+    "description": "Especialidados en gatos",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Gato.jpg",
+    "title": "Gatos"
+  },
+  {
+    "description": "Especialidados en canarios",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Canario.jpg",
+    "title": "Canarios"
+  },
+  {
+    "description": "Especialidados en conejos",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Conejo.jpg",
+    "title": "Conejos"
+  }
+]

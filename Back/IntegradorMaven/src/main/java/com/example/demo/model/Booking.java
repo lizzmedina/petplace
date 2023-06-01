@@ -3,7 +3,7 @@ package com.example.demo.model;
 import java.util.Date;
 
 public class Booking {
-    // completar clase: atributos( asegurarse que se importen las clases cuando se quieren colocar como atributos, constructor y metodos )
+
     private Integer idBooking;
     private PetDayCare petDayCare;
     private Date checkIn;

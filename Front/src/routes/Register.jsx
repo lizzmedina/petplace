@@ -1,5 +1,5 @@
-import React from 'react'
-import FormUser from '../components/FormUser'
+import React from 'react';
+import FormUser from '../components/FormUser';
 
 const Register = () => {
     return (
