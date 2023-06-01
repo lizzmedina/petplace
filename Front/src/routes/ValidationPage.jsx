@@ -4,36 +4,38 @@ import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.css';
 
 export const ValidationPage = () => {
+
   const { validationUserUrl } = useContextGlobal();
   const [user, setUser] = useState({
     email: ""
   });
 
   const handlerValidation = () => {
-    if (user.email) {
-      fetch(`${validationUserUrl}${user.email}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        }
-      })
-      .then(() => {
+    fetch(`${validationUserUrl}${user.email}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      }
+    })
+    .then((response) => {
+      console.log(response);
+      if (response.ok) {
         Swal.fire({
-          html: 'Validado con éxito, ahora puedes <a href="http://localhost:5173/login">ingresar a tu cuenta</a>',
+          html: 'Validado con éxito, ahora puedes <a href="/login">ingresar a tu cuenta</a>',
           icon: "success",
           showConfirmButton: false,
         });
-      })
-      .catch((error) => {
-        console.error("Error al validar:", error);
-      });
-    }else {
-      Swal.fire({
-        text: 'error al validar, revisa que esté bien escrito tú correo e intenta nuevamente, por favor',
-        icon: "error",
-      });
-    }
-  };
+      } else {
+        Swal.fire({
+          text: 'error al validar, revisa que esté bien escrito tú correo e intenta nuevamente, por favor',
+          icon: "error",
+        });
+      }
+    })
+    .catch((error) => {
+      console.error("Error al validar:", error);
+    });
+  }
 
   return (
     <div className="validationpage-container space-section">
