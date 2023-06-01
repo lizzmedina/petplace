@@ -18,7 +18,6 @@ export const ValidationPage = () => {
       }
     })
     .then((response) => {
-      console.log(response);
       if (response.ok) {
         Swal.fire({
           html: 'Validado con éxito, ahora puedes <a href="/login">ingresar a tu cuenta</a>',
