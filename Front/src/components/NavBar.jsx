@@ -36,19 +36,12 @@ export const NavBar = () => {
   });
 
   return (
-<<<<<<< HEAD
-    <div className='navbar'>
-      <Link className='navbar-link-container' to="/">
-        <img
-          src='https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/Logo/LogoDB.png'
-=======
     <div className = 'navbar'>
     
       <Link className = 'navbar-link-container' to = "/"> 
         
         <img 
           src='https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/Logo/LogoPP.png'  
->>>>>>> bc0833f521d49297a9dee0bc5fbd6eb2d442cd13
           alt="icono"
           className="logo"
         />
