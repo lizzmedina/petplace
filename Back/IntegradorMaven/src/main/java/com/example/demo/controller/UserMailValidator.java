@@ -36,13 +36,19 @@ public class UserMailValidator {
                 "\n" +
                 "Sigue los pasos a continuación para completar el proceso de validación: \n" +
                 "\n" +
-                "Haz clic en el siguiente enlace de verificación: [http://localhost:5173/validationPage]\n" +
+                "Haz clic en el siguiente enlace de verificación: [http://bucket-equipo2-frontend.s3-website.us-east-2.amazonaws.com/validationPage]\n" +
                 "\n" +
                 "Se abrirá una página de confirmación donde podrás verificar tu dirección de correo electrónico.\n" +
                 "\n" +
                 "Si no puedes hacer clic en el enlace de verificación, copia y pega la URL completa en la barra de direcciones de tu navegador.\n" +
                 "\n" +
-                "Una vez que hayas verificado tu dirección de correo electrónico, tendrás acceso completo a todas las funciones y características de PetPlace.");
+                "Una vez que hayas verificado tu dirección de correo electrónico, tendrás acceso completo a todas las funciones y características de PetPlace.\n" +
+                "\n" +
+                "Gracias por registrarte. \n" +
+                "\n" +
+                "PetPlace \uD83D\uDC3E, \n" +
+                "\n" +
+                "Los cuidamos como en casa.");
 
 
         mail.send(email);
