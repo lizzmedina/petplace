@@ -19,7 +19,7 @@ export const ValidationPage = () => {
       })
       .then(() => {
         Swal.fire({
-          html: 'Validado con éxito, ahora puedes <a href=`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/login`>ingresar a tu cuenta</a>',
+          html: 'Validado con éxito, ahora puedes <a href="http://localhost:5173/login">ingresar a tu cuenta</a>',
           icon: "success",
           showConfirmButton: false,
         });
