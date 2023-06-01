@@ -6,14 +6,14 @@ const ContextGlobal = createContext();
 const ContextProvider = ({children}) => {
 
     
-    const validationUserUrl = "http://localhost:8080/api/v1/user/validation/";
-    const sendEmailUrl = "http://localhost:8080/api/v1/mail/send/";
-    const urlGetUsers = "http://localhost:8080/api/v1/user/all";
-    const urlPostUsers = "http://127.0.0.1:8080/api/v1/user";
+    const validationUserUrl = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/user/validation/`;
+    const sendEmailUrl = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/mail/send/`;
+    const urlGetUsers = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/user/all`;
+    const urlPostUsers = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/user`;
 
     const [places, setPlaces] = useState([]); // categorias
     const getAllCategories = async()=> {
-        const res = await fetch('http://localhost:8080/api/v1/category/all');
+        const res = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/category/all`);
         const data = await res.json();
         setPlaces(data)
     }
@@ -22,7 +22,7 @@ const ContextProvider = ({children}) => {
     }, []);
 
 
-    const[url, setUrl] = useState("http://localhost:8080/api/v1/petDayCare/all") // productos/hospedajes
+    const[url, setUrl] = useState(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/petDayCare/all`) // productos/hospedajes
     const [dataCategory, setDataCategory] = useState([])
     useEffect(() => {
         fetch(url)

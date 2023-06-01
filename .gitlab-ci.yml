@@ -20,6 +20,7 @@ front:build:
   image:  node:20-alpine3.16
   script:
     - echo "Building app..."
+    - echo "VITE_REACT_APP_BACKEND_URL=http://${DEPLOY_SERVER_IP}:8080" > .env
     - cd Front
     - npm install
     - npm run build

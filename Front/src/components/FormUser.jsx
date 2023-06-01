@@ -62,7 +62,7 @@ const FormUser = () => {
     const [isSuccess, setIsSuccess] = useState(false);
     const [validationErrors, setValidationErrors] = useState({});
 
-    //const url = "http://localhost:8080/api/v1/user/all";
+    //const url = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/user/all`;
     const [allUsers, setAllUsers] = useState([]);
     useEffect(() => {
         fetch(urlGetUsers)
