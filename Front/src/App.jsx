@@ -11,7 +11,6 @@ import EditProducts from "./routes/EditProducts";
 import EditUsers from "./routes/EditUsers";
 import { Footer } from "./components/Footer";
 import './styles.css';
-import { FormNewCategory } from "./components/FormNewCategory";
 import { ValidationPage } from "./routes/ValidationPage";
 import { NewCategory } from "./routes/NewCategory";
 
@@ -30,7 +29,7 @@ function App() {
                 <Route path="/account/:id" element={<MyAccount/>}/>
                 <Route path="/editProducts" element={<EditProducts/>}/>
                 <Route path="/editUsers" element={<EditUsers/>}/>
-                <Route path="/validationPage" element={<ValidationPage/>}/>
+                <Route path="/validationPage/" element={<ValidationPage/>}/>
             </Routes>
             <Footer/>
         </div>

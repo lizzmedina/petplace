@@ -24,8 +24,9 @@ const FormLogin = () => {
         event.preventDefault();
 
         const foundUser = allUsers.find((item) => item.email.toLowerCase() === userLog.email.toLowerCase());
+        
         if (foundUser) {
-            if (foundUser.password === userLog.password) {
+            if (foundUser.password === userLog.password && foundUser.validation) {
                 Swal.fire({icon: 'success',title:`Bienvenido a PetPlace ${foundUser.name}.`});
                 localStorage.setItem('userConnected', JSON.stringify(foundUser));
                 setUserLog({
@@ -34,6 +35,9 @@ const FormLogin = () => {
                 });
                 navigate('/', { replace: true });
                 window.location.reload();
+            } 
+            else if (!foundUser.validation) {
+                Swal.fire({icon: 'error',title:"Este usuario no ha sido validado"});
             } else {
                 Swal.fire({icon: 'error',title:"Contraseña incorrecta."});
             }

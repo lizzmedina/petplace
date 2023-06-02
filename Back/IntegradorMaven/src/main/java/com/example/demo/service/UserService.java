@@ -76,7 +76,7 @@ public class UserService {
 
         for (int i = 0; i < usersFromDatabase.size(); i++) {
             User user = usersFromDatabase.get(i);
-            UserDTO userDTO = new UserDTO(user.getId(), user.getName(), user.getLastName(), user.getEmail(), user.getPassword(), user.getCellPhone(), user.getAddress(), user.getType());
+            UserDTO userDTO = new UserDTO(user.getId(), user.getName(), user.getLastName(), user.getEmail(), user.getPassword(), user.getCellPhone(), user.getAddress(), user.getType(), user.isValidation());
             listOfUserDtos.add(userDTO);
         }
 

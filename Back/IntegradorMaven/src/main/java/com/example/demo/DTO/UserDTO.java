@@ -10,8 +10,9 @@ public class UserDTO {
     private String cellPhone;
     private String address;
     private String type;
+    private boolean validation;
 
-    public UserDTO(Integer id, String name, String lastName, String email, String password, String cellPhone, String address, String type) {
+    public UserDTO(Integer id, String name, String lastName, String email, String password, String cellPhone, String address, String type, boolean validation) {
        this.id = id;
         this.name = name;
         this.lastName = lastName;
@@ -20,6 +21,7 @@ public class UserDTO {
         this.cellPhone = cellPhone;
         this.address = address;
         this.type = type;
+        this.validation = validation;
     }
 
 
@@ -68,6 +70,14 @@ public class UserDTO {
 
     public String getCellPhone() {
         return cellPhone;
+    }
+
+    public boolean isValidation() {
+        return validation;
+    }
+
+    public void setValidation(boolean validation) {
+        this.validation = validation;
     }
 
     public void setCellPhone(String cellPhone) {
