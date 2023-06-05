@@ -154,4 +154,7 @@ public class PetDayCareService {
         repository.findAll().stream().forEach(repository::delete);//Elimina todos los datos de la BD
     }
 
+    public Optional<PetDayCare> findById(Integer id) {
+        return repository.findById(id);
+    }
 }

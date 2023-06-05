@@ -43,7 +43,7 @@ import java.util.Set;
             this.name = name;
         }
 
-        public Integer getIid() {
+        public Integer getId() {
             return id;
         }
 

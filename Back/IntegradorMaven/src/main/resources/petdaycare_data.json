@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "name": "Paw Palace",
     "categoryName": "Conejos",
     "capacity": 50,
@@ -24,6 +25,7 @@
     "basicPrice": 30.000
   },
   {
+    "id": 2,
     "name": "Huellas de amor",
     "categoryName": "Perros",
     "capacity": 50,
@@ -50,6 +52,7 @@
     "basicPrice": 30.000
   },
   {
+    "id": 3,
     "name": "Pet Resort",
     "categoryName": "Gatos",
     "capacity": 50,
@@ -73,6 +76,7 @@
     "basicPrice": 30.000
   },
   {
+    "id": 4,
     "name": "Furry Friends Retreat",
     "categoryName": "Canarios",
     "capacity": 50,
@@ -97,6 +101,7 @@
     "basicPrice": 30.000
   },
   {
+    "id": 5,
     "name": "Critter Care Center",
     "categoryName": "Perros",
     "capacity": 50,
@@ -123,6 +128,7 @@
     "basicPrice": 30.000
   },
   {
+    "id": 6,
     "name": "Paws and Claws Lodge",
     "categoryName": "Gatos",
     "capacity": 50,
@@ -147,6 +153,7 @@
     "basicPrice": 30.000
   },
   {
+    "id": 7,
     "name": "Happy Tails Inn",
     "categoryName": "Conejos",
     "capacity": 50,
@@ -172,6 +179,7 @@
     "basicPrice": 30.000
   },
   {
+    "id": 8,
     "name": "Bark Avenue Boarding",
     "categoryName": "Canarios",
     "capacity": 50,
@@ -197,6 +205,7 @@
     "basicPrice": 30.000
   },
   {
+    "id": 9,
     "name": "The Cat's Meow Hotel",
     "categoryName": "Gatos",
     "capacity": 50,
@@ -221,6 +230,7 @@
     "basicPrice": 30.000
   },
   {
+    "id": 10,
     "name": "The Dog House",
     "categoryName": "Perros",
     "capacity": 50,
@@ -246,6 +256,7 @@
     "basicPrice": 30.000
   },
   {
+    "id": 11,
     "name": "Pet Paradise",
     "categoryName": "Conejos",
     "capacity": 50,
@@ -270,6 +281,7 @@
     "basicPrice": 30.000
   },
   {
+    "id": 12,
     "name": "Woof Den",
     "categoryName": "Canarios",
     "capacity": 50,
@@ -293,6 +305,7 @@
     "basicPrice": 30.000
   },
   {
+    "id": 13,
     "name": "Whiskers Lodge",
     "categoryName": "Perros",
     "capacity": 50,
@@ -316,6 +329,7 @@
     "basicPrice": 30.000
   },
   {
+    "id": 14,
     "name": "Tail Waggers Inn",
     "categoryName": "Gatos",
     "capacity": 50,
@@ -336,6 +350,7 @@
     "basicPrice": 30.000
   },
   {
+    "id": 15,
     "name": "Fuzzy Friends Farm",
     "categoryName": "Conejos",
     "capacity": 50,
@@ -358,6 +373,7 @@
     "basicPrice": 30.000
   },
   {
+    "id": 16,
     "name": "Critter Camp",
     "categoryName": "Canarios",
     "capacity": 50,
@@ -380,6 +396,7 @@
     "basicPrice": 30.000
   },
   {
+    "id": 17,
     "name": "Purrfect Retreat",
     "categoryName": "Perros",
     "capacity": 50,
@@ -403,6 +420,7 @@
     "basicPrice": 30.000
   },
   {
+    "id": 18,
     "name": "Barking Lot Lodge",
     "categoryName": "Perros",
     "capacity": 50,
@@ -424,6 +442,7 @@
     "basicPrice": 30.000
   },
   {
+    "id": 19,
     "name": "Animal House",
     "categoryName": "Canarios",
     "capacity": 50,
@@ -446,6 +465,7 @@
     "basicPrice": 30.000
   },
   {
+    "id": 20,
     "name": "Four Paws Resort",
     "categoryName": "Perros",
     "capacity": 50,
@@ -469,6 +489,7 @@
   },
 
   {
+    "id": 21,
     "name": "Rabbit Palace",
     "categoryName": "Conejos",
     "capacity": 50,
@@ -490,6 +511,7 @@
     "basicPrice": 30.000
   },
   {
+    "id": 22,
     "name": "Footprints Of Love",
     "categoryName": "Perros",
     "capacity": 50,
@@ -513,6 +535,7 @@
     "basicPrice": 30.000
   },
   {
+    "id": 23,
     "name": "House Mr. Cat",
     "categoryName": "Gatos",
     "capacity": 50,
@@ -533,6 +556,7 @@
     "basicPrice": 30.000
   },
   {
+    "id": 24,
     "name": "Flying Free",
     "categoryName": "Canarios",
     "capacity": 50,
@@ -554,6 +578,7 @@
     "basicPrice": 30.000
   },
   {
+    "id": 25,
     "name": "Hairy Paw",
     "categoryName": "Perros",
     "capacity": 50,
@@ -577,6 +602,7 @@
     "basicPrice": 30.000
   },
   {
+    "id": 26,
     "name": "Happy Claws",
     "categoryName": "Gatos",
     "capacity": 50,
@@ -598,6 +624,7 @@
     "basicPrice": 30.000
   },
   {
+    "id": 27,
     "name": "Ojeras Grandes",
     "categoryName": "Conejos",
     "capacity": 50,
@@ -620,6 +647,7 @@
     "basicPrice": 30.000
   },
   {
+    "id": 28,
     "name": "An Adventure In The Air",
     "categoryName": "Canarios",
     "capacity": 50,
@@ -642,6 +670,7 @@
     "basicPrice": 30.000
   },
   {
+    "id": 29,
     "name": "Meow Hotel",
     "categoryName": "Gatos",
     "capacity": 50,
@@ -663,6 +692,7 @@
     "basicPrice": 30.000
   },
   {
+    "id": 30,
     "name": "Colas Felices",
     "categoryName": "Perros",
     "capacity": 50,
@@ -685,6 +715,7 @@
     "basicPrice": 30.000
   },
   {
+    "id": 31,
     "name": "Orejas Alegres",
     "categoryName": "Conejos",
     "capacity": 50,
@@ -706,6 +737,7 @@
     "basicPrice": 30.000
   },
   {
+    "id": 32,
     "name": "Harmonious Wings",
     "categoryName": "Canarios",
     "capacity": 50,
@@ -727,6 +759,7 @@
     "basicPrice": 30.000
   },
   {
+    "id": 33,
     "name": "Dogs Playing",
     "categoryName": "Perros",
     "capacity": 50,
@@ -749,6 +782,7 @@
     "basicPrice": 30.000
   },
   {
+    "id": 34,
     "name": "Mi Amigo El Gato",
     "categoryName": "Gatos",
     "capacity": 50,
@@ -769,6 +803,7 @@
     "basicPrice": 30.000
   },
   {
+    "id": 35,
     "name": "Cute Ears",
     "categoryName": "Conejos",
     "capacity": 50,
@@ -791,6 +826,7 @@
     "basicPrice": 30.000
   },
   {
+    "id": 36,
     "name": "Canary Hotel",
     "categoryName": "Canarios",
     "capacity": 50,
@@ -813,6 +849,7 @@
     "basicPrice": 30.000
   },
   {
+    "id": 37,
     "name": "Patas Andantes",
     "categoryName": "Perros",
     "capacity": 50,
@@ -836,6 +873,7 @@
     "basicPrice": 30.000
   },
   {
+    "id": 38,
     "name": "Cuatro Patas",
     "categoryName": "Perros",
     "capacity": 50,
@@ -857,6 +895,7 @@
     "basicPrice": 30.000
   },
   {
+    "id": 39,
     "name": "Bird House",
     "categoryName": "Canarios",
     "capacity": 50,
@@ -878,6 +917,7 @@
     "basicPrice": 30.000
   },
   {
+    "id": 40,
     "name": "Four Paws Resort",
     "categoryName": "Perros",
     "capacity": 50,
