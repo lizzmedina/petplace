@@ -40,7 +40,6 @@ const FormProduct = () => {
         const result = allProducts.find((item) => item.name === product.name);
         console.log(result);
         if (result === undefined) {
-            // El nombre no existe en allProducts, proceder con el envío del formulario
             if (product.name.length > 2 && product.detail.length > 5) {
                 setIsLoading(true);
                 setProduct({
@@ -56,7 +55,7 @@ const FormProduct = () => {
                 });console.log(product);
                 
 
-                fetch("http://127.0.0.1:8080/api/v1/petDayCare", {
+                fetch("http://127.0.0.1:8080/api/v1/petDayCare", { 
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -119,10 +118,10 @@ const FormProduct = () => {
 
     useEffect(() => {
         setProduct((prevProduct) => ({
-          ...prevProduct,
-          characteristics: selectedCharacteristics,
+            ...prevProduct,
+            characteristics: selectedCharacteristics,
         }));
-      }, [selectedCharacteristics]);
+    }, [selectedCharacteristics]);
 
 
     const handleCheckboxChange = (option) => {

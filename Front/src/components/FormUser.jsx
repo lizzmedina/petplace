@@ -79,7 +79,7 @@ const FormUser = () => {
 
             const result = allUsers.find((item) => item.email.toLowerCase() === user.email.toLowerCase());
             if (!result) {
-                // Si el email no existe entonces se continua con el envío del formulario
+                
                 setIsLoading(true);
 
                 fetch(urlPostUsers, {
@@ -108,9 +108,7 @@ const FormUser = () => {
                         })
                         .then((res) => res.json())
                         .then((data) => {
-                            // Manejar la respuesta del servidor después de enviar el correo
                             console.log("Correo de validación enviado:", data);
-                                
                         })
                         .catch((error) => {
                             console.error("Error al enviar el correo de validación:", error);
