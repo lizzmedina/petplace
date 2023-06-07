@@ -69,9 +69,6 @@ public class BookingService {
 
     public double calculatePrice(Date checkIn, Date checkOut, double basicPrice, List<Pet> petListBooking){
 
-        //El precio base = si es gato, si es perro pequeño.
-        //Si es perro mediano o grande, al precio base se le suma un valor 10% al mediano y 20% al grande.
-        
         double countPrice = 0.0;
         for (int i = 0; i < petListBooking.toArray().length; i++) {
             if (petListBooking.get(i).getPetSize() == "pequeño" && petListBooking.get(i).getPetType() == "perro" ) {

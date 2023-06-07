@@ -3,7 +3,6 @@ package com.example.demo.service;
 import com.example.demo.DTO.RoleDTO;
 import com.example.demo.entity.Permission;
 import com.example.demo.entity.Role;
-import com.example.demo.entity.User;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +23,7 @@ public class RoleService {
         this.permissionService = permissionService;
     }
 
-    public Role save(RoleDTO roleDTO) { //
+    public Role save(RoleDTO roleDTO) {
         if (roleDTO == null) {
             throw new ResourceNotFoundException("El role no puede ser nulo");
         }

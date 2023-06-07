@@ -938,5 +938,28 @@
       "Veterinaria"
     ],
     "basicPrice": 30.000
+  },
+  {
+    "id": 41,
+    "name": "Four Paws Resort",
+    "categoryName": "Perros",
+    "capacity": 50,
+    "city": "Cali",
+    "address": "Calle 3, via Yumbo",
+    "detail": "Una casa de vacaciones donde las mascotas disfrutan de amplias áreas de descanso, juegos al aire libre y la compañía de otros animales mientras sus dueños están fuera, creando un ambiente acogedor y alegre.",
+    "images": [
+      "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/40.+Four+Paws+Resort/httpstinyurl.comnab8xerk.jpg",
+      "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/40.+Four+Paws+Resort/httpstinyurl.com4f4p29fe.jpg",
+      "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/40.+Four+Paws+Resort/httpstinyurl.com3epab7ds.jpg",
+      "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/40.+Four+Paws+Resort/httpstinyurl.com39heafte.jpg",
+      "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/40.+Four+Paws+Resort/httpstinyurl.comk8u5xxxd.jpg"
+    ],
+    "characteristics": [
+      "Baño",
+      "Paseo",
+      "Alimentación",
+      "Veterinaria"
+    ],
+    "basicPrice": 30.000
   }
 ]

@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.DTO.CategoryDTO;
 import com.example.demo.DTO.PetDayCareDTO;
+import com.example.demo.entity.City;
 import com.example.demo.entity.PetDayCare;
 import com.example.demo.mapper.CategoryMapper;
 import com.example.demo.repository.CategoryRepository;
@@ -39,14 +40,9 @@ public class PetDayCareServiceTest {
     @Test
     @DisplayName("Esta prueba valida la creación de un hotel nulo")
     public void save_nullTest(){
-        //Given: Settear el escenario de pruebas, para probar con esos datos.
-
-        //When: Cuando el hotel sea nulo, verificamos que se lanzó la exception
         Assertions.assertThrows(IllegalArgumentException.class,
-                () -> petDayCareService.save(null), "El hotel no puede ser nulo");//Los assert son verificar. Se verifica que cuando se lance un save con hotel nulo, se debe verificar que lance la excepción que to quiero que lance
-
-        //Then: Mockito por favor verifique que al repositorio que es el mock, lo llamaron con un parametro null
-        Mockito.verify(petDayCareRepository,Mockito.times(0)).save(null);//Verifique que nunca se llamó al reposrotorio porque el parametro es nulo.
+                () -> petDayCareService.save(null), "El hotel no puede ser nulo");
+        Mockito.verify(petDayCareRepository,Mockito.times(0)).save(null);
     }
 
     @Test
@@ -61,7 +57,7 @@ public class PetDayCareServiceTest {
         expectedPetDayCare.setName("Prueba hotel");
         expectedPetDayCare.setType(categoryMapper.mapToEntity(categoryDTO));
         expectedPetDayCare.setCapacity(30);
-        expectedPetDayCare.setCity("Ensayo");
+        expectedPetDayCare.setCity(new City("Ciudad"));
         expectedPetDayCare.setAddress("Ensayo");
         expectedPetDayCare.setImages(null);
         expectedPetDayCare.setCharacteristics(null);
@@ -120,7 +116,7 @@ public class PetDayCareServiceTest {
         expectedPetDayCare.setName("Prueba hotel");
         expectedPetDayCare.setType(categoryMapper.mapToEntity(categoryDTO));
         expectedPetDayCare.setCapacity(30);
-        expectedPetDayCare.setCity("Ensayo");
+        expectedPetDayCare.setCity(new City("Ciudad"));
         expectedPetDayCare.setAddress("Ensayo");
         expectedPetDayCare.setImages(null);
         expectedPetDayCare.setCharacteristics(null);

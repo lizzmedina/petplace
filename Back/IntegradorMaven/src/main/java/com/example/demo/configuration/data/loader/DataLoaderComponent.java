@@ -3,10 +3,12 @@ package com.example.demo.configuration.data.loader;
 import com.example.demo.DTO.CategoryDTO;
 import com.example.demo.DTO.PetDayCareDTO;
 import com.example.demo.DTO.UserDTO;
+import com.example.demo.entity.City;
 import com.example.demo.entity.Permission;
 import com.example.demo.entity.PetDayCare;
 import com.example.demo.entity.Role;
 import com.example.demo.exception.ResourceNotFoundException;
+import com.example.demo.repository.CityRepository;
 import com.example.demo.repository.PermissionRepository;
 import com.example.demo.repository.RoleRepository;
 import com.example.demo.service.CategoryService;
@@ -36,6 +38,23 @@ public class DataLoaderComponent {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private CityRepository cityRepository;
+
+    public void loadInitialCities() {
+        System.out.println("loading cities data...");
+        List<PetDayCareDTO> petDayCareList = JsonHelper.readJsonFromFile("petdaycare_data.json", new TypeReference<>() {
+        });
+        petDayCareList.stream().map(PetDayCareDTO::getCity).forEach(cityName -> {
+            Optional<City> cityOpt = cityRepository.findByName(cityName);
+            if(cityOpt.isEmpty()){
+                cityRepository.save(new City(cityName));
+            }else {
+                System.out.println("City ["+cityName+"], already exists, skipping creation...");
+            }
+        });
+    }
 
     public void loadInitialPetDayCareData() {
         System.out.println("loading pet day care data...");
@@ -133,6 +152,7 @@ public class DataLoaderComponent {
 
     @EventListener
     public void onApplicationEvent(ContextRefreshedEvent event) {
+        loadInitialCities();
         loadInitialCategoriesData();
         loadInitialPetDayCareData();
         loadInitialRoleData();
