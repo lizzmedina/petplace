@@ -1,21 +1,35 @@
-import { useState } from "react";
-
+import React, { useState } from "react";
+import Select from "react-select";
 
 export const SearcherByLocation = () => {
-    const opciones = ['Santa Fé de Bogotá, Colombia', 'Buenos Aires, Argentina', 'Cartagena, Colombia'];
-  const [opcionSeleccionada, setOpcionSeleccionada] = useState('');
+    
+    const options = [
+        { value: 'cali', label: 'Cali' },
+        { value: 'medellin', label: 'Medellín' },
+        { value: 'manizales', label: 'Manizales' },
+        { value: 'bogota', label: 'Bogotá' },
+        { value: 'barranquilla', label: 'Barranquilla' },
+        { value: 'cucuta', label: 'Cúcuta' },
+        { value: 'cartagena', label: 'Cartagena' },
+        { value: 'bucaramanga', label: 'Bucaramanga' },
+        { value: 'pereira', label: 'Pereira' },
+        { value: 'santa marta', label: 'Santa Marta' },
+        { value: 'ibague', label: 'Ibagué' },
+    ];
 
-  const handleSeleccionarOpcion = (event) => {
-    setOpcionSeleccionada(event.target.value);
-  };
+    const [selectedOption, setSelectedOption] = useState(null);
+
+    const handleSelectCity = (option) => {
+        setSelectedOption(option);
+    };
+
     return (
-        <select id="opciones" className = "search-by search-width " value={opcionSeleccionada} onChange={handleSeleccionarOpcion}>
-            <option value="" disabled hidden>¿dónde estarás? </option>
-            {opciones.map((opcion) => (
-                <option key={opcion} value={opcion}>
-                    {opcion}
-                </option>
-            ))}
-        </select>
-    )
-}
+        <Select
+        className="search-width"
+        placeholder="¿Dónde estarás?"
+        value={selectedOption}
+        options={options}
+        onChange={handleSelectCity}
+        />
+    );
+};

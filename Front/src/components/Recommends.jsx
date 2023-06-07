@@ -5,6 +5,7 @@ import Stack from '@mui/material/Stack';
 import { Pagination, useMediaQuery } from "@mui/material";
 
 export const Recommends = () => {
+  
   const url = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/petDayCare/all`;
 
   const [recommends, setRecommends] = useState([]);
@@ -25,13 +26,6 @@ export const Recommends = () => {
 
   // Determina la cantidad de tarjetas a mostrar en función del tamaño de la pantalla
   let cardsPerRow =10;
-  // if (isMobile) {
-  //   cardsPerRow = 1;
-  // } else if (isTablet) {
-  //   cardsPerRow = 2;
-  // } else {
-  //   cardsPerRow = 10;
-  // }
 
   // Cantidad de tarjetas por página
   const cardsPerPage = cardsPerRow;
