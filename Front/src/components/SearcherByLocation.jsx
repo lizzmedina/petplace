@@ -22,14 +22,14 @@ export const SearcherByLocation = () => {
     const handleSelectCity = (option) => {
         setSelectedOption(option);
     };
-
+    console.log(selectedOption?.value);
     return (
         <Select
-        className="search-width"
-        placeholder="¿Dónde estarás?"
-        value={selectedOption}
-        options={options}
-        onChange={handleSelectCity}
+            className="search-width"
+            placeholder={selectedOption ? selectedOption.label : "¿Dónde estarás?"}
+            value={selectedOption}
+            options={options}
+            onChange={handleSelectCity}
         />
     );
 };
