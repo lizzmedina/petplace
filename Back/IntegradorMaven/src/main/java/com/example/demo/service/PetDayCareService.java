@@ -4,37 +4,41 @@ package com.example.demo.service;
 import com.example.demo.DTO.CategoryDTO;
 import com.example.demo.DTO.PetDayCareDTO;
 import com.example.demo.DTO.PetDayCareDetailDTO;
+import com.example.demo.entity.City;
 import com.example.demo.entity.PetDayCare;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.mapper.CategoryMapper;
+import com.example.demo.mapper.CityMapper;
+import com.example.demo.repository.CityRepository;
 import com.example.demo.repository.PetDayCareRepository;
-import com.example.demo.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class PetDayCareService {
 
     private PetDayCareRepository repository;
 
-    private List<PetDayCare> petDayCareList;
-
     private CategoryService categoryService;
 
     private CategoryMapper categoryMapper;
 
+    private CityRepository cityRepository;
+
+    private CityMapper cityMapper;
+
     @Autowired
-    public PetDayCareService(PetDayCareRepository repository, List<PetDayCare> petDayCareList, CategoryService categoryService, CategoryMapper categoryMapper) {
+    public PetDayCareService(PetDayCareRepository repository, CategoryService categoryService,
+                             CategoryMapper categoryMapper, CityRepository cityRepository, CityMapper cityMapper) {
         this.repository = repository;
-        this.petDayCareList = petDayCareList;
         this.categoryService = categoryService;
         this.categoryMapper = categoryMapper;
+        this.cityRepository = cityRepository;
+        this.cityMapper = cityMapper;
     }
-
 
     public PetDayCareDTO edit(PetDayCareDTO petDayCareDTO){
 
@@ -48,7 +52,6 @@ public class PetDayCareService {
                 petDayCareEntity.setType(categoryMapper.mapToEntity(categoryDTO));
                 petDayCareEntity.setDetail(petDayCareDTO.getDetail());
                 petDayCareEntity.setAddress(petDayCareDTO.getAddress());
-                petDayCareEntity.setCity(petDayCareDTO.getCity());
                 petDayCareEntity.setCapacity(petDayCareDTO.getCapacity());
                 petDayCareEntity.setCharacteristics(petDayCareDTO.getCharacteristics());
                 petDayCareEntity.setImages(petDayCareDTO.getImages());
@@ -66,11 +69,13 @@ public class PetDayCareService {
     }
 
 
-    public PetDayCareDTO save(PetDayCareDTO petDayCare){
+    public PetDayCareDTO save(PetDayCareDTO petDayCare) {
 
         if (petDayCare == null) {
             throw new IllegalArgumentException("El hotel no puede ser nulo");
         }
+
+        City city = cityRepository.findByName(petDayCare.getCity()).get();
 
         CategoryDTO categoryDTO = this.categoryService.findByName(petDayCare.getCategoryName());
 
@@ -78,7 +83,7 @@ public class PetDayCareService {
                 petDayCare.getName(),
                 categoryMapper.mapToEntity(categoryDTO),
                 petDayCare.getCapacity(),
-                petDayCare.getCity(),
+                city,
                 petDayCare.getAddress(),
                 petDayCare.getDetail(),
                 petDayCare.getImages(),
@@ -86,33 +91,20 @@ public class PetDayCareService {
                 petDayCare.getBasicPrice()
         );
 
-        repository.save(newPetDayCare);
-
-        PetDayCareDTO petDayCareDTO = new PetDayCareDTO(
-                newPetDayCare.getName(),
-                newPetDayCare.getType().getTitle(),
-                newPetDayCare.getCapacity(),
-                newPetDayCare.getCity(),
-                newPetDayCare.getAddress(),
-                newPetDayCare.getDetail(),
-                newPetDayCare.getImages(),
-                newPetDayCare.getCharacteristics(),
-                newPetDayCare.getBasicPrice());
-
-        return petDayCareDTO;
+        newPetDayCare = repository.save(newPetDayCare);
+        petDayCare.setId(newPetDayCare.getId());
+        return petDayCare;
     }
 
     public List<PetDayCare> findAll(){
-
-        return repository.findAll().stream().collect(Collectors.toList());
-
+        return repository.findAll();
     }
 
     public String delete(Integer id){
         Optional<PetDayCare> petDayCare = this.repository.findById(id);
 
         if(!petDayCare.isPresent()){
-            throw new RuntimeException("La guarderia no fue encontrada");
+            throw new ResourceNotFoundException("La guarderia no fue encontrada");
         }
         repository.delete(petDayCare.get());
         return "El producto fue eliminado ";
@@ -120,24 +112,22 @@ public class PetDayCareService {
     }
 
     public List<PetDayCare> findByCategory(Integer type){
-
-        return repository.findByTypeId(type).stream().collect(Collectors.toList());
-
+        return repository.findByTypeId(type);
     }
 
     public PetDayCareDetailDTO detail(Integer id){
         Optional<PetDayCare> petDayCare = this.repository.findById(id);
 
-        if(!petDayCare.isPresent()){ //si no esta presente, manda una excepcion
-            throw new RuntimeException("La guarderia no fue encontrada");
-        };
+        if(petDayCare.isEmpty()){ //si no esta presente, lanza una excepcion
+            throw new ResourceNotFoundException("La guarderia no fue encontrada");
+        }
 
 
         PetDayCareDetailDTO detailPetDatCare = new PetDayCareDetailDTO(
                 petDayCare.get().getName(),
                 petDayCare.get().getType(),
                 petDayCare.get().getCapacity(),
-                petDayCare.get().getCity(),
+                petDayCare.get().getCity().getName(),
                 petDayCare.get().getAddress(),
                 petDayCare.get().getDetail(),
                 petDayCare.get().getImages(),
@@ -154,4 +144,7 @@ public class PetDayCareService {
         repository.findAll().stream().forEach(repository::delete);//Elimina todos los datos de la BD
     }
 
+    public Optional<PetDayCare> findById(Integer id) {
+        return repository.findById(id);
+    }
 }

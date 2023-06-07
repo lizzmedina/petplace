@@ -1,8 +1,10 @@
 [
   {
+    "id": 1,
     "name": "Manager"
   },
   {
+    "id": 2,
     "name": "Customer"
   }
 ]

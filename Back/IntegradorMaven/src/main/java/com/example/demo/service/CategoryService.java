@@ -47,12 +47,6 @@ public class CategoryService {
         return categoryRepository.findAll().stream().map(categoryMapper::mapToDTO).toList();
     }
 
-    /**
-     * In the database the title field refers to the name
-     *
-     * @param name of the category to search for
-     * @return Category object
-     */
     public CategoryDTO findByName(String name) {
         return categoryRepository.findByTitle(name.toUpperCase()).map(categoryMapper::mapToDTO)
                 .orElseThrow(() -> new ResourceNotFoundException(String.format("La categoria [%s] no existe", name)));
