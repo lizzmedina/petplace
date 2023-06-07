@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Product } from "../components/Product.jsx";
 import { useParams } from 'react-router-dom'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { CalendarDetail } from "../components/CalendarDetail.jsx";
 
 const Details = () => {
 
@@ -18,8 +19,8 @@ const Details = () => {
       }, [])
 
       return (
+            <>
             <div className="detail-container">  
-
                   <Product
                         id={details.id}
                         type={details.type}
@@ -32,9 +33,13 @@ const Details = () => {
                         basicPrice={details.basicPrice}
                         characteristics={details.characteristics}
                   />
-                                   
-                  
             </div>
+            <div>
+                  <CalendarDetail/>
+            </div>
+            
+            </>
+            
       )
 }
 

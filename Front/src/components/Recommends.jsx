@@ -21,9 +21,6 @@ export const Recommends = () => {
       });
   }, []);
 
-  const isMobile = useMediaQuery('(max-width: 767px)'); 
-  const isTablet = useMediaQuery('(max-width: 1024px)'); 
-
   // Determina la cantidad de tarjetas a mostrar en función del tamaño de la pantalla
   let cardsPerRow =10;
 
