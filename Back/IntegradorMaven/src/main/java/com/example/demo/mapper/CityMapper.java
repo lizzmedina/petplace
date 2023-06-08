@@ -18,7 +18,11 @@ public class CityMapper {
         if(dto == null){
             return null;
         }
-        return new City(dto.getName());
+        City cityEntity = new City();
+        cityEntity.setName(dto.getName());
+        cityEntity.setId(dto.getId());
+        //return new City(dto.getName());
+        return cityEntity;
     }
 
     public CityDTO mapToDto(City city){
@@ -33,7 +37,10 @@ public class CityMapper {
                         petDayCare.getDetail(),
                         petDayCare.getImages(),
                         petDayCare.getCharacteristics(),
-                        petDayCare.getBasicPrice());
+                        petDayCare.getBasicPrice(),
+                        petDayCare.getHouseRules(),
+                        petDayCare.getHealthAndSecurity(),
+                        petDayCare.getCancellationPolicy());
                 pdcDto.setId(petDayCare.getId());
                 return pdcDto;
             }).collect(Collectors.toSet()));
