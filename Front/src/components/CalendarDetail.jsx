@@ -1,7 +1,8 @@
-import React from 'react';
+
 import dayjs from 'dayjs';
-import { LocalizationProvider, CalendarPicker } from '@mui/lab';
-import AdapterDayjs from '@mui/lab/AdapterDayjs';
+import AdapterDayjs from '@mui/lab/AdapterDayjs'; 
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+
 
 export const CalendarDetail = () => {
     const currentDate = dayjs();
@@ -38,8 +39,8 @@ export const CalendarDetail = () => {
         <h1>Calendario</h1>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
             <CalendarPicker
-            renderDay={renderDay}
-            shouldDisableDate={(date) => date < startDate || date > endDate || shouldDisableDate(date)}
+                renderDay={renderDay}
+                shouldDisableDate={(date) => date < startDate || date > endDate || shouldDisableDate(date)}
             />
         </LocalizationProvider>
         </div>

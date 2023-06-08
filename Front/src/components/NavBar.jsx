@@ -11,6 +11,7 @@ import Tooltip from '@mui/material/Tooltip';
 import Divider from '@mui/material/Divider';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+
 export const NavBar = () => {
   const navigate = useNavigate();
   const userConnected = JSON.parse(localStorage.getItem('userConnected')) || null;

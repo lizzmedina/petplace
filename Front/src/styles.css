@@ -764,10 +764,24 @@ p.more-images {
     margin-right: 0.3rem;
 }
 
-
+.calendar-section-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.calendars-render{
+    display: flex;
+    margin: 2rem;
+}
+.calendar{
+    margin: 1rem;
+}
+.react-calendar{
+    height: 100%;
+}
 
 /* Estilos del modal galeria detalles de prodcuto */
- .modal-overlay {
+.modal-overlay {
     position: absolute;
     top: 106px;
     left: 0;
