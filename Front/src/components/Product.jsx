@@ -56,7 +56,7 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
 
         <div key={id} className="product-container">
             <div className="product-header">
-                <span className="product-location"><FontAwesomeIcon icon={faLocationDot} className='icon-service' /> {city}, {address}</span>  <a onClick={() => navigate(-1)}><FontAwesomeIcon icon={faChevronLeft} className='back-icon' /></a>
+                <span className="product-location"><FontAwesomeIcon icon={faLocationDot} className='icon-service' /> {city.name}, {address}</span>  <a onClick={() => navigate(-1)}><FontAwesomeIcon icon={faChevronLeft} className='back-icon' /></a>
             </div>
             <div className="product-galery">
                 <div className='leading-image'>
