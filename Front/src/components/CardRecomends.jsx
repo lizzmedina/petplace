@@ -40,7 +40,7 @@ export const CardRecomends = ({ image, type, name, rating, ratingText, character
                 <div className="right-card-content">
                     <h3 className="card-title-recommends">{name}</h3>
                     <span className="card-category-recommends">Habilitado para: {capacity} {type.title} </span>
-                    <p className="card-location-recommends"><FontAwesomeIcon icon={faLocationDot} className='card-location-icon' />{city.name}, {address}</p>
+                    <p className="card-location-recommends"><FontAwesomeIcon icon={faLocationDot} className='card-location-icon' />{city}, {address}</p>
                     <span className='card-services-list-recommends'>{renderCharacteristics()}</span>
                     <p className="card-descrption-recommends">{detail}</p>
                     <span>

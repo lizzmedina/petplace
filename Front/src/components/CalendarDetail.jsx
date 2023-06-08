@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 export const CalendarDetail = () => {
     const datesData = [
@@ -51,7 +49,7 @@ export const CalendarDetail = () => {
         <div className="calendars-render">
             <div className="calendar">
             <button className="calendar-navigation-button" onClick={handlePrevMonth}>
-                <ChevronLeftIcon />
+                Prev
             </button>
             <Calendar
                 value={dates}
@@ -62,9 +60,10 @@ export const CalendarDetail = () => {
                 activeStartDate={new Date(new Date().getFullYear(), currentMonth, 1)}
             />
             </div>
+
             <div className="calendar">
             <button className="calendar-navigation-button" onClick={handleNextMonth}>
-                <ChevronRightIcon />
+                Next
             </button>
             <Calendar
                 value={dates}
