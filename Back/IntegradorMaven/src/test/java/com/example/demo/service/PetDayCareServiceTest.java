@@ -53,7 +53,8 @@ public class PetDayCareServiceTest {
     public void save_hotelTest(){
         //Given
         PetDayCareDTO petDayCareDTO = new PetDayCareDTO();
-        CategoryDTO categoryDTO = this.categoryService.findByName(petDayCareDTO.getCategoryName());
+        petDayCareDTO.setType(new Category("canarios","Expertos en canarios",null));
+        CategoryDTO categoryDTO = this.categoryService.findByName(petDayCareDTO.getType().getTitle());
 
         PetDayCare expectedPetDayCare = new PetDayCare();
         expectedPetDayCare.setId(50);

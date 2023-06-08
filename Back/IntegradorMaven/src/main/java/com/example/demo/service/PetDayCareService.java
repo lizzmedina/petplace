@@ -48,7 +48,7 @@ public class PetDayCareService {
     public PetDayCareDTO edit(PetDayCareDTO petDayCareDTO){
 
         if(petDayCareDTO != null){
-            CategoryDTO categoryDTO = this.categoryService.findByName(petDayCareDTO.getCategoryName());
+            CategoryDTO categoryDTO = this.categoryService.findByName(petDayCareDTO.getType().getTitle());
             Optional<PetDayCare> namePetDayCareEntity = this.repository.findById(petDayCareDTO.getId());
             CityDTO cityDTO = this.cityService.findByName(petDayCareDTO.getCity());
 
@@ -83,7 +83,7 @@ public class PetDayCareService {
         }
 
         City city = cityRepository.findByName(petDayCare.getCity()).get();
-        CategoryDTO categoryDTO = this.categoryService.findByName(petDayCare.getCategoryName());
+        CategoryDTO categoryDTO = this.categoryService.findByName(petDayCare.getType().getTitle());
 
         PetDayCare newPetDayCare = new PetDayCare(
                 petDayCare.getName(),
@@ -128,6 +128,7 @@ public class PetDayCareService {
         Optional<PetDayCare> petDayCare = this.repository.findById(id);
         Optional<Category> category = this.categoryRepository.findById(petDayCare.get().getType().getId());
 
+
         if(petDayCare.isEmpty()){ //si no esta presente, lanza una excepcion
             throw new ResourceNotFoundException("La guarderia no fue encontrada");
         }
@@ -136,7 +137,7 @@ public class PetDayCareService {
 
         PetDayCareDTO petDayCareDTO= new PetDayCareDTO(
                 petDayCare.get().getName(),
-                category.get().getTitle(),
+                category.get(),
                 petDayCare.get().getCapacity(),
                 petDayCare.get().getCity().getName(),
                 petDayCare.get().getAddress(),
