@@ -32,7 +32,7 @@ public class CityMapper {
                 PetDayCareDTO pdcDto = new PetDayCareDTO(petDayCare.getName(),
                         petDayCare.getType(),
                         petDayCare.getCapacity(),
-                        cityDto.getName(),
+                        cityDto,
                         petDayCare.getAddress(),
                         petDayCare.getDetail(),
                         petDayCare.getImages(),

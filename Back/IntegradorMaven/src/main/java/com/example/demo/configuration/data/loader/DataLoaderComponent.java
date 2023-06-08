@@ -1,6 +1,7 @@
 package com.example.demo.configuration.data.loader;
 
 import com.example.demo.DTO.CategoryDTO;
+import com.example.demo.DTO.CityDTO;
 import com.example.demo.DTO.PetDayCareDTO;
 import com.example.demo.DTO.UserDTO;
 import com.example.demo.entity.City;
@@ -46,12 +47,16 @@ public class DataLoaderComponent {
         System.out.println("loading cities data...");
         List<PetDayCareDTO> petDayCareList = JsonHelper.readJsonFromFile("petdaycare_data.json", new TypeReference<>() {
         });
-        petDayCareList.stream().map(PetDayCareDTO::getCity).forEach(cityName -> {
+        petDayCareList.stream().map(PetDayCareDTO::getCity)
+                .filter(Objects::nonNull)
+                .map(CityDTO::getName)
+                .distinct()
+                .forEach(cityName -> {
             Optional<City> cityOpt = cityRepository.findByName(cityName);
-            if(cityOpt.isEmpty()){
+            if (cityOpt.isEmpty()) {
                 cityRepository.save(new City(cityName));
-            }else {
-                System.out.println("City ["+cityName+"], already exists, skipping creation...");
+            } else {
+                System.out.println("City [" + cityName + "], already exists, skipping creation...");
             }
         });
     }

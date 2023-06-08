@@ -11,7 +11,7 @@ public class PetDayCareDTO {
     //private String categoryName;
     private Category type;
     private Integer capacity;
-    private String city;
+    private CityDTO city;
     private String address;
     private String detail;
     private List<String> images;
@@ -22,7 +22,7 @@ public class PetDayCareDTO {
     private List<String> cancellationPolicy;
 
 
-    public PetDayCareDTO(String name, Category type, Integer capacity, String city, String address, String detail, List<String> images, List<String> characteristics, double basicPrice, List<String> houseRules, List<String> healthAndSecurity, List<String> cancellationPolicy) {
+    public PetDayCareDTO(String name, Category type, Integer capacity, CityDTO city, String address, String detail, List<String> images, List<String> characteristics, double basicPrice, List<String> houseRules, List<String> healthAndSecurity, List<String> cancellationPolicy) {
         this.name = name;
         this.type = type;
         this.capacity = capacity;
@@ -72,11 +72,11 @@ public class PetDayCareDTO {
         this.capacity = capacity;
     }
 
-    public String getCity() {
+    public CityDTO getCity() {
         return city;
     }
 
-    public void setCity(String city) {
+    public void setCity(CityDTO city) {
         this.city = city;
     }
 

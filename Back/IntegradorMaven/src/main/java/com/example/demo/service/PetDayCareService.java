@@ -50,7 +50,7 @@ public class PetDayCareService {
         if(petDayCareDTO != null){
             CategoryDTO categoryDTO = this.categoryService.findByName(petDayCareDTO.getType().getTitle());
             Optional<PetDayCare> namePetDayCareEntity = this.repository.findById(petDayCareDTO.getId());
-            CityDTO cityDTO = this.cityService.findByName(petDayCareDTO.getCity());
+            CityDTO cityDTO = this.cityService.findByName(petDayCareDTO.getCity().getName());
 
             if(namePetDayCareEntity.isPresent()){
                 PetDayCare petDayCareEntity = namePetDayCareEntity.get();
@@ -82,7 +82,7 @@ public class PetDayCareService {
             throw new IllegalArgumentException("El hotel no puede ser nulo");
         }
 
-        City city = cityRepository.findByName(petDayCare.getCity()).get();
+        City city = cityRepository.findByName(petDayCare.getCity().getName()).get();
         CategoryDTO categoryDTO = this.categoryService.findByName(petDayCare.getType().getTitle());
 
         PetDayCare newPetDayCare = new PetDayCare(
@@ -139,7 +139,7 @@ public class PetDayCareService {
                 petDayCare.get().getName(),
                 category.get(),
                 petDayCare.get().getCapacity(),
-                petDayCare.get().getCity().getName(),
+                cityMapper.mapToDto(petDayCare.get().getCity()),
                 petDayCare.get().getAddress(),
                 petDayCare.get().getDetail(),
                 petDayCare.get().getImages(),
