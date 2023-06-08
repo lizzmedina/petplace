@@ -1,11 +1,14 @@
 package com.example.demo.DTO;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public class CityDTO {
     private Integer id;
     private String name;
+    @JsonIgnore
     private Set<PetDayCareDTO> petDayCareDTOSet;
 
     public CityDTO(Integer id, String name) {

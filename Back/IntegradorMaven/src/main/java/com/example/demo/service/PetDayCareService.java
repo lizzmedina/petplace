@@ -149,6 +149,7 @@ public class PetDayCareService {
                 petDayCare.get().getHealthAndSecurity(),
                 petDayCare.get().getCancellationPolicy()
         );
+        petDayCareDTO.setId(id);
 
         return petDayCareDTO;
     }
