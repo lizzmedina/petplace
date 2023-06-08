@@ -2,7 +2,12 @@
   {
     "id": 1,
     "name": "Paw Palace",
-    "categoryName": "Conejos",
+    "type" : {
+    "id": 4,
+    "description": "Especialidados en conejos",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Conejo.jpg",
+    "title": "Conejos"
+  },
     "capacity": 8,
     "city": "Medellín",
     "address": "Calle 3, via Yumbo",
@@ -44,7 +49,12 @@
   {
     "id": 2,
     "name": "Huellas de amor",
-    "categoryName": "Perros",
+    "type" : {
+    "id": 1,
+    "description": "Especialidados en perros",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Perro1.jpg",
+    "title": "Perros"
+  },
     "capacity": 5,
     "city": "Cali",
     "address": "Calle 3, via Yumbo",
@@ -87,7 +97,12 @@
   {
     "id": 3,
     "name": "Pet Resort",
-    "categoryName": "Gatos",
+    "type" :  {
+    "id": 2,
+    "description": "Especialidados en gatos",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Gato.jpg",
+    "title": "Gatos"
+  },
     "capacity": 5,
     "city": "Barranquilla",
     "address": "Calle 3, via Yumbo",
@@ -111,7 +126,12 @@
   {
     "id": 4,
     "name": "Furry Friends Retreat",
-    "categoryName": "Canarios",
+    "type" :   {
+    "id": 3,
+    "description": "Especialidados en canarios",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Canario.jpg",
+    "title": "Canarios"
+  },
     "capacity": 10,
     "city": "Cúcuta",
     "address": "Calle 3, via Yumbo",
@@ -136,7 +156,12 @@
   {
     "id": 5,
     "name": "Critter Care Center",
-    "categoryName": "Perros",
+    "type" : {
+    "id": 1,
+    "description": "Especialidados en perros",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Perro1.jpg",
+    "title": "Perros"
+  },
     "capacity": 10,
     "city": "Cartagena de Indias",
     "address": "Calle 3, via Yumbo",
@@ -163,7 +188,12 @@
   {
     "id": 6,
     "name": "Paws and Claws Lodge",
-    "categoryName": "Gatos",
+    "type" :  {
+    "id": 2,
+    "description": "Especialidados en gatos",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Gato.jpg",
+    "title": "Gatos"
+  },
     "capacity": 7,
     "city": "Bucaramanga",
     "address": "Calle 3, via Yumbo",
@@ -188,7 +218,12 @@
   {
     "id": 7,
     "name": "Happy Tails Inn",
-    "categoryName": "Conejos",
+    "type" : {
+    "id": 4,
+    "description": "Especialidados en conejos",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Conejo.jpg",
+    "title": "Conejos"
+  },
     "capacity": 15,
     "city": "Pereira",
     "address": "Calle 3, via Yumbo",
@@ -214,7 +249,12 @@
   {
     "id": 8,
     "name": "Bark Avenue Boarding",
-    "categoryName": "Canarios",
+    "type" :   {
+    "id": 3,
+    "description": "Especialidados en canarios",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Canario.jpg",
+    "title": "Canarios"
+  },
     "capacity": 15,
     "city": "Santa Marta",
     "address": "Calle 3, via Yumbo",
@@ -240,7 +280,12 @@
   {
     "id": 9,
     "name": "The Cat's Meow Hotel",
-    "categoryName": "Gatos",
+    "type" :  {
+    "id": 2,
+    "description": "Especialidados en gatos",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Gato.jpg",
+    "title": "Gatos"
+  },
     "capacity": 5,
     "city": "Ibagué",
     "address": "Calle 3, via Yumbo",
@@ -265,7 +310,12 @@
   {
     "id": 10,
     "name": "The Dog House",
-    "categoryName": "Perros",
+    "type" : {
+    "id": 1,
+    "description": "Especialidados en perros",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Perro1.jpg",
+    "title": "Perros"
+  },
     "capacity": 6,
     "city": "Bogotá D.C",
     "address": "Calle 3, via Yumbo",
@@ -291,7 +341,12 @@
   {
     "id": 11,
     "name": "Pet Paradise",
-    "categoryName": "Conejos",
+    "type" : {
+    "id": 4,
+    "description": "Especialidados en conejos",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Conejo.jpg",
+    "title": "Conejos"
+  },
     "capacity": 8,
     "city": "Medellín",
     "address": "Calle 3, via Yumbo",
@@ -316,7 +371,12 @@
   {
     "id": 12,
     "name": "Woof Den",
-    "categoryName": "Canarios",
+    "type" :   {
+    "id": 3,
+    "description": "Especialidados en canarios",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Canario.jpg",
+    "title": "Canarios"
+  },
     "capacity": 8,
     "city": "Cali",
     "address": "Calle 3, via Yumbo",
@@ -340,7 +400,12 @@
   {
     "id": 13,
     "name": "Whiskers Lodge",
-    "categoryName": "Perros",
+    "type" : {
+    "id": 1,
+    "description": "Especialidados en perros",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Perro1.jpg",
+    "title": "Perros"
+  },
     "capacity": 9,
     "city": "Barranquilla",
     "address": "Calle 3, via Yumbo",
@@ -364,7 +429,12 @@
   {
     "id": 14,
     "name": "Tail Waggers Inn",
-    "categoryName": "Gatos",
+    "type" :  {
+    "id": 2,
+    "description": "Especialidados en gatos",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Gato.jpg",
+    "title": "Gatos"
+  },
     "capacity": 9,
     "city": "Cartagena de Indias",
     "address": "Calle 3, via Yumbo",
@@ -385,7 +455,12 @@
   {
     "id": 15,
     "name": "Fuzzy Friends Farm",
-    "categoryName": "Conejos",
+    "type" : {
+    "id": 4,
+    "description": "Especialidados en conejos",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Conejo.jpg",
+    "title": "Conejos"
+  },
     "capacity": 9,
     "city": "Cúcuta",
     "address": "Calle 3, via Yumbo",
@@ -408,7 +483,12 @@
   {
     "id": 16,
     "name": "Critter Camp",
-    "categoryName": "Canarios",
+    "type" :   {
+    "id": 3,
+    "description": "Especialidados en canarios",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Canario.jpg",
+    "title": "Canarios"
+  },
     "capacity": 9,
     "city": "Bucaramanga",
     "address": "Calle 3, via Yumbo",
@@ -431,7 +511,12 @@
   {
     "id": 17,
     "name": "Purrfect Retreat",
-    "categoryName": "Perros",
+    "type" : {
+    "id": 1,
+    "description": "Especialidados en perros",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Perro1.jpg",
+    "title": "Perros"
+  },
     "capacity": 15,
     "city": "Pereira",
     "address": "Calle 3, via Yumbo",
@@ -455,7 +540,12 @@
   {
     "id": 18,
     "name": "Barking Lot Lodge",
-    "categoryName": "Perros",
+    "type" : {
+    "id": 1,
+    "description": "Especialidados en perros",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Perro1.jpg",
+    "title": "Perros"
+  },
     "capacity": 7,
     "city": "Santa Marta",
     "address": "Calle 3, via Yumbo",
@@ -477,7 +567,12 @@
   {
     "id": 19,
     "name": "Animal House",
-    "categoryName": "Canarios",
+    "type" :   {
+    "id": 3,
+    "description": "Especialidados en canarios",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Canario.jpg",
+    "title": "Canarios"
+  },
     "capacity": 7,
     "city": "Bucaramanga",
     "address": "Calle 3, via Yumbo",
@@ -500,7 +595,12 @@
   {
     "id": 20,
     "name": "Four Paws Resort",
-    "categoryName": "Perros",
+    "type" : {
+    "id": 1,
+    "description": "Especialidados en perros",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Perro1.jpg",
+    "title": "Perros"
+  },
     "capacity": 12,
     "city": "Cali",
     "address": "Calle 3, via Yumbo",
@@ -524,7 +624,12 @@
   {
     "id": 21,
     "name": "Rabbit Palace",
-    "categoryName": "Conejos",
+    "type" : {
+    "id": 4,
+    "description": "Especialidados en conejos",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Conejo.jpg",
+    "title": "Conejos"
+  },
     "capacity": 18,
     "city": "Medellín",
     "address": "Calle 3, via Yumbo",
@@ -546,7 +651,12 @@
   {
     "id": 22,
     "name": "Footprints Of Love",
-    "categoryName": "Perros",
+    "type" : {
+    "id": 1,
+    "description": "Especialidados en perros",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Perro1.jpg",
+    "title": "Perros"
+  },
     "capacity": 10,
     "city": "Cali",
     "address": "Calle 3, via Yumbo",
@@ -570,7 +680,12 @@
   {
     "id": 23,
     "name": "House Mr. Cat",
-    "categoryName": "Gatos",
+    "type" :  {
+    "id": 2,
+    "description": "Especialidados en gatos",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Gato.jpg",
+    "title": "Gatos"
+  },
     "capacity": 10,
     "city": "Barranquilla",
     "address": "Calle 3, via Yumbo",
@@ -591,7 +706,12 @@
   {
     "id": 24,
     "name": "Flying Free",
-    "categoryName": "Canarios",
+    "type" :   {
+    "id": 3,
+    "description": "Especialidados en canarios",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Canario.jpg",
+    "title": "Canarios"
+  },
     "capacity": 50,
     "city": "Cúcuta",
     "address": "Calle 3, via Yumbo",
@@ -613,7 +733,12 @@
   {
     "id": 25,
     "name": "Hairy Paw",
-    "categoryName": "Perros",
+    "type" : {
+    "id": 1,
+    "description": "Especialidados en perros",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Perro1.jpg",
+    "title": "Perros"
+  },
     "capacity": 50,
     "city": "Cartagena de Indias",
     "address": "Calle 3, via Yumbo",
@@ -637,7 +762,12 @@
   {
     "id": 26,
     "name": "Happy Claws",
-    "categoryName": "Gatos",
+    "type" :  {
+    "id": 2,
+    "description": "Especialidados en gatos",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Gato.jpg",
+    "title": "Gatos"
+  },
     "capacity": 50,
     "city": "Bucaramanga",
     "address": "Calle 3, via Yumbo",
@@ -659,7 +789,12 @@
   {
     "id": 27,
     "name": "Ojeras Grandes",
-    "categoryName": "Conejos",
+    "type" : {
+    "id": 4,
+    "description": "Especialidados en conejos",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Conejo.jpg",
+    "title": "Conejos"
+  },
     "capacity": 50,
     "city": "Pereira",
     "address": "Calle 3, via Yumbo",
@@ -682,7 +817,12 @@
   {
     "id": 28,
     "name": "An Adventure In The Air",
-    "categoryName": "Canarios",
+    "type" :   {
+    "id": 3,
+    "description": "Especialidados en canarios",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Canario.jpg",
+    "title": "Canarios"
+  },
     "capacity": 50,
     "city": "Santa Marta",
     "address": "Calle 3, via Yumbo",
@@ -705,7 +845,12 @@
   {
     "id": 29,
     "name": "Meow Hotel",
-    "categoryName": "Gatos",
+    "type" :  {
+    "id": 2,
+    "description": "Especialidados en gatos",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Gato.jpg",
+    "title": "Gatos"
+  },
     "capacity": 50,
     "city": "Ibagué",
     "address": "Calle 3, via Yumbo",
@@ -727,7 +872,12 @@
   {
     "id": 30,
     "name": "Colas Felices",
-    "categoryName": "Perros",
+    "type" : {
+    "id": 1,
+    "description": "Especialidados en perros",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Perro1.jpg",
+    "title": "Perros"
+  },
     "capacity": 50,
     "city": "Bogotá D.C",
     "address": "Calle 3, via Yumbo",
@@ -750,7 +900,12 @@
   {
     "id": 31,
     "name": "Orejas Alegres",
-    "categoryName": "Conejos",
+    "type" : {
+    "id": 4,
+    "description": "Especialidados en conejos",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Conejo.jpg",
+    "title": "Conejos"
+  },
     "capacity": 50,
     "city": "Medellín",
     "address": "Calle 3, via Yumbo",
@@ -772,7 +927,12 @@
   {
     "id": 32,
     "name": "Harmonious Wings",
-    "categoryName": "Canarios",
+    "type" :   {
+    "id": 3,
+    "description": "Especialidados en canarios",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Canario.jpg",
+    "title": "Canarios"
+  },
     "capacity": 50,
     "city": "Cali",
     "address": "Calle 3, via Yumbo",
@@ -794,7 +954,12 @@
   {
     "id": 33,
     "name": "Dogs Playing",
-    "categoryName": "Perros",
+    "type" : {
+    "id": 1,
+    "description": "Especialidados en perros",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Perro1.jpg",
+    "title": "Perros"
+  },
     "capacity": 50,
     "city": "Barranquilla",
     "address": "Calle 3, via Yumbo",
@@ -817,7 +982,12 @@
   {
     "id": 34,
     "name": "Mi Amigo El Gato",
-    "categoryName": "Gatos",
+    "type" :  {
+    "id": 2,
+    "description": "Especialidados en gatos",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Gato.jpg",
+    "title": "Gatos"
+  },
     "capacity": 50,
     "city": "Cartagena de Indias",
     "address": "Calle 3, via Yumbo",
@@ -838,7 +1008,12 @@
   {
     "id": 35,
     "name": "Cute Ears",
-    "categoryName": "Conejos",
+    "type" : {
+    "id": 4,
+    "description": "Especialidados en conejos",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Conejo.jpg",
+    "title": "Conejos"
+  },
     "capacity": 50,
     "city": "Cúcuta",
     "address": "Calle 3, via Yumbo",
@@ -861,7 +1036,12 @@
   {
     "id": 36,
     "name": "Canary Hotel",
-    "categoryName": "Canarios",
+    "type" :   {
+    "id": 3,
+    "description": "Especialidados en canarios",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Canario.jpg",
+    "title": "Canarios"
+  },
     "capacity": 50,
     "city": "Bucaramanga",
     "address": "Calle 3, via Yumbo",
@@ -884,7 +1064,12 @@
   {
     "id": 37,
     "name": "Patas Andantes",
-    "categoryName": "Perros",
+    "type" : {
+    "id": 1,
+    "description": "Especialidados en perros",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Perro1.jpg",
+    "title": "Perros"
+  },
     "capacity": 50,
     "city": "Pereira",
     "address": "Calle 3, via Yumbo",
@@ -908,7 +1093,12 @@
   {
     "id": 38,
     "name": "Cuatro Patas",
-    "categoryName": "Perros",
+    "type" : {
+    "id": 1,
+    "description": "Especialidados en perros",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Perro1.jpg",
+    "title": "Perros"
+  },
     "capacity": 50,
     "city": "Santa Marta",
     "address": "Calle 3, via Yumbo",
@@ -930,7 +1120,12 @@
   {
     "id": 39,
     "name": "Bird House",
-    "categoryName": "Canarios",
+    "type" :   {
+    "id": 3,
+    "description": "Especialidados en canarios",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Canario.jpg",
+    "title": "Canarios"
+  },
     "capacity": 50,
     "city": "Bucaramanga",
     "address": "Calle 3, via Yumbo",
@@ -952,7 +1147,12 @@
   {
     "id": 40,
     "name": "Four Paws Resort",
-    "categoryName": "Perros",
+    "type" : {
+    "id": 1,
+    "description": "Especialidados en perros",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Perro1.jpg",
+    "title": "Perros"
+  },
     "capacity": 50,
     "city": "Cali",
     "address": "Calle 3, via Yumbo",
