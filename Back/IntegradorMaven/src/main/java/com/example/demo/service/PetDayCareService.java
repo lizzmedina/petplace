@@ -2,13 +2,15 @@ package com.example.demo.service;
 
 
 import com.example.demo.DTO.CategoryDTO;
+import com.example.demo.DTO.CityDTO;
 import com.example.demo.DTO.PetDayCareDTO;
-import com.example.demo.DTO.PetDayCareDetailDTO;
+import com.example.demo.entity.Category;
 import com.example.demo.entity.City;
 import com.example.demo.entity.PetDayCare;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.mapper.CategoryMapper;
 import com.example.demo.mapper.CityMapper;
+import com.example.demo.repository.CategoryRepository;
 import com.example.demo.repository.CityRepository;
 import com.example.demo.repository.PetDayCareRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,33 +25,38 @@ public class PetDayCareService {
     private PetDayCareRepository repository;
 
     private CategoryService categoryService;
+    private CategoryRepository categoryRepository;
 
     private CategoryMapper categoryMapper;
 
     private CityRepository cityRepository;
 
     private CityMapper cityMapper;
+    private CityService cityService;
 
     @Autowired
-    public PetDayCareService(PetDayCareRepository repository, CategoryService categoryService,
-                             CategoryMapper categoryMapper, CityRepository cityRepository, CityMapper cityMapper) {
+    public PetDayCareService(PetDayCareRepository repository, CategoryService categoryService, CategoryRepository categoryRepository, CategoryMapper categoryMapper, CityRepository cityRepository, CityMapper cityMapper, CityService cityService) {
         this.repository = repository;
         this.categoryService = categoryService;
+        this.categoryRepository = categoryRepository;
         this.categoryMapper = categoryMapper;
         this.cityRepository = cityRepository;
         this.cityMapper = cityMapper;
+        this.cityService = cityService;
     }
 
     public PetDayCareDTO edit(PetDayCareDTO petDayCareDTO){
 
         if(petDayCareDTO != null){
-            CategoryDTO categoryDTO = this.categoryService.findByName(petDayCareDTO.getCategoryName());
+            CategoryDTO categoryDTO = this.categoryService.findByName(petDayCareDTO.getType().getTitle());
             Optional<PetDayCare> namePetDayCareEntity = this.repository.findById(petDayCareDTO.getId());
+            CityDTO cityDTO = this.cityService.findByName(petDayCareDTO.getCity());
 
             if(namePetDayCareEntity.isPresent()){
                 PetDayCare petDayCareEntity = namePetDayCareEntity.get();
                 petDayCareEntity.setName(petDayCareDTO.getName());
                 petDayCareEntity.setType(categoryMapper.mapToEntity(categoryDTO));
+                petDayCareEntity.setCity(cityMapper.mapToEntity(cityDTO));
                 petDayCareEntity.setDetail(petDayCareDTO.getDetail());
                 petDayCareEntity.setAddress(petDayCareDTO.getAddress());
                 petDayCareEntity.setCapacity(petDayCareDTO.getCapacity());
@@ -76,8 +83,7 @@ public class PetDayCareService {
         }
 
         City city = cityRepository.findByName(petDayCare.getCity()).get();
-
-        CategoryDTO categoryDTO = this.categoryService.findByName(petDayCare.getCategoryName());
+        CategoryDTO categoryDTO = this.categoryService.findByName(petDayCare.getType().getTitle());
 
         PetDayCare newPetDayCare = new PetDayCare(
                 petDayCare.getName(),
@@ -88,7 +94,10 @@ public class PetDayCareService {
                 petDayCare.getDetail(),
                 petDayCare.getImages(),
                 petDayCare.getCharacteristics(),
-                petDayCare.getBasicPrice()
+                petDayCare.getBasicPrice(),
+                petDayCare.getHouseRules(),
+                petDayCare.getHealthAndSecurity(),
+                petDayCare.getCancellationPolicy()
         );
 
         newPetDayCare = repository.save(newPetDayCare);
@@ -115,29 +124,33 @@ public class PetDayCareService {
         return repository.findByTypeId(type);
     }
 
-    public PetDayCareDetailDTO detail(Integer id){
+    public PetDayCareDTO detail(Integer id){
         Optional<PetDayCare> petDayCare = this.repository.findById(id);
+        Optional<Category> category = this.categoryRepository.findById(petDayCare.get().getType().getId());
+
 
         if(petDayCare.isEmpty()){ //si no esta presente, lanza una excepcion
             throw new ResourceNotFoundException("La guarderia no fue encontrada");
         }
 
+        //CityDTO cityDTO = cityService.findByName(petDayCare.get().getCity().getName());
 
-        PetDayCareDetailDTO detailPetDatCare = new PetDayCareDetailDTO(
+        PetDayCareDTO petDayCareDTO= new PetDayCareDTO(
                 petDayCare.get().getName(),
-                petDayCare.get().getType(),
+                category.get(),
                 petDayCare.get().getCapacity(),
                 petDayCare.get().getCity().getName(),
                 petDayCare.get().getAddress(),
                 petDayCare.get().getDetail(),
                 petDayCare.get().getImages(),
                 petDayCare.get().getCharacteristics(),
-                petDayCare.get().getBasicPrice()
+                petDayCare.get().getBasicPrice(),
+                petDayCare.get().getHouseRules(),
+                petDayCare.get().getHealthAndSecurity(),
+                petDayCare.get().getCancellationPolicy()
         );
 
-
-        return detailPetDatCare;
-
+        return petDayCareDTO;
     }
 
     public void deleteAll(){

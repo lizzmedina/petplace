@@ -18,7 +18,11 @@ public class CityMapper {
         if(dto == null){
             return null;
         }
-        return new City(dto.getName());
+        City cityEntity = new City();
+        cityEntity.setName(dto.getName());
+        cityEntity.setId(dto.getId());
+        //return new City(dto.getName());
+        return cityEntity;
     }
 
     public CityDTO mapToDto(City city){
@@ -26,14 +30,17 @@ public class CityMapper {
         if(city.getPetDayCareSet() != null && !city.getPetDayCareSet().isEmpty()){
             cityDto.setPetDayCareDTOSet(city.getPetDayCareSet().stream().map(petDayCare -> {
                 PetDayCareDTO pdcDto = new PetDayCareDTO(petDayCare.getName(),
-                        petDayCare.getType().getTitle(),
+                        petDayCare.getType(),
                         petDayCare.getCapacity(),
                         cityDto.getName(),
                         petDayCare.getAddress(),
                         petDayCare.getDetail(),
                         petDayCare.getImages(),
                         petDayCare.getCharacteristics(),
-                        petDayCare.getBasicPrice());
+                        petDayCare.getBasicPrice(),
+                        petDayCare.getHouseRules(),
+                        petDayCare.getHealthAndSecurity(),
+                        petDayCare.getCancellationPolicy());
                 pdcDto.setId(petDayCare.getId());
                 return pdcDto;
             }).collect(Collectors.toSet()));

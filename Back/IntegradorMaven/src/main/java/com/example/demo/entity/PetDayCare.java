@@ -1,7 +1,5 @@
 package com.example.demo.entity;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonValue;
 import jakarta.persistence.*;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
@@ -45,11 +43,18 @@ public class PetDayCare {
     @Column(name = "basicPrice")
     private double basicPrice;
 
+    @Column(name = "houseRules", length = 2000)
+    private List<String> houseRules;
 
-    public PetDayCare(String name, Category type, Integer capacity, City city, String address, String detail,
-                      List<String> images, List<String> characteristics, double basicPrice) {
+    @Column(name = "healthAndSecurity", length = 2000)
+    private List<String> healthAndSecurity;
 
-       this.name = name;
+    @Column(name = "cancellationPolicy", length = 2000)
+    private List<String> cancellationPolicy;
+
+
+    public PetDayCare(String name, Category type, Integer capacity, City city, String address, String detail, List<String> images, List<String> characteristics, double basicPrice, List<String> houseRules, List<String> healthAndSecurity, List<String> cancellationPolicy) {
+        this.name = name;
         this.type = type;
         this.capacity = capacity;
         this.city = city;
@@ -58,6 +63,9 @@ public class PetDayCare {
         this.images = images;
         this.characteristics = characteristics;
         this.basicPrice = basicPrice;
+        this.houseRules = houseRules;
+        this.healthAndSecurity = healthAndSecurity;
+        this.cancellationPolicy = cancellationPolicy;
     }
 
     public PetDayCare() {
@@ -143,6 +151,28 @@ public class PetDayCare {
         this.basicPrice = basicPrice;
     }
 
+    public List<String> getHouseRules() {
+        return houseRules;
+    }
 
+    public void setHouseRules(List<String> houseRules) {
+        this.houseRules = houseRules;
+    }
+
+    public List<String> getHealthAndSecurity() {
+        return healthAndSecurity;
+    }
+
+    public void setHealthAndSecurity(List<String> healthAndSecurity) {
+        this.healthAndSecurity = healthAndSecurity;
+    }
+
+    public List<String> getCancellationPolicy() {
+        return cancellationPolicy;
+    }
+
+    public void setCancellationPolicy(List<String> cancellationPolicy) {
+        this.cancellationPolicy = cancellationPolicy;
+    }
 }
 

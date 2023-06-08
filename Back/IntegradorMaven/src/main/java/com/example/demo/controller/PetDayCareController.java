@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
 import com.example.demo.DTO.PetDayCareDTO;
-import com.example.demo.DTO.PetDayCareDetailDTO;
 import com.example.demo.entity.PetDayCare;
 import com.example.demo.service.PetDayCareService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +40,7 @@ public class PetDayCareController {
     };
 
     @GetMapping("/detail/{id}")
-    public PetDayCareDetailDTO detail(@PathVariable("id") Integer id){
+    public PetDayCareDTO detail(@PathVariable("id") Integer id){
         return service.detail(id);
     }
 
