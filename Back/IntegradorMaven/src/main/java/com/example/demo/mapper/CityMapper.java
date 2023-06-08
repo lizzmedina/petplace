@@ -30,7 +30,7 @@ public class CityMapper {
         if(city.getPetDayCareSet() != null && !city.getPetDayCareSet().isEmpty()){
             cityDto.setPetDayCareDTOSet(city.getPetDayCareSet().stream().map(petDayCare -> {
                 PetDayCareDTO pdcDto = new PetDayCareDTO(petDayCare.getName(),
-                        petDayCare.getType().getTitle(),
+                        petDayCare.getType(),
                         petDayCare.getCapacity(),
                         cityDto.getName(),
                         petDayCare.getAddress(),
