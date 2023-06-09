@@ -46,6 +46,7 @@ public class BookingService {
 
         Optional<User> user = this.userRepository.findById(bookingDTO.getUserId());
         Optional<PetDayCare> petDayCare = this.petDayCareRepository.findById(bookingDTO.getPetDayCareId());
+        Optional<Booking> bookingPetDayCare = this.bookingRepository.findByPetDayCareId(bookingDTO.getPetDayCareId());
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-M-d");
 
@@ -56,8 +57,12 @@ public class BookingService {
         System.out.println("___________________________RESULTADO________________________");
         System.out.println(resultado);
 
-        if(!user.isPresent() || !petDayCare.isPresent() || !available(checkIn.toString(), checkOut.toString())){
-            throw  new RuntimeException("las fechas a reservar no estan disponibles, o el usuario o hotel no se encuentran registrados");
+        if(!user.isPresent() && !petDayCare.isPresent()){
+            throw  new RuntimeException("El usuario o hotel no se encuentran registrados");
+        }
+
+        if(bookingPetDayCare.isPresent() && !available(checkIn.toString(), checkOut.toString())){
+            throw  new RuntimeException("las fechas a reservar no estan disponibles en ese ajolamiento pues ya se encuentra reservado");
         }
 
         double totalpriceBooking = calculatePrice(checkIn, checkOut, petDayCare.get().getBasicPrice());
