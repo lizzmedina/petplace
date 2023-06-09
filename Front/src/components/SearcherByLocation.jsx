@@ -1,35 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Select from "react-select";
 
 export const SearcherByLocation = () => {
-    
-    const options = [
-        { value: 'cali', label: 'Cali' },
-        { value: 'medellin', label: 'Medellín' },
-        { value: 'manizales', label: 'Manizales' },
-        { value: 'bogota', label: 'Bogotá' },
-        { value: 'barranquilla', label: 'Barranquilla' },
-        { value: 'cucuta', label: 'Cúcuta' },
-        { value: 'cartagena', label: 'Cartagena' },
-        { value: 'bucaramanga', label: 'Bucaramanga' },
-        { value: 'pereira', label: 'Pereira' },
-        { value: 'santa marta', label: 'Santa Marta' },
-        { value: 'ibague', label: 'Ibagué' },
-    ];
-
+    const [cities, setCities] = useState([]);
     const [selectedOption, setSelectedOption] = useState(null);
+
+    useEffect(() => {
+        const fetchCities = async () => {
+            try {
+                const response = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/cities`);
+                const data = await response.json();
+                const mappedCities = data.map((city) => ({
+                    value: city.name.toLowerCase(),
+                    label: city.name
+                }));
+                setCities(mappedCities);
+            } catch (error) {
+                console.error("Error al obtener las ciudades:", error);
+            }
+        };
+    
+        fetchCities();
+    }, []);
+    
 
     const handleSelectCity = (option) => {
         setSelectedOption(option);
     };
-    console.log(selectedOption?.value);
+
     return (
         <Select
-            className="search-width"
-            placeholder={selectedOption ? selectedOption.label : "¿Dónde estarás?"}
-            value={selectedOption}
-            options={options}
-            onChange={handleSelectCity}
+        className="search-width"
+        placeholder={selectedOption ? selectedOption.label : "¿Dónde estarás?"}
+        value={selectedOption}
+        options={cities}
+        onChange={handleSelectCity}
         />
     );
 };

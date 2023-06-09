@@ -9,62 +9,61 @@ export const Categories = () => {
 
   const {places} = useContextGlobal();
 
-  const isMobile = useMediaQuery('(max-width: 767px)'); // Verifica si es un dispositivo móvil
-  const isTablet = useMediaQuery('(max-width: 1024px)'); // Verifica si es una tablet
+  const isMobile = useMediaQuery('(max-width: 767px)'); 
+  const isTablet = useMediaQuery('(max-width: 1024px)'); 
   
-  let cardsPerRow;
-  let cardsPerPage;
-  if (isMobile) {
-    cardsPerRow = 1;
-    cardsPerPage = 1;
-  } else if (isTablet) {
-    cardsPerRow = 2;
-    cardsPerPage = 2;
-  } else {
-    cardsPerRow = 4;
-    cardsPerPage = 4;
-  }
-// Número total de páginas
-  const totalPages = Math.ceil(places.length / cardsPerPage); 
-  const [currentPage, setCurrentPage] = useState(1); // Página actual
-
-  // Calcula el índice inicial y final de los items a mostrar en la página actual
-  const startIndex = (currentPage - 1) * cardsPerRow;
-  const endIndex = startIndex + cardsPerRow;
-
-  // Obtén las tarjetas para la página actual
-  const currentCards = places.slice(startIndex, endIndex);
-  
-  // Función para cambiar la página
-  const handlePageChange = (event, page) => {
-    setCurrentPage(page);
+  const deviceConfigurations = {
+    mobile: {
+      cardsPerRow: 1,
+      cardsPerPage: 1
+    },
+    tablet: {
+      cardsPerRow: 2,
+      cardsPerPage: 2
+    },
+    desktop: {
+      cardsPerRow: 4,
+      cardsPerPage: 4
+    }
   };
-  
-  return (
+  const { cardsPerRow, cardsPerPage } = isMobile
+    ? deviceConfigurations.mobile : isTablet
+    ? deviceConfigurations.tablet : deviceConfigurations.desktop;
 
-    <div className = "categories-container">
-      <h2 className="home-titles">Buscar según el tipo de mascota </h2>
-      <div className = "render-cards-categories">
-        {
-          currentCards.map(place => (
-            <Link to={"/category/" + place.id} key={place.id +'n'}>
+    const totalPages = Math.ceil(places.length / cardsPerPage);
+    const [currentPage, setCurrentPage] = useState(1);
+  
+    const currentCards = places.slice(
+      (currentPage - 1) * cardsPerRow,
+      (currentPage - 1) * cardsPerRow + cardsPerRow
+    );
+  
+    const handlePageChange = (event, page) => {
+      setCurrentPage(page);
+    };
+  
+  
+    return (
+      <div className="categories-container">
+        <h2 className="home-titles">Buscar según el tipo de mascota</h2>
+        <div className="render-cards-categories">
+          {currentCards.map((place) => (
+            <Link to={"/category/" + place.id} key={place.id}>
               <Card
-                key={place.id}
                 title={place.title}
                 image={place.image}
                 description={place.description}
               />
             </Link>
-          ))
-        }
+          ))}
+        </div>
+        <Stack spacing={5} direction="row" justifyContent="center" mt={4}>
+          <Pagination
+            count={totalPages}
+            page={currentPage}
+            onChange={handlePageChange}
+          />
+        </Stack>
       </div>
-      <Stack spacing={5} direction="row" justifyContent="center" mt={4}>
-        <Pagination
-          count={totalPages}
-          page={currentPage}
-          onChange={handlePageChange}
-        />
-      </Stack>
-    </div>
-  )
-}
+    );
+};

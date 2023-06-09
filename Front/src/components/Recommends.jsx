@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { CardRecomends } from "./CardRecomends";
 import { Link } from 'react-router-dom';
 import Stack from '@mui/material/Stack';
-import { Pagination, useMediaQuery } from "@mui/material";
+import { Pagination} from "@mui/material";
 
 export const Recommends = () => {
   
@@ -43,8 +43,8 @@ export const Recommends = () => {
     setCurrentPage(page);
   };
 
+// Función para ordenar aleatoriamente el array
   function shuffleArray(array) {
-    // Función para ordenar aleatoriamente el array
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
