@@ -8,7 +8,6 @@ public class PetDayCareDTO {
 
     private Integer id;
     private String name;
-    //private String categoryName;
     private Category type;
     private Integer capacity;
     private CityDTO city;
@@ -55,6 +54,8 @@ public class PetDayCareDTO {
     public void setName(String name) {
         this.name = name;
     }
+
+
 
     public Category getType() {
         return type;
