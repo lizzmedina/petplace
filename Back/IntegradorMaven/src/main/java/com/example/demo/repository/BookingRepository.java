@@ -22,5 +22,7 @@ public interface BookingRepository extends JpaRepository<Booking, Integer> {
     @Query(value= "select * FROM  petplace.pet_day_care h left join petplace.booking  r on h.id = r.id_booking where h.city_id = :city  and ((not (check_in <= :check_out AND check_out >= :check_in)) or  r.check_in is null);", nativeQuery = true)
     List<Integer> searchAvailablePetDayCares(@Param("city") Integer city, @Param("check_in") LocalDate checkIn, @Param("check_out") LocalDate checkOut);
 
-    Optional<Booking> findByPetDayCareId(Integer id);
+//    Optional<Booking> findByPetDayCareId(Integer id);
+
+    List<Booking> findByPetDayCareId(Integer id);
 }

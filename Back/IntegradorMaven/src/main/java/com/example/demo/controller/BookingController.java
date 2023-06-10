@@ -41,5 +41,8 @@ public class BookingController {
         return service.findAll();
     }
 
-
+    @GetMapping("/petDayCare/{id}")
+    public List<BookingDTO> bookingsPetDayCare (@PathVariable("id") Integer id){
+        return service.bookingsPetDayCare(id);
+    }
 }
