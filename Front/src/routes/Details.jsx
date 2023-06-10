@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Product } from "../components/Product.jsx";
 import { useParams } from 'react-router-dom'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { CalendarDetail } from "../components/CalendarDetail.jsx";
+
 
 const Details = () => {
 
@@ -13,6 +13,7 @@ const Details = () => {
             const res = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/petDayCare/detail/${id}`)
             const data = await res.json()
             setDetails(data)
+            console.log(data);
       }
       useEffect(()=>{
             getDetail()
@@ -23,19 +24,22 @@ const Details = () => {
             <div className="detail-container">  
                   <Product
                         id={details.id}
-                        type={details.type}
                         name={details.name}
-                        image={details.images}
+                        type={details.type}
                         capacity={details.capacity}
-                        address={details.address}
                         city={details.city}
+                        address={details.address}
                         detail={details.detail}
+                        image={details.images}
                         basicPrice={details.basicPrice}
-                        characteristics={details.characteristics}
+                        features={details.characteristics}
+                        houseRules={details.houseRules}
+                        healthAndSecurity={details.healthAndSecurity}
+                        cancellationPolicy={details.cancellationPolicy}
                   />
             </div>
             <div>
-                  <CalendarDetail/>
+                  
             </div>
             
             </>

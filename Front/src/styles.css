@@ -13,9 +13,9 @@ body {
 :root {
     --color1: #f9f9f9;
     /* blanco */
-    --color2: #9E6EAF;
+    --color2: #9E73EE;
     /* MoradoClaro */
-    --color3: #8ED1B9;
+    --color3: #49E5AB;
     /* verde */
     --color4: #FBC02D;
     /* amarilloPrincipal */
@@ -746,6 +746,23 @@ p.more-images {
     font-size: 1.2em;
 }
 
+.location-container{
+    width: 100%;
+}
+.gmap_canvas {
+    overflow: hidden;
+    background: none !important;
+    height: 100%;
+    width: 100%;
+}
+
+.mapouter {
+    position: relative;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+}
+
 .features {
     margin: 1rem 0;
 }
@@ -755,7 +772,6 @@ p.more-images {
     justify-content: space-between;
     align-items: start;
     margin-top: 1rem;
-
 }
 
 .icon-service {
