@@ -14,7 +14,7 @@ public class City {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column
+    @Column(unique = true)
     private String name;
 
     @JsonIgnore
