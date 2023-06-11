@@ -71,14 +71,14 @@ public class CityService {
         return String.format("Se elimino exitosamente la ciudad con id: %s, nombre: %s", found.getId(), found.getName());
     }
 
-    public void updateCity(CityDTO cityDTO) {
+    public CityDTO updateCity(CityDTO cityDTO) {
         if (cityDTO != null) {
             Optional<City> cityOpt = cityRepository.findById(cityDTO.getId());
             if (cityOpt.isPresent()) {
                 City city = cityOpt.get();
                 city.setName(cityDTO.getName());
-                cityRepository.save(city);
-                return;
+               cityRepository.save(city);
+               return cityDTO;
             }
         }
         throw new ResourceNotFoundException("la ciudad no existe");

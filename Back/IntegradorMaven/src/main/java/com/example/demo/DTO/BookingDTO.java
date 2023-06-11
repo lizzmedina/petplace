@@ -4,57 +4,58 @@ import com.example.demo.entity.Pet;
 import com.example.demo.model.Customer;
 import com.example.demo.model.PetDayCare;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class BookingDTO {
 
-    private Integer petDayCareId;
-    private Date checkIn;
-    private Date checkOut;
+    private Integer idBooking;
+    private List<String> checkInCheckOut;
+
+    private double totalPrice;
     private Integer userId;
+    private Integer petDayCareId;
+//    List<Pet> pets;
 
-    List<Pet> pets;
+    private String petName;
 
 
-    public BookingDTO(Integer petDayCareId, Date checkIn, Date checkOut, Integer userId, List<Pet> pets) {
-
-        this.petDayCareId = petDayCareId;
-        this.checkIn = checkIn;
-        this.checkOut = checkOut;
+    public BookingDTO(List<String> checkInCheckOut, double totalPrice, Integer userId, Integer petDayCareId, String petName) {
+        this.checkInCheckOut = checkInCheckOut;
+        this.totalPrice = totalPrice;
         this.userId = userId;
-        this.pets = new ArrayList<>();
-
+        this.petDayCareId = petDayCareId;
+        this.petName = petName;
     }
 
     public BookingDTO() {
     }
 
-     public Integer getPetDayCareId() {
-        return petDayCareId;
+    public Integer getIdBooking() {
+        return idBooking;
     }
 
-    public void setPetDayCareId(Integer petDayCareId) {
-        this.petDayCareId = petDayCareId;
+    public void setIdBooking(Integer idBooking) {
+        this.idBooking = idBooking;
     }
 
-    public Date getCheckIn() {
-        return checkIn;
+    public List<String> getCheckInCheckOut() {
+        return checkInCheckOut;
     }
 
-    public void setCheckIn(Date checkIn) {
-        this.checkIn = checkIn;
+    public void setCheckInCheckOut(List<String> checkInCheckOut) {
+        this.checkInCheckOut = checkInCheckOut;
     }
 
-    public Date getCheckOut() {
-        return checkOut;
+    public double getTotalPrice() {
+        return totalPrice;
     }
 
-    public void setCheckOut(Date checkOut) {
-        this.checkOut = checkOut;
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
     }
-
 
     public Integer getUserId() {
         return userId;
@@ -64,11 +65,19 @@ public class BookingDTO {
         this.userId = userId;
     }
 
-    public List<Pet> getPets() {
-        return pets;
+    public Integer getPetDayCareId() {
+        return petDayCareId;
     }
 
-    public void setPets(List<Pet> pets) {
-        this.pets = pets;
+    public void setPetDayCareId(Integer petDayCareId) {
+        this.petDayCareId = petDayCareId;
+    }
+
+    public String getPetName() {
+        return petName;
+    }
+
+    public void setPetName(String petName) {
+        this.petName = petName;
     }
 }
