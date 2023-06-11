@@ -52,12 +52,19 @@ function EditCity() {
 
 
     const deleteCity = async (id, name) => {
-        const confirmDelete = window.confirm(`¿Seguro deseas eliminar el usuario ${name}?`);
-        if (confirmDelete) {
-            await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/user/${id}`, {
+        const confirmDelete = await Swal.fire({
+            title: `¿Seguro deseas eliminar el usuario ${name}?`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Eliminar',
+            cancelButtonText: 'Cancelar',
+            reverseButtons: true
+        });
+        if (confirmDelete.isConfirmed) {
+            await fetch(`${urlPostCities}/${id}`, {
                 method: 'DELETE'
             });
-            getAllUsers();
+            getAllCitiesDataBase();
         }
     };
 
@@ -79,6 +86,9 @@ function EditCity() {
 
     const closeModal = () => {
         setIsModalOpen(false);
+        setSelectedCity(null);
+        setDataCity('');
+        setCountry('');
     };
 
     const openEditForm = (city) => {
@@ -102,29 +112,36 @@ function EditCity() {
         if (!country || !dataCity) {
             Swal.fire('Debes completar todos los campos');
             return;
-        }
-
-        const updatedCity = {
-            id: selectedCity.id,
-            name: dataCity
-        };
-
-        fetch(urlPostCities, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(updatedCity)
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                Swal.fire({ icon: 'success', title: `Ciudad ${dataCity} actualizada con éxito` });
-                getAllCitiesDataBase();
-                closeModal();
-            })
-            .catch((error) => {
-                console.error('Error:', error);
+        } 
+        const cityExists = citiesInDataBase.some((city) => city.name === dataCity);
+        if (cityExists) {
+            Swal.fire({
+                icon: 'error',
+                title: "La ciudad elegida ya ha sido creada previamente, intenta con otra."
             });
+        } else {
+            const updatedCity = {
+                id: selectedCity.id,
+                name: dataCity
+            };
+    
+            fetch(urlPostCities, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(updatedCity)
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    Swal.fire({ icon: 'success', title: `Ciudad ${dataCity} actualizada con éxito` });
+                    getAllCitiesDataBase();
+                    closeModal();
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        }
     };
 
     return (
