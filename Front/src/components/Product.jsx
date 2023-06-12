@@ -15,11 +15,11 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
 
     const generateLocationURL = () => {
         const concatenatedValue = `${city.name} ${address}`;
-        const encodedValue = encodeURIComponent(concatenatedValue.replace(/ /g, '+'));
+        const encodedValue = encodeURIComponent(concatenatedValue);
         return `https://maps.google.com/maps?q=${encodedValue}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
-        
-      };
-      
+
+    };
+
 
     if (!image) {
         return image;
@@ -118,12 +118,11 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
 
             <div className='location-container'>
                 <h3>Ubicación</h3>
-                <div class="mapouter">
-                    <div class="gmap_canvas">
-                        <iframe width="100%" height="300px" id="gmap_canvas"
-                        src={generateLocationURL()}
-                        frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
-                        </iframe>
+                <div className="mapouter">
+                    <div className="gmap_canvas">
+                        <iframe className='mapFrame' id="gmap_canvas"
+                            src={generateLocationURL()}/>
+                        
                     </div>
                 </div>
             </div>
