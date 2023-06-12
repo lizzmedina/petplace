@@ -30,7 +30,7 @@ export const FormNewCategory = () => {
     };
     const handleSubmit = (event) => {
         event.preventDefault();
-        const urlPost = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/category`;
+        const urlPost = `${process.env.VITE_REACT_APP_BACKEND_URL}/api/v1/category`;
 
         // Validar los campos antes de enviar la solicitud
         let formIsValid = true;
@@ -87,12 +87,12 @@ export const FormNewCategory = () => {
 
             
             <div className="titles-new-category">
-                <h2 className="title-form-new-category">{userConnected.type !== "Manager" ? "Página no encontrada" : "Crear nueva categoría"}</h2>
-                <h3 className="instructions-form-new-category">{userConnected.type !== "Manager" ? "" : "Crear nueva categoría"}</h3>
+                <h2 className="title-form-new-category">{userConnected?.type !== "Manager" ? "Página no encontrada" : "Crear nueva categoría"}</h2>
+                <h3 className="instructions-form-new-category">{userConnected?.type !== "Manager" ? "" : "Crear nueva categoría"}</h3>
             </div>
             
 
-            {userConnected.type === "Manager" && (
+            {userConnected?.type === "Manager" && (
                 <form onSubmit={handleSubmit} className="form-new-category" >
                     <div className="title-input-container">
                         <label htmlFor="title">Titulo:</label>
