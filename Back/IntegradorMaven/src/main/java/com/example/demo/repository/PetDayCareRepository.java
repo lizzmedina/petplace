@@ -13,4 +13,9 @@ public interface PetDayCareRepository extends JpaRepository<PetDayCare, Integer>
     List<PetDayCare> findByTypeId(Integer id);
 
     List<PetDayCare> findByName(String namePetDayCare);
+
+    List<PetDayCare> findAllById(Iterable<Integer> idList);
+
+    List<PetDayCare> findAllByCityId(Integer city);
+
 }

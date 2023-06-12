@@ -45,7 +45,7 @@ export const CalendarDetail = () => {
 
     return (
         <div className="calendar-section-container">
-        <h2>Calendario</h2>
+        <h3>Fechas disponibles</h3>
         <div className="calendars-render">
             <div className="calendar">
             <button className="calendar-navigation-button" onClick={handlePrevMonth}>

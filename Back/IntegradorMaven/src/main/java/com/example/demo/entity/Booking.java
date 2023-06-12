@@ -3,6 +3,7 @@ package com.example.demo.entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -14,11 +15,17 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idBooking;
 
+    @Column(name = "bookingDaysList")
+    List<String> checkInCheckOut;
+
     @Column(name = "checkIn")
-    private Date checkIn;
+    private LocalDate checkIn;
 
     @Column(name = "checkOut")
-    private Date checkOut;
+    private LocalDate checkOut;
+
+    @Column(name = "petName")
+    private String petName;
 
     @Column(name = "totalPrice")
     private double totalPrice;
@@ -26,21 +33,37 @@ public class Booking {
     private User user;
     @ManyToOne
     private PetDayCare petDayCare;
-    @OneToMany(mappedBy = "booking")
-    List<Pet> pets;
+//    @OneToMany(mappedBy = "booking")
+//    List<Pet> pets;
 
-    public Booking(double totalPrice, Date checkIn, Date checkOut, List<Pet> pets
-                   ,User user, PetDayCare petDayCare
-    ) {
-        this.petDayCare = petDayCare;
+
+    public Booking(List<String> checkInCheckOut, LocalDate checkIn, LocalDate checkOut, String petName, double totalPrice, User user, PetDayCare petDayCare) {
+        this.checkInCheckOut = checkInCheckOut;
         this.checkIn = checkIn;
         this.checkOut = checkOut;
-        this.user = user;
+        this.petName = petName;
         this.totalPrice = totalPrice;
-        this.pets = new ArrayList<>();
+        this.user = user;
+        this.petDayCare = petDayCare;
     }
 
     public Booking() {
+    }
+
+    public LocalDate getCheckIn() {
+        return checkIn;
+    }
+
+    public void setCheckIn(LocalDate checkIn) {
+        this.checkIn = checkIn;
+    }
+
+    public LocalDate getCheckOut() {
+        return checkOut;
+    }
+
+    public void setCheckOut(LocalDate checkOut) {
+        this.checkOut = checkOut;
     }
 
     public Integer getIdBooking() {
@@ -51,36 +74,12 @@ public class Booking {
         this.idBooking = idBooking;
     }
 
-    public PetDayCare getPetDayCare() {
-        return petDayCare;
+    public List<String> getCheckInCheckOut() {
+        return checkInCheckOut;
     }
 
-    public void setPetDayCare(PetDayCare petDayCare) {
-        this.petDayCare = petDayCare;
-    }
-
-    public Date getCheckIn() {
-        return checkIn;
-    }
-
-    public void setCheckIn(Date checkIn) {
-        this.checkIn = checkIn;
-    }
-
-    public Date getCheckOut() {
-        return checkOut;
-    }
-
-    public void setCheckOut(Date checkOut) {
-        this.checkOut = checkOut;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
+    public void setCheckInCheckOut(List<String> checkInCheckOut) {
+        this.checkInCheckOut = checkInCheckOut;
     }
 
     public double getTotalPrice() {
@@ -91,11 +90,27 @@ public class Booking {
         this.totalPrice = totalPrice;
     }
 
-    public List<Pet> getPets() {
-        return pets;
+    public User getUser() {
+        return user;
     }
 
-    public void setPets(List<Pet> pets) {
-        this.pets = pets;
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public PetDayCare getPetDayCare() {
+        return petDayCare;
+    }
+
+    public void setPetDayCare(PetDayCare petDayCare) {
+        this.petDayCare = petDayCare;
+    }
+
+    public String getPetName() {
+        return petName;
+    }
+
+    public void setPetName(String petName) {
+        this.petName = petName;
     }
 }

@@ -13,7 +13,7 @@ body {
 :root {
     --color1: #f9f9f9;
     /* blanco */
-    --color2: #9E6EAF;
+    --color2: #9e6eaf;
     /* MoradoClaro */
     --color3: #8ED1B9;
     /* verde */
@@ -442,7 +442,6 @@ input,
 select {
     border-radius: 5px;
     border: 1px solid #bababa;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     min-height: 1.8rem;
     transition: .4s;
 }
@@ -590,6 +589,68 @@ input:hover {
 
 .servicios {
     display: flex;
+}
+
+/* Form City */
+
+.map-section{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 3rem;
+}
+.data-city{
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.select-formCity{
+    width: 250px;
+}
+
+/* Edit City */
+
+.city-modal{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    max-width: calc(100% - 10px);
+}
+.city-modal h2{
+    color: var(--color2);
+    font-size:28px;
+    font-weight: 600;
+    text-align: center;
+}
+.city-modal p{
+    color: var(--color6);
+    font-size: 18px ;
+    font-weight: bold;
+}
+.city-modal .selectFormCity{
+    width: 80%;
+    margin: 0 0 16px;
+}
+.city-modal .ok{
+    background-color: #7066e0;
+    border-color: #7066e0;
+    font-size: 16px;
+    color: #fff;
+    margin: 25px 5px 5px;
+    padding: 10px 17.6px;
+    border-radius: 5px;;
+}
+.city-modal .cancel{
+    background-color: #6e7881;
+    border-color: #6e7881;
+    font-size: 16px;
+    color: #fff;
+    margin: 25px 5px 5px;
+    padding: 10px 17.6px;
+    border-radius: 5px;;
 }
 
 /* Paginate */
@@ -749,6 +810,23 @@ p.more-images {
     font-size: 1.2em;
 }
 
+.location-container{
+    width: 100%;
+}
+.gmap_canvas {
+    overflow: hidden;
+    background: none !important;
+    height: 100%;
+    width: 100%;
+}
+
+.mapouter {
+    position: relative;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+}
+
 .features {
     margin: 1rem 0;
 }
@@ -758,7 +836,6 @@ p.more-images {
     justify-content: space-between;
     align-items: start;
     margin-top: 1rem;
-
 }
 
 .icon-service {

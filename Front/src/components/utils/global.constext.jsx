@@ -10,6 +10,8 @@ const ContextProvider = ({children}) => {
     const sendEmailUrl = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/mail/send/`;
     const urlGetUsers = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/user/all`;
     const urlPostUsers = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/user`;
+    const urlGetCities = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/cities`;
+    const urlPostCities = `http://localhost:8080/api/v1/cities`; // corregir
 
     const [places, setPlaces] = useState([]); // categorias
     const getAllCategories = async()=> {
@@ -36,7 +38,7 @@ const ContextProvider = ({children}) => {
     }, [url]);
 
     return (
-        <ContextGlobal.Provider value={{urlGetUsers, sendEmailUrl, urlPostUsers, validationUserUrl, getAllCategories, places,setPlaces, url, setUrl, dataCategory, setDataCategory}}>
+        <ContextGlobal.Provider value={{urlGetCities,urlPostCities,urlGetUsers, sendEmailUrl, urlPostUsers, validationUserUrl, getAllCategories, places,setPlaces, url, setUrl, dataCategory, setDataCategory}}>
             {children}
         </ContextGlobal.Provider>
     )

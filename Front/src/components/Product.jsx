@@ -4,18 +4,28 @@ import { faChevronLeft, faShower, faPersonWalkingWithCane, faCarrot, faBaseball,
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import ImageModal from './ImageModal';
+import { CalendarDetail } from "./CalendarDetail.jsx";
 
 
 
-export const Product = ({ id, name, type, capacity, city, address, detail, image, basicPrice, characteristics }) => {
+export const Product = ({ id, name, type, capacity, city, address, detail, image, basicPrice, features, houseRules, healthAndSecurity, cancellationPolicy }) => {
 
     const navigate = useNavigate()
     const [isModalOpen, setModalOpen] = useState(false);
+
+    const generateLocationURL = () => {
+        const concatenatedValue = `${city.name} ${address}`;
+        const encodedValue = encodeURIComponent(concatenatedValue.replace(/ /g, '+'));
+        return `https://maps.google.com/maps?q=${encodedValue}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
+        
+      };
+      
+
     if (!image) {
         return image;
     }
 
-    const renderCharacteristics = () => {
+    const renderFeatures = () => {
         const icons = {
             Paseo: faPersonWalkingWithCane,
             Baño: faShower,
@@ -23,10 +33,10 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
             Veterinaria: faStethoscope,
             Entrenamiento: faBaseball,
         };
-        
 
 
-        return characteristics.map((option, index) => {
+
+        return features.map((option, index) => {
             const icon = icons[option];
 
             if (icon && (option === 'Paseo' || option === 'Baño' || option === 'Alimentación' || option === 'Veterinaria' || option === 'Entrenamiento')) {
@@ -90,7 +100,7 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
                     <div className='features'>
                         <h3>Servicios más populares</h3>
                         <div className='feature-list'>
-                            {renderCharacteristics()}
+                            {renderFeatures()}
                         </div>
                     </div>
                 </span>
@@ -103,10 +113,22 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
 
 
             </div>
-            {isModalOpen && (
-                <ImageModal images={image} onClose={handleCloseModal} />
-                
-            )}
+
+            <CalendarDetail />
+
+            <div className='location-container'>
+                <h3>Ubicación</h3>
+                <div class="mapouter">
+                    <div class="gmap_canvas">
+                        <iframe width="100%" height="300px" id="gmap_canvas"
+                        src={generateLocationURL()}
+                        frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+
+            {isModalOpen && (<ImageModal images={image} onClose={handleCloseModal} />)}
 
         </div>
     )
