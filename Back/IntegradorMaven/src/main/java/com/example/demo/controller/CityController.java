@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.DTO.CityDTO;
+import com.example.demo.DTO.PetDayCareDTO;
 import com.example.demo.DTO.RoleDTO;
 import com.example.demo.entity.City;
 import com.example.demo.entity.Role;
@@ -49,10 +50,12 @@ public class CityController {
     }
 
     @PutMapping
-    public ResponseEntity<String> updateCity(@RequestBody CityDTO cityDTO) {
-        cityService.updateCity(cityDTO);
-        return ResponseEntity.ok("Ciudad actualizada correctamente");
+    public CityDTO updateCity(@RequestBody CityDTO cityDTO) {
+        return  cityService.updateCity(cityDTO);
 
     }
 }
+
+
+
 

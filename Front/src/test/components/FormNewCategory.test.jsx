@@ -1,4 +1,3 @@
-import React from 'react';
 import {fireEvent, render,  waitFor, screen} from '@testing-library/react';
 import { FormNewCategory } from '../../components/FormNewCategory';
 

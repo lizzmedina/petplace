@@ -87,12 +87,12 @@ export const FormNewCategory = () => {
 
             
             <div className="titles-new-category">
-                <h2 className="title-form-new-category">{userConnected.type !== "Manager" ? "Página no encontrada" : "Crear nueva categoría"}</h2>
-                <h3 className="instructions-form-new-category">{userConnected.type !== "Manager" ? "" : "Crear nueva categoría"}</h3>
+                <h2 className="title-form-new-category">{userConnected?.type !== "Manager" ? "Página no encontrada" : "Crear nueva categoría"}</h2>
+                <h3 className="instructions-form-new-category">{userConnected?.type !== "Manager" ? "" : "Crear nueva categoría"}</h3>
             </div>
             
 
-            {userConnected.type === "Manager" && (
+            {userConnected?.type === "Manager" && (
                 <form onSubmit={handleSubmit} className="form-new-category" >
                     <div className="title-input-container">
                         <label htmlFor="title">Titulo:</label>

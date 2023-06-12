@@ -71,7 +71,7 @@ function EditProducts() {
                                             )}
                                             </select>` +
                                             '<p>Ciudad: </p> ' +
-                                            `<input id="ciudad" class="swal2-input" value="${product.city}" required>` +
+                                            `<input id="ciudad" class="swal2-input" value="${product.city.name}" required>` +
                                             '<p>Direccion: </p> ' +
                                             `<input id="direccion" class="swal2-input" value="${product.address}" required>` +
                                             '<p>Descripcion: </p> ' +

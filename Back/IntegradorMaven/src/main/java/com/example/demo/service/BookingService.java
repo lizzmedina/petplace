@@ -46,7 +46,7 @@ public class BookingService {
 
         Optional<User> user = this.userRepository.findById(bookingDTO.getUserId());
         Optional<PetDayCare> petDayCare = this.petDayCareRepository.findById(bookingDTO.getPetDayCareId());
-        Optional<Booking> bookingPetDayCare = this.bookingRepository.findByPetDayCareId(bookingDTO.getPetDayCareId());
+        List<Booking> bookingPetDayCare = this.bookingRepository.findByPetDayCareId(bookingDTO.getPetDayCareId());
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-M-d");
 
@@ -61,7 +61,7 @@ public class BookingService {
             throw  new RuntimeException("El usuario o hotel no se encuentran registrados");
         }
 
-        if(bookingPetDayCare.isPresent() && !available(checkIn.toString(), checkOut.toString())){
+        if(!bookingPetDayCare.isEmpty() && !available(checkIn.toString(), checkOut.toString())){
             throw  new RuntimeException("las fechas a reservar no estan disponibles en ese ajolamiento pues ya se encuentra reservado");
         }
 
@@ -146,6 +146,25 @@ public class BookingService {
     }
 
 
+    public List<BookingDTO> bookingsPetDayCare(Integer idPetDayCare){
+       List<Booking> bookingsPetDayCare = bookingRepository.findByPetDayCareId(idPetDayCare);
+        System.out.println("-------------------------------");
+        System.out.println(bookingsPetDayCare.toString());
+
+
+        List<BookingDTO> bookingDTOList = bookingsPetDayCare.stream()
+                .map(booking -> new BookingDTO(
+                        booking.getCheckInCheckOut(),
+                        booking.getTotalPrice(),
+                        booking.getUser().getId(),
+                        booking.getPetDayCare().getId(),
+                        booking.getPetName()
+                ))
+                .collect(Collectors.toList());
+
+       return bookingDTOList;
+    }
+
     public Booking detail(Integer id){
         Optional<Booking> booking = bookingRepository.findById(id);
 
@@ -170,6 +189,5 @@ public class BookingService {
     public List<Booking> findAll(){
         return bookingRepository.findAll();
     }
-
 
 }
