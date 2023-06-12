@@ -370,20 +370,49 @@ a.ver-mas-recommends {
     flex-direction: column;
     padding: 3rem 0;
 }
-
+.account-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 80%;
+    max-width: 40rem;
+    background-color: var(--color1);
+    border-radius:15px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin: 0 0 1.5rem 0;
+}
 .space-section h2 {
     color: var(--color2);
 }
+.icon-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+}
+.circle-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 120px;
+    background-color: var(--color3);
+    color: white;
+    border-radius: 50%;
+    padding: 10px;
 
+}
 .form-container {
     display: flex;
     align-items: center;
     flex-direction: column;
     height: 100%;
     padding: 20px;
-    width: 100%;
 }
-
+.form-container h4{
+    color: var(--color2);
+}
 .form-section {
     display: flex;
     flex-direction: column;
@@ -460,6 +489,9 @@ input:hover {
 
 .datoUser {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .options-container {
@@ -476,8 +508,9 @@ input:hover {
     height: 20rem;
     align-items: center;
     border-radius: 10px;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     margin: 1rem;
+    background-color: var(--color1);
 }
 
 .options h3 {
