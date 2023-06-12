@@ -1,17 +1,13 @@
 package com.example.demo.configuration.data.loader;
 
-import com.example.demo.DTO.CategoryDTO;
-import com.example.demo.DTO.CityDTO;
-import com.example.demo.DTO.PetDayCareDTO;
-import com.example.demo.DTO.UserDTO;
-import com.example.demo.entity.City;
-import com.example.demo.entity.Permission;
-import com.example.demo.entity.PetDayCare;
-import com.example.demo.entity.Role;
+import com.example.demo.DTO.*;
+import com.example.demo.entity.*;
 import com.example.demo.exception.ResourceNotFoundException;
+import com.example.demo.repository.BookingRepository;
 import com.example.demo.repository.CityRepository;
 import com.example.demo.repository.PermissionRepository;
 import com.example.demo.repository.RoleRepository;
+import com.example.demo.service.BookingService;
 import com.example.demo.service.CategoryService;
 import com.example.demo.service.PetDayCareService;
 import com.example.demo.service.UserService;
@@ -43,6 +39,12 @@ public class DataLoaderComponent {
     @Autowired
     private CityRepository cityRepository;
 
+    @Autowired
+    private BookingService bookingService;
+
+    @Autowired
+    private BookingRepository bookingRepository;
+
     public void loadInitialCities() {
         System.out.println("loading cities data...");
         List<PetDayCareDTO> petDayCareList = JsonHelper.readJsonFromFile("petdaycare_data.json", new TypeReference<>() {
@@ -52,13 +54,13 @@ public class DataLoaderComponent {
                 .map(CityDTO::getName)
                 .distinct()
                 .forEach(cityName -> {
-            Optional<City> cityOpt = cityRepository.findByName(cityName);
-            if (cityOpt.isEmpty()) {
-                cityRepository.save(new City(cityName));
-            } else {
-                System.out.println("City [" + cityName + "], already exists, skipping creation...");
-            }
-        });
+                    Optional<City> cityOpt = cityRepository.findByName(cityName);
+                    if (cityOpt.isEmpty()) {
+                        cityRepository.save(new City(cityName));
+                    } else {
+                        System.out.println("City [" + cityName + "], already exists, skipping creation...");
+                    }
+                });
     }
 
     public void loadInitialPetDayCareData() {
@@ -102,6 +104,23 @@ public class DataLoaderComponent {
             }
         });
     }
+
+
+    public void loadInitialBookingData() {
+        System.out.println("loading booking data...");
+        List<Booking> bookingList = JsonHelper.readJsonFromFile("booking_data.json", new TypeReference<>() {
+        });
+        bookingList.forEach(booking -> {
+            Optional<Booking> booking1 = bookingRepository.findById(booking.getIdBooking());
+            if (booking1.isEmpty()) {
+                bookingRepository.save(booking);
+            } else {
+                System.out.println("booking data with id " + booking.getIdBooking() + " already exists, skipping creation...");
+            }
+        });
+    }
+
+
 
     public void loadInitialPermissionData() {
         System.out.println("loading permission data...");
@@ -164,5 +183,6 @@ public class DataLoaderComponent {
         loadInitialPermissionData();
         loadRolePermissionAssociations();
         loadInitialUserData();
+        loadInitialBookingData();
     }
 }

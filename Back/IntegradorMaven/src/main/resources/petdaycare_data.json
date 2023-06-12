@@ -10,7 +10,7 @@
     },
     "capacity": 8,
     "city": "Medellín",
-    "address": "Cra. 70 #45e127, Laureles - Estadio.",
+    "address": "Carrera 58 #2771 a 2701",
     "detail": "Un santuario rodeado de hermosos paisajes naturales, ofreciendo una experiencia tranquila y relajante para mascotas que disfrutan de paseos y relajación en la naturaleza",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/1.+Paw+Palace/httpsbit.ly3WNw24x.jpg",
@@ -57,7 +57,7 @@
     },
     "capacity": 5,
     "city": "Cali",
-    "address": "Calle 5 Oeste.",
+    "address": "Carrera 12 #18-40",
     "detail": "Un acogedor hogar para mascotas con amplios jardines y áreas de juego, donde los animales pueden socializar y disfrutar de su estancia en un entorno seguro y divertido",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/2.+Huellas+de+amor/httpstinyurl.com3md5vfnm.jpg",
@@ -105,7 +105,7 @@
     },
     "capacity": 5,
     "city": "Barranquilla",
-    "address": "Av. Murillo #32-74, Sur Orient.",
+    "address": "Calle 79 A #21b-38",
     "detail": "Un lujoso resort con suites privadas, piscinas y servicios de spa, donde los animales son tratados como verdaderos huéspedes VIP y disfrutan de un ambiente exclusivo y mimado",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/3.+Pet+Resort/httpsbit.ly3oD3TAa.jpg",
@@ -151,7 +151,7 @@
     },
     "capacity": 10,
     "city": "Cúcuta",
-    "address": "Avenida 0 # 8-12, Barrio San Luis",
+    "address": "Av. 2 Este #16a-2",
     "detail": "Un alojamiento familiar donde las mascotas son recibidas con cariño y tienen la oportunidad de interactuar con otros animales, creando un ambiente cálido y amigable",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/4.+Furry+Friends+Retreat/httpsbit.ly3IAorjS.jpg",
@@ -194,7 +194,7 @@
     },
     "capacity": 10,
     "city": "Cartagena de Indias",
-    "address": "Cra. 2 #5-2 a 5-134.",
+    "address": "Transversal 53 #2136",
     "detail": "Una granja con amplios espacios al aire libre y animales de granja amigables, brindando a las mascotas una experiencia educativa y divertida en un entorno rural",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/5.+Critter+Care+Center/httpsbit.ly3BSDBNk.jpg",
@@ -239,7 +239,7 @@
     },
     "capacity": 7,
     "city": "Bucaramanga",
-    "address": "Calle 45 # 15-20, Barrio Cabecera del Llano",
+    "address": "Carrera 15 #96-21",
     "detail": "Un hogar acogedor con atención personalizada, paseos diarios y actividades recreativas ara mantener a las mascotas felices y activas, creando un ambiente cálido y familiar",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/6.+Paws+and+Claws+Lodge/httpsbit.ly3q1y6cy.jpg",
@@ -284,7 +284,7 @@
     },
     "capacity": 15,
     "city": "Pereira",
-    "address": "Cl. 75b #32-141 a 32-1.",
+    "address": "Carrera 21 #24-135",
     "detail": "Un paraíso junto al mar con playas privadas, juegos acuáticos y servicios de cuidado especializados, para ofreecr a las mascotas unas vacaciones inolvidables junto a la costa",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/7.+Happy+Tails+Inn/httpsbit.ly3IDLnP0.jpg",
@@ -330,7 +330,7 @@
     },
     "capacity": 15,
     "city": "Santa Marta",
-    "address": "Cra. 24b #21-60 a 21-148, Comuna 4.",
+    "address": "Calle 31 #9-2",
     "detail": "Un refugio en medio de la naturaleza, rodeado de bosques y senderos para explorar, donde las mascotas pueden disfrutar de aventuras al aire libre y tranquilidad en un entorno natural",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/8.+Bark+Avenue+Boarding/httpsbit.ly3IAyo0D.jpg",
@@ -420,7 +420,7 @@
     },
     "capacity": 6,
     "city": "Bogotá D.C",
-    "address": "Cl. 128b #80-17.",
+    "address": "Calle 8 Sur #71a-69",
     "detail": "Un centro de retiro en un entorno tranquilo, ofreciendo actividades de relajación como masajes y terapia de aromaterapia para consentir a las mascotas y brindarles un ambiente sereno.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/10.+The+Dog+House/httpsbit.ly3OEgfTn.jpg",
@@ -464,7 +464,7 @@
     },
     "capacity": 8,
     "city": "Medellín",
-    "address": "Cl 10 #32-87, El Poblado.",
+    "address": "Calle 17 #48-84",
     "detail": "Una casa de campo con amplios jardines y zonas de juegos, donde las mascotas oueden disfrutar del aire fresco y participar en actividades al aire libre en un entorno campestre.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/11.+Pet+Paradise/httpsbit.ly3BVSGxQ.jpg",
@@ -509,7 +509,7 @@
     },
     "capacity": 8,
     "city": "Cali",
-    "address": "Cra. 44 #9-78, Los Cambulos.",
+    "address": "Carrera 49b #10-2",
     "detail": "Un hotel boutique decorado con estilo y elegancia, ofreciendo servicios personalizados y atención excepcional para satisfacer las necesitades individuales de cada mascota, con un toque de distinción.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/12.+Woof+Den/httpsbit.ly3MSZGlq.jpg",
@@ -554,7 +554,7 @@
     },
     "capacity": 9,
     "city": "Barranquilla",
-    "address": "Cl 72 #50-8, Nte. Centro Historico.",
+    "address": "Calle 72 #22b-59",
     "detail": "Un alojamiento en la montaña rodeado de vistas panorámicas y senderos para maninatas, brindando a las masoctas una experiencia enriquecedora en contacto con la naturaleza y aire fresco.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/13.+Whiskers+Lodge/httpsbit.ly3IEOVAI.jpg",
@@ -599,7 +599,7 @@
     },
     "capacity": 9,
     "city": "Cartagena de Indias",
-    "address": "Cra. 6 # 4-37.",
+    "address": "Carrera 68 #21-63",
     "detail": "Una residencia con instalaciones de entrenamiento, actividades de socialización y profesionales capacitados para asegurar el bienestar y desarrollo de las mascotas en un ambiente seguro.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/14.+Tail+Waggers+Inn/httpsbit.ly3ICuQe4.jpg",
@@ -681,7 +681,7 @@
     },
     "capacity": 9,
     "city": "Bucaramanga",
-    "address": "Carrera 27 # 36-10, Barrio Sotomayor.",
+    "address": "Carrera 19 #31-1",
     "detail": "Un Un retiro en el campo rodeado de vastos campos verdes, largos y serenos, proporcionando un ambiente tranquilo y sereno para una estancia relajante y pacífica para las mascotas.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/16.+Critter+Camp/httpstinyurl.com2n57epsy.jpg",
@@ -722,7 +722,7 @@
     },
     "capacity": 15,
     "city": "Pereira",
-    "address": "Cra. 26a #75c-99 a 75c-1.",
+    "address": "Calle 20 #22a-65",
     "detail": "Una casa de huespedes donde las mascotas son recibidas como parte de la familia, disfrutando de cómodas habitaciones y actividades recreativas bajo la supervisión de amantes de los animales.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/17.+Purrfect+Retreat/httpsbit.ly43mVEag.jpg",
@@ -766,7 +766,7 @@
     },
     "capacity": 7,
     "city": "Santa Marta",
-    "address": "Av. El Libertador #15-141 a 15-27, Comuna 4.",
+    "address": "Carrera 34 #7-265",
     "detail": "Un centro de bienestar que combina alojamiento de calidad con servicios de spa, alimentación saludable y programas de ejercicios para promover la salud y feicidad de las mascotas.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/18.+Barking+Lot+Lodge/httpsbit.ly43krcxs.jpg",
@@ -809,7 +809,7 @@
     },
     "capacity": 7,
     "city": "Bucaramanga",
-    "address": "Cl. 18 #26-27.",
+    "address": "Carrera 10 #29-63",
     "detail": "Un refugio junto al lago con acceso directo a actividades acuaticas como natación y paseos en bote, brindando diversión y aventuras en un entorno acuático para las mascotas.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/19.+Animal+House/httpstinyurl.com9nyretnr.jpg",
@@ -852,7 +852,7 @@
     },
     "capacity": 12,
     "city": "Cali",
-    "address": "Cra. 100 #15-29",
+    "address": "Calle 33b #67-04",
     "detail": "Una casa de vacaciones donde las mascotas disfrutan de amplias áreas de descanso, juegos al aire libre y la compañía de otros animales mientras sus dueños están fuera, creando un ambiente acogedor y alegre.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/20.+Four+Paws+Resort/httpstinyurl.com4ueahtf8.jpg",
@@ -896,7 +896,7 @@
     },
     "capacity": 18,
     "city": "Medellín",
-    "address": "Av. Las Palmas #20, Vda. El Penasco.",
+    "address": "Carrera 81 #6a-2",
     "detail": "Un santuario rodeado de hermosos paisajes naturales, ofreciendo una experiencia tranquila y relajante para mascotas que disfrutan de paseos y relajación en la naturaleza",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/21.+Rabbit+Palace/httpstinyurl.combdza5755.jpg",
@@ -937,7 +937,7 @@
     },
     "capacity": 10,
     "city": "Cali",
-    "address": "Cl. 44a Nte. #3a27, Vipasa",
+    "address": "Carrera 49a #51-105",
     "detail": "Un acogedor hogar para mascotas con amplios jardines y áreas de juego, donde los animales pueden socializar y disfrutar de su estancia en un entorno seguro y divertido",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/22.+Footprints+Of+Love/httpstinyurl.com2p89hpdb.jpg",
@@ -979,7 +979,7 @@
     },
     "capacity": 10,
     "city": "Barranquilla",
-    "address": "Cra. 46 #80-45, Nte. Centro Historico.",
+    "address": "Carrera 23 #44-44",
     "detail": "Un lujoso resort con suites privadas, piscinas y servicios de spa, donde los animales son tratados como verdaderos huéspedes VIP y disfrutan de un ambiente exclusivo y mimado",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/23.+House+Mr.+Cat/httpstinyurl.comyckmcp25.jpg",
@@ -1020,7 +1020,7 @@
     },
     "capacity": 8,
     "city": "Cúcuta",
-    "address": "Av. 3 #3-30, Barrio Lleras Restrepo.",
+    "address": "Calle 6 #22-99",
     "detail": "Un alojamiento familiar donde las mascotas son recibidas con cariño y tienen la oportunidad de interactuar con otros animales, creando un ambiente cálido y amigable",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/24.+Flying+Free/httpstinyurl.com2xa3bwsx.jpg",
@@ -1063,7 +1063,7 @@
     },
     "capacity": 5,
     "city": "Cartagena de Indias",
-    "address": "Cra. 3 # 5-66.",
+    "address": "Calle 23 #4860",
     "detail": "Una granja con amplios espacios al aire libre y animales de granja amigables, brindando a las mascotas una experiencia educativa y divertida en un entorno rural",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/25.+Hairy+Paw/httpstinyurl.com3ttyapzy.jpg",
@@ -1108,7 +1108,7 @@
     },
     "capacity": 5,
     "city": "Bucaramanga",
-    "address": "Cl. 14 #19-57.",
+    "address": "Calle 63#17e01",
     "detail": "Un hogar acogedor con atención personalizada, paseos diarios y actividades recreativas ara mantener a las mascotas felices y activas, creando un ambiente cálido y familiar",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/26.+Happy+Claws/httpstinyurl.com2p9yt3sv.jpg",
@@ -1152,7 +1152,7 @@
     },
     "capacity": 10,
     "city": "Pereira",
-    "address": "Cra. 38 #71a-89 a 71a-1.",
+    "address": "Calle 23 #12-57",
     "detail": "Un paraíso junto al mar con playas privadas, juegos acuáticos y servicios de cuidado especializados, para ofreecr a las mascotas unas vacaciones inolvidables junto a la costa",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/27.+Ojeras+Grandes/httpstinyurl.comy4xsrrn7.jpg",
@@ -1193,7 +1193,7 @@
     },
     "capacity": 9,
     "city": "Santa Marta",
-    "address": "Cra. 5 #7-123 a 7-1, Comuna 3.",
+    "address": "Carrera 5 #7-123",
     "detail": "Un refugio en medio de la naturaleza, rodeado de bosques y senderos para explorar, dondne las mascotas pueden disfrutar de aventuras al aire libre y tranquilidad en un entorno natural",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/28.+An+Adventure+In+The+Air/httpstinyurl.com5x8evnsm.jpg",
@@ -1234,7 +1234,7 @@
     },
     "capacity": 12,
     "city": "Ibagué",
-    "address": "Cra. 9 #19a-237 a 19a-1.",
+    "address": "Carrera 9 #19a-237",
     "detail": "Un moderno hotel con suites temáticas, áreas de juegos interactivos y cuidadores dedicados, brindando a las mascotas una estancia cómda y entretenida con un toque de estilo.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/29.+Meow+Hotel/httpstinyurl.com3a8ssx75.jpg",
@@ -1276,7 +1276,7 @@
     },
     "capacity": 7,
     "city": "Bogotá D.C",
-    "address": "Cl. 127c Bis #89-2 a 89-90.",
+    "address": "Calle 127c Bis #89-2",
     "detail": "Un centro de retiro en un entorno tranquilo, ofreciendo actividades de relajación como masajes y terapia de aromaterapia para consentir a las mascotas y brindarles un ambiente sereno.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/30.+Colas+Felices/httpstinyurl.com3b5y3s2u.jpg",
@@ -1319,7 +1319,7 @@
     },
     "capacity": 5,
     "city": "Medellín",
-    "address": "Av. 33 #52-19, La Candelaria.",
+    "address": "Av. 33 #52-19",
     "detail": "Una casa de campo con amplios jardines y zonas de juegos, donde las mascotas oueden disfrutar del aire fresco y participar en actividades al aire libre en un entorno campestre.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/31.+Orejas+Alegres/httpstinyurl.com2p9r9mse.jpg",
@@ -1359,7 +1359,7 @@
     },
     "capacity": 12,
     "city": "Cali",
-    "address": "Cra. 80 #4-10, Horzonte",
+    "address": "Carrera 80 #4-10",
     "detail": "Un hotel boutique decorado con estilo y elegancia, ofreciendo servicios personalizados y atención excepcional para satisfacer las necesitades individuales de cada mascota, con un toque de distinción.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/32.+Harmonious+Wings/httpstinyurl.commprwbkv6.jpg",
@@ -1401,7 +1401,7 @@
     },
     "capacity": 11,
     "city": "Barranquilla",
-    "address": "Cl. 75 #57-38, Nte. Centro Historico.",
+    "address": "Calle 75 #57-38",
     "detail": "Un alojamiento en la montaña rodeado de vistas panorámicas y senderos para maninatas, brindando a las masoctas una experiencia enriquecedora en contacto con la naturaleza y aire fresco.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/33.+Dogs+Playing/httpstinyurl.comyh4w8vvd.jpg",
@@ -1445,7 +1445,7 @@
     },
     "capacity": 12,
     "city": "Cartagena de Indias",
-    "address": "Cra. 4 # 6 - 119.",
+    "address": "Carrera 4 # 6 - 119",
     "detail": "Una residencia con instalaciones de entrenamiento, actividades de socialización y profesionales capacitados para asegurar el bienestar y desarrollo de las mascotas en un ambiente seguro.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/34.+Mi+Amigo+El+Gato/httpstinyurl.com2p87nszz.jpg",
@@ -1487,7 +1487,7 @@
     },
     "capacity": 8,
     "city": "Cúcuta",
-    "address": "Cl. 7 #10-15.",
+    "address": "Calle 13 #747",
     "detail": "Un alojamiento ubicado en el corazón de la ciudad, son paseos por parques locales y servicios de cuidado, adaptados al ritmo de la vida urbana para que las mascotas se sientan como en casa.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/35.+Cute+Ears/httpstinyurl.comy3rpbxrm.jpg",
@@ -1532,7 +1532,7 @@
     },
     "capacity": 9,
     "city": "Bucaramanga",
-    "address": "Cra. 26 #16-45.",
+    "address": "Carrera 26 #16-45",
     "detail": "Un Un retiro en el campo rodeado de vastos campos verdes, largos y serenos, proporcionando un ambiente tranquilo y sereno para una estancia relajante y pacífica para las mascotas.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/36.+Canary+Hotel/httpstinyurl.comycpd2e4x.jpg",
@@ -1573,7 +1573,7 @@
     },
     "capacity": 10,
     "city": "Pereira",
-    "address": "Cra. 34 #72-2 a 72-62.",
+    "address": "Carrera 34 #72-2",
     "detail": "Una casa de huespedes donde las mascotas son recibidas como parte de la familia, disfrutando de cómodas habitaciones y actividades recreativas bajo la supervisión de amantes de los animales.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/37.+Patas+Andantes/httpstinyurl.comyzuy8s78.jpg",
@@ -1615,7 +1615,7 @@
     },
     "capacity": 6,
     "city": "Santa Marta",
-    "address": "Cra. 19 #7-141 a 7-3, Comuna 3.",
+    "address": "Carrera 19 #7-141",
     "detail": "Un centro de bienestar que combina alojamiento de calidad con servicios de spa, alimentación saludable y programas de ejercicios para promover la salud y feicidad de las mascotas.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/38.+Cuatro+Patas/httpstinyurl.comymvzuv3z.jpg",
@@ -1657,7 +1657,7 @@
     },
     "capacity": 6,
     "city": "Bucaramanga",
-    "address": "Cl. 6 #1345 a 1303.",
+    "address": "Calle 6 #1345",
     "detail": "Un refugio junto al lago con acceso directo a actividades acuaticas como natación y paseos en bote, brindando diversión y aventuras en un entorno acuático para las mascotas.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/39.+Bird+House/httpstinyurl.com5esbfkyx.jpg",
@@ -1699,7 +1699,7 @@
     },
     "capacity": 20,
     "city": "Cali",
-    "address": "Av. 8 Nte. #45, El Bosque.",
+    "address": "Av. 8 Nte. #45",
     "detail": "Una casa de vacaciones donde las mascotas disfrutan de amplias áreas de descanso, juegos al aire libre y la compañía de otros animales mientras sus dueños están fuera, creando un ambiente acogedor y alegre.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/40.+Four+Paws+Resort/httpstinyurl.comnab8xerk.jpg",
