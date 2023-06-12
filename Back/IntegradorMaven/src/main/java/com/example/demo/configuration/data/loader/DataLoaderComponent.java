@@ -101,6 +101,9 @@ public class DataLoaderComponent {
                 System.out.println("user data with id " + userDTO.getId() + " already exists, skipping creation...");
             } catch (NoSuchElementException exception) {
                 userService.save(userDTO);
+                if(userDTO.isValidation()){
+                    userService.validation(userDTO.getEmail());
+                }
             }
         });
     }
