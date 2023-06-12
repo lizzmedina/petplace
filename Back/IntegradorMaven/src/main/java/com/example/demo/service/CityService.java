@@ -63,7 +63,9 @@ public class CityService {
 
         City found = cityopt.get();
 
-        if (!force && (petDayCareRepository.findById(found.getId()) == null || !found.getPetDayCareSet().isEmpty())){
+        if (!force &&
+                (found.getPetDayCareSet() != null ||
+                !petDayCareRepository.findAllByCityId(found.getId()).isEmpty())){
             throw new ReferencedCityException(cityMapper.mapToDto(found));
         }
 
