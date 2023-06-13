@@ -31,11 +31,11 @@ export const SearcherByLocation = () => {
 
     return (
         <Select
-        className="search-width"
-        placeholder={selectedOption ? selectedOption.label : "¿Dónde estarás?"}
-        value={selectedOption}
-        options={cities}
-        onChange={handleSelectCity}
+            className="search-width"
+            placeholder={selectedOption ? selectedOption.label : "¿Dónde estarás?"}
+            value={selectedOption}
+            options={cities}
+            onChange={handleSelectCity}
         />
     );
 };

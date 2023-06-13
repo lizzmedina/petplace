@@ -9,7 +9,7 @@ export const ReservationCalendar = () => {
     const { dates, handleDateChange } = useContextGlobal();
 
     return (
-        <div style={{ margin: 20 }}>
+        <div style={{ margin: 5,  width: 12}}>
             <RangePicker
             onChange={handleDateChange}
             />
