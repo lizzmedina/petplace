@@ -132,7 +132,7 @@ a:active {
     padding-left: 15vw;
 }
 .searcher-container p {
-    margin: 2rem 1rem 2rem 1rem;
+    margin: 1.5rem 1rem 1rem 1rem;
     justify-content: center;
 }
 .searcher {
@@ -388,6 +388,8 @@ a.ver-mas-recommends {
 }
 .space-section h2 {
     color: var(--color2);
+    text-align: center;
+    margin: 1rem 0 0 0;
 }
 .icon-container{
     display: flex;
@@ -423,7 +425,7 @@ a.ver-mas-recommends {
     flex-direction: column;
     height: 100%;
     padding-top: 1rem;
-    width: 60%;
+    width: 80%;
 }
 
 .form-section-name {
@@ -607,7 +609,7 @@ input:hover {
 }
 
 /* Form Product */
-.button-AddImage {
+.button-Add {
     border-color: var(--color2);
     background-color: var(--color2);
     color: var(--color1);
@@ -1126,6 +1128,7 @@ footer {
     .search-width {
         width: 100%;
         margin: 0.31rem;
+        height: 46px;
     }
 
     .searcher-container {
@@ -1133,10 +1136,11 @@ footer {
     }
 
     .searcher-title {
-        margin: 1.25rem 0.31rem;
+        margin: 1rem 0.31rem;
         text-align: center;
-        font-size: 1.75rem;
+        font-size: 1.5rem;
     }
+    
 
     .categories-container {
         align-items: center;
@@ -1201,10 +1205,11 @@ footer {
         margin-bottom: 3rem;
     }
     .carousel-root {
-        
         min-width: 100vw;
-        
-        
+    }
+    .searcher-container p {
+        margin: 1rem 1rem 1rem 1rem;
+        font-size: 0.8rem;
     }
     .rulesProduct{
         width: auto;       
@@ -1240,7 +1245,7 @@ footer {
     }
 
     .searcher-title {
-        margin: 1.25rem 0.31rem;
+        margin: 1rem 0.31rem;
         text-align: center;
         font-size: 1.75rem;
     }

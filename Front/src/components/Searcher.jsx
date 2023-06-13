@@ -1,11 +1,11 @@
 import { useState,  useContext } from "react";
 import { ReservationCalendar } from "./ReservationCalendar";
 import { SearcherByLocation } from "./SearcherByLocation";
-import  {SearchContext}  from "../components/utils/SearchContext";
+import { useContextGlobal } from "./utils/global.constext";
 
 export const Searcher = () => {
   const {
-    selectedOption,handleSelectCity, dates,handleDateChange} = useContext(SearchContext);
+    selectedOption,handleSelectCity, dates,handleDateChange} = useContextGlobal();
   const [searchResults, setSearchResults] = useState([]);
   const [searchTitle, setSearchTitle] = useState("Recomendaciones");
 
