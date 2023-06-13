@@ -413,6 +413,8 @@ a.ver-mas-recommends {
     align-items: center;
     flex-direction: column;
     height: 100%;
+    width: 85%;
+    max-width: 30rem;
     padding: 20px;
 }
 .form-container h4{
@@ -630,15 +632,23 @@ input:hover {
 
 .map-section{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
     flex-wrap: wrap;
-    margin: 3rem;
+    height: 20rem;
+    width: 100%;
+    margin: 20px
+}
+.location-FormCity{
+    height: 100%;
+    width: 100%;
 }
 .data-city{
-    min-height: 200px;
+    height: 200px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    margin: 20px;
 }
 .select-formCity{
     width: 250px;

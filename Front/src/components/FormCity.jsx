@@ -39,6 +39,23 @@ function FormCity() {
         setCities(countryCities);
     };
 
+    /* Funcion paa generar el mapa de la ciudad */
+    const generateLocationURL = () => {
+        const concatenatedValue = dataCity ? `Colombia ${dataCity}` : `Colombia`;
+        const encodedValue = encodeURIComponent(concatenatedValue);
+        return `https://maps.google.com/maps?q=${encodedValue}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
+    };
+
+    useEffect(() => {
+        // Update the map URL whenever dataCity changes
+        const mapURL = generateLocationURL();
+        const mapFrame = document.getElementById("google_map");
+        if (mapFrame) {
+            mapFrame.src = mapURL;
+        }
+        console.log(dataCity);
+    }, [dataCity]);
+
     /* Para editar los estilos en el componente Select */
     const colourStyles = {
         placeholder: (defaultStyles) => {
@@ -118,8 +135,16 @@ function FormCity() {
     return (
         <div>
             <div className="map-section">
-                <div className="map">Mapa</div>
-                <form className="data-city" onSubmit={handleSubmit}>
+                <div>
+                    <div>
+                        <div>
+                            <iframe className='mapFrame' id="google_map"
+                                src={generateLocationURL()} />
+                        </div>
+                    </div>
+                </div>
+
+                <div><form className="data-city" onSubmit={handleSubmit}>
                     <Select
                         className="select-formCity"
                         placeholder={
@@ -148,7 +173,7 @@ function FormCity() {
                     <div className="section-button">
                         <button className="button-1">Enviar</button>
                     </div>
-                </form>
+                </form></div>
             </div>
         </div>
     );
