@@ -57,7 +57,7 @@ class UserServiceTest {
 
 
     @Test
-    @DisplayName("Esta prueba valida la elimincacion de un usuario que no existe")
+    @DisplayName("Esta prueba valida la eliminacion de un usuario que no existe")
     public void delete_InvalidIdTest() {
         Mockito.when(userRepository.findById(Mockito.anyInt())).thenReturn(Optional.empty());
 
