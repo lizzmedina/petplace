@@ -7,22 +7,23 @@ export const SearcherByLocation = () => {
 
     useEffect(() => {
         const fetchCities = async () => {
-            try {
-                const response = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/cities`);
-                const data = await response.json();
-                const mappedCities = data.map((city) => ({
-                    value: city.name.toLowerCase(),
-                    label: city.name
-                }));
-                setCities(mappedCities);
-            } catch (error) {
-                console.error("Error al obtener las ciudades:", error);
-            }
+        try {
+            const response = await fetch(
+            `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/cities`
+            );
+            const data = await response.json();
+            const mappedCities = data.map((city) => ({
+            value: city.name.toLowerCase(),
+            label: city.name,
+            }));
+            setCities(mappedCities);
+        } catch (error) {
+            console.error("Error al obtener las ciudades:", error);
+        }
         };
-    
+
         fetchCities();
     }, []);
-    
 
     const handleSelectCity = (option) => {
         setSelectedOption(option);
