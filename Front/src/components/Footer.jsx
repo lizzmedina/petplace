@@ -2,6 +2,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebook, faTwitter, faDiscord } from '@fortawesome/free-brands-svg-icons'
 import { faCopyright } from '@fortawesome/free-regular-svg-icons'
+import { Link } from 'react-router-dom'
 
 
 
@@ -13,9 +14,9 @@ export const Footer = () => {
         <p> 2023 Digital Booking </p>
       </div>
       <div className="socialMedia">
-        <FontAwesomeIcon className='socialIcon' icon={faFacebook} size="xl" />
-        <FontAwesomeIcon className='socialIcon' icon={faTwitter} size="xl" />
-        <FontAwesomeIcon className='socialIcon' icon={faDiscord} size="xl" />
+        <Link className="socialLink" to="https://www.facebook.com"> <FontAwesomeIcon className='socialIcon' icon={faFacebook} size="xl" />  </Link>
+        <Link className="socialLink" to="https://twitter.com/home"> <FontAwesomeIcon className='socialIcon' icon={faTwitter} size="xl" /> </Link>
+        <Link className="socialLink" to="https://www.instagram.com/"> <FontAwesomeIcon className='socialIcon' icon={faDiscord} size="xl" /> </Link>
       </div>
     </footer>
   )

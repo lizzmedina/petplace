@@ -38,9 +38,6 @@ const Details = () => {
                         cancellationPolicy={details.cancellationPolicy}
                   />
             </div>
-            <div>
-                  
-            </div>
             
             </>
             

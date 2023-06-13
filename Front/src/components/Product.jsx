@@ -25,6 +25,20 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
         return image;
     }
 
+    const renderRules = (rules) => {
+        if (rules && rules.length > 0) {
+          return rules.map((rule, index) => (
+            <li key={index}>{rule}</li>
+          ));
+        } else {
+          return <p>No hay reglas disponibles.</p>;
+        }
+    };
+
+    
+      
+      
+
     const renderFeatures = () => {
         const icons = {
             Paseo: faPersonWalkingWithCane,
@@ -66,7 +80,7 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
 
         <div key={id} className="product-container">
             <div className="product-header">
-                <span className="product-location"><FontAwesomeIcon icon={faLocationDot} className='icon-service' /> {city.name}, {address}</span>  <a onClick={() => navigate(-1)}><FontAwesomeIcon icon={faChevronLeft} className='back-icon' /></a>
+            <a href="#locationContainer"><span className=""><FontAwesomeIcon icon={faLocationDot} className='icon-service' /> {city.name}, {address}</span></a>  <a onClick={() => navigate(-1)}><FontAwesomeIcon icon={faChevronLeft} className='back-icon' /></a>
             </div>
             <div className="product-galery">
                 <div className='leading-image'>
@@ -116,7 +130,7 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
 
             <CalendarDetail />
 
-            <div className='location-container'>
+            <div className='location-container' id='locationContainer'>
                 <h3>Ubicación</h3>
                 <div className="mapouter">
                     <div className="gmap_canvas">
@@ -126,6 +140,22 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
                     </div>
                 </div>
             </div>
+
+            <div className='rulesContainer'>
+                <div className='rulesProduct'>
+                    <h3>Normas de la casa</h3>
+                    <ul>{renderRules(houseRules)}</ul>
+                </div>
+                <div className='rulesProduct'>
+                    <h3>Salud y seguridad</h3>
+                    <ul>{renderRules(healthAndSecurity)}</ul>
+                </div>
+                <div className='rulesProduct'>
+                    <h3>Política de cancelación</h3>
+                    <ul>{renderRules(cancellationPolicy)}</ul>
+                </div>
+            </div>
+
 
             {isModalOpen && (<ImageModal images={image} onClose={handleCloseModal} />)}
 
