@@ -6,7 +6,7 @@ import Checkbox from '@mui/material/Checkbox';
 import Swal from 'sweetalert2';
 
 const FormProduct = () => {
-    const { places, setPlaces } = useContextGlobal();
+    const { places, setPlaces, urlGetProducts, urlPostProducts } = useContextGlobal();
 
     const userConnected = JSON.parse(localStorage.getItem('userConnected')) || null; //Para validad el tipo de usuario, si no esta logeado no cargara la pagina
 
@@ -20,15 +20,18 @@ const FormProduct = () => {
         images: [],
         characteristics: [],
         basicPrice: "",
+        houseRules: [],
+        healthAndSecurity: [],
+        cancellationPolicy: []
     });
 
     const [isLoading, setIsLoading] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
 
-    const url = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/petDayCare/all`;
+    //const url = urlGetProducts;
     const [allProducts, setAllProducts] = useState([]);
     useEffect(() => {
-        fetch(url)
+        fetch(urlGetProducts)
             .then((res) => res.json())
             .then((data) => {
                 setAllProducts(data);
@@ -38,7 +41,7 @@ const FormProduct = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         const result = allProducts.find((item) => item.name === product.name);
-        console.log(result);
+
         if (result === undefined) {
             if (product.name.length > 2 && product.detail.length > 5) {
                 setIsLoading(true);
@@ -52,16 +55,18 @@ const FormProduct = () => {
                     images: [],
                     characteristics: [],
                     basicPrice: "",
-                });console.log(product);
-                
+                    houseRules: [],
+                    healthAndSecurity: [],
+                    cancellationPolicy: []
+                });
+                console.log(product);
 
-                fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/petDayCare`, {
+                fetch(urlPostProducts, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
                     },
                     body: JSON.stringify(product),
-
                 })
                     .then((response) => {
                         if (response.ok) {
@@ -77,6 +82,9 @@ const FormProduct = () => {
                                 images: [],
                                 characteristics: [],
                                 basicPrice: "",
+                                houseRules: [],
+                                healthAndSecurity: [],
+                                cancellationPolicy: []
                             });
                             const selectElement = document.querySelector("select[name='type']");
                             selectElement.selectedIndex = 0;
@@ -100,10 +108,10 @@ const FormProduct = () => {
         }
     };
 
+    /* -- Lo siguiente es la logica para agregar Imagenes -- */
     const handleAddImage = () => {
         setProduct((prevState) => ({...prevState,images: [...prevState.images, ""]}));
     };
-
     const handleImageChange = (index, value) => {
         const updatedImages = [...product.images];
         updatedImages[index] = value;
@@ -113,16 +121,53 @@ const FormProduct = () => {
         }));
     };
 
-    //Checkbox de servicios
-    const [selectedCharacteristics, setSelectedCharacteristics] = useState([]);
+    /* -- Lo siguiente es la logica para agregar politicas de la casa -- */
+    const handleAddHouseRules = () => {
+        setProduct((prevState) => ({ ...prevState,houseRules: [...prevState.houseRules, ""]}));
+    };
+    const handleHouseRulesChange = (index, value) => {
+        const updatedPolicy = [...product.houseRules];
+        updatedPolicy[index] = value;
+        setProduct((prevState) => ({
+            ...prevState,
+            houseRules: updatedPolicy,
+        }));
+    };
 
+    /* -- Lo siguiente es la logica para agregar politicas de salud y seguridad -- */
+    const handleAddHealthAndSecurity = () => {
+        setProduct((prevState) => ({ ...prevState,healthAndSecurity: [...prevState.healthAndSecurity, ""]}));
+    };
+    const handleHealthAndSecurityChange = (index, value) => {
+        const updatedPolicy = [...product.healthAndSecurity];
+        updatedPolicy[index] = value;
+        setProduct((prevState) => ({
+            ...prevState,
+            healthAndSecurity: updatedPolicy,
+        }));
+    };
+
+    /* -- Lo siguiente es la logica para agregar politicas de cancelacion -- */
+    const handleAddCancellationPolicy = () => {
+        setProduct((prevState) => ({ ...prevState,cancellationPolicy: [...prevState.cancellationPolicy, ""]}));
+    };
+    const handleHouseCancellationPolicy = (index, value) => {
+        const updatedPolicy = [...product.cancellationPolicy];
+        updatedPolicy[index] = value;
+        setProduct((prevState) => ({
+            ...prevState,
+            cancellationPolicy: updatedPolicy,
+        }));
+    };
+
+    /* -- Lo siguiente es la logica para el checkbox de Servicios -- */
+    const [selectedCharacteristics, setSelectedCharacteristics] = useState([]);
     useEffect(() => {
         setProduct((prevProduct) => ({
             ...prevProduct,
             characteristics: selectedCharacteristics,
         }));
     }, [selectedCharacteristics]);
-
 
     const handleCheckboxChange = (option) => {
         if (selectedCharacteristics.includes(option)) {
@@ -157,9 +202,8 @@ const FormProduct = () => {
                     </div>
                     <br />
 
-
-                    <div className="section-Image">
-                        <label>Agregar Imagen: </label> <button type="button" onClick={handleAddImage} className="button-AddImage"> + </button>
+                    <div>
+                        <label>Agregar Imagen: </label> <button type="button" onClick={handleAddImage} className="button-Add"> + </button>
                     </div>
                     {product.images.map((imageUrl, index) => (
                         <div>
@@ -168,9 +212,8 @@ const FormProduct = () => {
                             <br />
                         </div>
                     ))}
-
-
                     <br />
+
                     <label>Tipo de alojamiento: </label>
                     <select name="type" onChange={(e) => setProduct({ ...product, categoryName: e.target.options[e.target.selectedIndex].value })}>
                     <option value="" hidden>--- Elige una Opción ---</option>
@@ -214,8 +257,43 @@ const FormProduct = () => {
                             label="Veterinaria" 
                         />
                     </FormGroup>
+                    <br/>
 
+                    <div>
+                        <label>Agregar Regla de Casa: </label> <button type="button" onClick={handleAddHouseRules} className="button-Add"> + </button>
+                    </div>
+                    {product.houseRules.map((policyText, index) => (
+                        <div>
+                            <input type="text" value={policyText} onChange={(e) => handleHouseRulesChange(index, e.target.value)} 
+                            className="input-Image" placeholder={"Regla de Casa " + (index + 1)}/>
+                            <br />
+                        </div>
+                    ))}
                     <br />
+                    <div>
+                        <label>Agregar Politica de Salud y Seguridad: </label> <button type="button" onClick={handleAddHealthAndSecurity} className="button-Add"> + </button>
+                    </div>
+                    {product.healthAndSecurity.map((policyText, index) => (
+                        <div>
+                            <input type="text" value={policyText} onChange={(e) => handleHealthAndSecurityChange(index, e.target.value)} 
+                            className="input-Image" placeholder={"Politica Salud&Seguridad " + (index + 1)}/>
+                            <br />
+                        </div>
+                    ))}
+                    <br />
+                    <div>
+                        <label>Agregar Politica de Cancelacion: </label> <button type="button" onClick={handleAddCancellationPolicy} className="button-Add"> + </button>
+                    </div>
+                    {product.cancellationPolicy.map((policyText, index) => (
+                        <div>
+                            <input type="text" value={policyText} onChange={(e) => handleHouseCancellationPolicy(index, e.target.value)} 
+                            className="input-Image" placeholder={"Politica de Cancelacion " + (index + 1)}/>
+                            <br />
+                        </div>
+                    ))}
+                    <br />
+
+
                     <div className="section-button">
                         <button className="button-1">Crear</button>
                     </div>

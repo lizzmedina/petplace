@@ -1,7 +1,7 @@
-import React from 'react';
-import { render, fireEvent, waitFor } from '@testing-library/react';
-import { Await, MemoryRouter } from 'react-router-dom';
-import FormLogin from '../../components/FormLogin';
+// import React from 'react';
+// import { render, fireEvent, waitFor } from '@testing-library/react';
+// import { Await, MemoryRouter } from 'react-router-dom';
+// import FormLogin from '../../components/FormLogin';
 
 describe('FormLogin', () => {
 

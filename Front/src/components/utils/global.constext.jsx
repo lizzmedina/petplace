@@ -11,11 +11,13 @@ const ContextProvider = ({children}) => {
     const urlGetUsers = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/user/all`;
     const urlPostUsers = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/user`;
     const urlGetCities = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/cities`;
-    const urlPostCities = `http://localhost:8080/api/v1/cities`; // corregir
     const [selectedOption, setSelectedOption] = useState(null);
     const [dates, setDates] = useState([]);
     const [searchResults, setSearchResults] = useState([]);
     const [searchTitle, setSearchTitle] = useState("Recomendaciones");
+    const urlPostCities = `http://localhost:8080/api/v1/cities`; // corregir se tiene asi para pruebas en local
+    const urlGetProducts = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/petDayCare/all`;
+    const urlPostProducts = `http://localhost:8080/api/v1/petDayCare`; // corregir se tiene asi para pruebas en local
 
     const handleSelectCity = (option) => {
         setSelectedOption(option);
@@ -62,7 +64,7 @@ const ContextProvider = ({children}) => {
         searchTitle,
         handleSearch,
     };
-
+    
     const [places, setPlaces] = useState([]); // categorias
     const getAllCategories = async()=> {
         const res = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/category/all`);
@@ -88,7 +90,7 @@ const ContextProvider = ({children}) => {
     }, [url]);
 
     return (
-        <ContextGlobal.Provider value={{searchContextValue, urlGetCities,urlPostCities,urlGetUsers, sendEmailUrl, urlPostUsers, validationUserUrl, getAllCategories, places,setPlaces, url, setUrl, dataCategory, setDataCategory}}>
+        <ContextGlobal.Provider value={{searchContextValue, urlGetProducts, urlPostProducts, urlGetCities,urlPostCities,urlGetUsers, sendEmailUrl, urlPostUsers, validationUserUrl, getAllCategories, places,setPlaces, url, setUrl, dataCategory, setDataCategory}}>
             {children}
         </ContextGlobal.Provider>
     )
