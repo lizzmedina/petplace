@@ -1,15 +1,15 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import Stack from '@mui/material/Stack';
-import { Pagination} from "@mui/material";
-import  {SearchContext}  from "../components/utils/SearchContext";
-import  {CardRecomends}  from "../components/CardRecomends";
+import { Pagination} from '@mui/material';
+import { useContextGlobal } from "./utils/global.constext";
+import {CardRecomends} from './CardRecomends';
 
 export const Recommends = () => {
   const url = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/petDayCare/all`;
 
   const [recommends, setRecommends] = useState([]);
-  const { searchResults, searchTitle } = useContext(SearchContext);
+  const { searchResults, searchTitle } = useContextGlobal();
   
   useEffect(() => {
     fetch(url)
@@ -24,7 +24,7 @@ export const Recommends = () => {
   }, []);
 
   useEffect(() => {
-    if (searchResults.length > 0) {
+    if (searchResults?.length > 0) {
       setRecommends(searchResults);
     } else {
       setRecommends([]);
@@ -54,7 +54,6 @@ export const Recommends = () => {
     }
     return array;
   }
-
   return (
     <div className="recommends-container">
       <h2 className="home-titles">{searchTitle}</h2>

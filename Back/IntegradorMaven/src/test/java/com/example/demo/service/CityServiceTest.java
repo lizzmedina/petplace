@@ -2,8 +2,10 @@ package com.example.demo.service;
 
 
 import com.example.demo.DTO.CityDTO;
+import com.example.demo.DTO.UserDTO;
 import com.example.demo.entity.City;
 import com.example.demo.entity.PetDayCare;
+import com.example.demo.entity.User;
 import com.example.demo.exception.ReferencedCityException;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.mapper.CityMapper;
@@ -18,6 +20,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,7 +43,7 @@ class CityServiceTest {
         int id = 12;
         Mockito.when(cityRepository.findById(Mockito.anyInt())).thenReturn(Optional.empty());
         Assertions.assertThrows(ResourceNotFoundException.class,
-                () -> cityService.deleteById(id, true), "No existe una ciudad creada con el id "+id);
+                () -> cityService.deleteById(id, true), "No existe una ciudad creada con el id " + id);
         Mockito.verify(cityRepository, Mockito.times(1)).findById(id);
         Mockito.verify(cityRepository, Mockito.times(0)).delete(Mockito.any());
     }
@@ -93,7 +96,28 @@ class CityServiceTest {
         Assertions.assertNull(actualCity.getPetDayCareDTOSet());
         Mockito.verify(cityRepository, Mockito.times(1)).save(cityMapper.mapToEntity(dto));
     }
-}
 
+    @Test
+    @DisplayName("Esta prueba valida la actualizacion de una ciudad nula")
+    public void update_nullTest() {
+        Assertions.assertThrows(ResourceNotFoundException.class,
+                () -> cityService.updateCity(null),
+                "La ciudad no existe");
+
+        Mockito.verify(cityRepository, Mockito.times(0)).findById(null);
+    }
+
+
+    @Test
+    @DisplayName("Esta prueba valida la obtencion de ciudades cuando no hay registros en la bd")
+    public void findAll_emptyTest() {
+        Mockito.when(cityRepository.findAll()).thenReturn(Collections.emptyList());
+
+        List<CityDTO> actualCities = cityService.getAllCities();
+
+        Mockito.verify(cityRepository, Mockito.times(1)).findAll();
+        Assertions.assertTrue(actualCities.isEmpty());
+    }
+}
 
 

@@ -13,7 +13,6 @@ const Details = () => {
             const res = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/petDayCare/detail/${id}`)
             const data = await res.json()
             setDetails(data)
-            console.log(data);
       }
       useEffect(()=>{
             getDetail()
@@ -37,9 +36,6 @@ const Details = () => {
                         healthAndSecurity={details.healthAndSecurity}
                         cancellationPolicy={details.cancellationPolicy}
                   />
-            </div>
-            <div>
-                  
             </div>
             
             </>

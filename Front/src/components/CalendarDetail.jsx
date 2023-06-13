@@ -16,8 +16,8 @@ export const CalendarDetail = () => {
     useEffect(() => {
         const markedMonths = datesData.map(([startDate]) => new Date(startDate).getMonth());
         if (markedMonths.length > 0) {
-        const minMonth = Math.min(...markedMonths);
-        setCurrentMonth(minMonth);
+            const minMonth = Math.min(...markedMonths);
+            setCurrentMonth(minMonth);
         }
     }, []);
 

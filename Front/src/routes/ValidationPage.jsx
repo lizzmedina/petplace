@@ -28,7 +28,7 @@ export const ValidationPage = () => {
   return (
     <div className="validationpage-container space-section">
       <h2 className="h2-validationpage">¡Felicidades, su cuenta ha sido validada exitosamente!</h2>
-      <h3 className="h2-validationpage" >Ahora puede ingresar con los datos registrados en "iniciar sesión" ↗️</h3>
+      <h3 className="h2-validationpage" >Ahora puede ingresar con los datos registrados en <Link to='/login'>"iniciar sesión" ↗️</Link> </h3>
     </div>
   );
 };

@@ -3,6 +3,9 @@
     box-sizing: border-box;
     font-family: 'Quicksand', sans-serif;
 }
+html {
+    scroll-behavior: smooth;
+}
 
 body {
     width: 100%;
@@ -81,8 +84,10 @@ a:active {
 
 .slogan-navbar {
     margin: 1rem;
-    color: #31363F;
-    font-size: 1.2rem;
+    color: var(--color6);
+    font-size: 1rem;
+    font-weight:500;
+    
 }
 
 .navbar-link-container {
@@ -130,7 +135,7 @@ a:active {
     padding-left: 15vw;
 }
 .searcher-container p {
-    margin: 2rem 1rem 2rem 1rem;
+    margin: 1.5rem 1rem 1rem 1rem;
     justify-content: center;
 }
 .searcher {
@@ -311,8 +316,9 @@ a:active {
 }
 
 .card-descrption-recommends::after {
-    content: "  más...";
-    color: var(--color2);
+    content: " Seguir leyendo";
+    color: var(--color3);
+    font-weight: 600;
 }
 
 .card-price-recommends {
@@ -439,9 +445,6 @@ a.ver-mas-recommends {
     font-weight: bold;
 }
 
-.space-section p {
-    font-weight: bold;
-}
 
 .box {
     width: 45%;
@@ -732,7 +735,13 @@ input:hover {
     padding: 1.5rem 1.5rem;
     flex-wrap: wrap-reverse;
 }
+.product-header a{
+    color: #31363F;
+}
 
+.pinLocation-product{
+    cursor: pointer;
+}
 
 .product-galery {
     width: 100%;
@@ -857,6 +866,10 @@ p.more-images {
 
 .location-container{
     width: 100%;
+    padding-left: auto 40px;
+}
+.location-container h3{
+    margin: 10px auto 15px 40px;
 }
 .gmap_canvas {
     overflow: hidden;
@@ -883,9 +896,12 @@ p.more-images {
 
 .feature-list {
     display: flex;
-    justify-content: space-between;
     align-items: start;
     margin-top: 1rem;
+}
+.featureItem{
+    margin-right: 50px;
+    margin-bottom: 10px;
 }
 
 .icon-service {
@@ -893,15 +909,18 @@ p.more-images {
     /* font-size: 1.1rem; */
     margin-right: 0.3rem;
 }
-
+.calendar-section-container h3{
+    margin-left: 40px;
+}
 .calendar-section-container{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
 }
 .calendars-render{
     display: flex;
     margin: 2rem;
+    flex-wrap: wrap;
 }
 .calendar{
     margin: 1rem;
@@ -909,6 +928,29 @@ p.more-images {
 .react-calendar{
     height: 100%;
 }
+.rulesContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0 40px;
+    margin: 20px 0;
+}
+.rulesProduct{
+    width: 33%;
+    font-size: 13px;
+    padding-right: 40px;
+    margin-bottom: 20px;
+}
+.rulesProduct h3{
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+.rulesProduct ul{
+    padding-left: 15px;
+
+}
+
+
 
 /* Estilos del modal galeria detalles de prodcuto */
 .modal-overlay {
@@ -1063,6 +1105,9 @@ footer {
 .socialIcon{
     margin: 0 10px;
 }
+.socialLink{
+    color: var(--color1);
+}
 .socialmedia{
     display: flex;
     flex-direction: row;
@@ -1103,6 +1148,7 @@ footer {
     .search-width {
         width: 100%;
         margin: 0.31rem;
+        height: 46px;
     }
 
     .searcher-container {
@@ -1110,10 +1156,11 @@ footer {
     }
 
     .searcher-title {
-        margin: 1.25rem 0.31rem;
+        margin: 1rem 0.31rem;
         text-align: center;
-        font-size: 1.75rem;
+        font-size: 1.5rem;
     }
+    
 
     .categories-container {
         align-items: center;
@@ -1178,10 +1225,14 @@ footer {
         margin-bottom: 3rem;
     }
     .carousel-root {
-        
         min-width: 100vw;
-        
-        
+    }
+    .searcher-container p {
+        margin: 1rem 1rem 1rem 1rem;
+        font-size: 0.8rem;
+    }
+    .rulesProduct{
+        width: auto;       
     }
 }
 
@@ -1214,7 +1265,7 @@ footer {
     }
 
     .searcher-title {
-        margin: 1.25rem 0.31rem;
+        margin: 1rem 0.31rem;
         text-align: center;
         font-size: 1.75rem;
     }
@@ -1238,6 +1289,9 @@ footer {
         
         min-width: 85vw;
         
+    }
+    .rulesProduct{
+        width: auto;       
     }
 }
 
@@ -1311,6 +1365,9 @@ footer {
 
     .card-image-recommends {
         height: 100%;
+    }
+    .rulesProduct{
+        width: auto;       
     }
 }
 
@@ -1390,7 +1447,9 @@ footer {
         min-width: 85vw;
         
     }
-
+    .rulesProduct{
+        width: auto;       
+    }
 
 }
 
