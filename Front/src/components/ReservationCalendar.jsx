@@ -1,12 +1,12 @@
 import { DatePicker } from 'antd';
-import  {SearchContext}  from "../components/utils/SearchContext";
 import { useContext } from 'react';
+import { useContextGlobal } from './utils/global.constext';
 
 const { RangePicker } = DatePicker;
 
 export const ReservationCalendar = () => {
 
-    const { dates, handleDateChange } = useContext(SearchContext);
+    const { dates, handleDateChange } = useContextGlobal();
 
     return (
         <div style={{ margin: 20 }}>

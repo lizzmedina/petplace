@@ -1,7 +1,6 @@
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link} from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft, faShower, faPersonWalkingWithCane, faCarrot, faBaseball, faStethoscope, faLocationDot } from '@fortawesome/free-solid-svg-icons'
-import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import ImageModal from './ImageModal';
 import { CalendarDetail } from "./CalendarDetail.jsx";
@@ -18,9 +17,8 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
         const encodedValue = encodeURIComponent(concatenatedValue.replace(/ /g, '+'));
         return `https://maps.google.com/maps?q=${encodedValue}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
         
-      };
-      
-
+    };
+    
     if (!image) {
         return image;
     }

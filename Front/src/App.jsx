@@ -15,13 +15,13 @@ import { Footer } from "./components/Footer";
 import './styles.css';
 import { ValidationPage } from "./routes/ValidationPage";
 import { NewCategory } from "./routes/NewCategory";
-import { SearchProvider } from "../src/components/utils/SearchContext";
+import ContextProvider from "../src/components/utils/global.constext";
 
 function App() {
     return (
         <div className="App">
             <NavBar/>
-            <SearchProvider>
+            <ContextProvider>
             <Routes>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/register" element={<Register/>}/>
@@ -37,7 +37,7 @@ function App() {
                 <Route path="/editCity" element={<EditCity/>}/>
                 <Route path="/validationPage/" element={<ValidationPage/>}/>
             </Routes>
-            </SearchProvider>
+            </ContextProvider>
             <Footer/>
         </div>
         
