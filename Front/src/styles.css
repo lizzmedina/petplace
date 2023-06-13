@@ -3,6 +3,9 @@
     box-sizing: border-box;
     font-family: 'Quicksand', sans-serif;
 }
+html {
+    scroll-behavior: smooth;
+}
 
 body {
     width: 100%;
@@ -313,8 +316,9 @@ a:active {
 }
 
 .card-descrption-recommends::after {
-    content: "  más...";
-    color: var(--color2);
+    content: " Seguir leyendo";
+    color: var(--color3);
+    font-weight: 600;
 }
 
 .card-price-recommends {
@@ -439,9 +443,6 @@ a.ver-mas-recommends {
     font-weight: bold;
 }
 
-.space-section p {
-    font-weight: bold;
-}
 
 .box {
     width: 45%;
@@ -724,7 +725,13 @@ input:hover {
     padding: 1.5rem 1.5rem;
     flex-wrap: wrap-reverse;
 }
+.product-header a{
+    color: #31363F;
+}
 
+.pinLocation-product{
+    cursor: pointer;
+}
 
 .product-galery {
     width: 100%;
@@ -879,9 +886,12 @@ p.more-images {
 
 .feature-list {
     display: flex;
-    justify-content: space-between;
     align-items: start;
     margin-top: 1rem;
+}
+.featureItem{
+    margin-right: 50px;
+    margin-bottom: 10px;
 }
 
 .icon-service {
