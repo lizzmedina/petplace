@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Stack from '@mui/material/Stack';
 import { Pagination} from "@mui/material";
 import  {SearchContext}  from "../components/utils/SearchContext";
+import  {CardRecomends}  from "../components/CardRecomends";
 
 export const Recommends = () => {
   const url = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/petDayCare/all`;
@@ -60,7 +61,7 @@ export const Recommends = () => {
       <div className="render-cards-recommends">
         {currentCards.map((recommend) => (
           <Link key={recommend.id} to={"/Detail/" + recommend.id}>
-            <CardRecommends
+            <CardRecomends
               key={recommend.id}
               type={recommend.type.title}
               name={recommend.name}
