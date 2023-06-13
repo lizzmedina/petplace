@@ -130,7 +130,7 @@ a:active {
     padding-left: 15vw;
 }
 .searcher-container p {
-    margin: 2rem 1rem 2rem 1rem;
+    margin: 1.5rem 1rem 1rem 1rem;
     justify-content: center;
 }
 .searcher {
@@ -1093,6 +1093,7 @@ footer {
     .search-width {
         width: 100%;
         margin: 0.31rem;
+        height: 46px;
     }
 
     .searcher-container {
@@ -1100,9 +1101,9 @@ footer {
     }
 
     .searcher-title {
-        margin: 1.25rem 0.31rem;
+        margin: 1rem 0.31rem;
         text-align: center;
-        font-size: 1.75rem;
+        font-size: 1.5rem;
     }
     
 
@@ -1169,10 +1170,11 @@ footer {
         margin-bottom: 3rem;
     }
     .carousel-root {
-        
         min-width: 100vw;
-        
-        
+    }
+    .searcher-container p {
+        margin: 1rem 1rem 1rem 1rem;
+        font-size: 0.8rem;
     }
 }
 
@@ -1205,7 +1207,7 @@ footer {
     }
 
     .searcher-title {
-        margin: 1.25rem 0.31rem;
+        margin: 1rem 0.31rem;
         text-align: center;
         font-size: 1.75rem;
     }
