@@ -26,6 +26,18 @@ export const CardRecomends = ({ image, type, name, rating, ratingText, character
             }
         });
     };
+
+    const truncateDetail = (text) => {
+        if (text.length > 100) {
+          return text.substring(0, 100) + '...';
+        }
+        return text;
+      };
+
+
+
+
+
     return (
         
         <div className="card-recomends">
@@ -42,7 +54,7 @@ export const CardRecomends = ({ image, type, name, rating, ratingText, character
                     <span className="card-category-recommends">Habilitado para: {capacity} {type.title} </span>
                     <p className="card-location-recommends"><FontAwesomeIcon icon={faLocationDot} className='card-location-icon' />{city.name}, {address}</p>
                     <span className='card-services-list-recommends'>{renderCharacteristics()}</span>
-                    <p className="card-descrption-recommends">{detail}</p>
+                    <p className="card-descrption-recommends">{truncateDetail(detail)}</p>
                     <span>
                         <p className="rating"> {rating} </p>
                         <p> {ratingText} </p>
