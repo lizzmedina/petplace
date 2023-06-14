@@ -47,7 +47,7 @@ public class PetDayCareService {
         this.cityService = cityService;
     }
 
-    public PetDayCareSaveDTO save(PetDayCareSaveDTO petDayCareSaveDTO) {
+    /*public PetDayCareSaveDTO save(PetDayCareSaveDTO petDayCareSaveDTO) {
 
         if(petDayCareSaveDTO == null){
             throw new IllegalArgumentException("El hotel no puede ser nulo");
@@ -99,7 +99,53 @@ public class PetDayCareService {
         petDayCareSaveDTO.setId(savePetDayCare.getId());
 
         return savePetDayCare;
+    }*/
+
+    public PetDayCareDTO save(PetDayCareDTO petDayCareDTO){
+
+        if (petDayCareDTO == null) {
+            throw new IllegalArgumentException("El hotel no puede ser nulo");
+        }
+
+        CategoryDTO categoryDTO = this.categoryService.findByName(petDayCareDTO.getType().getTitle());
+        CityDTO cityDTO = this.cityService.findByName(petDayCareDTO.getCity().getName());
+
+        PetDayCare petDayCareEntity = new PetDayCare(
+                petDayCareDTO.getName(),
+                categoryMapper.mapToEntity(categoryDTO),
+                petDayCareDTO.getCapacity(),
+                cityMapper.mapToEntity(cityDTO),
+                petDayCareDTO.getAddress(),
+                petDayCareDTO.getDetail(),
+                petDayCareDTO.getImages(),
+                petDayCareDTO.getCharacteristics(),
+                petDayCareDTO.getBasicPrice(),
+                petDayCareDTO.getHouseRules(),
+                petDayCareDTO.getHealthAndSecurity(),
+                petDayCareDTO.getCancellationPolicy()
+
+        );
+
+        repository.save(petDayCareEntity);
+
+        PetDayCareDTO petDayCareDTO1 = new PetDayCareDTO(
+                petDayCareEntity.getName(),
+                petDayCareEntity.getType(),
+                petDayCareEntity.getCapacity(),
+                petDayCareDTO.getCity(),
+                petDayCareDTO.getAddress(),
+                petDayCareEntity.getDetail(),
+                petDayCareEntity.getImages(),
+                petDayCareEntity.getCharacteristics(),
+                petDayCareEntity.getBasicPrice(),
+                petDayCareEntity.getHouseRules(),
+                petDayCareEntity.getHealthAndSecurity(),
+                petDayCareEntity.getCancellationPolicy()
+        );
+
+        return petDayCareDTO1;
     }
+
 
     public PetDayCareDTO saveBD(PetDayCareDTO petDayCare) {
 
