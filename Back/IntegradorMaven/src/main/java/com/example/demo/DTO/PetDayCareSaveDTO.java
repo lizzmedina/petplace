@@ -1,18 +1,15 @@
 package com.example.demo.DTO;
-
 import com.example.demo.entity.Category;
 
 import java.util.List;
 
-public class PetDayCareDTO {
+public class PetDayCareSaveDTO {
 
     private Integer id;
     private String name;
-    private Category type;
-
+    private String categoryName;
     private Integer capacity;
-    private CityDTO city;
-
+    private String cityName;
     private String address;
     private String detail;
     private List<String> images;
@@ -23,11 +20,11 @@ public class PetDayCareDTO {
     private List<String> cancellationPolicy;
 
 
-    public PetDayCareDTO(String name, Category type, Integer capacity, CityDTO city, String address, String detail, List<String> images, List<String> characteristics, double basicPrice, List<String> houseRules, List<String> healthAndSecurity, List<String> cancellationPolicy) {
+    public PetDayCareSaveDTO(String name, String categoryName, Integer capacity, String cityName, String address, String detail, List<String> images, List<String> characteristics, double basicPrice, List<String> houseRules, List<String> healthAndSecurity, List<String> cancellationPolicy) {
         this.name = name;
-        this.type = type;
+        this.categoryName = categoryName;
         this.capacity = capacity;
-        this.city = city;
+        this.cityName = cityName;
         this.address = address;
         this.detail = detail;
         this.images = images;
@@ -36,17 +33,11 @@ public class PetDayCareDTO {
         this.houseRules = houseRules;
         this.healthAndSecurity = healthAndSecurity;
         this.cancellationPolicy = cancellationPolicy;
+
     }
 
-    public PetDayCareDTO() {
-    }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
+    public PetDayCareSaveDTO() {
     }
 
     public String getName() {
@@ -57,12 +48,12 @@ public class PetDayCareDTO {
         this.name = name;
     }
 
-    public Category getType() {
-        return type;
+    public String getCategoryName() {
+        return categoryName;
     }
 
-    public void setType(Category type) {
-        this.type = type;
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
     public Integer getCapacity() {
@@ -73,12 +64,12 @@ public class PetDayCareDTO {
         this.capacity = capacity;
     }
 
-    public CityDTO getCity() {
-        return city;
+    public String getCityName() {
+        return cityName;
     }
 
-    public void setCity(CityDTO city) {
-        this.city = city;
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
     }
 
     public String getAddress() {
@@ -145,5 +136,12 @@ public class PetDayCareDTO {
         this.cancellationPolicy = cancellationPolicy;
     }
 
+    public Integer getId() {
+        return id;
+    }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }
+

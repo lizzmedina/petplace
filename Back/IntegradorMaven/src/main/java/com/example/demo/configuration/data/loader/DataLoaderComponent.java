@@ -3,14 +3,8 @@ package com.example.demo.configuration.data.loader;
 import com.example.demo.DTO.*;
 import com.example.demo.entity.*;
 import com.example.demo.exception.ResourceNotFoundException;
-import com.example.demo.repository.BookingRepository;
-import com.example.demo.repository.CityRepository;
-import com.example.demo.repository.PermissionRepository;
-import com.example.demo.repository.RoleRepository;
-import com.example.demo.service.BookingService;
-import com.example.demo.service.CategoryService;
-import com.example.demo.service.PetDayCareService;
-import com.example.demo.service.UserService;
+import com.example.demo.repository.*;
+import com.example.demo.service.*;
 import com.example.demo.utils.JsonHelper;
 import com.fasterxml.jackson.core.type.TypeReference;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,10 +34,15 @@ public class DataLoaderComponent {
     private CityRepository cityRepository;
 
     @Autowired
+    private CityService cityService;
+
+    @Autowired
     private BookingService bookingService;
 
     @Autowired
     private BookingRepository bookingRepository;
+    @Autowired
+    private PetDayCareRepository petDayCareRepository;
 
     public void loadInitialCities() {
         System.out.println("loading cities data...");
@@ -70,13 +69,12 @@ public class DataLoaderComponent {
         petDayCareList.forEach(petDayCareDTO -> {
             Optional<PetDayCare> petDayCareOpt = petDayCareService.findById(petDayCareDTO.getId());
             if (petDayCareOpt.isEmpty()) {
-                petDayCareService.save(petDayCareDTO);
+                petDayCareService.saveBD(petDayCareDTO);
             } else {
                 System.out.println("pet day care data with id " + petDayCareDTO.getId() + " already exists, skipping creation...");
             }
         });
     }
-
     public void loadInitialCategoriesData() {
         System.out.println("loading categories data...");
         List<CategoryDTO> petDayCareList = JsonHelper.readJsonFromFile("categories_data.json", new TypeReference<>() {
@@ -90,6 +88,8 @@ public class DataLoaderComponent {
             }
         });
     }
+
+
 
     public void loadInitialUserData() {
         System.out.println("loading user data...");
@@ -111,20 +111,18 @@ public class DataLoaderComponent {
 
     public void loadInitialBookingData() {
         System.out.println("loading booking data...");
-        List<Booking> bookingList = JsonHelper.readJsonFromFile("booking_data.json", new TypeReference<>() {
+        List<BookingDTO> bookingList = JsonHelper.readJsonFromFile("booking_data.json", new TypeReference<>() {
         });
         bookingList.forEach(booking -> {
-            Optional<Booking> booking1 = bookingRepository.findById(booking.getIdBooking());
+            Optional<Booking> booking1 = bookingService.findById(booking.getIdBooking());
             if (booking1.isEmpty()) {
-                bookingRepository.save(booking);
+                bookingService.save(booking);
             } else {
                 System.out.println("booking data with id " + booking.getIdBooking() + " already exists, skipping creation...");
             }
         });
     }
-
-
-
+    
     public void loadInitialPermissionData() {
         System.out.println("loading permission data...");
         List<Permission> permissionsList = JsonHelper.readJsonFromFile("permission_data.json", new TypeReference<>() {
@@ -181,10 +179,10 @@ public class DataLoaderComponent {
     public void onApplicationEvent(ContextRefreshedEvent event) {
         loadInitialCities();
         loadInitialCategoriesData();
-        loadInitialPetDayCareData();
         loadInitialRoleData();
         loadInitialPermissionData();
         loadRolePermissionAssociations();
+        loadInitialPetDayCareData();
         loadInitialUserData();
         loadInitialBookingData();
     }
