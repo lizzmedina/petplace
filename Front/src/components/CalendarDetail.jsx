@@ -4,13 +4,13 @@ import "react-calendar/dist/Calendar.css";
 
 export const CalendarDetail = () => {
     const datesData = [
-        ["2023-06-12", "2023-06-15"],
-        ["2023-07-23", "2023-07-26"],
-        ["2023-07-10", "2023-07-15"],
-        ["2023-06-19", "2023-06-21"],
+        [new Date("2023-06-14"), new Date("2023-06-17")], 
+        [new Date("2023-07-23"), new Date("2023-07-27")],
+        [new Date("2023-07-10"), new Date("2023-07-16")], 
+        [new Date("2023-06-19"), new Date("2023-06-22")],
     ];
 
-    const [dates, setDates] = useState([]);
+    const [dates, setDates] = useState(null);
     const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
 
     useEffect(() => {
@@ -27,10 +27,9 @@ export const CalendarDetail = () => {
 
     const tileDisabled = ({ date }) => {
         for (const [startDate, endDate] of datesData) {
-        const currentDate = new Date(date);
-        if (currentDate >= new Date(startDate) && currentDate <= new Date(endDate)) {
-            return true;
-        }
+            if (date >= startDate && date <= endDate) {
+                return true;
+            }
         }
         return false;
     };
@@ -45,36 +44,36 @@ export const CalendarDetail = () => {
 
     return (
         <div className="calendar-section-container">
-        <h3>Fechas disponibles</h3>
-        <div className="calendars-render">
-            <div className="calendar">
-            <button className="calendar-navigation-button" onClick={handlePrevMonth}>
-                Prev
-            </button>
-            <Calendar
-                value={dates}
-                onChange={handleDateChange}
-                tileDisabled={tileDisabled}
-                calendarType="ISO 8601"
-                minDetail="month"
-                activeStartDate={new Date(new Date().getFullYear(), currentMonth, 1)}
-            />
+            <h3>Fechas disponibles</h3>
+            <div className="calendars-render">
+                <div className="calendar">
+                    <button className="calendar-navigation-button" onClick={handlePrevMonth}>
+                        &lt;
+                    </button>
+                    <Calendar
+                        value={dates}
+                        onChange={handleDateChange}
+                        tileDisabled={tileDisabled}
+                        calendarType="ISO 8601"
+                        minDetail="month"
+                        activeStartDate={new Date(new Date().getFullYear(), currentMonth, 1)}
+                    />
+                </div>
+        
+                <div className="calendar">
+                <Calendar
+                    value={dates}
+                    onChange={handleDateChange}
+                    tileDisabled={tileDisabled}
+                    calendarType="ISO 8601"
+                    minDetail="month"
+                    activeStartDate={new Date(new Date().getFullYear(), currentMonth + 1, 1)}
+                />
+                <button className="calendar-navigation-button" onClick={handleNextMonth}>
+                    &gt;
+                </button>
+                </div>
             </div>
-
-            <div className="calendar">
-            <button className="calendar-navigation-button" onClick={handleNextMonth}>
-                Next
-            </button>
-            <Calendar
-                value={dates}
-                onChange={handleDateChange}
-                tileDisabled={tileDisabled}
-                calendarType="ISO 8601"
-                minDetail="month"
-                activeStartDate={new Date(new Date().getFullYear(), currentMonth + 1, 1)}
-            />
-            </div>
-        </div>
         </div>
     );
 };

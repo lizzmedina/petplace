@@ -836,12 +836,12 @@ p.more-images {
     outline: none;
     padding: 15px 20px;
     margin-top: 25px;
-    font-size: 16px;
-    letter-spacing: 1px;
+    /* font-size: 16px; */
+    letter-spacing: 1.5px;
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: 700;
     border-radius: 40px;
-    /* float:right; */
+    font-size: 1.2rem;
 }
 
 .text-info {
@@ -919,35 +919,61 @@ p.more-images {
 }
 .calendars-render{
     display: flex;
-    margin: 2rem;
     flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
 }
+
 .calendar{
     margin: 1rem;
+    display: flex;
 }
 .react-calendar{
     height: 100%;
 }
+.calendar-navigation-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 2rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    color: var(--color3);
+}
+
+.calendar-navigation-button:hover {
+    color: var(--color3);
+}
+
+/* .calendar-navigation-button:first-child {
+    margin-right: 8px;
+}
+
+.calendar-navigation-button:last-child {
+    margin-left: 8px;
+} */
+
 .rulesContainer{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    padding: 0 40px;
-    margin: 20px 0;
+    padding: 0rem 2.5rem;
+    margin: 1.25rem 0rem;
 }
 .rulesProduct{
     width: 33%;
-    font-size: 13px;
-    padding-right: 40px;
-    margin-bottom: 20px;
+    font-size: 1rem;
+    padding-right: 2.5rem;
+    margin-bottom: 1.25rem;
 }
 .rulesProduct h3{
-    margin-bottom: 15px;
-    font-size: 16px;
+    margin-bottom: 1rem;
+    font-size: 1rem;
 }
 .rulesProduct ul{
-    padding-left: 15px;
-
+    padding-left: 0.1rem;
+    text-align: justify;
 }
 
 
