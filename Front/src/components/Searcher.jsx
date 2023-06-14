@@ -1,47 +1,46 @@
-import { useState,  useContext } from "react";
-import { ReservationCalendar } from "./ReservationCalendar";
-import { SearcherByLocation } from "./SearcherByLocation";
+import { ReservationCalendar } from "./ReservationCalendar"
+import { SearcherByLocation } from "./SearcherByLocation"
 import { useContextGlobal } from "./utils/global.constext";
 
+
 export const Searcher = () => {
-  const {
-    selectedOption,handleSelectCity, dates,handleDateChange} = useContextGlobal();
-  const [searchResults, setSearchResults] = useState([]);
-  const [searchTitle, setSearchTitle] = useState("Recomendaciones");
 
-  const handleSearch = () => {
-    if (selectedOption) {
-      const city = selectedOption.value;
-      let searchUrl = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/booking/${city}`;
+  const {selectedCity,  selectedDates,  setRecommends} = useContextGlobal();
 
-      if (dates.length === 2) {
-        const startDate = dates[0];
-        const endDate = dates[1];
-        searchUrl += `?startDate=${startDate}&endDate=${endDate}`;
+
+  const handleSearch = async () => {
+    if (selectedCity) {
+      const urlSearch = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/booking/search/${selectedCity.value}`;
+
+      if (selectedDates.length > 0) {
+        const startDate = selectedDates[0].format('YYYY-MM-DD');
+        const endDate = selectedDates[1].format('YYYY-MM-DD');
+        urlSeach += `?checkInCheckOut=${startDate},${endDate}`;
       }
-
-      fetch(searchUrl)
-        .then((res) => res.json())
-        .then((data) => {
-          setSearchResults(data);
-          setSearchTitle("Resultados de búsqueda");
-        })
-        .catch((error) => {
-          console.error("Error al realizar la búsqueda:", error);
-        });
+  
+      try {
+        const response = await fetch(urlSearch);
+        const data = await response.json();
+        // Actualizar el estado de las recomendaciones con los resultados de búsqueda
+        setRecommends(data);
+      } catch (error) {
+        console.error("Error al buscar:", error);
+      }
     }
   };
-
+  
   return (
     <div className="searcher-container">
-      <h2 className="searcher-title">Busca el alojamiento ideal para tu mascota</h2>
+      
+      <h2 className="searcher-title"> Busca el alojamiento ideal para tu mascota</h2>
       <p>Busca de acuerdo a la ciudad en la que te encuentres y/o la fecha en la que lo necesitas</p>
-
+      
       <div className="searcher">
-        <SearcherByLocation />
-        <ReservationCalendar />
-        <button className="searcher-button search-width" onClick={handleSearch}>Buscar</button>
+        <SearcherByLocation/>
+        <ReservationCalendar/>
+      <button className="searcher-button search-width" onClick={handleSearch}>Buscar</button>
+
       </div>
     </div>
-  );
-};
+  )
+}
