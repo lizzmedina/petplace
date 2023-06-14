@@ -21,8 +21,8 @@ public class PetDayCareController {
     }
 
     @PostMapping()
-    public PetDayCareSaveDTO save(@RequestBody PetDayCareSaveDTO petDayCareSaveDTO){
-        return service.save(petDayCareSaveDTO);
+    public PetDayCareDTO save(@RequestBody PetDayCareDTO petDayCareDTO){
+        return service.save(petDayCareDTO);
     }
 
     @GetMapping("/all")

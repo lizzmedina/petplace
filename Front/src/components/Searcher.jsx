@@ -5,10 +5,11 @@ import { useContextGlobal } from "./utils/global.constext";
 
 export const Searcher = () => {
 
-  const {selectedCity,  selectedDates,  setRecommends} = useContextGlobal();
+  const {selectedCity,  selectedDates,  setRecommends, title, setTitle} = useContextGlobal();
 
 
   const handleSearch = async () => {
+    console.log("Entre");
     if (selectedCity) {
       const urlSearch = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/booking/search/${selectedCity.value}`;
 
@@ -23,6 +24,7 @@ export const Searcher = () => {
         const data = await response.json();
         // Actualizar el estado de las recomendaciones con los resultados de búsqueda
         setRecommends(data);
+        setTitle('Resultados de busqueda')
       } catch (error) {
         console.error("Error al buscar:", error);
       }

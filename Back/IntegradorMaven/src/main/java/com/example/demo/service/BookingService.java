@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.DTO.BookingDTO;
 import com.example.demo.entity.*;
+import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.*;
 
 import java.time.LocalDate;
@@ -181,6 +182,16 @@ public class BookingService {
 
         return bookingRepository.findById(id);
 
+    }
+
+    public String deleteById(Integer id) {
+        Optional<Booking> bookingopt = this.bookingRepository.findById(id);
+
+        if (!bookingopt.isPresent()) {
+            throw new ResourceNotFoundException("No existe una categoria registrado con el id: " + id);
+        }
+        bookingRepository.delete(bookingopt.get());
+        return "Se elimino exitosamente la reserva de id: " + id;
     }
 
 }

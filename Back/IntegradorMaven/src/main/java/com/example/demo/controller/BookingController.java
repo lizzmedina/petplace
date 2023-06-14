@@ -45,4 +45,9 @@ public class BookingController {
     public List<BookingDTO> bookingsPetDayCare (@PathVariable("id") Integer id){
         return service.bookingsPetDayCare(id);
     }
+
+    @DeleteMapping("/{id}")
+    public String deleteById(@PathVariable("id") Integer id) {
+        return service.deleteById(id);
+    }
 }

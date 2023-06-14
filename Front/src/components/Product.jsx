@@ -21,13 +21,6 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
         return `https://maps.google.com/maps?q=${encodedValue}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
 
     };
-
-    
-
-
-
-
-
     // rules develop
     const renderRules = (rules) => {
         if (rules && rules.length > 0) {
@@ -39,8 +32,6 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
         }
     };
 
-
-
     // Features develop  
 
     const renderFeatures = () => {
@@ -51,8 +42,6 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
             Veterinaria: faStethoscope,
             Entrenamiento: faBaseball,
         };
-
-
 
         return features.map((option, index) => {
             const icon = icons[option];
@@ -80,8 +69,6 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
     const handleCloseModal = () => {
         setModalOpen(false);
     };
-
-
 
 
     return (
@@ -132,7 +119,7 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
                     <p className="text-info">Precio: $ {basicPrice}</p>
                     <button className="buttonDetail button-1">Reservar</button>
                 </span>
-
+                
 
             </div>
 

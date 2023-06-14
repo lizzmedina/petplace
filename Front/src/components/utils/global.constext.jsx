@@ -18,7 +18,7 @@ const ContextProvider = ({children}) => {
     const [selectedCity, setSelectedCity] = useState(null);
     const [selectedDates, setSelectedDates] = useState([]);
     const [recommends, setRecommends] = useState([]);
-
+    const [title, setTitle] = useState('Recomendaciones');
     
     const [places, setPlaces] = useState([]); // categorias
     const getAllCategories = async()=> {
@@ -45,7 +45,7 @@ const ContextProvider = ({children}) => {
     }, [url]);
 
     return (
-        <ContextGlobal.Provider value={{ recommends, setRecommends, selectedDates, setSelectedDates, selectedCity, setSelectedCity, urlGetProducts, urlPostProducts, urlGetCities,urlPostCities,urlGetUsers, sendEmailUrl, urlPostUsers, validationUserUrl, getAllCategories, places,setPlaces, url, setUrl, dataCategory, setDataCategory}}>
+        <ContextGlobal.Provider value={{title, setTitle, recommends, setRecommends, selectedDates, setSelectedDates, selectedCity, setSelectedCity, urlGetProducts, urlPostProducts, urlGetCities,urlPostCities,urlGetUsers, sendEmailUrl, urlPostUsers, validationUserUrl, getAllCategories, places,setPlaces, url, setUrl, dataCategory, setDataCategory}}>
             {children}
         </ContextGlobal.Provider>
     )
