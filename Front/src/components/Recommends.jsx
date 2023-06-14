@@ -7,10 +7,8 @@ import { useContextGlobal } from "./utils/global.constext";
 
 export const Recommends = () => {
   
-  const url = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/petDayCare/all`;
   const [searchResults, setSearchResults] = useState([]);
-  const [title, setTitle] = useState('Recomendaciones');
-  const {recommends, setRecommends, selectedCity, selectedDates } = useContextGlobal();
+  const {recommends, setRecommends,  title} = useContextGlobal();
 
   useEffect(() => {
     if (searchResults.length > 0) {
@@ -33,34 +31,6 @@ export const Recommends = () => {
         console.error("Error al obtener las recomendaciones:", error);
       });
   };
-
-  useEffect(() => {
-    if (selectedCity || selectedDates.length > 0) {
-      handleSearch();
-    }
-  }, [selectedCity, selectedDates]);
-
-  const handleSearch = async () => {
-    if (selectedCity) {
-      const urlSearch = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/booking/search/${selectedCity.value}`;
-
-      if (selectedDates.length > 0) {
-        const startDate = selectedDates[0].format('YYYY-MM-DD');
-        const endDate = selectedDates[1].format('YYYY-MM-DD');
-        urlSeach += `?checkInCheckOut=${startDate},${endDate}`;
-      }
-  
-      try {
-        const response = await fetch(urlSearch);
-        const data = await response.json();
-        // Actualizar el estado de las recomendaciones con los resultados de búsqueda
-        setRecommends(data);
-      } catch (error) {
-        console.error("Error al buscar:", error);
-      }
-    }
-  };
-  
 
   // Determina la cantidad de tarjetas a mostrar en función del tamaño de la pantalla
   let cardsPerRow =10;
