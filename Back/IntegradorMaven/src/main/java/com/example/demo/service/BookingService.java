@@ -1,21 +1,17 @@
 package com.example.demo.service;
 
 import com.example.demo.DTO.BookingDTO;
-import com.example.demo.DTO.PetDayCareDTO;
 import com.example.demo.entity.*;
 import com.example.demo.repository.*;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import com.example.demo.entity.Booking;
 import com.example.demo.entity.PetDayCare;
 import com.example.demo.repository.BookingRepository;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import org.springframework.stereotype.Service;
 
 
@@ -48,7 +44,7 @@ public class BookingService {
         Optional<PetDayCare> petDayCare = this.petDayCareRepository.findById(bookingDTO.getPetDayCareId());
         List<Booking> bookingPetDayCare = this.bookingRepository.findByPetDayCareId(bookingDTO.getPetDayCareId());
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-M-d");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
         LocalDate checkIn = LocalDate.parse(bookingDTO.getCheckInCheckOut().get(0), formatter);
         LocalDate checkOut = LocalDate.parse(bookingDTO.getCheckInCheckOut().get(1), formatter);
@@ -188,6 +184,12 @@ public class BookingService {
 
     public List<Booking> findAll(){
         return bookingRepository.findAll();
+    }
+
+    public Optional<Booking> findById(Integer id) {
+
+        return bookingRepository.findById(id);
+
     }
 
 }
