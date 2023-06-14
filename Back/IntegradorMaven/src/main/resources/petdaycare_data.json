@@ -379,7 +379,7 @@
     },
     "capacity": 5,
     "city": "Ibagué",
-    "address": "Calle 48 #120.",
+    "address": "Calle 48 #120",
     "detail": "Un moderno hotel con suites temáticas, áreas de juegos interactivos y cuidadores dedicados, brindando a las mascotas una estancia cómda y entretenida con un toque de estilo.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/9.+The+Cat's+Meow+Hotel/httpsbit.ly43rRUEi.jpg",
