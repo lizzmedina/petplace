@@ -122,7 +122,7 @@ public class DataLoaderComponent {
             }
         });
     }
-    
+
     public void loadInitialPermissionData() {
         System.out.println("loading permission data...");
         List<Permission> permissionsList = JsonHelper.readJsonFromFile("permission_data.json", new TypeReference<>() {
