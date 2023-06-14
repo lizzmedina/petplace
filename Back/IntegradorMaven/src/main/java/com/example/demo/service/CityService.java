@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -30,6 +31,7 @@ public class CityService {
     public CityDTO findById(Integer id) {
         return cityMapper.mapToDto(cityRepository.findById(id).get());
     }
+
 
     public CityDTO findByName(String name){
         return cityMapper.mapToDto(cityRepository.findByName(name).get());
