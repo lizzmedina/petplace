@@ -9,10 +9,10 @@ public class PetDayCareDTO {
     private Integer id;
     private String name;
     private Category type;
-    //private String categoryName;
+
     private Integer capacity;
     private CityDTO city;
-    //private String cityName;
+
     private String address;
     private String detail;
     private List<String> images;
@@ -145,19 +145,5 @@ public class PetDayCareDTO {
         this.cancellationPolicy = cancellationPolicy;
     }
 
-    /*public String getCategoryName() {
-        return categoryName;
-    }
 
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
-    }
-
-    public String getCityName() {
-        return cityName;
-    }
-
-    public void setCityName(String cityName) {
-        this.cityName = cityName;
-    }*/
 }

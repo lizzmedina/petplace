@@ -33,6 +33,7 @@ public class PetDayCareSaveDTO {
         this.houseRules = houseRules;
         this.healthAndSecurity = healthAndSecurity;
         this.cancellationPolicy = cancellationPolicy;
+
     }
 
 

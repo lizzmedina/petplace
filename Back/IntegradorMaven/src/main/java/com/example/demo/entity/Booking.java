@@ -48,6 +48,9 @@ public class Booking {
     public Booking(String checkIn, String checkOut, LocalDate in, LocalDate out, String petName, double totalpriceBooking, User user, PetDayCare petDayCare) {
     }
 
+    /*public Booking(String checkIn, String checkOut, LocalDate in, LocalDate out, String petName, double totalpriceBooking, User user, PetDayCare petDayCare) {
+    }*/
+
 
     public Booking() {
     }

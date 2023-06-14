@@ -122,23 +122,7 @@ public class DataLoaderComponent {
             }
         });
     }
-
-    /*public void loadInitialBookingData() {
-        System.out.println("loading booking data...");
-        List<BookingSaveBdDTO> bookingSaveBdDTOList = JsonHelper.readJsonFromFile("booking_data.json", new TypeReference<>() {
-        });
-        bookingSaveBdDTOList.forEach(bookingSaveBdDTO -> {
-            Optional<Booking> bookingOpt = bookingService.findById(bookingSaveBdDTO.getIdBooking());
-            if (bookingOpt.isEmpty()) {
-                bookingService.saveBD(bookingSaveBdDTO);
-            } else {
-                System.out.println("pet day care data with id " + bookingSaveBdDTO.getIdBooking() + " already exists, skipping creation...");
-            }
-        });
-    }*/
-
-
-
+    
     public void loadInitialPermissionData() {
         System.out.println("loading permission data...");
         List<Permission> permissionsList = JsonHelper.readJsonFromFile("permission_data.json", new TypeReference<>() {

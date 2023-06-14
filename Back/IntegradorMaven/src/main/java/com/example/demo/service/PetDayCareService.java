@@ -133,14 +133,11 @@ public class PetDayCareService {
     public PetDayCareDTO edit(PetDayCareDTO petDayCareDTO){
 
         if(petDayCareDTO != null){
-
-
             Optional<PetDayCare> namePetDayCareEntity = this.repository.findById(petDayCareDTO.getId());
-
-
             if(namePetDayCareEntity.isPresent()){
                 PetDayCare petDayCareEntity = namePetDayCareEntity.get();
 
+                //Cambiar todos estos if por algo más potente
                 if(petDayCareDTO.getName() != null && !petDayCareDTO.getName().isEmpty()){
                     petDayCareEntity.setName(petDayCareDTO.getName());
                 }
@@ -178,6 +175,7 @@ public class PetDayCareService {
 
                 PetDayCare petDayCare = repository.save(petDayCareEntity);
 
+                //Mapeo
                 petDayCareDTO.setName(petDayCare.getName());
                 petDayCareDTO.setType(petDayCare.getType());
                 petDayCareDTO.setAddress(petDayCare.getAddress());
@@ -229,12 +227,10 @@ public class PetDayCareService {
             throw new ResourceNotFoundException("La guarderia no fue encontrada");
         }
 
-        //CityDTO cityDTO = cityService.findByName(petDayCare.get().getCity().getName());
-
         PetDayCareDTO petDayCareDTO= new PetDayCareDTO(
                 petDayCare.get().getName(),
                 category.get(),
-                //category.get().getTitle(),
+
                 petDayCare.get().getCapacity(),
                 cityMapper.mapToDto(petDayCare.get().getCity()),
                 petDayCare.get().getAddress(),
