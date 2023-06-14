@@ -31,8 +31,6 @@ public class Booking {
     private User user;
     @ManyToOne
     private PetDayCare petDayCare;
-//    @OneToMany(mappedBy = "booking")
-//    List<Pet> pets;
 
 
     public Booking(List<String> checkInCheckOut, LocalDate checkIn, LocalDate checkOut, String petName, double totalPrice, User user, PetDayCare petDayCare) {
@@ -47,10 +45,6 @@ public class Booking {
 
     public Booking(String checkIn, String checkOut, LocalDate in, LocalDate out, String petName, double totalpriceBooking, User user, PetDayCare petDayCare) {
     }
-
-    /*public Booking(String checkIn, String checkOut, LocalDate in, LocalDate out, String petName, double totalpriceBooking, User user, PetDayCare petDayCare) {
-    }*/
-
 
     public Booking() {
     }
