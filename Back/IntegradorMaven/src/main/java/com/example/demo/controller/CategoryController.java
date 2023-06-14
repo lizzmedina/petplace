@@ -40,4 +40,9 @@ public class CategoryController {
     public Category finById(@PathVariable("id") Integer id){
         return service.finById(id);
     }
+
+    @DeleteMapping("/{id}")
+    public String deleteById(@PathVariable("id") Integer id){
+        return service.deleteById(id);
+    }
 }

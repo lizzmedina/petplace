@@ -72,6 +72,16 @@ public class CategoryService {
         return categoryRepository.findById(id).get();
     }
 
+    public String deleteById(Integer id) {
+        Optional<Category> categoryopt = this.categoryRepository.findById(id);
+
+        if (!categoryopt.isPresent()) {
+            throw new ResourceNotFoundException("No existe una categoria registrado con el id: " + id);
+        }
+        categoryRepository.delete(categoryopt.get());
+        return "Se elimino exitosamente la categoría de id: " + id;
+    }
+
 
 
 }
