@@ -7,8 +7,7 @@ import { useContextGlobal } from "./utils/global.constext";
 
 export const Recommends = () => {
   
-  const [searchResults, setSearchResults] = useState([]);
-  const {recommends, setRecommends,  title, selectedCity} = useContextGlobal();
+  const {recommends, setRecommends,  title, selectedCity, searchResults, setSearchResults} = useContextGlobal();
 
   useEffect(() => {
     if (searchResults.length > 0) {

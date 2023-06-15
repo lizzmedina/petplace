@@ -16,8 +16,9 @@ const ContextProvider = ({children}) => {
     const urlPostProducts = `http://localhost:8080/api/v1/petDayCare`; // corregir se tiene asi para pruebas en local
 
     const [selectedCity, setSelectedCity] = useState(null);
-    const [selectedDates, setSelectedDates] = useState([]);
+    const [selectedDates, setSelectedDates] = useState([null, null]);
     const [recommends, setRecommends] = useState([]);
+    const [searchResults, setSearchResults] = useState([]);
     const [title, setTitle] = useState('Recomendaciones');
     
     const [places, setPlaces] = useState([]); // categorias
@@ -45,7 +46,7 @@ const ContextProvider = ({children}) => {
     }, [url]);
 
     return (
-        <ContextGlobal.Provider value={{title, setTitle, recommends, setRecommends, selectedDates, setSelectedDates, selectedCity, setSelectedCity, urlGetProducts, urlPostProducts, urlGetCities,urlPostCities,urlGetUsers, sendEmailUrl, urlPostUsers, validationUserUrl, getAllCategories, places,setPlaces, url, setUrl, dataCategory, setDataCategory}}>
+        <ContextGlobal.Provider value={{searchResults, setSearchResults, title, setTitle, recommends, setRecommends, selectedDates, setSelectedDates, selectedCity, setSelectedCity, urlGetProducts, urlPostProducts, urlGetCities,urlPostCities,urlGetUsers, sendEmailUrl, urlPostUsers, validationUserUrl, getAllCategories, places,setPlaces, url, setUrl, dataCategory, setDataCategory}}>
             {children}
         </ContextGlobal.Provider>
     )
