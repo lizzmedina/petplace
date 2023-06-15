@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { ReservationCalendar } from "./ReservationCalendar"
 import { SearcherByLocation } from "./SearcherByLocation"
 import { useContextGlobal } from "./utils/global.constext";
@@ -6,15 +7,15 @@ import { useContextGlobal } from "./utils/global.constext";
 export const Searcher = () => {
 
   const {selectedCity,  selectedDates,  setRecommends, title, setTitle} = useContextGlobal();
-
+ 
 
   const handleSearch = async () => {
-    console.log("Entre en search ");
 
     if (selectedCity) {
       let urlSearch = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/booking/search/${selectedCity.value}`;
-
-      if (selectedDates.length > 0) {
+      
+      if (selectedDates[0] && selectedDates[1]) {
+        
         const startDate = selectedDates[0];
         const endDate = selectedDates[1];
         urlSearch += `?checkInCheckOut=${startDate},${endDate}`;

@@ -46,6 +46,7 @@ function MyAccount() {
                         <div className="options">
                             <h3>Categorias</h3>
                             <button><Link to='/newCategory' style={{ color: 'inherit' }}>Crear Categoria</Link></button>
+                            <button><Link to='/editCategory' style={{ color: 'inherit' }}>Editar Categoria</Link></button>
                         </div>
                         <div className="options">
                             <h3>Usuarios</h3>

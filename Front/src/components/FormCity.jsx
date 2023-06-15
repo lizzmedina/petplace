@@ -3,7 +3,7 @@ import { Country, City } from 'country-state-city';
 import Select from "react-select";
 import Swal from 'sweetalert2';
 import * as yup from "yup";
-import { useContextGlobal } from "./utils/global.constext";
+import { useContextGlobal } from '../components/utils/global.constext';
 
 function FormCity() {
 

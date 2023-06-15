@@ -35,7 +35,7 @@ function EditUsers() {
             {userConnected.type === "Manager" && (
                 allUsers.map((user) => (
                     <div className='ListItem'>
-                        {user.name}
+                        {user.name} ({user.email})   |  |  {user.type}
                         <div className='ListButtons'>
                             <button
                                 className='edit-button'
