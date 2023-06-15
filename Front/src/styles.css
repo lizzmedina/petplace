@@ -132,7 +132,7 @@ a:active {
     width: 100%;
     min-height: 6.26rem;
     padding: 0.93rem;
-    padding-left: 15vw;
+    padding-left: calc(50% - 510px);
 }
 .searcher-container p {
     margin: 1.5rem 1rem 1rem 1rem;
@@ -898,6 +898,7 @@ p.more-images {
     display: flex;
     align-items: start;
     margin-top: 1rem;
+    flex-wrap: wrap;
 }
 .featureItem{
     margin-right: 50px;
@@ -928,9 +929,16 @@ p.more-images {
     margin: 1rem;
     display: flex;
 }
+
 .react-calendar{
-    height: 100%;
+    border: none !important;
+    background-color: var(--color1) !important;
 }
+.react-calendar__month-view__weekdays {
+    
+    color: var(--color3) !important;
+}
+
 .calendar-navigation-button {
     background: none;
     border: none;
@@ -940,6 +948,7 @@ p.more-images {
     display: flex;
     align-items: center;
     color: var(--color3);
+    background-color: var(--color1);
 }
 
 .calendar-navigation-button:hover {
@@ -1257,6 +1266,18 @@ footer {
         margin: 1rem 1rem 1rem 1rem;
         font-size: 0.8rem;
     }
+    .feature-list {
+        flex-direction: column;
+    }
+    .react-calendar{
+        width: 100% !important;
+        max-width: 350px;
+        height: auto;
+        background-color: var(--color1);
+    }
+    .calendar{
+        flex-direction: column;
+    }
     .rulesProduct{
         width: auto;       
     }
@@ -1298,6 +1319,7 @@ footer {
 
     .home-titles {
         margin: 1rem;
+        text-align: center;
     }
 
     .card-recomends {
@@ -1315,6 +1337,16 @@ footer {
         
         min-width: 85vw;
         
+    }
+    .feature-list {
+        flex-direction: column;
+    }
+    .calendar{
+        flex-direction: column;
+    }
+    .react-calendar{
+        
+        max-width: 350px;
     }
     .rulesProduct{
         width: auto;       
@@ -1365,6 +1397,7 @@ footer {
 
     .home-titles {
         margin-left: 1rem;
+        text-align: center;
     }
 
     .categories-container {
@@ -1391,6 +1424,9 @@ footer {
 
     .card-image-recommends {
         height: 100%;
+    }
+    .calendar{
+        flex-direction: column;
     }
     .rulesProduct{
         width: auto;       
@@ -1441,6 +1477,7 @@ footer {
 
     .home-titles {
         margin-left: 0.4rem;
+        text-align: center;
     }
 
     .categories-container {
@@ -1476,6 +1513,9 @@ footer {
     .rulesProduct{
         width: auto;       
     }
+    .calendar{
+        flex-direction: column;
+    }
 
 }
 
@@ -1485,8 +1525,8 @@ footer {
     }
 
     .searcher-container {
-        padding-left: 0.2rem;
-        align-items: flex-start;
+        
+        align-items: center;
     }
 
     .searcher {
@@ -1524,6 +1564,10 @@ footer {
     .navbar-link-container {
         width: 50vw;
     }
+    .calendar{
+        flex-direction: column;
+    }
+
 
     .carousel-root {
         
