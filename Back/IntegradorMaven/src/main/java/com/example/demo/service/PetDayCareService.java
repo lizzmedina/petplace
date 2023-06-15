@@ -4,7 +4,6 @@ package com.example.demo.service;
 import com.example.demo.DTO.CategoryDTO;
 import com.example.demo.DTO.CityDTO;
 import com.example.demo.DTO.PetDayCareDTO;
-import com.example.demo.DTO.PetDayCareSaveDTO;
 import com.example.demo.entity.Category;
 import com.example.demo.entity.City;
 import com.example.demo.entity.PetDayCare;
@@ -268,15 +267,18 @@ public class PetDayCareService {
         Optional<PetDayCare> petDayCare = this.repository.findById(id);
         Optional<Category> category = this.categoryRepository.findById(petDayCare.get().getType().getId());
 
+        if(id == null){
+            throw new IllegalArgumentException("El id no puede ser nulo");
+        }
 
         if(petDayCare.isEmpty()){ //si no esta presente, lanza una excepcion
             throw new ResourceNotFoundException("La guarderia no fue encontrada");
         }
 
+
         PetDayCareDTO petDayCareDTO= new PetDayCareDTO(
                 petDayCare.get().getName(),
                 category.get(),
-
                 petDayCare.get().getCapacity(),
                 cityMapper.mapToDto(petDayCare.get().getCity()),
                 petDayCare.get().getAddress(),
@@ -298,6 +300,14 @@ public class PetDayCareService {
     }
 
     public Optional<PetDayCare> findById(Integer id) {
-        return repository.findById(id);
+        Optional<PetDayCare> petDayCare = this.repository.findById(id);
+        if(id == null){
+            throw new IllegalArgumentException("El id no puede ser nulo");
+        }
+
+        if(petDayCare.isEmpty()){ //si no esta presente, lanza una excepcion
+            throw new IllegalArgumentException("La guarderia no fue encontrada");
+        }
+        return petDayCare;
     }
 }
