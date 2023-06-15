@@ -8,29 +8,35 @@ import { useContextGlobal } from "./utils/global.constext";
 export const Recommends = () => {
   
   const {recommends, setRecommends,  title, selectedCity, searchResults, setSearchResults} = useContextGlobal();
-
+  const [noResults, setNoResults] = useState(false);
+  
   useEffect(() => {
     if (searchResults.length > 0) {
-      const shuffledData = shuffleArray(searchResults);
-      setRecommends(shuffledData);
+      setRecommends(searchResults);
+      setNoResults(false);
     } else {
       fetchRecommends();
     }
-  }, [searchResults, selectedCity]);
+  }, [searchResults]);
+  
+  useEffect(() => {
+    setNoResults(recommends.length === 0);
+  }, [recommends]);
+
 
   const fetchRecommends = () => {
     const url = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/petDayCare/all`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        const shuffledData = shuffleArray(data);
-        setRecommends(shuffledData);
+        setRecommends(data);
+        setSearchResults(data);
+        setNoResults(data.length === 0);
       })
       .catch((error) => {
         console.error("Error al obtener las recomendaciones:", error);
       });
   };
-
   // Determina la cantidad de tarjetas a mostrar en función del tamaño de la pantalla
   let cardsPerRow =10;
 
@@ -65,6 +71,12 @@ export const Recommends = () => {
   return (
     <div className="recommends-container">
       <h2 className="home-titles">{title}</h2>
+      {noResults && (
+        <p style={{ fontSize: '1.5rem', textAlign: 'center', margin: '2rem', color: '#b94242', fontWeight:'bold' }}>
+          No hay resultados disponibles en las fechas seleccionadas.
+        </p>
+      )}
+      {!noResults && (
       <div className="render-cards-recommends">
       {currentCards.map((recommend) => (
         <Link key={recommend.id} to={"/Detail/" + recommend.id}>
@@ -85,6 +97,7 @@ export const Recommends = () => {
         </Link>
       ))}
       </div>
+      )}
 
       <Stack spacing={5} direction="row" justifyContent="center" mt={4}>
         <Pagination
