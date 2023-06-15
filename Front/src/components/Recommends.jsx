@@ -9,20 +9,24 @@ export const Recommends = () => {
   
   const {recommends, setRecommends,  title, selectedCity, searchResults, setSearchResults} = useContextGlobal();
   const [noResults, setNoResults] = useState(false);
-  
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
+    setIsLoading(true); 
     if (searchResults.length > 0) {
       setRecommends(searchResults);
       setNoResults(false);
+      setIsLoading(false);
     } else {
       fetchRecommends();
     }
   }, [searchResults]);
-  
-  useEffect(() => {
-    setNoResults(recommends.length === 0);
-  }, [recommends]);
 
+  useEffect(() => {
+    if (!isLoading && recommends.length === 0) {
+      setNoResults(true);
+    }
+  }, [recommends, isLoading]);
 
   const fetchRecommends = () => {
     const url = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/petDayCare/all`;
@@ -32,6 +36,7 @@ export const Recommends = () => {
         setRecommends(data);
         setSearchResults(data);
         setNoResults(data.length === 0);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.error("Error al obtener las recomendaciones:", error);
@@ -71,12 +76,17 @@ export const Recommends = () => {
   return (
     <div className="recommends-container">
       <h2 className="home-titles">{title}</h2>
-      {noResults && (
+      {isLoading && (
+        <p style={{ fontSize: '1.5rem', textAlign: 'center', margin: '2rem' }}>
+          Cargando...
+        </p>
+      )}
+      {!isLoading && noResults && (
         <p style={{ fontSize: '1.5rem', textAlign: 'center', margin: '2rem', color: '#b94242', fontWeight:'bold' }}>
           No hay resultados disponibles en las fechas seleccionadas.
         </p>
       )}
-      {!noResults && (
+      {!isLoading && !noResults && (
       <div className="render-cards-recommends">
       {currentCards.map((recommend) => (
         <Link key={recommend.id} to={"/Detail/" + recommend.id}>
