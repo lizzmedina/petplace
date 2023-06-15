@@ -19,7 +19,7 @@ public interface BookingRepository extends JpaRepository<Booking, Integer> {
     @Query(value= "SELECT COUNT(id_booking) FROM booking WHERE  pet_day_care_id = :pet_day_care_id AND check_in < :check_out AND check_out > :check_in", nativeQuery = true)
     public Integer disponibilidadQuery(@Param("pet_day_care_id")Integer pet_day_care_id, @Param("check_out") LocalDate check_out, @Param("check_in") LocalDate check_in);
 
-    @Query(value= "select * FROM  pet_day_care h left join booking  r on h.id = r.id_booking where h.city_id = :city  and ((not (check_in <= :check_out AND check_out >= :check_in)) or  r.check_in is null);", nativeQuery = true)
+    @Query(value= "select * from pet_day_care h where h.id not in (select h.id FROM booking r join  pet_day_care h  on h.id = r.pet_day_care_id where check_in <= :check_out AND check_out >= :check_in) and h.city_id= :city", nativeQuery = true)
     List<Integer> searchAvailablePetDayCares(@Param("city") Integer city, @Param("check_in") LocalDate checkIn, @Param("check_out") LocalDate checkOut);
 
     List<Booking> findByPetDayCareId(Integer id);

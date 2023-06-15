@@ -9,14 +9,15 @@ export const Searcher = () => {
 
 
   const handleSearch = async () => {
-    console.log("Entre");
+    console.log("Entre en search ");
+
     if (selectedCity) {
-      const urlSearch = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/booking/search/${selectedCity.value}`;
+      let urlSearch = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/booking/search/${selectedCity.value}`;
 
       if (selectedDates.length > 0) {
-        const startDate = selectedDates[0].format('YYYY-MM-DD');
-        const endDate = selectedDates[1].format('YYYY-MM-DD');
-        urlSeach += `?checkInCheckOut=${startDate},${endDate}`;
+        const startDate = selectedDates[0];
+        const endDate = selectedDates[1];
+        urlSearch += `?checkInCheckOut=${startDate},${endDate}`;
       }
   
       try {

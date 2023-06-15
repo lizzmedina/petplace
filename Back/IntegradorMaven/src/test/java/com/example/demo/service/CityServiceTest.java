@@ -50,7 +50,7 @@ class CityServiceTest {
 
     @Test
     @DisplayName("Esta prueba valida la eliminación de una ciudad existente")
-    public void delete_ValidCityWithReferenceTest() {
+    public void delete_ValidCityWithReferenceCityTest() {
         City expectedCity = new City("Barranquilla");
         expectedCity.setId(1);
         Optional<City> expectedCityOpt = Optional.of(expectedCity);
@@ -70,7 +70,7 @@ class CityServiceTest {
 
     @Test
     @DisplayName("Esta prueba valida la creacion de una ciudad nula")
-    public void save_nullTest() {
+    public void save_nullCityTest() {
         Assertions.assertThrows(ResourceNotFoundException.class,
                 () -> cityService.save(null), "La ciudad no puede ser nula");
 
@@ -79,7 +79,7 @@ class CityServiceTest {
 
     @Test
     @DisplayName("Esta prueba valida la creacion de una ciudad correcta")
-    public void save_successTest() {
+    public void save_successCityTest() {
 
         City expectedCity = new City();
         expectedCity.setId(1);
@@ -99,7 +99,7 @@ class CityServiceTest {
 
     @Test
     @DisplayName("Esta prueba valida la actualizacion de una ciudad nula")
-    public void update_nullTest() {
+    public void update_nullCityTest() {
         Assertions.assertThrows(ResourceNotFoundException.class,
                 () -> cityService.updateCity(null),
                 "La ciudad no existe");
@@ -110,7 +110,7 @@ class CityServiceTest {
 
     @Test
     @DisplayName("Esta prueba valida la obtencion de ciudades cuando no hay registros en la bd")
-    public void findAll_emptyTest() {
+    public void findAll_emptyCityTest() {
         Mockito.when(cityRepository.findAll()).thenReturn(Collections.emptyList());
 
         List<CityDTO> actualCities = cityService.getAllCities();
@@ -118,6 +118,9 @@ class CityServiceTest {
         Mockito.verify(cityRepository, Mockito.times(1)).findAll();
         Assertions.assertTrue(actualCities.isEmpty());
     }
+
 }
+
+
 
 
