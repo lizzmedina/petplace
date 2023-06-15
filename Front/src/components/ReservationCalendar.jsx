@@ -5,7 +5,6 @@ const { RangePicker } = DatePicker;
 
 export const ReservationCalendar = () => {
     const {selectedDates, setSelectedDates} = useContextGlobal();
-    console.log(selectedDates, 'calendar');
     return (
         <div style={{ margin: 5, width: 240 }}>
             <RangePicker
