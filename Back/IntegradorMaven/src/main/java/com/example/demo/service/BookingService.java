@@ -41,9 +41,12 @@ public class BookingService {
 
     public BookingDTO save(BookingDTO bookingDTO){
 
+        if (bookingDTO == null) {
+            throw new IllegalArgumentException("La reserva no puede ser nulo");
+        }
+
         Optional<User> user = this.userRepository.findById(bookingDTO.getUserId());
         Optional<PetDayCare> petDayCare = this.petDayCareRepository.findById(bookingDTO.getPetDayCareId());
-        List<Booking> bookingPetDayCare = this.bookingRepository.findByPetDayCareId(bookingDTO.getPetDayCareId());
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
