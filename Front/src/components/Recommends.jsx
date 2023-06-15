@@ -8,7 +8,7 @@ import { useContextGlobal } from "./utils/global.constext";
 export const Recommends = () => {
   
   const [searchResults, setSearchResults] = useState([]);
-  const {recommends, setRecommends,  title} = useContextGlobal();
+  const {recommends, setRecommends,  title, selectedCity} = useContextGlobal();
 
   useEffect(() => {
     if (searchResults.length > 0) {
@@ -17,7 +17,7 @@ export const Recommends = () => {
     } else {
       fetchRecommends();
     }
-  }, [searchResults]);
+  }, [searchResults, selectedCity]);
 
   const fetchRecommends = () => {
     const url = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/petDayCare/all`;

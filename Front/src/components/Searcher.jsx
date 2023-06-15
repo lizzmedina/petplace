@@ -9,7 +9,6 @@ export const Searcher = () => {
 
 
   const handleSearch = async () => {
-    console.log("Entre en search ");
 
     if (selectedCity) {
       let urlSearch = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/booking/search/${selectedCity.value}`;
