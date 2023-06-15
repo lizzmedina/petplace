@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -20,16 +21,19 @@ public class CityService {
     private CityMapper cityMapper;
     private PetDayCareRepository petDayCareRepository;
 
+
     @Autowired
     public CityService(CityRepository cityRepository, CityMapper cityMapper, PetDayCareRepository petDayCareRepository) {
         this.cityRepository = cityRepository;
         this.cityMapper = cityMapper;
         this.petDayCareRepository = petDayCareRepository;
+
     }
 
     public CityDTO findById(Integer id) {
         return cityMapper.mapToDto(cityRepository.findById(id).get());
     }
+
 
     public CityDTO findByName(String name){
         return cityMapper.mapToDto(cityRepository.findByName(name).get());

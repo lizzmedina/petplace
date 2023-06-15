@@ -8,9 +8,10 @@
       "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Conejo.jpg",
       "title": "Conejos"
     },
+
     "capacity": 8,
     "city": "Medellín",
-    "address": "Carrera 58 #2771 a 2701",
+    "address": "Carrera 58 #2771",
     "detail": "Un santuario rodeado de hermosos paisajes naturales, ofreciendo una experiencia tranquila y relajante para mascotas que disfrutan de paseos y relajación en la naturaleza",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/1.+Paw+Palace/httpsbit.ly3WNw24x.jpg",
@@ -55,6 +56,7 @@
       "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Perro1.jpg",
       "title": "Perros"
     },
+
     "capacity": 5,
     "city": "Cali",
     "address": "Carrera 12 #18-40",
@@ -143,12 +145,13 @@
   {
     "id": 4,
     "name": "Furry Friends Retreat",
-    "type" :   {
-      "id": 3,
-      "description": "Especialidados en canarios",
-      "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Canario.jpg",
-      "title": "Canarios"
+    "type" :  {
+      "id": 2,
+      "description": "Especialidados en gatos",
+      "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Gato.jpg",
+      "title": "Gatos"
     },
+
     "capacity": 10,
     "city": "Cúcuta",
     "address": "Av. 2 Este #16a-2",
@@ -376,7 +379,7 @@
     },
     "capacity": 5,
     "city": "Ibagué",
-    "address": "Calle 48 #120.",
+    "address": "Calle 48 #120",
     "detail": "Un moderno hotel con suites temáticas, áreas de juegos interactivos y cuidadores dedicados, brindando a las mascotas una estancia cómda y entretenida con un toque de estilo.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/9.+The+Cat's+Meow+Hotel/httpsbit.ly43rRUEi.jpg",
@@ -1399,6 +1402,7 @@
       "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Perro1.jpg",
       "title": "Perros"
     },
+
     "capacity": 11,
     "city": "Barranquilla",
     "address": "Calle 75 #57-38",
@@ -1565,11 +1569,11 @@
   {
     "id": 37,
     "name": "Patas Andantes",
-    "type" : {
-      "id": 1,
-      "description": "Especialidados en perros",
-      "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Perro1.jpg",
-      "title": "Perros"
+    "type" :   {
+      "id": 3,
+      "description": "Especialidados en canarios",
+      "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Canario.jpg",
+      "title": "Canarios"
     },
     "capacity": 10,
     "city": "Pereira",

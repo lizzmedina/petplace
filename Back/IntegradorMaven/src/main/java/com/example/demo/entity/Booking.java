@@ -4,8 +4,6 @@ package com.example.demo.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -33,8 +31,6 @@ public class Booking {
     private User user;
     @ManyToOne
     private PetDayCare petDayCare;
-//    @OneToMany(mappedBy = "booking")
-//    List<Pet> pets;
 
 
     public Booking(List<String> checkInCheckOut, LocalDate checkIn, LocalDate checkOut, String petName, double totalPrice, User user, PetDayCare petDayCare) {
@@ -45,6 +41,9 @@ public class Booking {
         this.totalPrice = totalPrice;
         this.user = user;
         this.petDayCare = petDayCare;
+    }
+
+    public Booking(String checkIn, String checkOut, LocalDate in, LocalDate out, String petName, double totalpriceBooking, User user, PetDayCare petDayCare) {
     }
 
     public Booking() {

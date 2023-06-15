@@ -70,7 +70,7 @@ class UserServiceTest {
     }
 
     @Test
-    @DisplayName("Esta prueba valida la elimincacion de un usuario si existe en la bd")
+    @DisplayName("Esta prueba valida la eliminacion de un usuario si existe en la bd")
     public void delete_validIdTest() {
         User expectedUser = this.createTestUser(1);
         Mockito.when(userRepository.findById(Mockito.anyInt())).thenReturn(Optional.of(expectedUser));

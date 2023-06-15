@@ -30,7 +30,7 @@
     "cellPhone": "3222222222",
     "address": "Carrera A # 14 - B",
     "type": "Manager",
-    "validation": false
+    "validation": true
   },
   {
     "id": 1592634807,

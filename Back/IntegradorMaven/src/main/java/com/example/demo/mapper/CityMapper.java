@@ -31,8 +31,10 @@ public class CityMapper {
             cityDto.setPetDayCareDTOSet(city.getPetDayCareSet().stream().map(petDayCare -> {
                 PetDayCareDTO pdcDto = new PetDayCareDTO(petDayCare.getName(),
                         petDayCare.getType(),
+                        //petDayCare.getType().getTitle(),
                         petDayCare.getCapacity(),
                         cityDto,
+                        //cityDto.getName(),
                         petDayCare.getAddress(),
                         petDayCare.getDetail(),
                         petDayCare.getImages(),

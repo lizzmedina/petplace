@@ -1,21 +1,18 @@
 package com.example.demo.service;
 
 import com.example.demo.DTO.BookingDTO;
-import com.example.demo.DTO.PetDayCareDTO;
 import com.example.demo.entity.*;
+import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.*;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import com.example.demo.entity.Booking;
 import com.example.demo.entity.PetDayCare;
 import com.example.demo.repository.BookingRepository;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import org.springframework.stereotype.Service;
 
 
@@ -48,20 +45,16 @@ public class BookingService {
         Optional<PetDayCare> petDayCare = this.petDayCareRepository.findById(bookingDTO.getPetDayCareId());
         List<Booking> bookingPetDayCare = this.bookingRepository.findByPetDayCareId(bookingDTO.getPetDayCareId());
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-M-d");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
         LocalDate checkIn = LocalDate.parse(bookingDTO.getCheckInCheckOut().get(0), formatter);
         LocalDate checkOut = LocalDate.parse(bookingDTO.getCheckInCheckOut().get(1), formatter);
-
-        boolean resultado = available(checkIn.toString(), checkOut.toString());
-        System.out.println("___________________________RESULTADO________________________");
-        System.out.println(resultado);
 
         if(!user.isPresent() && !petDayCare.isPresent()){
             throw  new RuntimeException("El usuario o hotel no se encuentran registrados");
         }
 
-        if(!bookingPetDayCare.isEmpty() && !available(checkIn.toString(), checkOut.toString())){
+        if(!available(bookingDTO.getPetDayCareId(), checkIn.toString(), checkOut.toString())){
             throw  new RuntimeException("las fechas a reservar no estan disponibles en ese ajolamiento pues ya se encuentra reservado");
         }
 
@@ -100,18 +93,16 @@ public class BookingService {
     }
 
 
-    public boolean available(String checkIn, String checkOut){
+    public boolean available(Integer petDayCareId, String checkIn, String checkOut){
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-M-d");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate startDay = LocalDate.parse(checkIn, formatter);
         LocalDate finalDay = LocalDate.parse(checkOut, formatter);
 
         LocalDate fechaActual = LocalDate.now();
 
-        Integer resultado = bookingRepository.disponibilidadQuery(finalDay, startDay);
+        Integer resultado = bookingRepository.disponibilidadQuery(petDayCareId, finalDay, startDay);
 
-        System.out.println("___________________________________________________");
-        System.out.println(resultado);
 
         if(startDay.compareTo(fechaActual) > 0 && resultado == 0) {
             return true;
@@ -134,7 +125,7 @@ public class BookingService {
 
 
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-M-d");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate checkIn = LocalDate.parse(checkInCheckOut.get(0), formatter);
         LocalDate checkOut = LocalDate.parse(checkInCheckOut.get(1), formatter);
         List<Integer> idList = bookingRepository.searchAvailablePetDayCares(cityId.get().getId(), checkIn, checkOut);
@@ -148,9 +139,6 @@ public class BookingService {
 
     public List<BookingDTO> bookingsPetDayCare(Integer idPetDayCare){
        List<Booking> bookingsPetDayCare = bookingRepository.findByPetDayCareId(idPetDayCare);
-        System.out.println("-------------------------------");
-        System.out.println(bookingsPetDayCare.toString());
-
 
         List<BookingDTO> bookingDTOList = bookingsPetDayCare.stream()
                 .map(booking -> new BookingDTO(
@@ -188,6 +176,22 @@ public class BookingService {
 
     public List<Booking> findAll(){
         return bookingRepository.findAll();
+    }
+
+    public Optional<Booking> findById(Integer id) {
+
+        return bookingRepository.findById(id);
+
+    }
+
+    public String deleteById(Integer id) {
+        Optional<Booking> bookingopt = this.bookingRepository.findById(id);
+
+        if (!bookingopt.isPresent()) {
+            throw new ResourceNotFoundException("No existe una categoria registrado con el id: " + id);
+        }
+        bookingRepository.delete(bookingopt.get());
+        return "Se elimino exitosamente la reserva de id: " + id;
     }
 
 }

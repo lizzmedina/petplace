@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.DTO.PetDayCareDTO;
+import com.example.demo.DTO.PetDayCareSaveDTO;
 import com.example.demo.entity.PetDayCare;
 import com.example.demo.service.PetDayCareService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,8 @@ public class PetDayCareController {
     }
 
     @PostMapping()
-    public PetDayCareDTO save(@RequestBody PetDayCareDTO petDayCare){
-        return service.save(petDayCare);
+    public PetDayCareDTO save(@RequestBody PetDayCareDTO petDayCareDTO){
+        return service.save(petDayCareDTO);
     }
 
     @GetMapping("/all")
@@ -43,6 +44,11 @@ public class PetDayCareController {
     public PetDayCareDTO detail(@PathVariable("id") Integer id){
         return service.detail(id);
     }
+
+    /*@PutMapping("/edit")
+    public PetDayCareSaveDTO edit(@RequestBody PetDayCareSaveDTO petDayCareSaveDTO){
+        return service.edit(petDayCareSaveDTO);
+    }*/
 
     @PutMapping("/edit")
     public PetDayCareDTO edit(@RequestBody PetDayCareDTO petDayCareDTO){
