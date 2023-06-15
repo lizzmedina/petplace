@@ -123,7 +123,7 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
 
             </div>
 
-            <CalendarDetail />
+            <CalendarDetail productId={id} />
 
             <Element name="locationContainer">
                 <div className='location-container' id='locationContainer'>
