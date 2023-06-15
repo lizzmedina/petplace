@@ -11,6 +11,7 @@ import MyAccount from "./routes/MyAccount";
 import EditProducts from "./routes/EditProducts";
 import EditUsers from "./routes/EditUsers";
 import EditCity from "./routes/EditCity";
+import EditCategory from "./routes/EditCategory";
 import { Footer } from "./components/Footer";
 import './styles.css';
 import { ValidationPage } from "./routes/ValidationPage";
@@ -35,6 +36,7 @@ function App() {
                 <Route path="/editProducts" element={<EditProducts/>}/>
                 <Route path="/editUsers" element={<EditUsers/>}/>
                 <Route path="/editCity" element={<EditCity/>}/>
+                <Route path="/editCategory" element={<EditCategory/>}/>
                 <Route path="/validationPage/" element={<ValidationPage/>}/>
             </Routes>
             </ContextProvider>

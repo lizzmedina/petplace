@@ -6,15 +6,24 @@ import Checkbox from '@mui/material/Checkbox';
 import Swal from 'sweetalert2';
 
 const FormProduct = () => {
-    const { places, setPlaces, urlGetProducts, urlPostProducts } = useContextGlobal();
+    const { places, setPlaces, urlGetCities, urlGetProducts, urlPostProducts } = useContextGlobal();
 
     const userConnected = JSON.parse(localStorage.getItem('userConnected')) || null; //Para validad el tipo de usuario, si no esta logeado no cargara la pagina
 
+    const [cities, setCities] = useState([]);
+    useEffect(() => {
+        fetch(urlGetCities)
+            .then((res) => res.json())
+            .then((data) => {
+                setCities(data);
+            });
+    }, []);
+
     const [product, setProduct] = useState({
         name: "",
-        categoryName: "",
+        type: { title: "" },
         capacity: "",
-        city: "",
+        city: { name: "" },
         address: "",
         detail: "",
         images: [],
@@ -47,9 +56,9 @@ const FormProduct = () => {
                 setIsLoading(true);
                 setProduct({
                     name: "",
-                    categoryName: "",
+                    type: { title: "" },
                     capacity: "",
-                    city: "",
+                    city: { name: "" },
                     address: "",
                     detail: "",
                     images: [],
@@ -74,9 +83,9 @@ const FormProduct = () => {
                             Swal.fire({icon: 'success',title:`El alojamiento ${product.name} ha sido creado exitosamente.`});
                             setProduct({
                                 name: "",
-                                categoryName: "",
+                                type: { title: "" },
                                 capacity: "",
-                                city: "",
+                                city: { name: "" },
                                 address: "",
                                 detail: "",
                                 images: [],
@@ -98,7 +107,7 @@ const FormProduct = () => {
                     })
                     .finally(() => {
                         setIsLoading(false);
-                        setProduct((product) => ({ ...product, categoryName: "" }));
+                        setProduct((product) => ({ ...product, type: "" }));
                     });
             } else {
                 Swal.fire({icon: 'error',title:`Parece que algo salió mal, recuerda llenar los campos.`});
@@ -215,7 +224,7 @@ const FormProduct = () => {
                     <br />
 
                     <label>Tipo de alojamiento: </label>
-                    <select name="type" onChange={(e) => setProduct({ ...product, categoryName: e.target.options[e.target.selectedIndex].value })}>
+                    <select name="type" onChange={(e) => setProduct({ ...product, type: { title: e.target.options[e.target.selectedIndex].value } })}>
                     <option value="" hidden>--- Elige una Opción ---</option>
                         {places.map((categoria) => (
                             <option key={categoria.title} value={categoria.title}> {categoria.title} </option>
@@ -223,8 +232,14 @@ const FormProduct = () => {
                     </select>
                     <br />
                     <label>Ciudad: </label>
-                    <input type="text" value={product.city} onChange={(e) => setProduct({ ...product, city: e.target.value })} />
+                    <select value={product.city.name} onChange={(e) => setProduct({ ...product, city: { name: e.target.value } })}>
+                        <option value="" hidden>--- Elige una Ciudad ---</option>
+                        {cities.map((city) => (
+                            <option key={city.id} value={city.name}>{city.name}</option>
+                        ))}
+                    </select>
                     <br />
+
                     <label>Direccion: </label>
                     <input type="text" value={product.address} onChange={(e) => setProduct({ ...product, address: e.target.value })} />
                     <br />
