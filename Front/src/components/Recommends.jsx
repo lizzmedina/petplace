@@ -9,24 +9,20 @@ export const Recommends = () => {
   
   const {recommends, setRecommends,  title, selectedCity, searchResults, setSearchResults} = useContextGlobal();
   const [noResults, setNoResults] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-
+  
   useEffect(() => {
-    setIsLoading(true); 
     if (searchResults.length > 0) {
       setRecommends(searchResults);
       setNoResults(false);
-      setIsLoading(false);
     } else {
       fetchRecommends();
     }
   }, [searchResults]);
-
+  
   useEffect(() => {
-    if (!isLoading && recommends.length === 0) {
-      setNoResults(true);
-    }
-  }, [recommends, isLoading]);
+    setNoResults(recommends.length === 0);
+  }, [recommends]);
+
 
   const fetchRecommends = () => {
     const url = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/petDayCare/all`;
@@ -36,7 +32,6 @@ export const Recommends = () => {
         setRecommends(data);
         setSearchResults(data);
         setNoResults(data.length === 0);
-        setIsLoading(false);
       })
       .catch((error) => {
         console.error("Error al obtener las recomendaciones:", error);
@@ -64,29 +59,16 @@ export const Recommends = () => {
     setCurrentPage(page);
   };
 
-// Función para ordenar aleatoriamente el array
-  function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-  }
 
   return (
     <div className="recommends-container">
       <h2 className="home-titles">{title}</h2>
-      {isLoading && (
-        <p style={{ fontSize: '1.5rem', textAlign: 'center', margin: '2rem' }}>
-          Cargando...
-        </p>
-      )}
-      {!isLoading && noResults && (
+      {noResults && (
         <p style={{ fontSize: '1.5rem', textAlign: 'center', margin: '2rem', color: '#b94242', fontWeight:'bold' }}>
           No hay resultados disponibles en las fechas seleccionadas.
         </p>
       )}
-      {!isLoading && !noResults && (
+      {!noResults && (
       <div className="render-cards-recommends">
       {currentCards.map((recommend) => (
         <Link key={recommend.id} to={"/Detail/" + recommend.id}>
