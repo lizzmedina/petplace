@@ -29,7 +29,7 @@ public class RoleController {
     }
 
     @DeleteMapping("/{id}")
-    public String deleteRole(@PathVariable("id") Integer id) { //localhost:8080/api/v1/manager
+    public String deleteRole(@PathVariable("id") Integer id) {
         return service.deleteById(id);
     }
 
@@ -37,6 +37,5 @@ public class RoleController {
     public ResponseEntity<String> updateRole(@RequestBody RoleDTO roleDTO) {
         service.updateRole(roleDTO);
         return ResponseEntity.ok("Role Actualizado correctamente");
-
     }
 }

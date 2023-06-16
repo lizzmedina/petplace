@@ -11,6 +11,10 @@ public class CategoryMapper {
     }
 
     public CategoryDTO mapToDTO(Category categoryEntity){
+        if(categoryEntity == null){
+            return null;
+        }
+
         CategoryDTO categoryDTO = new CategoryDTO();
         categoryDTO.setId(categoryEntity.getId());
         categoryDTO.setTitle(categoryEntity.getTitle());
@@ -21,6 +25,10 @@ public class CategoryMapper {
     }
 
     public Category mapToEntity(CategoryDTO categoryDTO){
+        if(categoryDTO == null){
+            return null;
+        }
+
         Category categoryEntity = new Category();
         categoryEntity.setId(categoryDTO.getId());
         categoryEntity.setTitle(categoryDTO.getTitle());

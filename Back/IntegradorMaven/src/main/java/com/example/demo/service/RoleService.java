@@ -35,7 +35,7 @@ public class RoleService {
         return repository.save(role);
     }
 
-    public Role findById(Integer id) {//Find a Manager by CC
+    public Role findById(Integer id) {
         return repository.findById(id).get();
     }
 
@@ -53,14 +53,15 @@ public class RoleService {
         return "Se elimino exitosamente el role de id: " + id;
     }
 
-    public void updateRole(RoleDTO roleDTO) {
+    public RoleDTO updateRole(RoleDTO roleDTO) {
         if (roleDTO != null) {
             Optional<Role> roleOpt = repository.findById(roleDTO.getId());
             if (roleOpt.isPresent()) {
                 Role role = roleOpt.get();
                 role.setName(roleDTO.getName());
-                repository.save(role);
-                return;
+                role = repository.save(role);
+                roleDTO.setId(role.getId());
+                return roleDTO;
             }
         }
         throw new ResourceNotFoundException("El role no existe");
@@ -79,7 +80,7 @@ public class RoleService {
         Permission permission = permissionService.findById(idPermission);
         Role role = findById(idRole);
 
-        if (permission != null && role != null) {
+        if (permission != null && role != null && role.getPermissions().contains(permission)) {
             role.removePermission(permission);
             repository.save(role);
         }

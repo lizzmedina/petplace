@@ -5,6 +5,7 @@ import com.example.demo.DTO.PetDayCareDTO;
 import com.example.demo.entity.City;
 import org.springframework.stereotype.Component;
 
+import java.util.HashSet;
 import java.util.stream.Collectors;
 
 @Component
@@ -21,20 +22,21 @@ public class CityMapper {
         City cityEntity = new City();
         cityEntity.setName(dto.getName());
         cityEntity.setId(dto.getId());
-        //return new City(dto.getName());
         return cityEntity;
     }
 
     public CityDTO mapToDto(City city){
+        if(city == null){
+            return null;
+        }
+
         CityDTO cityDto = new CityDTO(city.getId(), city.getName());
-        if(city.getPetDayCareSet() != null && !city.getPetDayCareSet().isEmpty()){
+        if(city.getPetDayCareSet() != null){
             cityDto.setPetDayCareDTOSet(city.getPetDayCareSet().stream().map(petDayCare -> {
                 PetDayCareDTO pdcDto = new PetDayCareDTO(petDayCare.getName(),
                         petDayCare.getType(),
-                        //petDayCare.getType().getTitle(),
                         petDayCare.getCapacity(),
                         cityDto,
-                        //cityDto.getName(),
                         petDayCare.getAddress(),
                         petDayCare.getDetail(),
                         petDayCare.getImages(),

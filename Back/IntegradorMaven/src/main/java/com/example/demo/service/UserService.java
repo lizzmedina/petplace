@@ -3,7 +3,6 @@ package com.example.demo.service;
 
 import com.example.demo.DTO.UserDTO;
 import com.example.demo.entity.Permission;
-import com.example.demo.entity.PetDayCare;
 import com.example.demo.entity.Role;
 import com.example.demo.entity.User;
 import com.example.demo.exception.ResourceNotFoundException;
@@ -148,7 +147,7 @@ public class UserService {
         user.getPermissions().add(permission);
         repository.save(user);
     }
-    public void removePermissionFromUSer(Integer idUser, Integer idPermission){
+    public void removePermissionFromUser(Integer idUser, Integer idPermission){
         User user = findById(idUser);
         Permission permission = permissionService.findById(idPermission);
         if(user != null && permission != null){

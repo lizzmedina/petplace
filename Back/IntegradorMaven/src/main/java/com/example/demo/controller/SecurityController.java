@@ -1,14 +1,11 @@
 package com.example.demo.controller;
 
-import com.example.demo.DTO.RoleDTO;
 import com.example.demo.DTO.UserAuthoritiesDTO;
 import com.example.demo.service.RoleService;
 import com.example.demo.service.SecurityService;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/security")
@@ -57,6 +54,6 @@ public class SecurityController {
 
     @DeleteMapping("/unlink/permission/{permissionId}/user/{userId}")
     public void removePermissionFromUser(@PathVariable("permissionId")Integer permissionId, @PathVariable("userId") Integer userId){
-        userService.removePermissionFromUSer(userId, permissionId);
+        userService.removePermissionFromUser(userId, permissionId);
     }
 }
