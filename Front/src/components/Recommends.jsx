@@ -37,6 +37,14 @@ export const Recommends = () => {
         console.error("Error al obtener las recomendaciones:", error);
       });
   };
+  // Función para ordenar aleatoriamente el array
+const shuffleArray = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
   // Determina la cantidad de tarjetas a mostrar en función del tamaño de la pantalla
   let cardsPerRow =10;
 
@@ -52,12 +60,13 @@ export const Recommends = () => {
   const endIndex = startIndex + cardsPerPage;
 
   // Obtén las tarjetas para la página actual
-  const currentCards = recommends.slice(startIndex, endIndex);
+  const currentCards = shuffleArray(recommends).slice(startIndex, endIndex);
 
   // Función para cambiar la página
   const handlePageChange = (event, page) => {
     setCurrentPage(page);
   };
+
 
 
   return (
