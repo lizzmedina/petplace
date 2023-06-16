@@ -58,6 +58,21 @@ public class CategoryServiceTest {
     }
 
     @Test
+    @DisplayName("Esta prueba valida la creacion de una categoria existente")
+    public void save_existingCategoryTest() {
+
+        CategoryDTO categoryDTO = new CategoryDTO(1, "Hamster", "guarderia de roedores", "url.com");
+        Mockito.doCallRealMethod().when(mapper).mapToEntity(categoryDTO);
+        Category mappedCategory = mapper.mapToEntity(categoryDTO);
+        Mockito.when(repository.findByTitle("Hamster")).thenReturn(Optional.of(mappedCategory));
+
+        Assertions.assertThrows( RuntimeException.class,() -> service.save(categoryDTO));
+
+        Mockito.verify(repository, Mockito.times(0)).save(mappedCategory);
+
+    }
+
+    @Test
     @DisplayName("Esta prueba valida la edición de una categoria nula")
     public void edit_nullTest(){
         Assertions.assertThrows(NullPointerException.class,
@@ -94,6 +109,66 @@ public class CategoryServiceTest {
         Assertions.assertEquals(expectedCategory.getImage(), editCategory.getImage());
     }
 
+  @Test
+  public void edit_exceptionTest() {
+    Mockito.when(repository.findById(1)).thenReturn(Optional.empty());
+    Assertions.assertThrows(
+        ResourceNotFoundException.class,
+        () -> service.edit(new CategoryDTO(1, "name", "description", "image")));
+  }
+
+  @Test
+  public void findAllTest() {
+    service.findAll();
+    Mockito.verify(repository).findAll();
+  }
+
+  @Test
+  public void findByNameTest() {
+    Category found = createTestCategory(1);
+    Mockito.doCallRealMethod().when(mapper).mapToDTO(found);
+    Mockito.when(repository.findByTitle("HAMSTER")).thenReturn(Optional.of(found));
+    service.findByName("Hamster");
+    Mockito.verify(repository).findByTitle("HAMSTER");
+  }
+
+  @Test
+  public void findByName_exceptionTest() {
+    Mockito.when(repository.findByTitle("HAMSTER")).thenReturn(Optional.empty());
+    Assertions.assertThrows(ResourceNotFoundException.class, () -> service.findByName("Hamster"));
+    Mockito.verify(repository).findByTitle("HAMSTER");
+  }
+
+  @Test
+  public void findById_exceptionTest() {
+    Mockito.when(repository.findById(1)).thenReturn(Optional.empty());
+    Assertions.assertThrows(ResourceNotFoundException.class, () -> service.findById(1));
+  }
+
+  @Test
+  public void findById_successTest() {
+    Mockito.when(repository.findById(1)).thenReturn(Optional.of(this.createTestCategory(1)));
+    Category actual = service.findById(1);
+
+    Assertions.assertEquals(1, actual.getId());
+    Assertions.assertEquals("Hamster", actual.getTitle());
+    Assertions.assertEquals("guarderia de roedores", actual.getDescription());
+    Assertions.assertEquals("url.com", actual.getImage());
+  }
+
+  @Test
+  public void deleteById_exceptionTest() {
+    Mockito.when(repository.findById(1)).thenReturn(Optional.empty());
+    Assertions.assertThrows(ResourceNotFoundException.class, () -> service.deleteById(1));
+  }
+
+  @Test
+  public void deleteById_successTest() {
+    Mockito.when(repository.findById(1)).thenReturn(Optional.of(this.createTestCategory(1)));
+    String actual = service.deleteById(1);
+
+    Assertions.assertEquals("Se elimino exitosamente la categoría de id: 1", actual);
+  }
 
     private Category createTestCategory(Integer id) {
         Category expectedCategory = new Category();

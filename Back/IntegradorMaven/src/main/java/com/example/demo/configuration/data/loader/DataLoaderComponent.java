@@ -81,7 +81,7 @@ public class DataLoaderComponent {
         });
         petDayCareList.forEach(categoryDTO -> {
             try {
-                categoryService.finById(categoryDTO.getId());
+                categoryService.findById(categoryDTO.getId());
                 System.out.println("category data with id " + categoryDTO.getId() + " already exists, skipping creation...");
             } catch (ResourceNotFoundException exception) {
                 categoryService.save(categoryDTO);

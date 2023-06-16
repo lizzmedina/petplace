@@ -1,14 +1,12 @@
 package com.example.demo.controller;
 
 import com.example.demo.DTO.CategoryDTO;
-import com.example.demo.DTO.PetDayCareDTO;
 import com.example.demo.entity.Category;
 import com.example.demo.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/api/v1/category")
@@ -38,7 +36,7 @@ public class CategoryController {
 
     @GetMapping("/{id}")
     public Category finById(@PathVariable("id") Integer id){
-        return service.finById(id);
+        return service.findById(id);
     }
 
     @DeleteMapping("/{id}")

@@ -1,9 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.DTO.CategoryDTO;
-import com.example.demo.DTO.UserDTO;
 import com.example.demo.entity.Category;
-import com.example.demo.entity.User;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.mapper.CategoryMapper;
 import com.example.demo.repository.CategoryRepository;
@@ -63,13 +61,13 @@ public class CategoryService {
         return categoryDTO;
     }
 
-    public Category finById(Integer id){
+    public Category findById(Integer id){
 
         Optional<Category> category = this.categoryRepository.findById(id);
         if(category.isEmpty()){
             throw new  ResourceNotFoundException("No existe categoria con el id: " + id);
         }
-        return categoryRepository.findById(id).get();
+        return category.get();
     }
 
     public String deleteById(Integer id) {

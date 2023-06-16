@@ -6,6 +6,7 @@ import com.example.demo.DTO.UserDTO;
 import com.example.demo.entity.City;
 import com.example.demo.entity.PetDayCare;
 import com.example.demo.entity.User;
+import com.example.demo.exception.DuplicatedNameException;
 import com.example.demo.exception.ReferencedCityException;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.mapper.CityMapper;
@@ -49,7 +50,7 @@ class CityServiceTest {
     }
 
     @Test
-    @DisplayName("Esta prueba valida la eliminación de una ciudad existente")
+    @DisplayName("Esta prueba valida la eliminación de una ciudad existente referenciada")
     public void delete_ValidCityWithReferenceCityTest() {
         City expectedCity = new City("Barranquilla");
         expectedCity.setId(1);
@@ -66,6 +67,23 @@ class CityServiceTest {
         Mockito.verify(petDayCareRepository, Mockito.times(1)).findAllByCityId(expectedCity.getId());
         Mockito.verify(cityMapper).mapToDto(expectedCity);
         Mockito.verify(cityRepository, Mockito.times(0)).delete(Mockito.any());
+    }
+
+    @Test
+    @DisplayName("Esta prueba valida la eliminación de una ciudad existente NO referenciada")
+    public void delete_ValidCityWithoutReferenceCityTest() {
+        City expectedCity = new City("Barranquilla");
+        expectedCity.setId(1);
+        Optional<City> expectedCityOpt = Optional.of(expectedCity);
+
+        Mockito.when(cityRepository.findById(1)).thenReturn(expectedCityOpt);
+        Mockito.when(petDayCareRepository.findAllByCityId(1)).thenReturn(Collections.emptyList());
+
+        cityService.deleteById(1, false);
+
+        Mockito.verify(cityRepository, Mockito.times(1)).findById(expectedCity.getId());
+        Mockito.verify(petDayCareRepository, Mockito.times(1)).findAllByCityId(expectedCity.getId());
+        Mockito.verify(cityRepository, Mockito.times(1)).delete(Mockito.any());
     }
 
     @Test
@@ -107,6 +125,27 @@ class CityServiceTest {
         Mockito.verify(cityRepository, Mockito.times(0)).findById(null);
     }
 
+    @Test
+    @DisplayName("Esta prueba valida la actualizacion de una ciudad correctamente")
+    public void update_validCityTest() {
+        City found = new City("Cali");
+        found.setId(1);
+
+        Mockito.when(cityRepository.findById(1)).thenReturn(Optional.of(found));
+        Mockito.doCallRealMethod().when(cityMapper).mapToDto(found);
+
+        CityDTO dto = cityMapper.mapToDto(found);
+        dto.setName("Medellín");
+
+        CityDTO actual = cityService.updateCity(dto);
+
+        Assertions.assertEquals(1, actual.getId());
+        Assertions.assertEquals("Medellín", actual.getName());
+
+        Mockito.verify(cityRepository).findById(1);
+        Mockito.verify(cityRepository).save(found);
+    }
+
 
     @Test
     @DisplayName("Esta prueba valida la obtencion de ciudades cuando no hay registros en la bd")
@@ -119,6 +158,60 @@ class CityServiceTest {
         Assertions.assertTrue(actualCities.isEmpty());
     }
 
+  @Test
+  @DisplayName("Validar buscar por Id")
+  public void findByIdTest() {
+    City found = new City("Cali");
+    found.setId(1);
+
+    Mockito.doCallRealMethod().when(cityMapper).mapToDto(found);
+    Mockito.when(cityRepository.findById(1)).thenReturn(Optional.of(found));
+
+    CityDTO actual = cityService.findById(1);
+
+    Mockito.verify(cityMapper).mapToDto(found);
+    Mockito.verify(cityRepository).findById(1);
+
+    Assertions.assertEquals(1, actual.getId());
+    Assertions.assertEquals("Cali", actual.getName());
+  }
+
+  @Test
+  @DisplayName("Validar buscar por nombre")
+  public void findByNameTest() {
+    String name = "Cali";
+
+    City found = new City(name);
+    found.setId(1);
+
+    Mockito.doCallRealMethod().when(cityMapper).mapToDto(found);
+    Mockito.when(cityRepository.findByName(name)).thenReturn(Optional.of(found));
+
+    CityDTO actual = cityService.findByName(name);
+
+    Mockito.verify(cityMapper).mapToDto(found);
+    Mockito.verify(cityRepository).findByName(name);
+
+    Assertions.assertEquals(1, actual.getId());
+    Assertions.assertEquals("Cali", actual.getName());
+  }
+
+  @Test
+  @DisplayName("Esta prueba valida la creacion de una ciudad que ya existe")
+  public void save_duplicateCityTest() {
+
+    City found = new City("Cali");
+    found.setId(1);
+
+    Mockito.when(cityRepository.findByName("Cali")).thenReturn(Optional.of(found));
+
+    Assertions.assertThrows(
+        DuplicatedNameException.class,
+        () -> cityService.save(new CityDTO("Cali")),
+        "Ya existe una ciudad con el nombre: Cali");
+
+    Mockito.verify(cityRepository, Mockito.times(0)).save(Mockito.any());
+  }
 }
 
 

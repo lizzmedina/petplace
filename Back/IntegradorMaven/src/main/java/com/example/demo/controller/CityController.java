@@ -52,7 +52,6 @@ public class CityController {
     @PutMapping
     public CityDTO updateCity(@RequestBody CityDTO cityDTO) {
         return  cityService.updateCity(cityDTO);
-
     }
 }
 
