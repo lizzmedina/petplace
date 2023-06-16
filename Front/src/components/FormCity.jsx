@@ -109,7 +109,7 @@ function FormCity() {
                         if (response.ok) {
                             Swal.fire({
                                 icon: 'success',
-                                title: `La ciudad ${dataCity.name} ha sido creada exitosamente.`
+                                title: `La ciudad ha sido creada exitosamente.`
                             }).then(() => {
                                 setCountry(null)
                                 setDataCity(null)

@@ -61,7 +61,7 @@ function EditCity() {
             reverseButtons: true
         });
         if (confirmDelete.isConfirmed) {
-            await fetch(`${urlPostCities}/${id}`, {
+            await fetch(`${urlPostCities}/force/${id}`, {
                 method: 'DELETE'
             });
             getAllCitiesDataBase();
