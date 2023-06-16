@@ -33,8 +33,6 @@ import java.util.Set;
 
         }
 
-
-
         public String getName() {
             return name;
         }
@@ -43,7 +41,7 @@ import java.util.Set;
             this.name = name;
         }
 
-        public Integer getIid() {
+        public Integer getId() {
             return id;
         }
 

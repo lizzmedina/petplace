@@ -1,21 +1,41 @@
-import { useState } from "react";
-
+import React, { useState, useEffect } from "react";
+import Select from "react-select";
+import { useContextGlobal } from "./utils/global.constext";
 
 export const SearcherByLocation = () => {
-    const opciones = ['Santa Fé de Bogotá, Colombia', 'Buenos Aires, Argentina', 'Cartagena, Colombia'];
-  const [opcionSeleccionada, setOpcionSeleccionada] = useState('');
+    const [cities, setCities] = useState([]);
+    const {selectedCity, setSelectedCity} = useContextGlobal();
 
-  const handleSeleccionarOpcion = (event) => {
-    setOpcionSeleccionada(event.target.value);
-  };
+    useEffect(() => {
+        if(cities.length === 0)
+            fetchCities();
+    }, []);
+    
+    const fetchCities = async () => {
+        try {
+            const response = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/cities`);
+            const data = await response.json();
+            const mappedCities = data.map((city) => ({
+                value: city.name.toLowerCase(),
+                label: city.name
+            }));
+            setCities(mappedCities);
+        } catch (error) {
+            console.error("Error al obtener las ciudades:", error);
+        }
+    };
+
+    const handleSelectCity = (option) => {
+        setSelectedCity(option);
+    };
+    
     return (
-        <select id="opciones" className = "search-by search-width " value={opcionSeleccionada} onChange={handleSeleccionarOpcion}>
-            <option value="" disabled hidden>¿dónde estarás? </option>
-            {opciones.map((opcion) => (
-                <option key={opcion} value={opcion}>
-                    {opcion}
-                </option>
-            ))}
-        </select>
-    )
-}
+        <Select
+            className="search-width"
+            placeholder={selectedCity ? selectedCity.label : "¿Dónde estarás?"}
+            value={selectedCity}
+            options={cities}
+            onChange={handleSelectCity}
+        />
+    );
+};

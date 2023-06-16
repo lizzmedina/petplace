@@ -35,21 +35,15 @@ class PetServiceTest {
     }
 
     @Test
-    @DisplayName("Esta prueba valida de eliminacion de una mascota que si existe en la bd")
+    @DisplayName("Esta prueba valida la eliminacion de una mascota que si existe en la bd")
     public void delete_ValidIdTest2() {
-        //given -> dado .... un listado de 5 perros de la manera pacos1,asd2,1234.
-        //when -> cuando .... yo elimine el perro llamado paco1
-        //then -> entonces .. el listado resultante debe ser 123,123123,
 
-        // given -> dado que en la bd existe una mascota con 1 , paco, perro, 23k
         Pet expected = new Pet(1, "Paco", "Perro", "23k");
         Mockito.when(repository.findById(Mockito.anyInt()))
                 .thenReturn(Optional.of(expected));
 
-        //when ... entonces cuando borre el 1 id
         petService.deleteById(1);
 
-        // then .. entonces se ejecutaron los metodos de buscar el id 1, y eliminar por 1 id
         Mockito.verify(repository, Mockito.times(1)).findById(1);
         Mockito.verify(repository, Mockito.times(1)).delete(expected);
     }

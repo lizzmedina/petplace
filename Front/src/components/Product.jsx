@@ -1,21 +1,40 @@
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft, faShower, faPersonWalkingWithCane, faCarrot, faBaseball, faStethoscope, faLocationDot } from '@fortawesome/free-solid-svg-icons'
-import { Link } from 'react-router-dom';
+import { Link as ScrollLink, Element } from 'react-scroll';
 import React, { useState } from 'react';
 import ImageModal from './ImageModal';
+import { CalendarDetail } from "./CalendarDetail.jsx";
 
 
 
-export const Product = ({ id, name, type, capacity, city, address, detail, image, basicPrice, characteristics }) => {
+export const Product = ({ id, name, type, capacity, city, address, detail, image, basicPrice, features, houseRules, healthAndSecurity, cancellationPolicy }) => {
 
     const navigate = useNavigate()
     const [isModalOpen, setModalOpen] = useState(false);
-    if (!image) {
-        return image;
-    }
 
-    const renderCharacteristics = () => {
+
+    // map develop
+    const generateLocationURL = () => {
+        const concatenatedValue = `${city.name} ${address}`;
+        const encodedValue = encodeURIComponent(concatenatedValue);
+        return `https://maps.google.com/maps?q=${encodedValue}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
+
+    };
+    // rules develop
+    const renderRules = (rules) => {
+        if (rules && rules.length > 0) {
+            return rules.map((rule, index) => (
+                <li key={index}>{rule}</li>
+            ));
+        } else {
+            return <p>No hay reglas disponibles.</p>;
+        }
+    };
+
+    // Features develop  
+
+    const renderFeatures = () => {
         const icons = {
             Paseo: faPersonWalkingWithCane,
             Baño: faShower,
@@ -23,16 +42,14 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
             Veterinaria: faStethoscope,
             Entrenamiento: faBaseball,
         };
-        
 
-
-        return characteristics.map((option, index) => {
+        return features.map((option, index) => {
             const icon = icons[option];
 
             if (icon && (option === 'Paseo' || option === 'Baño' || option === 'Alimentación' || option === 'Veterinaria' || option === 'Entrenamiento')) {
 
                 return (
-                    <div key={index}>
+                    <div className='featureItem' key={index}>
                         <FontAwesomeIcon icon={icon} className='icon-service' />
                         {'  '}
                         {option}
@@ -42,6 +59,10 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
         });
     };
 
+    // Gallery modal develop
+    if (!image) {
+        return image;
+    }
     const handleOpenModal = () => {
         setModalOpen(true);
     };
@@ -50,13 +71,11 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
     };
 
 
-
-
     return (
 
         <div key={id} className="product-container">
             <div className="product-header">
-                <span className="product-location"><FontAwesomeIcon icon={faLocationDot} className='icon-service' /> {city}, {address}</span>  <a onClick={() => navigate(-1)}><FontAwesomeIcon icon={faChevronLeft} className='back-icon' /></a>
+                <ScrollLink to="locationContainer" smooth={true} duration={500}><span className="pinLocation-product"><FontAwesomeIcon icon={faLocationDot} className='icon-service' /> {city.name}, {address}</span></ScrollLink>  <a onClick={() => navigate(-1)}><FontAwesomeIcon icon={faChevronLeft} className='back-icon' /></a>
             </div>
             <div className="product-galery">
                 <div className='leading-image'>
@@ -90,7 +109,7 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
                     <div className='features'>
                         <h3>Servicios más populares</h3>
                         <div className='feature-list'>
-                            {renderCharacteristics()}
+                            {renderFeatures()}
                         </div>
                     </div>
                 </span>
@@ -100,13 +119,42 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
                     <p className="text-info">Precio: $ {basicPrice}</p>
                     <button className="buttonDetail button-1">Reservar</button>
                 </span>
-
+                
 
             </div>
-            {isModalOpen && (
-                <ImageModal images={image} onClose={handleCloseModal} />
-                
-            )}
+
+            <CalendarDetail productId={id} />
+
+            <Element name="locationContainer">
+                <div className='location-container' id='locationContainer'>
+                    <h3>Ubicación</h3>
+                    <div className="mapouter">
+                        <div className="gmap_canvas">
+                            <iframe className='mapFrame' id="gmap_canvas"
+                                src={generateLocationURL()} />
+
+                        </div>
+                    </div>
+                </div>
+            </Element>
+
+            <div className='rulesContainer'>
+                <div className='rulesProduct'>
+                    <h3>Normas de la casa</h3>
+                    <ul>{renderRules(houseRules)}</ul>
+                </div>
+                <div className='rulesProduct'>
+                    <h3>Salud y seguridad</h3>
+                    <ul>{renderRules(healthAndSecurity)}</ul>
+                </div>
+                <div className='rulesProduct'>
+                    <h3>Política de cancelación</h3>
+                    <ul>{renderRules(cancellationPolicy)}</ul>
+                </div>
+            </div>
+
+
+            {isModalOpen && (<ImageModal images={image} onClose={handleCloseModal} />)}
 
         </div>
     )

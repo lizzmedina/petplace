@@ -1,24 +1,31 @@
 package com.example.demo.DTO;
 
+import com.example.demo.entity.Category;
+
 import java.util.List;
 
 public class PetDayCareDTO {
 
     private Integer id;
     private String name;
-    private String categoryName;
+    private Category type;
+
     private Integer capacity;
-    private String city;
+    private CityDTO city;
+
     private String address;
     private String detail;
     private List<String> images;
     private List<String> characteristics;
     private double basicPrice;
+    private List<String> houseRules;
+    private List<String> healthAndSecurity;
+    private List<String> cancellationPolicy;
 
-    public PetDayCareDTO(String name, String categoryName, Integer capacity, String city, String address, String detail, List<String> images, List<String> characteristics, double basicPrice) {
 
+    public PetDayCareDTO(String name, Category type, Integer capacity, CityDTO city, String address, String detail, List<String> images, List<String> characteristics, double basicPrice, List<String> houseRules, List<String> healthAndSecurity, List<String> cancellationPolicy) {
         this.name = name;
-        this.categoryName = categoryName;
+        this.type = type;
         this.capacity = capacity;
         this.city = city;
         this.address = address;
@@ -26,6 +33,9 @@ public class PetDayCareDTO {
         this.images = images;
         this.characteristics = characteristics;
         this.basicPrice = basicPrice;
+        this.houseRules = houseRules;
+        this.healthAndSecurity = healthAndSecurity;
+        this.cancellationPolicy = cancellationPolicy;
     }
 
     public PetDayCareDTO() {
@@ -47,12 +57,12 @@ public class PetDayCareDTO {
         this.name = name;
     }
 
-    public String getCategoryName() {
-        return categoryName;
+    public Category getType() {
+        return type;
     }
 
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
+    public void setType(Category type) {
+        this.type = type;
     }
 
     public Integer getCapacity() {
@@ -63,11 +73,11 @@ public class PetDayCareDTO {
         this.capacity = capacity;
     }
 
-    public String getCity() {
+    public CityDTO getCity() {
         return city;
     }
 
-    public void setCity(String city) {
+    public void setCity(CityDTO city) {
         this.city = city;
     }
 
@@ -110,4 +120,30 @@ public class PetDayCareDTO {
     public void setBasicPrice(double basicPrice) {
         this.basicPrice = basicPrice;
     }
+
+    public List<String> getHouseRules() {
+        return houseRules;
+    }
+
+    public void setHouseRules(List<String> houseRules) {
+        this.houseRules = houseRules;
+    }
+
+    public List<String> getHealthAndSecurity() {
+        return healthAndSecurity;
+    }
+
+    public void setHealthAndSecurity(List<String> healthAndSecurity) {
+        this.healthAndSecurity = healthAndSecurity;
+    }
+
+    public List<String> getCancellationPolicy() {
+        return cancellationPolicy;
+    }
+
+    public void setCancellationPolicy(List<String> cancellationPolicy) {
+        this.cancellationPolicy = cancellationPolicy;
+    }
+
+
 }

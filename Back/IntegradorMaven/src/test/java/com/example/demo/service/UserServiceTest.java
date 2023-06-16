@@ -44,7 +44,7 @@ class UserServiceTest {
     public void save_successTest() {
         User expectedUser = this.createTestUser(1);
 
-        UserDTO userDTO = new UserDTO(1, "Goku", "Martinez", "goku@correo.com", "goku123", "319123123", "Goku casa", "Manager");
+        UserDTO userDTO = new UserDTO(1, "Goku", "Martinez", "goku@correo.com", "goku123", "319123123", "Goku casa", "Manager",false );
 
         Mockito.when(userRepository.save(Mockito.any(User.class))).thenReturn(expectedUser);
         Mockito.when(roleService.findByName(Mockito.anyString())).thenReturn(new Role());
@@ -57,7 +57,7 @@ class UserServiceTest {
 
 
     @Test
-    @DisplayName("Esta prueba valida la elimincacion de un usuario que no existe")
+    @DisplayName("Esta prueba valida la eliminacion de un usuario que no existe")
     public void delete_InvalidIdTest() {
         Mockito.when(userRepository.findById(Mockito.anyInt())).thenReturn(Optional.empty());
 
@@ -70,7 +70,7 @@ class UserServiceTest {
     }
 
     @Test
-    @DisplayName("Esta prueba valida la elimincacion de un usuario si existe en la bd")
+    @DisplayName("Esta prueba valida la eliminacion de un usuario si existe en la bd")
     public void delete_validIdTest() {
         User expectedUser = this.createTestUser(1);
         Mockito.when(userRepository.findById(Mockito.anyInt())).thenReturn(Optional.of(expectedUser));

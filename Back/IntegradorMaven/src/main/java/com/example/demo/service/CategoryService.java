@@ -47,12 +47,6 @@ public class CategoryService {
         return categoryRepository.findAll().stream().map(categoryMapper::mapToDTO).toList();
     }
 
-    /**
-     * In the database the title field refers to the name
-     *
-     * @param name of the category to search for
-     * @return Category object
-     */
     public CategoryDTO findByName(String name) {
         return categoryRepository.findByTitle(name.toUpperCase()).map(categoryMapper::mapToDTO)
                 .orElseThrow(() -> new ResourceNotFoundException(String.format("La categoria [%s] no existe", name)));
@@ -76,6 +70,16 @@ public class CategoryService {
             throw new  ResourceNotFoundException("No existe categoria con el id: " + id);
         }
         return categoryRepository.findById(id).get();
+    }
+
+    public String deleteById(Integer id) {
+        Optional<Category> categoryopt = this.categoryRepository.findById(id);
+
+        if (!categoryopt.isPresent()) {
+            throw new ResourceNotFoundException("No existe una categoria registrado con el id: " + id);
+        }
+        categoryRepository.delete(categoryopt.get());
+        return "Se elimino exitosamente la categoría de id: " + id;
     }
 
 

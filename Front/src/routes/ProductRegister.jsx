@@ -7,7 +7,7 @@ const ProductRegister = () => {
 
     return (
         <div className='space-section'>
-            <h2>{userConnected.type !== "Manager" ? "Página no encontrada" : "Resitra un alojamiento para mascotas"}</h2>
+            <h2>{userConnected.type !== "Manager" ? "Página no encontrada" : "Registra un alojamiento para mascotas"}</h2>
             <p>{userConnected.type !== "Manager" ? "" : "Completa los siguientes campos"}</p>
             <FormProduct/>
         </div>

@@ -7,7 +7,8 @@
     "password": "11111aa",
     "cellPhone": "3003333333",
     "address": "Carrera Z # 80 - 40",
-    "type": "Customer"
+    "type": "Customer",
+    "validation": true
   },
   {
     "id": 1876543210,
@@ -17,7 +18,8 @@
     "password": "987654aa",
     "cellPhone": "3210000000",
     "address": "Carrera 60 # A - V",
-    "type": "Customer"
+    "type": "Customer",
+    "validation": false
   },
   {
     "id": 1589631074,
@@ -27,7 +29,8 @@
     "password": "Petplace.dh.team2",
     "cellPhone": "3222222222",
     "address": "Carrera A # 14 - B",
-    "type": "Manager"
+    "type": "Manager",
+    "validation": true
   },
   {
     "id": 1592634807,
@@ -37,6 +40,403 @@
     "password": "88888aa",
     "cellPhone": "3216000000",
     "address": "Carrera 30 # 47 - 59",
-    "type": "Manager"
+    "type": "Manager",
+    "validation": true
+  },
+  {
+    "id": 1968712356,
+    "name": "Alan",
+    "lastName": "Pasto",
+    "email": "alanpasto@gmail.com",
+    "password": "99999aa",
+    "cellPhone": "3117000000",
+    "address": "Carrera 51 # 30 - 60",
+    "type": "Customer",
+    "validation": true
+  },
+  {
+    "id": 1741289036,
+    "name": "Jeifer",
+    "lastName": "Jimenez",
+    "email": "jeiferjimenez@gmail.com",
+    "password": "22222aa",
+    "cellPhone": "3316000000",
+    "address": "Carrera 31 # 40 - 50",
+    "type": "Customer",
+    "validation": true
+  },
+  {
+    "id": 1596574231,
+    "name": "Viviana",
+    "lastName": "Buritica",
+    "email": "vivianaburitica@gmail.com",
+    "password": "33333aa",
+    "cellPhone": "3336000000",
+    "address": "Carrera 32 # 41 - 53",
+    "type": "Manager",
+    "validation": false
+  },
+  {
+    "id": 1596654807,
+    "name": "Liza",
+    "lastName": "Medina",
+    "email": "lizamedina@gmail.com",
+    "password": "44444aa",
+    "cellPhone": "3256000000",
+    "address": "Carrera 36 # 45 - 69",
+    "type": "Manager",
+    "validation": false
+  },
+  {
+    "id": 1699634805,
+    "name": "Julie",
+    "lastName": "Serrano",
+    "email": "julieserrano@gmail.com",
+    "password": "55555aa",
+    "cellPhone": "3616000000",
+    "address": "Carrera 69 # 47 - 98",
+    "type": "Customer",
+    "validation": false
+  },
+  {
+    "id": 1772654997,
+    "name": "Yessid",
+    "lastName": "Vargas",
+    "email": "yessidvargas@gmail.com",
+    "password": "66666aa",
+    "cellPhone": "3776000000",
+    "address": "Carrera 56 # 67 - 79",
+    "type": "Customer",
+    "validation": false
+  },
+  {
+    "id": 1452634809,
+    "name": "María",
+    "lastName": "Giraldo",
+    "email": "mariagiraldo@gmail.com",
+    "password": "77777aa",
+    "cellPhone": "3336000000",
+    "address": "Carrera 63 # 57 - 89",
+    "type": "Manager",
+    "validation": true
+  },
+  {
+    "id": 1392674808,
+    "name": "Victoria",
+    "lastName": "Peluffo",
+    "email": "victoriapeluffo@gmail.com",
+    "password": "12121aa",
+    "cellPhone": "3286030000",
+    "address": "Carrera 95 # 46 - 79",
+    "type": "Manager",
+    "validation": true
+  },
+  {
+    "id": 1792634864,
+    "name": "Jorge",
+    "lastName": "Preciado",
+    "email": "jorgepreciado@gmail.com",
+    "password": "23232aa",
+    "cellPhone": "3318000000",
+    "address": "Carrera 60 # 77 - 99",
+    "type": "Customer",
+    "validation": true
+  },
+  {
+    "id": 1292634506,
+    "name": "Andrea",
+    "lastName": "Bedoya",
+    "email": "mariapancha@gmail.com",
+    "password": "34343aa",
+    "cellPhone": "3289000000",
+    "address": "Carrera 37 # 57 - 79",
+    "type": "Customer",
+    "validation": true
+  },
+  {
+    "id": 1592434854,
+    "name": "José",
+    "lastName": "Perez",
+    "email": "joseperez@gmail.com",
+    "password": "45454aa",
+    "cellPhone": "3816000000",
+    "address": "Carrera 31 # 57 - 99",
+    "type": "Manager",
+    "validation": true
+  },
+  {
+    "id": 1366634882,
+    "name": "Jesús",
+    "lastName": "Pancha",
+    "email": "jesuspancha@gmail.com",
+    "password": "56565aa",
+    "cellPhone": "3316000050",
+    "address": "Carrera 65 # 77 - 89",
+    "type": "Manager",
+    "validation": true
+  },
+  {
+    "id": 1392635805,
+    "name": "Patricio",
+    "lastName": "Sales",
+    "email": "patriciosales@gmail.com",
+    "password": "67676aa",
+    "cellPhone": "3251000000",
+    "address": "Carrera 96 # 67 - 79",
+    "type": "Customer",
+    "validation": false
+  },
+  {
+    "id": 1692635898,
+    "name": "Lorenzo",
+    "lastName": "Guzman",
+    "email": "lorenzogusman@gmail.com",
+    "password": "89898aa",
+    "cellPhone": "3654000000",
+    "address": "Carrera 16 # 78 - 69",
+    "type": "Customer",
+    "validation": false
+  },
+  {
+    "id": 1192634865,
+    "name": "Adolfo",
+    "lastName": "Jimenez",
+    "email": "adolfojimenez@gmail.com",
+    "password": "21212aa",
+    "cellPhone": "3296300000",
+    "address": "Carrera 16 # 17 - 89",
+    "type": "Manager",
+    "validation": false
+  },
+  {
+    "id": 1222634889,
+    "name": "Daneris",
+    "lastName": "Jimenez",
+    "email": "danerisjimenez@gmail.com",
+    "password": "32323aa",
+    "cellPhone": "3218900000",
+    "address": "Carrera 23 # 97 - 69",
+    "type": "Manager",
+    "validation": false
+  },
+  {
+    "id": 1122634834,
+    "name": "Julieth",
+    "lastName": "Pelaez",
+    "email": "juliethpelaez@gmail.com",
+    "password": "43434aa",
+    "cellPhone": "3216600000",
+    "address": "Carrera 33 # 67 - 89",
+    "type": "Customer",
+    "validation": true
+  },
+  {
+    "id": 1562634878,
+    "name": "Liliana",
+    "lastName": "Hernández",
+    "email": "lilianahernandez@gmail.com",
+    "password": "54545aa",
+    "cellPhone": "3556000000",
+    "address": "Carrera 55 # 57 - 56",
+    "type": "Customer",
+    "validation": true
+  },
+  {
+    "id": 1912634801,
+    "name": "Vin",
+    "lastName": "Diesel",
+    "email": "vindisel@gmail.com",
+    "password": "65656aa",
+    "cellPhone": "3936000000",
+    "address": "Carrera 90 # 77 - 59",
+    "type": "Manager",
+    "validation": true
+  },
+  {
+    "id": 1982634876,
+    "name": "Alejandra",
+    "lastName": "Zapata",
+    "email": "alejandrazapata@gmail.com",
+    "password": "76767aa",
+    "cellPhone": "3296008000",
+    "address": "Carrera 60 # 27 - 39",
+    "type": "Manager",
+    "validation": true
+  },
+  {
+    "id": 1762634854,
+    "name": "Danni",
+    "lastName": "Lopéz",
+    "email": "dannilopez@gmail.com",
+    "password": "87878aa",
+    "cellPhone": "3213060800",
+    "address": "Carrera 31 # 37 - 69",
+    "type": "Customer",
+    "validation": false
+  },
+  {
+    "id": 1542634832,
+    "name": "Tatto",
+    "lastName": "Hell",
+    "email": "tattohell@gmail.com",
+    "password": "98989aa",
+    "cellPhone": "3116011000",
+    "address": "Carrera 80 # 87 - 89",
+    "type": "Customer",
+    "validation": false
+  },
+  {
+    "id": 1322634819,
+    "name": "Lina",
+    "lastName": "Gracias",
+    "email": "linagracias@gmail.com",
+    "password": "11888aa",
+    "cellPhone": "3162000000",
+    "address": "Carrera 20 # 27 - 29",
+    "type": "Manager",
+    "validation": false
+  },
+  {
+    "id": 1192634820,
+    "name": "Andrés",
+    "lastName": "Cepeda",
+    "email": "andrescepeda@gmail.com",
+    "password": "22888aa",
+    "cellPhone": "3216022000",
+    "address": "Carrera 22 # 46 - 19",
+    "type": "Manager",
+    "validation": false
+  },
+  {
+    "id": 1302634804,
+    "name": "Santiago",
+    "lastName": "Cruz",
+    "email": "santiagocruz@gmail.com",
+    "password": "33888aa",
+    "cellPhone": "3216033000",
+    "address": "Carrera 44 # 44 - 54",
+    "type": "Customer",
+    "validation": true
+  },
+  {
+    "id": 1502634862,
+    "name": "Chojin",
+    "lastName": "Gitano",
+    "email": "chojingitano@gmail.com",
+    "password": "44888aa",
+    "cellPhone": "3216044000",
+    "address": "Carrera 40 # 44 - 49",
+    "type": "Customer",
+    "validation": true
+  },
+  {
+    "id": 1742634873,
+    "name": "Ángel",
+    "lastName": "Calamaro",
+    "email": "angelcalamaro@gmail.com",
+    "password": "55888aa",
+    "cellPhone": "3216055000",
+    "address": "Carrera 55 # 57 - 55",
+    "type": "Manager",
+    "validation": true
+  },
+  {
+    "id": 1652634823,
+    "name": "Bob",
+    "lastName": "Esponja",
+    "email": "bobesponja@gmail.com",
+    "password": "66888aa",
+    "cellPhone": "3216660000",
+    "address": "Carrera 66 # 47 - 69",
+    "type": "Manager",
+    "validation": true
+  },
+  {
+    "id": 1452634845,
+    "name": "Gianluca",
+    "lastName": "Ginoble",
+    "email": "gianlucaginoble@gmail.com",
+    "password": "77888aa",
+    "cellPhone": "3216077000",
+    "address": "Carrera 70 # 77 - 79",
+    "type": "Customer",
+    "validation": false
+  },
+  {
+    "id": 1372634873,
+    "name": "Calamardo",
+    "lastName": "Tentaculos",
+    "email": "calamardotentaculos@gmail.com",
+    "password": "99888aa",
+    "cellPhone": "3216099000",
+    "address": "Carrera 99 # 87 - 89",
+    "type": "Customer",
+    "validation": false
+  },
+  {
+    "id": 1629263482,
+    "name": "María",
+    "lastName": "Pancha",
+    "email": "mariapancha@gmail.com",
+    "password": "88888aa",
+    "cellPhone": "3216000000",
+    "address": "Carrera 30 # 47 - 59",
+    "type": "Manager",
+    "validation": false
+  },
+  {
+    "id": 1452634874,
+    "name": "Cosmo",
+    "lastName": "Mágico",
+    "email": "cosmomagico@gmail.com",
+    "password": "88118aa",
+    "cellPhone": "3216000110",
+    "address": "Carrera 31 # 41 - 91",
+    "type": "Manager",
+    "validation": false
+  },
+  {
+    "id": 1692634899,
+    "name": "Timmy",
+    "lastName": "Turner",
+    "email": "timmyturner@gmail.com",
+    "password": "88228aa",
+    "cellPhone": "3216000220",
+    "address": "Carrera 22 # 27 - 92",
+    "type": "Customer",
+    "validation": true
+  },
+  {
+    "id": 1462634864,
+    "name": "Mr",
+    "lastName": "Crocker",
+    "email": "mrcrocker@gmail.com",
+    "password": "88338aa",
+    "cellPhone": "3216000330",
+    "address": "Carrera 33 # 43 - 93",
+    "type": "Customer",
+    "validation": true
+  },
+  {
+    "id": 1322634834,
+    "name": "Jorge",
+    "lastName": "Strangle",
+    "email": "jorgestrangle@gmail.com",
+    "password": "88448aa",
+    "cellPhone": "3216000440",
+    "address": "Carrera 34 # 44 - 94",
+    "type": "Manager",
+    "validation": true
+  },
+  {
+    "id": 1352634853,
+    "name": "Chester",
+    "lastName": "MacBadBat",
+    "email": "chester@gmail.com",
+    "password": "88558aa",
+    "cellPhone": "3216000550",
+    "address": "Carrera 35 # 45 - 95",
+    "type": "Manager",
+    "validation": true
   }
 ]

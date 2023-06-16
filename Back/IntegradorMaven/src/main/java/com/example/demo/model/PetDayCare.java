@@ -14,10 +14,16 @@ public class PetDayCare {
     private List<String> images;
     private List<String> characteristics;
     private double basicPrice;
+    private List<String> houseRules;
+
+    private List<String> healthAndSecurity;
+
+    private List<String> cancellationPolicy;
     List<Pet> listPetsDay;
     PetDayCare petDayCare;
 
-    public PetDayCare(Integer id, String name, String type, Integer capacity, String city, String address, String detail, List<String> images, List<String> characteristics, double basicPrice) {
+
+    public PetDayCare(Integer id, String name, String type, Integer capacity, String city, String address, String detail, List<String> images, List<String> characteristics, double basicPrice, List<String> houseRules, List<String> healthAndSecurity, List<String> cancellationPolicy) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -28,6 +34,9 @@ public class PetDayCare {
         this.images = images;
         this.characteristics = characteristics;
         this.basicPrice = basicPrice;
+        this.houseRules = houseRules;
+        this.healthAndSecurity = healthAndSecurity;
+        this.cancellationPolicy = cancellationPolicy;
     }
 
     public List listPetsDayCare(){

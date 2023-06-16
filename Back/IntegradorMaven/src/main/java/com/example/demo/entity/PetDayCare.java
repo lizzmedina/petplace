@@ -1,9 +1,9 @@
 package com.example.demo.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -18,14 +18,15 @@ public class PetDayCare {
     @Column(name = "name")
     private String name;
 
-   @OneToOne
-   private Category type;
+    @OneToOne
+    private Category type;
 
     @Column(name = "capacity")
     private Integer capacity;
 
-    @Column(name = "city")
-    private String city;
+    @ManyToOne
+    @Cascade(CascadeType.SAVE_UPDATE)
+    private City city;
 
     @Column(name = "address")
     private String address;
@@ -42,15 +43,18 @@ public class PetDayCare {
     @Column(name = "basicPrice")
     private double basicPrice;
 
-//    @ManyToOne
-//    private User user;
+    @Column(name = "houseRules", length = 2000)
+    private List<String> houseRules;
 
-//    @OneToMany(mappedBy = "petDayCare")
-//    List<Booking> bookings;
+    @Column(name = "healthAndSecurity", length = 2000)
+    private List<String> healthAndSecurity;
 
-    public PetDayCare(String name, Category type, Integer capacity, String city, String address, String detail, List<String> images, List<String> characteristics, double basicPrice) {
+    @Column(name = "cancellationPolicy", length = 2000)
+    private List<String> cancellationPolicy;
 
-       this.name = name;
+
+    public PetDayCare(String name, Category type, Integer capacity, City city, String address, String detail, List<String> images, List<String> characteristics, double basicPrice, List<String> houseRules, List<String> healthAndSecurity, List<String> cancellationPolicy) {
+        this.name = name;
         this.type = type;
         this.capacity = capacity;
         this.city = city;
@@ -59,6 +63,9 @@ public class PetDayCare {
         this.images = images;
         this.characteristics = characteristics;
         this.basicPrice = basicPrice;
+        this.houseRules = houseRules;
+        this.healthAndSecurity = healthAndSecurity;
+        this.cancellationPolicy = cancellationPolicy;
     }
 
     public PetDayCare() {
@@ -88,15 +95,6 @@ public class PetDayCare {
         this.type = type;
     }
 
-
-//    public String getType() {
-//        return type;
-//    }
-//
-//    public void setType(String type) {
-//        this.type = type;
-//    }
-
     public Integer getCapacity() {
         return capacity;
     }
@@ -105,11 +103,11 @@ public class PetDayCare {
         this.capacity = capacity;
     }
 
-    public String getCity() {
+    public City getCity() {
         return city;
     }
 
-    public void setCity(String city) {
+    public void setCity(City city) {
         this.city = city;
     }
 
@@ -153,19 +151,28 @@ public class PetDayCare {
         this.basicPrice = basicPrice;
     }
 
-//    public User getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
+    public List<String> getHouseRules() {
+        return houseRules;
+    }
 
-//    public List<Booking> getBookings() {
-//        return bookings;
-//    }
-//
-//    public void setBookings(List<Booking> bookings) {
-//        this.bookings = bookings;
-//    }
+    public void setHouseRules(List<String> houseRules) {
+        this.houseRules = houseRules;
+    }
+
+    public List<String> getHealthAndSecurity() {
+        return healthAndSecurity;
+    }
+
+    public void setHealthAndSecurity(List<String> healthAndSecurity) {
+        this.healthAndSecurity = healthAndSecurity;
+    }
+
+    public List<String> getCancellationPolicy() {
+        return cancellationPolicy;
+    }
+
+    public void setCancellationPolicy(List<String> cancellationPolicy) {
+        this.cancellationPolicy = cancellationPolicy;
+    }
 }
+

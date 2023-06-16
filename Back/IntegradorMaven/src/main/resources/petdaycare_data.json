@@ -1,10 +1,17 @@
 [
   {
+    "id": 1,
     "name": "Paw Palace",
-    "categoryName": "Conejos",
-    "capacity": 50,
+    "type" : {
+      "id": 4,
+      "description": "Especialidados en conejos",
+      "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Conejo.jpg",
+      "title": "Conejos"
+    },
+
+    "capacity": 8,
     "city": "Medellín",
-    "address": "Calle 3, via Yumbo",
+    "address": "Carrera 58 #2771",
     "detail": "Un santuario rodeado de hermosos paisajes naturales, ofreciendo una experiencia tranquila y relajante para mascotas que disfrutan de paseos y relajación en la naturaleza",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/1.+Paw+Palace/httpsbit.ly3WNw24x.jpg",
@@ -21,14 +28,38 @@
       "Alimentación",
       "Veterinaria"
     ],
-    "basicPrice": 30.000
+    "basicPrice": 30.000,
+    "houseRules": [
+      "Check-out: 10:00",
+      "No se permiten fiestas",
+      "No fumar"
+    ],
+    "healthAndSecurity": [
+      "Se aplican las pautas de distanciamiento social y otras normas realcionadas con el coronavirus.",
+      "Detector de humo.",
+      "Depósito de seguridad"
+    ],
+    "cancellationPolicy": [
+      "Agregá las fechas de reserva para obtener los detalles de cancelación de esta estadía",
+      "Reservas límitadas, por lo que se sugiere cancelar antes de la fecha programada.",
+      "Para cancelar, se puede enviar un correo a paw_palace@gmial.com, o llamar al número 123456789",
+      "Las cancelaciones realizadas dentro de 2 horas antes de la fecha de reserva, no recibirán un reembolso."
+
+    ]
   },
   {
+    "id": 2,
     "name": "Huellas de amor",
-    "categoryName": "Perros",
-    "capacity": 50,
+    "type" : {
+      "id": 1,
+      "description": "Especialidados en perros",
+      "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Perro1.jpg",
+      "title": "Perros"
+    },
+
+    "capacity": 5,
     "city": "Cali",
-    "address": "Calle 3, via Yumbo",
+    "address": "Carrera 12 #18-40",
     "detail": "Un acogedor hogar para mascotas con amplios jardines y áreas de juego, donde los animales pueden socializar y disfrutar de su estancia en un entorno seguro y divertido",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/2.+Huellas+de+amor/httpstinyurl.com3md5vfnm.jpg",
@@ -47,14 +78,36 @@
       "Veterinaria",
       "Entrenamiento"
     ],
-    "basicPrice": 30.000
+    "basicPrice": 30.000,
+    "houseRules": [
+      "Check-out: 10:00",
+      "Nada de gritos en la casa. En la casa se habla sin gritar",
+      "Prohibido el alcohol",
+      "Está prohibido lastimar a otros. No debes pegar ni dar patadas."
+    ],
+    "healthAndSecurity": [
+      "Comunicar cualquier condición insegura.",
+      "Mantener limpio y ordenado el lugar.",
+      "Prohibido arrojar basuras en el jardín."
+
+    ],
+    "cancellationPolicy": [
+      "Tenga en cuenta que no ofrecemos reembolsos.",
+      "Si nos notifica al menos 2 días de su necesidad de cancelar, acreditaremos su pago para otra reserva."
+    ]
   },
   {
+    "id": 3,
     "name": "Pet Resort",
-    "categoryName": "Gatos",
-    "capacity": 50,
+    "type" :  {
+      "id": 2,
+      "description": "Especialidados en gatos",
+      "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Gato.jpg",
+      "title": "Gatos"
+    },
+    "capacity": 5,
     "city": "Barranquilla",
-    "address": "Calle 3, via Yumbo",
+    "address": "Calle 79 A #21b-38",
     "detail": "Un lujoso resort con suites privadas, piscinas y servicios de spa, donde los animales son tratados como verdaderos huéspedes VIP y disfrutan de un ambiente exclusivo y mimado",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/3.+Pet+Resort/httpsbit.ly3oD3TAa.jpg",
@@ -70,14 +123,38 @@
       "Alimentación",
       "Veterinaria"
     ],
-    "basicPrice": 30.000
+    "basicPrice": 30.000,
+    "houseRules": [
+      "Check-out: 8:00 am",
+      "Escuchar con atención cuando hable.",
+      "Dar las gracias y ser agradecido.",
+      "Ser educado y cordial siempre."
+    ],
+    "healthAndSecurity": [
+      "Deberá mantener una adecuada higiene con lavado y desinfección frecuente de manos.",
+      "Prohibido arrojar basuras en el jardín.",
+      "La comida siempre empaquetada."
+
+
+    ],
+    "cancellationPolicy": [
+      "En el caso de una emergencia real e inevitable, la totalidad o parte de su tarifa de cancelación se puede aplicar a servicios futuros.",
+      "Por favor, comprenda que los horarios de las citas son limitados. Si debe cancelar su cita, solicitamos respetuosamente un aviso de 1 día."
+    ]
   },
   {
+    "id": 4,
     "name": "Furry Friends Retreat",
-    "categoryName": "Canarios",
-    "capacity": 50,
+    "type" :  {
+      "id": 2,
+      "description": "Especialidados en gatos",
+      "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Gato.jpg",
+      "title": "Gatos"
+    },
+
+    "capacity": 10,
     "city": "Cúcuta",
-    "address": "Calle 3, via Yumbo",
+    "address": "Av. 2 Este #16a-2",
     "detail": "Un alojamiento familiar donde las mascotas son recibidas con cariño y tienen la oportunidad de interactuar con otros animales, creando un ambiente cálido y amigable",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/4.+Furry+Friends+Retreat/httpsbit.ly3IAorjS.jpg",
@@ -94,14 +171,33 @@
       "Alimentación",
       "Veterinaria"
     ],
-    "basicPrice": 30.000
+    "basicPrice": 30.000,
+    "houseRules": [
+      "Check-out: 9:00 am",
+      "Pedir permiso antes de coger cualquier objeto ajeno.",
+      "No comer en los pasillos.",
+      "Saludar y despedirse siempre."
+    ],
+    "healthAndSecurity": [
+      "Evita las prisas y excesos de confianza.",
+      "Mantenga limpio y ordenado el lugar."
+    ],
+    "cancellationPolicy": [
+      "Cuando reserva su cita, tiene un espacio en nuestro calendario que ya no está disponible para nuestros otros clientes. Para ser respetuoso con otros clientes, llame al 9999999 tan pronto como sepa que no podrá asistir a su reserva."
+    ]
   },
   {
+    "id": 5,
     "name": "Critter Care Center",
-    "categoryName": "Perros",
-    "capacity": 50,
+    "type" : {
+      "id": 1,
+      "description": "Especialidados en perros",
+      "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Perro1.jpg",
+      "title": "Perros"
+    },
+    "capacity": 10,
     "city": "Cartagena de Indias",
-    "address": "Calle 3, via Yumbo",
+    "address": "Transversal 53 #2136",
     "detail": "Una granja con amplios espacios al aire libre y animales de granja amigables, brindando a las mascotas una experiencia educativa y divertida en un entorno rural",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/5.+Critter+Care+Center/httpsbit.ly3BSDBNk.jpg",
@@ -120,14 +216,33 @@
       "Veterinaria",
       "Entrenamiento"
     ],
-    "basicPrice": 30.000
+    "basicPrice": 30.000,
+    "houseRules": [
+      "Check-out: 8:00 am",
+      "No molestar los peces en el acuario.",
+      "Saludar y despedirse."
+
+    ],
+    "healthAndSecurity": [
+      "Utilizar tapabocas y lavarse las manos.",
+      "Mantenga limpio y ordenado el lugar."
+    ],
+    "cancellationPolicy": [
+      "Si después de 20 minutos a partir de la hora acordada para comenzar la reserva, el cliente no está disponible para comenzar, la reserva se dará por cancelada y se penalizará con el total de horas de la reserva agendada."
+    ]
   },
   {
+    "id": 6,
     "name": "Paws and Claws Lodge",
-    "categoryName": "Gatos",
-    "capacity": 50,
+    "type" :  {
+      "id": 2,
+      "description": "Especialidados en gatos",
+      "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Gato.jpg",
+      "title": "Gatos"
+    },
+    "capacity": 7,
     "city": "Bucaramanga",
-    "address": "Calle 3, via Yumbo",
+    "address": "Carrera 15 #96-21",
     "detail": "Un hogar acogedor con atención personalizada, paseos diarios y actividades recreativas ara mantener a las mascotas felices y activas, creando un ambiente cálido y familiar",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/6.+Paws+and+Claws+Lodge/httpsbit.ly3q1y6cy.jpg",
@@ -144,14 +259,35 @@
       "Alimentación",
       "Veterinaria"
     ],
-    "basicPrice": 30.000
+    "basicPrice": 30.000,
+    "houseRules": [
+      "Check-out: 7:00 am",
+      "Ser educados y amables.",
+      "Prohibido correr por los pasillos.",
+      "Saludar y despedirse siempre."
+    ],
+    "healthAndSecurity": [
+      "Cumplir las normas de seguridad básicas.",
+      "Lavarse las manos al llegar al lugar."
+    ],
+    "cancellationPolicy": [
+      "Si necesita cancelar su cita, le solicitamos que llame al menos dos dias por adelantado. Las reservas tienen una gran demanda y su notificación anticipada permitirá que otro cliente acceda a la hora de esa reserva.",
+      "Las cancelaciones realizadas dos días o más antes de la fecha de la reserva recibirán un reembolso del 100 %.",
+      "Las cancelaciones realizadas dentro de 24 horas antes de la reserva, no recibirán un reembolso."
+    ]
   },
   {
+    "id": 7,
     "name": "Happy Tails Inn",
-    "categoryName": "Conejos",
-    "capacity": 50,
+    "type" : {
+      "id": 4,
+      "description": "Especialidados en conejos",
+      "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Conejo.jpg",
+      "title": "Conejos"
+    },
+    "capacity": 15,
     "city": "Pereira",
-    "address": "Calle 3, via Yumbo",
+    "address": "Carrera 21 #24-135",
     "detail": "Un paraíso junto al mar con playas privadas, juegos acuáticos y servicios de cuidado especializados, para ofreecr a las mascotas unas vacaciones inolvidables junto a la costa",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/7.+Happy+Tails+Inn/httpsbit.ly3IDLnP0.jpg",
@@ -169,14 +305,35 @@
       "Veterinaria",
       "Entrenamiento"
     ],
-    "basicPrice": 30.000
+    "basicPrice": 30.000,
+    "houseRules": [
+      "Check-out: 10:00 am",
+      "No hacer juegos o bromas dentro de la casa.",
+      "Prohibido correr por los pasillos.",
+      "Mantener ordenado el lugar."
+    ],
+    "healthAndSecurity": [
+      "Prohibido fumar.",
+      "Prohibido el alcohol.",
+      "Usar tapabocas en las áreas comunes"
+    ],
+    "cancellationPolicy": [
+      "Puede llamarnos al 3123123131 o escribirnos a happy_tails_inn@gmail.com entre las horas de 8:00 am a 7:00 pm para cancelar",
+      "Tenga en cuenta que no ofrecemos reembolsos."
+    ]
   },
   {
+    "id": 8,
     "name": "Bark Avenue Boarding",
-    "categoryName": "Canarios",
-    "capacity": 50,
+    "type" :   {
+      "id": 3,
+      "description": "Especialidados en canarios",
+      "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Canario.jpg",
+      "title": "Canarios"
+    },
+    "capacity": 15,
     "city": "Santa Marta",
-    "address": "Calle 3, via Yumbo",
+    "address": "Calle 31 #9-2",
     "detail": "Un refugio en medio de la naturaleza, rodeado de bosques y senderos para explorar, donde las mascotas pueden disfrutar de aventuras al aire libre y tranquilidad en un entorno natural",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/8.+Bark+Avenue+Boarding/httpsbit.ly3IAyo0D.jpg",
@@ -194,14 +351,35 @@
       "Veterinaria",
       "Entrenamiento"
     ],
-    "basicPrice": 30.000
+    "basicPrice": 30.000,
+    "houseRules": [
+      "Ser respetuoso.",
+      "Ser honesto.",
+      "No comer en los muebles."
+    ],
+    "healthAndSecurity": [
+      "Prohibido jugar con fuego.",
+      "Prohibido consumir drogas o ingerir bebidas alcohólicas.",
+      "No tocar las matas"
+    ],
+    "cancellationPolicy": [
+      " Las cancelaciones realizadas dentro de 2 días, recibirán un reembolso del 50 %.",
+      " Sin embargo, si no cancela con al menos 5 horas de aviso, perderá los pagos que ya haya realizado.",
+      "La primera vez que un cliente falte a una reserva, haremos una nota en su expediente."
+    ]
   },
   {
+    "id": 9,
     "name": "The Cat's Meow Hotel",
-    "categoryName": "Gatos",
-    "capacity": 50,
+    "type" :  {
+      "id": 2,
+      "description": "Especialidados en gatos",
+      "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Gato.jpg",
+      "title": "Gatos"
+    },
+    "capacity": 5,
     "city": "Ibagué",
-    "address": "Calle 3, via Yumbo",
+    "address": "Calle 48 #120",
     "detail": "Un moderno hotel con suites temáticas, áreas de juegos interactivos y cuidadores dedicados, brindando a las mascotas una estancia cómda y entretenida con un toque de estilo.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/9.+The+Cat's+Meow+Hotel/httpsbit.ly43rRUEi.jpg",
@@ -218,14 +396,34 @@
       "Alimentación",
       "Veterinaria"
     ],
-    "basicPrice": 30.000
+    "basicPrice": 30.000,
+    "houseRules": [
+      "No nos hacemos responsables de los objetos olvidados.",
+      "Saludar al entrar a la casa.",
+      "Tener un tono de voz suave, evitar dar gritos."
+    ],
+    "healthAndSecurity": [
+      "Prohibido jugar con otros gatos.",
+      "Prohibido consumir drogas o ingerir bebidas alcohólicas.",
+      "No tocar las matas."
+    ],
+    "cancellationPolicy": [
+      "Cualquier cancelación o reprogramación realizada antes de 2 días generará una tarifa de cancelación del 15% de la reserva.",
+      "Las cancelaciones realizadas 5 días o más antes de la fecha de la reserva recibirán un reembolso del 100 %."
+    ]
   },
   {
+    "id": 10,
     "name": "The Dog House",
-    "categoryName": "Perros",
-    "capacity": 50,
+    "type" : {
+      "id": 1,
+      "description": "Especialidados en perros",
+      "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Perro1.jpg",
+      "title": "Perros"
+    },
+    "capacity": 6,
     "city": "Bogotá D.C",
-    "address": "Calle 3, via Yumbo",
+    "address": "Calle 8 Sur #71a-69",
     "detail": "Un centro de retiro en un entorno tranquilo, ofreciendo actividades de relajación como masajes y terapia de aromaterapia para consentir a las mascotas y brindarles un ambiente sereno.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/10.+The+Dog+House/httpsbit.ly3OEgfTn.jpg",
@@ -243,14 +441,33 @@
       "Alimentación",
       "Veterinaria"
     ],
-    "basicPrice": 30.000
+    "basicPrice": 30.000,
+    "houseRules": [
+      "Despedirnos al retirarnos del lugar.",
+      "Hablar sin gritar.",
+      "No pisar las plantas."
+    ],
+    "healthAndSecurity": [
+      "Prohibido gritarle a los perros.",
+      "No fumar en las zonas comunes.",
+      "No tirar la basura al piso."
+    ],
+    "cancellationPolicy": [
+      "Exigimos que todos los clientes lo informen con MÁS de 24 horas de anticipación al horario programado. De lo contrario, les cobraremos la reserva completa. Ofrecemos una exención de cargo por cancelación por única vez, en virtud de la cual los clientes pueden cancelar una reserva con menos de 24 horas de anticipación sin cargo adicional."
+    ]
   },
   {
+    "id": 11,
     "name": "Pet Paradise",
-    "categoryName": "Conejos",
-    "capacity": 50,
+    "type" : {
+      "id": 4,
+      "description": "Especialidados en conejos",
+      "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Conejo.jpg",
+      "title": "Conejos"
+    },
+    "capacity": 8,
     "city": "Medellín",
-    "address": "Calle 3, via Yumbo",
+    "address": "Calle 17 #48-84",
     "detail": "Una casa de campo con amplios jardines y zonas de juegos, donde las mascotas oueden disfrutar del aire fresco y participar en actividades al aire libre en un entorno campestre.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/11.+Pet+Paradise/httpsbit.ly3BVSGxQ.jpg",
@@ -267,14 +484,35 @@
       "Alimentación",
       "Entrenamiento"
     ],
-    "basicPrice": 30.000
+    "basicPrice": 30.000,
+    "houseRules": [
+      "No golpear las cosas de la casa.",
+      "No gritar ni mostrar malos modos, incluso cuando alguien los haya tenido.",
+      "Higiene y seguridad en los establecimientos."
+    ],
+    "healthAndSecurity": [
+      "Prohibido gritarle a los perros.",
+      "No fumar en las zonas comunes.",
+      "No tirar la basura al piso."
+    ],
+    "cancellationPolicy": [
+      "Toda cancelación deberá hacerse en horario de oficina de 9am a 5pm de lunes a viernes al teléfono 55-42-09-43-13 o al correo pet_paradise@gmail.com indicando el nombre del cliente, fecha y hora de la reserva que desea cancelar.",
+      "Las cancelaciones se podrán hacer sin penalización alguna, siempre y cuando se hagan con por lo menos 24 hrs de anticipación respecto al horario agendado.",
+      "En caso de que el cliente cancele una reserva agendada con 2 horas de anticipación o menos, o en caso de que no haga una cancelación, se penalizará con el total de la duración de la reserva agendada."
+    ]
   },
   {
+    "id": 12,
     "name": "Woof Den",
-    "categoryName": "Canarios",
-    "capacity": 50,
+    "type" :   {
+      "id": 3,
+      "description": "Especialidados en canarios",
+      "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Canario.jpg",
+      "title": "Canarios"
+    },
+    "capacity": 8,
     "city": "Cali",
-    "address": "Calle 3, via Yumbo",
+    "address": "Carrera 49b #10-2",
     "detail": "Un hotel boutique decorado con estilo y elegancia, ofreciendo servicios personalizados y atención excepcional para satisfacer las necesitades individuales de cada mascota, con un toque de distinción.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/12.+Woof+Den/httpsbit.ly3MSZGlq.jpg",
@@ -290,14 +528,36 @@
       "Alimentación",
       "Veterinaria"
     ],
-    "basicPrice": 30.000
+    "basicPrice": 30.000,
+    "houseRules": [
+      "Check-out: 10:00 am",
+      "No se permiten fiestas",
+      "No fumar"
+    ],
+    "healthAndSecurity": [
+      "Se aplican las pautas de distanciamiento social y otras normas realcionadas con el coronavirus.",
+      "Detector de humo.",
+      "Depósito de seguridad"
+    ],
+    "cancellationPolicy": [
+      "Agregá las fechas de reserva para obtener los detalles de cancelación de esta estadía",
+      "Reservas límitadas, por lo que se sugiere cancelar antes de la fecha programada.",
+      "Para cancelar, se puede enviar un correo a paw_palace@gmial.com, o llamar al número 123456789",
+      "Las cancelaciones realizadas dentro de 2 horas antes de la fecha de reserva, no recibirán un reembolso."
+    ]
   },
   {
+    "id": 13,
     "name": "Whiskers Lodge",
-    "categoryName": "Perros",
-    "capacity": 50,
+    "type" : {
+      "id": 1,
+      "description": "Especialidados en perros",
+      "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Perro1.jpg",
+      "title": "Perros"
+    },
+    "capacity": 9,
     "city": "Barranquilla",
-    "address": "Calle 3, via Yumbo",
+    "address": "Calle 72 #22b-59",
     "detail": "Un alojamiento en la montaña rodeado de vistas panorámicas y senderos para maninatas, brindando a las masoctas una experiencia enriquecedora en contacto con la naturaleza y aire fresco.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/13.+Whiskers+Lodge/httpsbit.ly3IEOVAI.jpg",
@@ -313,14 +573,36 @@
       "Alimentación",
       "Entrenamiento"
     ],
-    "basicPrice": 30.000
+    "basicPrice": 30.000,
+    "houseRules": [
+      "Check-out: 11:00 am",
+      "Nada de gritos en la casa. En la casa se habla sin gritar",
+      "Prohibido el alcohol",
+      "Está prohibido lastimar a otros. No debes pegar ni dar patadas."
+    ],
+    "healthAndSecurity": [
+      "Comunicar cualquier condición insegura.",
+      "Mantener limpio y ordenado el lugar.",
+      "Prohibido arrojar basuras en el jardín."
+
+    ],
+    "cancellationPolicy": [
+      "Tenga en cuenta que no ofrecemos reembolsos.",
+      "Si nos notifica al menos 2 días de su necesidad de cancelar, acreditaremos su pago para otra reserva."
+    ]
   },
   {
+    "id": 14,
     "name": "Tail Waggers Inn",
-    "categoryName": "Gatos",
-    "capacity": 50,
+    "type" :  {
+      "id": 2,
+      "description": "Especialidados en gatos",
+      "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Gato.jpg",
+      "title": "Gatos"
+    },
+    "capacity": 9,
     "city": "Cartagena de Indias",
-    "address": "Calle 3, via Yumbo",
+    "address": "Carrera 68 #21-63",
     "detail": "Una residencia con instalaciones de entrenamiento, actividades de socialización y profesionales capacitados para asegurar el bienestar y desarrollo de las mascotas en un ambiente seguro.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/14.+Tail+Waggers+Inn/httpsbit.ly3ICuQe4.jpg",
@@ -333,14 +615,35 @@
       "Baño",
       "Alimentación"
     ],
-    "basicPrice": 30.000
+    "basicPrice": 30.000,
+    "houseRules": [
+      "Check-out: 8:00 am",
+      "Escuchar con atención cuando hable.",
+      "Dar las gracias y ser agradecido.",
+      "Ser educado y cordial siempre."
+    ],
+    "healthAndSecurity": [
+      "Deberá mantener una adecuada higiene con lavado y desinfección frecuente de manos.",
+      "Prohibido arrojar basuras en el jardín.",
+      "La comida siempre empaquetada."
+    ],
+    "cancellationPolicy": [
+      "En el caso de una emergencia real e inevitable, la totalidad o parte de su tarifa de cancelación se puede aplicar a servicios futuros.",
+      "Por favor, comprenda que los horarios de las citas son limitados. Si debe cancelar su cita, solicitamos respetuosamente un aviso de 1 día."
+    ]
   },
   {
+    "id": 15,
     "name": "Fuzzy Friends Farm",
-    "categoryName": "Conejos",
-    "capacity": 50,
+    "type" : {
+      "id": 4,
+      "description": "Especialidados en conejos",
+      "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Conejo.jpg",
+      "title": "Conejos"
+    },
+    "capacity": 9,
     "city": "Cúcuta",
-    "address": "Calle 3, via Yumbo",
+    "address": "Av. 0 #8-12.",
     "detail": "Un alojamiento ubicado en el corazón de la ciudad, son paseos por parques locales y servicios de cuidado, adaptados al ritmo de la vida urbana para que las mascotas se sientan como en casa.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/15.+Fuzzy+Friends+Farm/httpsbit.ly45s5WI3.jpg",
@@ -355,14 +658,33 @@
       "Veterinaria",
       "Entrenamiento"
     ],
-    "basicPrice": 30.000
+    "basicPrice": 30.000,
+    "houseRules": [
+      "Check-out: 9:00 am",
+      "Pedir permiso antes de coger cualquier objeto ajeno.",
+      "No comer en los pasillos.",
+      "Saludar y despedirse siempre."
+    ],
+    "healthAndSecurity": [
+      "Evita las prisas y excesos de confianza.",
+      "Mantenga limpio y ordenado el lugar."
+    ],
+    "cancellationPolicy": [
+      "Cuando reserva su cita, tiene un espacio en nuestro calendario que ya no está disponible para nuestros otros clientes. Para ser respetuoso con otros clientes, llame al 9999999 tan pronto como sepa que no podrá asistir a su reserva."
+    ]
   },
   {
+    "id": 16,
     "name": "Critter Camp",
-    "categoryName": "Canarios",
-    "capacity": 50,
+    "type" :   {
+      "id": 3,
+      "description": "Especialidados en canarios",
+      "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Canario.jpg",
+      "title": "Canarios"
+    },
+    "capacity": 9,
     "city": "Bucaramanga",
-    "address": "Calle 3, via Yumbo",
+    "address": "Carrera 19 #31-1",
     "detail": "Un Un retiro en el campo rodeado de vastos campos verdes, largos y serenos, proporcionando un ambiente tranquilo y sereno para una estancia relajante y pacífica para las mascotas.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/16.+Critter+Camp/httpstinyurl.com2n57epsy.jpg",
@@ -377,14 +699,33 @@
       "Veterinaria",
       "Entrenamiento"
     ],
-    "basicPrice": 30.000
+    "basicPrice": 30.000,
+    "houseRules": [
+      "Check-out: 8:00 am",
+      "No molestar los peces en el acuario.",
+      "Saludar y despedirse."
+
+    ],
+    "healthAndSecurity": [
+      "Utilizar tapabocas y lavarse las manos.",
+      "Mantenga limpio y ordenado el lugar."
+    ],
+    "cancellationPolicy": [
+      "Si después de 20 minutos a partir de la hora acordada para comenzar la reserva, el cliente no está disponible para comenzar, la reserva se dará por cancelada y se penalizará con el total de horas de la reserva agendada."
+    ]
   },
   {
+    "id": 17,
     "name": "Purrfect Retreat",
-    "categoryName": "Perros",
-    "capacity": 50,
+    "type" : {
+      "id": 1,
+      "description": "Especialidados en perros",
+      "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Perro1.jpg",
+      "title": "Perros"
+    },
+    "capacity": 15,
     "city": "Pereira",
-    "address": "Calle 3, via Yumbo",
+    "address": "Calle 20 #22a-65",
     "detail": "Una casa de huespedes donde las mascotas son recibidas como parte de la familia, disfrutando de cómodas habitaciones y actividades recreativas bajo la supervisión de amantes de los animales.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/17.+Purrfect+Retreat/httpsbit.ly43mVEag.jpg",
@@ -400,14 +741,35 @@
       "Veterinaria",
       "Entrenamiento"
     ],
-    "basicPrice": 30.000
+    "basicPrice": 30.000,
+    "houseRules": [
+      "Check-out: 7:00 am",
+      "Ser educados y amables.",
+      "Prohibido correr por los pasillos.",
+      "Saludar y despedirse siempre."
+    ],
+    "healthAndSecurity": [
+      "Cumplir las normas de seguridad básicas.",
+      "Lavarse las manos al llegar al lugar."
+    ],
+    "cancellationPolicy": [
+      "Si necesita cancelar su cita, le solicitamos que llame al menos dos dias por adelantado. Las reservas tienen una gran demanda y su notificación anticipada permitirá que otro cliente acceda a la hora de esa reserva.",
+      "Las cancelaciones realizadas dos días o más antes de la fecha de la reserva recibirán un reembolso del 100 %.",
+      "Las cancelaciones realizadas dentro de 24 horas antes de la reserva, no recibirán un reembolso."
+    ]
   },
   {
+    "id": 18,
     "name": "Barking Lot Lodge",
-    "categoryName": "Perros",
-    "capacity": 50,
+    "type" : {
+      "id": 1,
+      "description": "Especialidados en perros",
+      "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Perro1.jpg",
+      "title": "Perros"
+    },
+    "capacity": 7,
     "city": "Santa Marta",
-    "address": "Calle 3, via Yumbo",
+    "address": "Carrera 34 #7-265",
     "detail": "Un centro de bienestar que combina alojamiento de calidad con servicios de spa, alimentación saludable y programas de ejercicios para promover la salud y feicidad de las mascotas.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/18.+Barking+Lot+Lodge/httpsbit.ly43krcxs.jpg",
@@ -421,14 +783,36 @@
       "Alimentación",
       "Veterinaria"
     ],
-    "basicPrice": 30.000
+    "basicPrice": 30.000,
+    "houseRules": [
+      "Check-out: 10:00 am",
+      "No se permiten fiestas",
+      "No fumar"
+    ],
+    "healthAndSecurity": [
+      "Se aplican las pautas de distanciamiento social y otras normas realcionadas con el coronavirus.",
+      "Detector de humo.",
+      "Depósito de seguridad"
+    ],
+    "cancellationPolicy": [
+      "Agregá las fechas de reserva para obtener los detalles de cancelación de esta estadía",
+      "Reservas límitadas, por lo que se sugiere cancelar antes de la fecha programada.",
+      "Para cancelar, se puede enviar un correo a paw_palace@gmial.com, o llamar al número 123456789",
+      "Las cancelaciones realizadas dentro de 2 horas antes de la fecha de reserva, no recibirán un reembolso."
+    ]
   },
   {
+    "id": 19,
     "name": "Animal House",
-    "categoryName": "Canarios",
-    "capacity": 50,
+    "type" :   {
+      "id": 3,
+      "description": "Especialidados en canarios",
+      "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Canario.jpg",
+      "title": "Canarios"
+    },
+    "capacity": 7,
     "city": "Bucaramanga",
-    "address": "Calle 3, via Yumbo",
+    "address": "Carrera 10 #29-63",
     "detail": "Un refugio junto al lago con acceso directo a actividades acuaticas como natación y paseos en bote, brindando diversión y aventuras en un entorno acuático para las mascotas.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/19.+Animal+House/httpstinyurl.com9nyretnr.jpg",
@@ -443,14 +827,35 @@
       "Alimentación",
       "Veterinaria"
     ],
-    "basicPrice": 30.000
+    "basicPrice": 30.000,
+    "houseRules": [
+      "Check-out: 10:00 am",
+      "No hacer juegos o bromas dentro de la casa.",
+      "Prohibido correr por los pasillos.",
+      "Mantener ordenado el lugar."
+    ],
+    "healthAndSecurity": [
+      "Prohibido fumar.",
+      "Prohibido el alcohol.",
+      "Usar tapabocas en las áreas comunes"
+    ],
+    "cancellationPolicy": [
+      "Puede llamarnos al 3123123131 o escribirnos a happy_tails_inn@gmail.com entre las horas de 8:00 am a 7:00 pm para cancelar",
+      "Tenga en cuenta que no ofrecemos reembolsos."
+    ]
   },
   {
+    "id": 20,
     "name": "Four Paws Resort",
-    "categoryName": "Perros",
-    "capacity": 50,
+    "type" : {
+      "id": 1,
+      "description": "Especialidados en perros",
+      "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Perro1.jpg",
+      "title": "Perros"
+    },
+    "capacity": 12,
     "city": "Cali",
-    "address": "Calle 3, via Yumbo",
+    "address": "Calle 33b #67-04",
     "detail": "Una casa de vacaciones donde las mascotas disfrutan de amplias áreas de descanso, juegos al aire libre y la compañía de otros animales mientras sus dueños están fuera, creando un ambiente acogedor y alegre.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/20.+Four+Paws+Resort/httpstinyurl.com4ueahtf8.jpg",
@@ -465,15 +870,36 @@
       "Alimentación",
       "Veterinaria"
     ],
-    "basicPrice": 30.000
+    "basicPrice": 30.000,
+    "houseRules": [
+      "Ser respetuoso.",
+      "Ser honesto.",
+      "No comer en los muebles."
+    ],
+    "healthAndSecurity": [
+      "Prohibido jugar con fuego.",
+      "Prohibido consumir drogas o ingerir bebidas alcohólicas.",
+      "No tocar las matas"
+    ],
+    "cancellationPolicy": [
+      " Las cancelaciones realizadas dentro de 2 días, recibirán un reembolso del 50 %.",
+      " Sin embargo, si no cancela con al menos 5 horas de aviso, perderá los pagos que ya haya realizado.",
+      "La primera vez que un cliente falte a una reserva, haremos una nota en su expediente."
+    ]
   },
 
   {
+    "id": 21,
     "name": "Rabbit Palace",
-    "categoryName": "Conejos",
-    "capacity": 50,
+    "type" : {
+      "id": 4,
+      "description": "Especialidados en conejos",
+      "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Conejo.jpg",
+      "title": "Conejos"
+    },
+    "capacity": 18,
     "city": "Medellín",
-    "address": "Calle 3, via Yumbo",
+    "address": "Carrera 81 #6a-2",
     "detail": "Un santuario rodeado de hermosos paisajes naturales, ofreciendo una experiencia tranquila y relajante para mascotas que disfrutan de paseos y relajación en la naturaleza",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/21.+Rabbit+Palace/httpstinyurl.combdza5755.jpg",
@@ -487,14 +913,34 @@
       "Alimentación",
       "Veterinaria"
     ],
-    "basicPrice": 30.000
+    "basicPrice": 30.000,
+    "houseRules": [
+      "No nos hacemos responsables de los objetos olvidados.",
+      "Saludar al entrar a la casa.",
+      "Tener un tono de voz suave, evitar dar gritos."
+    ],
+    "healthAndSecurity": [
+      "Prohibido jugar con otros gatos.",
+      "Prohibido consumir drogas o ingerir bebidas alcohólicas.",
+      "No tocar las matas."
+    ],
+    "cancellationPolicy": [
+      "Cualquier cancelación o reprogramación realizada antes de 2 días generará una tarifa de cancelación del 15% de la reserva.",
+      "Las cancelaciones realizadas 5 días o más antes de la fecha de la reserva recibirán un reembolso del 100 %."
+    ]
   },
   {
+    "id": 22,
     "name": "Footprints Of Love",
-    "categoryName": "Perros",
-    "capacity": 50,
+    "type" : {
+      "id": 1,
+      "description": "Especialidados en perros",
+      "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Perro1.jpg",
+      "title": "Perros"
+    },
+    "capacity": 10,
     "city": "Cali",
-    "address": "Calle 3, via Yumbo",
+    "address": "Carrera 49a #51-105",
     "detail": "Un acogedor hogar para mascotas con amplios jardines y áreas de juego, donde los animales pueden socializar y disfrutar de su estancia en un entorno seguro y divertido",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/22.+Footprints+Of+Love/httpstinyurl.com2p89hpdb.jpg",
@@ -510,14 +956,33 @@
       "Veterinaria",
       "Entrenamiento"
     ],
-    "basicPrice": 30.000
+    "basicPrice": 30.000,
+    "houseRules": [
+      "Despedirnos al retirarnos del lugar.",
+      "Hablar sin gritar.",
+      "No pisar las plantas."
+    ],
+    "healthAndSecurity": [
+      "Prohibido gritarle a los perros.",
+      "No fumar en las zonas comunes.",
+      "No tirar la basura al piso."
+    ],
+    "cancellationPolicy": [
+      "Exigimos que todos los clientes lo informen con MÁS de 24 horas de anticipación al horario programado. De lo contrario, les cobraremos la reserva completa. Ofrecemos una exención de cargo por cancelación por única vez, en virtud de la cual los clientes pueden cancelar una reserva con menos de 24 horas de anticipación sin cargo adicional."
+    ]
   },
   {
+    "id": 23,
     "name": "House Mr. Cat",
-    "categoryName": "Gatos",
-    "capacity": 50,
+    "type" :  {
+      "id": 2,
+      "description": "Especialidados en gatos",
+      "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Gato.jpg",
+      "title": "Gatos"
+    },
+    "capacity": 10,
     "city": "Barranquilla",
-    "address": "Calle 3, via Yumbo",
+    "address": "Carrera 23 #44-44",
     "detail": "Un lujoso resort con suites privadas, piscinas y servicios de spa, donde los animales son tratados como verdaderos huéspedes VIP y disfrutan de un ambiente exclusivo y mimado",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/23.+House+Mr.+Cat/httpstinyurl.comyckmcp25.jpg",
@@ -530,14 +995,35 @@
       "Alimentación",
       "Veterinaria"
     ],
-    "basicPrice": 30.000
+    "basicPrice": 30.000,
+    "houseRules": [
+      "No golpear las cosas de la casa.",
+      "No gritar ni mostrar malos modos, incluso cuando alguien los haya tenido.",
+      "Higiene y seguridad en los establecimientos."
+    ],
+    "healthAndSecurity": [
+      "Prohibido gritarle a los perros.",
+      "No fumar en las zonas comunes.",
+      "No tirar la basura al piso."
+    ],
+    "cancellationPolicy": [
+      "Toda cancelación deberá hacerse en horario de oficina de 9am a 5pm de lunes a viernes al teléfono 55-42-09-43-13 o al correo pet_paradise@gmail.com indicando el nombre del cliente, fecha y hora de la reserva que desea cancelar.",
+      "Las cancelaciones se podrán hacer sin penalización alguna, siempre y cuando se hagan con por lo menos 24 hrs de anticipación respecto al horario agendado.",
+      "En caso de que el cliente cancele una reserva agendada con 2 horas de anticipación o menos, o en caso de que no haga una cancelación, se penalizará con el total de la duración de la reserva agendada."
+    ]
   },
   {
+    "id": 24,
     "name": "Flying Free",
-    "categoryName": "Canarios",
-    "capacity": 50,
+    "type" :   {
+      "id": 3,
+      "description": "Especialidados en canarios",
+      "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Canario.jpg",
+      "title": "Canarios"
+    },
+    "capacity": 8,
     "city": "Cúcuta",
-    "address": "Calle 3, via Yumbo",
+    "address": "Calle 6 #22-99",
     "detail": "Un alojamiento familiar donde las mascotas son recibidas con cariño y tienen la oportunidad de interactuar con otros animales, creando un ambiente cálido y amigable",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/24.+Flying+Free/httpstinyurl.com2xa3bwsx.jpg",
@@ -551,14 +1037,36 @@
       "Alimentación",
       "Veterinaria"
     ],
-    "basicPrice": 30.000
+    "basicPrice": 30.000,
+    "houseRules": [
+      "Check-out: 10:00 am",
+      "No se permiten fiestas",
+      "No fumar"
+    ],
+    "healthAndSecurity": [
+      "Se aplican las pautas de distanciamiento social y otras normas realcionadas con el coronavirus.",
+      "Detector de humo.",
+      "Depósito de seguridad"
+    ],
+    "cancellationPolicy": [
+      "Agregá las fechas de reserva para obtener los detalles de cancelación de esta estadía",
+      "Reservas límitadas, por lo que se sugiere cancelar antes de la fecha programada.",
+      "Para cancelar, se puede enviar un correo a paw_palace@gmial.com, o llamar al número 123456789",
+      "Las cancelaciones realizadas dentro de 2 horas antes de la fecha de reserva, no recibirán un reembolso."
+    ]
   },
   {
+    "id": 25,
     "name": "Hairy Paw",
-    "categoryName": "Perros",
-    "capacity": 50,
+    "type" : {
+      "id": 1,
+      "description": "Especialidados en perros",
+      "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Perro1.jpg",
+      "title": "Perros"
+    },
+    "capacity": 5,
     "city": "Cartagena de Indias",
-    "address": "Calle 3, via Yumbo",
+    "address": "Calle 23 #4860",
     "detail": "Una granja con amplios espacios al aire libre y animales de granja amigables, brindando a las mascotas una experiencia educativa y divertida en un entorno rural",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/25.+Hairy+Paw/httpstinyurl.com3ttyapzy.jpg",
@@ -574,14 +1082,36 @@
       "Veterinaria",
       "Entrenamiento"
     ],
-    "basicPrice": 30.000
+    "basicPrice": 30.000,
+    "houseRules": [
+      "Check-out: 11:00 am",
+      "Nada de gritos en la casa. En la casa se habla sin gritar",
+      "Prohibido el alcohol",
+      "Está prohibido lastimar a otros. No debes pegar ni dar patadas."
+    ],
+    "healthAndSecurity": [
+      "Comunicar cualquier condición insegura.",
+      "Mantener limpio y ordenado el lugar.",
+      "Prohibido arrojar basuras en el jardín."
+
+    ],
+    "cancellationPolicy": [
+      "Tenga en cuenta que no ofrecemos reembolsos.",
+      "Si nos notifica al menos 2 días de su necesidad de cancelar, acreditaremos su pago para otra reserva."
+    ]
   },
   {
+    "id": 26,
     "name": "Happy Claws",
-    "categoryName": "Gatos",
-    "capacity": 50,
+    "type" :  {
+      "id": 2,
+      "description": "Especialidados en gatos",
+      "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Gato.jpg",
+      "title": "Gatos"
+    },
+    "capacity": 5,
     "city": "Bucaramanga",
-    "address": "Calle 3, via Yumbo",
+    "address": "Calle 63#17e01",
     "detail": "Un hogar acogedor con atención personalizada, paseos diarios y actividades recreativas ara mantener a las mascotas felices y activas, creando un ambiente cálido y familiar",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/26.+Happy+Claws/httpstinyurl.com2p9yt3sv.jpg",
@@ -595,14 +1125,37 @@
       "Alimentación",
       "Veterinaria"
     ],
-    "basicPrice": 30.000
+    "basicPrice": 30.000,
+    "houseRules": [
+      "Check-out: 8:00 am",
+      "Escuchar con atención cuando hable.",
+      "Dar las gracias y ser agradecido.",
+      "Ser educado y cordial siempre."
+    ],
+    "healthAndSecurity": [
+      "Deberá mantener una adecuada higiene con lavado y desinfección frecuente de manos.",
+      "Prohibido arrojar basuras en el jardín.",
+      "La comida siempre empaquetada."
+
+
+    ],
+    "cancellationPolicy": [
+      "En el caso de una emergencia real e inevitable, la totalidad o parte de su tarifa de cancelación se puede aplicar a servicios futuros.",
+      "Por favor, comprenda que los horarios de las citas son limitados. Si debe cancelar su cita, solicitamos respetuosamente un aviso de 1 día."
+    ]
   },
   {
+    "id": 27,
     "name": "Ojeras Grandes",
-    "categoryName": "Conejos",
-    "capacity": 50,
+    "type" : {
+      "id": 4,
+      "description": "Especialidados en conejos",
+      "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Conejo.jpg",
+      "title": "Conejos"
+    },
+    "capacity": 10,
     "city": "Pereira",
-    "address": "Calle 3, via Yumbo",
+    "address": "Calle 23 #12-57",
     "detail": "Un paraíso junto al mar con playas privadas, juegos acuáticos y servicios de cuidado especializados, para ofreecr a las mascotas unas vacaciones inolvidables junto a la costa",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/27.+Ojeras+Grandes/httpstinyurl.comy4xsrrn7.jpg",
@@ -617,14 +1170,33 @@
       "Veterinaria",
       "Entrenamiento"
     ],
-    "basicPrice": 30.000
+    "basicPrice": 30.000,
+    "houseRules": [
+      "Check-out: 9:00 am",
+      "Pedir permiso antes de coger cualquier objeto ajeno.",
+      "No comer en los pasillos.",
+      "Saludar y despedirse siempre."
+    ],
+    "healthAndSecurity": [
+      "Evita las prisas y excesos de confianza.",
+      "Mantenga limpio y ordenado el lugar."
+    ],
+    "cancellationPolicy": [
+      "Cuando reserva su cita, tiene un espacio en nuestro calendario que ya no está disponible para nuestros otros clientes. Para ser respetuoso con otros clientes, llame al 9999999 tan pronto como sepa que no podrá asistir a su reserva."
+    ]
   },
   {
+    "id": 28,
     "name": "An Adventure In The Air",
-    "categoryName": "Canarios",
-    "capacity": 50,
+    "type" :   {
+      "id": 3,
+      "description": "Especialidados en canarios",
+      "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Canario.jpg",
+      "title": "Canarios"
+    },
+    "capacity": 9,
     "city": "Santa Marta",
-    "address": "Calle 3, via Yumbo",
+    "address": "Carrera 5 #7-123",
     "detail": "Un refugio en medio de la naturaleza, rodeado de bosques y senderos para explorar, dondne las mascotas pueden disfrutar de aventuras al aire libre y tranquilidad en un entorno natural",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/28.+An+Adventure+In+The+Air/httpstinyurl.com5x8evnsm.jpg",
@@ -639,14 +1211,33 @@
       "Veterinaria",
       "Entrenamiento"
     ],
-    "basicPrice": 30.000
+    "basicPrice": 30.000,
+    "houseRules": [
+      "Check-out: 8:00 am",
+      "No molestar los peces en el acuario.",
+      "Saludar y despedirse."
+
+    ],
+    "healthAndSecurity": [
+      "Utilizar tapabocas y lavarse las manos.",
+      "Mantenga limpio y ordenado el lugar."
+    ],
+    "cancellationPolicy": [
+      "Si después de 20 minutos a partir de la hora acordada para comenzar la reserva, el cliente no está disponible para comenzar, la reserva se dará por cancelada y se penalizará con el total de horas de la reserva agendada."
+    ]
   },
   {
+    "id": 29,
     "name": "Meow Hotel",
-    "categoryName": "Gatos",
-    "capacity": 50,
+    "type" :  {
+      "id": 2,
+      "description": "Especialidados en gatos",
+      "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Gato.jpg",
+      "title": "Gatos"
+    },
+    "capacity": 12,
     "city": "Ibagué",
-    "address": "Calle 3, via Yumbo",
+    "address": "Carrera 9 #19a-237",
     "detail": "Un moderno hotel con suites temáticas, áreas de juegos interactivos y cuidadores dedicados, brindando a las mascotas una estancia cómda y entretenida con un toque de estilo.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/29.+Meow+Hotel/httpstinyurl.com3a8ssx75.jpg",
@@ -660,14 +1251,35 @@
       "Alimentación",
       "Veterinaria"
     ],
-    "basicPrice": 30.000
+    "basicPrice": 30.000,
+    "houseRules": [
+      "Check-out: 7:00 am",
+      "Ser educados y amables.",
+      "Prohibido correr por los pasillos.",
+      "Saludar y despedirse siempre."
+    ],
+    "healthAndSecurity": [
+      "Cumplir las normas de seguridad básicas.",
+      "Lavarse las manos al llegar al lugar."
+    ],
+    "cancellationPolicy": [
+      "Si necesita cancelar su cita, le solicitamos que llame al menos dos dias por adelantado. Las reservas tienen una gran demanda y su notificación anticipada permitirá que otro cliente acceda a la hora de esa reserva.",
+      "Las cancelaciones realizadas dos días o más antes de la fecha de la reserva recibirán un reembolso del 100 %.",
+      "Las cancelaciones realizadas dentro de 24 horas antes de la reserva, no recibirán un reembolso."
+    ]
   },
   {
+    "id": 30,
     "name": "Colas Felices",
-    "categoryName": "Perros",
-    "capacity": 50,
+    "type" : {
+      "id": 1,
+      "description": "Especialidados en perros",
+      "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Perro1.jpg",
+      "title": "Perros"
+    },
+    "capacity": 7,
     "city": "Bogotá D.C",
-    "address": "Calle 3, via Yumbo",
+    "address": "Calle 127c Bis #89-2",
     "detail": "Un centro de retiro en un entorno tranquilo, ofreciendo actividades de relajación como masajes y terapia de aromaterapia para consentir a las mascotas y brindarles un ambiente sereno.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/30.+Colas+Felices/httpstinyurl.com3b5y3s2u.jpg",
@@ -682,14 +1294,35 @@
       "Alimentación",
       "Veterinaria"
     ],
-    "basicPrice": 30.000
+    "basicPrice": 30.000,
+    "houseRules": [
+      "Ser respetuoso.",
+      "Ser honesto.",
+      "No comer en los muebles."
+    ],
+    "healthAndSecurity": [
+      "Prohibido jugar con fuego.",
+      "Prohibido consumir drogas o ingerir bebidas alcohólicas.",
+      "No tocar las matas"
+    ],
+    "cancellationPolicy": [
+      " Las cancelaciones realizadas dentro de 2 días, recibirán un reembolso del 50 %.",
+      " Sin embargo, si no cancela con al menos 5 horas de aviso, perderá los pagos que ya haya realizado.",
+      "La primera vez que un cliente falte a una reserva, haremos una nota en su expediente."
+    ]
   },
   {
+    "id": 31,
     "name": "Orejas Alegres",
-    "categoryName": "Conejos",
-    "capacity": 50,
+    "type" : {
+      "id": 4,
+      "description": "Especialidados en conejos",
+      "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Conejo.jpg",
+      "title": "Conejos"
+    },
+    "capacity": 5,
     "city": "Medellín",
-    "address": "Calle 3, via Yumbo",
+    "address": "Av. 33 #52-19",
     "detail": "Una casa de campo con amplios jardines y zonas de juegos, donde las mascotas oueden disfrutar del aire fresco y participar en actividades al aire libre en un entorno campestre.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/31.+Orejas+Alegres/httpstinyurl.com2p9r9mse.jpg",
@@ -703,14 +1336,33 @@
       "Alimentación",
       "Entrenamiento"
     ],
-    "basicPrice": 30.000
+    "basicPrice": 30.000,
+    "houseRules": [
+      "Despedirnos al retirarnos del lugar.",
+      "Hablar sin gritar.",
+      "No pisar las plantas."
+    ],
+    "healthAndSecurity": [
+      "Prohibido gritarle a los perros.",
+      "No fumar en las zonas comunes.",
+      "No tirar la basura al piso."
+    ],
+    "cancellationPolicy": [
+      "Exigimos que todos los clientes lo informen con MÁS de 24 horas de anticipación al horario programado. De lo contrario, les cobraremos la reserva completa. Ofrecemos una exención de cargo por cancelación por única vez, en virtud de la cual los clientes pueden cancelar una reserva con menos de 24 horas de anticipación sin cargo adicional."
+    ]
   },
   {
+    "id": 32,
     "name": "Harmonious Wings",
-    "categoryName": "Canarios",
-    "capacity": 50,
+    "type" :   {
+      "id": 3,
+      "description": "Especialidados en canarios",
+      "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Canario.jpg",
+      "title": "Canarios"
+    },
+    "capacity": 12,
     "city": "Cali",
-    "address": "Calle 3, via Yumbo",
+    "address": "Carrera 80 #4-10",
     "detail": "Un hotel boutique decorado con estilo y elegancia, ofreciendo servicios personalizados y atención excepcional para satisfacer las necesitades individuales de cada mascota, con un toque de distinción.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/32.+Harmonious+Wings/httpstinyurl.commprwbkv6.jpg",
@@ -724,14 +1376,36 @@
       "Alimentación",
       "Veterinaria"
     ],
-    "basicPrice": 30.000
+    "basicPrice": 30.000,
+    "houseRules": [
+      "No golpear las cosas de la casa.",
+      "No gritar ni mostrar malos modos, incluso cuando alguien los haya tenido.",
+      "Higiene y seguridad en los establecimientos."
+    ],
+    "healthAndSecurity": [
+      "Prohibido gritarle a los perros.",
+      "No fumar en las zonas comunes.",
+      "No tirar la basura al piso."
+    ],
+    "cancellationPolicy": [
+      "Toda cancelación deberá hacerse en horario de oficina de 9am a 5pm de lunes a viernes al teléfono 55-42-09-43-13 o al correo pet_paradise@gmail.com indicando el nombre del cliente, fecha y hora de la reserva que desea cancelar.",
+      "Las cancelaciones se podrán hacer sin penalización alguna, siempre y cuando se hagan con por lo menos 24 hrs de anticipación respecto al horario agendado.",
+      "En caso de que el cliente cancele una reserva agendada con 2 horas de anticipación o menos, o en caso de que no haga una cancelación, se penalizará con el total de la duración de la reserva agendada."
+    ]
   },
   {
+    "id": 33,
     "name": "Dogs Playing",
-    "categoryName": "Perros",
-    "capacity": 50,
+    "type" : {
+      "id": 1,
+      "description": "Especialidados en perros",
+      "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Perro1.jpg",
+      "title": "Perros"
+    },
+
+    "capacity": 11,
     "city": "Barranquilla",
-    "address": "Calle 3, via Yumbo",
+    "address": "Calle 75 #57-38",
     "detail": "Un alojamiento en la montaña rodeado de vistas panorámicas y senderos para maninatas, brindando a las masoctas una experiencia enriquecedora en contacto con la naturaleza y aire fresco.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/33.+Dogs+Playing/httpstinyurl.comyh4w8vvd.jpg",
@@ -746,14 +1420,36 @@
       "Alimentación",
       "Entrenamiento"
     ],
-    "basicPrice": 30.000
+    "basicPrice": 30.000,
+    "houseRules": [
+      "Check-out: 10:00 am",
+      "No se permiten fiestas",
+      "No fumar"
+    ],
+    "healthAndSecurity": [
+      "Se aplican las pautas de distanciamiento social y otras normas realcionadas con el coronavirus.",
+      "Detector de humo.",
+      "Depósito de seguridad"
+    ],
+    "cancellationPolicy": [
+      "Agregá las fechas de reserva para obtener los detalles de cancelación de esta estadía",
+      "Reservas límitadas, por lo que se sugiere cancelar antes de la fecha programada.",
+      "Para cancelar, se puede enviar un correo a paw_palace@gmial.com, o llamar al número 123456789",
+      "Las cancelaciones realizadas dentro de 2 horas antes de la fecha de reserva, no recibirán un reembolso."
+    ]
   },
   {
+    "id": 34,
     "name": "Mi Amigo El Gato",
-    "categoryName": "Gatos",
-    "capacity": 50,
+    "type" :  {
+      "id": 2,
+      "description": "Especialidados en gatos",
+      "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Gato.jpg",
+      "title": "Gatos"
+    },
+    "capacity": 12,
     "city": "Cartagena de Indias",
-    "address": "Calle 3, via Yumbo",
+    "address": "Carrera 4 # 6 - 119",
     "detail": "Una residencia con instalaciones de entrenamiento, actividades de socialización y profesionales capacitados para asegurar el bienestar y desarrollo de las mascotas en un ambiente seguro.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/34.+Mi+Amigo+El+Gato/httpstinyurl.com2p87nszz.jpg",
@@ -766,14 +1462,36 @@
       "Baño",
       "Alimentación"
     ],
-    "basicPrice": 30.000
+    "basicPrice": 30.000,
+    "houseRules": [
+      "Check-out: 11:00 am",
+      "Nada de gritos en la casa. En la casa se habla sin gritar",
+      "Prohibido el alcohol",
+      "Está prohibido lastimar a otros. No debes pegar ni dar patadas."
+    ],
+    "healthAndSecurity": [
+      "Comunicar cualquier condición insegura.",
+      "Mantener limpio y ordenado el lugar.",
+      "Prohibido arrojar basuras en el jardín."
+
+    ],
+    "cancellationPolicy": [
+      "Tenga en cuenta que no ofrecemos reembolsos.",
+      "Si nos notifica al menos 2 días de su necesidad de cancelar, acreditaremos su pago para otra reserva."
+    ]
   },
   {
+    "id": 35,
     "name": "Cute Ears",
-    "categoryName": "Conejos",
-    "capacity": 50,
+    "type" : {
+      "id": 4,
+      "description": "Especialidados en conejos",
+      "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Conejo.jpg",
+      "title": "Conejos"
+    },
+    "capacity": 8,
     "city": "Cúcuta",
-    "address": "Calle 3, via Yumbo",
+    "address": "Calle 13 #747",
     "detail": "Un alojamiento ubicado en el corazón de la ciudad, son paseos por parques locales y servicios de cuidado, adaptados al ritmo de la vida urbana para que las mascotas se sientan como en casa.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/35.+Cute+Ears/httpstinyurl.comy3rpbxrm.jpg",
@@ -788,14 +1506,37 @@
       "Veterinaria",
       "Entrenamiento"
     ],
-    "basicPrice": 30.000
+    "basicPrice": 30.000,
+    "houseRules": [
+      "Check-out: 8:00 am",
+      "Escuchar con atención cuando hable.",
+      "Dar las gracias y ser agradecido.",
+      "Ser educado y cordial siempre."
+    ],
+    "healthAndSecurity": [
+      "Deberá mantener una adecuada higiene con lavado y desinfección frecuente de manos.",
+      "Prohibido arrojar basuras en el jardín.",
+      "La comida siempre empaquetada."
+
+
+    ],
+    "cancellationPolicy": [
+      "En el caso de una emergencia real e inevitable, la totalidad o parte de su tarifa de cancelación se puede aplicar a servicios futuros.",
+      "Por favor, comprenda que los horarios de las citas son limitados. Si debe cancelar su cita, solicitamos respetuosamente un aviso de 1 día."
+    ]
   },
   {
+    "id": 36,
     "name": "Canary Hotel",
-    "categoryName": "Canarios",
-    "capacity": 50,
+    "type" :   {
+      "id": 3,
+      "description": "Especialidados en canarios",
+      "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Canario.jpg",
+      "title": "Canarios"
+    },
+    "capacity": 9,
     "city": "Bucaramanga",
-    "address": "Calle 3, via Yumbo",
+    "address": "Carrera 26 #16-45",
     "detail": "Un Un retiro en el campo rodeado de vastos campos verdes, largos y serenos, proporcionando un ambiente tranquilo y sereno para una estancia relajante y pacífica para las mascotas.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/36.+Canary+Hotel/httpstinyurl.comycpd2e4x.jpg",
@@ -810,14 +1551,33 @@
       "Veterinaria",
       "Entrenamiento"
     ],
-    "basicPrice": 30.000
+    "basicPrice": 30.000,
+    "houseRules": [
+      "Check-out: 9:00 am",
+      "Pedir permiso antes de coger cualquier objeto ajeno.",
+      "No comer en los pasillos.",
+      "Saludar y despedirse siempre."
+    ],
+    "healthAndSecurity": [
+      "Evita las prisas y excesos de confianza.",
+      "Mantenga limpio y ordenado el lugar."
+    ],
+    "cancellationPolicy": [
+      "Cuando reserva su cita, tiene un espacio en nuestro calendario que ya no está disponible para nuestros otros clientes. Para ser respetuoso con otros clientes, llame al 9999999 tan pronto como sepa que no podrá asistir a su reserva."
+    ]
   },
   {
+    "id": 37,
     "name": "Patas Andantes",
-    "categoryName": "Perros",
-    "capacity": 50,
+    "type" :   {
+      "id": 3,
+      "description": "Especialidados en canarios",
+      "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Canario.jpg",
+      "title": "Canarios"
+    },
+    "capacity": 10,
     "city": "Pereira",
-    "address": "Calle 3, via Yumbo",
+    "address": "Carrera 34 #72-2",
     "detail": "Una casa de huespedes donde las mascotas son recibidas como parte de la familia, disfrutando de cómodas habitaciones y actividades recreativas bajo la supervisión de amantes de los animales.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/37.+Patas+Andantes/httpstinyurl.comyzuy8s78.jpg",
@@ -833,14 +1593,33 @@
       "Veterinaria",
       "Entrenamiento"
     ],
-    "basicPrice": 30.000
+    "basicPrice": 30.000,
+    "houseRules": [
+      "Check-out: 8:00 am",
+      "No molestar los peces en el acuario.",
+      "Saludar y despedirse."
+
+    ],
+    "healthAndSecurity": [
+      "Utilizar tapabocas y lavarse las manos.",
+      "Mantenga limpio y ordenado el lugar."
+    ],
+    "cancellationPolicy": [
+      "Si después de 20 minutos a partir de la hora acordada para comenzar la reserva, el cliente no está disponible para comenzar, la reserva se dará por cancelada y se penalizará con el total de horas de la reserva agendada."
+    ]
   },
   {
+    "id": 38,
     "name": "Cuatro Patas",
-    "categoryName": "Perros",
-    "capacity": 50,
+    "type" : {
+      "id": 1,
+      "description": "Especialidados en perros",
+      "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Perro1.jpg",
+      "title": "Perros"
+    },
+    "capacity": 6,
     "city": "Santa Marta",
-    "address": "Calle 3, via Yumbo",
+    "address": "Carrera 19 #7-141",
     "detail": "Un centro de bienestar que combina alojamiento de calidad con servicios de spa, alimentación saludable y programas de ejercicios para promover la salud y feicidad de las mascotas.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/38.+Cuatro+Patas/httpstinyurl.comymvzuv3z.jpg",
@@ -854,14 +1633,35 @@
       "Alimentación",
       "Veterinaria"
     ],
-    "basicPrice": 30.000
+    "basicPrice": 30.000,
+    "houseRules": [
+      "Check-out: 7:00 am",
+      "Ser educados y amables.",
+      "Prohibido correr por los pasillos.",
+      "Saludar y despedirse siempre."
+    ],
+    "healthAndSecurity": [
+      "Cumplir las normas de seguridad básicas.",
+      "Lavarse las manos al llegar al lugar."
+    ],
+    "cancellationPolicy": [
+      "Si necesita cancelar su cita, le solicitamos que llame al menos dos dias por adelantado. Las reservas tienen una gran demanda y su notificación anticipada permitirá que otro cliente acceda a la hora de esa reserva.",
+      "Las cancelaciones realizadas dos días o más antes de la fecha de la reserva recibirán un reembolso del 100 %.",
+      "Las cancelaciones realizadas dentro de 24 horas antes de la reserva, no recibirán un reembolso."
+    ]
   },
   {
+    "id": 39,
     "name": "Bird House",
-    "categoryName": "Canarios",
-    "capacity": 50,
+    "type" :   {
+      "id": 3,
+      "description": "Especialidados en canarios",
+      "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Canario.jpg",
+      "title": "Canarios"
+    },
+    "capacity": 6,
     "city": "Bucaramanga",
-    "address": "Calle 3, via Yumbo",
+    "address": "Calle 6 #1345",
     "detail": "Un refugio junto al lago con acceso directo a actividades acuaticas como natación y paseos en bote, brindando diversión y aventuras en un entorno acuático para las mascotas.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/39.+Bird+House/httpstinyurl.com5esbfkyx.jpg",
@@ -875,14 +1675,35 @@
       "Alimentación",
       "Veterinaria"
     ],
-    "basicPrice": 30.000
+    "basicPrice": 30.000,
+    "houseRules": [
+      "Check-out: 7:00 am",
+      "Ser educados y amables.",
+      "Prohibido correr por los pasillos.",
+      "Saludar y despedirse siempre."
+    ],
+    "healthAndSecurity": [
+      "Cumplir las normas de seguridad básicas.",
+      "Lavarse las manos al llegar al lugar."
+    ],
+    "cancellationPolicy": [
+      "Si necesita cancelar su cita, le solicitamos que llame al menos dos dias por adelantado. Las reservas tienen una gran demanda y su notificación anticipada permitirá que otro cliente acceda a la hora de esa reserva.",
+      "Las cancelaciones realizadas dos días o más antes de la fecha de la reserva recibirán un reembolso del 100 %.",
+      "Las cancelaciones realizadas dentro de 24 horas antes de la reserva, no recibirán un reembolso."
+    ]
   },
   {
+    "id": 40,
     "name": "Four Paws Resort",
-    "categoryName": "Perros",
-    "capacity": 50,
+    "type" : {
+      "id": 1,
+      "description": "Especialidados en perros",
+      "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Perro1.jpg",
+      "title": "Perros"
+    },
+    "capacity": 20,
     "city": "Cali",
-    "address": "Calle 3, via Yumbo",
+    "address": "Av. 8 Nte. #45",
     "detail": "Una casa de vacaciones donde las mascotas disfrutan de amplias áreas de descanso, juegos al aire libre y la compañía de otros animales mientras sus dueños están fuera, creando un ambiente acogedor y alegre.",
     "images": [
       "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesPetDayCare/40.+Four+Paws+Resort/httpstinyurl.comnab8xerk.jpg",
@@ -897,6 +1718,20 @@
       "Alimentación",
       "Veterinaria"
     ],
-    "basicPrice": 30.000
+    "basicPrice": 30.000,
+    "houseRules": [
+      "No nos hacemos responsables de los objetos olvidados.",
+      "Saludar al entrar a la casa.",
+      "Tener un tono de voz suave, evitar dar gritos."
+    ],
+    "healthAndSecurity": [
+      "Prohibido jugar con otros perros.",
+      "Prohibido consumir drogas o ingerir bebidas alcohólicas.",
+      "No tocar las matas."
+    ],
+    "cancellationPolicy": [
+      "Cualquier cancelación o reprogramación realizada antes de 2 días generará una tarifa de cancelación del 15% de la reserva.",
+      "Las cancelaciones realizadas 5 días o más antes de la fecha de la reserva recibirán un reembolso del 100 %."
+    ]
   }
 ]

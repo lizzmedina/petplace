@@ -1,10 +1,21 @@
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
+import { useContextGlobal } from '../components/utils/global.constext';
 import Swal from 'sweetalert2';
 
 export const FormNewCategory = () => {
+    const { urlCategory } = useContextGlobal();
 
     const userConnected = JSON.parse(localStorage.getItem('userConnected')) || null; //Para validad el tipo de usuario, si no esta logeado no cargara la pagina
+
+    const [categoryInDataBase, setCategoryInDataBase] = useState([]);
+    const getAllCategoryDataBase = async () => {
+        const res = await fetch(`${urlCategory}/all`);
+        const data = await res.json();
+        setCategoryInDataBase(data);
+    };
+    useEffect(() => {
+        getAllCategoryDataBase();
+    }, []);
 
     const [newCategory, setNewCategory] = useState({
         title: "",
@@ -28,56 +39,69 @@ export const FormNewCategory = () => {
             [name]: ""
         }));
     };
+
     const handleSubmit = (event) => {
         event.preventDefault();
-        const urlPost = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/category`;
 
-        // Validar los campos antes de enviar la solicitud
-        let formIsValid = true;
-        const newErrors = { ...errors };
+        const categoryExists = categoryInDataBase.some((category) =>
+            category.title.toLowerCase() === newCategory.title.toLowerCase()
+        );
 
-        if (!newCategory.title.match(/^[a-zA-Z\s]+$/)) {
-        formIsValid = false;
-        newErrors.title = "Ingrese un nombre válido (solo letras)";
-        }
-
-        if (!newCategory.description || newCategory.description.trim() === "") {
-        formIsValid = false;
-        newErrors.description = "Ingrese una descripción válida";
-        }
-
-        if (!newCategory.image?.match(/^(ftp|http|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?$/
-        )) {
-            formIsValid = false;
-            newErrors.image = "Ingrese una URL de imagen válida";
-        }
-
-        if (formIsValid) {
-            // Enviar los datos de newCategory al endpoint de creación en el backend
-            fetch(urlPost, {
-                method: "POST",
-                headers: {
-                "Content-Type": "application/json"
-                },
-                body: JSON.stringify(newCategory)
-            })
-            .then((response) => response.json())
-            .then(() => {
-                Swal.fire( {
-                    text: "¡Categoría creada exitosamente!",
-                    icon: "success",
-                });
-                setNewCategory({
-                    title: "",
-                    description: "",
-                    image: ""
-                });
-            })
-            .catch((error) => {
-                console.error("Error creating category:", error);
+        if (categoryExists) {
+            Swal.fire({
+                icon: 'error',
+                title: 'La categoría elegida ya ha sido creada previamente, intenta con otra.',
             });
         } else {
-            setErrors(newErrors);
+            const urlPost = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/category`;
+
+            // Validar los campos antes de enviar la solicitud
+            let formIsValid = true;
+            const newErrors = { ...errors };
+
+            if (!newCategory.title.match(/^[a-zA-Z\s]+$/)) {
+                formIsValid = false;
+                newErrors.title = "Ingrese un nombre válido (solo letras)";
+            }
+
+            if (!newCategory.description || newCategory.description.trim() === "") {
+                formIsValid = false;
+                newErrors.description = "Ingrese una descripción válida";
+            }
+
+            if (!newCategory.image?.match(/^(ftp|http|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?$/
+            )) {
+                formIsValid = false;
+                newErrors.image = "Ingrese una URL de imagen válida";
+            }
+
+            if (formIsValid) {
+                // Enviar los datos de newCategory al endpoint de creación en el backend
+                fetch(urlPost, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(newCategory)
+                })
+                    .then((response) => response.json())
+                    .then(() => {
+                        Swal.fire({
+                            text: "¡Categoría creada exitosamente!",
+                            icon: "success",
+                        });
+                        setNewCategory({
+                            title: "",
+                            description: "",
+                            image: ""
+                        });
+                    })
+                    .catch((error) => {
+                        console.error("Error creating category:", error);
+                    });
+            } else {
+                setErrors(newErrors);
+            }
         }
     };
 
@@ -87,12 +111,12 @@ export const FormNewCategory = () => {
 
             
             <div className="titles-new-category">
-                <h2 className="title-form-new-category">{userConnected.type !== "Manager" ? "Página no encontrada" : "Crear nueva categoría"}</h2>
-                <h3 className="instructions-form-new-category">{userConnected.type !== "Manager" ? "" : "Crear nueva categoría"}</h3>
+                <h2 className="title-form-new-category">{userConnected?.type !== "Manager" ? "Página no encontrada" : "Crear nueva categoría"}</h2>
+                <h3 className="instructions-form-new-category">{userConnected?.type !== "Manager" ? "" : "Crear nueva categoría"}</h3>
             </div>
             
 
-            {userConnected.type === "Manager" && (
+            {userConnected?.type === "Manager" && (
                 <form onSubmit={handleSubmit} className="form-new-category" >
                     <div className="title-input-container">
                         <label htmlFor="title">Titulo:</label>

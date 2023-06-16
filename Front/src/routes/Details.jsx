@@ -3,6 +3,7 @@ import { Product } from "../components/Product.jsx";
 import { useParams } from 'react-router-dom'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
+
 const Details = () => {
 
       const [details, setDetails] = useState([])
@@ -18,23 +19,27 @@ const Details = () => {
       }, [])
 
       return (
+            <>
             <div className="detail-container">  
-
                   <Product
                         id={details.id}
-                        type={details.type}
                         name={details.name}
-                        image={details.images}
+                        type={details.type}
                         capacity={details.capacity}
-                        address={details.address}
                         city={details.city}
+                        address={details.address}
                         detail={details.detail}
+                        image={details.images}
                         basicPrice={details.basicPrice}
-                        characteristics={details.characteristics}
+                        features={details.characteristics}
+                        houseRules={details.houseRules}
+                        healthAndSecurity={details.healthAndSecurity}
+                        cancellationPolicy={details.cancellationPolicy}
                   />
-                                   
-                  
             </div>
+            
+            </>
+            
       )
 }
 

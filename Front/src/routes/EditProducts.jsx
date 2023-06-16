@@ -5,18 +5,27 @@ import { useContextGlobal } from '../components/utils/global.constext';
 import Swal from 'sweetalert2';
 
 function EditProducts() {
-    const { places, setPlaces } = useContextGlobal();
+    const { places, setPlaces, urlGetCities, urlGetProducts, urlPostProducts } = useContextGlobal();
 
     const userConnected = JSON.parse(localStorage.getItem('userConnected')) || null;  //Para validad el tipo de usuario, si no esta logeado no cargara la pagina
 
     const [allProducts, setAllProducts] = useState([]);
     const getAllProducts = async () => {
-        const res = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/petDayCare/all`);
+        const res = await fetch(urlGetProducts);
         const data = await res.json();
         setAllProducts(data);
     };
     useEffect(() => {
         getAllProducts();
+    }, []);
+
+    const [cities, setCities] = useState([]);
+    useEffect(() => {
+        fetch(urlGetCities)
+            .then((res) => res.json())
+            .then((data) => {
+                setCities(data);
+            });
     }, []);
 
     const deleteProduct = async (id, name) => {
@@ -71,7 +80,13 @@ function EditProducts() {
                                             )}
                                             </select>` +
                                             '<p>Ciudad: </p> ' +
-                                            `<input id="ciudad" class="swal2-input" value="${product.city}" required>` +
+                                            `<select id="ciudad" class="swal2-input">
+                                            ${cities.map(
+                                                (city) =>
+                                                    `<option value="${city.name}" ${city.name === product.city.name ? 'selected' : ''
+                                                    }>${city.name}</option>`
+                                            )}
+                                            </select>` +
                                             '<p>Direccion: </p> ' +
                                             `<input id="direccion" class="swal2-input" value="${product.address}" required>` +
                                             '<p>Descripcion: </p> ' +
@@ -106,15 +121,15 @@ function EditProducts() {
                                             name: nombre,
                                             capacity: capacidad,
                                             basicPrice: precio,
-                                            categoryName: categoria,
-                                            city: ciudad,
+                                            type: {title: categoria},
+                                            city: {name: ciudad},
                                             address: direccion,
                                             detail: detail,
                                             images: product.images,
                                             characteristics: product.characteristics,
                                         };
 
-                                        fetch('http://127.0.0.1:8080/api/v1/petDayCare/edit', {
+                                        fetch(`${urlPostProducts}/edit`, {
                                             method: 'PUT',
                                             headers: {
                                                 'Content-Type': 'application/json',

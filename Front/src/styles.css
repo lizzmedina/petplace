@@ -3,6 +3,9 @@
     box-sizing: border-box;
     font-family: 'Quicksand', sans-serif;
 }
+html {
+    scroll-behavior: smooth;
+}
 
 body {
     width: 100%;
@@ -13,7 +16,7 @@ body {
 :root {
     --color1: #f9f9f9;
     /* blanco */
-    --color2: #9E6EAF;
+    --color2: #9e6eaf;
     /* MoradoClaro */
     --color3: #8ED1B9;
     /* verde */
@@ -81,8 +84,10 @@ a:active {
 
 .slogan-navbar {
     margin: 1rem;
-    color: #31363F;
-    font-size: 1.2rem;
+    color: var(--color6);
+    font-size: 1rem;
+    font-weight:500;
+    
 }
 
 .navbar-link-container {
@@ -127,9 +132,12 @@ a:active {
     width: 100%;
     min-height: 6.26rem;
     padding: 0.93rem;
-    padding-left: 15vw;
+    padding-left: calc(50% - 510px);
 }
-
+.searcher-container p {
+    margin: 1.5rem 1rem 1rem 1rem;
+    justify-content: center;
+}
 .searcher {
     display: flex;
     flex-direction: row;
@@ -308,8 +316,9 @@ a:active {
 }
 
 .card-descrption-recommends::after {
-    content: "  más...";
-    color: var(--color2);
+    content: " Seguir leyendo";
+    color: var(--color3);
+    font-weight: 600;
 }
 
 .card-price-recommends {
@@ -370,26 +379,59 @@ a.ver-mas-recommends {
     flex-direction: column;
     padding: 3rem 0;
 }
-
+.account-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 80%;
+    max-width: 40rem;
+    background-color: var(--color1);
+    border-radius:15px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin: 0 0 1.5rem 0;
+}
 .space-section h2 {
     color: var(--color2);
+    text-align: center;
+    margin: 1rem 0 0 0;
 }
+.icon-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+}
+.circle-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 120px;
+    background-color: var(--color3);
+    color: white;
+    border-radius: 50%;
+    padding: 10px;
 
+}
 .form-container {
     display: flex;
     align-items: center;
     flex-direction: column;
     height: 100%;
+    width: 85%;
+    max-width: 30rem;
     padding: 20px;
-    width: 100%;
 }
-
+.form-container h4{
+    color: var(--color2);
+}
 .form-section {
     display: flex;
     flex-direction: column;
     height: 100%;
     padding-top: 1rem;
-    width: 60%;
+    width: 80%;
 }
 
 .form-section-name {
@@ -403,9 +445,6 @@ a.ver-mas-recommends {
     font-weight: bold;
 }
 
-.space-section p {
-    font-weight: bold;
-}
 
 .box {
     width: 45%;
@@ -439,7 +478,6 @@ input,
 select {
     border-radius: 5px;
     border: 1px solid #bababa;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     min-height: 1.8rem;
     transition: .4s;
 }
@@ -461,6 +499,9 @@ input:hover {
 
 .datoUser {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .options-container {
@@ -477,8 +518,9 @@ input:hover {
     height: 20rem;
     align-items: center;
     border-radius: 10px;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     margin: 1rem;
+    background-color: var(--color1);
 }
 
 .options h3 {
@@ -570,7 +612,7 @@ input:hover {
 }
 
 /* Form Product */
-.button-AddImage {
+.button-Add {
     border-color: var(--color2);
     background-color: var(--color2);
     color: var(--color1);
@@ -587,6 +629,76 @@ input:hover {
 
 .servicios {
     display: flex;
+}
+
+/* Form City */
+
+.map-section{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 20rem;
+    width: 100%;
+    margin: 20px
+}
+.location-FormCity{
+    height: 100%;
+    width: 100%;
+}
+.data-city{
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 20px;
+}
+.select-formCity{
+    width: 250px;
+}
+
+/* Edit City */
+
+.city-modal{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    max-width: calc(100% - 10px);
+}
+.city-modal h2{
+    color: var(--color2);
+    font-size:28px;
+    font-weight: 600;
+    text-align: center;
+}
+.city-modal p{
+    color: var(--color6);
+    font-size: 18px ;
+    font-weight: bold;
+}
+.city-modal .selectFormCity{
+    width: 80%;
+    margin: 0 0 16px;
+}
+.city-modal .ok{
+    background-color: #7066e0;
+    border-color: #7066e0;
+    font-size: 16px;
+    color: #fff;
+    margin: 25px 5px 5px;
+    padding: 10px 17.6px;
+    border-radius: 5px;;
+}
+.city-modal .cancel{
+    background-color: #6e7881;
+    border-color: #6e7881;
+    font-size: 16px;
+    color: #fff;
+    margin: 25px 5px 5px;
+    padding: 10px 17.6px;
+    border-radius: 5px;;
 }
 
 /* Paginate */
@@ -623,7 +735,13 @@ input:hover {
     padding: 1.5rem 1.5rem;
     flex-wrap: wrap-reverse;
 }
+.product-header a{
+    color: #31363F;
+}
 
+.pinLocation-product{
+    cursor: pointer;
+}
 
 .product-galery {
     width: 100%;
@@ -718,12 +836,12 @@ p.more-images {
     outline: none;
     padding: 15px 20px;
     margin-top: 25px;
-    font-size: 16px;
-    letter-spacing: 1px;
+    /* font-size: 16px; */
+    letter-spacing: 1.5px;
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: 700;
     border-radius: 40px;
-    /* float:right; */
+    font-size: 1.2rem;
 }
 
 .text-info {
@@ -746,16 +864,45 @@ p.more-images {
     font-size: 1.2em;
 }
 
+.location-container{
+    width: 100%;
+    padding-left: auto 40px;
+}
+.location-container h3{
+    margin: 10px auto 15px 40px;
+}
+.gmap_canvas {
+    overflow: hidden;
+    background: none !important;
+    height: 100%;
+    width: 100%;
+}
+
+.mapouter {
+    position: relative;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+}
+.mapFrame{
+    width: 100%;
+    height: 300px;
+    border: 0;
+}
+
 .features {
     margin: 1rem 0;
 }
 
 .feature-list {
     display: flex;
-    justify-content: space-between;
     align-items: start;
     margin-top: 1rem;
-
+    flex-wrap: wrap;
+}
+.featureItem{
+    margin-right: 50px;
+    margin-bottom: 10px;
 }
 
 .icon-service {
@@ -763,11 +910,85 @@ p.more-images {
     /* font-size: 1.1rem; */
     margin-right: 0.3rem;
 }
+.calendar-section-container h3{
+    margin-left: 40px;
+}
+.calendar-section-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.calendars-render{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+}
+
+.calendar{
+    margin: 1rem;
+    display: flex;
+}
+
+.react-calendar{
+    border: none !important;
+    background-color: var(--color1) !important;
+}
+.react-calendar__month-view__weekdays {
+    
+    color: var(--color3) !important;
+}
+
+.calendar-navigation-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 2rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    color: var(--color3);
+    background-color: var(--color1);
+}
+
+.calendar-navigation-button:hover {
+    color: var(--color3);
+}
+
+/* .calendar-navigation-button:first-child {
+    margin-right: 8px;
+}
+
+.calendar-navigation-button:last-child {
+    margin-left: 8px;
+} */
+
+.rulesContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0rem 2.5rem;
+    margin: 1.25rem 0rem;
+}
+.rulesProduct{
+    width: 33%;
+    font-size: 1rem;
+    padding-right: 2.5rem;
+    margin-bottom: 1.25rem;
+}
+.rulesProduct h3{
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+.rulesProduct ul{
+    padding-left: 0.1rem;
+    text-align: justify;
+}
 
 
 
 /* Estilos del modal galeria detalles de prodcuto */
- .modal-overlay {
+.modal-overlay {
     position: absolute;
     top: 106px;
     left: 0;
@@ -869,6 +1090,7 @@ p.more-images {
 .validationpage-container {
     flex-wrap: wrap;
     width: 100%;
+    margin-bottom: 15rem;
 }
 
 .h2-validationpage {
@@ -918,6 +1140,9 @@ footer {
 .socialIcon{
     margin: 0 10px;
 }
+.socialLink{
+    color: var(--color1);
+}
 .socialmedia{
     display: flex;
     flex-direction: row;
@@ -958,6 +1183,7 @@ footer {
     .search-width {
         width: 100%;
         margin: 0.31rem;
+        height: 46px;
     }
 
     .searcher-container {
@@ -965,10 +1191,11 @@ footer {
     }
 
     .searcher-title {
-        margin: 1.25rem 0.31rem;
+        margin: 1rem 0.31rem;
         text-align: center;
-        font-size: 1.75rem;
+        font-size: 1.5rem;
     }
+    
 
     .categories-container {
         align-items: center;
@@ -1033,10 +1260,26 @@ footer {
         margin-bottom: 3rem;
     }
     .carousel-root {
-        
         min-width: 100vw;
-        
-        
+    }
+    .searcher-container p {
+        margin: 1rem 1rem 1rem 1rem;
+        font-size: 0.8rem;
+    }
+    .feature-list {
+        flex-direction: column;
+    }
+    .react-calendar{
+        width: 100% !important;
+        max-width: 350px;
+        height: auto;
+        background-color: var(--color1);
+    }
+    .calendar{
+        flex-direction: column;
+    }
+    .rulesProduct{
+        width: auto;       
     }
 }
 
@@ -1069,13 +1312,14 @@ footer {
     }
 
     .searcher-title {
-        margin: 1.25rem 0.31rem;
+        margin: 1rem 0.31rem;
         text-align: center;
         font-size: 1.75rem;
     }
 
     .home-titles {
         margin: 1rem;
+        text-align: center;
     }
 
     .card-recomends {
@@ -1093,6 +1337,19 @@ footer {
         
         min-width: 85vw;
         
+    }
+    .feature-list {
+        flex-direction: column;
+    }
+    .calendar{
+        flex-direction: column;
+    }
+    .react-calendar{
+        
+        max-width: 350px;
+    }
+    .rulesProduct{
+        width: auto;       
     }
 }
 
@@ -1140,6 +1397,7 @@ footer {
 
     .home-titles {
         margin-left: 1rem;
+        text-align: center;
     }
 
     .categories-container {
@@ -1166,6 +1424,12 @@ footer {
 
     .card-image-recommends {
         height: 100%;
+    }
+    .calendar{
+        flex-direction: column;
+    }
+    .rulesProduct{
+        width: auto;       
     }
 }
 
@@ -1213,6 +1477,7 @@ footer {
 
     .home-titles {
         margin-left: 0.4rem;
+        text-align: center;
     }
 
     .categories-container {
@@ -1245,7 +1510,12 @@ footer {
         min-width: 85vw;
         
     }
-
+    .rulesProduct{
+        width: auto;       
+    }
+    .calendar{
+        flex-direction: column;
+    }
 
 }
 
@@ -1255,8 +1525,8 @@ footer {
     }
 
     .searcher-container {
-        padding-left: 0.2rem;
-        align-items: flex-start;
+        
+        align-items: center;
     }
 
     .searcher {
@@ -1294,6 +1564,10 @@ footer {
     .navbar-link-container {
         width: 50vw;
     }
+    .calendar{
+        flex-direction: column;
+    }
+
 
     .carousel-root {
         

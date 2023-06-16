@@ -10,7 +10,18 @@ const ContextProvider = ({children}) => {
     const sendEmailUrl = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/mail/send/`;
     const urlGetUsers = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/user/all`;
     const urlPostUsers = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/user`;
+    const urlGetCities = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/cities`;
+    const urlPostCities = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/cities`; 
+    const urlGetProducts = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/petDayCare/all`;
+    const urlPostProducts = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/petDayCare`; 
+    const urlCategory = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/category`  
 
+    const [selectedCity, setSelectedCity] = useState(null);
+    const [selectedDates, setSelectedDates] = useState([null, null]);
+    const [recommends, setRecommends] = useState([]);
+    const [searchResults, setSearchResults] = useState([]);
+    const [title, setTitle] = useState('Recomendaciones');
+    
     const [places, setPlaces] = useState([]); // categorias
     const getAllCategories = async()=> {
         const res = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/category/all`);
@@ -36,7 +47,35 @@ const ContextProvider = ({children}) => {
     }, [url]);
 
     return (
-        <ContextGlobal.Provider value={{urlGetUsers, sendEmailUrl, urlPostUsers, validationUserUrl, getAllCategories, places,setPlaces, url, setUrl, dataCategory, setDataCategory}}>
+        <ContextGlobal.Provider 
+            value={{
+                searchResults,
+                setSearchResults, 
+                title,
+                setTitle,
+                recommends,
+                setRecommends, 
+                selectedDates, 
+                setSelectedDates, 
+                selectedCity, 
+                setSelectedCity, 
+                urlGetProducts, 
+                urlPostProducts, 
+                urlCategory, 
+                urlGetCities,
+                urlPostCities,
+                urlGetUsers, 
+                sendEmailUrl, 
+                urlPostUsers, 
+                validationUserUrl, 
+                getAllCategories, 
+                places,
+                setPlaces, 
+                url, 
+                setUrl, 
+                dataCategory, 
+                setDataCategory
+            }}>
             {children}
         </ContextGlobal.Provider>
     )
