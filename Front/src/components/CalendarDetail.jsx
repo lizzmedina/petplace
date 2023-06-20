@@ -2,15 +2,17 @@ import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 
-export const CalendarDetail = ({productId }) => {
-    const [dates, setDates] = useState([]);
+export const CalendarDetail = ({ productId }) => {
+    const [selectedDates, setSelectedDates] = useState([]);
     const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
     const [bookingData, setBookingData] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
         try {
-            const response = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/booking/petDayCare/${productId}`);
+            const response = await fetch(
+            `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/booking/petDayCare/${productId}`
+            );
             const data = await response.json();
             setBookingData(data);
         } catch (error) {
@@ -20,14 +22,6 @@ export const CalendarDetail = ({productId }) => {
 
         fetchData();
     }, [productId]);
-
-    useEffect(() => {
-        const markedDates = bookingData.map((booking) => ({
-        startDate: new Date(booking.checkInCheckOut[0]),
-        endDate: new Date(booking.checkInCheckOut[1]),
-        }));
-        setDates(markedDates);
-    }, [bookingData]);
 
     useEffect(() => {
         const markedMonths = bookingData.map(
@@ -41,18 +35,18 @@ export const CalendarDetail = ({productId }) => {
 
     const tileDisabled = ({ date }) => {
         for (const booking of bookingData) {
-            const startDate = new Date(booking.checkInCheckOut[0]);
-            const endDate = new Date(booking.checkInCheckOut[1]);
-            endDate.setDate(endDate.getDate() + 1);
-            if (date >= startDate && date < endDate) {
-                return true; 
-            }
+        const startDate = new Date(booking.checkInCheckOut[0]);
+        const endDate = new Date(booking.checkInCheckOut[1]);
+        endDate.setDate(endDate.getDate() + 1);
+        if (date >= startDate && date < endDate) {
+            return true;
         }
-        return false; 
+        }
+        return false;
     };
 
     const handleDateChange = (date) => {
-        setDates(date);
+        setSelectedDates(date);
     };
 
     const handlePrevMonth = () => {
@@ -75,7 +69,8 @@ export const CalendarDetail = ({productId }) => {
                 &lt;
             </button>
             <Calendar
-                value={new Date()}
+                selectRange
+                value={selectedDates}
                 onChange={handleDateChange}
                 tileDisabled={tileDisabled}
                 calendarType="ISO 8601"
@@ -85,12 +80,24 @@ export const CalendarDetail = ({productId }) => {
                 currentMonth,
                 1
                 )}
+                prev2Label={null}
+                next2Label={null}
+                nextLabel={null}
+                prevLabel={null}
+                navigationLabel={({ date }) =>
+                `${new Intl.DateTimeFormat("es", {
+                    month: "long",
+                    year: "numeric",
+                }).format(date)}`
+                }
             />
+
             </div>
 
             <div className="calendar">
             <Calendar
-                value={new Date()}
+                selectRange
+                value={selectedDates}
                 onChange={handleDateChange}
                 tileDisabled={tileDisabled}
                 calendarType="ISO 8601"
@@ -100,8 +107,18 @@ export const CalendarDetail = ({productId }) => {
                 currentMonth + 1,
                 1
                 )}
+                prev2Label={null}
+                next2Label={null}
+                nextLabel={null}
+                prevLabel={null}
+                navigationLabel={({ date }) =>
+                `${new Intl.DateTimeFormat("es", {
+                    month: "long",
+                    year: "numeric",
+                }).format(date)}`
+                }
             />
-            <button
+                        <button
                 className="calendar-navigation-button"
                 onClick={handleNextMonth}
             >
