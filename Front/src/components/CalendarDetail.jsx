@@ -1,3 +1,4 @@
+// como estaba 
 import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
@@ -7,8 +8,8 @@ export const CalendarDetail = ({ productId }) => {
     const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
     const [bookingData, setBookingData] = useState([]);
 
-    useEffect(() => {
-        const fetchData = async () => {
+
+    const fetchData = async () => {
         try {
             const response = await fetch(
             `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/booking/petDayCare/${productId}`
@@ -18,7 +19,11 @@ export const CalendarDetail = ({ productId }) => {
         } catch (error) {
             console.error("Error fetching booking data:", error);
         }
-        };
+        
+    };
+
+
+    useEffect(() => {
 
         fetchData();
     }, [productId]);
@@ -56,7 +61,8 @@ export const CalendarDetail = ({ productId }) => {
     const handleNextMonth = () => {
         setCurrentMonth((prevMonth) => prevMonth + 1);
     };
-
+    console.log(selectedDates, 'select');
+    console.log(bookingData, 'booking');
     return (
         <div className="calendar-section-container">
         <h3>Fechas disponibles</h3>
