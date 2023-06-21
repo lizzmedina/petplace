@@ -1,12 +1,8 @@
 package com.example.demo.DTO;
 
-import com.example.demo.entity.Pet;
-import com.example.demo.model.Customer;
-import com.example.demo.model.PetDayCare;
+import com.example.demo.entity.PetDayCare;
+import com.example.demo.entity.User;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class BookingDTO {
@@ -17,21 +13,25 @@ public class BookingDTO {
     private double totalPrice;
     private Integer userId;
     private Integer petDayCareId;
-//    List<Pet> pets;
 
-    private String petName;
+    private User user;
+
+    private PetDayCare petDayCare;
+    //    List<Pet> pets;
+    private List<String> dataPet;
 
 
-    public BookingDTO(List<String> checkInCheckOut, double totalPrice, Integer userId, Integer petDayCareId, String petName) {
+    public BookingDTO(List<String> checkInCheckOut, double totalPrice, Integer userId, Integer petDayCareId, List<String> dataPet) {
         this.checkInCheckOut = checkInCheckOut;
         this.totalPrice = totalPrice;
         this.userId = userId;
         this.petDayCareId = petDayCareId;
-        this.petName = petName;
+        this.dataPet = dataPet;
     }
 
     public BookingDTO() {
     }
+
 
     public Integer getIdBooking() {
         return idBooking;
@@ -73,11 +73,27 @@ public class BookingDTO {
         this.petDayCareId = petDayCareId;
     }
 
-    public String getPetName() {
-        return petName;
+    public List<String> getDataPet() {
+        return dataPet;
     }
 
-    public void setPetName(String petName) {
-        this.petName = petName;
+    public void setDataPet(List<String> dataPet) {
+        this.dataPet = dataPet;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public PetDayCare getPetDayCare() {
+        return petDayCare;
+    }
+
+    public void setPetDayCare(PetDayCare petDayCare) {
+        this.petDayCare = petDayCare;
     }
 }

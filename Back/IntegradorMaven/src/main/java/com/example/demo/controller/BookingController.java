@@ -50,4 +50,9 @@ public class BookingController {
     public String deleteById(@PathVariable("id") Integer id) {
         return service.deleteById(id);
     }
+
+    @GetMapping("/user/{idUser}")
+    List<Booking> bookingsUserId(@PathVariable Integer idUser){
+        return service.bookingsUserId(idUser);
+    }
 }
