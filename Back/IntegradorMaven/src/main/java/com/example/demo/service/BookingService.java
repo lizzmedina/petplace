@@ -67,7 +67,7 @@ public class BookingService {
                 bookingDTO.getCheckInCheckOut(),
                 checkIn,
                 checkOut,
-                bookingDTO.getPetName(),
+                bookingDTO.getDataPet(),
                 totalpriceBooking,
                 user.get(),
                 petDayCare.get());
@@ -76,10 +76,12 @@ public class BookingService {
 
         BookingDTO newBookingDTO = new BookingDTO(
                 newBooking.getCheckInCheckOut(),
-                totalpriceBooking,
+                newBooking.getTotalPrice(),
                 newBooking.getUser().getId(),
                 newBooking.getPetDayCare().getId(),
-                newBooking.getPetName());
+                newBooking.getDataPet()
+        );
+
 
         bookingDTO.setIdBooking(newBookingDTO.getIdBooking());
 
@@ -91,7 +93,7 @@ public class BookingService {
     public double calculatePrice(LocalDate checkIn, LocalDate checkOut, double basicPrice){
 
         long totalDays = ChronoUnit.DAYS.between(checkIn, checkOut);
-             double total = (totalDays * basicPrice);
+        double total = (totalDays * basicPrice);
         return total;
     }
 
@@ -120,13 +122,11 @@ public class BookingService {
 
         if(!city.isEmpty() && checkInCheckOut == null){
 
-             List<PetDayCare> petDayCareListByCity = petDayCareRepository.findAllByCityId(cityId.get().getId());
+            List<PetDayCare> petDayCareListByCity = petDayCareRepository.findAllByCityId(cityId.get().getId());
 
-             return petDayCareListByCity;
+            return petDayCareListByCity;
 
         }
-
-
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate checkIn = LocalDate.parse(checkInCheckOut.get(0), formatter);
@@ -141,7 +141,7 @@ public class BookingService {
 
 
     public List<BookingDTO> bookingsPetDayCare(Integer idPetDayCare){
-       List<Booking> bookingsPetDayCare = bookingRepository.findByPetDayCareId(idPetDayCare);
+        List<Booking> bookingsPetDayCare = bookingRepository.findByPetDayCareId(idPetDayCare);
 
         List<BookingDTO> bookingDTOList = bookingsPetDayCare.stream()
                 .map(booking -> new BookingDTO(
@@ -149,11 +149,11 @@ public class BookingService {
                         booking.getTotalPrice(),
                         booking.getUser().getId(),
                         booking.getPetDayCare().getId(),
-                        booking.getPetName()
+                        booking.getDataPet()
                 ))
                 .collect(Collectors.toList());
 
-       return bookingDTOList;
+        return bookingDTOList;
     }
 
     public Booking detail(Integer id){
@@ -168,10 +168,10 @@ public class BookingService {
                 booking.get().getCheckInCheckOut(),
                 booking.get().getCheckIn(),
                 booking.get().getCheckOut(),
-                booking.get().getPetName(),
+                booking.get().getDataPet(),
                 booking.get().getTotalPrice(),
                 booking.get().getUser(),
-               booking.get().getPetDayCare()
+                booking.get().getPetDayCare()
         );
 
         return bookingDetail;
@@ -195,6 +195,24 @@ public class BookingService {
         }
         bookingRepository.delete(bookingopt.get());
         return "Se elimino exitosamente la reserva de id: " + id;
+    }
+
+    public List<Booking> bookingsUserId(Integer idUser){
+        List<Booking> bookingsUser = bookingRepository.findByUserId(idUser);
+
+        List<Booking> bookingList = bookingsUser.stream()
+                .map(booking -> new Booking(
+                        booking.getCheckInCheckOut(),
+                        booking.getCheckIn(),
+                        booking.getCheckOut(),
+                        booking.getDataPet(),
+                        booking.getTotalPrice(),
+                        booking.getUser(),
+                        booking.getPetDayCare()
+                ))
+                .collect(Collectors.toList());
+
+        return bookingList;
     }
 
 }

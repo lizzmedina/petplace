@@ -45,11 +45,8 @@ public class PetDayCareController {
         return service.detail(id);
     }
 
-    /*@PutMapping("/edit")
-    public PetDayCareSaveDTO edit(@RequestBody PetDayCareSaveDTO petDayCareSaveDTO){
-        return service.edit(petDayCareSaveDTO);
-    }*/
-
+    @PutMapping("favorite/{id}")
+    public String favorite(@PathVariable("id") Integer id){return service.favorite(id);}
     @PutMapping("/edit")
     public PetDayCareDTO edit(@RequestBody PetDayCareDTO petDayCareDTO){
         return service.edit(petDayCareDTO);
