@@ -1,5 +1,6 @@
 package com.example.demo.DTO;
 
+import com.example.demo.entity.Booking;
 import com.example.demo.entity.PetDayCare;
 import com.example.demo.entity.User;
 
@@ -27,6 +28,17 @@ public class BookingDTO {
         this.userId = userId;
         this.petDayCareId = petDayCareId;
         this.dataPet = dataPet;
+    }
+
+    public BookingDTO(Booking booking){
+        this.setIdBooking(booking.getIdBooking());
+        this.setCheckInCheckOut(booking.getCheckInCheckOut());
+        this.setTotalPrice(booking.getTotalPrice());
+        this.setUserId(booking.getUser().getId());
+        this.setPetDayCareId(booking.getPetDayCare().getId());
+        this.setPetDayCare(booking.getPetDayCare());
+        this.setUser(booking.getUser());
+        this.setDataPet(booking.getDataPet());
     }
 
     public BookingDTO() {

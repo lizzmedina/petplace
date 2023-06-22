@@ -36,7 +36,7 @@ public class CategoryMapperTest {
     Assertions.assertEquals("Gatos", actual.getTitle());
     Assertions.assertEquals("Descripcion", actual.getDescription());
     Assertions.assertEquals("imagen", actual.getImage());
-    Assertions.assertEquals("icon",actual.getIcon());
+    Assertions.assertEquals("icono",actual.getIcon());
   }
 
   @Test

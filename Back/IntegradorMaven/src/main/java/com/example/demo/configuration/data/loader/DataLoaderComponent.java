@@ -12,6 +12,7 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.*;
 
 @Component
@@ -67,11 +68,12 @@ public class DataLoaderComponent {
         List<PetDayCareDTO> petDayCareList = JsonHelper.readJsonFromFile("petdaycare_data.json", new TypeReference<>() {
         });
         petDayCareList.forEach(petDayCareDTO -> {
-            Optional<PetDayCare> petDayCareOpt = petDayCareService.findById(petDayCareDTO.getId());
-            if (petDayCareOpt.isEmpty()) {
-                petDayCareService.saveBD(petDayCareDTO);
-            } else {
+            try{
+                // valida que ya no exista en la BD
+                petDayCareService.findById(petDayCareDTO.getId());
                 System.out.println("pet day care data with id " + petDayCareDTO.getId() + " already exists, skipping creation...");
+            } catch (IllegalArgumentException e){
+                petDayCareService.saveBD(petDayCareDTO);
             }
         });
     }
@@ -114,9 +116,16 @@ public class DataLoaderComponent {
         List<BookingDTO> bookingList = JsonHelper.readJsonFromFile("booking_data.json", new TypeReference<>() {
         });
         bookingList.forEach(booking -> {
-            Optional<Booking> booking1 = bookingService.findById(booking.getIdBooking());
-            if (booking1.isEmpty()) {
-                bookingService.save(booking);
+            Optional<Booking> entityOpt = bookingService.findById(booking.getIdBooking());
+
+            if (entityOpt.isEmpty()) {
+                LocalDate checkIn = bookingService.getCheckInDate(booking);
+                LocalDate checkOut = bookingService.getCheckOutDate(booking);
+                if(bookingService.available(booking.getPetDayCareId(), checkIn, checkOut)){
+                    PetDayCare petDayCare = petDayCareService.findById(booking.getPetDayCareId());
+                    booking.setPetDayCare(petDayCare);
+                    bookingService.save(booking);
+                }
             } else {
                 System.out.println("booking data with id " + booking.getIdBooking() + " already exists, skipping creation...");
             }

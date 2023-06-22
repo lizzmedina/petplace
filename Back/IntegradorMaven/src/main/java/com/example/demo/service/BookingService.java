@@ -13,6 +13,7 @@ import java.util.Optional;
 import com.example.demo.entity.Booking;
 import com.example.demo.entity.PetDayCare;
 import com.example.demo.repository.BookingRepository;
+import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Service;
 
 
@@ -48,16 +49,14 @@ public class BookingService {
         Optional<User> user = this.userRepository.findById(bookingDTO.getUserId());
         Optional<PetDayCare> petDayCare = this.petDayCareRepository.findById(bookingDTO.getPetDayCareId());
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-
-        LocalDate checkIn = LocalDate.parse(bookingDTO.getCheckInCheckOut().get(0), formatter);
-        LocalDate checkOut = LocalDate.parse(bookingDTO.getCheckInCheckOut().get(1), formatter);
+        LocalDate checkIn = getCheckInDate(bookingDTO);
+        LocalDate checkOut = getCheckOutDate(bookingDTO);
 
         if(!user.isPresent() && !petDayCare.isPresent()){
             throw  new RuntimeException("El usuario o hotel no se encuentran registrados");
         }
 
-        if(!available(bookingDTO.getPetDayCareId(), checkIn.toString(), checkOut.toString())){
+        if(!available(bookingDTO.getPetDayCareId(), checkIn, checkOut)){
             throw  new RuntimeException("las fechas a reservar no estan disponibles en ese ajolamiento pues ya se encuentra reservado");
         }
 
@@ -98,23 +97,9 @@ public class BookingService {
     }
 
 
-    public boolean available(Integer petDayCareId, String checkIn, String checkOut){
-
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate startDay = LocalDate.parse(checkIn, formatter);
-        LocalDate finalDay = LocalDate.parse(checkOut, formatter);
-
-        LocalDate fechaActual = LocalDate.now();
-
-        Integer resultado = bookingRepository.disponibilidadQuery(petDayCareId, finalDay, startDay);
-
-
-        if(startDay.compareTo(fechaActual) > 0 && resultado == 0) {
-            return true;
-        }
-
-        return false;
-
+    public boolean available(Integer petDayCareId, LocalDate checkIn, LocalDate checkOut){
+        Integer cantReservas = bookingRepository.disponibilidadQuery(petDayCareId, checkOut, checkIn);
+        return checkIn.compareTo(LocalDate.now()) > 0 && cantReservas == 0;
     }
 
     public List<PetDayCare> search(String city, List<String> checkInCheckOut){
@@ -144,13 +129,7 @@ public class BookingService {
         List<Booking> bookingsPetDayCare = bookingRepository.findByPetDayCareId(idPetDayCare);
 
         List<BookingDTO> bookingDTOList = bookingsPetDayCare.stream()
-                .map(booking -> new BookingDTO(
-                        booking.getCheckInCheckOut(),
-                        booking.getTotalPrice(),
-                        booking.getUser().getId(),
-                        booking.getPetDayCare().getId(),
-                        booking.getDataPet()
-                ))
+                .map(BookingDTO::new)
                 .collect(Collectors.toList());
 
         return bookingDTOList;
@@ -223,4 +202,16 @@ public class BookingService {
         return bookingList;
     }
 
+    private LocalDate parseStringToDate(String date){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        return LocalDate.parse(date, formatter);
+    }
+
+    public LocalDate getCheckInDate(BookingDTO bookingDTO){
+        return parseStringToDate(bookingDTO.getCheckInCheckOut().get(0));
+    }
+
+    public LocalDate getCheckOutDate(BookingDTO bookingDTO){
+        return parseStringToDate(bookingDTO.getCheckInCheckOut().get(1));
+    }
 }

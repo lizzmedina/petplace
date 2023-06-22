@@ -20,7 +20,7 @@ public class CategoryMapper {
         categoryDTO.setTitle(categoryEntity.getTitle());
         categoryDTO.setDescription(categoryEntity.getDescription());
         categoryDTO.setImage(categoryEntity.getImage());
-        categoryDTO.setIcon(categoryDTO.getIcon());
+        categoryDTO.setIcon(categoryEntity.getIcon());
 
         return categoryDTO;
     }
