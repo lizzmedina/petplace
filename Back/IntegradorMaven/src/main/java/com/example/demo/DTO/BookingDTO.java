@@ -36,8 +36,6 @@ public class BookingDTO {
         this.setTotalPrice(booking.getTotalPrice());
         this.setUserId(booking.getUser().getId());
         this.setPetDayCareId(booking.getPetDayCare().getId());
-        this.setPetDayCare(booking.getPetDayCare());
-        this.setUser(booking.getUser());
         this.setDataPet(booking.getDataPet());
     }
 

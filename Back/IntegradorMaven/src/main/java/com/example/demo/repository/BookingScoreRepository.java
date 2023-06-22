@@ -5,10 +5,15 @@ import com.example.demo.entity.BookingScore;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
+import java.util.Optional;
 
-public interface BookingScoreRepository extends JpaRepository<BookingScore, Integer> {
+public interface BookingScoreRepository extends JpaRepository<BookingScore, BookingScore.BookingScoreId> {
 
-    List<BookingScore> findAllByBooking(Booking booking);
+    List<BookingScore> findAllByBookingScoreIdBooking(Booking booking);
 
-    List<BookingScore> findByBookingIn(List<Booking> bookings);
+    List<BookingScore> findByBookingScoreIdBookingIn(List<Booking> bookings);
+
+    Optional<BookingScore> findByBookingScoreIdUserIdAndBookingScoreIdBooking(Integer userId, Booking booking);
+
+
 }
