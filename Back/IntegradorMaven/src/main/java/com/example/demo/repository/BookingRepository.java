@@ -23,4 +23,6 @@ public interface BookingRepository extends JpaRepository<Booking, Integer> {
     List<Integer> searchAvailablePetDayCares(@Param("city") Integer city, @Param("check_in") LocalDate checkIn, @Param("check_out") LocalDate checkOut);
 
     List<Booking> findByPetDayCareId(Integer id);
+
+    List<Booking>findByUserId(Integer idUser);
 }

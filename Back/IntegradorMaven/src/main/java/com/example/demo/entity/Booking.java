@@ -22,8 +22,8 @@ public class Booking {
     @Column(name = "checkOut")
     private LocalDate checkOut;
 
-    @Column(name = "petName")
-    private String petName;
+    @Column(name = "dataPet")
+    private List<String> dataPet;
 
     @Column(name = "totalPrice")
     private double totalPrice;
@@ -33,18 +33,20 @@ public class Booking {
     private PetDayCare petDayCare;
 
 
-    public Booking(List<String> checkInCheckOut, LocalDate checkIn, LocalDate checkOut, String petName, double totalPrice, User user, PetDayCare petDayCare) {
+    public Booking(List<String> checkInCheckOut, LocalDate checkIn, LocalDate checkOut, List<String> dataPet, double totalPrice, User user, PetDayCare petDayCare) {
         this.checkInCheckOut = checkInCheckOut;
         this.checkIn = checkIn;
         this.checkOut = checkOut;
-        this.petName = petName;
+        this.dataPet = dataPet;
         this.totalPrice = totalPrice;
         this.user = user;
         this.petDayCare = petDayCare;
     }
 
-    public Booking(String checkIn, String checkOut, LocalDate in, LocalDate out, String petName, double totalpriceBooking, User user, PetDayCare petDayCare) {
+    public Booking(String checkIn, String checkOut, LocalDate in, LocalDate out, List<String> dataPet, double totalpriceBooking, User user, PetDayCare petDayCare) {
     }
+
+
 
     public Booking() {
     }
@@ -105,11 +107,11 @@ public class Booking {
         this.petDayCare = petDayCare;
     }
 
-    public String getPetName() {
-        return petName;
+    public List<String> getDataPet() {
+        return dataPet;
     }
 
-    public void setPetName(String petName) {
-        this.petName = petName;
+    public void setDataPet(List<String> dataPet) {
+        this.dataPet = dataPet;
     }
 }

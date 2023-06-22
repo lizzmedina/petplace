@@ -13,6 +13,7 @@ import com.example.demo.mapper.CityMapper;
 import com.example.demo.repository.CategoryRepository;
 import com.example.demo.repository.CityRepository;
 import com.example.demo.repository.PetDayCareRepository;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -121,7 +122,8 @@ public class PetDayCareService {
                 petDayCareDTO.getBasicPrice(),
                 petDayCareDTO.getHouseRules(),
                 petDayCareDTO.getHealthAndSecurity(),
-                petDayCareDTO.getCancellationPolicy()
+                petDayCareDTO.getCancellationPolicy(),
+                false
 
         );
 
@@ -167,7 +169,10 @@ public class PetDayCareService {
                 petDayCare.getBasicPrice(),
                 petDayCare.getHouseRules(),
                 petDayCare.getHealthAndSecurity(),
-                petDayCare.getCancellationPolicy()
+                petDayCare.getCancellationPolicy(),
+                false
+
+
         );
 
         newPetDayCare = repository.save(newPetDayCare);
@@ -241,6 +246,38 @@ public class PetDayCareService {
         } else {
             throw new ResourceNotFoundException("No existe guardería con el id: " + petDayCareDTO.getId());
         }
+
+    }
+
+    public String favorite(Integer id){
+
+        Optional<PetDayCare> petDayCareOpt = this.repository.findById(id);
+
+        if(petDayCareOpt.isPresent()) {
+            if(petDayCareOpt.get().isFavorite() == false){
+            petDayCareOpt.get().setFavorite(true);
+            }else{
+             petDayCareOpt.get().setFavorite(false);
+            }
+
+            PetDayCare petDayCare = new PetDayCare(
+                    petDayCareOpt.get().getName(),
+                    petDayCareOpt.get().getType(),
+                    petDayCareOpt.get().getCapacity(),
+                    petDayCareOpt.get().getCity(),
+                    petDayCareOpt.get().getAddress(),
+                    petDayCareOpt.get().getDetail(),
+                    petDayCareOpt.get().getImages(),
+                    petDayCareOpt.get().getCharacteristics(),
+                    petDayCareOpt.get().getBasicPrice(),
+                    petDayCareOpt.get().getHouseRules(),
+                    petDayCareOpt.get().getHealthAndSecurity(),
+                    petDayCareOpt.get().getCancellationPolicy(),
+                    petDayCareOpt.get().isFavorite()
+            );
+            repository.save(petDayCare);
+        }
+        return "El estado de producto en favoritos es: "+ petDayCareOpt.get().isFavorite() ;
 
     }
 

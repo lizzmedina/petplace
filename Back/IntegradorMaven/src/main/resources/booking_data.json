@@ -8,7 +8,7 @@
     "totalPrice": 30000.0,
     "userId": 1234567890,
     "petDayCareId": 1,
-    "petName": "Papucha"
+    "dataPet": ["Papucha","Mini Lop","Pequeño","Si","Le gusta mucho la zanahoria y los tomates."]
   },
   {
     "idBooking": 2,
@@ -19,7 +19,7 @@
     "totalPrice": 30000.0,
     "userId": 1876543210,
     "petDayCareId": 2,
-    "petName": "Copito"
+    "dataPet": ["Copito","Bulldog","Mediano","Si","Es un perrito tranquilo, pero le gusta jugar con las traperas. No necesita ningún tipo de medicamento"]
   },
   {
     "idBooking": 3,
@@ -30,7 +30,7 @@
     "totalPrice": 30000.0,
     "userId": 1589631074,
     "petDayCareId": 3,
-    "petName": "Pancho"
+    "dataPet": ["Pancho","Persa","Mediano","Si","El gato Pancho es muy cariñoso y le gusta la arena limpia."]
   },
   {
     "idBooking": 4,
@@ -41,7 +41,7 @@
     "totalPrice": 30000.0,
     "userId": 1592634807,
     "petDayCareId": 4,
-    "petName": "Thor"
+    "dataPet": ["Thor","Abisinio","Mediano","Si","Necesita de su cobija para dormir."]
   },
   {
     "idBooking": 5,
@@ -52,7 +52,7 @@
     "totalPrice": 30000.0,
     "userId": 1968712356,
     "petDayCareId": 5,
-    "petName": "Toretto"
+    "dataPet": ["Toretto","Pastor Aleman","Grande","Si","Torreto es muy amigable con otros perros y gatos, además come mucho"]
   },
   {
     "idBooking": 6,
@@ -63,7 +63,7 @@
     "totalPrice": 30000.0,
     "userId": 1741289036,
     "petDayCareId": 6,
-    "petName": "Akon"
+    "dataPet": ["Akon","Azul Ruso","Pqueño","Si","Akon tiene dos meses, por lo tanto el cuido debe ser de croquetas pequeñas."]
   },
   {
     "idBooking": 7,
@@ -74,7 +74,7 @@
     "totalPrice": 30000.0,
     "userId": 1596574231,
     "petDayCareId": 7,
-    "petName": "Juanita"
+    "dataPet": ["Juanita","Blanco de Hotot","Pequeño","No","Le encanta comer acompañada."]
   },
   {
     "idBooking": 8,
@@ -85,7 +85,8 @@
     "totalPrice": 30000.0,
     "userId": 1596654807,
     "petDayCareId": 8,
-    "petName": "Leo"
+    "dataPet": ["Leo","Roller","Pequeño","No","Le encanta cantar en las madrugadas."]
+
   },
   {
     "idBooking": 9,
@@ -96,7 +97,7 @@
     "totalPrice": 30000.0,
     "userId": 1699634805,
     "petDayCareId": 9,
-    "petName": "Dre"
+    "dataPet": ["Dre","Balinés","Mediano","Si","Es un gato muy serio y prefiere estar solo."]
   },
   {
     "idBooking": 10,
@@ -107,7 +108,7 @@
     "totalPrice": 30000.0,
     "userId": 1772654997,
     "petDayCareId": 10,
-    "petName": "Mao"
+    "dataPet": ["Mao","Esquimal Americano","Grande","Si","Es muy cariñoso. No necesita ningún tipo de medicamento"]
   },
   {
     "idBooking": 11,
@@ -118,7 +119,7 @@
     "totalPrice": 30000.0,
     "userId": 1452634809,
     "petDayCareId": 11,
-    "petName": "Tamara"
+    "dataPet": ["Tamara","Cabeza de León","Pequeño","Si","No le gustan las zanahorias, solo come brócoli."]
   },
   {
     "idBooking": 12,
@@ -129,7 +130,8 @@
     "totalPrice": 30000.0,
     "userId": 1392674808,
     "petDayCareId": 12,
-    "petName": "Tinity"
+    "dataPet": ["Tinity","Cantor Ruso","Pequeño","No","Intenta escaparse por las ranuras."]
+
   },
   {
     "idBooking": 13,
@@ -140,7 +142,7 @@
     "totalPrice": 30000.0,
     "userId": 1792634864,
     "petDayCareId": 13,
-    "petName": "Venus"
+    "dataPet": ["Venus","Pomerania","Mediano","Si","Es agresiva con otros Pomerania."]
   },
   {
     "idBooking": 14,
@@ -151,7 +153,7 @@
     "totalPrice": 30000.0,
     "userId": 1292634506,
     "petDayCareId": 14,
-    "petName": "Roberto"
+    "dataPet": ["Roberto","Bengalí","Mediano","Si","Le gusta rascar los muebles."]
   },
   {
     "idBooking": 15,
@@ -162,7 +164,7 @@
     "totalPrice": 30000.0,
     "userId": 1592434854,
     "petDayCareId": 15,
-    "petName": "Paca"
+    "dataPet": ["Paca","Belier","Pequeño","No","Este hermoso conejo necesita oxigeno para dormir."]
   },
   {
     "idBooking": 16,
@@ -173,7 +175,12 @@
     "totalPrice": 30000.0,
     "userId": 1366634882,
     "petDayCareId": 16,
-    "petName": "Lolo"
+    "dataPet": [
+      "Lolo",
+      "Giboso italiano",
+      "Pequeño",
+      "No",
+      "Ama que le hagan piojitos, dice groserías."]
   },
   {
     "idBooking": 17,
@@ -184,7 +191,8 @@
     "totalPrice": 30000.0,
     "userId": 1392635805,
     "petDayCareId": 17,
-    "petName": "Lulu"
+    "dataPet": ["Lulu","Chihuahua","Pequeño","Si","Ladra por todo y es celosa con la cama de ella."]
+
   },
   {
     "idBooking": 18,
@@ -195,7 +203,8 @@
     "totalPrice": 30000.0,
     "userId": 1692635898,
     "petDayCareId": 18,
-    "petName": "Justin"
+    "dataPet": ["Justin","Shih Tzu","Mediano","Si","Es muy amable con todos los animales. Requiere insulina por diabetes."]
+
   },
   {
     "idBooking": 19,
@@ -206,7 +215,8 @@
     "totalPrice": 30000.0,
     "userId": 1192634865,
     "petDayCareId": 19,
-    "petName": "Fergie"
+    "dataPet": ["Fergie","Melado de Tenerife","Pequeño","No","Es un canario muy feliz que le encanta cantar cuando tiene hambre."]
+
   },
   {
     "idBooking": 20,
@@ -217,7 +227,8 @@
     "totalPrice": 30000.0,
     "userId": 1222634889,
     "petDayCareId": 20,
-    "petName": "Juanita"
+    "dataPet": ["Juanita","Perdiguero Portugués","Grande","Si","Le gusta dormir en los muebles. Requiere cuido para ansianos."]
+
   },
   {
     "idBooking": 21,
@@ -228,7 +239,8 @@
     "totalPrice": 30000.0,
     "userId": 1122634834,
     "petDayCareId": 21,
-    "petName": "Lorenzo"
+    "dataPet": ["Lorenzo","Toy","Pequeño","No","Tiene problemas de orina, por lo qe requiere beber mucha agua."]
+
   },
   {
     "idBooking": 22,
@@ -239,7 +251,8 @@
     "totalPrice": 30000.0,
     "userId": 1562634878,
     "petDayCareId": 22,
-    "petName": "Pepe"
+    "dataPet": ["Pepe","Perdiguero de Burgos","Grande","No","Necesita ejercitarse dos veces al día."]
+
   },
   {
     "idBooking": 23,
@@ -250,7 +263,8 @@
     "totalPrice": 30000.0,
     "userId": 1912634801,
     "petDayCareId": 23,
-    "petName": "Pedro"
+    "dataPet": ["Pedro","Asíatico","Mediano","Si","Es muy puntual con las comidas."]
+
   },
   {
     "idBooking": 24,
@@ -261,7 +275,8 @@
     "totalPrice": 30000.0,
     "userId": 1982634876,
     "petDayCareId": 24,
-    "petName": "Pelusa"
+    "dataPet": ["Pelusa","Giboso español","Pequeño","No","Solo come una vez a día por obesidad."]
+
   },
   {
     "idBooking": 25,
@@ -272,7 +287,8 @@
     "totalPrice": 30000.0,
     "userId": 1762634854,
     "petDayCareId": 25,
-    "petName": "Pinky"
+    "dataPet": ["Pinky","Flat coated retriever","Grande","Si","Le gusta jugar con los trapos que se encuentre. No necesita ningún tipo de medicamento."]
+
   },
   {
     "idBooking": 26,
@@ -283,7 +299,8 @@
     "totalPrice": 30000.0,
     "userId": 1542634832,
     "petDayCareId": 26,
-    "petName": "James"
+    "dataPet": ["James","Americano de pelo duro","Mediano","Si","Le gusta dormir solo en la cada de el."]
+
   },
   {
     "idBooking": 27,
@@ -294,7 +311,8 @@
     "totalPrice": 30000.0,
     "userId": 1322634819,
     "petDayCareId": 27,
-    "petName": "Fabio"
+    "dataPet": ["Fabio","Gigante de Flandes","Grande","Si","Es muy perezoso y cariñoso."]
+
   },
   {
     "idBooking": 28,
@@ -305,7 +323,8 @@
     "totalPrice": 30000.0,
     "userId": 1192634820,
     "petDayCareId": 28,
-    "petName": "Ramón"
+    "dataPet": ["Ramón","Rizado de París","Pequeño","Si","Le gusta mucho la oscuridad."]
+
   },
   {
     "idBooking": 29,
@@ -316,7 +335,8 @@
     "totalPrice": 30000.0,
     "userId": 1302634804,
     "petDayCareId": 29,
-    "petName": "Bigotes"
+    "dataPet": ["Bigotes","Americano de pelo duro","Pequeño","Si","Se requiere cuidado constante, pues es un gato cachorro prematuro."]
+
   },
   {
     "idBooking": 30,
@@ -327,7 +347,8 @@
     "totalPrice": 30000.0,
     "userId": 1502634862,
     "petDayCareId": 30,
-    "petName": "Bigotona"
+    "dataPet": ["Bigotona","Silky terrier australiano","Mediano","Si","No necesita ningún tipo de medicamento."]
+
   },
   {
     "idBooking": 31,
@@ -338,7 +359,8 @@
     "totalPrice": 30000.0,
     "userId": 1742634873,
     "petDayCareId": 31,
-    "petName": "Negrito"
+    "dataPet": ["Negrito","Tan","Mediano","Si","Todo el día come ramitas."]
+
   },
   {
     "idBooking": 32,
@@ -349,7 +371,8 @@
     "totalPrice": 30000.0,
     "userId": 1652634823,
     "petDayCareId": 32,
-    "petName": "Fresita"
+    "dataPet": ["Fresita","Bossu Belga","Pequeño","Si","Es un canario muy particular, pues le encanta bañarse todos los días."]
+
   },
   {
     "idBooking": 33,
@@ -360,7 +383,8 @@
     "totalPrice": 30000.0,
     "userId": 1452634845,
     "petDayCareId": 33,
-    "petName": "Blanquita"
+    "dataPet": ["Blanquita","Braco de Borbón","Grande","Si","Perro muy inteligente que necesita jugar una vez al día corriendo."]
+
   },
   {
     "idBooking": 34,
@@ -371,7 +395,8 @@
     "totalPrice": 30000.0,
     "userId": 1372634873,
     "petDayCareId": 34,
-    "petName": "Chocolate"
+    "dataPet": ["Chocolate","Birmano","Mediano","Si","Por favor no dejarlo salir al pasto, pues es alérgico."]
+
   },
   {
     "idBooking": 35,
@@ -382,7 +407,7 @@
     "totalPrice": 30000.0,
     "userId": 1629263482,
     "petDayCareId": 35,
-    "petName": "Hittler"
+    "dataPet": ["Hittler","Holandés enano","Pequeño","No","Es un conejo ciego que necesita de cuidados especiales."]
   },
   {
     "idBooking": 36,
@@ -393,7 +418,8 @@
     "totalPrice": 30000.0,
     "userId": 1452634874,
     "petDayCareId": 36,
-    "petName": "Thanos"
+    "dataPet": ["Thanos","Muniqués","Pequeño","Si","Le falta una pata, por lo que debe estar en constante vigilancia ya que suele caerse."]
+
   },
   {
     "idBooking": 37,
@@ -404,7 +430,8 @@
     "totalPrice": 30000.0,
     "userId": 1692634899,
     "petDayCareId": 37,
-    "petName": "Hulk"
+    "dataPet": ["Hulk","Hosso Japonés","Pequeño","No","Canario que no deja dormir bien, porque canta todas las noches."]
+
   },
   {
     "idBooking": 38,
@@ -415,7 +442,7 @@
     "totalPrice": 30000.0,
     "userId": 1462634864,
     "petDayCareId": 38,
-    "petName": "Zuly"
+    "dataPet": ["Zuly","Beagle","Mediano","No","Es una perrito tranquilo, requiere de alimento para ancianos."]
   },
   {
     "idBooking": 39,
@@ -426,7 +453,8 @@
     "totalPrice": 30000.0,
     "userId": 1322634834,
     "petDayCareId": 39,
-    "petName": "Ivan"
+    "dataPet": ["Ivan","Scotch Fancy","Pequeño","No","Canario muy elegante que le gusta mucho los rayos del sol."]
+
   },
   {
     "idBooking": 40,
@@ -437,7 +465,8 @@
     "totalPrice": 30000.0,
     "userId": 1352634853,
     "petDayCareId": 40,
-    "petName": "Lennon"
+    "dataPet": ["Lennon","Border Collie","Grande","Si","Es un perro atlético que necesita hacer ejercicio diario. No necesita ningún medicamento."]
+
   },
 
   {
@@ -449,7 +478,7 @@
     "totalPrice": 30000.0,
     "userId": 1234567890,
     "petDayCareId": 1,
-    "petName": "Papucha"
+    "dataPet": ["Papucha","Mini Lop","Pequeño","Si","Le gusta mucho la zanahoria y los tomates."]
   },
   {
     "idBooking": 42,
@@ -460,7 +489,7 @@
     "totalPrice": 30000.0,
     "userId": 1876543210,
     "petDayCareId": 2,
-    "petName": "Copito"
+    "dataPet": ["Copito","Bulldog","Mediano","Si","Es un perrito tranquilo, pero le gusta jugar con las traperas. No necesita ningún tipo de medicamento"]
   },
   {
     "idBooking": 43,
@@ -471,7 +500,7 @@
     "totalPrice": 30000.0,
     "userId": 1589631074,
     "petDayCareId": 3,
-    "petName": "Pancho"
+    "dataPet": ["Pancho","Persa","Mediano","Si","El gato Pancho es muy cariñoso y le gusta la arena limpia."]
   },
   {
     "idBooking": 44,
@@ -482,7 +511,7 @@
     "totalPrice": 30000.0,
     "userId": 1592634807,
     "petDayCareId": 4,
-    "petName": "Thor"
+    "dataPet": ["Thor","Abisinio","Mediano","Si","Necesita de su cobija para dormir."]
   },
   {
     "idBooking": 45,
@@ -493,7 +522,7 @@
     "totalPrice": 30000.0,
     "userId": 1968712356,
     "petDayCareId": 5,
-    "petName": "Toretto"
+    "dataPet": ["Toretto","Pastor Aleman","Grande","Si","Torreto es muy amigable con otros perros y gatos, además come mucho"]
   },
   {
     "idBooking": 46,
@@ -504,7 +533,7 @@
     "totalPrice": 30000.0,
     "userId": 1741289036,
     "petDayCareId": 6,
-    "petName": "Akon"
+    "dataPet": ["Akon","Azul Ruso","Pqueño","Si","Akon tiene dos meses, por lo tanto el cuido debe ser de croquetas pequeñas."]
   },
   {
     "idBooking": 47,
@@ -515,7 +544,7 @@
     "totalPrice": 30000.0,
     "userId": 1596574231,
     "petDayCareId": 7,
-    "petName": "Juanita"
+    "dataPet": ["Juanita","Blanco de Hotot","Pequeño","No","Le encanta comer acompañada."]
   },
   {
     "idBooking": 48,
@@ -526,7 +555,7 @@
     "totalPrice": 30000.0,
     "userId": 1596654807,
     "petDayCareId": 8,
-    "petName": "Leo"
+    "dataPet": ["Leo","Roller","Pequeño","No","Le encanta cantar en las madrugadas."]
   },
   {
     "idBooking": 49,
@@ -537,7 +566,7 @@
     "totalPrice": 30000.0,
     "userId": 1699634805,
     "petDayCareId": 9,
-    "petName": "Dre"
+    "dataPet": ["Dre","Balinés","Mediano","Si","Es un gato muy serio y prefiere estar solo."]
   },
   {
     "idBooking": 50,
@@ -548,7 +577,7 @@
     "totalPrice": 30000.0,
     "userId": 1772654997,
     "petDayCareId": 10,
-    "petName": "Mao"
+    "dataPet": ["Mao","Esquimal Americano","Grande","Si","Es muy cariñoso. No necesita ningún tipo de medicamento"]
   },
   {
     "idBooking": 51,
@@ -559,7 +588,7 @@
     "totalPrice": 30000.0,
     "userId": 1452634809,
     "petDayCareId": 11,
-    "petName": "Tamara"
+    "dataPet": ["Tamara","Cabeza de León","Pequeño","Si","No le gustan las zanahorias, solo come brócoli."]
   },
   {
     "idBooking": 52,
@@ -570,7 +599,7 @@
     "totalPrice": 30000.0,
     "userId": 1392674808,
     "petDayCareId": 12,
-    "petName": "Tinity"
+    "dataPet": ["Tinity","Cantor Ruso","Pequeño","No","Intenta escaparse por las ranuras."]
   },
   {
     "idBooking": 53,
@@ -581,7 +610,7 @@
     "totalPrice": 30000.0,
     "userId": 1792634864,
     "petDayCareId": 13,
-    "petName": "Venus"
+    "dataPet": ["Venus","Pomerania","Mediano","Si","Es agresiva con otros Pomerania."]
   },
   {
     "idBooking": 54,
@@ -592,7 +621,7 @@
     "totalPrice": 30000.0,
     "userId": 1292634506,
     "petDayCareId": 14,
-    "petName": "Roberto"
+    "dataPet": ["Roberto","Bengalí","Mediano","Si","Le gusta rascar los muebles."]
   },
   {
     "idBooking": 55,
@@ -603,7 +632,7 @@
     "totalPrice": 30000.0,
     "userId": 1592434854,
     "petDayCareId": 15,
-    "petName": "Paca"
+    "dataPet": ["Paca","Belier","Pequeño","No","Este hermoso conejo necesita oxigeno para dormir."]
   },
   {
     "idBooking": 56,
@@ -614,7 +643,12 @@
     "totalPrice": 30000.0,
     "userId": 1366634882,
     "petDayCareId": 16,
-    "petName": "Lolo"
+    "dataPet": [
+      "Lolo",
+      "Giboso italiano",
+      "Pequeño",
+      "No",
+      "Ama que le hagan piojitos, dice groserías."]
   },
   {
     "idBooking": 57,
@@ -625,7 +659,7 @@
     "totalPrice": 30000.0,
     "userId": 1392635805,
     "petDayCareId": 17,
-    "petName": "Lulu"
+    "dataPet": ["Lulu","Chihuahua","Pequeño","Si","Ladra por todo y es celosa con la cama de ella."]
   },
   {
     "idBooking": 58,
@@ -636,7 +670,7 @@
     "totalPrice": 30000.0,
     "userId": 1692635898,
     "petDayCareId": 18,
-    "petName": "Justin"
+    "dataPet": ["Justin","Shih Tzu","Mediano","Si","Es muy amable con todos los animales. Requiere insulina por diabetes."]
   },
   {
     "idBooking": 59,
@@ -647,7 +681,7 @@
     "totalPrice": 30000.0,
     "userId": 1192634865,
     "petDayCareId": 19,
-    "petName": "Fergie"
+    "dataPet": ["Fergie","Melado de Tenerife","Pequeño","No","Es un canario muy feliz que le encanta cantar cuando tiene hambre."]
   },
   {
     "idBooking": 60,
@@ -658,7 +692,7 @@
     "totalPrice": 30000.0,
     "userId": 1222634889,
     "petDayCareId": 20,
-    "petName": "Juanita"
+    "dataPet": ["Juanita","Perdiguero Portugués","Grande","Si","Le gusta dormir en los muebles. Requiere cuido para ansianos."]
   },
   {
     "idBooking": 61,
@@ -669,7 +703,7 @@
     "totalPrice": 30000.0,
     "userId": 1122634834,
     "petDayCareId": 21,
-    "petName": "Lorenzo"
+    "dataPet": ["Lorenzo","Toy","Pequeño","No","Tiene problemas de orina, por lo qe requiere beber mucha agua."]
   },
   {
     "idBooking": 62,
@@ -680,7 +714,7 @@
     "totalPrice": 30000.0,
     "userId": 1562634878,
     "petDayCareId": 22,
-    "petName": "Pepe"
+    "dataPet": ["Pepe","Perdiguero de Burgos","Grande","No","Necesita ejercitarse dos veces al día."]
   },
   {
     "idBooking": 63,
@@ -691,7 +725,7 @@
     "totalPrice": 30000.0,
     "userId": 1912634801,
     "petDayCareId": 23,
-    "petName": "Pedro"
+    "dataPet": ["Pedro","Asíatico","Mediano","Si","Es muy puntual con las comidas."]
   },
   {
     "idBooking": 64,
@@ -702,7 +736,7 @@
     "totalPrice": 30000.0,
     "userId": 1982634876,
     "petDayCareId": 24,
-    "petName": "Pelusa"
+    "dataPet": ["Pelusa","Giboso español","Pequeño","No","Solo come una vez a día por obesidad."]
   },
   {
     "idBooking": 65,
@@ -713,7 +747,7 @@
     "totalPrice": 30000.0,
     "userId": 1762634854,
     "petDayCareId": 25,
-    "petName": "Pinky"
+    "dataPet": ["Pinky","Flat coated retriever","Grande","Si","Le gusta jugar con los trapos que se encuentre. No necesita ningún tipo de medicamento."]
   },
   {
     "idBooking": 66,
@@ -724,7 +758,7 @@
     "totalPrice": 30000.0,
     "userId": 1542634832,
     "petDayCareId": 26,
-    "petName": "James"
+    "dataPet": ["James","Americano de pelo duro","Mediano","Si","Le gusta dormir solo en la cada de el."]
   },
   {
     "idBooking": 67,
@@ -735,7 +769,7 @@
     "totalPrice": 30000.0,
     "userId": 1322634819,
     "petDayCareId": 27,
-    "petName": "Fabio"
+    "dataPet": ["Fabio","Gigante de Flandes","Grande","Si","Es muy perezoso y cariñoso."]
   },
   {
     "idBooking": 68,
@@ -746,7 +780,7 @@
     "totalPrice": 30000.0,
     "userId": 1192634820,
     "petDayCareId": 28,
-    "petName": "Ramón"
+    "dataPet": ["Ramón","Rizado de París","Pequeño","Si","Le gusta mucho la oscuridad."]
   },
   {
     "idBooking": 69,
@@ -757,7 +791,7 @@
     "totalPrice": 30000.0,
     "userId": 1302634804,
     "petDayCareId": 29,
-    "petName": "Bigotes"
+    "dataPet": ["Bigotes","Americano de pelo duro","Pequeño","Si","Se requiere cuidado constante, pues es un gato cachorro prematuro."]
   },
   {
     "idBooking": 70,
@@ -768,7 +802,7 @@
     "totalPrice": 30000.0,
     "userId": 1502634862,
     "petDayCareId": 30,
-    "petName": "Bigotona"
+    "dataPet": ["Bigotona","Silky terrier australiano","Mediano","Si","No necesita ningún tipo de medicamento."]
   },
   {
     "idBooking": 71,
@@ -779,7 +813,7 @@
     "totalPrice": 30000.0,
     "userId": 1742634873,
     "petDayCareId": 31,
-    "petName": "Negrito"
+    "dataPet": ["Negrito","Tan","Mediano","Si","Todo el día come ramitas."]
   },
   {
     "idBooking": 72,
@@ -790,7 +824,7 @@
     "totalPrice": 30000.0,
     "userId": 1652634823,
     "petDayCareId": 32,
-    "petName": "Fresita"
+    "dataPet": ["Fresita","Bossu Belga","Pequeño","Si","Es un canario muy particular, pues le encanta bañarse todos los días."]
   },
   {
     "idBooking": 73,
@@ -801,7 +835,7 @@
     "totalPrice": 30000.0,
     "userId": 1452634845,
     "petDayCareId": 33,
-    "petName": "Blanquita"
+    "dataPet": ["Blanquita","Braco de Borbón","Grande","Si","Perro muy inteligente que necesita jugar una vez al día corriendo."]
   },
   {
     "idBooking": 74,
@@ -812,7 +846,7 @@
     "totalPrice": 30000.0,
     "userId": 1372634873,
     "petDayCareId": 34,
-    "petName": "Chocolate"
+    "dataPet": ["Chocolate","Birmano","Mediano","Si","Por favor no dejarlo salir al pasto, pues es alérgico."]
   },
   {
     "idBooking": 75,
@@ -823,7 +857,7 @@
     "totalPrice": 30000.0,
     "userId": 1629263482,
     "petDayCareId": 35,
-    "petName": "Hittler"
+    "dataPet": ["Hittler","Holandés enano","Pequeño","No","Es un conejo ciego que necesita de cuidados especiales."]
   },
   {
     "idBooking": 76,
@@ -834,7 +868,7 @@
     "totalPrice": 30000.0,
     "userId": 1452634874,
     "petDayCareId": 36,
-    "petName": "Thanos"
+    "dataPet": ["Thanos","Muniqués","Pequeño","Si","Le falta una pata, por lo que debe estar en constante vigilancia ya que suele caerse."]
   },
   {
     "idBooking": 77,
@@ -845,7 +879,8 @@
     "totalPrice": 30000.0,
     "userId": 1692634899,
     "petDayCareId": 37,
-    "petName": "Hulk"
+    "dataPet": ["Hulk","Bulldog","Mediano","Si","Es una perrito tranquilo, pero le gusta jugar con las traperas. No necesita ningún tipo de medicamento"]
+
   },
   {
     "idBooking": 78,
@@ -856,7 +891,7 @@
     "totalPrice": 30000.0,
     "userId": 1462634864,
     "petDayCareId": 38,
-    "petName": "Zuly"
+    "dataPet": ["Zuly","Beagle","Mediano","No","Es una perrito tranquilo, requiere de alimento para ancianos."]
   },
   {
     "idBooking": 79,
@@ -867,7 +902,7 @@
     "totalPrice": 30000.0,
     "userId": 1322634834,
     "petDayCareId": 39,
-    "petName": "Ivan"
+    "dataPet": ["Ivan","Scotch Fancy","Pequeño","No","Canario muy elegante que le gusta mucho los rayos del sol."]
   },
   {
     "idBooking": 80,
@@ -878,6 +913,6 @@
     "totalPrice": 30000.0,
     "userId": 1352634853,
     "petDayCareId": 40,
-    "petName": "Lennon"
+    "dataPet": ["Lennon","Border Collie","Grande","Si","Es un perro atlético que necesita hacer ejercicio diario. No necesita ningún medicamento."]
   }
-  ]
+]
