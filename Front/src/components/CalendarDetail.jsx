@@ -1,137 +1,72 @@
-// como estaba 
-import React, { useState, useEffect } from "react";
-import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css";
+import React, { useEffect, useState } from "react";
+import DatePicker from "react-datepicker";
+import { eachDayOfInterval, addDays } from "date-fns";
+import "react-datepicker/dist/react-datepicker.css";
+import { useContextGlobal } from "./utils/global.constext";
 
 export const CalendarDetail = ({ productId }) => {
-    const [selectedDates, setSelectedDates] = useState([]);
-    const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
-    const [bookingData, setBookingData] = useState([]);
 
+    const [startDate, setStartDate] = useState(new Date());
+    const [endDate, setEndDate] = useState(null);
+    const [reservations, setReservations] = useState([]);
+    const {selectedDate, setSelectedDate} = useContextGlobal();
 
     const fetchData = async () => {
         try {
             const response = await fetch(
             `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/booking/petDayCare/${productId}`
             );
-            const data = await response.json();
-            setBookingData(data);
+            if (response.ok) {
+                const data = await response.json();
+                setReservations(data);
+            } else {
+                console.error("Error al obtener los datos:", response.status);
+            }
         } catch (error) {
-            console.error("Error fetching booking data:", error);
+            console.error("Error al obtener los datos:", error);
         }
-        
     };
 
-
     useEffect(() => {
-
         fetchData();
-    }, [productId]);
+    }, []);
 
-    useEffect(() => {
-        const markedMonths = bookingData.map(
-        (booking) => new Date(booking.checkInCheckOut[0]).getMonth()
-        );
-        if (markedMonths.length > 0) {
-        const minMonth = Math.min(...markedMonths);
-        setCurrentMonth(minMonth);
-        }
-    }, [bookingData]);
 
-    const tileDisabled = ({ date }) => {
-        for (const booking of bookingData) {
-        const startDate = new Date(booking.checkInCheckOut[0]);
-        const endDate = new Date(booking.checkInCheckOut[1]);
-        endDate.setDate(endDate.getDate() + 1);
-        if (date >= startDate && date < endDate) {
-            return true;
-        }
-        }
-        return false;
+    const disabledDates = reservations.flatMap((reservation) => {
+        const [checkIn, checkOut] = reservation.checkInCheckOut;
+        const startDate = new Date(checkIn);
+        const endDate = new Date(checkOut);
+        const range = eachDayOfInterval({
+            start: addDays(startDate, 1),
+            end: addDays(endDate, 1),
+        });
+        return range;
+    });
+
+    const onChange = (dates) => {
+        const [start, end] = dates;
+        setStartDate(start);
+        setEndDate(end);
+        localStorage.setItem("selectedDate", start);
     };
 
-    const handleDateChange = (date) => {
-        setSelectedDates(date);
-    };
-
-    const handlePrevMonth = () => {
-        setCurrentMonth((prevMonth) => prevMonth - 1);
-    };
-
-    const handleNextMonth = () => {
-        setCurrentMonth((prevMonth) => prevMonth + 1);
-    };
-    console.log(selectedDates, 'select');
-    console.log(bookingData, 'booking');
     return (
         <div className="calendar-section-container">
-        <h3>Fechas disponibles</h3>
-        <div className="calendars-render">
+            <h3>Fechas disponibles</h3>
+            <div className="calendars-render">
             <div className="calendar">
-            <button
-                className="calendar-navigation-button"
-                onClick={handlePrevMonth}
-            >
-                &lt;
-            </button>
-            <Calendar
-                selectRange
-                value={selectedDates}
-                onChange={handleDateChange}
-                tileDisabled={tileDisabled}
-                calendarType="ISO 8601"
-                minDetail="month"
-                activeStartDate={new Date(
-                new Date().getFullYear(),
-                currentMonth,
-                1
-                )}
-                prev2Label={null}
-                next2Label={null}
-                nextLabel={null}
-                prevLabel={null}
-                navigationLabel={({ date }) =>
-                `${new Intl.DateTimeFormat("es", {
-                    month: "long",
-                    year: "numeric",
-                }).format(date)}`
-                }
-            />
-
+                <DatePicker
+                selected={startDate}
+                onChange={onChange}
+                startDate={startDate}
+                endDate={endDate}
+                monthsShown={2}
+                excludeDates={disabledDates}
+                selectsRange
+                inline
+                />
             </div>
-
-            <div className="calendar">
-            <Calendar
-                selectRange
-                value={selectedDates}
-                onChange={handleDateChange}
-                tileDisabled={tileDisabled}
-                calendarType="ISO 8601"
-                minDetail="month"
-                activeStartDate={new Date(
-                new Date().getFullYear(),
-                currentMonth + 1,
-                1
-                )}
-                prev2Label={null}
-                next2Label={null}
-                nextLabel={null}
-                prevLabel={null}
-                navigationLabel={({ date }) =>
-                `${new Intl.DateTimeFormat("es", {
-                    month: "long",
-                    year: "numeric",
-                }).format(date)}`
-                }
-            />
-                        <button
-                className="calendar-navigation-button"
-                onClick={handleNextMonth}
-            >
-                &gt;
-            </button>
             </div>
         </div>
-        </div>
-    );
+        );
 };
