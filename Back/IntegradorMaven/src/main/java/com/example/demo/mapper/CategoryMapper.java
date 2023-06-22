@@ -20,6 +20,7 @@ public class CategoryMapper {
         categoryDTO.setTitle(categoryEntity.getTitle());
         categoryDTO.setDescription(categoryEntity.getDescription());
         categoryDTO.setImage(categoryEntity.getImage());
+        categoryDTO.setIcon(categoryDTO.getIcon());
 
         return categoryDTO;
     }
@@ -34,6 +35,7 @@ public class CategoryMapper {
         categoryEntity.setTitle(categoryDTO.getTitle());
         categoryEntity.setDescription(categoryDTO.getDescription());
         categoryEntity.setImage(categoryDTO.getImage());
+        categoryEntity.setIcon(categoryDTO.getIcon());
 
         return categoryEntity;
     }
