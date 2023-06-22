@@ -16,10 +16,18 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.repository.query.FluentQuery;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.util.function.Function;
 
 @ExtendWith(MockitoExtension.class)
 public class BookingTest {
@@ -186,5 +194,31 @@ public class BookingTest {
 
     }
 
+    @Test
+    @DisplayName("Test para un idUser nulo")
+    public void bookingsUserNullIdTest(){
+        //given: Settear el escenario de pruebas, para probar con esos datos.
 
+        //when: Cuando el id sea nulo, verificamos que se lanzó la exception
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> bookingService.bookingsUserId(null), "El id no puede ser nulo");//Los assert son verificar. Se verifica que cuando se lance un save con hotel nulo, se debe verificar que lance la excepción que to quiero que lance
+
+        //then: Mockito por favor verifique que al repositorio que es el mock, lo llamaron con un parametro null
+        Mockito.verify(bookingRepository,Mockito.times(0)).save(null);//Verifique que nunca se llamó al reposrotorio porque el parametro es nulo.
+
+    }
+
+    /*@Test
+    @DisplayName("Esta prueba valida la edición de un id invalido")
+    public void bookingsUserinvalidIdTest() {
+        //given: Settear el escenario de pruebas, para probar con esos datos.
+
+        //when: Cuando el id sea nulo, verificamos que se lanzó la exception
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> bookingService.bookingsUserId(100), "Las reservas no fueron encontradas");//Los assert son verificar. Se verifica que cuando se lance un save con hotel nulo, se debe verificar que lance la excepción que to quiero que lance
+
+        //then: Mockito por favor verifique que al repositorio que es el mock, lo llamaron con un parametro null
+        Mockito.verify(bookingRepository,Mockito.times(0)).findByUserId(100);//Verifique que nunca se llamó al reposrotorio porque el parametro es nulo.
+
+    }*/
 }
