@@ -129,13 +129,7 @@ public class BookingService {
         List<Booking> bookingsPetDayCare = bookingRepository.findByPetDayCareId(idPetDayCare);
 
         List<BookingDTO> bookingDTOList = bookingsPetDayCare.stream()
-                .map(booking -> new BookingDTO(
-                        booking.getCheckInCheckOut(),
-                        booking.getTotalPrice(),
-                        booking.getUser().getId(),
-                        booking.getPetDayCare().getId(),
-                        booking.getDataPet()
-                ))
+                .map(BookingDTO::new)
                 .collect(Collectors.toList());
 
         return bookingDTOList;

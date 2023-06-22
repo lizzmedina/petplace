@@ -22,6 +22,8 @@ public class PetDayCareDTO {
     private List<String> healthAndSecurity;
     private List<String> cancellationPolicy;
 
+    private Double average;
+
 
     public PetDayCareDTO(String name, Category type, Integer capacity, CityDTO city, String address, String detail, List<String> images, List<String> characteristics, double basicPrice, List<String> houseRules, List<String> healthAndSecurity, List<String> cancellationPolicy) {
         this.name = name;
