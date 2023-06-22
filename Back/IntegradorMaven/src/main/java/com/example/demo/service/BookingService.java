@@ -200,6 +200,14 @@ public class BookingService {
     public List<Booking> bookingsUserId(Integer idUser){
         List<Booking> bookingsUser = bookingRepository.findByUserId(idUser);
 
+        if(idUser == null){
+            throw new IllegalArgumentException("El id no puede ser nulo");
+        }
+
+        if(bookingsUser.isEmpty()){
+            throw new IllegalArgumentException("Las reservas no fueron encontradas");
+        }
+
         List<Booking> bookingList = bookingsUser.stream()
                 .map(booking -> new Booking(
                         booking.getCheckInCheckOut(),
