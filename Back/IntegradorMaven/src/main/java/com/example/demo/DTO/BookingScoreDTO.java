@@ -1,5 +1,7 @@
 package com.example.demo.DTO;
 
+import com.example.demo.utils.NumberUtils;
+
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.List;
@@ -30,9 +32,7 @@ public class BookingScoreDTO {
     }
 
     public void setAverage(Double average) {
-        DecimalFormat df = new DecimalFormat("#.##");
-        df.setRoundingMode(RoundingMode.HALF_UP);
-        this.average = Double.parseDouble(df.format(average).replace(",", "."));
+        this.average = NumberUtils.roundTwoDecimals(average);
     }
 
     public List<BookingScoreReviewDTO> getBookingScoreReviews() {

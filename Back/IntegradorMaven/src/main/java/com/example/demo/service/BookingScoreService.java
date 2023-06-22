@@ -21,7 +21,8 @@ public class BookingScoreService {
   private BookingScoreRepository bookingScoreRepository;
 
   @Autowired
-  public BookingScoreService(BookingRepository bookingRepository, BookingScoreRepository bookingScoreRepository) {
+  public BookingScoreService(
+      BookingRepository bookingRepository, BookingScoreRepository bookingScoreRepository) {
     this.bookingRepository = bookingRepository;
     this.bookingScoreRepository = bookingScoreRepository;
   }
@@ -43,6 +44,15 @@ public class BookingScoreService {
     return mapFromBooking(booking);
   }
 
+  public Double getAverageScore(Integer petDayCareId) {
+    List<Booking> bookings = bookingRepository.findByPetDayCareId(petDayCareId);
+
+    return bookingScoreRepository.findByBookingIn(bookings).stream()
+        .map(BookingScore::getScore)
+        .collect(Collectors.summarizingDouble(Double::valueOf))
+        .getAverage();
+  }
+
   private Double getAverageScore(Booking booking) {
     return bookingScoreRepository.findAllByBooking(booking).stream()
         .map(BookingScore::getScore)
@@ -59,12 +69,10 @@ public class BookingScoreService {
   private Booking findBookingScoreByBookingId(Integer id) {
     Optional<Booking> bookingOpt = bookingRepository.findById(id);
     return bookingOpt.orElseThrow(
-        () ->
-            new ResourceNotFoundException(
-                "No existe la reserva con id: " + id));
+        () -> new ResourceNotFoundException("No existe la reserva con id: " + id));
   }
 
-  private BookingScoreDTO mapFromBooking(Booking booking){
+  private BookingScoreDTO mapFromBooking(Booking booking) {
     BookingScoreDTO bookingScoreDTO = new BookingScoreDTO();
     bookingScoreDTO.setAverage(getAverageScore(booking));
     bookingScoreDTO.setBookingScoreReviews(getBookingScoreEvaluations(booking));

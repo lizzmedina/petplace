@@ -9,4 +9,6 @@ import java.util.List;
 public interface BookingScoreRepository extends JpaRepository<BookingScore, Integer> {
 
     List<BookingScore> findAllByBooking(Booking booking);
+
+    List<BookingScore> findByBookingIn(List<Booking> bookings);
 }

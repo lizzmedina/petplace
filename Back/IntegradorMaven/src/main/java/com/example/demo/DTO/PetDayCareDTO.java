@@ -1,6 +1,7 @@
 package com.example.demo.DTO;
 
 import com.example.demo.entity.Category;
+import com.example.demo.utils.NumberUtils;
 
 import java.util.List;
 
@@ -147,5 +148,11 @@ public class PetDayCareDTO {
         this.cancellationPolicy = cancellationPolicy;
     }
 
+    public Double getAverage() {
+        return average;
+    }
 
+    public void setAverage(Double average) {
+        this.average = NumberUtils.roundTwoDecimals(average);
+    }
 }
