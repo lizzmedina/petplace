@@ -19,12 +19,15 @@ public class Category {
     @Column(name = "image")
     private String image;
 
+    @Column(name = "icon")
+    private String icon;
 
 
-    public Category(String title, String description, String image) {
+    public Category(String title, String description, String image, String icon) {
         this.title = title;
         this.description = description;
         this.image = image;
+        this.icon = icon;
     }
 
     public Category() {
@@ -60,5 +63,13 @@ public class Category {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
     }
 }

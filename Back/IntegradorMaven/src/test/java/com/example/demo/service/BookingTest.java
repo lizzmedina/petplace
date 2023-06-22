@@ -175,7 +175,7 @@ public class BookingTest {
         PetDayCare expectedPetDayCare = new PetDayCare();
         expectedPetDayCare.setId(50);
         expectedPetDayCare.setName("Prueba hotel");
-        expectedPetDayCare.setType(new Category("canarios","Expertos en canarios",null));
+        expectedPetDayCare.setType(new Category("canarios","Expertos en canarios",null, null));
         expectedPetDayCare.setCapacity(30);
         expectedPetDayCare.setCity(expectedCity);
         expectedPetDayCare.setAddress("Ensayo");
