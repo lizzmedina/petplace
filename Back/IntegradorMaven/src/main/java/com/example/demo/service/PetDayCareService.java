@@ -336,15 +336,12 @@ public class PetDayCareService {
         repository.findAll().stream().forEach(repository::delete);//Elimina todos los datos de la BD
     }
 
-    public Optional<PetDayCare> findById(Integer id) {
+    public PetDayCare findById(Integer id) {
         Optional<PetDayCare> petDayCare = this.repository.findById(id);
         if(id == null){
             throw new IllegalArgumentException("El id no puede ser nulo");
         }
 
-        if(petDayCare.isEmpty()){ //si no esta presente, lanza una excepcion
-            throw new IllegalArgumentException("La guarderia no fue encontrada");
-        }
-        return petDayCare;
+        return petDayCare.orElseThrow(() -> new IllegalArgumentException("La guarderia no fue encontrada: "+id));
     }
 }
