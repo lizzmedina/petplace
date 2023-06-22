@@ -7,7 +7,7 @@ function CityRegister() {
 
     return (
         <div className='space-section'>
-            <h2>{userConnected.type !== "Manager" ? "Página no encontrada" : "Resitra una nueva Ciudad"}</h2>
+            <h2>{userConnected.type !== "Manager" ? "Página no encontrada" : "Registra una nueva Ciudad"}</h2>
             <p>{userConnected.type !== "Manager" ? "" : "Completa los siguientes campos"}</p>
             {userConnected.type !== "Manager" ? "" : <FormCity/>}
         </div>

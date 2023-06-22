@@ -697,6 +697,17 @@ input:hover {
     border-radius: 5px;;
 }
 
+/* Form Booking*/
+
+.booking-upcontainer{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 90vw;
+    border: solid black;
+}
+
+
 /* Paginate */
 
 .paginate-container {

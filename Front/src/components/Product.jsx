@@ -117,7 +117,7 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
                 <span className="product-info-rigth">
                     <p className="text-info"> Capacidad: {capacity} {type.title}</p>
                     <p className="text-info">Precio: $ {basicPrice}</p>
-                    <button className="buttonDetail button-1">Reservar</button>
+                    <button className="buttonDetail button-1"><Link to='/bookingRegister' style={{ color: 'inherit' }}>Reservar</Link></button>
                 </span>
                 
 
