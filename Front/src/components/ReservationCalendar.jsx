@@ -7,15 +7,7 @@ const { RangePicker } = DatePicker;
 export const ReservationCalendar = () => {
     const {selectedDates, setSelectedDates} = useContextGlobal();
 
-    useEffect(() => {
-        // Recuperar las fechas almacenadas del almacenamiento local
-        const storedStartDate = JSON.parse(localStorage.getItem('selectedStartDate'));
-        const storedEndDate = JSON.parse(localStorage.getItem('selectedEndDate'));
-        // Establecer las fechas seleccionadas en el estado
-        console.log(selectedDates);
-        setSelectedDates([storedStartDate, storedEndDate]);
-        console.log(selectedDates);
-    }, []);
+    
 
     return (
         <div style={{ margin: 5, width: 240 }}>
@@ -27,8 +19,16 @@ export const ReservationCalendar = () => {
                         startDate = values[0] ? values[0].format('YYYY-MM-DD') : null;
                         endDate = values[1] ? values[1].format('YYYY-MM-DD') : null;
                     }
+                    
+                    localStorage.setItem('localStartDate', startDate);
+                    localStorage.setItem('localEndDate', endDate);
+                    
+                    console.log("Localstorage dates: ");
+                    console.log(startDate, endDate);
+                    console.log("--------------------")
                     setSelectedDates([startDate, endDate]);
                     
+                   
                 }}
             />
         </div>

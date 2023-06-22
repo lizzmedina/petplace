@@ -4,8 +4,7 @@ import { SearcherByLocation } from "./SearcherByLocation";
 import { useContextGlobal } from "./utils/global.constext";
 
 export const Searcher = () => {
-  const { selectedCity, selectedDates, setRecommends, setTitle } =
-    useContextGlobal();
+  const { selectedCity, selectedDates, setRecommends, setTitle } = useContextGlobal();
 
   const handleSearch = async () => {
     if (selectedCity) {
@@ -28,7 +27,6 @@ export const Searcher = () => {
       }
     }
   };
-
   return (
     <div className="searcher-container">
       <h2 className="searcher-title">Busca el alojamiento ideal para tu mascota</h2>

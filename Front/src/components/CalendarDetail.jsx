@@ -2,14 +2,12 @@ import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import { eachDayOfInterval, addDays } from "date-fns";
 import "react-datepicker/dist/react-datepicker.css";
-import { useContextGlobal } from "./utils/global.constext";
 
 export const CalendarDetail = ({ productId }) => {
 
     const [startDate, setStartDate] = useState(new Date());
-    const [endDate, setEndDate] = useState(null);
+    const [endDate, setEndDate] = useState(new Date());
     const [reservations, setReservations] = useState([]);
-    const {selectedDate, setSelectedDate} = useContextGlobal();
 
     const fetchData = async () => {
         try {
@@ -27,8 +25,38 @@ export const CalendarDetail = ({ productId }) => {
         }
     };
 
+    const getLocalStorageDate = () => {
+        
+        let localStartDate = localStorage.getItem('localStartDate');
+        let startDate = localStartDate ??  null;
+        
+        let localEndDate = localStorage.getItem('localEndDate');
+        let endDate = localEndDate ??  null;
+
+        if (startDate) {
+            let newStartDate = new Date(startDate);
+            newStartDate.setDate(newStartDate.getDate() + 1);
+            setStartDate(newStartDate);
+        }
+        
+        if (endDate) {
+            let newEndDate = new Date(endDate);
+            newEndDate.setDate(newEndDate.getDate() + 1);
+            setEndDate(newEndDate);
+        }
+
+        console.log('---- getLocalStorageDate ----');
+        console.log('startDate:');
+        console.log(startDate);
+        console.log('endDate:');        
+        console.log(endDate);
+        console.log("--------------------")
+
+    }
+
     useEffect(() => {
         fetchData();
+        getLocalStorageDate();
     }, []);
 
 
