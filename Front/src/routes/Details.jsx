@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Product } from "../components/Product.jsx";
 import { useParams } from 'react-router-dom'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import ReviewModalComponent from "../components/ReviewModalComponent.jsx"
 
 
 const Details = () => {
@@ -23,6 +24,16 @@ const Details = () => {
 
       return (
             <>
+                  <div>
+                    <ReviewModalComponent
+                            title="Calificacion"
+                            cancelButtonText="Cancelar"
+                            actionButtonText="Calificar"
+                            buttonText="Puntuar"
+                            userId={1352634853}
+                            bookingId={80}
+                          />
+                  </div>
                   <div className="detail-container">
                         <Product
                         id={details.id}
