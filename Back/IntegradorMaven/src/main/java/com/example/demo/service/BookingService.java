@@ -176,7 +176,7 @@ public class BookingService {
         return "Se elimino exitosamente la reserva de id: " + id;
     }
 
-    public List<Booking> bookingsUserId(Integer idUser){
+    public List<BookingDTO> bookingsUserId(Integer idUser){
         List<Booking> bookingsUser = bookingRepository.findByUserId(idUser);
 
         if(idUser == null){
@@ -187,19 +187,7 @@ public class BookingService {
             throw new IllegalArgumentException("Las reservas no fueron encontradas");
         }
 
-        List<Booking> bookingList = bookingsUser.stream()
-                .map(booking -> new Booking(
-                        booking.getCheckInCheckOut(),
-                        booking.getCheckIn(),
-                        booking.getCheckOut(),
-                        booking.getDataPet(),
-                        booking.getTotalPrice(),
-                        booking.getUser(),
-                        booking.getPetDayCare()
-                ))
-                .collect(Collectors.toList());
-
-        return bookingList;
+        return bookingsUser.stream().map(BookingDTO::new).toList();
     }
 
     private LocalDate parseStringToDate(String date){
