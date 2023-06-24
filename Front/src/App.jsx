@@ -6,7 +6,6 @@ import Login from "./routes/Login";
 import {CategoryFiltred} from "./routes/CategoryFiltred";
 import ProductRegister from "./routes/ProductRegister";
 import CityRegister from "./routes/CityRegister";
-import BookingRegister from "./routes/BookingRegister";
 import Details from "./routes/Details";
 import MyAccount from "./routes/MyAccount";
 import EditProducts from "./routes/EditProducts";
@@ -18,7 +17,7 @@ import './styles.css';
 import { ValidationPage } from "./routes/ValidationPage";
 import { NewCategory } from "./routes/NewCategory";
 import ContextProvider from "../src/components/utils/global.constext";
-
+import {BookingHistory} from './routes/BookingHistory';
 function App() {
     return (
         <div className="App">
@@ -31,7 +30,6 @@ function App() {
                 <Route path="/category/:id" element={<CategoryFiltred/>}/>
                 <Route path="/productRegister" element={<ProductRegister/>}/>
                 <Route path="/cityRegister" element={<CityRegister/>}/>
-                <Route path="/bookingRegister" element={<BookingRegister/>}/>
                 <Route path="/Detail/:id" element={<Details/>}/>
                 <Route path="/newCategory" element={<NewCategory/>}/>
                 <Route path="/account/:id" element={<MyAccount/>}/>
@@ -40,6 +38,7 @@ function App() {
                 <Route path="/editCity" element={<EditCity/>}/>
                 <Route path="/editCategory" element={<EditCategory/>}/>
                 <Route path="/validationPage/" element={<ValidationPage/>}/>
+                <Route path="/bookinghistory" element={<BookingHistory/>}/>
             </Routes>
             </ContextProvider>
             <Footer/>
