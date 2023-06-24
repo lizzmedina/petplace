@@ -5,12 +5,17 @@ function Cursor() {
     return (
     <>
         <AnimatedCursor
-        innerSize={8}
-        outerSize={8}
-        color='142, 209, 185'
-        outerAlpha={0.2}
-        innerScale={0.7}
-        outerScale={5}
+        innerSize={10}
+        //color='142, 209, 185'
+        //color = '56, 11, 71'
+        color = '53, 194, 219'
+        
+        outerStyle={{
+            border: '3px solid var(--cursor-color)'
+        }}
+        innerStyle={{
+            backgroundColor: 'var(--cursor-color)'
+        }}
         clickables={[
             'a',
             'input[type="text"]',
