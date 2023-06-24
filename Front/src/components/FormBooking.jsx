@@ -120,8 +120,12 @@ function FormBooking() {
                             <p className="detail-info">{product.address}</p>
                             <p className="detail-info">{product.city.name}</p>
                         </div>
-                            MAPA
-                        <div>
+                            
+                        <div className="booking-map">
+                                        <div className="gmap_canvas">
+                                            <iframe className='mapFrame' id="gmap_canvas"
+                                                src={generateLocationURL()} />
+                                        </div>
 
                         </div>
                     </div>
