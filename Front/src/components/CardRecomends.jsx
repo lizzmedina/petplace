@@ -40,6 +40,11 @@ export const CardRecomends = ({ image, type, name, characteristics, city, addres
         return ratingValue !== null && ratingValue !== undefined;
     };
 
+    const hideFavorite = () => {
+        // placeholder para la funcionalidad del corazon de favoritos en el card
+        return true;
+    }
+
     return (
         <div className="card-recomends">
             <div className="card-content">
@@ -59,9 +64,11 @@ export const CardRecomends = ({ image, type, name, characteristics, city, addres
                             <p className="rating-value"> {ratingValue} / 5.0</p>
                           </Grid>) : null
                     }
-                    <Grid item xs={2}>
+                    { hideFavorite() ? null :
+                    (<Grid item xs={2}>
                         <FontAwesomeIcon icon={faHeart} className='card-favorite-icon'/>
-                    </Grid>
+                    </Grid>)
+                    }
                     </Grid>
                     <span className="card-category-recommends">Habilitado para: {capacity} {type.title} </span>
                     <p className="card-location-recommends"><FontAwesomeIcon icon={faLocationDot} className='card-location-icon' />{city.name}, {address}</p>
