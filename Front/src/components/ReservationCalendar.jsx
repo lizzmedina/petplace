@@ -10,7 +10,7 @@ export const ReservationCalendar = () => {
     
 
     return (
-        <div style={{ margin: 5, width: 240 }}>
+        <div className='searcher-calendar'>
             <RangePicker
                 onChange={(values) => {
                     let startDate = null;

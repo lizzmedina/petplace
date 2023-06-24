@@ -35,7 +35,7 @@ export const Searcher = () => {
       <div className="searcher">
         <SearcherByLocation />
         <ReservationCalendar />
-        <button className="searcher-button search-width" onClick={handleSearch}>
+        <button className="searcher-button" onClick={handleSearch}>
           Buscar
         </button>
       </div>
