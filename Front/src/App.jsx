@@ -18,9 +18,11 @@ import { ValidationPage } from "./routes/ValidationPage";
 import { NewCategory } from "./routes/NewCategory";
 import ContextProvider from "../src/components/utils/global.constext";
 import {BookingHistory} from './routes/BookingHistory';
+import Cursor from "./components/Cursor";
 function App() {
     return (
         <div className="App">
+            <Cursor/>
             <NavBar/>
             <ContextProvider>
             <Routes>
