@@ -23,15 +23,15 @@ console.log(bookingHistory);
     return (
         <div className="space-section">
             <h2>Historial de reservas</h2>
-            {userConnected?.type === "Manager" && (
+            {userConnected.validation === true &&  (
                 <table>
                 <thead>
                     <tr>
-                    <th className="booking-cell">Pet Daycare Name</th>
+                    <th className="booking-cell">Alojamiento</th>
                     <th className="booking-cell" >Check-in</th>
                     <th className="booking-cell">Check-out</th>
-                    <th className="booking-cell">Data Pet</th>                    
-                    <th className="booking-cell">Total Price</th>
+                    <th className="booking-cell">Nombre de Mascota</th>                    
+                    <th className="booking-cell">Precio pagado</th>
                     </tr>
                 </thead>
                 <tbody>

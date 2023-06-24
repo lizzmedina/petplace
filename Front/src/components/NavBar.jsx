@@ -10,6 +10,7 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Divider from '@mui/material/Divider';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { BookingHistory } from '../routes/BookingHistory';
 
 
 export const NavBar = () => {
@@ -108,6 +109,8 @@ export const NavBar = () => {
             anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
           >
             <MenuItem onClick={() => navigate("/account/" + userConnected.id)}> Mi cuenta </MenuItem>
+            <Divider />
+            <MenuItem onClick={() => navigate("/bookinghistory")}> Mis Reservas</MenuItem>
             <Divider />
             <MenuItem onClick={handleCloseSesion}> Cerrar Sesión </MenuItem>
           </Menu>
