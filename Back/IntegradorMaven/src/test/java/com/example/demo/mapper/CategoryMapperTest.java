@@ -13,7 +13,7 @@ public class CategoryMapperTest {
   @DisplayName(
       "Verifica que una entidad Category se mapee correctamente a un CityDTO sin PetDayCare asociados")
   public void mapToDto_success() {
-    Category category = new Category("Perros", "Descripcion", "imagen");
+    Category category = new Category("Perros", "Descripcion", "imagen","icono");
     category.setId(1);
 
     CategoryDTO actual = categoryMapper.mapToDTO(category);
@@ -22,12 +22,13 @@ public class CategoryMapperTest {
     Assertions.assertEquals("Perros", actual.getTitle());
     Assertions.assertEquals("Descripcion", actual.getDescription());
     Assertions.assertEquals("imagen", actual.getImage());
+    Assertions.assertEquals("icono", actual.getIcon());
   }
 
   @Test
   @DisplayName("Verifica que un CityDTO se mapee correctamente a un City sin PetDayCare asociados")
   public void mapToEntity_success_withoutPdc() {
-    CategoryDTO dto = new CategoryDTO(2, "Gatos", "Descripcion", "imagen");
+    CategoryDTO dto = new CategoryDTO(2, "Gatos", "Descripcion", "imagen","icono");
 
     Category actual = categoryMapper.mapToEntity(dto);
 
@@ -35,6 +36,7 @@ public class CategoryMapperTest {
     Assertions.assertEquals("Gatos", actual.getTitle());
     Assertions.assertEquals("Descripcion", actual.getDescription());
     Assertions.assertEquals("imagen", actual.getImage());
+    Assertions.assertEquals("icono",actual.getIcon());
   }
 
   @Test

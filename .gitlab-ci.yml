@@ -24,6 +24,8 @@ front:build:
     - echo "Building app..."
     - echo "VITE_REACT_APP_BACKEND_URL=http://${DEPLOY_SERVER_IP}:8080" > Front/.env
     - cd Front
+    - rm -rf node_modules
+    - npm prune
     - npm install
     - npm run build
     - echo "Finished building the app."

@@ -693,7 +693,7 @@ input:hover {
     color: #fff;
     margin: 25px 5px 5px;
     padding: 10px 17.6px;
-    border-radius: 5px;;
+    border-radius: 5px;
 }
 
 /* Form Booking*/
@@ -1173,7 +1173,15 @@ p.more-images {
     color: var(--color3);
     cursor: pointer;
 }
+/* booking history*/
 
+.reservation {
+    background-color: #EAFFF7;
+    margin: 1rem;
+}
+.booking-cell{
+    padding: 2rem;
+}
 
 
 /* footer */

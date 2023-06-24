@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 
+import com.example.demo.DTO.BookingScoreDTO;
 import com.example.demo.DTO.CategoryDTO;
 import com.example.demo.DTO.CityDTO;
 import com.example.demo.DTO.PetDayCareDTO;
@@ -36,16 +37,27 @@ public class PetDayCareService {
     private CityMapper cityMapper;
     private CityService cityService;
 
-    @Autowired
-    public PetDayCareService(PetDayCareRepository repository, CategoryService categoryService, CategoryRepository categoryRepository, CategoryMapper categoryMapper, CityRepository cityRepository, CityMapper cityMapper, CityService cityService) {
-        this.repository = repository;
-        this.categoryService = categoryService;
-        this.categoryRepository = categoryRepository;
-        this.categoryMapper = categoryMapper;
-        this.cityRepository = cityRepository;
-        this.cityMapper = cityMapper;
-        this.cityService = cityService;
-    }
+    private BookingScoreService bookingScoreService;
+
+  @Autowired
+  public PetDayCareService(
+      PetDayCareRepository repository,
+      CategoryService categoryService,
+      CategoryRepository categoryRepository,
+      CategoryMapper categoryMapper,
+      CityRepository cityRepository,
+      CityMapper cityMapper,
+      CityService cityService,
+      BookingScoreService bookingScoreService) {
+    this.repository = repository;
+    this.categoryService = categoryService;
+    this.categoryRepository = categoryRepository;
+    this.categoryMapper = categoryMapper;
+    this.cityRepository = cityRepository;
+    this.cityMapper = cityMapper;
+    this.cityService = cityService;
+    this.bookingScoreService = bookingScoreService;
+  }
 
     /*public PetDayCareSaveDTO save(PetDayCareSaveDTO petDayCareSaveDTO) {
 
@@ -328,6 +340,7 @@ public class PetDayCareService {
                 petDayCare.get().getCancellationPolicy()
         );
         petDayCareDTO.setId(id);
+        petDayCareDTO.setAverage(bookingScoreService.getAverageScore(id));
 
         return petDayCareDTO;
     }
@@ -336,15 +349,12 @@ public class PetDayCareService {
         repository.findAll().stream().forEach(repository::delete);//Elimina todos los datos de la BD
     }
 
-    public Optional<PetDayCare> findById(Integer id) {
+    public PetDayCare findById(Integer id) {
         Optional<PetDayCare> petDayCare = this.repository.findById(id);
         if(id == null){
             throw new IllegalArgumentException("El id no puede ser nulo");
         }
 
-        if(petDayCare.isEmpty()){ //si no esta presente, lanza una excepcion
-            throw new IllegalArgumentException("La guarderia no fue encontrada");
-        }
-        return petDayCare;
+        return petDayCare.orElseThrow(() -> new IllegalArgumentException("La guarderia no fue encontrada: "+id));
     }
 }

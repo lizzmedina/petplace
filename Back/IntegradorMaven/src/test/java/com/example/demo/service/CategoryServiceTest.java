@@ -42,7 +42,7 @@ public class CategoryServiceTest {
     public void save_successTest() {
         Category expectedCategory = this.createTestCategory(1);
 
-        CategoryDTO categoryDTO = new CategoryDTO(1, "Hamster", "guarderia de roedores", "url.com");
+        CategoryDTO categoryDTO = new CategoryDTO(1, "Hamster", "guarderia de roedores", "url.com","icon");
         Category mappedCategory = mapper.mapToEntity(categoryDTO);
 
         Mockito.when(repository.save(mappedCategory)).thenReturn(expectedCategory);
@@ -55,13 +55,14 @@ public class CategoryServiceTest {
         Assertions.assertEquals(expectedCategory.getDescription(), actualCategory.getDescription());
         Assertions.assertEquals(expectedCategory.getTitle(), actualCategory.getTitle());
         Assertions.assertEquals(expectedCategory.getImage(), actualCategory.getImage());
+        //Assertions.assertEquals(expectedCategory.getIcon(), actualCategory.getIcon());
     }
 
     @Test
     @DisplayName("Esta prueba valida la creacion de una categoria existente")
     public void save_existingCategoryTest() {
 
-        CategoryDTO categoryDTO = new CategoryDTO(1, "Hamster", "guarderia de roedores", "url.com");
+        CategoryDTO categoryDTO = new CategoryDTO(1, "Hamster", "guarderia de roedores", "url.com","icon");
         Mockito.doCallRealMethod().when(mapper).mapToEntity(categoryDTO);
         Category mappedCategory = mapper.mapToEntity(categoryDTO);
         Mockito.when(repository.findByTitle("Hamster")).thenReturn(Optional.of(mappedCategory));
@@ -88,7 +89,7 @@ public class CategoryServiceTest {
 
         Category expectedCategory = this.createTestCategory(1);
 
-        CategoryDTO categoryDTO = new CategoryDTO(1, "Hamster", "guarderia de roedores", "url.com");
+        CategoryDTO categoryDTO = new CategoryDTO(1, "Hamster", "guarderia de roedores", "url.com","icon");
 
         Category mappedCategory = mapper.mapToEntity(categoryDTO);
         Mockito.when(repository.save(mappedCategory)).thenReturn(expectedCategory);
@@ -107,6 +108,7 @@ public class CategoryServiceTest {
         Assertions.assertEquals(expectedCategory.getDescription(), editCategory.getDescription());
         Assertions.assertEquals(expectedCategory.getTitle(), editCategory.getTitle());
         Assertions.assertEquals(expectedCategory.getImage(), editCategory.getImage());
+        //Assertions.assertEquals(expectedCategory.getIcon(),editCategory.getIcon());
     }
 
   @Test
@@ -114,7 +116,7 @@ public class CategoryServiceTest {
     Mockito.when(repository.findById(1)).thenReturn(Optional.empty());
     Assertions.assertThrows(
         ResourceNotFoundException.class,
-        () -> service.edit(new CategoryDTO(1, "name", "description", "image")));
+        () -> service.edit(new CategoryDTO(1, "name", "description", "image","icon")));
   }
 
   @Test

@@ -1,26 +1,33 @@
 [
   {
     "id": 1,
+    "title": "Perros",
     "description": "Especialidados en perros",
     "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Perro1.jpg",
-    "title": "Perros"
+    "icon": "Ensayo"
+
   },
   {
     "id": 2,
+    "title": "Gatos",
     "description": "Especialidados en gatos",
     "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Gato.jpg",
-    "title": "Gatos"
+    "icon": "Ensayo"
+
   },
   {
     "id": 3,
+    "title": "Canarios",
     "description": "Especialidados en canarios",
     "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Canario.jpg",
-    "title": "Canarios"
+    "icon": "Ensayo"
+
   },
   {
     "id": 4,
+    "title": "Conejos",
     "description": "Especialidados en conejos",
     "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Conejo.jpg",
-    "title": "Conejos"
+    "icon": "Ensayo"
   }
 ]

@@ -1,6 +1,7 @@
 package com.example.demo.DTO;
 
 import com.example.demo.entity.Category;
+import com.example.demo.utils.NumberUtils;
 
 import java.util.List;
 
@@ -21,6 +22,8 @@ public class PetDayCareDTO {
     private List<String> houseRules;
     private List<String> healthAndSecurity;
     private List<String> cancellationPolicy;
+
+    private Double average;
 
 
     public PetDayCareDTO(String name, Category type, Integer capacity, CityDTO city, String address, String detail, List<String> images, List<String> characteristics, double basicPrice, List<String> houseRules, List<String> healthAndSecurity, List<String> cancellationPolicy) {
@@ -145,5 +148,11 @@ public class PetDayCareDTO {
         this.cancellationPolicy = cancellationPolicy;
     }
 
+    public Double getAverage() {
+        return average;
+    }
 
+    public void setAverage(Double average) {
+        this.average = NumberUtils.roundTwoDecimals(average);
+    }
 }

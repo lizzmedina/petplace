@@ -4,7 +4,7 @@ import { faChevronLeft, faShower, faPersonWalkingWithCane, faCarrot, faBaseball,
 import { Link as ScrollLink, Element } from 'react-scroll';
 import React, { useState } from 'react';
 import ImageModal from './ImageModal';
-import { CalendarDetail } from "./CalendarDetail.jsx";
+import { CalendarDetail } from './CalendarDetail';
 
 
 
@@ -124,7 +124,6 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
             </div>
 
             <CalendarDetail productId={id} />
-
             <Element name="locationContainer">
                 <div className='location-container' id='locationContainer'>
                     <h3>Ubicación</h3>

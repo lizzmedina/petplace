@@ -14,13 +14,15 @@ const ContextProvider = ({children}) => {
     const urlPostCities = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/cities`; 
     const urlGetProducts = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/petDayCare/all`;
     const urlPostProducts = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/petDayCare`; 
-    const urlCategory = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/category`  
+    const urlCategory = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/category`;
+    const urlBookingHistory = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/booking/user/`;
 
     const [selectedCity, setSelectedCity] = useState(null);
     const [selectedDates, setSelectedDates] = useState([null, null]);
     const [recommends, setRecommends] = useState([]);
     const [searchResults, setSearchResults] = useState([]);
     const [title, setTitle] = useState('Recomendaciones');
+    const [bookingHistory, setBookingHistory] = useState([{}]);
     
     const [places, setPlaces] = useState([]); // categorias
     const getAllCategories = async()=> {
@@ -49,6 +51,9 @@ const ContextProvider = ({children}) => {
     return (
         <ContextGlobal.Provider 
             value={{
+                urlBookingHistory,
+                bookingHistory,
+                setBookingHistory,
                 searchResults,
                 setSearchResults, 
                 title,

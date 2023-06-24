@@ -53,9 +53,9 @@ public class PetDayCare {
     private List<String> cancellationPolicy;
 
     @Column(name = "favorite")
-    private boolean favorite;
+    private Boolean favorite;
 
-    public PetDayCare(String name, Category type, Integer capacity, City city, String address, String detail, List<String> images, List<String> characteristics, double basicPrice, List<String> houseRules, List<String> healthAndSecurity, List<String> cancellationPolicy, boolean favorite) {
+    public PetDayCare(String name, Category type, Integer capacity, City city, String address, String detail, List<String> images, List<String> characteristics, double basicPrice, List<String> houseRules, List<String> healthAndSecurity, List<String> cancellationPolicy, Boolean favorite) {
         this.name = name;
         this.type = type;
         this.capacity = capacity;
@@ -178,12 +178,16 @@ public class PetDayCare {
         this.cancellationPolicy = cancellationPolicy;
     }
 
-    public boolean isFavorite() {
+    public Boolean isFavorite() {
         return favorite;
     }
 
-    public void setFavorite(boolean favorite) {
-        this.favorite = favorite;
+    public void setFavorite(Boolean favorite) {
+        if(favorite == null){
+            this.favorite = false;
+        } else {
+            this.favorite = favorite;
+        }
     }
 }
 
