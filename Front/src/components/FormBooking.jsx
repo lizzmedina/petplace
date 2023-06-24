@@ -99,7 +99,7 @@ function FormBooking() {
                     </div>
                     <div className="booking-upleftsection">
                         <h3>Información de Reserva</h3><br/>
-                        <ReservationCalendar /><br/>
+                        <div className="booking-calendar"><ReservationCalendar /></div>
                         <div className='form-infoLine'> <p>Precio base x dia(s):</p> <p>&nbsp;${product.basicPrice}</p> </div>
                         <div className='form-infoLine'> <p>Dia(s):</p> <p>&nbsp; {numberofDays}</p> </div>
                         <div className='form-infoLine'> <p>Total a Pagar:</p> <p>&nbsp; {totalPayment}</p> </div>
