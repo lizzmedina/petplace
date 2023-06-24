@@ -842,11 +842,25 @@ p.more-images {
 }
 
 .product-info-rigth {
-    width: 20rem;
+    width: 23rem;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-end;
+}
+
+.rating-value {
+    color: var(--color3);
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.space-content {
+    place-content: space-between;
+}
+
+.card-favorite-icon {
+    color: var(--color8);
 }
 
 .buttonDetail {

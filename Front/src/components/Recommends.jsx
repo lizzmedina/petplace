@@ -77,8 +77,7 @@ const shuffleArray = (array) => {
             name={recommend.name}
             image={recommend.images}
             capacity={recommend.capacity}
-            rating={recommend.rating}
-            ratingText={recommend.ratingText}
+            ratingValue={recommend.average}
             city={recommend.city}
             address={recommend.address}
             detail={recommend.detail}

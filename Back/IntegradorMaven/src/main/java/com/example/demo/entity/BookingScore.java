@@ -8,8 +8,8 @@ import java.util.Objects;
 @Entity
 public class BookingScore {
 
-   @EmbeddedId
-   private BookingScoreId bookingScoreId;
+    @EmbeddedId
+    private BookingScoreId bookingScoreId;
 
     @Column
     private Integer score;
@@ -18,7 +18,7 @@ public class BookingScore {
     private String review;
 
     public BookingScore(){
-        bookingScoreId = new BookingScoreId();
+        this.bookingScoreId = new BookingScoreId();
     }
 
     public Integer getScore() {
@@ -55,8 +55,6 @@ public class BookingScore {
 
     @Embeddable
     public static class BookingScoreId implements Serializable {
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Integer id;
         private Integer userId;
         @ManyToOne
         private Booking booking;
@@ -66,12 +64,12 @@ public class BookingScore {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
             BookingScoreId that = (BookingScoreId) o;
-            return Objects.equals(id, that.id) && Objects.equals(userId, that.userId) && Objects.equals(booking, that.booking);
+            return Objects.equals(userId, that.userId) && Objects.equals(booking, that.booking);
         }
 
         @Override
         public int hashCode() {
-            return Objects.hash(id, userId, booking);
+            return Objects.hash(userId, booking);
         }
     }
 }

@@ -72,8 +72,7 @@ export const ReviewModalComponent = (props) => {
           <ModalBody className="text-left border-0">
             <Typography component="legend">Calificacion</Typography>
             <Rating
-              name="simple-controlled"
-              value={ratingValue}
+              value={0}
               precision={0.5}
               onChange={(event, newValue) => {
                 setRatingValue(newValue);

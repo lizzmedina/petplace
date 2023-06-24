@@ -5,10 +5,9 @@ import { Link as ScrollLink, Element } from 'react-scroll';
 import React, { useState } from 'react';
 import ImageModal from './ImageModal';
 import { CalendarDetail } from './CalendarDetail';
+import { Rating, Typography, Grid } from '@mui/material';
 
-
-
-export const Product = ({ id, name, type, capacity, city, address, detail, image, basicPrice, features, houseRules, healthAndSecurity, cancellationPolicy }) => {
+export const Product = ({ id, name, type, capacity, city, address, detail, image, basicPrice, features, houseRules, healthAndSecurity, cancellationPolicy, ratingValue }) => {
 
     const navigate = useNavigate()
     const [isModalOpen, setModalOpen] = useState(false);
@@ -114,11 +113,43 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
                     </div>
                 </span>
 
-                <span className="product-info-rigth">
-                    <p className="text-info"> Capacidad: {capacity} {type.title}</p>
-                    <p className="text-info">Precio: $ {basicPrice}</p>
+                <div className="product-info-rigth">
+                    { ratingValue !== null ?
+                    <Grid container spacing={3} direction="row">
+                      <Grid item>
+                        <Typography component="legend"><p className="text-info">Calificación:</p></Typography>
+                      </Grid>
+                      <Grid item>
+                        <p className="text-info">
+                            <Rating readOnly value={ratingValue}  precision={0.5} />
+                        </p>
+                      </Grid>
+                      <Grid item>
+                          <p className="text-info">
+                              {ratingValue} / 5.0
+                          </p>
+                      </Grid>
+                    </Grid> : null
+                    }
+                    <Grid container spacing={2}>
+                      <Grid item>
+                        <p className="text-info">Capacidad:</p>
+                      </Grid>
+                      <Grid item>
+                        <p className="text-info">{capacity} {type.title}</p>
+                      </Grid>
+                    </Grid>
+
+                    <Grid container spacing={2}>
+                      <Grid item>
+                        <p className="text-info">Precio:</p>
+                      </Grid>
+                      <Grid item>
+                        <p className="text-info">$ {basicPrice}</p>
+                      </Grid>
+                    </Grid>
                     <button className="buttonDetail button-1"><Link to='/bookingRegister' style={{ color: 'inherit' }}>Reservar</Link></button>
-                </span>
+                </div>
                 
 
             </div>

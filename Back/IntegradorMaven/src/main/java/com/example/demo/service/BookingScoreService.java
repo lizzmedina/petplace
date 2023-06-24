@@ -63,7 +63,9 @@ public class BookingScoreService {
   public Double getAverageScore(Integer petDayCareId) {
     List<Booking> bookings = bookingRepository.findByPetDayCareId(petDayCareId);
 
-    return bookingScoreRepository.findByBookingScoreIdBookingIn(bookings).stream()
+    List<BookingScore> bookingRatings = bookingScoreRepository.findByBookingScoreIdBookingIn(bookings);
+
+    return bookingRatings.isEmpty() ? null : bookingRatings.stream()
         .map(BookingScore::getScore)
         .collect(Collectors.summarizingDouble(Double::valueOf))
         .getAverage();

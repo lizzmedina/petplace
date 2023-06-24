@@ -11,6 +11,9 @@ public class NumberUtils {
     }
 
     public static Double roundTwoDecimals(Double value){
+        if(value == null){
+            return null;
+        }
         df.setRoundingMode(RoundingMode.HALF_UP);
         return Double.parseDouble(df.format(value).replace(",", "."));
     }
