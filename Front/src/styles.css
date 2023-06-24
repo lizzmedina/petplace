@@ -1123,7 +1123,15 @@ p.more-images {
     color: var(--color3);
     cursor: pointer;
 }
+/* booking history*/
 
+.reservation {
+    background-color: #EAFFF7;
+    margin: 1rem;
+}
+.booking-cell{
+    padding: 2rem;
+}
 
 
 /* footer */
