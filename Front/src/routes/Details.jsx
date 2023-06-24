@@ -18,6 +18,11 @@ const Details = () => {
             getDetail()
       }, [])
 
+      useEffect(() => {
+            // Guardar detalles en sessionStorage cuando details cambie
+            sessionStorage.setItem("productDetail", JSON.stringify(details));
+      }, [details]);
+
       return (
             <>
             <div className="detail-container">  
