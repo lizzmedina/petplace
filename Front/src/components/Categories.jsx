@@ -48,7 +48,7 @@ export const Categories = () => {
 
   return (
     <div className="categories-container">
-      <h2 className="home-titles">Buscar según el tipo de mascota</h2>
+      <h2 className="home-titles">Alojamientos por tipo de mascota</h2>
       {isLoading ? (
         <p style={{ fontSize: '1.5rem', textAlign: 'center', margin: '2rem' }}>
           Cargando...
@@ -61,6 +61,7 @@ export const Categories = () => {
                 title={place.title}
                 image={place.image}
                 description={place.description}
+                icon={place.icon}
               />
             </Link>
           ))}

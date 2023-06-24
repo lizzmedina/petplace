@@ -47,8 +47,9 @@ export const CategoryFiltred = () =>  {
 
   return (
     <div className='space-section'>
+      <img src="" alt="" />
       <h2>Alojamiento para {category.length > 0 ? category[0].type.title : ''}</h2>
-      <p>Esta es una lista de nuestras opciones de hospedajes especializados en {category.length > 0 ? category[0].type.title : ''}</p>
+      <p className="category-description">Esta es una lista de nuestras opciones de hospedajes especializados en {category.length > 0 ? category[0].type.title : ''}</p>
 
       <div className="render-cards-recommends">
         {currentCards.map((recommend) => (
