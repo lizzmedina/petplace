@@ -16,7 +16,7 @@ export const ReservationCalendar = () => {
         : null;
 
     return (
-        <div style={{ margin: 5, width: 240 }}>
+        <div className='searcher-calendar'>
             <RangePicker
                 defaultValue={[localStartDate, localEndDate]}
                 onChange={(values) => {

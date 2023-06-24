@@ -43,7 +43,7 @@ export const NavBar = () => {
       <Link className = 'navbar-link-container' to = "/"> 
         
         <img 
-          src='https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/Logo/LogoPP.png'  
+          src='https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/Logo/logoPPRecurso+18.png'  
           alt="icono"
           className="logo"
         />

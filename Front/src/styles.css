@@ -16,7 +16,7 @@ body {
 :root {
     --color1: #f9f9f9;
     /* blanco */
-    --color2: #9e6eaf;
+    --color2: #a278f0;
     /* MoradoClaro */
     --color3: #8ED1B9;
     /* verde */
@@ -30,6 +30,11 @@ body {
     /* blancoParaCards */
     --color8: #b94242;
     /* rojoParaEliminar */
+    --color9: #63b698;
+    /* green button active */
+    --color10: #7a58b7;
+    /* violet button active */
+
 
 }
 
@@ -39,6 +44,10 @@ a:visited,
 a:active {
     text-decoration: none;
 }
+h2{
+    font-size:  1.3rem;
+}
+
 
 /*Estilos generales para botones*/
 .button-1 {
@@ -47,6 +56,7 @@ a:active {
     color: var(--color2);
     padding: 0.3rem;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .button-2 {
@@ -57,8 +67,14 @@ a:active {
     width: 100%;
     border: none;
     height: 1.5rem;
+    cursor: pointer;
 
 }
+.button-2:hover {
+    background-color: var(--color10);
+    
+}
+
 
 /* navbar */
 
@@ -98,14 +114,27 @@ a:active {
     justify-content: flex-start;
 }
 
-.navbar-buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin: 25px;
-    width: 270px;
+#menu .item a{
+    color: var(--color6) ;
+    font-weight: 500;
 }
+
+
+#menu .item {
+    border-radius: 3px;
+
+    
+}
+#menu .item:hover {
+    background-color: var(--color9);
+    transition: all 300ms ease-out;
+}
+#menu .item:hover > a{
+    
+    text-decoration: none;
+    color: var(--color1);
+}
+
 
 /* body */
 
@@ -119,7 +148,7 @@ a:active {
     justify-content: space-between;
     flex-direction: column;
     background-color: var(--color1);
-    width: 100vw;
+    width: 100%;
 }
 
 .searcher-container {
@@ -131,7 +160,7 @@ a:active {
     background-color: var(--color2);
     width: 100%;
     min-height: 6.26rem;
-    padding: 0.93rem;
+    padding: 1.5rem;
 }
 .searcher-container p {
     margin: 1.5rem 1rem 1rem 1rem;
@@ -140,73 +169,159 @@ a:active {
 .searcher {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     width: 100%;
+    max-width: 1001px;
 }
 
 .search-width {
-    width: 12rem;
-    margin: 5px;
+    width: 34%;
+    margin: 0 5px;
+    height: 42.8px;
 }
 
 .searcher-button {
     background-color: var(--color3);
-    color: var(--color7);
-    border-color: var(--color3);
+    color: var(--color6) ;
+    font-weight: 500;
+    font-size: 16px;
+    border:none;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
-    border-radius: 5px;
-    padding: 5px;
+    border-radius: 4px;
     text-align: center;
+    width: 26%;
+    margin: 0 5px;
+    height: 42.8px;
+    cursor: pointer;
+}
+.searcher-button:hover {
+    background-color: var(--color9);
+    color: var(--color1) ;
+    transition: all 300ms ease-out; 
+}
+.searcher-calendar{
+    width: 34%;
+    height: 42.8px;
+}
+:where(.css-dev-only-do-not-override-dfjnss).ant-picker-range {
+    
+    width: 100%;
+    height: 42.8px;
 }
 
+
 .categories-container {
-    display: flex;
-    flex-direction: column;
     padding-top: 20px;
     background-color: var(--color1);
     width: 100%;
+    
+
 }
 
 .render-cards-categories {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     margin: auto;
     width: 100%;
+    max-width: 770px;
+    
 }
 
 .card-container {
-    background-color: var(--color7);
-    margin: 20px;
+     
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 250px;
+     margin-top: 20px;
+    
+}
+.card-container figure{
+    position: absolute;
+    height: 250px;
+    width: 230px;
+    overflow: hidden;
     border-radius: 10px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    max-width: 280px;
+}
+.card-image {
+   width: 100%;
+   height: 100%;
+   transition: all 300ms ease-out;
+   
+}
+figure h3{
+    font-size: 0.9rem;
 }
 
-.card-image {
-    display: flex;
-    justify-content: center;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    width: 14rem;
-    height: 181px;
+.layer{
+    position: absolute;
+    top: 85%;
+    width: 100%;
+    height: 100%;
+    background: var(--color7);
+    transition: all 300ms ease-out;
+    
+    
+}
+.card-container figure:hover > .layer{
+    opacity: 1;
+    visibility: visible;
+    top: 0;
+    background: rgba(161 98 255 / 70%);
+    text-align: center;
+
+}
+.card-container figure:hover > .card-image{
+    transform: scale(1.3);
+    filter: blur(3px);
+    visibility: visible;
 }
 
 .card-title-category {
     color: var(--color6);
     margin: 8px;
     margin-bottom: 5px;
-
+    text-align: center;
+    font-size: 15px;
+    
+}
+.card-container figure:hover > .layer .card-title-category{
+    opacity: 0;
+    visibility: hidden;
 }
 
 .card-quantity-categories {
-    color: var(--color6);
+    color: var(--color1);
     margin: 10px;
     margin-top: 5px;
+}
+.card-icon-category{
+    width: 60%;
+    height: auto;
+    visibility: hidden;
+    opacity: 0;
+}
+.card-container figure:hover > .layer .card-icon-category{
+    opacity: 1;
+    visibility: visible;
+    margin:20px auto; 
+}
+.card-icon-category{
+    width: 60%;
+    height: auto;
+    visibility: hidden;
+    opacity: 0;
+}
+.card-container figure:hover > .layer .card-icon-category{
+    opacity: 1;
+    visibility: visible;
+    margin:20px auto; 
 }
 
 .home-titles {
@@ -219,7 +334,7 @@ a:active {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    background-color: var(--color1);
+    background-color: var(--color7);
     padding-top: 20px;
     width: 100%;
 }
@@ -232,6 +347,7 @@ a:active {
     align-items: center;
     margin: auto;
     max-width: 1246px;
+    
 }
 
 
@@ -245,19 +361,17 @@ a:active {
     max-width: 29rem;
     overflow: hidden;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    cursor:auto;
 }
 
 .card-content {
     display: flex;
-    background-color: var(--color7);
+    background-color: var(--color1);
     width: 100%;
     height: 15rem;
 }
 
 
-/* .left-card-content, .right-card-content{
-    width: 100%;
-} */
 
 .right-card-content {
     padding: 15px;
@@ -266,14 +380,22 @@ a:active {
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
+    z-index: 2;
+    background-color: var(--color1);
 
 }
 
 .left-card-content {
-
+    overflow: hidden;
     display: contents;
     width: 50%;
 }
+.card-content:hover > .left-card-content .card-image-recommends{
+    transform: scale(1.1);
+    overflow: hidden;
+    transition: all 300ms ease-out;
+}
+
 
 .card-image-recommends {
     display: flex;
@@ -281,11 +403,12 @@ a:active {
     height: 100%;
     border-top-left-radius: 10px;
     border-style: none;
+    transition: all 300ms ease-out;
 }
 
 .card-like-recommends {
     position: relative;
-    z-index: 1;
+    z-index: 3;
     top: 10px;
     right: 25px;
     width: 15px;
@@ -315,7 +438,9 @@ a:active {
     content: " Seguir leyendo";
     color: var(--color3);
     font-weight: 600;
+    cursor: pointer;
 }
+
 
 .card-price-recommends {
     display: flex;
@@ -350,21 +475,24 @@ a:active {
     color: var(--color6);
 }
 
-.card-quantity-recommends {
+.css-16p6zaw-MuiStack-root{
+    margin: 25px 0;
+}
+/* .card-quantity-recommends {
     color: var(--color6);
     font-size: 0.4rem;
     margin: 10px;
     margin-top: 5px;
     margin-bottom: 15px;
-}
+} */
 
-a.ver-mas-recommends {
+/* a.ver-mas-recommends {
     background: var(--color2);
     border-color: var(--color2);
     border-radius: 5px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
     color: var(--color7);
-}
+} */
 
 /* register-formUser y login-formlogin */
 
@@ -901,12 +1029,16 @@ p.more-images {
     outline: none;
     padding: 15px 20px;
     margin-top: 25px;
-    /* font-size: 16px; */
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    font-weight: 700;
-    border-radius: 40px;
-    font-size: 1.2rem;
+    font-weight: 500;
+    border-radius: 5px;
+    font-size: 1.1rem;
+
+}
+.buttonDetail:hover {
+    
+    background-color: var(--color10);
+    
+
 }
 
 .text-info {
@@ -1182,15 +1314,7 @@ p.more-images {
     color: var(--color3);
     cursor: pointer;
 }
-/* booking history*/
 
-.reservation {
-    background-color: #EAFFF7;
-    margin: 1rem;
-}
-.booking-cell{
-    padding: 2rem;
-}
 
 
 /* footer */
@@ -1269,20 +1393,22 @@ footer {
         text-align: center;
         font-size: 1.5rem;
     }
+    .searcher-calendar{
+        width: 68%;
+        margin-left: 5px;
+    }
     
 
     .categories-container {
         align-items: center;
         padding: 1.25rem 0rem;
     }
+    
 
     .home-titles {
         margin-left: 0.4rem;
     }
 
-    .card-container {
-        margin: 0.6rem 0rem;
-    }
 
     .recommends-container {
         padding: 1.5rem 0rem;
@@ -1292,25 +1418,31 @@ footer {
         padding: 0.9rem;
         padding-top: 0;
         width: 100%;
-        height: 255px;
+        height: 195px;
+        margin-top: 10px;
+        
     }
 
     .left-card-content {
-
         display: flex;
         width: 100%;
-        height: 255px;
+        height: 45%;
+        
     }
 
     .card-recomends {
         margin: 1.5rem 0rem;
         max-width: 15rem;
         min-height: 25rem;
+        height: 195px;
     }
 
     .card-content {
         flex-direction: column;
-        height: 20rem;
+        height: fit-content;
+    }
+    .render-cards-categories{
+        display: block;
     }
 
     .card-image-recommends {
@@ -1399,6 +1531,10 @@ footer {
         text-align: center;
         font-size: 1.75rem;
     }
+    .searcher-calendar {
+        width: 70%;
+        margin-left: 5px;
+    }
 
     .home-titles {
         margin: 1rem;
@@ -1411,6 +1547,9 @@ footer {
 
     .card-content {
         width: 100%;
+    }
+    .render-cards-categories{
+        display: block;
     }
 
     .instructions-form-new-category {
@@ -1652,6 +1791,11 @@ footer {
 
     .card-content {
         width: 30rem;
+    }
+
+    .render-cards-categories {
+        justify-content: space-evenly;    
+        
     }
 
     .card-recomends {
