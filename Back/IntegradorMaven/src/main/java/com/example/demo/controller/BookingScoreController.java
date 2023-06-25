@@ -23,6 +23,10 @@ public class BookingScoreController {
     if (bookingScoreReview == null) {
       throw new IllegalArgumentException("El cuerpo de la peticion no puede ser vacio!");
     } else {
+      if (bookingScoreReview.getUserId() == null) {
+        throw new IllegalArgumentException("El id del usuario debe ser valido");
+      }
+
       if (bookingScoreReview.getBookingId() == null || bookingScoreReview.getBookingId() < 0) {
         throw new IllegalArgumentException("El id de la reserva asociado debe ser valido");
       }
@@ -32,7 +36,10 @@ public class BookingScoreController {
         throw new IllegalArgumentException("La calificacion debe ser entre 1 y 5");
       }
 
-      bookingScoreReview.setReview(bookingScoreReview.getReview().trim());
+      if (bookingScoreReview.getReview() != null){
+        bookingScoreReview.setReview(bookingScoreReview.getReview().trim());
+      }
+
       return bookingScoreService.evaluate(bookingScoreReview);
     }
   }

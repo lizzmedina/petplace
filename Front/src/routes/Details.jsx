@@ -44,6 +44,7 @@ const Details = () => {
                         healthAndSecurity={details.healthAndSecurity}
                         cancellationPolicy={details.cancellationPolicy}
                         selectedDate={selectedDate}
+                        ratingValue={details.average}
                         />
                   </div>
             </>

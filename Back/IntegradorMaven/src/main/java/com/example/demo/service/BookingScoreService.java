@@ -5,18 +5,21 @@ import com.example.demo.DTO.BookingScoreDTO;
 import com.example.demo.DTO.BookingScoreReviewDTO;
 import com.example.demo.entity.Booking;
 import com.example.demo.entity.BookingScore;
+import com.example.demo.exception.ExistingEvaluationException;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.BookingRepository;
 import com.example.demo.repository.BookingScoreRepository;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
 @Service
 public class BookingScoreService {
-
   private BookingRepository bookingRepository;
   private BookingScoreRepository bookingScoreRepository;
 
@@ -30,7 +33,22 @@ public class BookingScoreService {
   public BookingScoreDTO evaluate(BookingScoreReviewDTO scoreReview) {
     Booking booking = findBookingScoreByBookingId(scoreReview.getBookingId());
 
+    if(!scoreReview.getUserId().equals(booking.getUser().getId())){
+      throw new IllegalArgumentException(
+              String.format("El usuario que va a calificar (%s), NO coincide con el usuario (%s) de la reserva (%s)",
+                      scoreReview.getUserId(),
+                      booking.getUser().getId(),
+                      booking.getIdBooking()));
+    }
+
+    boolean alreadyEvaluated = bookingScoreRepository.findByBookingScoreIdUserIdAndBookingScoreIdBooking(scoreReview.getUserId(), booking).isPresent();
+
+    if(alreadyEvaluated){
+      throw new ExistingEvaluationException(scoreReview.getUserId(), booking.getPetDayCare().getName());
+    }
+
     BookingScore bookingScore = new BookingScore();
+    bookingScore.setUserId(scoreReview.getUserId());
     bookingScore.setBooking(booking);
     bookingScore.setScore(scoreReview.getScore());
     bookingScore.setReview(scoreReview.getReview());
@@ -47,22 +65,26 @@ public class BookingScoreService {
   public Double getAverageScore(Integer petDayCareId) {
     List<Booking> bookings = bookingRepository.findByPetDayCareId(petDayCareId);
 
-    return bookingScoreRepository.findByBookingIn(bookings).stream()
+    List<BookingScore> bookingRatings = bookingScoreRepository.findByBookingScoreIdBookingIn(bookings);
+
+    var avg = bookingRatings.isEmpty() ? null : bookingRatings.stream()
         .map(BookingScore::getScore)
         .collect(Collectors.summarizingDouble(Double::valueOf))
         .getAverage();
+
+    return avg == null ? null : BigDecimal.valueOf(avg).setScale(1, RoundingMode.HALF_UP).doubleValue();
   }
 
   private Double getAverageScore(Booking booking) {
-    return bookingScoreRepository.findAllByBooking(booking).stream()
+    return bookingScoreRepository.findAllByBookingScoreIdBooking(booking).stream()
         .map(BookingScore::getScore)
         .collect(Collectors.summarizingDouble(Double::valueOf))
         .getAverage();
   }
 
-  private List<BookingScoreReviewDTO> getBookingScoreEvaluations(Booking booking) {
-    return bookingScoreRepository.findAllByBooking(booking).stream()
-        .map(bk -> new BookingScoreReviewDTO(booking.getIdBooking(), bk.getScore(), bk.getReview()))
+  private List<BookingScoreReviewDTO> getBookingScoreEvaluations(Integer userId, Booking booking) {
+    return bookingScoreRepository.findAllByBookingScoreIdBooking(booking).stream()
+        .map(bk -> new BookingScoreReviewDTO(userId, booking.getIdBooking(), bk.getScore(), bk.getReview()))
         .toList();
   }
 
@@ -75,7 +97,7 @@ public class BookingScoreService {
   private BookingScoreDTO mapFromBooking(Booking booking) {
     BookingScoreDTO bookingScoreDTO = new BookingScoreDTO();
     bookingScoreDTO.setAverage(getAverageScore(booking));
-    bookingScoreDTO.setBookingScoreReviews(getBookingScoreEvaluations(booking));
+    bookingScoreDTO.setBookingScoreReviews(getBookingScoreEvaluations(booking.getUser().getId(), booking));
     bookingScoreDTO.setBooking(new BookingDTO(booking));
 
     return bookingScoreDTO;

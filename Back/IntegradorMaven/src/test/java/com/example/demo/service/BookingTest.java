@@ -68,7 +68,7 @@ public class BookingTest {
     @DisplayName("Esta prueba valida la creación de una reserva nulo")
     public void save_nullTest(){
         Assertions.assertThrows(IllegalArgumentException.class,
-                () -> bookingService.save(null), "La reserva no puede ser nulo");
+                () -> bookingService.save(null), "La reserva no puede ser nula");
         Mockito.verify(bookingRepository,Mockito.times(0)).save(null);
     }
 
@@ -78,8 +78,14 @@ public class BookingTest {
 
         BookingDTO expectedBooking = this.createTestBooking(1);
 
+        BookingCreationRequest creationRequest = new BookingCreationRequest();
+        creationRequest.setUserId(expectedBooking.getUserId());
+        creationRequest.setCheckInDate(expectedBooking.getCheckIn());
+        creationRequest.setCheckOutDate(expectedBooking.getCheckOut());
+        creationRequest.setPetDayCareId(expectedBooking.getPetDayCareId());
+
         Assertions.assertThrows(RuntimeException.class,
-                () -> bookingService.save(expectedBooking), "El usuario o hotel no se encuentran registrados");
+                () -> bookingService.save(creationRequest), "El usuario o hotel no se encuentran registrados");
         Mockito.verify(bookingRepository,Mockito.times(0)).save(null);
     }
 
