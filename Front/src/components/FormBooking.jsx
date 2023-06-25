@@ -4,10 +4,12 @@ import { useNavigate, Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft, faShower, faPersonWalkingWithCane, faCarrot, faBaseball, faStethoscope, faLocationDot } from '@fortawesome/free-solid-svg-icons'
 import { ReservationCalendar } from "./ReservationCalendar";
-import { Link as ScrollLink, Element } from 'react-scroll';
 import ImageModal from './ImageModal';
-import { CalendarDetail } from "./CalendarDetail.jsx";
 import { useContextGlobal } from './utils/global.constext';
+import dayjs from 'dayjs';
+import { FaPaypal, FaRegCreditCard,FaMoneyBillAlt } from 'react-icons/fa';
+
+
 
 function FormBooking() {
 
@@ -76,33 +78,57 @@ function FormBooking() {
     };
 
     //Calculo del numero de dias
-    const startDate = new Date(selectedDates[0]);
-    const endDate = new Date(selectedDates[1]);
-
-    const timeDifference = endDate.getTime() - startDate.getTime();
+    const localStartDate = localStorage.getItem('localStartDate')
+        ? dayjs(localStorage.getItem('localStartDate')).toDate()
+        : null;
+    const localEndDate = localStorage.getItem('localEndDate')
+        ? dayjs(localStorage.getItem('localEndDate')).toDate()
+        : null;
+    const timeDifference = localEndDate.getTime() - localStartDate.getTime();
     const numberofDays = Math.floor(timeDifference / (1000 * 3600 * 24));
+    const totalPayment = product.basicPrice * numberofDays;
 
-    const totalPayment = product.basicPrice * numberofDays
+    //Informacion de la mascota
+    const [pet, setPet] = useState([null, null, null, null, null]);
+
+    //Generacion de la Reserva
+    const [booking, setBooking] = useState({
+        
+    });
+
 
 
     return (
-        <div>
+        <div className="booking-form">
             <div className="booking-upcontainer">
                 <div className="booking-upleftcontainer">
-                    <div className="booking-upleftsection">
-                        <h3>Información de Usuario</h3><br/>
-                        <div className='form-infoLine'> <p>id:&nbsp;{user.id}</p> </div>
-                        <div className='form-infoLine'> <p>Nombre(s):</p> <p>&nbsp;{user.name}</p></div>
-                        <div className='form-infoLine'> <p>Apellido(s):</p> <p>&nbsp;{user.lastName}</p> </div>
-                        <div className='form-infoLine'> <p>email:</p> <p>&nbsp;{user.email}</p> </div>
-                        <div className='form-infoLine'> <p>Celular:</p> <p>&nbsp;{user.cellPhone}</p> </div>
+                    <div className="booking-upleftsection1">
+                        <h3>Información del Usuario</h3><br/>
+                        <div className='form-infoLine'> <p style={{ fontWeight: 'bold' }}>id:</p> <p>&nbsp;{user.id}</p> </div>
+                        <div className='form-infoLine'> <p style={{ fontWeight: 'bold' }}>Nombre(s):</p> <p>&nbsp;{user.name}</p></div>
+                        <div className='form-infoLine'> <p style={{ fontWeight: 'bold' }}>Apellido(s):</p> <p>&nbsp;{user.lastName}</p> </div>
+                        <div className='form-infoLine'> <p style={{ fontWeight: 'bold' }}>email:</p> <p>&nbsp;{user.email}</p> </div>
+                        <div className='form-infoLine'> <p style={{ fontWeight: 'bold' }}>Celular:</p> <p>&nbsp;{user.cellPhone}</p> </div><br/><br/>
                     </div>
-                    <div className="booking-upleftsection">
-                        <h3>Información de Reserva</h3><br/>
-                        <div className="booking-calendar"><ReservationCalendar /></div>
-                        <div className='form-infoLine'> <p>Precio base x dia(s):</p> <p>&nbsp;${product.basicPrice}</p> </div>
+
+                    <div className="booking-upleftsection2">
+                        <h3>Información de Reserva</h3><br />
+                        <div className="booking-calendar"><ReservationCalendar /></div><br/>
+                        <div className='form-infoLine'> <p>Precio base x dia:</p> <p>&nbsp;${product.basicPrice}</p> </div>
                         <div className='form-infoLine'> <p>Dia(s):</p> <p>&nbsp; {numberofDays}</p> </div>
-                        <div className='form-infoLine'> <p>Total a Pagar:</p> <p>&nbsp; {totalPayment}</p> </div>
+                        <div className="text-total"> <p>Total a Pagar:</p> <p>&nbsp;{totalPayment}</p> </div>
+                        <div className="text-info"> <p>Metodo de pago:</p> </div>
+                        <form>
+                            <input type="radio" id="paypal" name="pago" value="paypal" />
+                            <label htmlFor="paypal"><FaPaypal className='icon-service'/>Paypal</label>
+                            <br />
+                            <input type="radio" id="efectivo" name="pago" value="efectivo" />
+                            <label htmlFor="efectivo"><FaMoneyBillAlt className='icon-service'/>Efectivo</label>
+                            <br />
+                            <input type="radio" id="tarjeta" name="pago" value="tarjeta" />
+                            <label htmlFor="tarjeta"><FaRegCreditCard className='icon-service'/>Tarjeta crédito</label>
+                            <br />
+                        </form>
                     </div>
                 </div>
 
@@ -142,19 +168,55 @@ function FormBooking() {
                             <p className="detail-info">{product.address}</p>
                             <p className="detail-info">{product.city.name}</p>
                         </div>
-                            
-                        <div className="booking-map">
-                                        <div className="gmap_canvas">
-                                            <iframe className='mapFrame' id="gmap_canvas"
-                                                src={generateLocationURL()} />
-                                        </div>
 
+                        <div className="booking-map">
+                            <div className="gmap_canvas">
+                                <iframe className='mapFrame' id="gmap_canvas"
+                                    src={generateLocationURL()} />
+                            </div>
                         </div>
                     </div>
-
-
                 </div>
             </div>
+
+            <div className="booking-downcontainer">
+                <div className='booking-pet'>
+                    <h3>Información de la Mascota</h3><br />
+                    <div className='booking-petInfo'>
+                        <div>
+                            <p className="text-info">Nombre:</p>
+                            <input type="petName" onChange={(e) => setPet([e.target.value, ...pet.slice(1)])} />
+                        </div>
+                        <div>
+                            <p className="text-info">Raza:</p>
+                            <input type="petType" onChange={(e) => setPet([pet[0], e.target.value, ...pet.slice(2)])} />
+                        </div>
+                        <div>
+                            <p className="text-info">Tamaño:</p>
+                            <select value={pet[2]} onChange={(e) => setPet([pet[0], pet[1], e.target.value, pet[3]])}>
+                                <option value={null}>Seleccionar opción</option>
+                                <option value="small">Pequeña</option>
+                                <option value="medium">Mediana</option>
+                                <option value="big">Grande</option>
+                            </select>
+                        </div>
+                        <div>
+                            <p className="text-info">Vacunas al día:</p>
+                            <select value={pet[3]} onChange={(e) => setPet([pet[0], pet[1], pet[2], e.target.value, pet[4]])}>
+                                <option value={null}>Seleccionar opción</option>
+                                <option value="sí">Sí</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+                        <div>
+                            <p className="text-info">Comentarios adicionales:</p>
+                            <input type="petExtraInfo" onChange={(e) => setPet([pet[0], pet[1], pet[2], pet[3], e.target.value])} />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {console.log(pet)}
 
             <div className="booking-downcontainer">
                 <div className='rulesContainer'>
