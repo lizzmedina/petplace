@@ -127,7 +127,13 @@ public class DataLoaderComponent {
                 if (bookingService.available(booking.getPetDayCareId(), checkIn, checkOut)) {
                     PetDayCare petDayCare = petDayCareService.findById(booking.getPetDayCareId());
                     booking.setPetDayCare(petDayCare);
-                    bookingService.save(booking);
+
+                    BookingCreationRequest creationRequest = new BookingCreationRequest();
+                    creationRequest.setUserId(booking.getUserId());
+                    creationRequest.setCheckInDate(checkIn);
+                    creationRequest.setCheckOutDate(checkOut);
+                    creationRequest.setPetDayCareId(petDayCare.getId());
+                    bookingService.save(creationRequest);
                 }
             } else {
                 System.out.println("booking data with id " + booking.getIdBooking() + " already exists, skipping creation...");
