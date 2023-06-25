@@ -45,6 +45,9 @@ public class DataLoaderComponent {
     @Autowired
     private PetDayCareRepository petDayCareRepository;
 
+    @Autowired
+    private BookingScoreRepository bookingScoreRepository;
+
     public void loadInitialCities() {
         System.out.println("loading cities data...");
         List<PetDayCareDTO> petDayCareList = JsonHelper.readJsonFromFile("petdaycare_data.json", new TypeReference<>() {
@@ -68,15 +71,16 @@ public class DataLoaderComponent {
         List<PetDayCareDTO> petDayCareList = JsonHelper.readJsonFromFile("petdaycare_data.json", new TypeReference<>() {
         });
         petDayCareList.forEach(petDayCareDTO -> {
-            try{
+            try {
                 // valida que ya no exista en la BD
                 petDayCareService.findById(petDayCareDTO.getId());
                 System.out.println("pet day care data with id " + petDayCareDTO.getId() + " already exists, skipping creation...");
-            } catch (IllegalArgumentException e){
+            } catch (IllegalArgumentException e) {
                 petDayCareService.saveBD(petDayCareDTO);
             }
         });
     }
+
     public void loadInitialCategoriesData() {
         System.out.println("loading categories data...");
         List<CategoryDTO> petDayCareList = JsonHelper.readJsonFromFile("categories_data.json", new TypeReference<>() {
@@ -92,7 +96,6 @@ public class DataLoaderComponent {
     }
 
 
-
     public void loadInitialUserData() {
         System.out.println("loading user data...");
         List<UserDTO> userDTOList = JsonHelper.readJsonFromFile("user_data.json", new TypeReference<>() {
@@ -103,7 +106,7 @@ public class DataLoaderComponent {
                 System.out.println("user data with id " + userDTO.getId() + " already exists, skipping creation...");
             } catch (NoSuchElementException exception) {
                 userService.save(userDTO);
-                if(userDTO.isValidation()){
+                if (userDTO.isValidation()) {
                     userService.validation(userDTO.getEmail());
                 }
             }
@@ -121,7 +124,7 @@ public class DataLoaderComponent {
             if (entityOpt.isEmpty()) {
                 LocalDate checkIn = bookingService.getCheckInDate(booking);
                 LocalDate checkOut = bookingService.getCheckOutDate(booking);
-                if(bookingService.available(booking.getPetDayCareId(), checkIn, checkOut)){
+                if (bookingService.available(booking.getPetDayCareId(), checkIn, checkOut)) {
                     PetDayCare petDayCare = petDayCareService.findById(booking.getPetDayCareId());
                     booking.setPetDayCare(petDayCare);
                     bookingService.save(booking);
@@ -183,6 +186,23 @@ public class DataLoaderComponent {
         });
     }
 
+    private void generateBookingScores() {
+        var bookings = bookingRepository.findAll();
+        var rnd = new Random();
+
+        bookings.forEach(booking -> {
+            BookingScore bookingScore = new BookingScore();
+            bookingScore.setBooking(booking);
+            bookingScore.setUserId(booking.getUser().getId());
+            bookingScore.setScore(rnd.nextInt(1, 6));
+
+            if (bookingScoreRepository.findByBookingScoreIdUserIdAndBookingScoreIdBooking(bookingScore.getUserId(), booking).isEmpty()) {
+                bookingScoreRepository.save(bookingScore);
+            }
+
+        });
+    }
+
 
     @EventListener
     public void onApplicationEvent(ContextRefreshedEvent event) {
@@ -194,5 +214,7 @@ public class DataLoaderComponent {
         loadInitialPetDayCareData();
         loadInitialUserData();
         loadInitialBookingData();
+
+        generateBookingScores();
     }
 }
