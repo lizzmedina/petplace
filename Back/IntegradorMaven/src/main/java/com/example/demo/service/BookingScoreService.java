@@ -12,6 +12,8 @@ import com.example.demo.repository.BookingScoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -65,10 +67,12 @@ public class BookingScoreService {
 
     List<BookingScore> bookingRatings = bookingScoreRepository.findByBookingScoreIdBookingIn(bookings);
 
-    return bookingRatings.isEmpty() ? null : bookingRatings.stream()
+    var avg = bookingRatings.isEmpty() ? null : bookingRatings.stream()
         .map(BookingScore::getScore)
         .collect(Collectors.summarizingDouble(Double::valueOf))
         .getAverage();
+
+    return avg == null ? null : BigDecimal.valueOf(avg).setScale(1, RoundingMode.HALF_UP).doubleValue();
   }
 
   private Double getAverageScore(Booking booking) {

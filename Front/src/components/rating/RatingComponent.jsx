@@ -38,7 +38,6 @@ export const RatingComponent = ({bookingId}) => {
     .then((response) => response.json())
     .then((data) => {
         document.getElementById("close-modal").click();
-        console.log(data);
         if(data.status !== undefined && data.status !== 200){
             Swal.fire({icon: 'error',title:`Ups! ${data.message}`});
         }

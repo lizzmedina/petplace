@@ -1,7 +1,6 @@
 package com.example.demo.service;
 
 
-import com.example.demo.DTO.BookingScoreDTO;
 import com.example.demo.DTO.CategoryDTO;
 import com.example.demo.DTO.CityDTO;
 import com.example.demo.DTO.PetDayCareDTO;
@@ -14,12 +13,9 @@ import com.example.demo.mapper.CityMapper;
 import com.example.demo.repository.CategoryRepository;
 import com.example.demo.repository.CityRepository;
 import com.example.demo.repository.PetDayCareRepository;
-import com.example.demo.utils.NumberUtils;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -365,7 +361,7 @@ public class PetDayCareService {
     }
 
     private PetDayCare calculateAverage(PetDayCare pdc){
-        pdc.setAverage(NumberUtils.roundTwoDecimals(bookingScoreService.getAverageScore(pdc.getId())));
+        pdc.setAverage(bookingScoreService.getAverageScore(pdc.getId()));
         return pdc;
     }
 }

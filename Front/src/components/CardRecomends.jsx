@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShower, faPersonWalkingWithCane, faCarrot, faBaseball, faStethoscope, faLocationDot, faHeart } from '@fortawesome/free-solid-svg-icons';
-import { Grid } from '@mui/material';
+import { Grid, Rating } from '@mui/material';
 
 export const CardRecomends = ({ image, type, name, characteristics, city, address, detail, capacity, basicPrice, ratingValue}) => {
 
@@ -61,8 +61,11 @@ export const CardRecomends = ({ image, type, name, characteristics, city, addres
                         <h3 className="card-title-recommends">{name}</h3>
                       </Grid>
                     { showRating() ? (<Grid item xs={4}>
-                            <p className="rating-value"> {ratingValue} / 5.0</p>
-                          </Grid>) : null
+                        <Grid container direction="row" spacing={0} className="align-items-center">
+                            <span className="rating-value">{ratingValue}</span>
+                            <Rating className="rating-value-star" defaultValue={1} max={1}/>
+                        </Grid>
+                      </Grid>) : null
                     }
                     { hideFavorite() ? null :
                     (<Grid item xs={2}>

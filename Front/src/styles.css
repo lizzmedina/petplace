@@ -1831,13 +1831,21 @@ footer {
 }
 
 .rating-value {
-    color: var(--color3);
     font-weight: bold;
     font-size: 0.9rem;
 }
 
+.rating-value-star {
+    font-weight: bold;
+    font-size: 1.5rem !important;
+}
+
 .space-content {
     place-content: space-between;
+}
+
+.align-items-center {
+    align-items: center !important;
 }
 
 .card-favorite-icon {
