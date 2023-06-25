@@ -10,16 +10,13 @@ public class BookingDTO {
 
     private Integer idBooking;
     private List<String> checkInCheckOut;
-
     private double totalPrice;
     private Integer userId;
     private Integer petDayCareId;
-
     private User user;
-
     private PetDayCare petDayCare;
-    //    List<Pet> pets;
     private List<String> dataPet;
+    private boolean evaluated;
 
 
     public BookingDTO(List<String> checkInCheckOut, double totalPrice, Integer userId, Integer petDayCareId, List<String> dataPet) {
@@ -28,6 +25,7 @@ public class BookingDTO {
         this.userId = userId;
         this.petDayCareId = petDayCareId;
         this.dataPet = dataPet;
+        this.evaluated = false;
     }
 
     public BookingDTO(Booking booking){
@@ -37,6 +35,7 @@ public class BookingDTO {
         this.setUserId(booking.getUser().getId());
         this.setPetDayCareId(booking.getPetDayCare().getId());
         this.setDataPet(booking.getDataPet());
+        this.setEvaluated(booking.getBookingScore() != null && !booking.getBookingScore().isEmpty());
     }
 
     public BookingDTO() {
@@ -105,5 +104,13 @@ public class BookingDTO {
 
     public void setPetDayCare(PetDayCare petDayCare) {
         this.petDayCare = petDayCare;
+    }
+
+    public boolean isEvaluated() {
+        return evaluated;
+    }
+
+    public void setEvaluated(boolean evaluated) {
+        this.evaluated = evaluated;
     }
 }

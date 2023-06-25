@@ -32,6 +32,9 @@ public class Booking {
     @ManyToOne
     private PetDayCare petDayCare;
 
+    @OneToMany(mappedBy = "bookingScoreId.booking")
+    private List<BookingScore> bookingScore;
+
 
     public Booking(List<String> checkInCheckOut, LocalDate checkIn, LocalDate checkOut, List<String> dataPet, double totalPrice, User user, PetDayCare petDayCare) {
         this.checkInCheckOut = checkInCheckOut;
@@ -113,5 +116,13 @@ public class Booking {
 
     public void setDataPet(List<String> dataPet) {
         this.dataPet = dataPet;
+    }
+
+    public List<BookingScore> getBookingScore() {
+        return bookingScore;
+    }
+
+    public void setBookingScore(List<BookingScore> bookingScore) {
+        this.bookingScore = bookingScore;
     }
 }

@@ -4,7 +4,7 @@ import { useContextGlobal } from '../utils/global.constext';
 import Swal from 'sweetalert2';
 
 
-export const RatingComponent = ({bookingId}) => {
+export const RatingComponent = ({booking, dataRef}) => {
   const getUserId = () => {
       const userStr = localStorage.getItem('userConnected');
       if(userStr === undefined || userStr === null){
@@ -22,7 +22,7 @@ export const RatingComponent = ({bookingId}) => {
   const enviarCalificacion = (ratingValue) => {
     const ratingBody = {
                           userId: getUserId(),
-                          bookingId: bookingId,
+                          bookingId: booking.idBooking,
                           score: ratingValue,
                           review: null
                          };
@@ -41,6 +41,7 @@ export const RatingComponent = ({bookingId}) => {
         if(data.status !== undefined && data.status !== 200){
             Swal.fire({icon: 'error',title:`Ups! ${data.message}`});
         }
+        dataRef();
     });
   }
 
