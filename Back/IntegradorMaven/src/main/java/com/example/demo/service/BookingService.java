@@ -47,6 +47,10 @@ public class BookingService {
 
     public BookingDTO save(BookingCreationRequest bookingCreationRequest){
 
+        if(bookingCreationRequest == null){
+            throw new IllegalArgumentException("La reserva no puede ser nula");
+        }
+
         User user = userRepository.findById(bookingCreationRequest.getUserId())
                 .orElseThrow(() -> new ResourceNotFoundException(
                         String.format("No se encuentra registrado el usuario con id (%s)", bookingCreationRequest.getUserId())));

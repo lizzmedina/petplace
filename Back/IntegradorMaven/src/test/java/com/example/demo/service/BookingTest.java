@@ -68,7 +68,7 @@ public class BookingTest {
     @DisplayName("Esta prueba valida la creación de una reserva nulo")
     public void save_nullTest(){
         Assertions.assertThrows(IllegalArgumentException.class,
-                () -> bookingService.save(null), "La reserva no puede ser nulo");
+                () -> bookingService.save(null), "La reserva no puede ser nula");
         Mockito.verify(bookingRepository,Mockito.times(0)).save(null);
     }
 
