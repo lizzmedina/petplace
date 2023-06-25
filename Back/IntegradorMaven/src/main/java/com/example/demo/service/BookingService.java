@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.DTO.BookingCreationRequest;
 import com.example.demo.DTO.BookingDTO;
 import com.example.demo.entity.*;
 import com.example.demo.exception.ResourceNotFoundException;
@@ -11,11 +12,12 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Service
 public class BookingService {
+    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
 
     private List<Booking> bookingList;
     private BookingRepository bookingRepository;
@@ -43,52 +45,37 @@ public class BookingService {
         this.bookingScoreRepository = bookingScoreRepository;
     }
 
-    public BookingDTO save(BookingDTO bookingDTO){
+    public BookingDTO save(BookingCreationRequest bookingCreationRequest){
 
-        if (bookingDTO == null) {
-            throw new IllegalArgumentException("La reserva no puede ser nulo");
+        User user = userRepository.findById(bookingCreationRequest.getUserId())
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        String.format("No se encuentra registrado el usuario con id (%s)", bookingCreationRequest.getUserId())));
+
+        PetDayCare petDayCare = this.petDayCareRepository.findById(bookingCreationRequest.getPetDayCareId())
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        String.format("No se encuentra un alojamiento con id (%s)", bookingCreationRequest.getPetDayCareId())));
+
+        Booking booking = new Booking();
+        booking.setUser(user);
+        booking.setPetDayCare(petDayCare);
+        booking.setCheckIn(bookingCreationRequest.getCheckInDate());
+        booking.setCheckOut(bookingCreationRequest.getCheckOutDate());
+        booking.setCheckInCheckOut(
+                List.of(formatter.format(bookingCreationRequest.getCheckInDate()),
+                        formatter.format(bookingCreationRequest.getCheckOutDate())));
+
+        if(!available(booking.getPetDayCare().getId(), booking.getCheckIn(), booking.getCheckOut())){
+            throw new RuntimeException("las fechas a reservar no estan disponibles en ese ajolamiento pues ya se encuentra reservado");
         }
 
-        Optional<User> user = this.userRepository.findById(bookingDTO.getUserId());
-        Optional<PetDayCare> petDayCare = this.petDayCareRepository.findById(bookingDTO.getPetDayCareId());
+        double totalPrice = calculatePrice(booking.getCheckIn(), booking.getCheckOut(), petDayCare.getBasicPrice());
+        booking.setTotalPrice(totalPrice);
 
-        LocalDate checkIn = getCheckInDate(bookingDTO);
-        LocalDate checkOut = getCheckOutDate(bookingDTO);
+        var savedBooking = bookingRepository.save(booking);
 
-        if(!user.isPresent() && !petDayCare.isPresent()){
-            throw  new RuntimeException("El usuario o hotel no se encuentran registrados");
-        }
+        booking.setIdBooking(savedBooking.getIdBooking());
 
-        if(!available(bookingDTO.getPetDayCareId(), checkIn, checkOut)){
-            throw  new RuntimeException("las fechas a reservar no estan disponibles en ese ajolamiento pues ya se encuentra reservado");
-        }
-
-        double totalpriceBooking = calculatePrice(checkIn, checkOut, petDayCare.get().getBasicPrice());
-
-        Booking newBooking = new Booking(
-                bookingDTO.getCheckInCheckOut(),
-                checkIn,
-                checkOut,
-                bookingDTO.getDataPet(),
-                totalpriceBooking,
-                user.get(),
-                petDayCare.get());
-
-        bookingRepository.save(newBooking);
-
-        BookingDTO newBookingDTO = new BookingDTO(
-                newBooking.getCheckInCheckOut(),
-                newBooking.getTotalPrice(),
-                newBooking.getUser().getId(),
-                newBooking.getPetDayCare().getId(),
-                newBooking.getDataPet()
-        );
-
-
-        bookingDTO.setIdBooking(newBookingDTO.getIdBooking());
-
-        return newBookingDTO;
-
+        return new BookingDTO(booking);
     }
 
 
@@ -116,7 +103,6 @@ public class BookingService {
 
         }
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate checkIn = LocalDate.parse(checkInCheckOut.get(0), formatter);
         LocalDate checkOut = LocalDate.parse(checkInCheckOut.get(1), formatter);
         List<Integer> idList = bookingRepository.searchAvailablePetDayCares(cityId.get().getId(), checkIn, checkOut);

@@ -33,6 +33,9 @@ public class Booking {
     @ManyToOne
     private PetDayCare petDayCare;
 
+    @Column
+    private LocalDate creationDate;
+
 
     public Booking(List<String> checkInCheckOut, LocalDate checkIn, LocalDate checkOut, List<String> dataPet, double totalPrice, User user, PetDayCare petDayCare) {
         this.checkInCheckOut = checkInCheckOut;
@@ -42,14 +45,18 @@ public class Booking {
         this.totalPrice = totalPrice;
         this.user = user;
         this.petDayCare = petDayCare;
+        this.creationDate = LocalDate.now();
     }
 
     public Booking(String checkIn, String checkOut, LocalDate in, LocalDate out, List<String> dataPet, double totalpriceBooking, User user, PetDayCare petDayCare) {
+        this.creationDate = LocalDate.now();
+
     }
 
 
 
     public Booking() {
+        this.creationDate = LocalDate.now();
     }
 
     public LocalDate getCheckIn() {
@@ -114,6 +121,14 @@ public class Booking {
 
     public void setDataPet(List<String> dataPet) {
         this.dataPet = dataPet;
+    }
+
+    public LocalDate getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(LocalDate creationDate) {
+        this.creationDate = creationDate;
     }
 
     @Override
