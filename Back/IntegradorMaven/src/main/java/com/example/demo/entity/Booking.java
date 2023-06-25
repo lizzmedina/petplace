@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "booking")
@@ -113,5 +114,18 @@ public class Booking {
 
     public void setDataPet(List<String> dataPet) {
         this.dataPet = dataPet;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Booking booking = (Booking) o;
+        return idBooking.equals(booking.idBooking) && user.equals(booking.user);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idBooking, user);
     }
 }

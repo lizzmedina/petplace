@@ -52,7 +52,7 @@ public class BookingController {
     }
 
     @GetMapping("/user/{idUser}")
-    List<Booking> bookingsUserId(@PathVariable Integer idUser){
+    List<BookingDTO> bookingsUserId(@PathVariable Integer idUser){
         return service.bookingsUserId(idUser);
     }
 }

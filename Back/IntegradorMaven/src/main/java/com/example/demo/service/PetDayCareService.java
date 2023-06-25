@@ -1,7 +1,6 @@
 package com.example.demo.service;
 
 
-import com.example.demo.DTO.BookingScoreDTO;
 import com.example.demo.DTO.CategoryDTO;
 import com.example.demo.DTO.CityDTO;
 import com.example.demo.DTO.PetDayCareDTO;
@@ -14,7 +13,6 @@ import com.example.demo.mapper.CityMapper;
 import com.example.demo.repository.CategoryRepository;
 import com.example.demo.repository.CityRepository;
 import com.example.demo.repository.PetDayCareRepository;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -294,7 +292,7 @@ public class PetDayCareService {
     }
 
     public List<PetDayCare> findAll(){
-        return repository.findAll();
+        return this.addAverageToEntities(repository.findAll());
     }
 
     public String delete(Integer id){
@@ -309,7 +307,7 @@ public class PetDayCareService {
     }
 
     public List<PetDayCare> findByCategory(Integer type){
-        return repository.findByTypeId(type);
+        return this.addAverageToEntities(repository.findByTypeId(type));
     }
 
     public PetDayCareDTO detail(Integer id){
@@ -356,5 +354,14 @@ public class PetDayCareService {
         }
 
         return petDayCare.orElseThrow(() -> new IllegalArgumentException("La guarderia no fue encontrada: "+id));
+    }
+
+    private List<PetDayCare> addAverageToEntities(List<PetDayCare> petDayCareList){
+        return petDayCareList.stream().map(this::calculateAverage).toList();
+    }
+
+    private PetDayCare calculateAverage(PetDayCare pdc){
+        pdc.setAverage(bookingScoreService.getAverageScore(pdc.getId()));
+        return pdc;
     }
 }

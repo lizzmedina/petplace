@@ -16,6 +16,7 @@ const ContextProvider = ({children}) => {
     const urlPostProducts = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/petDayCare`; 
     const urlCategory = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/category`;
     const urlBookingHistory = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/booking/user/`;
+    const urlBookingScore = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/booking/score`;
 
     const [selectedCity, setSelectedCity] = useState(null);
     const [selectedDates, setSelectedDates] = useState([null, null]);
@@ -23,7 +24,7 @@ const ContextProvider = ({children}) => {
     const [searchResults, setSearchResults] = useState([]);
     const [title, setTitle] = useState('Recomendaciones');
     const [bookingHistory, setBookingHistory] = useState([{}]);
-    
+
     const [places, setPlaces] = useState([]); // categorias
     const getAllCategories = async()=> {
         const res = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/category/all`);
@@ -69,7 +70,8 @@ const ContextProvider = ({children}) => {
                 urlCategory, 
                 urlGetCities,
                 urlPostCities,
-                urlGetUsers, 
+                urlGetUsers,
+                urlBookingScore,
                 sendEmailUrl, 
                 urlPostUsers, 
                 validationUserUrl, 

@@ -4,19 +4,14 @@ import com.example.demo.DTO.BookingDTO;
 import com.example.demo.entity.*;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.*;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
-import com.example.demo.entity.Booking;
-import com.example.demo.entity.PetDayCare;
-import com.example.demo.repository.BookingRepository;
-import org.springframework.cglib.core.Local;
-import org.springframework.stereotype.Service;
-
-
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Service
@@ -24,20 +19,28 @@ public class BookingService {
 
     private List<Booking> bookingList;
     private BookingRepository bookingRepository;
-    private  UserRepository userRepository;
+    private UserRepository userRepository;
     private PetDayCareRepository petDayCareRepository;
     private PetRepository petRepository;
 
     private CityRepository cityRepository;
+    private BookingScoreRepository bookingScoreRepository;
 
 
-    public BookingService(List<Booking> bookingList, BookingRepository bookingRepository, UserRepository userRepository, PetDayCareRepository petDayCareRepository, PetRepository petRepository, CityRepository cityRepository) {
+    public BookingService(List<Booking> bookingList,
+                          BookingRepository bookingRepository,
+                          UserRepository userRepository,
+                          PetDayCareRepository petDayCareRepository,
+                          PetRepository petRepository,
+                          CityRepository cityRepository,
+                          BookingScoreRepository bookingScoreRepository) {
         this.bookingList = bookingList;
         this.bookingRepository = bookingRepository;
         this.userRepository = userRepository;
         this.petDayCareRepository = petDayCareRepository;
         this.petRepository = petRepository;
         this.cityRepository = cityRepository;
+        this.bookingScoreRepository = bookingScoreRepository;
     }
 
     public BookingDTO save(BookingDTO bookingDTO){
@@ -176,7 +179,7 @@ public class BookingService {
         return "Se elimino exitosamente la reserva de id: " + id;
     }
 
-    public List<Booking> bookingsUserId(Integer idUser){
+    public List<BookingDTO> bookingsUserId(Integer idUser){
         List<Booking> bookingsUser = bookingRepository.findByUserId(idUser);
 
         if(idUser == null){
@@ -187,19 +190,14 @@ public class BookingService {
             throw new IllegalArgumentException("Las reservas no fueron encontradas");
         }
 
-        List<Booking> bookingList = bookingsUser.stream()
-                .map(booking -> new Booking(
-                        booking.getCheckInCheckOut(),
-                        booking.getCheckIn(),
-                        booking.getCheckOut(),
-                        booking.getDataPet(),
-                        booking.getTotalPrice(),
-                        booking.getUser(),
-                        booking.getPetDayCare()
-                ))
-                .collect(Collectors.toList());
+        var bookingScores =
+                bookingScoreRepository.findByBookingScoreIdUserIdAndBookingScoreIdBookingIn(idUser, bookingsUser)
+                        .stream().collect(Collectors.groupingBy(BookingScore::getBookingId));
 
-        return bookingList;
+
+        return bookingsUser.stream().map(BookingDTO::new)
+                .map(bookingDTO -> bookingDTO.setEvaluated(bookingScores.containsKey(bookingDTO.getIdBooking())))
+                .toList();
     }
 
     private LocalDate parseStringToDate(String date){

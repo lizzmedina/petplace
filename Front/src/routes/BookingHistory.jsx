@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useContextGlobal } from "../components/utils/global.constext";
+import RatingComponent from "../components/rating/RatingComponent.jsx"
 
 export const BookingHistory = () => {
     const { bookingHistory, setBookingHistory, urlBookingHistory } = useContextGlobal();
@@ -42,7 +43,7 @@ console.log(bookingHistory);
                     const dataPetName = dataPet && dataPet[0];
                     const petDayCareName = petDayCare && petDayCare.name;
                     const key = `booking_${index}`;
-        
+
                     return (
                         <tr key={key}>
                             <td className="booking-cell">{petDayCareName}</td>
@@ -50,6 +51,9 @@ console.log(bookingHistory);
                             <td className="booking-cell">{checkOutDate}</td>
                             <td className="booking-cell">{dataPetName}</td>                            
                             <td className="booking-cell">{totalPrice}</td>
+                            { booking.evaluated ? null :
+                                <td className="booking-cell"><RatingComponent booking={booking} dataRef={getBookingHistory}/></td>
+                            }
                         </tr>
                     );
                     })}

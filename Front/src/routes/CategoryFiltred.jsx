@@ -60,8 +60,7 @@ export const CategoryFiltred = () =>  {
               name={recommend.name}
               image={recommend.images}
               capacity={recommend.capacity}
-              rating={recommend.rating}
-              ratingText={recommend.ratingText}
+              ratingValue={recommend.average}
               characteristics={recommend.characteristics}
               city={recommend.city}
               address={recommend.address}
