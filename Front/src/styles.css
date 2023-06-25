@@ -496,7 +496,7 @@ figure h3{
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 3rem 0;
+    padding: 2rem 0;
 }
 .account-container{
     display: flex;
@@ -512,7 +512,6 @@ figure h3{
 .space-section h2 {
     color: var(--color2);
     text-align: center;
-    margin: 1rem 0 0 0;
 }
 .icon-container{
     display: flex;
@@ -824,10 +823,72 @@ input:hover {
 
 .booking-upcontainer{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
-    width: 90vw;
+    width: 95vw;
     border: solid black;
+}
+.booking-upcontainer p{
+    font-size: 16px;
+}
+.booking-upleftcontainer{
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    width: 30%;
+    border: solid black;
+}
+.booking-upleftsection{
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    padding: 1rem;
+    margin: 1rem 0;
+    width: 100%;
+}
+.booking-calendar .searcher-calendar{
+    width: 100%;
+}
+.booking-uprigthcontainer{
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    padding: 1rem;
+    margin: 1rem 0;
+    width: 60%;
+}
+.form-infoLine{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 0 0.5rem;
+    
+}
+.booking-ubication{
+    display: flex;
+    justify-content: space-between;
+}
+.booking-address{
+    width: 40%;
+}
+.booking-map{
+    width: 55%;
+    height: 7.5rem;
+}
+
+.booking-downcontainer{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 95vw;
+    border: solid black;
+}
+.booking-downcontainer .rulesContainer{
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    width: 95%;
+}
+.rulesProduct ul{
+    font-size: 16px;
+}
+.booking-downcontainer p{
+    font-size: 16px;
 }
 
 
@@ -1100,6 +1161,7 @@ p.more-images {
 .rulesContainer{
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
     flex-wrap: wrap;
     padding: 0rem 2.5rem;
     margin: 1.25rem 0rem;
@@ -1107,7 +1169,7 @@ p.more-images {
 .rulesProduct{
     width: 33%;
     font-size: 1rem;
-    padding-right: 2.5rem;
+    padding: 0 1.5rem;
     margin-bottom: 1.25rem;
 }
 .rulesProduct h3{
@@ -1420,7 +1482,16 @@ footer {
         flex-direction: column;
     }
     .rulesProduct{
-        width: auto;       
+        width: 100%;       
+    }
+    .booking-upleftcontainer{
+        width: 100%;
+    }
+    .booking-uprigthcontainer{
+        width: 100%;
+    }
+    .booking-downcontainer .rulesContainer{
+        width: 100%;
     }
 }
 
@@ -1499,7 +1570,16 @@ footer {
         max-width: 350px;
     }
     .rulesProduct{
-        width: auto;       
+        width: 100%;       
+    }
+    .booking-upleftcontainer{
+        width: 100%;
+    }
+    .booking-uprigthcontainer{
+        width: 100%;
+    }
+    .booking-downcontainer .rulesContainer{
+        width: 100%;
     }
 }
 
@@ -1579,7 +1659,16 @@ footer {
         flex-direction: column;
     }
     .rulesProduct{
-        width: auto;       
+        width: 100%;       
+    }
+    .booking-upleftcontainer{
+        width: 100%;
+    }
+    .booking-uprigthcontainer{
+        width: 100%;
+    }
+    .booking-downcontainer .rulesContainer{
+        width: 100%;
     }
 }
 
@@ -1661,7 +1750,7 @@ footer {
         
     }
     .rulesProduct{
-        width: auto;       
+        width: 100%;       
     }
     .calendar{
         flex-direction: column;

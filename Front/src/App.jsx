@@ -6,6 +6,7 @@ import Login from "./routes/Login";
 import {CategoryFiltred} from "./routes/CategoryFiltred";
 import ProductRegister from "./routes/ProductRegister";
 import CityRegister from "./routes/CityRegister";
+import BookingRegister from "./routes/BookingRegister";
 import Details from "./routes/Details";
 import MyAccount from "./routes/MyAccount";
 import EditProducts from "./routes/EditProducts";
@@ -32,6 +33,7 @@ function App() {
                 <Route path="/category/:id" element={<CategoryFiltred/>}/>
                 <Route path="/productRegister" element={<ProductRegister/>}/>
                 <Route path="/cityRegister" element={<CityRegister/>}/>
+                <Route path="/bookingRegister" element={<BookingRegister/>}/>
                 <Route path="/Detail/:id" element={<Details/>}/>
                 <Route path="/newCategory" element={<NewCategory/>}/>
                 <Route path="/account/:id" element={<MyAccount/>}/>
