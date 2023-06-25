@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "booking")
@@ -31,9 +32,6 @@ public class Booking {
     private User user;
     @ManyToOne
     private PetDayCare petDayCare;
-
-    @OneToMany(mappedBy = "bookingScoreId.booking")
-    private List<BookingScore> bookingScore;
 
 
     public Booking(List<String> checkInCheckOut, LocalDate checkIn, LocalDate checkOut, List<String> dataPet, double totalPrice, User user, PetDayCare petDayCare) {
@@ -118,11 +116,16 @@ public class Booking {
         this.dataPet = dataPet;
     }
 
-    public List<BookingScore> getBookingScore() {
-        return bookingScore;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Booking booking = (Booking) o;
+        return idBooking.equals(booking.idBooking) && user.equals(booking.user);
     }
 
-    public void setBookingScore(List<BookingScore> bookingScore) {
-        this.bookingScore = bookingScore;
+    @Override
+    public int hashCode() {
+        return Objects.hash(idBooking, user);
     }
 }

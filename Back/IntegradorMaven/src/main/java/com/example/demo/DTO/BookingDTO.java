@@ -35,7 +35,6 @@ public class BookingDTO {
         this.setUserId(booking.getUser().getId());
         this.setPetDayCareId(booking.getPetDayCare().getId());
         this.setDataPet(booking.getDataPet());
-        this.setEvaluated(booking.getBookingScore() != null && !booking.getBookingScore().isEmpty());
     }
 
     public BookingDTO() {
@@ -110,7 +109,8 @@ public class BookingDTO {
         return evaluated;
     }
 
-    public void setEvaluated(boolean evaluated) {
+    public BookingDTO setEvaluated(boolean evaluated) {
         this.evaluated = evaluated;
+        return this;
     }
 }

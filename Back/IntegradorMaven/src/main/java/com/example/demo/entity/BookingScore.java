@@ -45,6 +45,10 @@ public class BookingScore {
         this.bookingScoreId.userId = userId;
     }
 
+    public Integer getBookingId() {
+        return bookingScoreId.booking.getIdBooking();
+    }
+
     public Booking getBooking() {
         return bookingScoreId.booking;
     }

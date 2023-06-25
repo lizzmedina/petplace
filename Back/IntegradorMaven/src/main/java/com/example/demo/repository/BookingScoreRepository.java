@@ -15,5 +15,7 @@ public interface BookingScoreRepository extends JpaRepository<BookingScore, Book
 
     Optional<BookingScore> findByBookingScoreIdUserIdAndBookingScoreIdBooking(Integer userId, Booking booking);
 
+    List<BookingScore> findByBookingScoreIdUserIdAndBookingScoreIdBookingIn(Integer userId, List<Booking> bookings);
+
 
 }
