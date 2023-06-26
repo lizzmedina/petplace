@@ -67,6 +67,7 @@ public class BookingService {
         booking.setCheckInCheckOut(
                 List.of(formatter.format(bookingCreationRequest.getCheckInDate()),
                         formatter.format(bookingCreationRequest.getCheckOutDate())));
+        booking.setDataPet(bookingCreationRequest.getDataPet());
 
         if(!available(booking.getPetDayCare().getId(), booking.getCheckIn(), booking.getCheckOut())){
             throw new RuntimeException("las fechas a reservar no estan disponibles en ese ajolamiento pues ya se encuentra reservado");
