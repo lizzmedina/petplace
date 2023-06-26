@@ -24,7 +24,7 @@ public class PetDayCareDTO {
     private List<String> cancellationPolicy;
 
     private RatingDTO rating;
-    private boolean favorite;
+    private Boolean favorite;
 
     public PetDayCareDTO(PetDayCare petDayCare, CityDTO city, RatingDTO rating) {
         this.setId(petDayCare.getId());
@@ -160,11 +160,11 @@ public class PetDayCareDTO {
         this.rating = rating;
     }
 
-    public boolean isFavorite() {
+    public Boolean isFavorite() {
         return favorite;
     }
 
-    public void setFavorite(boolean favorite) {
+    public void setFavorite(Boolean favorite) {
         this.favorite = favorite;
     }
 }
