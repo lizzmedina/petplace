@@ -148,7 +148,6 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
             </div>
             <Link onClick={handleOpenModal}><p className='more-images'> Ver más</p></Link>
 
-
             <div className="product-info-container">
 
                 <span className="product-info-left">
@@ -166,28 +165,26 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
                 <div className="product-info-rigth">
                     { rating !== null ?
                     <Grid container spacing={3} direction="row">
-                      <Grid item>
-                        <Typography component="legend"><p className="text-info">Calificación:</p></Typography>
-                      </Grid>
-                      <Grid item>
-                        <p className="text-info">
-                            <Rating readOnly value={rating.average}  precision={0.5} />
-                        </p>
-                      </Grid>
-                      <Grid item>
-                          <p className="text-info">
-                              {rating.average} / 5.0
-                          </p>
-                      </Grid>
-                      <Grid item className="no-top-padding">
-                          <p>
-                              {getRatingText()}
-                          </p>
-                      </Grid>
+                        <Grid item>
+                            <Typography component="legend"><p className="text-info">Calificación:</p></Typography>
+                        </Grid>
+                        <Grid item>
+                            <p className="text-info">
+                                <Rating readOnly value={rating.average}  precision={0.5} />
+                            </p>
+                        </Grid>
+                        <Grid item>
+                            <p className="text-info">
+                                {rating.average} / 5.0
+                            </p>
+                        </Grid>
+                        <Grid item className="no-top-padding">
+                            <p>
+                                {getRatingText()}
+                            </p>
+                        </Grid>
                     </Grid> : null
                     }
-                    
-                    
                         <Grid container spacing={2}>
                         <Grid item>
                             <p className="text-info">Capacidad:</p>
@@ -208,7 +205,6 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
                     <button className="buttonDetail button-1"><Link to={`/bookingRegister?idProduct=${id}`} style={{ color: 'inherit' }}>Reservar</Link></button>
                 </div>
                 
-
             </div>
 
             <CalendarDetail productId={id} />
@@ -219,7 +215,6 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
                         <div className="gmap_canvas">
                             <iframe className='mapFrame' id="gmap_canvas"
                                 src={generateLocationURL()} />
-
                         </div>
                     </div>
                 </div>
@@ -240,9 +235,7 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
                 </div>
             </div>
 
-
             {isModalOpen && (<ImageModal images={image} onClose={handleCloseModal} />)}
-
         </div>
     )
 

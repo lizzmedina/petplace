@@ -10,11 +10,9 @@ const Details = () => {
       const [selectedDate, setSelectedDate] = useState(null);
 
       const getDetail = async () => {
-                  const res = await fetch(
-                        `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/petDayCare/detail/${id}`
-                  );
-                  const data = await res.json();
-                  setDetails(data);
+            const res = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/petDayCare/detail/${id}` );
+            const data = await res.json();
+            setDetails(data);
       };
 
       useEffect(() => {
@@ -25,6 +23,8 @@ const Details = () => {
             // Guardar detalles en sessionStorage cuando details cambie
             sessionStorage.setItem("productDetail", JSON.stringify(details));
       }, [details]);
+
+      console.log(details);
 
       return (
             <>
@@ -44,7 +44,7 @@ const Details = () => {
                               healthAndSecurity={details.healthAndSecurity}
                               cancellationPolicy={details.cancellationPolicy}
                               selectedDate={selectedDate}
-                              ratingValue={details.average}
+                              rating={details.rating}
                         />
                   </div>
             </>

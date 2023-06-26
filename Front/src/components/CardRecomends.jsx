@@ -78,7 +78,7 @@ export const CardRecomends = ({ image, type, name, characteristics, city, addres
                             <span className="rating-value">{rating.average}</span>
                             <Rating className="rating-value-star" defaultValue={1} max={1}/>
                         </Grid>
-                      </Grid>) : null
+                    </Grid>) : null
                     }
                     
                     { isFavorite 

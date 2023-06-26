@@ -1,6 +1,5 @@
 import { DatePicker } from 'antd';
 import { useContextGlobal } from './utils/global.constext';
-import { useEffect } from 'react';
 import dayjs from 'dayjs';
 
 const { RangePicker } = DatePicker;
@@ -8,12 +7,12 @@ const { RangePicker } = DatePicker;
 export const ReservationCalendar = () => {
     const { selectedDates, setSelectedDates } = useContextGlobal();
 
-    const localStartDate = localStorage.getItem('localStartDate')
-        ? dayjs(localStorage.getItem('localStartDate'))
-        : null;
-    const localEndDate = localStorage.getItem('localEndDate')
-        ? dayjs(localStorage.getItem('localEndDate'))
-        : null;
+    // const localStartDate = localStorage.getItem('localStartDate')
+    //     ? dayjs(localStorage.getItem('localStartDate'))
+    //     : null;
+    // const localEndDate = localStorage.getItem('localEndDate')
+    //     ? dayjs(localStorage.getItem('localEndDate'))
+    //     : null;
 
     return (
         <div className='searcher-calendar'>
