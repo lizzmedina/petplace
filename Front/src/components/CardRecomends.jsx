@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShower, faPersonWalkingWithCane, faCarrot, faBaseball, faStethoscope, faLocationDot, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { Grid, Rating } from '@mui/material';
 
-export const CardRecomends = ({ image, type, name, characteristics, city, address, detail, capacity, basicPrice, ratingValue}) => {
+export const CardRecomends = ({ image, type, name, characteristics, city, address, detail, capacity, basicPrice, rating}) => {
 
     if (!image) {
             return image;
@@ -37,7 +37,7 @@ export const CardRecomends = ({ image, type, name, characteristics, city, addres
 
 
     const showRating = () => {
-        return ratingValue !== null && ratingValue !== undefined;
+        return rating !== null && rating !== undefined;
     };
 
     const hideFavorite = () => {
@@ -62,7 +62,7 @@ export const CardRecomends = ({ image, type, name, characteristics, city, addres
                       </Grid>
                     { showRating() ? (<Grid item xs={4}>
                         <Grid container direction="row" spacing={0} className="align-items-center">
-                            <span className="rating-value">{ratingValue}</span>
+                            <span className="rating-value">{rating.average}</span>
                             <Rating className="rating-value-star" defaultValue={1} max={1}/>
                         </Grid>
                       </Grid>) : null

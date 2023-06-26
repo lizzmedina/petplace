@@ -1,7 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.DTO.BookingDTO;
-import com.example.demo.DTO.BookingScoreDTO;
+import com.example.demo.DTO.RatingDTO;
 import com.example.demo.DTO.BookingScoreReviewDTO;
 import com.example.demo.entity.Booking;
 import com.example.demo.entity.BookingScore;
@@ -19,18 +18,18 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class BookingScoreService {
+public class RatingService {
   private BookingRepository bookingRepository;
   private BookingScoreRepository bookingScoreRepository;
 
   @Autowired
-  public BookingScoreService(
+  public RatingService(
       BookingRepository bookingRepository, BookingScoreRepository bookingScoreRepository) {
     this.bookingRepository = bookingRepository;
     this.bookingScoreRepository = bookingScoreRepository;
   }
 
-  public BookingScoreDTO evaluate(BookingScoreReviewDTO scoreReview) {
+  public RatingDTO evaluate(BookingScoreReviewDTO scoreReview) {
     Booking booking = findBookingScoreByBookingId(scoreReview.getBookingId());
 
     if(!scoreReview.getUserId().equals(booking.getUser().getId())){
@@ -57,7 +56,28 @@ public class BookingScoreService {
     return mapFromBooking(booking);
   }
 
-  public BookingScoreDTO getEvaluations(Integer bookingId) {
+  public RatingDTO getRatingsByPetDayCare(Integer petDayCareId) {
+    List<Booking> bookings = bookingRepository.findByPetDayCareId(petDayCareId);
+    List<BookingScore> bookingRatings = bookingScoreRepository.findByBookingScoreIdBookingIn(bookings);
+
+    var stats = bookingRatings.isEmpty() ? null : bookingRatings.stream()
+            .map(BookingScore::getScore)
+            .collect(Collectors.summarizingDouble(Double::valueOf));
+
+    if(stats == null){
+      return null;
+    }
+
+    RatingDTO rating = new RatingDTO();
+    rating.setAverage(roundOneDecimal(stats.getAverage()));
+    rating.setPetDayCareId(petDayCareId);
+    rating.setRatings(getReviewsByBookingList(bookings));
+    rating.setAmountOfReviews(bookingRatings.size());
+
+    return rating;
+  }
+
+  public RatingDTO getRatingsByBooking(Integer bookingId) {
     Booking booking = findBookingScoreByBookingId(bookingId);
     return mapFromBooking(booking);
   }
@@ -72,7 +92,7 @@ public class BookingScoreService {
         .collect(Collectors.summarizingDouble(Double::valueOf))
         .getAverage();
 
-    return avg == null ? null : BigDecimal.valueOf(avg).setScale(1, RoundingMode.HALF_UP).doubleValue();
+    return avg == null ? null : roundOneDecimal(avg);
   }
 
   private Double getAverageScore(Booking booking) {
@@ -88,18 +108,28 @@ public class BookingScoreService {
         .toList();
   }
 
+  private List<BookingScoreReviewDTO> getReviewsByBookingList(List<Booking> bookings) {
+    return bookingScoreRepository.findByBookingScoreIdBookingIn(bookings).stream()
+            .map(bk -> new BookingScoreReviewDTO(bk.getUserId(), bk.getBookingId(), bk.getScore(), bk.getReview()))
+            .toList();
+  }
+
   private Booking findBookingScoreByBookingId(Integer id) {
     Optional<Booking> bookingOpt = bookingRepository.findById(id);
     return bookingOpt.orElseThrow(
         () -> new ResourceNotFoundException("No existe la reserva con id: " + id));
   }
 
-  private BookingScoreDTO mapFromBooking(Booking booking) {
-    BookingScoreDTO bookingScoreDTO = new BookingScoreDTO();
-    bookingScoreDTO.setAverage(getAverageScore(booking));
-    bookingScoreDTO.setBookingScoreReviews(getBookingScoreEvaluations(booking.getUser().getId(), booking));
-    bookingScoreDTO.setBooking(new BookingDTO(booking));
+  private RatingDTO mapFromBooking(Booking booking) {
+    RatingDTO ratingDTO = new RatingDTO();
+    ratingDTO.setPetDayCareId(booking.getPetDayCare().getId());
+    ratingDTO.setAverage(getAverageScore(booking));
+    ratingDTO.setRatings(getBookingScoreEvaluations(booking.getUser().getId(), booking));
 
-    return bookingScoreDTO;
+    return ratingDTO;
+  }
+
+  private Double roundOneDecimal(Double value) {
+    return BigDecimal.valueOf(value).setScale(1, RoundingMode.HALF_UP).doubleValue();
   }
 }

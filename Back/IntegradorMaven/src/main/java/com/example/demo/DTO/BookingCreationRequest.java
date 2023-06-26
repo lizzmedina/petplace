@@ -1,7 +1,5 @@
 package com.example.demo.DTO;
 
-import com.example.demo.entity.Pet;
-
 import java.time.LocalDate;
 import java.util.List;
 

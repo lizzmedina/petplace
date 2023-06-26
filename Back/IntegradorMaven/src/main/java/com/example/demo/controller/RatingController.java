@@ -1,9 +1,8 @@
 package com.example.demo.controller;
 
-import com.example.demo.DTO.BookingScoreDTO;
+import com.example.demo.DTO.RatingDTO;
 import com.example.demo.DTO.BookingScoreReviewDTO;
-import com.example.demo.service.BookingScoreService;
-import java.util.List;
+import com.example.demo.service.RatingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,13 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/api/v1/booking/score")
-public class BookingScoreController {
+@RequestMapping(value = "/api/v1/booking/rating")
+public class RatingController {
 
-  @Autowired private BookingScoreService bookingScoreService;
+  @Autowired private RatingService ratingService;
 
   @PostMapping
-  public BookingScoreDTO evaluate(@RequestBody BookingScoreReviewDTO bookingScoreReview) {
+  public RatingDTO evaluate(@RequestBody BookingScoreReviewDTO bookingScoreReview) {
     if (bookingScoreReview == null) {
       throw new IllegalArgumentException("El cuerpo de la peticion no puede ser vacio!");
     } else {
@@ -40,12 +39,12 @@ public class BookingScoreController {
         bookingScoreReview.setReview(bookingScoreReview.getReview().trim());
       }
 
-      return bookingScoreService.evaluate(bookingScoreReview);
+      return ratingService.evaluate(bookingScoreReview);
     }
   }
 
   @GetMapping("/{bookingId}")
-  public BookingScoreDTO getEvaluations(@PathVariable(name = "bookingId") Integer bookingId) {
-    return bookingScoreService.getEvaluations(bookingId);
+  public RatingDTO getEvaluations(@PathVariable(name = "bookingId") Integer bookingId) {
+    return ratingService.getRatingsByBooking(bookingId);
   }
 }

@@ -16,21 +16,20 @@ export const RatingComponent = ({booking, dataRef}) => {
   const { urlBookingScore } = useContextGlobal();
   const calificarAction = (event) => {
     event.preventDefault(event);
-    enviarCalificacion(parseInt(event.target.rating.value));
+    enviarCalificacion(parseInt(event.target.rating.value), event.target.review.value);
   };
 
-  const enviarCalificacion = (ratingValue) => {
+  const enviarCalificacion = (ratingValue, reviewValue) => {
     const ratingBody = {
                           userId: getUserId(),
                           bookingId: booking.idBooking,
                           score: ratingValue,
-                          review: null
+                          review: reviewValue
                          };
     fetch(urlBookingScore,
             {
                 method: 'POST',
                 headers: {
-                    'Access-Control-Allow-Origin': '*',
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(ratingBody)
