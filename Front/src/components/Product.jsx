@@ -116,37 +116,37 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
                 <div className="product-info-rigth">
                     { ratingValue !== null ?
                     <Grid container spacing={3} direction="row">
-                      <Grid item>
-                        <Typography component="legend"><p className="text-info">Calificación:</p></Typography>
-                      </Grid>
-                      <Grid item>
-                        <p className="text-info">
-                            <Rating readOnly value={ratingValue}  precision={0.5} />
-                        </p>
-                      </Grid>
-                      <Grid item>
-                          <p className="text-info">
-                              {ratingValue} / 5.0
-                          </p>
-                      </Grid>
-                    </Grid> : null
+                        <Grid item>
+                            <Typography component="legend"><p className="text-info">Calificación:</p></Typography>
+                        </Grid>
+                        <Grid item>
+                            <p className="text-info">
+                                <Rating readOnly value={ratingValue}  precision={0.5} />
+                            </p>
+                        </Grid>
+                        <Grid item>
+                            <p className="text-info">
+                                {ratingValue} / 5.0
+                            </p>
+                        </Grid>
+                        </Grid> : null
                     }
-                    <Grid container spacing={2}>
-                      <Grid item>
-                        <p className="text-info">Capacidad:</p>
-                      </Grid>
-                      <Grid item>
-                        <p className="text-info">{capacity} {type.title}</p>
-                      </Grid>
-                    </Grid>
+                        <Grid container spacing={2}>
+                        <Grid item>
+                            <p className="text-info">Capacidad:</p>
+                        </Grid>
+                        <Grid item>
+                            <p className="text-info">{capacity} {type.title}</p>
+                        </Grid>
+                        </Grid>
 
-                    <Grid container spacing={2}>
-                      <Grid item>
-                        <p className="text-info">Precio:</p>
-                      </Grid>
-                      <Grid item>
-                        <p className="text-info">$ {basicPrice}</p>
-                      </Grid>
+                        <Grid container spacing={2}>
+                        <Grid item>
+                            <p className="text-info">Precio:</p>
+                        </Grid>
+                        <Grid item>
+                            <p className="text-info">$ {basicPrice}</p>
+                        </Grid>
                     </Grid>
                     <button className="buttonDetail button-1"><Link to={`/bookingRegister?idProduct=${id}`} style={{ color: 'inherit' }}>Reservar</Link></button>
                 </div>

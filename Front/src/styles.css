@@ -1313,6 +1313,14 @@ p.more-images {
     cursor: pointer;
 }
 
+/* Booking History*/
+.reservation {
+    background-color: #EAFFF7;
+    margin: 1rem;
+}
+.booking-cell{
+    padding: 2rem;
+}
 
 
 /* footer */

@@ -57,15 +57,15 @@ export const CardRecomends = ({ image, type, name, characteristics, city, addres
                 </div>
                 <div className="right-card-content">
                     <Grid container spacing={1} direction="row" className="space-content">
-                      <Grid item xs={6}>
+                    <Grid item xs={6}>
                         <h3 className="card-title-recommends">{name}</h3>
-                      </Grid>
+                    </Grid>
                     { showRating() ? (<Grid item xs={4}>
                         <Grid container direction="row" spacing={0} className="align-items-center">
                             <span className="rating-value">{ratingValue}</span>
                             <Rating className="rating-value-star" defaultValue={1} max={1}/>
                         </Grid>
-                      </Grid>) : null
+                    </Grid>) : null
                     }
                     { hideFavorite() ? null :
                     (<Grid item xs={2}>
@@ -77,7 +77,7 @@ export const CardRecomends = ({ image, type, name, characteristics, city, addres
                     <p className="card-location-recommends"><FontAwesomeIcon icon={faLocationDot} className='card-location-icon' />{city.name}, {address}</p>
                     <span className='card-services-list-recommends'>{renderCharacteristics()}</span>
                     <p className="card-descrption-recommends">{truncateDetail(detail)}</p>
-                    <button className='button-2'>Ver más</button>
+                    <button className='button-2'> Ver más </button>
                 </div>
             </div>
         </div>
