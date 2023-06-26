@@ -821,30 +821,52 @@ input:hover {
 
 /* Form Booking*/
 
+.booking-form h3{
+    text-align: center;
+    color: var(--color9);
+}
 .booking-upcontainer{
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     width: 95vw;
-    border: solid black;
 }
 .booking-upcontainer p{
     font-size: 16px;
 }
 .booking-upleftcontainer{
-    border-radius: 10px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width: 30%;
-    border: solid black;
 }
-.booking-upleftsection{
+.booking-upleftsection1{
     border-radius: 10px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
     padding: 1rem;
     margin: 1rem 0;
     width: 100%;
+    height: 30%;
+}
+.booking-upleftsection2{
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    padding: 1rem;
+    margin: 1rem 0;
+    width: 100%;
+    height: 60%;
+}
+
+.text-total {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--color2);
 }
 .booking-calendar .searcher-calendar{
+    display: flex;
+    justify-content: center;
     width: 100%;
 }
 .booking-uprigthcontainer{
@@ -871,13 +893,22 @@ input:hover {
     width: 55%;
     height: 7.5rem;
 }
-
 .booking-downcontainer{
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     width: 95vw;
-    border: solid black;
+}
+.booking-pet{
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    width: 95%;
+    padding: 1.3rem 2rem;
+}
+.booking-petInfo{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 .booking-downcontainer .rulesContainer{
     border-radius: 10px;
