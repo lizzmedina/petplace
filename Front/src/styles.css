@@ -1985,3 +1985,8 @@ footer {
 .card-favorite-icon {
     color: var(--color8);
 }
+
+.no-top-padding {
+    padding-top: 0 !important;
+}
+

@@ -4,7 +4,7 @@ import { Grid, Rating } from '@mui/material';
 import { useContextGlobal } from './utils/global.constext';
 
 
-export const CardRecomends = ({ image, type, name, characteristics, city, address, detail, capacity, basicPrice, ratingValue}) => {
+export const CardRecomends = ({ image, type, name, characteristics, city, address, detail, capacity, basicPrice, rating}) => {
 
     const {favorites, setFavorites, isFavorite, setIsFavorite} = useContextGlobal();
 
@@ -41,7 +41,7 @@ export const CardRecomends = ({ image, type, name, characteristics, city, addres
 
 
     const showRating = () => {
-        return ratingValue !== null && ratingValue !== undefined;
+        return rating !== null && rating !== undefined;
     };
 
     const handleFavorite = () => {
@@ -72,14 +72,13 @@ export const CardRecomends = ({ image, type, name, characteristics, city, addres
                     <Grid container spacing={1} direction="row" className="space-content">
                     <Grid item xs={6}>
                         <h3 className="card-title-recommends">{name}</h3>
-                    </Grid>
-                    { showRating() ? (
-                        <Grid item xs={4}>
-                            <Grid container direction="row" spacing={0} className="align-items-center">
-                                <span className="rating-value">{ratingValue}</span>
-                                <Rating className="rating-value-star" defaultValue={1} max={1}/>
-                            </Grid>
-                        </Grid>) : null
+                      </Grid>
+                    { showRating() ? (<Grid item xs={4}>
+                        <Grid container direction="row" spacing={0} className="align-items-center">
+                            <span className="rating-value">{rating.average}</span>
+                            <Rating className="rating-value-star" defaultValue={1} max={1}/>
+                        </Grid>
+                      </Grid>) : null
                     }
                     
                     { isFavorite 
