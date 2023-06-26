@@ -1940,3 +1940,9 @@ footer {
 .card-favorite-icon {
     color: var(--color8);
 }
+
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+    height: 10rem;
+    margin-left: 4rem;
+}
+

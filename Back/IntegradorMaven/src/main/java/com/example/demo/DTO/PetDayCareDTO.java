@@ -21,7 +21,7 @@ public class PetDayCareDTO {
     private List<String> healthAndSecurity;
     private List<String> cancellationPolicy;
 
-    private Double average;
+    private RatingDTO rating;
 
 
     public PetDayCareDTO(String name, Category type, Integer capacity, CityDTO city, String address, String detail, List<String> images, List<String> characteristics, double basicPrice, List<String> houseRules, List<String> healthAndSecurity, List<String> cancellationPolicy) {
@@ -146,11 +146,11 @@ public class PetDayCareDTO {
         this.cancellationPolicy = cancellationPolicy;
     }
 
-    public Double getAverage() {
-        return average;
+    public RatingDTO getRating() {
+        return rating;
     }
 
-    public void setAverage(Double average) {
-        this.average = average;
+    public void setRating(RatingDTO rating) {
+        this.rating = rating;
     }
 }

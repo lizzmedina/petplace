@@ -20,18 +20,8 @@ public class BookingDTO {
     private LocalDate checkIn;
     private LocalDate checkOut;
 
-    private boolean evaluated;
     private LocalDate creationDate;
-
-
-    public BookingDTO(List<String> checkInCheckOut, double totalPrice, Integer userId, Integer petDayCareId, List<String> dataPet) {
-        this.checkInCheckOut = checkInCheckOut;
-        this.totalPrice = totalPrice;
-        this.userId = userId;
-        this.petDayCareId = petDayCareId;
-        this.dataPet = dataPet;
-        this.evaluated = false;
-    }
+    private Integer score;
 
     public BookingDTO(Booking booking){
         this.setIdBooking(booking.getIdBooking());
@@ -131,13 +121,12 @@ public class BookingDTO {
         this.checkOut = checkOut;
     }
 
-    public boolean isEvaluated() {
-        return evaluated;
+    public Integer getScore() {
+        return score;
     }
 
-    public BookingDTO setEvaluated(boolean evaluated) {
-        this.evaluated = evaluated;
-        return this;
+    public void setScore(Integer score) {
+        this.score = score;
     }
 
     public LocalDate getCreationDate() {

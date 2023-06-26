@@ -35,7 +35,7 @@ public class PetDayCareService {
     private CityMapper cityMapper;
     private CityService cityService;
 
-    private BookingScoreService bookingScoreService;
+    private RatingService ratingService;
 
   @Autowired
   public PetDayCareService(
@@ -46,7 +46,7 @@ public class PetDayCareService {
       CityRepository cityRepository,
       CityMapper cityMapper,
       CityService cityService,
-      BookingScoreService bookingScoreService) {
+      RatingService ratingService) {
     this.repository = repository;
     this.categoryService = categoryService;
     this.categoryRepository = categoryRepository;
@@ -54,7 +54,7 @@ public class PetDayCareService {
     this.cityRepository = cityRepository;
     this.cityMapper = cityMapper;
     this.cityService = cityService;
-    this.bookingScoreService = bookingScoreService;
+    this.ratingService = ratingService;
   }
 
     /*public PetDayCareSaveDTO save(PetDayCareSaveDTO petDayCareSaveDTO) {
@@ -187,6 +187,7 @@ public class PetDayCareService {
 
         newPetDayCare = repository.save(newPetDayCare);
         petDayCare.setId(newPetDayCare.getId());
+        petDayCare.setRating(ratingService.getRatingsByPetDayCare(petDayCare.getId()));
         return petDayCare;
     }
 
@@ -249,6 +250,7 @@ public class PetDayCareService {
                 petDayCareDTO.setBasicPrice(petDayCare.getBasicPrice());
                 petDayCareDTO.setCharacteristics(petDayCare.getCharacteristics());
                 petDayCareDTO.setId(petDayCare.getId());
+                petDayCareDTO.setRating(ratingService.getRatingsByPetDayCare(petDayCare.getId()));
             }
             return petDayCareDTO;
         }else if (petDayCareDTO == null){
@@ -338,7 +340,7 @@ public class PetDayCareService {
                 petDayCare.get().getCancellationPolicy()
         );
         petDayCareDTO.setId(id);
-        petDayCareDTO.setAverage(bookingScoreService.getAverageScore(id));
+        petDayCareDTO.setRating(ratingService.getRatingsByPetDayCare(id));
 
         return petDayCareDTO;
     }
@@ -361,7 +363,7 @@ public class PetDayCareService {
     }
 
     private PetDayCare calculateAverage(PetDayCare pdc){
-        pdc.setAverage(bookingScoreService.getAverageScore(pdc.getId()));
+        pdc.setAverage(ratingService.getAverageScore(pdc.getId()));
         return pdc;
     }
 }
