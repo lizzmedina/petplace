@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
 import { useLocation } from 'react-router-dom';
 import { useNavigate, Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -8,12 +8,13 @@ import ImageModal from './ImageModal';
 import { useContextGlobal } from './utils/global.constext';
 import dayjs from 'dayjs';
 import { FaPaypal, FaRegCreditCard,FaMoneyBillAlt } from 'react-icons/fa';
+import Swal from 'sweetalert2';
 
 
 
 function FormBooking() {
 
-    const {selectedDates, setSelectedDates} = useContextGlobal();
+    const {selectedDates, setSelectedDates, urlPostBooking} = useContextGlobal();
 
     const user = JSON.parse(localStorage.getItem("userConnected"));
     const product = JSON.parse(sessionStorage.getItem("productDetail"));
@@ -93,8 +94,44 @@ function FormBooking() {
 
     //Generacion de la Reserva
     const [booking, setBooking] = useState({
-        
+        userId: user.id,
+        petDayCareId: product.id,
+        checkInDate: localStorage.getItem('localStartDate'),
+        checkOutDate: localStorage.getItem('localEndDate')
     });
+    useEffect(() => {
+        const newBooking = {
+            ...booking,
+            checkInDate: localStorage.getItem('localStartDate'),
+            checkOutDate: localStorage.getItem('localEndDate')
+        };
+        setBooking(newBooking);
+    }, [selectedDates]);
+
+    const [isSuccess, setIsSuccess] = useState(false);
+    const handleSubmit = () => {
+        console.log(booking);
+        fetch(urlPostBooking, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(booking),
+        })
+            .then((response) => {
+                if (response.ok) {
+                    setIsSuccess(true);
+                    Swal.fire({ icon: 'success', title: 'La reserva ha sido creada exitosamente.' });
+                } else {
+                    return response.json().then((data) => {
+                        throw new Error(data.message);
+                    });
+                }
+            })
+            .catch((error) => {
+                Swal.fire({ icon: 'error', title: 'Error', text: error.message });
+            });
+    };
 
 
 
@@ -234,6 +271,8 @@ function FormBooking() {
                     </div>
                 </div>
             </div>
+
+            <button onClick={handleSubmit} className="button-2">Enviar Reserva</button>
         </div>
     )
 }
