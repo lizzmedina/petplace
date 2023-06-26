@@ -70,9 +70,10 @@ const shuffleArray = (array) => {
       {!noResults && (
       <div className="render-cards-recommends">
       {currentCards.map((recommend) => (
-        <Link key={recommend.id} to={"/Detail/" + recommend.id}>
+        // <Link key={recommend.id} to={"/Detail/" + recommend.id}>
           <CardRecomends
             key={recommend.id}
+            number={recommend.id}
             type={recommend.type.title}
             name={recommend.name}
             image={recommend.images}
@@ -84,7 +85,7 @@ const shuffleArray = (array) => {
             basicPrice={recommend.basicPrice}
             characteristics={recommend.characteristics}
           />
-        </Link>
+        //</Link>
       ))}
       </div>
       )}
