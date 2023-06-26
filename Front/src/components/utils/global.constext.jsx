@@ -16,6 +16,7 @@ const ContextProvider = ({children}) => {
     const urlPostProducts = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/petDayCare`; 
     const urlCategory = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/category`;
     const urlBookingHistory = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/booking/user/`;
+    const urlPostBooking = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/booking`
     const urlBookingScore = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/booking/rating`;
 
     const [selectedCity, setSelectedCity] = useState(null);
@@ -81,7 +82,8 @@ const ContextProvider = ({children}) => {
                 url, 
                 setUrl, 
                 dataCategory, 
-                setDataCategory
+                setDataCategory,
+                urlPostBooking
             }}>
             {children}
         </ContextGlobal.Provider>

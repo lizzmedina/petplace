@@ -36,7 +36,6 @@ export const ReservationCalendar = () => {
                     setSelectedDates([startDate, endDate]);
                 }}
             />
-            {console.log(localStartDate)}
         </div>
     );
 };
