@@ -74,18 +74,18 @@ export const CalendarDetail = ({ productId }) => {
         <div className="calendar-section-container">
             <h3>Fechas disponibles</h3>
             <div className="calendars-render">
-            <div className="calendar">
-                <DatePicker
-                selected={startDate}
-                onChange={onChange}
-                startDate={startDate}
-                endDate={endDate}
-                monthsShown={2}
-                excludeDates={disabledDates}
-                selectsRange
-                inline
-                />
-            </div>
+                <div className="calendar">
+                    <DatePicker
+                    selected={startDate}
+                    onChange={onChange}
+                    startDate={startDate}
+                    endDate={endDate}
+                    monthsShown={2}
+                    excludeDates={disabledDates}
+                    selectsRange
+                    inline
+                    />
+                </div>
             </div>
         </div>
         );
