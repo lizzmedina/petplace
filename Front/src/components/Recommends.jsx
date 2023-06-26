@@ -32,6 +32,7 @@ export const Recommends = () => {
         setRecommends(data);
         setSearchResults(data);
         setNoResults(data.length === 0);
+        console.log(data);
       })
       .catch((error) => {
         console.error("Error al obtener las recomendaciones:", error);
@@ -78,7 +79,7 @@ const shuffleArray = (array) => {
             name={recommend.name}
             image={recommend.images}
             capacity={recommend.capacity}
-            ratingValue={recommend.average}
+            rating={recommend.rating}
             city={recommend.city}
             address={recommend.address}
             detail={recommend.detail}

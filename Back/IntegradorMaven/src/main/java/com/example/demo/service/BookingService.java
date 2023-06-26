@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -67,6 +68,7 @@ public class BookingService {
         booking.setCheckInCheckOut(
                 List.of(formatter.format(bookingCreationRequest.getCheckInDate()),
                         formatter.format(bookingCreationRequest.getCheckOutDate())));
+        booking.setDataPet(bookingCreationRequest.getDataPet());
 
         if(!available(booking.getPetDayCare().getId(), booking.getCheckIn(), booking.getCheckOut())){
             throw new RuntimeException("las fechas a reservar no estan disponibles en ese ajolamiento pues ya se encuentra reservado");
@@ -181,13 +183,20 @@ public class BookingService {
         }
 
         var bookingScores =
-                bookingScoreRepository.findByBookingScoreIdUserIdAndBookingScoreIdBookingIn(idUser, bookingsUser)
-                        .stream().collect(Collectors.groupingBy(BookingScore::getBookingId));
+                bookingScoreRepository.findByBookingScoreIdUserIdAndBookingScoreIdBookingIn(idUser, bookingsUser);
 
 
         return bookingsUser.stream().map(BookingDTO::new)
-                .map(bookingDTO -> bookingDTO.setEvaluated(bookingScores.containsKey(bookingDTO.getIdBooking())))
+                .map(bookingDTO -> this.setBookingScore(bookingDTO, bookingScores))
                 .toList();
+    }
+
+    private BookingDTO setBookingScore(BookingDTO bookingDTO, List<BookingScore> bookingScores){
+        var score = bookingScores.stream()
+                .filter(bs -> bookingDTO.getIdBooking() == bs.getBookingId())
+                .map(BookingScore::getScore).findFirst().orElse(null);
+        bookingDTO.setScore(score);
+        return bookingDTO;
     }
 
     private LocalDate parseStringToDate(String date){

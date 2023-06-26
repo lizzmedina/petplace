@@ -3,7 +3,7 @@ import { faShower, faPersonWalkingWithCane, faCarrot, faBaseball, faStethoscope,
 import { Grid, Rating } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-export const CardRecomends = ({ number, image, type, name, characteristics, city, address, detail, capacity, basicPrice, ratingValue}) => {
+export const CardRecomends = ({ number, image, type, name, characteristics, city, address, detail, capacity, basicPrice, rating}) => {
 
     if (!image) {
             return image;
@@ -38,7 +38,7 @@ export const CardRecomends = ({ number, image, type, name, characteristics, city
 
 
     const showRating = () => {
-        return ratingValue !== null && ratingValue !== undefined;
+        return rating !== null && rating !== undefined;
     };
 
     const hideFavorite = () => {
@@ -58,6 +58,21 @@ export const CardRecomends = ({ number, image, type, name, characteristics, city
                 </div>
                 <div className="right-card-content">
                     <Grid container spacing={1} direction="row" className="space-content">
+                      <Grid item xs={6}>
+                        <h3 className="card-title-recommends">{name}</h3>
+                      </Grid>
+                    { showRating() ? (<Grid item xs={4}>
+                        <Grid container direction="row" spacing={0} className="align-items-center">
+                            <span className="rating-value">{rating.average}</span>
+                            <Rating className="rating-value-star" defaultValue={1} max={1}/>
+                        </Grid>
+                      </Grid>) : null
+                    }
+                    { hideFavorite() ? null :
+                    (<Grid item xs={2}>
+                        <FontAwesomeIcon icon={faHeart} className='card-favorite-icon'/>
+                    </Grid>)
+                    }
                         <Grid item xs={6}>
                             <h3 className="card-title-recommends">{name}</h3>
                         </Grid>

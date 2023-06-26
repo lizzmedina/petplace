@@ -1,14 +1,14 @@
 package com.example.demo.DTO;
 
-import com.example.demo.entity.Booking;
-
 import java.time.LocalDate;
+import java.util.List;
 
 public class BookingCreationRequest {
     private Integer userId;
     private Integer petDayCareId;
     private LocalDate checkInDate;
     private LocalDate checkOutDate;
+    private List<String> dataPet;
 
     public BookingCreationRequest() {
     }
@@ -43,5 +43,13 @@ public class BookingCreationRequest {
 
     public void setCheckOutDate(LocalDate checkOutDate) {
         this.checkOutDate = checkOutDate;
+    }
+
+    public List<String> getDataPet() {
+        return dataPet;
+    }
+
+    public void setDataPet(List<String> dataPet) {
+        this.dataPet = dataPet;
     }
 }

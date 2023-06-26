@@ -26,7 +26,7 @@ public class PetDayCareController {
     }
 
     @GetMapping("/all")
-    public List<PetDayCare> petDayCareList(){
+    public List<PetDayCareDTO> petDayCareList(){
         return service.findAll();
     }
 
@@ -36,7 +36,7 @@ public class PetDayCareController {
     }
 
     @GetMapping("/category/{category}")
-    public List<PetDayCare> findByCategory(@PathVariable("category") Integer type){
+    public List<PetDayCareDTO> findByCategory(@PathVariable("category") Integer type){
         return service.findByCategory(type);
     };
 

@@ -221,6 +221,6 @@ public class DataLoaderComponent {
         loadInitialUserData();
         loadInitialBookingData();
 
-        generateBookingScores();
+        //generateBookingScores();
     }
 }
