@@ -33,19 +33,7 @@ public class CityMapper {
         CityDTO cityDto = new CityDTO(city.getId(), city.getName());
         if(city.getPetDayCareSet() != null){
             cityDto.setPetDayCareDTOSet(city.getPetDayCareSet().stream().map(petDayCare -> {
-                PetDayCareDTO pdcDto = new PetDayCareDTO(petDayCare.getName(),
-                        petDayCare.getType(),
-                        petDayCare.getCapacity(),
-                        cityDto,
-                        petDayCare.getAddress(),
-                        petDayCare.getDetail(),
-                        petDayCare.getImages(),
-                        petDayCare.getCharacteristics(),
-                        petDayCare.getBasicPrice(),
-                        petDayCare.getHouseRules(),
-                        petDayCare.getHealthAndSecurity(),
-                        petDayCare.getCancellationPolicy());
-                pdcDto.setId(petDayCare.getId());
+                PetDayCareDTO pdcDto = new PetDayCareDTO(petDayCare, cityDto, null);
                 return pdcDto;
             }).collect(Collectors.toSet()));
         }

@@ -137,24 +137,11 @@ public class PetDayCareService {
 
         );
 
-        repository.save(petDayCareEntity);
+        var saved = repository.save(petDayCareEntity);
+        petDayCareDTO.setId(saved.getId());
+        petDayCareDTO.setRating(ratingService.getRatingsByPetDayCare(saved.getId()));
 
-        PetDayCareDTO petDayCareDTO1 = new PetDayCareDTO(
-                petDayCareEntity.getName(),
-                petDayCareEntity.getType(),
-                petDayCareEntity.getCapacity(),
-                petDayCareDTO.getCity(),
-                petDayCareDTO.getAddress(),
-                petDayCareEntity.getDetail(),
-                petDayCareEntity.getImages(),
-                petDayCareEntity.getCharacteristics(),
-                petDayCareEntity.getBasicPrice(),
-                petDayCareEntity.getHouseRules(),
-                petDayCareEntity.getHealthAndSecurity(),
-                petDayCareEntity.getCancellationPolicy()
-        );
-
-        return petDayCareDTO1;
+        return petDayCareDTO;
     }
 
 
@@ -293,8 +280,9 @@ public class PetDayCareService {
 
     }
 
-    public List<PetDayCare> findAll(){
-        return this.addAverageToEntities(repository.findAll());
+    public List<PetDayCareDTO> findAll(){
+        return repository.findAll().stream()
+                .map(this::mapEntityToDto).toList();
     }
 
     public String delete(Integer id){
@@ -308,8 +296,8 @@ public class PetDayCareService {
 
     }
 
-    public List<PetDayCare> findByCategory(Integer type){
-        return this.addAverageToEntities(repository.findByTypeId(type));
+    public List<PetDayCareDTO> findByCategory(Integer type){
+        return repository.findByTypeId(type).stream().map(this::mapEntityToDto).toList();
     }
 
     public PetDayCareDTO detail(Integer id){
@@ -324,25 +312,7 @@ public class PetDayCareService {
             throw new ResourceNotFoundException("La guarderia no fue encontrada");
         }
 
-
-        PetDayCareDTO petDayCareDTO= new PetDayCareDTO(
-                petDayCare.get().getName(),
-                category.get(),
-                petDayCare.get().getCapacity(),
-                cityMapper.mapToDto(petDayCare.get().getCity()),
-                petDayCare.get().getAddress(),
-                petDayCare.get().getDetail(),
-                petDayCare.get().getImages(),
-                petDayCare.get().getCharacteristics(),
-                petDayCare.get().getBasicPrice(),
-                petDayCare.get().getHouseRules(),
-                petDayCare.get().getHealthAndSecurity(),
-                petDayCare.get().getCancellationPolicy()
-        );
-        petDayCareDTO.setId(id);
-        petDayCareDTO.setRating(ratingService.getRatingsByPetDayCare(id));
-
-        return petDayCareDTO;
+        return this.mapEntityToDto(petDayCare.get());
     }
 
     public void deleteAll(){
@@ -358,12 +328,10 @@ public class PetDayCareService {
         return petDayCare.orElseThrow(() -> new IllegalArgumentException("La guarderia no fue encontrada: "+id));
     }
 
-    private List<PetDayCare> addAverageToEntities(List<PetDayCare> petDayCareList){
-        return petDayCareList.stream().map(this::calculateAverage).toList();
-    }
-
-    private PetDayCare calculateAverage(PetDayCare pdc){
-        pdc.setAverage(ratingService.getAverageScore(pdc.getId()));
-        return pdc;
+    private PetDayCareDTO mapEntityToDto(PetDayCare pdc) {
+        var dto = new PetDayCareDTO(pdc,
+                cityMapper.mapToDto(pdc.getCity()),
+                ratingService.getRatingsByPetDayCare(pdc.getId()));
+        return dto;
     }
 }

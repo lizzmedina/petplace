@@ -1941,8 +1941,7 @@ footer {
     color: var(--color8);
 }
 
-.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
-    height: 10rem;
-    margin-left: 4rem;
+.no-top-padding {
+    padding-top: 0 !important;
 }
 

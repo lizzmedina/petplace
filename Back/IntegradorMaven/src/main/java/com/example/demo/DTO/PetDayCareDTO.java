@@ -1,6 +1,8 @@
 package com.example.demo.DTO;
 
 import com.example.demo.entity.Category;
+import com.example.demo.entity.PetDayCare;
+
 import java.util.List;
 
 public class PetDayCareDTO {
@@ -22,21 +24,25 @@ public class PetDayCareDTO {
     private List<String> cancellationPolicy;
 
     private RatingDTO rating;
+    private boolean favorite;
 
-
-    public PetDayCareDTO(String name, Category type, Integer capacity, CityDTO city, String address, String detail, List<String> images, List<String> characteristics, double basicPrice, List<String> houseRules, List<String> healthAndSecurity, List<String> cancellationPolicy) {
-        this.name = name;
-        this.type = type;
-        this.capacity = capacity;
-        this.city = city;
-        this.address = address;
-        this.detail = detail;
-        this.images = images;
-        this.characteristics = characteristics;
-        this.basicPrice = basicPrice;
-        this.houseRules = houseRules;
-        this.healthAndSecurity = healthAndSecurity;
-        this.cancellationPolicy = cancellationPolicy;
+    public PetDayCareDTO(PetDayCare petDayCare, CityDTO city, RatingDTO rating) {
+        this.setId(petDayCare.getId());
+        this.setName(petDayCare.getName());
+        this.setType(petDayCare.getType());
+        this.setCapacity(petDayCare.getCapacity());
+        this.setCity(city);
+        this.setAddress(petDayCare.getAddress());
+        this.setDetail(petDayCare.getDetail());
+        this.setImages(petDayCare.getImages());
+        this.setCharacteristics(petDayCare.getCharacteristics());
+        this.setBasicPrice(petDayCare.getBasicPrice());
+        this.setHouseRules(petDayCare.getHouseRules());
+        this.setHealthAndSecurity(petDayCare.getHealthAndSecurity());
+        this.setCancellationPolicy(petDayCare.getCancellationPolicy());
+        this.setId(id);
+        this.setRating(rating);
+        this.setFavorite(petDayCare.isFavorite());
     }
 
     public PetDayCareDTO() {
@@ -152,5 +158,13 @@ public class PetDayCareDTO {
 
     public void setRating(RatingDTO rating) {
         this.rating = rating;
+    }
+
+    public boolean isFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        this.favorite = favorite;
     }
 }
