@@ -25,6 +25,8 @@ const ContextProvider = ({children}) => {
     const [searchResults, setSearchResults] = useState([]);
     const [title, setTitle] = useState('Recomendaciones');
     const [bookingHistory, setBookingHistory] = useState([{}]);
+    const [favorites, setFavorites] = useState([]);
+    const [isFavorite, setIsFavorite] = useState(false);
 
     const [places, setPlaces] = useState([]); // categorias
     const getAllCategories = async()=> {
@@ -53,6 +55,10 @@ const ContextProvider = ({children}) => {
     return (
         <ContextGlobal.Provider 
             value={{
+                isFavorite, 
+                setIsFavorite,
+                favorites,
+                setFavorites,
                 urlBookingHistory,
                 bookingHistory,
                 setBookingHistory,

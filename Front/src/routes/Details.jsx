@@ -30,21 +30,21 @@ const Details = () => {
             <>
                   <div className="detail-container">
                         <Product
-                        id={details.id}
-                        name={details.name}
-                        type={details.type}
-                        capacity={details.capacity}
-                        city={details.city}
-                        address={details.address}
-                        detail={details.detail}
-                        image={details.images}
-                        basicPrice={details.basicPrice}
-                        features={details.characteristics}
-                        houseRules={details.houseRules}
-                        healthAndSecurity={details.healthAndSecurity}
-                        cancellationPolicy={details.cancellationPolicy}
-                        selectedDate={selectedDate}
-                        ratingValue={details.average}
+                              id={details.id}
+                              name={details.name}
+                              type={details.type}
+                              capacity={details.capacity}
+                              city={details.city}
+                              address={details.address}
+                              detail={details.detail}
+                              image={details.images}
+                              basicPrice={details.basicPrice}
+                              features={details.characteristics}
+                              houseRules={details.houseRules}
+                              healthAndSecurity={details.healthAndSecurity}
+                              cancellationPolicy={details.cancellationPolicy}
+                              selectedDate={selectedDate}
+                              ratingValue={details.average}
                         />
                   </div>
             </>

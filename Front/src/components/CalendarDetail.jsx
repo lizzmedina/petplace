@@ -44,14 +44,6 @@ export const CalendarDetail = ({ productId }) => {
             newEndDate.setDate(newEndDate.getDate() + 1);
             setEndDate(newEndDate);
         }
-
-        console.log('---- getLocalStorageDate ----');
-        console.log('startDate:');
-        console.log(startDate);
-        console.log('endDate:');        
-        console.log(endDate);
-        console.log("--------------------")
-
     }
 
     useEffect(() => {

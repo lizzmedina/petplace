@@ -1,8 +1,12 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShower, faPersonWalkingWithCane, faCarrot, faBaseball, faStethoscope, faLocationDot, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { Grid, Rating } from '@mui/material';
+import { useContextGlobal } from './utils/global.constext';
+
 
 export const CardRecomends = ({ image, type, name, characteristics, city, address, detail, capacity, basicPrice, ratingValue}) => {
+
+    const {favorites, setFavorites, isFavorite, setIsFavorite} = useContextGlobal();
 
     if (!image) {
             return image;
@@ -30,20 +34,29 @@ export const CardRecomends = ({ image, type, name, characteristics, city, addres
 
     const truncateDetail = (text) => {
         if (text.length > 100) {
-          return text.substring(0, 100) + '...';
+            return text.substring(0, 100) + '...';
         }
         return text;
-      };
+    };
 
 
     const showRating = () => {
         return ratingValue !== null && ratingValue !== undefined;
     };
 
-    const hideFavorite = () => {
-        // placeholder para la funcionalidad del corazon de favoritos en el card
-        return true;
+    const handleFavorite = () => {
+        setIsFavorite(!isFavorite);
     }
+
+    // const handleFavorite = () => {
+    //     const updatedFavorites = favorites.map((item) => {
+    //       if (item.id === id) {
+    //         return { ...item, isFavorite: !item.isFavorite };
+    //       }
+    //       return item;
+    //     });
+    //     setFavorites(updatedFavorites);
+    //   };
 
     return (
         <div className="card-recomends">
@@ -60,17 +73,32 @@ export const CardRecomends = ({ image, type, name, characteristics, city, addres
                     <Grid item xs={6}>
                         <h3 className="card-title-recommends">{name}</h3>
                     </Grid>
-                    { showRating() ? (<Grid item xs={4}>
-                        <Grid container direction="row" spacing={0} className="align-items-center">
-                            <span className="rating-value">{ratingValue}</span>
-                            <Rating className="rating-value-star" defaultValue={1} max={1}/>
-                        </Grid>
-                    </Grid>) : null
+                    { showRating() ? (
+                        <Grid item xs={4}>
+                            <Grid container direction="row" spacing={0} className="align-items-center">
+                                <span className="rating-value">{ratingValue}</span>
+                                <Rating className="rating-value-star" defaultValue={1} max={1}/>
+                            </Grid>
+                        </Grid>) : null
                     }
-                    { hideFavorite() ? null :
-                    (<Grid item xs={2}>
-                        <FontAwesomeIcon icon={faHeart} className='card-favorite-icon'/>
-                    </Grid>)
+                    
+                    { isFavorite 
+                        ? 
+                            (<Grid item xs={2}>
+                                <FontAwesomeIcon 
+                                    icon= {faHeart} style={{color: "#f01414",}}
+                                    className='card-favorite-icon' 
+                                    onClick={handleFavorite}
+                                />
+                            </Grid>)
+                        :
+                            (<Grid item xs={2}>
+                                <FontAwesomeIcon 
+                                    icon= {faHeart} style={{color: "#e0e0e0",}}
+                                    className='card-favorite-icon' 
+                                    onClick={handleFavorite}
+                                />
+                            </Grid>)
                     }
                     </Grid>
                     <span className="card-category-recommends">Habilitado para: {capacity} {type.title} </span>
