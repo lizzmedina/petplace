@@ -112,6 +112,8 @@ export const NavBar = () => {
             <Divider />
             <MenuItem onClick={() => navigate("/bookinghistory")}> Mis Reservas</MenuItem>
             <Divider />
+            <MenuItem onClick={() => navigate("/favorites")}> Favoritos </MenuItem>
+            <Divider />
             <MenuItem onClick={handleCloseSesion}> Cerrar Sesión </MenuItem>
           </Menu>
         </ThemeProvider>

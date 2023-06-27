@@ -1,16 +1,18 @@
 import { useNavigate, Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronLeft, faShower, faPersonWalkingWithCane, faCarrot, faBaseball, faStethoscope, faLocationDot } from '@fortawesome/free-solid-svg-icons'
+import { faChevronLeft, faShower, faPersonWalkingWithCane, faCarrot, faBaseball, faStethoscope, faLocationDot, faHeart } from '@fortawesome/free-solid-svg-icons'
 import { Link as ScrollLink, Element } from 'react-scroll';
 import React, { useState } from 'react';
 import ImageModal from './ImageModal';
 import { CalendarDetail } from './CalendarDetail';
 import { Rating, Typography, Grid } from '@mui/material';
+import { useContextGlobal } from './utils/global.constext';
 
 export const Product = ({ id, name, type, capacity, city, address, detail, image, basicPrice, features, houseRules, healthAndSecurity, cancellationPolicy, rating }) => {
 
     const navigate = useNavigate()
     const [isModalOpen, setModalOpen] = useState(false);
+    const {favorites, setFavorites, isFavorite, setIsFavorite} = useContextGlobal();
 
 
     // map develop
@@ -69,6 +71,9 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
         setModalOpen(false);
     };
 
+    const handleFavorite = () => {
+        setIsFavorite(!isFavorite);
+    } 
     const getRatingText = () => {
         if(rating == null)
             return '';
@@ -83,7 +88,43 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
 
         <div key={id} className="product-container">
             <div className="product-header">
-                <ScrollLink to="locationContainer" smooth={true} duration={500}><span className="pinLocation-product"><FontAwesomeIcon icon={faLocationDot} className='icon-service' /> {city.name}, {address}</span></ScrollLink>  <a onClick={() => navigate(-1)}><FontAwesomeIcon icon={faChevronLeft} className='back-icon' /></a>
+                
+                <ScrollLink to="locationContainer" smooth={true} duration={500}>
+                    <span className="pinLocation-product">
+                        <FontAwesomeIcon 
+                            icon={faLocationDot} 
+                            className='icon-service' 
+                        /> 
+                        {city.name}, {address}
+                    </span>
+                </ScrollLink>  
+                <div className='favorite-product-container'>
+                        { isFavorite 
+                            ? 
+                                (<Grid item xs={2}>
+                                    <FontAwesomeIcon 
+                                        icon= {faHeart} style={{color: "#f01414",}}
+                                        className='card-favorite-icon' 
+                                        onClick={handleFavorite}
+                                    />
+                                </Grid>)
+                            :
+                                (<Grid item xs={2}>
+                                    <FontAwesomeIcon 
+                                        icon= {faHeart} style={{color: "#e0e0e0",}}
+                                        className='card-favorite-icon' 
+                                        onClick={handleFavorite}
+                                    />
+                                </Grid>)
+                        }
+                    </div>
+                <a onClick={() => navigate(-1)}>
+                        <FontAwesomeIcon 
+                            icon={faChevronLeft} 
+                            className='back-icon' 
+                        />
+                </a>
+                
             </div>
             <div className="product-galery">
                 <div className='leading-image'>
@@ -107,7 +148,6 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
             </div>
             <Link onClick={handleOpenModal}><p className='more-images'> Ver más</p></Link>
 
-
             <div className="product-info-container">
 
                 <span className="product-info-left">
@@ -125,47 +165,46 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
                 <div className="product-info-rigth">
                     { rating !== null ?
                     <Grid container spacing={3} direction="row">
-                      <Grid item>
-                        <Typography component="legend"><p className="text-info">Calificación:</p></Typography>
-                      </Grid>
-                      <Grid item>
-                        <p className="text-info">
-                            <Rating readOnly value={rating.average}  precision={0.5} />
-                        </p>
-                      </Grid>
-                      <Grid item>
-                          <p className="text-info">
-                              {rating.average} / 5.0
-                          </p>
-                      </Grid>
-                      <Grid item className="no-top-padding">
-                          <p>
-                              {getRatingText()}
-                          </p>
-                      </Grid>
+                        <Grid item>
+                            <Typography component="legend"><p className="text-info">Calificación:</p></Typography>
+                        </Grid>
+                        <Grid item>
+                            <p className="text-info">
+                                <Rating readOnly value={rating.average}  precision={0.5} />
+                            </p>
+                        </Grid>
+                        <Grid item>
+                            <p className="text-info">
+                                {rating.average} / 5.0
+                            </p>
+                        </Grid>
+                        <Grid item className="no-top-padding">
+                            <p>
+                                {getRatingText()}
+                            </p>
+                        </Grid>
                     </Grid> : null
                     }
-                    <Grid container spacing={2}>
-                      <Grid item>
-                        <p className="text-info">Capacidad:</p>
-                      </Grid>
-                      <Grid item>
-                        <p className="text-info">{capacity} {type.title}</p>
-                      </Grid>
-                    </Grid>
+                        <Grid container spacing={2}>
+                        <Grid item>
+                            <p className="text-info">Capacidad:</p>
+                        </Grid>
+                        <Grid item>
+                            <p className="text-info">{capacity} {type.title}</p>
+                        </Grid>
+                        </Grid>
 
-                    <Grid container spacing={2}>
-                      <Grid item>
-                        <p className="text-info">Precio:</p>
-                      </Grid>
-                      <Grid item>
-                        <p className="text-info">$ {basicPrice}</p>
-                      </Grid>
+                        <Grid container spacing={2}>
+                        <Grid item>
+                            <p className="text-info">Precio:</p>
+                        </Grid>
+                        <Grid item>
+                            <p className="text-info">$ {basicPrice}</p>
+                        </Grid>
                     </Grid>
                     <button className="buttonDetail button-1"><Link to={`/bookingRegister?idProduct=${id}`} style={{ color: 'inherit' }}>Reservar</Link></button>
                 </div>
                 
-
             </div>
 
             <CalendarDetail productId={id} />
@@ -176,7 +215,6 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
                         <div className="gmap_canvas">
                             <iframe className='mapFrame' id="gmap_canvas"
                                 src={generateLocationURL()} />
-
                         </div>
                     </div>
                 </div>
@@ -197,9 +235,7 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
                 </div>
             </div>
 
-
             {isModalOpen && (<ImageModal images={image} onClose={handleCloseModal} />)}
-
         </div>
     )
 

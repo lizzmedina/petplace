@@ -956,6 +956,7 @@ input:hover {
     justify-content: space-between;
     padding: 1.5rem 1.5rem;
     flex-wrap: wrap-reverse;
+    align-items: center;
 }
 .product-header a{
     color: #31363F;
@@ -1344,7 +1345,20 @@ p.more-images {
     cursor: pointer;
 }
 
+/* Booking History*/
+.reservation {
+    background-color: #EAFFF7;
+    margin: 1rem;
+}
+.booking-cell{
+    padding: 2rem;
+}
+/* Favorites */
 
+/* .favorite-product-container {
+    display: flex;
+    align-items: center;
+} */
 
 /* footer */
 
