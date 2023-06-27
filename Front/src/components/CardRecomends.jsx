@@ -1,8 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShower, faPersonWalkingWithCane, faCarrot, faBaseball, faStethoscope, faLocationDot, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { Grid, Rating } from '@mui/material';
+import { Link } from 'react-router-dom';
 
-export const CardRecomends = ({ image, type, name, characteristics, city, address, detail, capacity, basicPrice, rating}) => {
+export const CardRecomends = ({ number, image, type, name, characteristics, city, address, detail, capacity, basicPrice, rating}) => {
 
     if (!image) {
             return image;
@@ -77,7 +78,7 @@ export const CardRecomends = ({ image, type, name, characteristics, city, addres
                     <p className="card-location-recommends"><FontAwesomeIcon icon={faLocationDot} className='card-location-icon' />{city.name}, {address}</p>
                     <span className='card-services-list-recommends'>{renderCharacteristics()}</span>
                     <p className="card-descrption-recommends">{truncateDetail(detail)}</p>
-                    <button className='button-2'>Ver más</button>
+                    <Link key={number} to={"/Detail/" + number}><button className='button-2'>Ver más</button></Link>
                 </div>
             </div>
         </div>
