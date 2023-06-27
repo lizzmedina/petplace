@@ -23,6 +23,7 @@ function EditCategory() {
         title: yup.string().required('El nombre de la categoría es obligatorio'),
         image: yup.string().required('Una imagen para la categoría es obligatoria'),
         description: yup.string().required('Una descripción es obligatoria'),
+        icon: yup.string().required('Un icono para la categoría es obligatorio'),
     });
     const [validationErrors, setValidationErrors] = useState({});
 
@@ -48,6 +49,7 @@ function EditCategory() {
         title: '',
         description: '',
         image: '',
+        icon: '',
     });
 
     const openEditForm = (category) => {
@@ -56,6 +58,7 @@ function EditCategory() {
             title: category.title,
             description: category.description,
             image: category.image,
+            icon: category.icon,
         });
         openModal();
     };
@@ -72,6 +75,7 @@ function EditCategory() {
             title: '',
             description: '',
             image: '',
+            icon: '',
         });
     };
 
@@ -102,6 +106,8 @@ function EditCategory() {
                         title: categoryData.title,
                         description: categoryData.description,
                         image: categoryData.image,
+                        icon: category.icon,
+                        
                     };
 
                     fetch(`${urlCategory}/edit`, {
@@ -187,6 +193,16 @@ function EditCategory() {
                         required
                     />
                     {validationErrors.image && <span className="error-message">{validationErrors.image}</span>}
+                    <br/>
+                    <p>Icono de la categoría:</p>
+                    <input
+                        id="icon"
+                        className="swal2-input"
+                        value={categoryData.icon}
+                        onChange={(e) => setCategoryData({ ...categoryData, icon: e.target.value })}
+                        required
+                    />
+                    {validationErrors.icon && <span className="error-message">{validationErrors.icon}</span>}
                     <br/>
 
                     <div>
