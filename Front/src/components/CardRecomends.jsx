@@ -1,9 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShower, faPersonWalkingWithCane, faCarrot, faBaseball, faStethoscope, faLocationDot, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { Grid, Rating } from '@mui/material';
-import { Link } from 'react-router-dom';
 
-export const CardRecomends = ({ number, image, type, name, characteristics, city, address, detail, capacity, basicPrice, rating}) => {
+export const CardRecomends = ({ image, type, name, characteristics, city, address, detail, capacity, basicPrice, rating}) => {
 
     if (!image) {
             return image;
@@ -73,27 +72,12 @@ export const CardRecomends = ({ number, image, type, name, characteristics, city
                         <FontAwesomeIcon icon={faHeart} className='card-favorite-icon'/>
                     </Grid>)
                     }
-                        <Grid item xs={6}>
-                            <h3 className="card-title-recommends">{name}</h3>
-                        </Grid>
-                        {showRating() ? (<Grid item xs={4}>
-                            <Grid container direction="row" spacing={0} className="align-items-center">
-                                <span className="rating-value">{ratingValue}</span>
-                                <Rating className="rating-value-star" defaultValue={1} max={1} />
-                            </Grid>
-                        </Grid>) : null
-                        }
-                        {hideFavorite() ? null :
-                            (<Grid item xs={2}>
-                                <FontAwesomeIcon icon={faHeart} className='card-favorite-icon' />
-                            </Grid>)
-                        }
                     </Grid>
                     <span className="card-category-recommends">Habilitado para: {capacity} {type.title} </span>
                     <p className="card-location-recommends"><FontAwesomeIcon icon={faLocationDot} className='card-location-icon' />{city.name}, {address}</p>
                     <span className='card-services-list-recommends'>{renderCharacteristics()}</span>
                     <p className="card-descrption-recommends">{truncateDetail(detail)}</p>
-                    <Link key={number} to={"/Detail/" + number}><button className='button-2'>Ver más</button></Link>
+                    <button className='button-2'>Ver más</button>
                 </div>
             </div>
         </div>
