@@ -42,7 +42,7 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
             Veterinaria: faStethoscope,
             Entrenamiento: faBaseball,
         };
-
+        
         return features.map((option, index) => {
             const icon = icons[option];
 
