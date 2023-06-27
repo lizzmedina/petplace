@@ -15,8 +15,8 @@ export const Footer = () => {
       </div>
       <div className="socialMedia">
         <Link className="socialLink" to="https://www.facebook.com/PetPlaceDB"> <FontAwesomeIcon className='socialIcon' icon={faFacebook} size="xl" />  </Link>
-        <Link className="socialLink" to="https://twitter.com/home"> <FontAwesomeIcon className='socialIcon' icon={faTwitter} size="xl" /> </Link>
-        <Link className="socialLink" to="https://www.instagram.com/"> <FontAwesomeIcon className='socialIcon' icon={faInstagram} size="xl" /> </Link>
+        <Link className="socialLink" to="https://twitter.com/PetPlacecasa"> <FontAwesomeIcon className='socialIcon' icon={faTwitter} size="xl" /> </Link>
+        <Link className="socialLink" to="https://www.instagram.com/petplacecomoencasa/"> <FontAwesomeIcon className='socialIcon' icon={faInstagram} size="xl" /> </Link>
       </div>
     </footer>
   )

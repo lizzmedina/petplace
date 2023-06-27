@@ -13,7 +13,7 @@ function MyAccount() {
             <div className="account-container">
             <div className="icon-container">
                 <LuDog size={100} className="circle-icon"/>
-                <p>{userConnected.name}</p><p>{userConnected.lastName}</p>
+                <p>{userConnected.name} {userConnected.lastName}</p>
             </div>
                 <div className="form-container">
                     <div className="datoUser"><h4>Documento de Identidad: </h4> <p>&nbsp;{userConnected.id}</p></div>
