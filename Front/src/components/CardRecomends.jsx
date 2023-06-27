@@ -113,6 +113,7 @@ export const CardRecomends = ({
                     className="rating-value-star"
                     defaultValue={1}
                     max={1}
+                    readOnly
                   />
                 </Grid>
               </Grid>
