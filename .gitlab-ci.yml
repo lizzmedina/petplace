@@ -8,7 +8,10 @@ back:build:
   script:
     - echo "Building app..."
     - cd Back/IntegradorMaven
-    - mvn clean install
+    - echo "Deleting target folder..."
+    - rm -rf target/
+    - echo "Running clean install..."
+    - mvn clean install -U
     - echo "Finished building the app."
   artifacts:
     expire_in: 1 week
@@ -24,9 +27,13 @@ front:build:
     - echo "Building app..."
     - echo "VITE_REACT_APP_BACKEND_URL=http://${DEPLOY_SERVER_IP}:8080" > Front/.env
     - cd Front
+    - echo "Deleting modules..."
     - rm -rf node_modules
+    - echo "Pruning modules..."
     - npm prune
+    - echo "Running npm install..."
     - npm install
+    - echo "Minifying artifacto for deployment..."
     - npm run build
     - echo "Finished building the app."
   artifacts:
