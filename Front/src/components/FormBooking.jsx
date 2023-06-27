@@ -9,7 +9,7 @@ import { useContextGlobal } from './utils/global.constext';
 import dayjs from 'dayjs';
 import { FaPaypal, FaRegCreditCard,FaMoneyBillAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
-
+import * as yup from "yup";
 
 
 function FormBooking() {
@@ -96,7 +96,20 @@ function FormBooking() {
     }
 
     //Informacion de la mascota
-    const [pet, setPet] = useState([null, null, null, null, null]);
+    const [pet, setPet] = useState(() => [null, null, null, null, null]);
+
+    //Schema generado para validar
+    const validationSchema = yup.object().shape({
+        pet: yup.array().of(
+            yup.mixed()
+                .required('Todos los campos de la mascota son requeridos')
+                .notOneOf([null], 'El campo de la mascota no puede ser nulo')
+        ),
+        paymentMethod: yup.string().required('Debe seleccionar un método de pago'),
+        localStartDate: yup.string().required('La fecha de inicio es requerida'),
+        localEndDate: yup.string().required('La fecha de fin es requerida'),
+    });
+
 
     //Generacion de la Reserva
     const [booking, setBooking] = useState({
@@ -110,35 +123,44 @@ function FormBooking() {
             ...booking,
             checkInDate: localStorage.getItem('localStartDate'),
             checkOutDate: localStorage.getItem('localEndDate'),
-            dataPet : pet
+            dataPet: pet
         };
         setBooking(newBooking);
     }, [selectedDates, pet]);
 
     const [isSuccess, setIsSuccess] = useState(false);
     const handleSubmit = () => {
-        console.log(booking);
-        fetch(urlPostBooking, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(booking),
-        })
-            .then((response) => {
-                if (response.ok) {
-                    setIsSuccess(true);
-                    Swal.fire({ icon: 'success', title: 'La reserva ha sido creada exitosamente.' });
-                } else {
-                    return response.json().then((data) => {
-                        throw new Error(data.message);
+        validationSchema
+            .validate(booking, { abortEarly: false })
+            .then(() => {
+                console.log(booking);
+                fetch(urlPostBooking, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(booking),
+                })
+                    .then((response) => {
+                        if (response.ok) {
+                            setIsSuccess(true);
+                            Swal.fire({ icon: 'success', title: 'La reserva ha sido creada exitosamente.' });
+                        } else {
+                            return response.json().then((data) => {
+                                throw new Error(data.message);
+                            });
+                        }
+                    })
+                    .catch((error) => {
+                        Swal.fire({ icon: 'error', title: 'Error', text: error.message });
                     });
-                }
             })
-            .catch((error) => {
-                Swal.fire({ icon: 'error', title: 'Error', text: error.message });
+            .catch((validationErrors) => {
+                // Handle validation errors here
+                console.log(validationErrors);
             });
     };
+
 
 
 
