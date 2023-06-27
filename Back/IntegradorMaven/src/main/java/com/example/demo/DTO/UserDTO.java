@@ -1,5 +1,7 @@
 package com.example.demo.DTO;
 
+import com.example.demo.entity.User;
+
 public class UserDTO {
 
     private Integer id;
@@ -22,6 +24,18 @@ public class UserDTO {
         this.address = address;
         this.type = type;
         this.validation = validation;
+    }
+
+    public UserDTO(User user){
+        this.setId(user.getId());
+        this.setName(user.getName());
+        this.setLastName(user.getLastName());
+        this.setEmail(user.getEmail());
+        this.setPassword(user.getPassword());
+        this.setCellPhone(user.getCellPhone());
+        this.setAddress(user.getAddress());
+        this.setType(user.getType());
+        this.setValidation(user.isValidation());
     }
 
 

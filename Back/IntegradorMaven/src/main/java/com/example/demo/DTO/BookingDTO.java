@@ -14,8 +14,8 @@ public class BookingDTO {
     private double totalPrice;
     private Integer userId;
     private Integer petDayCareId;
-    private User user;
-    private PetDayCare petDayCare;
+    private UserDTO user;
+    private PetDayCareDTO petDayCare;
     private List<String> dataPet;
     private LocalDate checkIn;
     private LocalDate checkOut;
@@ -32,8 +32,8 @@ public class BookingDTO {
         this.setDataPet(booking.getDataPet());
         this.setCheckIn(booking.getCheckIn());
         this.setCheckOut(booking.getCheckOut());
-        this.setPetDayCare(booking.getPetDayCare());
-        this.setUser(booking.getUser());
+        this.setPetDayCare(new PetDayCareDTO(booking.getPetDayCare()));
+        this.setUser(new UserDTO(booking.getUser()));
         this.setCreationDate(booking.getCreationDate());
     }
 
@@ -89,19 +89,19 @@ public class BookingDTO {
         this.dataPet = dataPet;
     }
 
-    public User getUser() {
+    public UserDTO getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(UserDTO user) {
         this.user = user;
     }
 
-    public PetDayCare getPetDayCare() {
+    public PetDayCareDTO getPetDayCare() {
         return petDayCare;
     }
 
-    public void setPetDayCare(PetDayCare petDayCare) {
+    public void setPetDayCare(PetDayCareDTO petDayCare) {
         this.petDayCare = petDayCare;
     }
 
