@@ -1,45 +1,50 @@
 package com.example.demo.controller;
 
-import com.example.demo.DTO.BookingDTO;
 import com.example.demo.entity.Booking;
 import com.example.demo.service.BookingService;
-import com.example.demo.service.UserService;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.Optional;
 
 
 @RestController
 @RequestMapping("/api/v1/mail")
 public class UserMailValidator {
-    @Autowired
-    private UserService userService;
+    private JavaMailSender javaMailSender;
+    private BookingService bookingService;
+
+    @Value("classpath:/templates/header.html")
+    private Resource headerTemplate;
+    @Value("classpath:/templates/body.html")
+    private Resource bodyTemplate;
+    @Value("classpath:/templates/footer.html")
+    private Resource footerTemplate;
 
     @Autowired
-    private JavaMailSender mail;
-    private BookingService bookingService;
-    @Autowired
-    public UserMailValidator(BookingService bookingService) {
+    public UserMailValidator(BookingService bookingService, JavaMailSender javaMailSender) {
         this.bookingService = bookingService;
+        this.javaMailSender = javaMailSender;
     }
 
     @PostMapping("/send/{email}")
     public ResponseEntity<?> sendMail(@PathVariable("email") String emailUser) throws MessagingException {
 
-        MimeMessage message = mail.createMimeMessage();
+        MimeMessage message = javaMailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
 
         String htmlContent = "<!DOCTYPE html>\n" +
@@ -64,13 +69,8 @@ public class UserMailValidator {
         helper.setSubject("Validación de correo electrónico para tu registro en la página web PetPlace 🐾");
         helper.setText(htmlContent, true); // true to set content as HTML
 
-        mail.send(message);
-
-
+        javaMailSender.send(message);
         return new ResponseEntity<>(true, HttpStatus.OK);
-
-
-
     }
 
     @PostMapping("/send/{email}/idBooking/{id}")
@@ -78,15 +78,8 @@ public class UserMailValidator {
 
         Optional<Booking> bookingDTO = bookingService.findById(id);
 
-        MimeMessage message = mail.createMimeMessage();
+        MimeMessage message = javaMailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
-
-
-        String[] filePaths = {
-                "C:\\Users\\Vivi\\Documents\\digitalHouse\\CertifiedTechDeveloper\\ProyectoIntegrador\\equipo-02\\Back\\IntegradorMaven\\src\\main\\resources\\mail1.html",
-                "C:\\Users\\Vivi\\Documents\\digitalHouse\\CertifiedTechDeveloper\\ProyectoIntegrador\\equipo-02\\Back\\IntegradorMaven\\src\\main\\resources\\mail2.html",
-                "C:\\Users\\Vivi\\Documents\\digitalHouse\\CertifiedTechDeveloper\\ProyectoIntegrador\\equipo-02\\Back\\IntegradorMaven\\src\\main\\resources\\mail3.html"
-        };
 
 
          String mailData1 = "  <table style=\"font-family:'Cabin',sans-serif;\" role=\"presentation\"\n" +
@@ -281,7 +274,7 @@ public class UserMailValidator {
                  "                                            style=\"font-size: 14px; line-height: 140%; text-align: left; word-wrap: break-word;\">\n" +
                  "                                        <p style=\"font-size: 14px; line-height: 140%;\">\n" +
                  "                                            <strong><span\n" +
-                 "                                                    style=\"font-family: Lato, sans-serif; font-size: 14px; line-height: 19.6px;\">CHCEK-OUT</span></strong><br><span\n" +
+                 "                                                    style=\"font-family: Lato, sans-serif; font-size: 14px; line-height: 19.6px;\">CHECK-OUT</span></strong><br><span\n" +
                  "                                                style=\"font-family: Lato, sans-serif; font-size: 12px; line-height: 16.8px; color: #7e8c8d;\"> "+bookingDTO.get().getCheckOut()+" </span>\n" +
                  "                                        </p>\n" +
                  "                                    </div>\n" +
@@ -624,68 +617,37 @@ public class UserMailValidator {
                  "    </div>\n" +
                  "</div>";
 
-         String mergedHTML = mergeHTMLFiles(filePaths, mailData1, mailData2);
-
-
 //        ---------------------------------------------------
+        String mergedHTML = mergeHTMLFiles(mailData1, mailData2);
         helper.setTo(emailUser);
         helper.setFrom("petplace.dh@gmail.com");
-        helper.setSubject("Validación de correo electrónico para tu registro en la página web PetPlace 🐾");
+        helper.setSubject("¡Tu reserva en PetPlace 🐾 ha sido confirmada!");
         helper.setText(mergedHTML, true); // true to set content as HTML
 
-        mail.send(message);
-
-
+        javaMailSender.send(message);
         return new ResponseEntity<>(true, HttpStatus.OK);
-
-
-
     }
 
-    public static String mergeHTMLFiles(String[] filePaths, String mailContent1, String mailContent2) {
+    public String mergeHTMLFiles(String mailContent1, String mailContent2) {
         StringBuilder mergedHTMLBuilder = new StringBuilder();
 
-        String file1Content = readHTMLFile(filePaths[0]);
-        mergedHTMLBuilder.append(file1Content);
-
+        mergedHTMLBuilder.append(readHTMLFile(headerTemplate));
         mergedHTMLBuilder.append(mailContent1);
 
-        String file2Content = readHTMLFile(filePaths[1]);
-        mergedHTMLBuilder.append(file2Content);
-
+        mergedHTMLBuilder.append(readHTMLFile(bodyTemplate));
         mergedHTMLBuilder.append(mailContent2);
 
-
-        String file3Content = readHTMLFile(filePaths[2]);
-        mergedHTMLBuilder.append(file3Content);
+        mergedHTMLBuilder.append(readHTMLFile(footerTemplate));
 
         return mergedHTMLBuilder.toString();
     }
 
-    public static String readHTMLFile(String filePath) {
-        StringBuilder stringBuilder = new StringBuilder();
-        BufferedReader bufferedReader = null;
-
-        try {
-            bufferedReader = new BufferedReader(new FileReader(filePath));
-            String line;
-
-            while ((line = bufferedReader.readLine()) != null) {
-                stringBuilder.append(line);
-            }
+    private String readHTMLFile(Resource resource) {
+        try (var inputStream = resource.getInputStream()){
+            return StreamUtils.copyToString(inputStream, Charset.forName("UTF-8"));
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            if (bufferedReader != null) {
-                try {
-                    bufferedReader.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+            throw new RuntimeException("Ocurrio un error leyendo los archivos");
         }
-
-        return stringBuilder.toString();
     }
-
 }
