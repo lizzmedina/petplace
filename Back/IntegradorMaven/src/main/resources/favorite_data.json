@@ -1,0 +1,22 @@
+[
+  {
+    "idFavorite": 1,
+    "userId": 1234567890,
+    "petDayCareId": 1
+  },
+  {
+    "idFavorite": 2,
+    "userId": 1876543210,
+    "petDayCareId": 2
+  },
+  {
+    "idFavorite": 3,
+    "userId": 1589631074,
+    "petDayCareId": 3
+  },
+  {
+    "idFavorite": 4,
+    "userId": 1592634807,
+    "petDayCareId": 4
+  }
+]
