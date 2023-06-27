@@ -291,7 +291,6 @@ function FormBooking() {
                 </div>
             </div>
 
-            {console.log(pet)}
 
             <div className="booking-downcontainer">
                 <div className='rulesContainer'>

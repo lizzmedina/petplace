@@ -23,7 +23,7 @@ export const ReservationCalendar = () => {
         fechaPorDefecto = undefined
     } else {
         localStartDate = dayjs(localStorage.getItem('localStartDate'))
-        localEndDate = dayjs(localStorage.getItem('localStartDate'))
+        localEndDate = dayjs(localStorage.getItem('localEndDate'))
         fechaPorDefecto = [localStartDate, localEndDate]
     }
 
