@@ -17,6 +17,7 @@ const ContextProvider = ({children}) => {
     const urlCategory = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/category`;
     const urlBookingHistory = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/booking/user/`;
     const urlPostBooking = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/booking`;
+    const urlEmailBooking = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/mail/send/`
     const urlBookingScore = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/booking/rating`;
 
     const [selectedCity, setSelectedCity] = useState(null);
@@ -55,7 +56,7 @@ const ContextProvider = ({children}) => {
     return (
         <ContextGlobal.Provider 
             value={{
-                isFavorite, 
+                isFavorite,
                 setIsFavorite,
                 favorites,
                 setFavorites,
@@ -89,7 +90,8 @@ const ContextProvider = ({children}) => {
                 setUrl, 
                 dataCategory, 
                 setDataCategory,
-                urlPostBooking
+                urlPostBooking,
+                urlEmailBooking
             }}>
             {children}
         </ContextGlobal.Provider>

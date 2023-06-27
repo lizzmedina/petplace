@@ -132,7 +132,7 @@ public class DataLoaderComponent {
                 LocalDate checkOut = bookingService.getCheckOutDate(booking);
                 if (bookingService.available(booking.getPetDayCareId(), checkIn, checkOut)) {
                     PetDayCare petDayCare = petDayCareService.findById(booking.getPetDayCareId());
-                    booking.setPetDayCare(petDayCare);
+                    booking.setPetDayCare(new PetDayCareDTO(petDayCare));
 
                     BookingCreationRequest creationRequest = new BookingCreationRequest();
                     creationRequest.setUserId(booking.getUserId());
