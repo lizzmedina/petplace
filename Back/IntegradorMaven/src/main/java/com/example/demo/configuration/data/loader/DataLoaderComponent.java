@@ -48,6 +48,12 @@ public class DataLoaderComponent {
     @Autowired
     private BookingScoreRepository bookingScoreRepository;
 
+    @Autowired
+    private FavoriteService favoriteService;
+
+    @Autowired
+    private FavoriteRepository favoriteRepository;
+
     public void loadInitialCities() {
         System.out.println("loading cities data...");
         List<PetDayCareDTO> petDayCareList = JsonHelper.readJsonFromFile("petdaycare_data.json", new TypeReference<>() {
@@ -208,7 +214,19 @@ public class DataLoaderComponent {
 
         });
     }
-
+    public void loadInitialFavoriteData() {
+        System.out.println("loading favorite data...");
+        List<FavoriteDTO> favoriteDTOS = JsonHelper.readJsonFromFile("favorite_data.json", new TypeReference<>() {
+        });
+        favoriteDTOS.forEach(favoriteDTO -> {
+            Optional<Favorite> booking1 = favoriteService.findByID(favoriteDTO.getIdFavorite());
+            if (booking1.isEmpty()) {
+                favoriteService.save(favoriteDTO);
+            } else {
+                System.out.println("favorite data with id " + favoriteDTO.getIdFavorite() + " already exists, skipping creation...");
+            }
+        });
+    }
 
     @EventListener
     public void onApplicationEvent(ContextRefreshedEvent event) {
@@ -220,6 +238,7 @@ public class DataLoaderComponent {
         loadInitialPetDayCareData();
         loadInitialUserData();
         loadInitialBookingData();
+        loadInitialFavoriteData();
 
         //generateBookingScores();
     }

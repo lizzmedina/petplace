@@ -1,27 +1,36 @@
 import { DatePicker } from 'antd';
 import { useContextGlobal } from './utils/global.constext';
-//import dayjs from 'dayjs';
-//import { useEffect } from 'react';
+import dayjs from 'dayjs';
 
 const { RangePicker } = DatePicker;
 
 export const ReservationCalendar = () => {
     const { selectedDates, setSelectedDates } = useContextGlobal();
 
-    // useEffect(() => {
-    //     const localStartDate = localStorage.getItem('localStartDate')
-    //         ? dayjs(localStorage.getItem('localStartDate'))
-    //         : null;
-    //     const localEndDate = localStorage.getItem('localEndDate')
-    //         ? dayjs(localStorage.getItem('localEndDate'))
-    //         : null;
-    //         setSelectedDates([localStartDate, localEndDate])
-    // }, [selectedDates])
+    let fechaPorDefecto = []
 
+    let localStartDate = null
+    const storedStartDate = localStorage.getItem('localStartDate');
+    let localEndDate = null
+    const storedEndDate = localStorage.getItem('localEndDate');
+
+    if (storedStartDate === "null" || storedEndDate === "null") {
+        localStorage.removeItem('localStartDate')
+        localStorage.removeItem('localEndDate')
+        fechaPorDefecto = undefined
+    } if (storedStartDate === null || storedEndDate === null) {
+        fechaPorDefecto = undefined
+    } else {
+        localStartDate = dayjs(localStorage.getItem('localStartDate'))
+        localEndDate = dayjs(localStorage.getItem('localEndDate'));
+        fechaPorDefecto = [localStartDate, localEndDate]
+    }
+
+    
     return (
         <div className='searcher-calendar'>
             <RangePicker
-                //defaultValue={[selectedDates[0], selectedDates[1]]}
+                defaultValue={fechaPorDefecto}
                 onChange={(values) => {
                     let startDate = null;
                     let endDate = null;
@@ -29,9 +38,6 @@ export const ReservationCalendar = () => {
                         startDate = values[0] ? values[0].format('YYYY-MM-DD') : null;
                         endDate = values[1] ? values[1].format('YYYY-MM-DD') : null;
                     }
-                    localStorage.setItem('localStartDate', startDate);
-                    localStorage.setItem('localEndDate', endDate);
-
                     setSelectedDates([startDate, endDate]);
                 }}
                 placeholder={['check In', 'check Out']}
