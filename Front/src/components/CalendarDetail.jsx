@@ -76,14 +76,14 @@ export const CalendarDetail = ({ productId }) => {
             <div className="calendars-render">
                 <div className="calendar">
                     <DatePicker
-                    selected={startDate}
-                    onChange={onChange}
-                    startDate={startDate}
-                    endDate={endDate}
-                    monthsShown={2}
-                    excludeDates={disabledDates}
-                    selectsRange
-                    inline
+                        selected={startDate}
+                        onChange={onChange}
+                        startDate={startDate}
+                        endDate={endDate}
+                        monthsShown={2}
+                        excludeDates={disabledDates}
+                        selectsRange
+                        inline
                     />
                 </div>
             </div>

@@ -1,23 +1,27 @@
 import { DatePicker } from 'antd';
 import { useContextGlobal } from './utils/global.constext';
-import dayjs from 'dayjs';
+//import dayjs from 'dayjs';
+//import { useEffect } from 'react';
 
 const { RangePicker } = DatePicker;
 
 export const ReservationCalendar = () => {
     const { selectedDates, setSelectedDates } = useContextGlobal();
 
-    // const localStartDate = localStorage.getItem('localStartDate')
-    //     ? dayjs(localStorage.getItem('localStartDate'))
-    //     : null;
-    // const localEndDate = localStorage.getItem('localEndDate')
-    //     ? dayjs(localStorage.getItem('localEndDate'))
-    //     : null;
+    // useEffect(() => {
+    //     const localStartDate = localStorage.getItem('localStartDate')
+    //         ? dayjs(localStorage.getItem('localStartDate'))
+    //         : null;
+    //     const localEndDate = localStorage.getItem('localEndDate')
+    //         ? dayjs(localStorage.getItem('localEndDate'))
+    //         : null;
+    //         setSelectedDates([localStartDate, localEndDate])
+    // }, [selectedDates])
 
     return (
         <div className='searcher-calendar'>
             <RangePicker
-                defaultValue={[localStartDate, localEndDate]}
+                //defaultValue={[selectedDates[0], selectedDates[1]]}
                 onChange={(values) => {
                     let startDate = null;
                     let endDate = null;
@@ -25,15 +29,12 @@ export const ReservationCalendar = () => {
                         startDate = values[0] ? values[0].format('YYYY-MM-DD') : null;
                         endDate = values[1] ? values[1].format('YYYY-MM-DD') : null;
                     }
-
                     localStorage.setItem('localStartDate', startDate);
                     localStorage.setItem('localEndDate', endDate);
 
-                    console.log('Localstorage dates: ');
-                    console.log(startDate, endDate);
-                    console.log('--------------------');
                     setSelectedDates([startDate, endDate]);
                 }}
+                placeholder={['check In', 'check Out']}
             />
         </div>
     );
