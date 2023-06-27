@@ -72,18 +72,51 @@ export const CardRecomends = ({
   };
 
   const handleFavorite = () => {
+  
     setIsFavorite(!isFavorite);
+    console.log("number:");
+    console.log(number);
   };
 
-  // const handleFavorite = () => {
-  //     const updatedFavorites = favorites.map((item) => {
-  //       if (item.id === id) {
-  //         return { ...item, isFavorite: !item.isFavorite };
+  // const handleFavorite = async () => {
+    
+  //   //setIsFavorite(!isFavorite);
+  
+  //   const petDayCareId = {number}; 
+  //   const userConnected = JSON.parse(localStorage.getItem('userConnected'));
+  //   const userId = userConnected.id;
+
+  //   if (userId) {
+  //     const newFavorite = {
+  //       idFavorite: 0,
+  //       userId: parseInt(userId),
+  //       petDayCareId: petDayCareId,
+  //     };
+  
+  //     try {
+  //         const response = await fetch('http://localhost:8080/api/v1/favorite/', {
+  //         method: 'POST',
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //         },
+  //         body: JSON.stringify(newFavorite),
+  //       });
+  
+  //       if (response.ok) {
+  //         setFavorites([...favorites, newFavorite]);
+  //         setIsFavorite(!isFavorite);
+  //       } else {
+  //         console.error('Error al agregar el producto a favoritos');
   //       }
-  //       return item;
-  //     });
-  //     setFavorites(updatedFavorites);
-  //   };
+  //     } catch (error) {
+  //       console.error('Error al hacer la solicitud POST de favoritos:', error);
+  //     }
+  //   } else {
+  //     console.error('No se encontró el userId en el localStorage');
+  //   }
+    
+  // };
+
 
   return (
     <div className="card-recomends">
@@ -118,25 +151,17 @@ export const CardRecomends = ({
               </Grid>
             ) : null}
 
-            {isFavorite ? (
+            {
               <Grid item xs={2}>
                 <FontAwesomeIcon
                   icon={faHeart}
-                  style={{ color: "#f01414" }}
+                  style={ isFavorite ? {color: "#f01414" }  : {color: "#e0e0e0"}}
                   className="card-favorite-icon"
                   onClick={handleFavorite}
                 />
               </Grid>
-            ) : (
-              <Grid item xs={2}>
-                <FontAwesomeIcon
-                  icon={faHeart}
-                  style={{ color: "#e0e0e0" }}
-                  className="card-favorite-icon"
-                  onClick={handleFavorite}
-                />
-              </Grid>
-            )}
+            }
+
           </Grid>
           <span className="card-category-recommends">
             Habilitado para: {capacity} {type.title}{" "}

@@ -1346,13 +1346,26 @@ p.more-images {
 }
 
 /* Booking History*/
+
+.booking-history-container{
+    display: flex;
+    padding: 2rem;
+    height: 80vh;
+    justify-content: space-around;
+}
 .reservation {
     background-color: #EAFFF7;
     margin: 1rem;
 }
 .booking-cell{
-    padding: 2rem;
+    padding: 1rem;
+    font-size: 0.85rem;
 }
+/* .container-booking-history{
+    display: flex;
+    flex-wrap: wrap;
+} */
+
 /* Favorites */
 
 /* .favorite-product-container {
