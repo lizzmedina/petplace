@@ -73,7 +73,7 @@ export const CardRecomends = ({ number, image, type, name, characteristics, city
                     <Grid container spacing={1} direction="row" className="space-content">
                     <Grid item xs={6}>
                         <h3 className="card-title-recommends">{name}</h3>
-                      </Grid>
+                    </Grid>
                     { showRating() ? (<Grid item xs={4}>
                         <Grid container direction="row" spacing={0} className="align-items-center">
                             <span className="rating-value">{rating.average}</span>
@@ -110,12 +110,8 @@ export const CardRecomends = ({ number, image, type, name, characteristics, city
                             </Grid>
                         </Grid>) : null
                         }
-                        {hideFavorite() ? null :
-                            (<Grid item xs={2}>
-                                <FontAwesomeIcon icon={faHeart} className='card-favorite-icon' />
-                            </Grid>)
-                        }
-                    </Grid>
+                        
+                        </Grid>
                     <span className="card-category-recommends">Habilitado para: {capacity} {type.title} </span>
                     <p className="card-location-recommends"><FontAwesomeIcon icon={faLocationDot} className='card-location-icon' />{city.name}, {address}</p>
                     <span className='card-services-list-recommends'>{renderCharacteristics()}</span>
