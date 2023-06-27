@@ -39,13 +39,13 @@ export const Recommends = () => {
       });
   };
 
-const shuffleArray = (array) => {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
+  const shuffleArray = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
   }
-  return array;
-}
 
   let cardsPerRow =10;
   const cardsPerPage = cardsPerRow;
@@ -65,7 +65,7 @@ const shuffleArray = (array) => {
       <h2 className="home-titles">{title}</h2>
       {noResults && (
         <p style={{ fontSize: '1.5rem', textAlign: 'center', margin: '2rem', color: '#b94242', fontWeight:'bold' }}>
-          No hay resultados disponibles en las fechas seleccionadas.
+          No hay resultados disponibles.
         </p>
       )}
       {!noResults && (

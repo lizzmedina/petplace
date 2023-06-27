@@ -8,17 +8,30 @@ const { RangePicker } = DatePicker;
 export const ReservationCalendar = () => {
     const { selectedDates, setSelectedDates } = useContextGlobal();
 
-    const localStartDate = localStorage.getItem('localStartDate')
-        ? dayjs(localStorage.getItem('localStartDate'))
-        : null;
-    const localEndDate = localStorage.getItem('localEndDate')
-        ? dayjs(localStorage.getItem('localEndDate'))
-        : null;
+    let fechaPorDefecto = []
 
+    let localStartDate = null
+    const storedStartDate = localStorage.getItem('localStartDate');
+    let localEndDate = null
+    const storedEndDate = localStorage.getItem('localEndDate');
+
+    if (storedStartDate === "null" || storedEndDate === "null") {
+        localStorage.removeItem('localStartDate')
+        localStorage.removeItem('localEndDate')
+        fechaPorDefecto = undefined
+    } if (storedStartDate === null || storedEndDate === null) {
+        fechaPorDefecto = undefined
+    } else {
+        localStartDate = dayjs(localStorage.getItem('localStartDate'))
+        localEndDate = dayjs(localStorage.getItem('localEndDate'))
+        fechaPorDefecto = [localStartDate, localEndDate]
+    }
+
+    
     return (
         <div className='searcher-calendar'>
             <RangePicker
-                defaultValue={[localStartDate, localEndDate]}
+                defaultValue={fechaPorDefecto}
                 onChange={(values) => {
                     let startDate = null;
                     let endDate = null;
@@ -39,4 +52,3 @@ export const ReservationCalendar = () => {
         </div>
     );
 };
-

@@ -20,6 +20,7 @@ import { NewCategory } from "./routes/NewCategory";
 import ContextProvider from "../src/components/utils/global.constext";
 import {BookingHistory} from './routes/BookingHistory';
 import Cursor from "./components/Cursor";
+import { Favorites } from "./routes/Favorites";
 function App() {
     return (
         <div className="App">
@@ -43,6 +44,7 @@ function App() {
                 <Route path="/editCategory" element={<EditCategory/>}/>
                 <Route path="/validationPage/" element={<ValidationPage/>}/>
                 <Route path="/bookinghistory" element={<BookingHistory/>}/>
+                <Route path="/favorites" element={<Favorites/>}/>
             </Routes>
             </ContextProvider>
             <Footer/>
