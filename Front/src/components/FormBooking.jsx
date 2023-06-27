@@ -79,15 +79,21 @@ function FormBooking() {
     };
 
     //Calculo del numero de dias
-    const localStartDate = localStorage.getItem('localStartDate')
-        ? dayjs(localStorage.getItem('localStartDate')).toDate()
-        : null;
-    const localEndDate = localStorage.getItem('localEndDate')
-        ? dayjs(localStorage.getItem('localEndDate')).toDate()
-        : null;
-    const timeDifference = localEndDate.getTime() - localStartDate.getTime();
-    const numberofDays = Math.floor(timeDifference / (1000 * 3600 * 24));
-    const totalPayment = product.basicPrice * numberofDays;
+    const localStartDate = localStorage.getItem('localStartDate');
+    const localEndDate = localStorage.getItem('localEndDate');
+    let timeDifference = 0
+    let numberOfDays = 0
+    let totalPayment = 0;
+
+    if (localStartDate && localEndDate) {
+        const startDate = dayjs(localStartDate).toDate();
+        const endDate = dayjs(localEndDate).toDate();
+
+        timeDifference = endDate.getTime() - startDate.getTime();
+        numberOfDays = Math.floor(timeDifference / (1000 * 3600 * 24));
+
+        totalPayment = product.basicPrice * numberOfDays;
+    }
 
     //Informacion de la mascota
     const [pet, setPet] = useState([null, null, null, null, null]);
@@ -103,10 +109,11 @@ function FormBooking() {
         const newBooking = {
             ...booking,
             checkInDate: localStorage.getItem('localStartDate'),
-            checkOutDate: localStorage.getItem('localEndDate')
+            checkOutDate: localStorage.getItem('localEndDate'),
+            dataPet : pet
         };
         setBooking(newBooking);
-    }, [selectedDates]);
+    }, [selectedDates, pet]);
 
     const [isSuccess, setIsSuccess] = useState(false);
     const handleSubmit = () => {
@@ -152,7 +159,7 @@ function FormBooking() {
                         <h3>Información de Reserva</h3><br />
                         <div className="booking-calendar"><ReservationCalendar /></div><br/>
                         <div className='form-infoLine'> <p>Precio base x dia:</p> <p>&nbsp;${product.basicPrice}</p> </div>
-                        <div className='form-infoLine'> <p>Dia(s):</p> <p>&nbsp; {numberofDays}</p> </div>
+                        <div className='form-infoLine'> <p>Dia(s):</p> <p>&nbsp; {numberOfDays}</p> </div>
                         <div className="text-total"> <p>Total a Pagar:</p> <p>&nbsp;{totalPayment}</p> </div>
                         <div className="text-info"> <p>Metodo de pago:</p> </div>
                         <form>
