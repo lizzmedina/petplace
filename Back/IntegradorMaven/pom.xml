@@ -142,6 +142,9 @@
 				<includes>
 					<include>*.json</include>
 					<include>application.properties</include>
+					<include>/templates/header.html</include>
+					<include>/templates/body.html</include>
+					<include>/templates/footer.html</include>
 				</includes>
 			</resource>
 		</resources>
