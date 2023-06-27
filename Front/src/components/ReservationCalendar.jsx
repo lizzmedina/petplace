@@ -1,5 +1,6 @@
 import { DatePicker } from 'antd';
 import { useContextGlobal } from './utils/global.constext';
+import { useEffect } from 'react';
 import dayjs from 'dayjs';
 
 const { RangePicker } = DatePicker;
@@ -22,7 +23,7 @@ export const ReservationCalendar = () => {
         fechaPorDefecto = undefined
     } else {
         localStartDate = dayjs(localStorage.getItem('localStartDate'))
-        localEndDate = dayjs(localStorage.getItem('localEndDate'));
+        localEndDate = dayjs(localStorage.getItem('localEndDate'))
         fechaPorDefecto = [localStartDate, localEndDate]
     }
 
@@ -38,11 +39,16 @@ export const ReservationCalendar = () => {
                         startDate = values[0] ? values[0].format('YYYY-MM-DD') : null;
                         endDate = values[1] ? values[1].format('YYYY-MM-DD') : null;
                     }
+
+                    localStorage.setItem('localStartDate', startDate);
+                    localStorage.setItem('localEndDate', endDate);
+
+                    console.log('Localstorage dates: ');
+                    console.log(startDate, endDate);
+                    console.log('--------------------');
                     setSelectedDates([startDate, endDate]);
                 }}
-                placeholder={['check In', 'check Out']}
             />
         </div>
     );
 };
-
