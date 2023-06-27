@@ -4,31 +4,24 @@ import com.example.demo.entity.Booking;
 import com.example.demo.entity.PetDayCare;
 import com.example.demo.entity.User;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class BookingDTO {
 
     private Integer idBooking;
     private List<String> checkInCheckOut;
-
     private double totalPrice;
     private Integer userId;
     private Integer petDayCareId;
-
     private User user;
-
     private PetDayCare petDayCare;
-    //    List<Pet> pets;
     private List<String> dataPet;
+    private LocalDate checkIn;
+    private LocalDate checkOut;
 
-
-    public BookingDTO(List<String> checkInCheckOut, double totalPrice, Integer userId, Integer petDayCareId, List<String> dataPet) {
-        this.checkInCheckOut = checkInCheckOut;
-        this.totalPrice = totalPrice;
-        this.userId = userId;
-        this.petDayCareId = petDayCareId;
-        this.dataPet = dataPet;
-    }
+    private LocalDate creationDate;
+    private Integer score;
 
     public BookingDTO(Booking booking){
         this.setIdBooking(booking.getIdBooking());
@@ -36,9 +29,12 @@ public class BookingDTO {
         this.setTotalPrice(booking.getTotalPrice());
         this.setUserId(booking.getUser().getId());
         this.setPetDayCareId(booking.getPetDayCare().getId());
+        this.setDataPet(booking.getDataPet());
+        this.setCheckIn(booking.getCheckIn());
+        this.setCheckOut(booking.getCheckOut());
         this.setPetDayCare(booking.getPetDayCare());
         this.setUser(booking.getUser());
-        this.setDataPet(booking.getDataPet());
+        this.setCreationDate(booking.getCreationDate());
     }
 
     public BookingDTO() {
@@ -107,5 +103,37 @@ public class BookingDTO {
 
     public void setPetDayCare(PetDayCare petDayCare) {
         this.petDayCare = petDayCare;
+    }
+
+    public LocalDate getCheckIn() {
+        return checkIn;
+    }
+
+    public void setCheckIn(LocalDate checkIn) {
+        this.checkIn = checkIn;
+    }
+
+    public LocalDate getCheckOut() {
+        return checkOut;
+    }
+
+    public void setCheckOut(LocalDate checkOut) {
+        this.checkOut = checkOut;
+    }
+
+    public Integer getScore() {
+        return score;
+    }
+
+    public void setScore(Integer score) {
+        this.score = score;
+    }
+
+    public LocalDate getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(LocalDate creationDate) {
+        this.creationDate = creationDate;
     }
 }

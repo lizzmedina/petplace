@@ -1,91 +1,87 @@
 package com.example.demo.service;
 
+import com.example.demo.DTO.BookingCreationRequest;
 import com.example.demo.DTO.BookingDTO;
 import com.example.demo.entity.*;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.*;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
-import com.example.demo.entity.Booking;
-import com.example.demo.entity.PetDayCare;
-import com.example.demo.repository.BookingRepository;
-import org.springframework.cglib.core.Local;
-import org.springframework.stereotype.Service;
-
-
 import java.util.stream.Collectors;
 
 @Service
 public class BookingService {
+    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
 
     private List<Booking> bookingList;
     private BookingRepository bookingRepository;
-    private  UserRepository userRepository;
+    private UserRepository userRepository;
     private PetDayCareRepository petDayCareRepository;
     private PetRepository petRepository;
 
     private CityRepository cityRepository;
+    private BookingScoreRepository bookingScoreRepository;
 
 
-    public BookingService(List<Booking> bookingList, BookingRepository bookingRepository, UserRepository userRepository, PetDayCareRepository petDayCareRepository, PetRepository petRepository, CityRepository cityRepository) {
+    public BookingService(List<Booking> bookingList,
+                          BookingRepository bookingRepository,
+                          UserRepository userRepository,
+                          PetDayCareRepository petDayCareRepository,
+                          PetRepository petRepository,
+                          CityRepository cityRepository,
+                          BookingScoreRepository bookingScoreRepository) {
         this.bookingList = bookingList;
         this.bookingRepository = bookingRepository;
         this.userRepository = userRepository;
         this.petDayCareRepository = petDayCareRepository;
         this.petRepository = petRepository;
         this.cityRepository = cityRepository;
+        this.bookingScoreRepository = bookingScoreRepository;
     }
 
-    public BookingDTO save(BookingDTO bookingDTO){
+    public BookingDTO save(BookingCreationRequest bookingCreationRequest){
 
-        if (bookingDTO == null) {
-            throw new IllegalArgumentException("La reserva no puede ser nulo");
+        if(bookingCreationRequest == null){
+            throw new IllegalArgumentException("La reserva no puede ser nula");
         }
 
-        Optional<User> user = this.userRepository.findById(bookingDTO.getUserId());
-        Optional<PetDayCare> petDayCare = this.petDayCareRepository.findById(bookingDTO.getPetDayCareId());
+        User user = userRepository.findById(bookingCreationRequest.getUserId())
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        String.format("No se encuentra registrado el usuario con id (%s)", bookingCreationRequest.getUserId())));
 
-        LocalDate checkIn = getCheckInDate(bookingDTO);
-        LocalDate checkOut = getCheckOutDate(bookingDTO);
+        PetDayCare petDayCare = this.petDayCareRepository.findById(bookingCreationRequest.getPetDayCareId())
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        String.format("No se encuentra un alojamiento con id (%s)", bookingCreationRequest.getPetDayCareId())));
 
-        if(!user.isPresent() && !petDayCare.isPresent()){
-            throw  new RuntimeException("El usuario o hotel no se encuentran registrados");
+        Booking booking = new Booking();
+        booking.setUser(user);
+        booking.setPetDayCare(petDayCare);
+        booking.setCheckIn(bookingCreationRequest.getCheckInDate());
+        booking.setCheckOut(bookingCreationRequest.getCheckOutDate());
+        booking.setCheckInCheckOut(
+                List.of(formatter.format(bookingCreationRequest.getCheckInDate()),
+                        formatter.format(bookingCreationRequest.getCheckOutDate())));
+        booking.setDataPet(bookingCreationRequest.getDataPet());
+
+        if(!available(booking.getPetDayCare().getId(), booking.getCheckIn(), booking.getCheckOut())){
+            throw new RuntimeException("las fechas a reservar no estan disponibles en ese ajolamiento pues ya se encuentra reservado");
         }
 
-        if(!available(bookingDTO.getPetDayCareId(), checkIn, checkOut)){
-            throw  new RuntimeException("las fechas a reservar no estan disponibles en ese ajolamiento pues ya se encuentra reservado");
-        }
+        double totalPrice = calculatePrice(booking.getCheckIn(), booking.getCheckOut(), petDayCare.getBasicPrice());
+        booking.setTotalPrice(totalPrice);
 
-        double totalpriceBooking = calculatePrice(checkIn, checkOut, petDayCare.get().getBasicPrice());
+        var savedBooking = bookingRepository.save(booking);
 
-        Booking newBooking = new Booking(
-                bookingDTO.getCheckInCheckOut(),
-                checkIn,
-                checkOut,
-                bookingDTO.getDataPet(),
-                totalpriceBooking,
-                user.get(),
-                petDayCare.get());
+        booking.setIdBooking(savedBooking.getIdBooking());
 
-        bookingRepository.save(newBooking);
-
-        BookingDTO newBookingDTO = new BookingDTO(
-                newBooking.getCheckInCheckOut(),
-                newBooking.getTotalPrice(),
-                newBooking.getUser().getId(),
-                newBooking.getPetDayCare().getId(),
-                newBooking.getDataPet()
-        );
-
-
-        bookingDTO.setIdBooking(newBookingDTO.getIdBooking());
-
-        return newBookingDTO;
-
+        return new BookingDTO(booking);
     }
 
 
@@ -113,7 +109,6 @@ public class BookingService {
 
         }
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate checkIn = LocalDate.parse(checkInCheckOut.get(0), formatter);
         LocalDate checkOut = LocalDate.parse(checkInCheckOut.get(1), formatter);
         List<Integer> idList = bookingRepository.searchAvailablePetDayCares(cityId.get().getId(), checkIn, checkOut);
@@ -176,7 +171,7 @@ public class BookingService {
         return "Se elimino exitosamente la reserva de id: " + id;
     }
 
-    public List<Booking> bookingsUserId(Integer idUser){
+    public List<BookingDTO> bookingsUserId(Integer idUser){
         List<Booking> bookingsUser = bookingRepository.findByUserId(idUser);
 
         if(idUser == null){
@@ -187,19 +182,21 @@ public class BookingService {
             throw new IllegalArgumentException("Las reservas no fueron encontradas");
         }
 
-        List<Booking> bookingList = bookingsUser.stream()
-                .map(booking -> new Booking(
-                        booking.getCheckInCheckOut(),
-                        booking.getCheckIn(),
-                        booking.getCheckOut(),
-                        booking.getDataPet(),
-                        booking.getTotalPrice(),
-                        booking.getUser(),
-                        booking.getPetDayCare()
-                ))
-                .collect(Collectors.toList());
+        var bookingScores =
+                bookingScoreRepository.findByBookingScoreIdUserIdAndBookingScoreIdBookingIn(idUser, bookingsUser);
 
-        return bookingList;
+
+        return bookingsUser.stream().map(BookingDTO::new)
+                .map(bookingDTO -> this.setBookingScore(bookingDTO, bookingScores))
+                .toList();
+    }
+
+    private BookingDTO setBookingScore(BookingDTO bookingDTO, List<BookingScore> bookingScores){
+        var score = bookingScores.stream()
+                .filter(bs -> bookingDTO.getIdBooking() == bs.getBookingId())
+                .map(BookingScore::getScore).findFirst().orElse(null);
+        bookingDTO.setScore(score);
+        return bookingDTO;
     }
 
     private LocalDate parseStringToDate(String date){

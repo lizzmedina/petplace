@@ -1,21 +1,15 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
+
+import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
 public class BookingScore {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
-    @ManyToOne
-    private Booking booking;
+    @EmbeddedId
+    private BookingScoreId bookingScoreId;
 
     @Column
     private Integer score;
@@ -23,20 +17,8 @@ public class BookingScore {
     @Column
     private String review;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Booking getBooking() {
-        return booking;
-    }
-
-    public void setBooking(Booking booking) {
-        this.booking = booking;
+    public BookingScore(){
+        this.bookingScoreId = new BookingScoreId();
     }
 
     public Integer getScore() {
@@ -53,5 +35,45 @@ public class BookingScore {
 
     public void setReview(String review) {
         this.review = review;
+    }
+
+    public Integer getUserId() {
+        return bookingScoreId.userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.bookingScoreId.userId = userId;
+    }
+
+    public Integer getBookingId() {
+        return bookingScoreId.booking.getIdBooking();
+    }
+
+    public Booking getBooking() {
+        return bookingScoreId.booking;
+    }
+
+    public void setBooking(Booking booking) {
+        this.bookingScoreId.booking = booking;
+    }
+
+    @Embeddable
+    public static class BookingScoreId implements Serializable {
+        private Integer userId;
+        @ManyToOne
+        private Booking booking;
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            BookingScoreId that = (BookingScoreId) o;
+            return Objects.equals(userId, that.userId) && Objects.equals(booking, that.booking);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(userId, booking);
+        }
     }
 }

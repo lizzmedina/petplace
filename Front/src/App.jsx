@@ -6,6 +6,7 @@ import Login from "./routes/Login";
 import {CategoryFiltred} from "./routes/CategoryFiltred";
 import ProductRegister from "./routes/ProductRegister";
 import CityRegister from "./routes/CityRegister";
+import BookingRegister from "./routes/BookingRegister";
 import Details from "./routes/Details";
 import MyAccount from "./routes/MyAccount";
 import EditProducts from "./routes/EditProducts";
@@ -18,9 +19,11 @@ import { ValidationPage } from "./routes/ValidationPage";
 import { NewCategory } from "./routes/NewCategory";
 import ContextProvider from "../src/components/utils/global.constext";
 import {BookingHistory} from './routes/BookingHistory';
+import Cursor from "./components/Cursor";
 function App() {
     return (
         <div className="App">
+            <Cursor/>
             <NavBar/>
             <ContextProvider>
             <Routes>
@@ -30,6 +33,7 @@ function App() {
                 <Route path="/category/:id" element={<CategoryFiltred/>}/>
                 <Route path="/productRegister" element={<ProductRegister/>}/>
                 <Route path="/cityRegister" element={<CityRegister/>}/>
+                <Route path="/bookingRegister" element={<BookingRegister/>}/>
                 <Route path="/Detail/:id" element={<Details/>}/>
                 <Route path="/newCategory" element={<NewCategory/>}/>
                 <Route path="/account/:id" element={<MyAccount/>}/>

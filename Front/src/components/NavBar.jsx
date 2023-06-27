@@ -10,6 +10,7 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Divider from '@mui/material/Divider';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { BookingHistory } from '../routes/BookingHistory';
 
 
 export const NavBar = () => {
@@ -42,7 +43,7 @@ export const NavBar = () => {
       <Link className = 'navbar-link-container' to = "/"> 
         
         <img 
-          src='https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/Logo/LogoPP.png'  
+          src='https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/Logo/logoPPRecurso+18.png'  
           alt="icono"
           className="logo"
         />
@@ -108,6 +109,8 @@ export const NavBar = () => {
             anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
           >
             <MenuItem onClick={() => navigate("/account/" + userConnected.id)}> Mi cuenta </MenuItem>
+            <Divider />
+            <MenuItem onClick={() => navigate("/bookinghistory")}> Mis Reservas</MenuItem>
             <Divider />
             <MenuItem onClick={handleCloseSesion}> Cerrar Sesión </MenuItem>
           </Menu>

@@ -5,10 +5,9 @@ import { Link as ScrollLink, Element } from 'react-scroll';
 import React, { useState } from 'react';
 import ImageModal from './ImageModal';
 import { CalendarDetail } from './CalendarDetail';
+import { Rating, Typography, Grid } from '@mui/material';
 
-
-
-export const Product = ({ id, name, type, capacity, city, address, detail, image, basicPrice, features, houseRules, healthAndSecurity, cancellationPolicy }) => {
+export const Product = ({ id, name, type, capacity, city, address, detail, image, basicPrice, features, houseRules, healthAndSecurity, cancellationPolicy, rating }) => {
 
     const navigate = useNavigate()
     const [isModalOpen, setModalOpen] = useState(false);
@@ -70,6 +69,15 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
         setModalOpen(false);
     };
 
+    const getRatingText = () => {
+        if(rating == null)
+            return '';
+
+        return (rating.amountOfReviews > 1)
+            ? `${rating.amountOfReviews} calificaciones`
+            : '1 calificación'
+    }
+
 
     return (
 
@@ -114,11 +122,48 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
                     </div>
                 </span>
 
-                <span className="product-info-rigth">
-                    <p className="text-info"> Capacidad: {capacity} {type.title}</p>
-                    <p className="text-info">Precio: $ {basicPrice}</p>
-                    <button className="buttonDetail button-1"><Link to='/bookingRegister' style={{ color: 'inherit' }}>Reservar</Link></button>
-                </span>
+                <div className="product-info-rigth">
+                    { rating !== null ?
+                    <Grid container spacing={3} direction="row">
+                      <Grid item>
+                        <Typography component="legend"><p className="text-info">Calificación:</p></Typography>
+                      </Grid>
+                      <Grid item>
+                        <p className="text-info">
+                            <Rating readOnly value={rating.average}  precision={0.5} />
+                        </p>
+                      </Grid>
+                      <Grid item>
+                          <p className="text-info">
+                              {rating.average} / 5.0
+                          </p>
+                      </Grid>
+                      <Grid item className="no-top-padding">
+                          <p>
+                              {getRatingText()}
+                          </p>
+                      </Grid>
+                    </Grid> : null
+                    }
+                    <Grid container spacing={2}>
+                      <Grid item>
+                        <p className="text-info">Capacidad:</p>
+                      </Grid>
+                      <Grid item>
+                        <p className="text-info">{capacity} {type.title}</p>
+                      </Grid>
+                    </Grid>
+
+                    <Grid container spacing={2}>
+                      <Grid item>
+                        <p className="text-info">Precio:</p>
+                      </Grid>
+                      <Grid item>
+                        <p className="text-info">$ {basicPrice}</p>
+                      </Grid>
+                    </Grid>
+                    <button className="buttonDetail button-1"><Link to={`/bookingRegister?idProduct=${id}`} style={{ color: 'inherit' }}>Reservar</Link></button>
+                </div>
                 
 
             </div>

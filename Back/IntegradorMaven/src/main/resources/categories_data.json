@@ -2,32 +2,32 @@
   {
     "id": 1,
     "title": "Perros",
-    "description": "Especialidados en perros",
-    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Perro1.jpg",
-    "icon": "Ensayo"
+    "description": "Especializados en perros",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/Categorias/perrosMesa+de+trabajo+3.png",
+    "icon": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/Categorias/icon-dog.png"
 
   },
   {
     "id": 2,
     "title": "Gatos",
-    "description": "Especialidados en gatos",
-    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Gato.jpg",
-    "icon": "Ensayo"
+    "description": "Especializados en gatos",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/Categorias/gatosMesa+de+trabajo+3.png",
+    "icon": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/Categorias/icon-cat.png"
 
   },
   {
     "id": 3,
-    "title": "Canarios",
-    "description": "Especialidados en canarios",
-    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Canario.jpg",
-    "icon": "Ensayo"
+    "title": "Canarios", 
+    "description": "Especializados en canarios",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/Categorias/canariosMesa+de+trabajo+3.png",
+    "icon": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/Categorias/icont-bird.png"
 
   },
   {
     "id": 4,
     "title": "Conejos",
-    "description": "Especialidados en conejos",
-    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/ImagenesCategory/Conejo.jpg",
-    "icon": "Ensayo"
+    "description": "Especializados en conejos",
+    "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/Categorias/conejosMesa+de+trabajo+3.png",
+    "icon": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/Categorias/icon-rabbit.png"
   }
 ]

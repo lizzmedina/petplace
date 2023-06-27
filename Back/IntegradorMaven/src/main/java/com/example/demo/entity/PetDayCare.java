@@ -55,6 +55,8 @@ public class PetDayCare {
     @Column(name = "favorite")
     private Boolean favorite;
 
+    private transient Double average;
+
     public PetDayCare(String name, Category type, Integer capacity, City city, String address, String detail, List<String> images, List<String> characteristics, double basicPrice, List<String> houseRules, List<String> healthAndSecurity, List<String> cancellationPolicy, Boolean favorite) {
         this.name = name;
         this.type = type;
@@ -188,6 +190,14 @@ public class PetDayCare {
         } else {
             this.favorite = favorite;
         }
+    }
+
+    public Double getAverage() {
+        return average;
+    }
+
+    public void setAverage(Double average) {
+        this.average = average;
     }
 }
 

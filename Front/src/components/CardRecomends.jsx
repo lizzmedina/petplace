@@ -1,7 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShower, faPersonWalkingWithCane, faCarrot, faBaseball, faStethoscope, faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { faShower, faPersonWalkingWithCane, faCarrot, faBaseball, faStethoscope, faLocationDot, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { Grid, Rating } from '@mui/material';
+import { Link } from 'react-router-dom';
 
-export const CardRecomends = ({ image, type, name, rating, ratingText, characteristics, city, address, detail, capacity, basicPrice, }) => {
+export const CardRecomends = ({ number, image, type, name, characteristics, city, address, detail, capacity, basicPrice, rating}) => {
 
     if (!image) {
             return image;
@@ -35,11 +37,16 @@ export const CardRecomends = ({ image, type, name, rating, ratingText, character
       };
 
 
+    const showRating = () => {
+        return rating !== null && rating !== undefined;
+    };
 
-
+    const hideFavorite = () => {
+        // placeholder para la funcionalidad del corazon de favoritos en el card
+        return true;
+    }
 
     return (
-        
         <div className="card-recomends">
             <div className="card-content">
                 <div className="left-card-content">
@@ -50,16 +57,43 @@ export const CardRecomends = ({ image, type, name, rating, ratingText, character
                     />
                 </div>
                 <div className="right-card-content">
-                    <h3 className="card-title-recommends">{name}</h3>
+                    <Grid container spacing={1} direction="row" className="space-content">
+                      <Grid item xs={6}>
+                        <h3 className="card-title-recommends">{name}</h3>
+                      </Grid>
+                    { showRating() ? (<Grid item xs={4}>
+                        <Grid container direction="row" spacing={0} className="align-items-center">
+                            <span className="rating-value">{rating.average}</span>
+                            <Rating className="rating-value-star" defaultValue={1} max={1}/>
+                        </Grid>
+                      </Grid>) : null
+                    }
+                    { hideFavorite() ? null :
+                    (<Grid item xs={2}>
+                        <FontAwesomeIcon icon={faHeart} className='card-favorite-icon'/>
+                    </Grid>)
+                    }
+                        <Grid item xs={6}>
+                            <h3 className="card-title-recommends">{name}</h3>
+                        </Grid>
+                        {showRating() ? (<Grid item xs={4}>
+                            <Grid container direction="row" spacing={0} className="align-items-center">
+                                <span className="rating-value">{ratingValue}</span>
+                                <Rating className="rating-value-star" defaultValue={1} max={1} />
+                            </Grid>
+                        </Grid>) : null
+                        }
+                        {hideFavorite() ? null :
+                            (<Grid item xs={2}>
+                                <FontAwesomeIcon icon={faHeart} className='card-favorite-icon' />
+                            </Grid>)
+                        }
+                    </Grid>
                     <span className="card-category-recommends">Habilitado para: {capacity} {type.title} </span>
                     <p className="card-location-recommends"><FontAwesomeIcon icon={faLocationDot} className='card-location-icon' />{city.name}, {address}</p>
                     <span className='card-services-list-recommends'>{renderCharacteristics()}</span>
                     <p className="card-descrption-recommends">{truncateDetail(detail)}</p>
-                    <span>
-                        <p className="rating"> {rating} </p>
-                        <p> {ratingText} </p>
-                    </span>
-                    <button className='button-2'>Ver más</button>
+                    <Link key={number} to={"/Detail/" + number}><button className='button-2'>Ver más</button></Link>
                 </div>
             </div>
         </div>

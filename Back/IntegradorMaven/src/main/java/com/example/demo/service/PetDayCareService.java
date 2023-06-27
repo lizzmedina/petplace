@@ -1,7 +1,6 @@
 package com.example.demo.service;
 
 
-import com.example.demo.DTO.BookingScoreDTO;
 import com.example.demo.DTO.CategoryDTO;
 import com.example.demo.DTO.CityDTO;
 import com.example.demo.DTO.PetDayCareDTO;
@@ -14,7 +13,6 @@ import com.example.demo.mapper.CityMapper;
 import com.example.demo.repository.CategoryRepository;
 import com.example.demo.repository.CityRepository;
 import com.example.demo.repository.PetDayCareRepository;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,7 +35,7 @@ public class PetDayCareService {
     private CityMapper cityMapper;
     private CityService cityService;
 
-    private BookingScoreService bookingScoreService;
+    private RatingService ratingService;
 
   @Autowired
   public PetDayCareService(
@@ -48,7 +46,7 @@ public class PetDayCareService {
       CityRepository cityRepository,
       CityMapper cityMapper,
       CityService cityService,
-      BookingScoreService bookingScoreService) {
+      RatingService ratingService) {
     this.repository = repository;
     this.categoryService = categoryService;
     this.categoryRepository = categoryRepository;
@@ -56,7 +54,7 @@ public class PetDayCareService {
     this.cityRepository = cityRepository;
     this.cityMapper = cityMapper;
     this.cityService = cityService;
-    this.bookingScoreService = bookingScoreService;
+    this.ratingService = ratingService;
   }
 
     /*public PetDayCareSaveDTO save(PetDayCareSaveDTO petDayCareSaveDTO) {
@@ -139,24 +137,11 @@ public class PetDayCareService {
 
         );
 
-        repository.save(petDayCareEntity);
+        var saved = repository.save(petDayCareEntity);
+        petDayCareDTO.setId(saved.getId());
+        petDayCareDTO.setRating(ratingService.getRatingsByPetDayCare(saved.getId()));
 
-        PetDayCareDTO petDayCareDTO1 = new PetDayCareDTO(
-                petDayCareEntity.getName(),
-                petDayCareEntity.getType(),
-                petDayCareEntity.getCapacity(),
-                petDayCareDTO.getCity(),
-                petDayCareDTO.getAddress(),
-                petDayCareEntity.getDetail(),
-                petDayCareEntity.getImages(),
-                petDayCareEntity.getCharacteristics(),
-                petDayCareEntity.getBasicPrice(),
-                petDayCareEntity.getHouseRules(),
-                petDayCareEntity.getHealthAndSecurity(),
-                petDayCareEntity.getCancellationPolicy()
-        );
-
-        return petDayCareDTO1;
+        return petDayCareDTO;
     }
 
 
@@ -189,6 +174,7 @@ public class PetDayCareService {
 
         newPetDayCare = repository.save(newPetDayCare);
         petDayCare.setId(newPetDayCare.getId());
+        petDayCare.setRating(ratingService.getRatingsByPetDayCare(petDayCare.getId()));
         return petDayCare;
     }
 
@@ -251,6 +237,7 @@ public class PetDayCareService {
                 petDayCareDTO.setBasicPrice(petDayCare.getBasicPrice());
                 petDayCareDTO.setCharacteristics(petDayCare.getCharacteristics());
                 petDayCareDTO.setId(petDayCare.getId());
+                petDayCareDTO.setRating(ratingService.getRatingsByPetDayCare(petDayCare.getId()));
             }
             return petDayCareDTO;
         }else if (petDayCareDTO == null){
@@ -293,8 +280,9 @@ public class PetDayCareService {
 
     }
 
-    public List<PetDayCare> findAll(){
-        return repository.findAll();
+    public List<PetDayCareDTO> findAll(){
+        return repository.findAll().stream()
+                .map(this::mapEntityToDto).toList();
     }
 
     public String delete(Integer id){
@@ -308,8 +296,8 @@ public class PetDayCareService {
 
     }
 
-    public List<PetDayCare> findByCategory(Integer type){
-        return repository.findByTypeId(type);
+    public List<PetDayCareDTO> findByCategory(Integer type){
+        return repository.findByTypeId(type).stream().map(this::mapEntityToDto).toList();
     }
 
     public PetDayCareDTO detail(Integer id){
@@ -324,25 +312,7 @@ public class PetDayCareService {
             throw new ResourceNotFoundException("La guarderia no fue encontrada");
         }
 
-
-        PetDayCareDTO petDayCareDTO= new PetDayCareDTO(
-                petDayCare.get().getName(),
-                category.get(),
-                petDayCare.get().getCapacity(),
-                cityMapper.mapToDto(petDayCare.get().getCity()),
-                petDayCare.get().getAddress(),
-                petDayCare.get().getDetail(),
-                petDayCare.get().getImages(),
-                petDayCare.get().getCharacteristics(),
-                petDayCare.get().getBasicPrice(),
-                petDayCare.get().getHouseRules(),
-                petDayCare.get().getHealthAndSecurity(),
-                petDayCare.get().getCancellationPolicy()
-        );
-        petDayCareDTO.setId(id);
-        petDayCareDTO.setAverage(bookingScoreService.getAverageScore(id));
-
-        return petDayCareDTO;
+        return this.mapEntityToDto(petDayCare.get());
     }
 
     public void deleteAll(){
@@ -356,5 +326,12 @@ public class PetDayCareService {
         }
 
         return petDayCare.orElseThrow(() -> new IllegalArgumentException("La guarderia no fue encontrada: "+id));
+    }
+
+    private PetDayCareDTO mapEntityToDto(PetDayCare pdc) {
+        var dto = new PetDayCareDTO(pdc,
+                cityMapper.mapToDto(pdc.getCity()),
+                ratingService.getRatingsByPetDayCare(pdc.getId()));
+        return dto;
     }
 }

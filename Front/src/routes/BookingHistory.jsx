@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { useContextGlobal } from "../components/utils/global.constext";
+import RatingComponent from "../components/rating/RatingComponent.jsx"
+import { Grid, Rating } from '@mui/material';
 
 export const BookingHistory = () => {
     const { bookingHistory, setBookingHistory, urlBookingHistory } = useContextGlobal();
@@ -23,15 +25,16 @@ console.log(bookingHistory);
     return (
         <div className="space-section">
             <h2>Historial de reservas</h2>
-            {userConnected?.type === "Manager" && (
+            {userConnected.validation === true &&  (
                 <table>
                 <thead>
                     <tr>
-                    <th className="booking-cell">Pet Daycare Name</th>
+                    <th className="booking-cell">Alojamiento</th>
                     <th className="booking-cell" >Check-in</th>
                     <th className="booking-cell">Check-out</th>
-                    <th className="booking-cell">Data Pet</th>                    
-                    <th className="booking-cell">Total Price</th>
+                    <th className="booking-cell">Nombre de Mascota</th>                    
+                    <th className="booking-cell">Precio pagado</th>
+                    <th className="booking-cell">Calificación</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -42,7 +45,7 @@ console.log(bookingHistory);
                     const dataPetName = dataPet && dataPet[0];
                     const petDayCareName = petDayCare && petDayCare.name;
                     const key = `booking_${index}`;
-        
+
                     return (
                         <tr key={key}>
                             <td className="booking-cell">{petDayCareName}</td>
@@ -50,6 +53,14 @@ console.log(bookingHistory);
                             <td className="booking-cell">{checkOutDate}</td>
                             <td className="booking-cell">{dataPetName}</td>                            
                             <td className="booking-cell">{totalPrice}</td>
+                            { booking.score ?
+                             <td className="booking-cell">
+                                 <Grid container direction="row" spacing={0} className="align-items-center">
+                                     <Rating className="rating-value-star" defaultValue={booking.score} max={5} readOnly/>
+                                 </Grid>
+                             </td>
+                             : <td className="booking-cell"><RatingComponent booking={booking} dataRef={getBookingHistory}/></td>
+                            }
                         </tr>
                     );
                     })}

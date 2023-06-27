@@ -32,12 +32,13 @@ export const Recommends = () => {
         setRecommends(data);
         setSearchResults(data);
         setNoResults(data.length === 0);
+        console.log(data);
       })
       .catch((error) => {
         console.error("Error al obtener las recomendaciones:", error);
       });
   };
-  // Función para ordenar aleatoriamente el array
+
 const shuffleArray = (array) => {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -45,24 +46,14 @@ const shuffleArray = (array) => {
   }
   return array;
 }
-  // Determina la cantidad de tarjetas a mostrar en función del tamaño de la pantalla
+
   let cardsPerRow =10;
-
-  // Cantidad de tarjetas por página
   const cardsPerPage = cardsPerRow;
-
-  // Número total de páginas
   const totalPages = Math.ceil(recommends.length / cardsPerPage);
-  const [currentPage, setCurrentPage] = useState(1); // Página actual
-
-  // Calcula el índice inicial y final de los items a mostrar en la página actual
+  const [currentPage, setCurrentPage] = useState(1); 
   const startIndex = (currentPage - 1) * cardsPerPage;
   const endIndex = startIndex + cardsPerPage;
-
-  // Obtén las tarjetas para la página actual
   const currentCards = shuffleArray(recommends).slice(startIndex, endIndex);
-
-  // Función para cambiar la página
   const handlePageChange = (event, page) => {
     setCurrentPage(page);
   };
@@ -80,22 +71,22 @@ const shuffleArray = (array) => {
       {!noResults && (
       <div className="render-cards-recommends">
       {currentCards.map((recommend) => (
-        <Link key={recommend.id} to={"/Detail/" + recommend.id}>
+        // <Link key={recommend.id} to={"/Detail/" + recommend.id}>
           <CardRecomends
             key={recommend.id}
+            number={recommend.id}
             type={recommend.type.title}
             name={recommend.name}
             image={recommend.images}
             capacity={recommend.capacity}
             rating={recommend.rating}
-            ratingText={recommend.ratingText}
             city={recommend.city}
             address={recommend.address}
             detail={recommend.detail}
             basicPrice={recommend.basicPrice}
             characteristics={recommend.characteristics}
           />
-        </Link>
+        //</Link>
       ))}
       </div>
       )}
