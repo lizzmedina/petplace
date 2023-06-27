@@ -105,7 +105,7 @@ export const CardRecomends = ({ number, image, type, name, characteristics, city
                         </Grid>
                         {showRating() ? (<Grid item xs={4}>
                             <Grid container direction="row" spacing={0} className="align-items-center">
-                                <span className="rating-value">{ratingValue}</span>
+                                <span className="rating-value">{rating.average}</span>
                                 <Rating className="rating-value-star" defaultValue={1} max={1} />
                             </Grid>
                         </Grid>) : null
