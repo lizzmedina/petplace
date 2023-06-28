@@ -85,6 +85,19 @@ h2 {
   z-index: 5;
 }
 
+.categories2{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color1);
+  padding: 30px;
+  width: 30%;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
 .logo {
   text-align: left;
   height: 80px;
@@ -350,6 +363,19 @@ figure h3 {
   overflow: hidden;
   display: contents;
   width: 50%;
+}
+.card-head-recommends{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    width: 100%;
+}
+.card-rating-recommends{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
 .card-content:hover > .left-card-content .card-image-recommends {
   transform: scale(1.1);
@@ -1455,15 +1481,33 @@ p.more-images {
 }
 
 /* Booking History*/
+
+.booking-history-container{
+    display: flex;
+    padding: 2rem;
+    height: 80vh;
+    justify-content: space-around;
+}
 .reservation {
   background-color: #eafff7;
   margin: 1rem;
 }
-.booking-cell {
-  padding: 2rem;
+.booking-cell{
+    padding: 1rem;
+    font-size: 0.85rem;
 }
-/* Favorites */
+/* .container-booking-history{
+    display: flex;
+    flex-wrap: wrap;
+} */
 
+/* Favorites */
+.favorites-container{
+  padding: 10rem 0rem;
+}
+.h3-no-favorites{
+  margin-top: 3rem;
+}
 .booking-item {
   padding: 10px;
   border-radius: 5px;
@@ -2102,11 +2146,12 @@ footer {
 .rating-value {
   font-weight: bold;
   font-size: 0.9rem;
+  padding-top: -10px;
 }
 
 .rating-value-star {
   font-weight: bold;
-  font-size: 1.5rem !important;
+  font-size: 1.1rem !important;
 }
 
 .space-content {
@@ -2120,7 +2165,7 @@ footer {
 .card-favorite-icon {
   z-index: 3;
   cursor: pointer;
-  color: var(--color4);
+  /* color: var(--color4); */
   position: absolute;
   margin-left: 200px;
   margin-top: 10px;
