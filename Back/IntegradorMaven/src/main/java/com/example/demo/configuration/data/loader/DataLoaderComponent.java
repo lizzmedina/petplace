@@ -97,6 +97,7 @@ public class DataLoaderComponent {
                 System.out.println("category data with id " + categoryDTO.getId() + " already exists, skipping creation...");
             } catch (ResourceNotFoundException exception) {
                 categoryService.save(categoryDTO);
+                System.out.println("category " + categoryDTO.getTitle() + " saved successfully...");
             }
         });
     }
@@ -132,13 +133,14 @@ public class DataLoaderComponent {
                 LocalDate checkOut = bookingService.getCheckOutDate(booking);
                 if (bookingService.available(booking.getPetDayCareId(), checkIn, checkOut)) {
                     PetDayCare petDayCare = petDayCareService.findById(booking.getPetDayCareId());
-                    booking.setPetDayCare(petDayCare);
+                    booking.setPetDayCare(new PetDayCareDTO(petDayCare));
 
                     BookingCreationRequest creationRequest = new BookingCreationRequest();
                     creationRequest.setUserId(booking.getUserId());
                     creationRequest.setCheckInDate(checkIn);
                     creationRequest.setCheckOutDate(checkOut);
                     creationRequest.setPetDayCareId(petDayCare.getId());
+                    creationRequest.setDataPet(booking.getDataPet());
                     bookingService.save(creationRequest);
                 }
             } else {
@@ -199,20 +201,21 @@ public class DataLoaderComponent {
     }
 
     private void generateBookingScores() {
+        var users = userService.getAllUsers();
         var bookings = bookingRepository.findAll();
         var rnd = new Random();
 
-        bookings.forEach(booking -> {
+        int i = 0;
+        while (i < 10){
+            var booking = bookings.get(rnd.nextInt(0, bookings.size()));
             BookingScore bookingScore = new BookingScore();
             bookingScore.setBooking(booking);
-            bookingScore.setUserId(booking.getUser().getId());
+            bookingScore.setUserId(users.get(rnd.nextInt(0, users.size())).getId());
             bookingScore.setScore(rnd.nextInt(1, 6));
 
-            if (bookingScoreRepository.findByBookingScoreIdUserIdAndBookingScoreIdBooking(bookingScore.getUserId(), booking).isEmpty()) {
-                bookingScoreRepository.save(bookingScore);
-            }
-
-        });
+            bookingScoreRepository.save(bookingScore);
+            i++;
+        }
     }
     public void loadInitialFavoriteData() {
         System.out.println("loading favorite data...");
@@ -240,6 +243,6 @@ public class DataLoaderComponent {
         loadInitialBookingData();
         loadInitialFavoriteData();
 
-        //generateBookingScores();
+        generateBookingScores();
     }
 }

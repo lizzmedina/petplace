@@ -40,8 +40,27 @@ public class PetDayCareDTO {
         this.setHouseRules(petDayCare.getHouseRules());
         this.setHealthAndSecurity(petDayCare.getHealthAndSecurity());
         this.setCancellationPolicy(petDayCare.getCancellationPolicy());
-        this.setId(id);
+        this.setId(petDayCare.getId());
         this.setRating(rating);
+        this.setFavorite(petDayCare.isFavorite());
+    }
+
+    public PetDayCareDTO(PetDayCare petDayCare) {
+        this.setId(petDayCare.getId());
+        this.setName(petDayCare.getName());
+        this.setType(petDayCare.getType());
+        this.setCapacity(petDayCare.getCapacity());
+        this.setCity(new CityDTO(petDayCare.getCity().getId(), petDayCare.getCity().getName()));
+        this.setAddress(petDayCare.getAddress());
+        this.setDetail(petDayCare.getDetail());
+        this.setImages(petDayCare.getImages());
+        this.setCharacteristics(petDayCare.getCharacteristics());
+        this.setBasicPrice(petDayCare.getBasicPrice());
+        this.setHouseRules(petDayCare.getHouseRules());
+        this.setHealthAndSecurity(petDayCare.getHealthAndSecurity());
+        this.setCancellationPolicy(petDayCare.getCancellationPolicy());
+        this.setId(petDayCare.getId());
+        this.setRating(null);
         this.setFavorite(petDayCare.isFavorite());
     }
 

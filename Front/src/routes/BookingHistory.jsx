@@ -26,7 +26,7 @@ console.log(bookingHistory);
         <div className="space-section">
             <h2>Historial de reservas</h2>
             {userConnected.validation === true &&  (
-                <table>
+                <table className="booking-item">
                 <thead>
                     <tr>
                     <th className="booking-cell">Alojamiento</th>

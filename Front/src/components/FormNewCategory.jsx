@@ -20,12 +20,14 @@ export const FormNewCategory = () => {
     const [newCategory, setNewCategory] = useState({
         title: "",
         description: "",
-        image: ""
+        image: "",
+        icon: ""
     });
     const [errors, setErrors] = useState({
         title: "",
         description: "",
-        image: ""
+        image: "",
+        icon: ""
     });
     
     const handleInputChange = (event) => {
@@ -74,6 +76,11 @@ export const FormNewCategory = () => {
                 formIsValid = false;
                 newErrors.image = "Ingrese una URL de imagen válida";
             }
+            if (!newCategory.icon?.match(/^(ftp|http|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?$/
+            )) {
+                formIsValid = false;
+                newErrors.icon = "Ingrese una URL de icon válida";
+            }
 
             if (formIsValid) {
                 // Enviar los datos de newCategory al endpoint de creación en el backend
@@ -93,7 +100,8 @@ export const FormNewCategory = () => {
                         setNewCategory({
                             title: "",
                             description: "",
-                            image: ""
+                            image: "",
+                            icon: ""
                         });
                     })
                     .catch((error) => {
@@ -112,7 +120,7 @@ export const FormNewCategory = () => {
             
             <div className="titles-new-category">
                 <h2 className="title-form-new-category">{userConnected?.type !== "Manager" ? "Página no encontrada" : "Crear nueva categoría"}</h2>
-                <h3 className="instructions-form-new-category">{userConnected?.type !== "Manager" ? "" : "Crear nueva categoría"}</h3>
+                <h3 className="instructions-form-new-category">{userConnected?.type !== "Manager" ? "" : "Ingresa los campos para crear tu nueva categoría"}</h3>
             </div>
             
 
@@ -155,6 +163,18 @@ export const FormNewCategory = () => {
                             onChange={handleInputChange}
                         />
                         {errors.image && <span className="error">{errors.image}</span>}
+                    </div>
+                    <div className="icon-input-container">
+                        <label htmlFor="icon">URL icono:</label>
+                        <input
+                            className="input-category"
+                            type="text"
+                            name="icon"
+                            id="icon"
+                            value={newCategory.icon}
+                            onChange={handleInputChange}
+                        />
+                        {errors.icon && <span className="error">{errors.icon}</span>}
                     </div>
                     <div className="button-new-category-container">
                         <button 

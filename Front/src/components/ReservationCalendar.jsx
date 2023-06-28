@@ -43,11 +43,9 @@ export const ReservationCalendar = () => {
                     localStorage.setItem('localStartDate', startDate);
                     localStorage.setItem('localEndDate', endDate);
 
-                    console.log('Localstorage dates: ');
-                    console.log(startDate, endDate);
-                    console.log('--------------------');
                     setSelectedDates([startDate, endDate]);
                 }}
+                placeholder={['check In', 'check Out']}
             />
         </div>
     );

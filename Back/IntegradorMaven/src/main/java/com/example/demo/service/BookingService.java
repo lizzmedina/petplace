@@ -125,7 +125,7 @@ public class BookingService {
 
         List<BookingDTO> bookingDTOList = bookingsPetDayCare.stream()
                 .map(BookingDTO::new)
-                .collect(Collectors.toList());
+                .toList();
 
         return bookingDTOList;
     }

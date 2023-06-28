@@ -14,7 +14,7 @@ import * as yup from "yup";
 
 function FormBooking() {
 
-    const {selectedDates, setSelectedDates, urlPostBooking} = useContextGlobal();
+    const {selectedDates, setSelectedDates, urlPostBooking, urlEmailBooking} = useContextGlobal();
 
     const user = JSON.parse(localStorage.getItem("userConnected"));
     const product = JSON.parse(sessionStorage.getItem("productDetail"));
@@ -100,14 +100,9 @@ function FormBooking() {
 
     //Schema generado para validar
     const validationSchema = yup.object().shape({
-        pet: yup.array().of(
-            yup.mixed()
-                .required('Todos los campos de la mascota son requeridos')
-                .notOneOf([null], 'El campo de la mascota no puede ser nulo')
-        ),
-        paymentMethod: yup.string().required('Debe seleccionar un método de pago'),
-        localStartDate: yup.string().required('La fecha de inicio es requerida'),
-        localEndDate: yup.string().required('La fecha de fin es requerida'),
+        // paymentMethod: yup.string().required('Debe seleccionar un método de pago'),
+        // localStartDate: yup.string().required('La fecha de inicio es requerida'),
+        // localEndDate: yup.string().required('La fecha de fin es requerida'),
     });
 
 
@@ -133,7 +128,6 @@ function FormBooking() {
         validationSchema
             .validate(booking, { abortEarly: false })
             .then(() => {
-                console.log(booking);
                 fetch(urlPostBooking, {
                     method: "POST",
                     headers: {
@@ -145,11 +139,24 @@ function FormBooking() {
                         if (response.ok) {
                             setIsSuccess(true);
                             Swal.fire({ icon: 'success', title: 'La reserva ha sido creada exitosamente.' });
+
+                            return response.json(); // Devuelve la respuesta en formato JSON
                         } else {
                             return response.json().then((data) => {
                                 throw new Error(data.message);
                             });
                         }
+                    })
+                    .then((data) => {
+                        console.log("El id es: " + data.idBooking); // Imprime el ID de la reserva
+                        fetch(urlEmailBooking + user.email + "/idBooking/" + data.idBooking, {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            //body: JSON.stringify(booking),
+                        })
+
                     })
                     .catch((error) => {
                         Swal.fire({ icon: 'error', title: 'Error', text: error.message });
@@ -157,9 +164,11 @@ function FormBooking() {
             })
             .catch((validationErrors) => {
                 // Handle validation errors here
-                console.log(validationErrors);
+                console.log(validationErrors)
+                console.log(booking);
             });
     };
+      
 
 
 
@@ -282,7 +291,6 @@ function FormBooking() {
                 </div>
             </div>
 
-            {console.log(pet)}
 
             <div className="booking-downcontainer">
                 <div className='rulesContainer'>
