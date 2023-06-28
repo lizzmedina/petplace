@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useContextGlobal } from '../components/utils/global.constext';
 import Swal from 'sweetalert2';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faPenToSquare, faTrash} from "@fortawesome/free-solid-svg-icons";
 
 function EditProducts() {
     const { places, setPlaces, urlGetCities, urlGetProducts, urlPostProducts } = useContextGlobal();
@@ -59,8 +61,8 @@ function EditProducts() {
                     <div className='ListItem'>
                         {product.name}
                         <div className='ListButtons'>
-                            <button
-                                className='edit-button'
+                            <p className='option-edit-button' 
+                                /* className='edit-button' */
                                 onClick={() => {
                                     Swal.fire({
                                         title: 'Formulario de Edición',
@@ -147,12 +149,12 @@ function EditProducts() {
                                     });
                                 }}
                             >
-                                Editar
-                            </button>
+                                <FontAwesomeIcon icon={faPenToSquare} size="lg" style={{color: "#8ed1b9",}} />
+                            </p>
 
-                            <button className='delete-button' onClick={() => deleteProduct(product.id, product.name)}>
-                                Eliminar
-                            </button>
+                            <p className='option-delete-button' /* className='delete-button' */  onClick={() => deleteProduct(product.id, product.name)}>
+                                <FontAwesomeIcon icon={faTrash} size="lg" style={{color: "#ff1117",}} />
+                            </p>
                         </div>
                     </div>
                 ))
