@@ -7,6 +7,7 @@ import ImageModal from './ImageModal';
 import { CalendarDetail } from './CalendarDetail';
 import { Rating, Typography, Grid } from '@mui/material';
 import { useContextGlobal } from './utils/global.constext';
+import PageModalWindows from './PageModalWindows';
 
 export const Product = ({ id, name, type, capacity, city, address, detail, image, basicPrice, features, houseRules, healthAndSecurity, cancellationPolicy, rating }) => {
 
@@ -118,6 +119,7 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
                                 </Grid>)
                         }
                     </div>
+                <PageModalWindows name={name} basicPrice={basicPrice} city={city.name} address={address} image={image[0]}>Compartir</PageModalWindows>
                 <a onClick={() => navigate(-1)}>
                         <FontAwesomeIcon 
                             icon={faChevronLeft} 
