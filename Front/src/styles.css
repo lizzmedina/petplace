@@ -364,6 +364,19 @@ figure h3 {
   display: contents;
   width: 50%;
 }
+.card-head-recommends{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    width: 100%;
+}
+.card-rating-recommends{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
 .card-content:hover > .left-card-content .card-image-recommends {
   transform: scale(1.1);
   overflow: hidden;
@@ -946,12 +959,20 @@ input:hover {
 .product-header {
   display: flex;
   justify-content: space-between;
-  padding: 1.5rem 1.5rem;
+  padding: 1.5rem 0.5rem 1.5rem 1.5rem;
   flex-wrap: wrap-reverse;
   align-items: center;
 }
+.icons-product-container{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+.icons-product-container > *{
+    margin: 0 10px;
+  }
 .product-header a {
-  color: #31363f;
+  color: var(--color6);
 }
 
 .pinLocation-product {
@@ -1051,6 +1072,7 @@ p.more-images {
   font-weight: 500;
   border-radius: 5px;
   font-size: 1.1rem;
+  margin-left: 40px;
 }
 .buttonDetail:hover {
   background-color: var(--color10);
@@ -1079,6 +1101,18 @@ p.more-images {
 .location-container {
   width: 100%;
   padding-left: auto 40px;
+}
+
+.reserveDetail{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.reserveDetail .buttonDetailContent{
+    display: flex;
+    align-items: center;
+    align-items: center;
+
 }
 .location-container h3 {
   margin: 10px auto 15px 40px;
@@ -1161,6 +1195,9 @@ p.more-images {
   color: var(--color3);
   background-color: var(--color1);
 }
+.react-datepicker{
+    border: none !important;
+}
 
 .calendar-navigation-button:hover {
   color: var(--color3);
@@ -1194,7 +1231,7 @@ p.more-images {
 }
 .rulesProduct ul {
   padding-left: 0.1rem;
-  text-align: justify;
+  text-align: left;
 }
 
 /* Estilos del modal galeria detalles de compartir */
@@ -1225,106 +1262,70 @@ p.more-images {
     max-height: 600px;
     /* overflow-y: auto; */
     background-color: #fff;
+    border-radius: 10px;
+    cursor: auto;
 
 
 }
 
-.modal-close {
-    position: absolute;
-    left: 94%;
-}
 
-.ejemplo {
-    display: flex;
-    justify-content: space-around;
-}
+
 
 .modal-compartir {
+    margin-top: 10px;
     display: flex;
     justify-content: space-around;
-
-
-}
-
-.modal-compartir2 {
-    display: flex;
-}
-
-.iconsModal2 {
-    display: flex;
-    column-count: 2;
-
 }
 
 .iconsSpecificColumns {
-    margin-top: 2rem;
-    margin-bottom: 3rem;
-    margin-right: 2.5rem;
+        margin-bottom: 3rem;
+        column-count: 3;
+        
 }
-
-.iconsSpecificColumns2 {
-    margin-top: 2rem;
-    margin-bottom: 3rem;
-}
+   
 
 
 .iconsModalsSpecific {
-    margin-top: 38%;
-}
-
-.contectCardModal {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--color3);
+    cursor: pointer;
+    
 }
 
-.contectCardModal-describe {
+.iconsModalsSpecific svg{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.contentCardModal {
+    display: flex;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.contentCardModal-describe {
     margin-top: 1rem;
     margin-left: 1.5rem;
 }
 
-.contectCardModal-img {
+.contentCardModal-img {
     margin-top: 1rem;
-    margin-left: 2rem;
+    
 }
 
-.contectCardModalInsade {
+.contentCardModalInsade {
     margin-top: 1rem;
     font-size: 100%;
 }
-
-.iconsModalsSpecific-A:hover {
-    background-color: rgba(0, 0, 0, 0.04);
-    font-size: 103%;
-    font-weight: bold;
+.contentCardModalInsade p svg{
+    color: #a278f0;
 }
 
-.iconsModalsSpecific-B:hover {
-    background-color: rgba(0, 0, 0, 0.04);
-    font-size: 103%;
-    font-weight: bold;
-}
-
-.iconsModalsSpecific-C:hover {
-    background-color: rgba(0, 0, 0, 0.04);
-    font-size: 103%;
-    font-weight: bold;
-}
-
-.iconsModalsSpecific-D:hover {
-    background-color: rgba(0, 0, 0, 0.04);
-    font-size: 103%;
-    font-weight: bold;
-}
-
-.iconsModalsSpecific-E:hover {
-    background-color: rgba(0, 0, 0, 0.04);
-    font-size: 103%;
-    font-weight: bold;
-}
-
-.iconsModalsSpecific-F:hover {
-    background-color: rgba(0, 0, 0, 0.04);
-    font-size: 103%;
-    font-weight: bold;
+.iconsModalsSpecific:hover {
+   color: var(--color9);
+   font-weight: bold;
 }
 
 /* Estilos del modal galeria detalles de prodcuto */
@@ -1360,9 +1361,11 @@ p.more-images {
     flex-wrap: wrap;
     justify-content: center;
 }
-
+.ParrafoModal1{
+    color: var(--color6);
+}
 .ParrafoModal1.ParrafoModal1-copy {
-    color: #24f111;
+    color: var(--color9);
 }
 /*
 .carousel .slider-wrapper.axis-horizontal .slider {
@@ -2072,26 +2075,20 @@ footer {
   }
 }
 
-._modal-close {
+.modal-close {
   position: absolute;
   top: 0;
   right: 0;
   padding: 0.5em;
   line-height: 1;
-  background: #f6f6f7;
   border: 0;
   box-shadow: 0;
   cursor: pointer;
+  
 }
 
-._modal-close-icon {
-  width: 25px;
-  height: 25px;
-  fill: transparent;
-  stroke: black;
-  stroke-linecap: round;
-  stroke-width: 2;
-}
+
+
 
 .modal-body {
   padding-top: 0.25em;
@@ -2138,11 +2135,12 @@ footer {
 .rating-value {
   font-weight: bold;
   font-size: 0.9rem;
+  padding-top: -10px;
 }
 
 .rating-value-star {
   font-weight: bold;
-  font-size: 1.5rem !important;
+  font-size: 1.1rem !important;
 }
 
 .space-content {
@@ -2154,7 +2152,13 @@ footer {
 }
 
 .card-favorite-icon {
-  color: var(--color8);
+  z-index: 3;
+  cursor: pointer;
+  /* color: var(--color4); */
+  position: absolute;
+  margin-left: 200px;
+  margin-top: 10px;
+ 
 }
 
 .no-top-padding {

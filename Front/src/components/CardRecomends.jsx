@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {  faShower, faPersonWalkingWithCane, faCarrot, faBaseball, faStethoscope, faLocationDot, faHeart} from "@fortawesome/free-solid-svg-icons";
+import {  faHeart as fasHeart} from "@fortawesome/free-regular-svg-icons";
 import { Grid, Rating } from "@mui/material";
 import { useContextGlobal } from "./utils/global.constext";
 import { Link } from "react-router-dom";
@@ -141,6 +142,7 @@ export const CardRecomends = ({number,image,type,name,characteristics,city,addre
             <Grid item xs={6}>
               <h3 className="card-title-recommends">{name}</h3>
             </Grid>
+
             {showRating() ? (
               <Grid item xs={4}>
                 <Grid
@@ -169,8 +171,12 @@ export const CardRecomends = ({number,image,type,name,characteristics,city,addre
                   onClick={handleFavorite}
                 />
               </Grid>
+
             ) : null}
           </Grid>
+          </div>
+          </div>
+
           <span className="card-category-recommends">
             Habilitado para: {capacity} {type.title}{" "}
           </span>
@@ -185,11 +191,9 @@ export const CardRecomends = ({number,image,type,name,characteristics,city,addre
             {renderCharacteristics()}
           </span>
           <p className="card-descrption-recommends">{truncateDetail(detail)}</p>
-          <Link key={number} to={"/Detail/" + number}>
+          <Link className="button-2" key={number} to={"/Detail/" + number}>
             <button className="button-2">Ver más</button>
           </Link>
         </div>
-      </div>
-    </div>
   );
 };

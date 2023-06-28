@@ -125,28 +125,31 @@ public class DataLoaderComponent {
         System.out.println("loading booking data...");
         List<BookingDTO> bookingList = JsonHelper.readJsonFromFile("booking_data.json", new TypeReference<>() {
         });
-        bookingList.forEach(booking -> {
+
+
+        LocalDate today = LocalDate.now();
+        int addition = 1;
+        for (int i = 0; i < bookingList.size(); i++, addition++) {
+            BookingDTO booking = bookingList.get(i);
             Optional<Booking> entityOpt = bookingService.findById(booking.getIdBooking());
 
             if (entityOpt.isEmpty()) {
-                LocalDate checkIn = bookingService.getCheckInDate(booking);
-                LocalDate checkOut = bookingService.getCheckOutDate(booking);
-                if (bookingService.available(booking.getPetDayCareId(), checkIn, checkOut)) {
-                    PetDayCare petDayCare = petDayCareService.findById(booking.getPetDayCareId());
-                    booking.setPetDayCare(new PetDayCareDTO(petDayCare));
+                LocalDate checkIn = today.plusDays(addition);
+                LocalDate checkOut = today.plusDays(addition += 2);
+                PetDayCare petDayCare = petDayCareService.findById(booking.getPetDayCareId());
+                booking.setPetDayCare(new PetDayCareDTO(petDayCare));
 
-                    BookingCreationRequest creationRequest = new BookingCreationRequest();
-                    creationRequest.setUserId(booking.getUserId());
-                    creationRequest.setCheckInDate(checkIn);
-                    creationRequest.setCheckOutDate(checkOut);
-                    creationRequest.setPetDayCareId(petDayCare.getId());
-                    creationRequest.setDataPet(booking.getDataPet());
-                    bookingService.save(creationRequest);
-                }
+                BookingCreationRequest creationRequest = new BookingCreationRequest();
+                creationRequest.setUserId(booking.getUserId());
+                creationRequest.setCheckInDate(checkIn);
+                creationRequest.setCheckOutDate(checkOut);
+                creationRequest.setPetDayCareId(petDayCare.getId());
+                creationRequest.setDataPet(booking.getDataPet());
+                bookingService.save(creationRequest);
             } else {
                 System.out.println("booking data with id " + booking.getIdBooking() + " already exists, skipping creation...");
             }
-        });
+        }
     }
 
     public void loadInitialPermissionData() {
@@ -206,17 +209,22 @@ public class DataLoaderComponent {
         var rnd = new Random();
 
         int i = 0;
-        while (i < 10){
-            var booking = bookings.get(rnd.nextInt(0, bookings.size()));
-            BookingScore bookingScore = new BookingScore();
-            bookingScore.setBooking(booking);
-            bookingScore.setUserId(users.get(rnd.nextInt(0, users.size())).getId());
-            bookingScore.setScore(rnd.nextInt(1, 6));
-
-            bookingScoreRepository.save(bookingScore);
-            i++;
+        while (i < bookings.size()){
+            var booking = bookings.get(i);
+            for (int j = 0; j < 50; j++) {
+                var userId = users.get(rnd.nextInt(0, users.size())).getId();
+                if(userId != booking.getUser().getId()){
+                    BookingScore bookingScore = new BookingScore();
+                    bookingScore.setBooking(booking);
+                    bookingScore.setUserId(userId);
+                    bookingScore.setScore(rnd.nextInt(1, 6));
+                    bookingScoreRepository.save(bookingScore);
+                }
+            }
+            i+= 2;
         }
     }
+
     public void loadInitialFavoriteData() {
         System.out.println("loading favorite data...");
         List<FavoriteDTO> favoriteDTOS = JsonHelper.readJsonFromFile("favorite_data.json", new TypeReference<>() {
