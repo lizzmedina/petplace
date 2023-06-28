@@ -53,9 +53,10 @@ export const CategoryFiltred = () =>  {
 
       <div className="render-cards-recommends">
         {currentCards.map((recommend) => (
-          <Link key={recommend.id} to={"/Detail/" + recommend.id}>
+          //<Link key={recommend.id} to={"/Detail/" + recommend.id}>
             <CardRecomends
               key={recommend.id}
+              number={recommend.id}
               type={recommend.type.title}
               name={recommend.name}
               image={recommend.images}
@@ -67,7 +68,7 @@ export const CategoryFiltred = () =>  {
               detail={recommend.detail}
               basicPrice={recommend.basicPrice}
             />
-          </Link>
+          //</Link>
         ))}
       </div>
 

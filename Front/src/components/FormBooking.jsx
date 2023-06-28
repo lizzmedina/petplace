@@ -100,6 +100,8 @@ function FormBooking() {
 
     const [errorPet, setErrorPet] = useState("")
     const [errorDate, setErrorDate] = useState("")
+    const [payment, setPayment] = useState("")
+    const [errorPayment, setErrorPayment] = useState("")
 
 
     //Generacion de la Reserva
@@ -124,9 +126,11 @@ function FormBooking() {
     const handleSubmit = () => {
         console.log(booking);
         console.log(selectedDates);
-        if (pet[0] == '' || pet[1] == '' || pet[2] == '' || pet[3] == '' || selectedDates == [null, null]) {
+        console.log(payment);
+        if (pet[0] == '' || pet[1] == '' || pet[2] == '' || pet[3] == '' || selectedDates == [null, null] || payment =='') {
             setErrorPet("Recuerda llenar los campos de nombre, raza, tamaño y vacunacion")
             setErrorDate("Seleccionar rango de fechas validas")
+            setErrorPayment("Seleccionar un metodo de pago")
             Swal.fire({
                 icon: 'error',
                 title: 'Campos incompletos',
@@ -161,6 +165,7 @@ function FormBooking() {
                         "Content-Type": "application/json",
                     },
                 })
+                navigate('/bookinghistory')
             })
     };
 
@@ -186,14 +191,15 @@ function FormBooking() {
                         <div className='form-infoLine'> <p>Dia(s):</p> <p>&nbsp; {numberOfDays}</p> </div>
                         <div className="text-total"> <p>Total a Pagar:</p> <p>&nbsp;{totalPayment}</p> </div>
                         <div className="text-info"> <p>Metodo de pago:</p> </div>
+                        {<span className="error-message">{errorPayment}</span>}
                         <form>
-                            <input type="radio" id="paypal" name="pago" value="paypal" />
+                            <input type="radio" id="paypal" name="pago" value="paypal" onChange={(e) => {setPayment(e.target.value)}}/>
                             <label htmlFor="paypal"><FaPaypal className='icon-service'/>Paypal</label>
                             <br />
-                            <input type="radio" id="efectivo" name="pago" value="efectivo" />
+                            <input type="radio" id="efectivo" name="pago" value="efectivo" onChange={(e) => {setPayment(e.target.value)}}/>
                             <label htmlFor="efectivo"><FaMoneyBillAlt className='icon-service'/>Efectivo</label>
                             <br />
-                            <input type="radio" id="tarjeta" name="pago" value="tarjeta" />
+                            <input type="radio" id="tarjeta" name="pago" value="tarjeta" onChange={(e) => {setPayment(e.target.value)}}/>
                             <label htmlFor="tarjeta"><FaRegCreditCard className='icon-service'/>Tarjeta crédito</label>
                             <br />
                         </form>
