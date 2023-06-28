@@ -85,6 +85,19 @@ h2 {
   z-index: 5;
 }
 
+.categories2{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color1);
+  padding: 30px;
+  width: 30%;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
 .logo {
   text-align: left;
   height: 80px;
