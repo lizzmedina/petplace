@@ -2,7 +2,7 @@
   {
     "id": 1,
     "title": "Perros",
-    "description": "Especializados en perros",
+    "description": "Lealtad en cuatro patas",
     "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/Categorias/perrosMesa+de+trabajo+3.png",
     "icon": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/Categorias/icon-dog.png"
 
@@ -10,7 +10,7 @@
   {
     "id": 2,
     "title": "Gatos",
-    "description": "Especializados en gatos",
+    "description": "Ronroneos que enamoran",
     "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/Categorias/gatosMesa+de+trabajo+3.png",
     "icon": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/Categorias/icon-cat.png"
 
@@ -18,7 +18,7 @@
   {
     "id": 3,
     "title": "Canarios",
-    "description": "Especializados en canarios",
+    "description": "Puro amor emplumado",
     "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/Categorias/canariosMesa+de+trabajo+3.png",
     "icon": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/Categorias/icont-bird.png"
 
@@ -26,7 +26,7 @@
   {
     "id": 4,
     "title": "Conejos",
-    "description": "Especializados en conejos",
+    "description": "Peludos de orejas largas",
     "image": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/Categorias/conejosMesa+de+trabajo+3.png",
     "icon": "https://bucket-equipo2-frontend-imagenes.s3.us-east-2.amazonaws.com/Categorias/icon-rabbit.png"
   }
