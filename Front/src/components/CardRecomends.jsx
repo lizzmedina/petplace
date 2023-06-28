@@ -1,15 +1,16 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {  faShower, faPersonWalkingWithCane, faCarrot, faBaseball, faStethoscope, faLocationDot, faHeart} from "@fortawesome/free-solid-svg-icons";
+import {  faHeart as fasHeart} from "@fortawesome/free-regular-svg-icons";
 import { Grid, Rating } from "@mui/material";
 import { useContextGlobal } from "./utils/global.constext";
 
 import { Link } from "react-router-dom";
 
-export const CardRecomends = ({number,image,type,name,characteristics,city,address,detail,capacity,basicPrice,rating,}) => {
+export const CardRecomends = ({ number, image, type, name, characteristics, city, address, detail, capacity, basicPrice, rating, }) => {
   const { favorites, setFavorites, isFavorite, setIsFavorite } =
     useContextGlobal();
   const userConnected = JSON.parse(localStorage.getItem('userConnected')) || null;
-  
+
   if (!image) {
     return image;
   }
@@ -53,16 +54,15 @@ export const CardRecomends = ({number,image,type,name,characteristics,city,addre
   };
 
   const handleFavorite = () => {
-  
     setIsFavorite(!isFavorite);
     console.log("number:");
     console.log(number);
   };
 
   // const handleFavorite = async () => {
-    
+
   //   //setIsFavorite(!isFavorite);
-  
+
   //   const petDayCareId = {number}; 
   //   const userConnected = JSON.parse(localStorage.getItem('userConnected'));
   //   const userId = userConnected.id;
@@ -73,7 +73,6 @@ export const CardRecomends = ({number,image,type,name,characteristics,city,addre
   //       userId: parseInt(userId),
   //       petDayCareId: petDayCareId,
   //     };
-  
   //     try {
   //         const response = await fetch('http://localhost:8080/api/v1/favorite/', {
   //         method: 'POST',
@@ -82,7 +81,6 @@ export const CardRecomends = ({number,image,type,name,characteristics,city,addre
   //         },
   //         body: JSON.stringify(newFavorite),
   //       });
-  
   //       if (response.ok) {
   //         setFavorites([...favorites, newFavorite]);
   //         setIsFavorite(!isFavorite);
@@ -95,55 +93,62 @@ export const CardRecomends = ({number,image,type,name,characteristics,city,addre
   //   } else {
   //     console.error('No se encontró el userId en el localStorage');
   //   }
-    
-  // };
 
+  // };
 
   return (
     <div className="card-recomends">
+
       <div className="card-content">
+        {isFavorite ? (
+
+          <FontAwesomeIcon
+            icon={faHeart}
+            style={{ color: "red" }}
+            className="card-favorite-icon"
+            onClick={handleFavorite}
+            beat
+          />
+
+        ) : (
+
+          <FontAwesomeIcon
+            icon={fasHeart}
+            style={{ color: "#fff" }}
+            className="card-favorite-icon"
+            onClick={handleFavorite}
+
+          />
+
+        )}
         <div className="left-card-content">
           <img
             className="card-image-recommends"
             src={image[0]}
             alt={type.title}
           />
+
+
         </div>
         <div className="right-card-content">
-          <Grid container spacing={1} direction="row" className="space-content">
-            <Grid item xs={6}>
-              <h3 className="card-title-recommends">{name}</h3>
-            </Grid>
+          <div className="card-head-recommends">
+          <h3 className="card-title-recommends">{name}</h3>
+          <div>
             {showRating() ? (
-              <Grid item xs={4}>
-                <Grid
-                  container
-                  direction="row"
-                  spacing={0}
-                  className="align-items-center"
-                >
-                  <span className="rating-value">{rating.average}</span>
-                  <Rating
-                    className="rating-value-star"
-                    defaultValue={1}
-                    max={1}
-                    readOnly
-                  />
-                </Grid>
-              </Grid>
-            ) : null}
-
-            {userConnected ? (
-              <Grid item xs={2}>
-                <FontAwesomeIcon
-                  icon={faHeart}
-                  style={isFavorite ? { color: "#f01414" } : { color: "#e0e0e0" }}
-                  className="card-favorite-icon"
-                  onClick={handleFavorite}
+              <span className="card-head-recommends">
+                <span className="rating-value">{rating.average}</span>
+                <Rating
+                  className="rating-value-star"
+                  defaultValue={1}
+                  max={1}
+                  readOnly
                 />
-              </Grid>
+              </span>
+
             ) : null}
-          </Grid>
+          </div>
+          </div>
+
           <span className="card-category-recommends">
             Habilitado para: {capacity} {type.title}{" "}
           </span>
@@ -158,7 +163,7 @@ export const CardRecomends = ({number,image,type,name,characteristics,city,addre
             {renderCharacteristics()}
           </span>
           <p className="card-descrption-recommends">{truncateDetail(detail)}</p>
-          <Link key={number} to={"/Detail/" + number}>
+          <Link className="button-2" key={number} to={"/Detail/" + number}>
             <button className="button-2">Ver más</button>
           </Link>
         </div>
