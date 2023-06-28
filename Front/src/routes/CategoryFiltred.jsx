@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import {CardRecomends} from "../components/CardRecomends";
 import Stack from '@mui/material/Stack';
-import { Pagination } from "@mui/material";
+import { Button, Pagination } from "@mui/material";
+
 
 export const CategoryFiltred = () =>  {
   const { id} = useParams();
@@ -47,6 +48,30 @@ export const CategoryFiltred = () =>  {
 
   return (
     <div className='space-section'>
+      <div class= 'categories2'>
+        <div>
+          <Link to={"/category/1"}>
+            <Button class="button-2"> Perros </Button>
+          </Link>
+          
+        </div>
+        <div>
+          <Link to={"/category/2"}>
+            <Button class="button-2"> Gatos </Button>
+          </Link>
+        </div>
+        <div>
+          <Link to={"/category/3"}>
+            <Button class="button-2">Canarios</Button>
+          </Link>
+        </div>
+        <div>
+          <Link to={"/category/4"}>
+            <Button class="button-2"> Conejos </Button>
+          </Link>
+        </div>
+      </div>
+      
       <img src="" alt="" />
       <h2>Alojamiento para {category.length > 0 ? category[0].type.title : ''}</h2>
       <p className="category-description">Esta es una lista de nuestras opciones de hospedajes especializados en {category.length > 0 ? category[0].type.title : ''}</p>

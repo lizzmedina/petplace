@@ -1,14 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faShower,
-  faPersonWalkingWithCane,
-  faCarrot,
-  faBaseball,
-  faStethoscope,
-  faLocationDot,
-  faHeart,
-} from "@fortawesome/free-solid-svg-icons";
-import { faHeart as fasHeart } from '@fortawesome/free-regular-svg-icons';
+import {  faShower, faPersonWalkingWithCane, faCarrot, faBaseball, faStethoscope, faLocationDot, faHeart} from "@fortawesome/free-solid-svg-icons";
+import {  faHeart as fasHeart} from "@fortawesome/free-regular-svg-icons";
 import { Grid, Rating } from "@mui/material";
 import { useContextGlobal } from "./utils/global.constext";
 
@@ -62,7 +54,6 @@ export const CardRecomends = ({ number, image, type, name, characteristics, city
   };
 
   const handleFavorite = () => {
-
     setIsFavorite(!isFavorite);
     console.log("number:");
     console.log(number);
@@ -82,7 +73,6 @@ export const CardRecomends = ({ number, image, type, name, characteristics, city
   //       userId: parseInt(userId),
   //       petDayCareId: petDayCareId,
   //     };
-
   //     try {
   //         const response = await fetch('http://localhost:8080/api/v1/favorite/', {
   //         method: 'POST',
@@ -91,7 +81,6 @@ export const CardRecomends = ({ number, image, type, name, characteristics, city
   //         },
   //         body: JSON.stringify(newFavorite),
   //       });
-
   //       if (response.ok) {
   //         setFavorites([...favorites, newFavorite]);
   //         setIsFavorite(!isFavorite);
