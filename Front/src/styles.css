@@ -1479,7 +1479,7 @@ p.more-images {
 .favorites-container{
   padding: 10rem 0rem;
 }
-.favorites-container h3{
+.h3-no-favorites{
   margin-top: 3rem;
 }
 .booking-item {
