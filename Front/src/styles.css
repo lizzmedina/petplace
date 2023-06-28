@@ -1184,6 +1184,136 @@ p.more-images {
   text-align: justify;
 }
 
+/* Estilos del modal galeria detalles de compartir */
+
+.modal {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgba(0, 0, 0, 0.80);
+    justify-content: center;
+    align-items: center;
+    display: none;
+
+}
+
+.modal.is-open {
+    display: flex;
+}
+
+.modal-container {
+    position: relative;
+    max-width: 120px;
+    min-width: 360px;
+    min-height: 200px;
+    max-height: 600px;
+    /* overflow-y: auto; */
+    background-color: #fff;
+
+
+}
+
+.modal-close {
+    position: absolute;
+    left: 94%;
+}
+
+.ejemplo {
+    display: flex;
+    justify-content: space-around;
+}
+
+.modal-compartir {
+    display: flex;
+    justify-content: space-around;
+
+
+}
+
+.modal-compartir2 {
+    display: flex;
+}
+
+.iconsModal2 {
+    display: flex;
+    column-count: 2;
+
+}
+
+.iconsSpecificColumns {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    margin-right: 2.5rem;
+}
+
+.iconsSpecificColumns2 {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+}
+
+
+.iconsModalsSpecific {
+    margin-top: 38%;
+}
+
+.contectCardModal {
+    display: flex;
+}
+
+.contectCardModal-describe {
+    margin-top: 1rem;
+    margin-left: 1.5rem;
+}
+
+.contectCardModal-img {
+    margin-top: 1rem;
+    margin-left: 2rem;
+}
+
+.contectCardModalInsade {
+    margin-top: 1rem;
+    font-size: 100%;
+}
+
+.iconsModalsSpecific-A:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+    font-size: 103%;
+    font-weight: bold;
+}
+
+.iconsModalsSpecific-B:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+    font-size: 103%;
+    font-weight: bold;
+}
+
+.iconsModalsSpecific-C:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+    font-size: 103%;
+    font-weight: bold;
+}
+
+.iconsModalsSpecific-D:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+    font-size: 103%;
+    font-weight: bold;
+}
+
+.iconsModalsSpecific-E:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+    font-size: 103%;
+    font-weight: bold;
+}
+
+.iconsModalsSpecific-F:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+    font-size: 103%;
+    font-weight: bold;
+}
+
 /* Estilos del modal galeria detalles de prodcuto */
 .modal-overlay {
   position: absolute;
@@ -1213,9 +1343,13 @@ p.more-images {
   margin: auto !important;
 }
 .carousel .thumbs-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.ParrafoModal1.ParrafoModal1-copy {
+    color: #24f111;
 }
 /*
 .carousel .slider-wrapper.axis-horizontal .slider {
