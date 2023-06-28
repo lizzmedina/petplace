@@ -2118,7 +2118,13 @@ footer {
 }
 
 .card-favorite-icon {
-  color: var(--color8);
+  z-index: 3;
+  cursor: pointer;
+  color: var(--color4);
+  position: absolute;
+  margin-left: 200px;
+  margin-top: 10px;
+ 
 }
 
 .no-top-padding {

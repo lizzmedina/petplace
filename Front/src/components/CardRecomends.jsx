@@ -8,6 +8,7 @@ import {
   faLocationDot,
   faHeart,
 } from "@fortawesome/free-solid-svg-icons";
+import { faHeart as fasHeart} from '@fortawesome/free-regular-svg-icons';
 import { Grid, Rating } from "@mui/material";
 import { useContextGlobal } from "./utils/global.constext";
 
@@ -87,13 +88,37 @@ export const CardRecomends = ({
 
   return (
     <div className="card-recomends">
+      
       <div className="card-content">
+      {isFavorite ? (
+              
+              <FontAwesomeIcon
+                icon={faHeart}
+                style={{ color: "red" }}
+                className="card-favorite-icon"
+                onClick={handleFavorite}
+                beat
+              />
+            
+          ) : (
+            
+              <FontAwesomeIcon
+                icon={fasHeart}
+                style={{color: "#fff"}}
+                className="card-favorite-icon"
+                onClick={handleFavorite}
+              
+              />
+            
+          )}
         <div className="left-card-content">
           <img
             className="card-image-recommends"
             src={image[0]}
             alt={type.title}
           />
+          
+
         </div>
         <div className="right-card-content">
           <Grid container spacing={1} direction="row" className="space-content">
@@ -119,25 +144,7 @@ export const CardRecomends = ({
               </Grid>
             ) : null}
 
-            {isFavorite ? (
-              <Grid item xs={2}>
-                <FontAwesomeIcon
-                  icon={faHeart}
-                  style={{ color: "#f01414" }}
-                  className="card-favorite-icon"
-                  onClick={handleFavorite}
-                />
-              </Grid>
-            ) : (
-              <Grid item xs={2}>
-                <FontAwesomeIcon
-                  icon={faHeart}
-                  style={{ color: "#e0e0e0" }}
-                  className="card-favorite-icon"
-                  onClick={handleFavorite}
-                />
-              </Grid>
-            )}
+            
           </Grid>
           <span className="card-category-recommends">
             Habilitado para: {capacity} {type.title}{" "}
@@ -153,7 +160,7 @@ export const CardRecomends = ({
             {renderCharacteristics()}
           </span>
           <p className="card-descrption-recommends">{truncateDetail(detail)}</p>
-          <Link key={number} to={"/Detail/" + number}>
+          <Link  className="button-2" key={number} to={"/Detail/" + number}>
             <button className="button-2">Ver más</button>
           </Link>
         </div>
