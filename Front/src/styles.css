@@ -1468,15 +1468,33 @@ p.more-images {
 }
 
 /* Booking History*/
+
+.booking-history-container{
+    display: flex;
+    padding: 2rem;
+    height: 80vh;
+    justify-content: space-around;
+}
 .reservation {
   background-color: #eafff7;
   margin: 1rem;
 }
-.booking-cell {
-  padding: 2rem;
+.booking-cell{
+    padding: 1rem;
+    font-size: 0.85rem;
 }
-/* Favorites */
+/* .container-booking-history{
+    display: flex;
+    flex-wrap: wrap;
+} */
 
+/* Favorites */
+.favorites-container{
+  padding: 10rem 0rem;
+}
+.h3-no-favorites{
+  margin-top: 3rem;
+}
 .booking-item {
   padding: 10px;
   border-radius: 5px;

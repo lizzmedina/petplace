@@ -1,34 +1,15 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faShower,
-  faPersonWalkingWithCane,
-  faCarrot,
-  faBaseball,
-  faStethoscope,
-  faLocationDot,
-  faHeart,
-} from "@fortawesome/free-solid-svg-icons";
+import {  faShower, faPersonWalkingWithCane, faCarrot, faBaseball, faStethoscope, faLocationDot, faHeart} from "@fortawesome/free-solid-svg-icons";
 import { Grid, Rating } from "@mui/material";
 import { useContextGlobal } from "./utils/global.constext";
 
 import { Link } from "react-router-dom";
 
-export const CardRecomends = ({
-  number,
-  image,
-  type,
-  name,
-  characteristics,
-  city,
-  address,
-  detail,
-  capacity,
-  basicPrice,
-  rating,
-}) => {
+export const CardRecomends = ({number,image,type,name,characteristics,city,address,detail,capacity,basicPrice,rating,}) => {
   const { favorites, setFavorites, isFavorite, setIsFavorite } =
     useContextGlobal();
-
+  const userConnected = JSON.parse(localStorage.getItem('userConnected')) || null;
+  
   if (!image) {
     return image;
   }
@@ -72,18 +53,51 @@ export const CardRecomends = ({
   };
 
   const handleFavorite = () => {
+  
     setIsFavorite(!isFavorite);
+    console.log("number:");
+    console.log(number);
   };
 
-  // const handleFavorite = () => {
-  //     const updatedFavorites = favorites.map((item) => {
-  //       if (item.id === id) {
-  //         return { ...item, isFavorite: !item.isFavorite };
+  // const handleFavorite = async () => {
+    
+  //   //setIsFavorite(!isFavorite);
+  
+  //   const petDayCareId = {number}; 
+  //   const userConnected = JSON.parse(localStorage.getItem('userConnected'));
+  //   const userId = userConnected.id;
+
+  //   if (userId) {
+  //     const newFavorite = {
+  //       idFavorite: 0,
+  //       userId: parseInt(userId),
+  //       petDayCareId: petDayCareId,
+  //     };
+  
+  //     try {
+  //         const response = await fetch('http://localhost:8080/api/v1/favorite/', {
+  //         method: 'POST',
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //         },
+  //         body: JSON.stringify(newFavorite),
+  //       });
+  
+  //       if (response.ok) {
+  //         setFavorites([...favorites, newFavorite]);
+  //         setIsFavorite(!isFavorite);
+  //       } else {
+  //         console.error('Error al agregar el producto a favoritos');
   //       }
-  //       return item;
-  //     });
-  //     setFavorites(updatedFavorites);
-  //   };
+  //     } catch (error) {
+  //       console.error('Error al hacer la solicitud POST de favoritos:', error);
+  //     }
+  //   } else {
+  //     console.error('No se encontró el userId en el localStorage');
+  //   }
+    
+  // };
+
 
   return (
     <div className="card-recomends">
@@ -119,25 +133,16 @@ export const CardRecomends = ({
               </Grid>
             ) : null}
 
-            {isFavorite ? (
+            {userConnected ? (
               <Grid item xs={2}>
                 <FontAwesomeIcon
                   icon={faHeart}
-                  style={{ color: "#f01414" }}
+                  style={isFavorite ? { color: "#f01414" } : { color: "#e0e0e0" }}
                   className="card-favorite-icon"
                   onClick={handleFavorite}
                 />
               </Grid>
-            ) : (
-              <Grid item xs={2}>
-                <FontAwesomeIcon
-                  icon={faHeart}
-                  style={{ color: "#e0e0e0" }}
-                  className="card-favorite-icon"
-                  onClick={handleFavorite}
-                />
-              </Grid>
-            )}
+            ) : null}
           </Grid>
           <span className="card-category-recommends">
             Habilitado para: {capacity} {type.title}{" "}
