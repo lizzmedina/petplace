@@ -57,7 +57,7 @@ public class UserMailValidator {
                 "    <h1>Bienvenido! 🐶🐱</h1>\n" +
                 "    <p>¡Te damos la bienvenida a PetPlace, la comunidad en línea para amantes de las mascotas! Para completar tu registro y asegurarnos de que tu dirección de correo electrónico sea válida, necesitamos que verifiques tu cuenta.</p>\n" +
                 "    <p>Sigue los pasos a continuación para completar el proceso de validación:</p>\n" +
-                "    <a href='http://bucket-equipo2-frontend.s3-website.us-east-2.amazonaws.com/validationPage/?email=" +  emailUser + "' target='_blank' style='color: blue;'>Haz clic para verificar tu cuenta</a>\n" +
+                "    <a href='http://petplace.redirectme.net/validationPage/?email=" +  emailUser + "' target='_blank' style='color: blue;'>Haz clic para verificar tu cuenta</a>\n" +
                 "    <p>Una vez que hayas verificado tu dirección de correo electrónico, tendrás acceso completo a todas las funciones y características de PetPlace.</p>\n" +
                 "    <p>Gracias por registrarte.</p>\n" +
                 "    <p>PetPlace 🐾</p>\n" +

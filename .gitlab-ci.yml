@@ -11,7 +11,9 @@ back:build:
     - echo "Deleting target folder..."
     - rm -rf target/
     - echo "Running clean install..."
-    - mvn clean install -U
+    - mvn clean
+    - mvn compile -U
+    - mvn install
     - echo "Finished building the app."
   artifacts:
     expire_in: 1 week

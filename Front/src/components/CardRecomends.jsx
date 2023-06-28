@@ -127,6 +127,7 @@ export const CardRecomends = ({number,image,type,name,characteristics,city,addre
                     className="rating-value-star"
                     defaultValue={1}
                     max={1}
+                    readOnly
                   />
                 </Grid>
               </Grid>
