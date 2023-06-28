@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { element } from 'prop-types';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faPenToSquare, faTrash} from "@fortawesome/free-solid-svg-icons";
 
 function EditUsers() {
 
@@ -37,8 +40,8 @@ function EditUsers() {
                     <div className='ListItem'>
                         {user.name} ({user.email})   |  |  {user.type}
                         <div className='ListButtons'>
-                            <button
-                                className='edit-button'
+                            <p
+                                className='option-edit-button'
                                 onClick={() => {
                                     Swal.fire({
                                         title: 'Formulario de Edición',
@@ -108,12 +111,12 @@ function EditUsers() {
                                     });
                                 }}
                             >
-                                Editar
-                            </button>
+                                <FontAwesomeIcon icon={faPenToSquare} size="lg" style={{color: "#8ed1b9",}} /> 
+                            </p>
 
-                            <button className='delete-button' onClick={() => deleteUser(product.id, product.name)}>
-                                Eliminar
-                            </button>
+                            <p /* className='delete-button' */ onClick={() => deleteUser(product.id, product.name)}>
+                                <FontAwesomeIcon icon={faTrash} size="lg" style={{color: "#ff1117",}} />
+                            </p>
                         </div>
                     </div>
                 ))
