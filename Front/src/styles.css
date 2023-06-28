@@ -1342,7 +1342,12 @@ p.more-images {
 } */
 
 /* Favorites */
-
+.favorites-container{
+  padding: 10rem 0rem;
+}
+.favorites-container h3{
+  margin-top: 3rem;
+}
 .booking-item {
   padding: 10px;
   border-radius: 5px;

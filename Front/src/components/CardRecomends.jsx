@@ -1,34 +1,15 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faShower,
-  faPersonWalkingWithCane,
-  faCarrot,
-  faBaseball,
-  faStethoscope,
-  faLocationDot,
-  faHeart,
-} from "@fortawesome/free-solid-svg-icons";
+import {  faShower, faPersonWalkingWithCane, faCarrot, faBaseball, faStethoscope, faLocationDot, faHeart} from "@fortawesome/free-solid-svg-icons";
 import { Grid, Rating } from "@mui/material";
 import { useContextGlobal } from "./utils/global.constext";
 
 import { Link } from "react-router-dom";
 
-export const CardRecomends = ({
-  number,
-  image,
-  type,
-  name,
-  characteristics,
-  city,
-  address,
-  detail,
-  capacity,
-  basicPrice,
-  rating,
-}) => {
+export const CardRecomends = ({number,image,type,name,characteristics,city,address,detail,capacity,basicPrice,rating,}) => {
   const { favorites, setFavorites, isFavorite, setIsFavorite } =
     useContextGlobal();
-
+  const userConnected = JSON.parse(localStorage.getItem('userConnected')) || null;
+  
   if (!image) {
     return image;
   }
@@ -151,17 +132,16 @@ export const CardRecomends = ({
               </Grid>
             ) : null}
 
-            {
+            {userConnected ? (
               <Grid item xs={2}>
                 <FontAwesomeIcon
                   icon={faHeart}
-                  style={ isFavorite ? {color: "#f01414" }  : {color: "#e0e0e0"}}
+                  style={isFavorite ? { color: "#f01414" } : { color: "#e0e0e0" }}
                   className="card-favorite-icon"
                   onClick={handleFavorite}
                 />
               </Grid>
-            }
-
+            ) : null}
           </Grid>
           <span className="card-category-recommends">
             Habilitado para: {capacity} {type.title}{" "}
