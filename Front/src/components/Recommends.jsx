@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
 import { CardRecomends } from "./CardRecomends";
-import { Link } from 'react-router-dom';
 import Stack from '@mui/material/Stack';
 import { Pagination} from "@mui/material";
 import { useContextGlobal } from "./utils/global.constext";
 
 export const Recommends = () => {
   
-  const {recommends, setRecommends,  title, selectedCity, searchResults, setSearchResults} = useContextGlobal();
+  const {recommends, setRecommends,  title, searchResults, setSearchResults} = useContextGlobal();
   const [noResults, setNoResults] = useState(false);
   
   useEffect(() => {

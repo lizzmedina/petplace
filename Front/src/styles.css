@@ -1473,16 +1473,30 @@ p.more-images {
     display: flex;
     padding: 2rem;
     height: 80vh;
-    justify-content: space-around;
+    justify-content: space-evenly;
+}
+.booking-history-container h2{
+  margin-bottom: 1rem;
 }
 .reservation {
   background-color: #eafff7;
   margin: 1rem;
 }
 .booking-cell{
-    padding: 1rem;
-    font-size: 0.85rem;
+  font-size: 1rem;
+  text-align: center;
+  padding: 0.2rem 1rem;
 }
+
+thead tr {
+  color: var(--color6);
+}
+tbody tr td {
+  padding-top: 10px;
+  background-color: var(--color7);
+  height: 15px;
+}
+
 /* .container-booking-history{
     display: flex;
     flex-wrap: wrap;
@@ -1490,7 +1504,7 @@ p.more-images {
 
 /* Favorites */
 .favorites-container{
-  padding: 10rem 0rem;
+  padding: 3rem 0rem;
 }
 .h3-no-favorites{
   margin-top: 3rem;
@@ -1506,19 +1520,10 @@ p.more-images {
   border-collapse: collapse;
   border-spacing: 0;
 }
-.booking-cell {
-  text-align: left;
-  padding: 0 20px;
+.title-favorites{
+  margin-bottom: 1rem;
+    font-size: 1.5rem;
 }
-thead tr {
-  color: var(--color6);
-}
-tbody tr td {
-  padding-top: 10px;
-  background-color: var(--color7);
-  height: 15px;
-}
-
 /* footer */
 
 footer {

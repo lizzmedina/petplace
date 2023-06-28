@@ -28,8 +28,6 @@ export const BookingHistory = () => {
         getBookingHistory();
     }, []);
 
-    console.log(bookingHistory);
-
     const formatCreationDate = (dateString) => {
         const date = new Date(dateString);
         const year = date.getFullYear();

@@ -8,10 +8,8 @@ export const Favorites = () => {
     
     const fetchFavorites = () => {
         const userConnected = JSON.parse(localStorage.getItem("userConnected"));
-        console.log(userConnected.id, 'funcion ');
         if (userConnected) {
             const userId = userConnected.id;
-            console.log(userId, 'if');
             fetch(`${urlFavorites}${userId}`, {
                 method: "GET",
                 headers: {
@@ -29,13 +27,11 @@ export const Favorites = () => {
     };
     useEffect(() => {
         fetchFavorites();
-    }, []);
+    }, [favorites]);
 
-//   <h3 className="h3-no-favorites">Aún no se han agregado hospedajes a favoritos.</h3>;
-    console.log(favorites);
     return (
         <div className="space-section favorites-container">
-            <h2>Favorites</h2>
+            <h2 className="title-favorites">Favorites</h2>
             
             {favorites.length === 0 ? (
                 <h3 className="h3-no-favorites">Aún no se han agregado hospedajes a favoritos.</h3>
@@ -57,6 +53,8 @@ export const Favorites = () => {
                                 detail={petDayCare.detail}
                                 basicPrice={petDayCare.basicPrice}
                                 characteristics={petDayCare.characteristics}
+                                favorites={favorites}
+                                setFavorites={setFavorites}
                             />
                         );
                     })}

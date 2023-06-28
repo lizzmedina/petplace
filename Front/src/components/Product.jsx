@@ -13,7 +13,7 @@ export const Product = ({ id, name, type, capacity, city, address, detail, image
 
     const navigate = useNavigate()
     const [isModalOpen, setModalOpen] = useState(false);
-    const {favorites, setFavorites, isFavorite, setIsFavorite} = useContextGlobal();
+    const {isFavorite, setIsFavorite} = useContextGlobal();
 
 
     // map develop

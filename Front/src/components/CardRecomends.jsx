@@ -2,14 +2,33 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {  faShower, faPersonWalkingWithCane, faCarrot, faBaseball, faStethoscope, faLocationDot, faHeart} from "@fortawesome/free-solid-svg-icons";
 import { Grid, Rating } from "@mui/material";
 import { useContextGlobal } from "./utils/global.constext";
-
 import { Link } from "react-router-dom";
+import  { useEffect, useState,  } from "react";
 
 export const CardRecomends = ({number,image,type,name,characteristics,city,address,detail,capacity,basicPrice,rating,}) => {
-  const { favorites, setFavorites, isFavorite, setIsFavorite } =
-    useContextGlobal();
+
+  const { favorites, setFavorites, isFavorite, setIsFavorite, urlPostFavorites } = useContextGlobal();
   const userConnected = JSON.parse(localStorage.getItem('userConnected')) || null;
-  
+  const [favoriteMap, setFavoriteMap] = useState({});
+
+  const updateFavoriteMap = () => {
+    const isFavorite = favorites.some((fav) => fav.petDayCareId === number);
+    setFavoriteMap((prevMap) => ({
+      ...prevMap,
+      [number]: isFavorite,
+    }));
+  };
+
+  // Llama a updateFavoriteMap cuando favorites o number cambien
+  useEffect(() => {
+    updateFavoriteMap();
+  }, [favorites, number]);
+
+
+  useEffect(() => {
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  }, [favorites]);
+
   if (!image) {
     return image;
   }
@@ -52,52 +71,60 @@ export const CardRecomends = ({number,image,type,name,characteristics,city,addre
     return rating !== null && rating !== undefined;
   };
 
-  const handleFavorite = () => {
-  
-    setIsFavorite(!isFavorite);
-    console.log("number:");
-    console.log(number);
-  };
+  const handleFavorite = async () => {
+    const petDayCareId = number;
+    const userConnected = JSON.parse(localStorage.getItem('userConnected'));
+    const userId = userConnected.id;
 
-  // const handleFavorite = async () => {
+    if (userId) {
+        const newFavorite = {
+            idFavorite: 0,
+            userId: parseInt(userId),
+            petDayCareId: petDayCareId,
+        };
     
-  //   //setIsFavorite(!isFavorite);
-  
-  //   const petDayCareId = {number}; 
-  //   const userConnected = JSON.parse(localStorage.getItem('userConnected'));
-  //   const userId = userConnected.id;
+        try {
+            const url = `${urlPostFavorites}${userId}&petDayCareId=${petDayCareId}`;
+            
+            
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newFavorite),
+            });
+            if (response.ok) {
+                setFavoriteMap((prevMap) => ({
+                    ...prevMap,
+                    [number]: !prevMap[number],
+                }));
 
-  //   if (userId) {
-  //     const newFavorite = {
-  //       idFavorite: 0,
-  //       userId: parseInt(userId),
-  //       petDayCareId: petDayCareId,
-  //     };
-  
-  //     try {
-  //         const response = await fetch('http://localhost:8080/api/v1/favorite/', {
-  //         method: 'POST',
-  //         headers: {
-  //           'Content-Type': 'application/json',
-  //         },
-  //         body: JSON.stringify(newFavorite),
-  //       });
-  
-  //       if (response.ok) {
-  //         setFavorites([...favorites, newFavorite]);
-  //         setIsFavorite(!isFavorite);
-  //       } else {
-  //         console.error('Error al agregar el producto a favoritos');
-  //       }
-  //     } catch (error) {
-  //       console.error('Error al hacer la solicitud POST de favoritos:', error);
-  //     }
-  //   } else {
-  //     console.error('No se encontró el userId en el localStorage');
-  //   }
-    
-  // };
+            const updatedFavorites = prevFavorites => {
+            const isAlreadyFavorite = prevFavorites.some(
+                (favorite) => favorite.petDayCareId === petDayCareId
+            );
 
+            if (!isAlreadyFavorite) {
+                return [...prevFavorites, newFavorite];
+            } else {
+                return prevFavorites.filter(
+                    (favorite) => favorite.petDayCareId !== petDayCareId
+                );
+            }
+            };
+
+            setFavorites(updatedFavorites);
+        } else {
+            console.error('Error al agregar o quitar el producto de favoritos');
+        }
+        } catch (error) {
+            console.error('Error al hacer la solicitud POST de favoritos:', error);
+        }
+    } else {
+        console.error('No se encontró el userId en el localStorage');
+    }
+};
 
   return (
     <div className="card-recomends">
@@ -137,7 +164,7 @@ export const CardRecomends = ({number,image,type,name,characteristics,city,addre
               <Grid item xs={2}>
                 <FontAwesomeIcon
                   icon={faHeart}
-                  style={isFavorite ? { color: "#f01414" } : { color: "#e0e0e0" }}
+                  style={favoriteMap[number] ? { color: "#f01414" } : { color: "#e0e0e0" }}
                   className="card-favorite-icon"
                   onClick={handleFavorite}
                 />
