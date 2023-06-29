@@ -3,6 +3,8 @@ import Swal from 'sweetalert2';
 import * as yup from 'yup';
 import { useContextGlobal } from '../components/utils/global.constext';
 import Modal from 'react-modal';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faPenToSquare, faTrash} from "@fortawesome/free-solid-svg-icons";
 
 function EditCategory() {
     const { urlCategory } = useContextGlobal();
@@ -148,12 +150,12 @@ function EditCategory() {
                     <div className="ListItem" key={category.id}>
                         {category.title}
                         <div className="ListButtons">
-                            <button className="edit-button" onClick={() => openEditForm(category)}>
-                                Editar
-                            </button>
-                            <button className="delete-button" onClick={() => deleteCategory(category.id, category.title)}>
-                                Eliminar
-                            </button>
+                            <p className="option-edit-button" onClick={() => openEditForm(category)}>
+                              <FontAwesomeIcon icon={faPenToSquare} size="lg" style={{color: "#8ed1b9",}} />
+                            </p>
+                            <p /* className="delete-button" */ onClick={() => deleteCategory(category.id, category.title)}>
+                              <FontAwesomeIcon icon={faTrash} size="lg" style={{color: "#ff1117",}} />
+                            </p>
                         </div>
                     </div>
                 ))}

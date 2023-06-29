@@ -5,6 +5,8 @@ import Swal from 'sweetalert2';
 import * as yup from 'yup';
 import { useContextGlobal } from '../components/utils/global.constext';
 import Modal from 'react-modal';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faPenToSquare, faTrash} from "@fortawesome/free-solid-svg-icons";
 
 function EditCity() {
     const { urlGetCities, urlPostCities } = useContextGlobal();
@@ -155,12 +157,12 @@ function EditCity() {
                     <div className="ListItem" key={city.id}>
                         {city.name}
                         <div className="ListButtons">
-                            <button className="edit-button" onClick={() => openEditForm(city)}>
-                                Editar
-                            </button>
-                            <button className="delete-button" onClick={() => deleteCity(city.id, city.name)}>
-                                Eliminar
-                            </button>
+                            <p className="option-edit-button" onClick={() => openEditForm(city)}>
+                                <FontAwesomeIcon icon={faPenToSquare} size="lg" style={{color: "#8ed1b9",}} />
+                            </p>
+                            <p /* className="delete-button" */ onClick={() => deleteCity(city.id, city.name)}>
+                                <FontAwesomeIcon icon={faTrash} size="lg" style={{color: "#ff1117",}} /> 
+                            </p>
                         </div>
                     </div>
                 ))}

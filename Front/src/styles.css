@@ -1367,6 +1367,17 @@ p.more-images {
 .ParrafoModal1.ParrafoModal1-copy {
     color: var(--color9);
 }
+
+
+/* Edit and Delete buttons for every element */
+
+
+.option-edit-button {
+    padding-right: 1rem;
+}
+
+
+
 /*
 .carousel .slider-wrapper.axis-horizontal .slider {
     -ms-box-orient: horizontal !important; 
