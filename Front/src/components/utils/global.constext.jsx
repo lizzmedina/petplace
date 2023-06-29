@@ -29,23 +29,54 @@ const ContextProvider = ({children}) => {
     const [title, setTitle] = useState('Recomendaciones');
     const [bookingHistory, setBookingHistory] = useState([{}]);
     const [favorites, setFavorites] = useState([]);
-    const [isFavorite, setIsFavorite] = useState(false);
-
+    const [isFavorite, setIsFavorite] = useState(true);
+    const [searchFavorites, setSearchFavorites] = useState(false); //  state para busqueda de favoritos
     const [places, setPlaces] = useState([]); // categorias
+    const[url, setUrl] = useState(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/petDayCare/all`) 
+    const [dataCategory, setDataCategory] = useState([])
+
     const getAllCategories = async()=> {
         const res = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/category/all`);
         const data = await res.json();
         setPlaces(data)
     }
-    useEffect(() => {
-        getAllCategories();
-    }, []);
+    //función auxiliar para buscar favoritos por userId:
+    const fetchFavorites = async () => {
+        const userConnected = JSON.parse(localStorage.getItem("userConnected"));
 
-
-    const[url, setUrl] = useState(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/v1/petDayCare/all`) // productos/hospedajes
-    const [dataCategory, setDataCategory] = useState([])
+        if (userConnected) {
+            const userId = userConnected.id;
+            await fetch(`${urlFavorites}${userId}`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    setFavorites(data);
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+        }
+    };
     useEffect(() => {
-        fetch(url)
+        if(!searchFavorites) {
+            fetchFavorites();
+            setSearchFavorites (true);
+        }
+    }, [searchFavorites, setSearchFavorites]);
+
+    useEffect(() => {
+        if(places.length === 0){
+            getAllCategories();
+        }
+    }, [places, setPlaces]);
+
+    useEffect(() => {
+        if(dataCategory.length === 0) {
+            fetch(url)
             .then((res) => res.json())
             .then((data) => {
                 setDataCategory(data);
@@ -53,9 +84,8 @@ const ContextProvider = ({children}) => {
             .catch((error) => {
                 error('Error al obtener los datos:', error);
             });
-    }, [url]);
-
-    
+        }
+    }, [url, dataCategory, setDataCategory]);
 
 
     return (

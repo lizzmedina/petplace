@@ -8,19 +8,35 @@ export const Recommends = () => {
   
   const {recommends, setRecommends,  title, searchResults, setSearchResults} = useContextGlobal();
   const [noResults, setNoResults] = useState(false);
+  const [search, setSearch] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1); 
+
+  const [random, setRandom] = useState(false);
+
+
+  let cardsPerRow = 10;
+  const cardsPerPage = cardsPerRow;
+  const startIndex = (currentPage - 1) * cardsPerPage;
+  const endIndex = startIndex + cardsPerPage;
+
+  const totalPages = Math.ceil(recommends.length / cardsPerPage);
+  
+  const [currentCards, setCurrentCards] = useState([]);
   
   useEffect(() => {
+    if(currentCards.length === 0)
+      setCurrentCards(shuffleArray(recommends).slice(startIndex, endIndex));
     if (searchResults.length > 0) {
       setRecommends(searchResults);
       setNoResults(false);
-    } else {
+      
+    } else if(!search) {
       fetchRecommends();
+      setSearch(true);
     }
-  }, [searchResults]);
+  }, [searchResults, search, setSearch]);
   
-  useEffect(() => {
-    setNoResults(recommends.length === 0);
-  }, [recommends]);
+ 
 
 
   const fetchRecommends = () => {
@@ -46,13 +62,11 @@ export const Recommends = () => {
     return array;
   }
 
-  let cardsPerRow =10;
-  const cardsPerPage = cardsPerRow;
-  const totalPages = Math.ceil(recommends.length / cardsPerPage);
-  const [currentPage, setCurrentPage] = useState(1); 
-  const startIndex = (currentPage - 1) * cardsPerPage;
-  const endIndex = startIndex + cardsPerPage;
-  const currentCards = shuffleArray(recommends).slice(startIndex, endIndex);
+  
+  
+
+  
+
   const handlePageChange = (event, page) => {
     setCurrentPage(page);
   };

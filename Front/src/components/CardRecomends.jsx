@@ -8,27 +8,18 @@ import  { useEffect, useState,  } from "react";
 
 export const CardRecomends = ({number,image,type,name,characteristics,city,address,detail,capacity,basicPrice,rating,}) => {
 
-  const { favorites, setFavorites, isFavorite, setIsFavorite, urlPostFavorites } = useContextGlobal();
+  const { favorites, setFavorites,  urlPostFavorites, urlFavorites } = useContextGlobal();
   const userConnected = JSON.parse(localStorage.getItem('userConnected')) || null;
-  const [favoriteMap, setFavoriteMap] = useState({});
+  //const [favoriteMap, setFavoriteMap] = useState({});
+  const [isFavorite, setIsFavorite] = useState(null);
 
-  const updateFavoriteMap = () => {
-    const isFavorite = favorites.some((fav) => fav.petDayCareId === number);
-    setFavoriteMap((prevMap) => ({
-      ...prevMap,
-      [number]: isFavorite,
-    }));
-  };
-
-  // Llama a updateFavoriteMap cuando favorites o number cambien
-  useEffect(() => {
-    updateFavoriteMap();
-  }, [favorites, number]);
-
-
-  useEffect(() => {
-    localStorage.setItem('favorites', JSON.stringify(favorites));
-  }, [favorites]);
+ //const updateFavoriteMap = () => {
+ //  const isFavorite = favorites.some((fav) => fav.petDayCareId === number);
+ //  setFavoriteMap((prevMap) => ({
+ //    ...prevMap,
+ //    [number]: isFavorite,
+ //  }));
+ //};
 
   if (!image) {
     return image;
@@ -72,6 +63,28 @@ export const CardRecomends = ({number,image,type,name,characteristics,city,addre
     return rating !== null && rating !== undefined;
   };
 
+  //función auxiliar para buscar favoritos por userId:
+  const fetchFavorites = async () => {
+    const userConnected = JSON.parse(localStorage.getItem("userConnected"));
+
+    if (userConnected) {
+        const userId = userConnected.id;
+        await fetch(`${urlFavorites}${userId}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                setFavorites(data);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }
+};
+
   const handleFavorite = async () => {
     const petDayCareId = number;
     const userConnected = JSON.parse(localStorage.getItem('userConnected'));
@@ -85,97 +98,79 @@ export const CardRecomends = ({number,image,type,name,characteristics,city,addre
         };
     
         try {
-            const url = `${urlPostFavorites}${userId}&petDayCareId=${petDayCareId}`;
-            
-            
-            const response = await fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(newFavorite),
-            });
-            if (response.ok) {
-                setFavoriteMap((prevMap) => ({
-                    ...prevMap,
-                    [number]: !prevMap[number],
-                }));
-
-            const updatedFavorites = prevFavorites => {
-            const isAlreadyFavorite = prevFavorites.some(
-                (favorite) => favorite.petDayCareId === petDayCareId
-            );
-
-            if (!isAlreadyFavorite) {
-                return [...prevFavorites, newFavorite];
-            } else {
-                return prevFavorites.filter(
-                    (favorite) => favorite.petDayCareId !== petDayCareId
-                );
-            }
-            };
-
-            setFavorites(updatedFavorites);
-        } else {
-            console.error('Error al agregar o quitar el producto de favoritos');
-        }
+          const url = `${urlPostFavorites}${userId}&petDayCareId=${petDayCareId}`;
+          
+          const response = await fetch(url, {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(newFavorite),
+          });
+          if (response.ok) {
+            await fetchFavorites();  
+            setIsFavorite(null); 
+          }else {
+              console.error('Error al agregar o quitar el producto de favoritos');
+          }
         } catch (error) {
-            console.error('Error al hacer la solicitud POST de favoritos:', error);
+              console.error('Error al hacer la solicitud POST de favoritos:', error);
         }
     } else {
         console.error('No se encontró el userId en el localStorage');
     }
 };
+  const checkFavorite = () => {
+    return( favorites?.filter ( f => f?.petDayCare?.id === number)).length > 0;
+  }
+
+  useEffect(() => {
+    if (isFavorite === null) 
+      setIsFavorite(checkFavorite());
+    
+  }, [isFavorite, setIsFavorite ]);
 
   return (
     <div className="card-recomends">
+
       <div className="card-content">
-        <div className="left-card-content">
+      {userConnected ? (
+          (
+            <FontAwesomeIcon
+              icon={ isFavorite ? faHeart : fasHeart }
+              style={ isFavorite ? { color: "red" } :{ color: "#fff" }}
+              className="card-favorite-icon"
+              onClick={handleFavorite}
+              beat = { isFavorite ? true : false}
+            />
+          ) 
+        ) : null}
+
+      <div className="left-card-content">
           <img
             className="card-image-recommends"
             src={image[0]}
             alt={type.title}
           />
-        </div>
-        <div className="right-card-content">
-          <Grid container spacing={1} direction="row" className="space-content">
-            <Grid item xs={6}>
-              <h3 className="card-title-recommends">{name}</h3>
-            </Grid>
-
+      </div>
+      <div className="right-card-content">
+        <div className="card-head-recommends">
+          <h3 className="card-title-recommends">{name}</h3>
+        <div>
             {showRating() ? (
-              <Grid item xs={4}>
-                <Grid
-                  container
-                  direction="row"
-                  spacing={0}
-                  className="align-items-center"
-                >
-                  <span className="rating-value">{rating.average}</span>
-                  <Rating
-                    className="rating-value-star"
-                    defaultValue={1}
-                    max={1}
-                    readOnly
-                  />
-                </Grid>
-              </Grid>
-            ) : null}
-
-            {userConnected ? (
-              <Grid item xs={2}>
-                <FontAwesomeIcon
-                  icon={faHeart}
-                  style={favoriteMap[number] ? { color: "#f01414" } : { color: "#e0e0e0" }}
-                  className="card-favorite-icon"
-                  onClick={handleFavorite}
+              <span className="card-head-recommends">
+                <span className="rating-value">{rating.average}</span>
+                <Rating
+                  className="rating-value-star"
+                  defaultValue={1}
+                  max={1}
+                  readOnly
                 />
-              </Grid>
+              </span>
 
             ) : null}
-          </Grid>
-          </div>
-          </div>
+        </div>
+      </div>
 
           <span className="card-category-recommends">
             Habilitado para: {capacity} {type.title}{" "}
@@ -195,5 +190,7 @@ export const CardRecomends = ({number,image,type,name,characteristics,city,addre
             <button className="button-2">Ver más</button>
           </Link>
         </div>
+      </div>
+    </div>
   );
 };
