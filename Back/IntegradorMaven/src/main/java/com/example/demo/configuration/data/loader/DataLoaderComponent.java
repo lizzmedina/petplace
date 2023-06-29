@@ -97,6 +97,7 @@ public class DataLoaderComponent {
                 System.out.println("category data with id " + categoryDTO.getId() + " already exists, skipping creation...");
             } catch (ResourceNotFoundException exception) {
                 categoryService.save(categoryDTO);
+                System.out.println("category " + categoryDTO.getTitle() + " saved successfully...");
             }
         });
     }
@@ -124,27 +125,31 @@ public class DataLoaderComponent {
         System.out.println("loading booking data...");
         List<BookingDTO> bookingList = JsonHelper.readJsonFromFile("booking_data.json", new TypeReference<>() {
         });
-        bookingList.forEach(booking -> {
+
+
+        LocalDate today = LocalDate.now();
+        int addition = 1;
+        for (int i = 0; i < bookingList.size(); i++, addition++) {
+            BookingDTO booking = bookingList.get(i);
             Optional<Booking> entityOpt = bookingService.findById(booking.getIdBooking());
 
             if (entityOpt.isEmpty()) {
-                LocalDate checkIn = bookingService.getCheckInDate(booking);
-                LocalDate checkOut = bookingService.getCheckOutDate(booking);
-                if (bookingService.available(booking.getPetDayCareId(), checkIn, checkOut)) {
-                    PetDayCare petDayCare = petDayCareService.findById(booking.getPetDayCareId());
-                    booking.setPetDayCare(new PetDayCareDTO(petDayCare));
+                LocalDate checkIn = today.plusDays(addition);
+                LocalDate checkOut = today.plusDays(addition += 2);
+                PetDayCare petDayCare = petDayCareService.findById(booking.getPetDayCareId());
+                booking.setPetDayCare(new PetDayCareDTO(petDayCare));
 
-                    BookingCreationRequest creationRequest = new BookingCreationRequest();
-                    creationRequest.setUserId(booking.getUserId());
-                    creationRequest.setCheckInDate(checkIn);
-                    creationRequest.setCheckOutDate(checkOut);
-                    creationRequest.setPetDayCareId(petDayCare.getId());
-                    bookingService.save(creationRequest);
-                }
+                BookingCreationRequest creationRequest = new BookingCreationRequest();
+                creationRequest.setUserId(booking.getUserId());
+                creationRequest.setCheckInDate(checkIn);
+                creationRequest.setCheckOutDate(checkOut);
+                creationRequest.setPetDayCareId(petDayCare.getId());
+                creationRequest.setDataPet(booking.getDataPet());
+                bookingService.save(creationRequest);
             } else {
                 System.out.println("booking data with id " + booking.getIdBooking() + " already exists, skipping creation...");
             }
-        });
+        }
     }
 
     public void loadInitialPermissionData() {
@@ -199,21 +204,27 @@ public class DataLoaderComponent {
     }
 
     private void generateBookingScores() {
+        var users = userService.getAllUsers();
         var bookings = bookingRepository.findAll();
         var rnd = new Random();
 
-        bookings.forEach(booking -> {
-            BookingScore bookingScore = new BookingScore();
-            bookingScore.setBooking(booking);
-            bookingScore.setUserId(booking.getUser().getId());
-            bookingScore.setScore(rnd.nextInt(1, 6));
-
-            if (bookingScoreRepository.findByBookingScoreIdUserIdAndBookingScoreIdBooking(bookingScore.getUserId(), booking).isEmpty()) {
-                bookingScoreRepository.save(bookingScore);
+        int i = 0;
+        while (i < bookings.size()){
+            var booking = bookings.get(i);
+            for (int j = 0; j < 50; j++) {
+                var userId = users.get(rnd.nextInt(0, users.size())).getId();
+                if(userId != booking.getUser().getId()){
+                    BookingScore bookingScore = new BookingScore();
+                    bookingScore.setBooking(booking);
+                    bookingScore.setUserId(userId);
+                    bookingScore.setScore(rnd.nextInt(1, 6));
+                    bookingScoreRepository.save(bookingScore);
+                }
             }
-
-        });
+            i+= 2;
+        }
     }
+
     public void loadInitialFavoriteData() {
         System.out.println("loading favorite data...");
         List<FavoriteDTO> favoriteDTOS = JsonHelper.readJsonFromFile("favorite_data.json", new TypeReference<>() {
@@ -240,6 +251,6 @@ public class DataLoaderComponent {
         loadInitialBookingData();
         loadInitialFavoriteData();
 
-        //generateBookingScores();
+        generateBookingScores();
     }
 }

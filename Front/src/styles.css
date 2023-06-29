@@ -85,6 +85,19 @@ h2 {
   z-index: 5;
 }
 
+.categories2{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color1);
+  padding: 30px;
+  width: 30%;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
 .logo {
   text-align: left;
   height: 80px;
@@ -350,6 +363,19 @@ figure h3 {
   overflow: hidden;
   display: contents;
   width: 50%;
+}
+.card-head-recommends{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    width: 100%;
+}
+.card-rating-recommends{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
 .card-content:hover > .left-card-content .card-image-recommends {
   transform: scale(1.1);
@@ -933,12 +959,20 @@ input:hover {
 .product-header {
   display: flex;
   justify-content: space-between;
-  padding: 1.5rem 1.5rem;
+  padding: 1.5rem 0.5rem 1.5rem 1.5rem;
   flex-wrap: wrap-reverse;
   align-items: center;
 }
+.icons-product-container{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+.icons-product-container > *{
+    margin: 0 10px;
+  }
 .product-header a {
-  color: #31363f;
+  color: var(--color6);
 }
 
 .pinLocation-product {
@@ -1038,6 +1072,7 @@ p.more-images {
   font-weight: 500;
   border-radius: 5px;
   font-size: 1.1rem;
+  margin-left: 40px;
 }
 .buttonDetail:hover {
   background-color: var(--color10);
@@ -1066,6 +1101,18 @@ p.more-images {
 .location-container {
   width: 100%;
   padding-left: auto 40px;
+}
+
+.reserveDetail{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.reserveDetail .buttonDetailContent{
+    display: flex;
+    align-items: center;
+    align-items: center;
+
 }
 .location-container h3 {
   margin: 10px auto 15px 40px;
@@ -1148,6 +1195,9 @@ p.more-images {
   color: var(--color3);
   background-color: var(--color1);
 }
+.react-datepicker{
+    border: none !important;
+}
 
 .calendar-navigation-button:hover {
   color: var(--color3);
@@ -1181,7 +1231,101 @@ p.more-images {
 }
 .rulesProduct ul {
   padding-left: 0.1rem;
-  text-align: justify;
+  text-align: left;
+}
+
+/* Estilos del modal galeria detalles de compartir */
+
+.modal {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgba(0, 0, 0, 0.80);
+    justify-content: center;
+    align-items: center;
+    display: none;
+
+}
+
+.modal.is-open {
+    display: flex;
+}
+
+.modal-container {
+    position: relative;
+    max-width: 120px;
+    min-width: 360px;
+    min-height: 200px;
+    max-height: 600px;
+    /* overflow-y: auto; */
+    background-color: #fff;
+    border-radius: 10px;
+    cursor: auto;
+
+
+}
+
+
+
+
+.modal-compartir {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.iconsSpecificColumns {
+        margin-bottom: 3rem;
+        column-count: 3;
+        
+}
+   
+
+
+.iconsModalsSpecific {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--color3);
+    cursor: pointer;
+    
+}
+
+.iconsModalsSpecific svg{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.contentCardModal {
+    display: flex;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.contentCardModal-describe {
+    margin-top: 1rem;
+    margin-left: 1.5rem;
+}
+
+.contentCardModal-img {
+    margin-top: 1rem;
+    
+}
+
+.contentCardModalInsade {
+    margin-top: 1rem;
+    font-size: 100%;
+}
+.contentCardModalInsade p svg{
+    color: #a278f0;
+}
+
+.iconsModalsSpecific:hover {
+   color: var(--color9);
+   font-weight: bold;
 }
 
 /* Estilos del modal galeria detalles de prodcuto */
@@ -1213,10 +1357,27 @@ p.more-images {
   margin: auto !important;
 }
 .carousel .thumbs-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
+.ParrafoModal1{
+    color: var(--color6);
+}
+.ParrafoModal1.ParrafoModal1-copy {
+    color: var(--color9);
+}
+
+
+/* Edit and Delete buttons for every element */
+
+
+.option-edit-button {
+    padding-right: 1rem;
+}
+
+
+
 /*
 .carousel .slider-wrapper.axis-horizontal .slider {
     -ms-box-orient: horizontal !important; 
@@ -1321,15 +1482,33 @@ p.more-images {
 }
 
 /* Booking History*/
+
+.booking-history-container{
+    display: flex;
+    padding: 2rem;
+    height: 80vh;
+    justify-content: space-around;
+}
 .reservation {
   background-color: #eafff7;
   margin: 1rem;
 }
-.booking-cell {
-  padding: 2rem;
+.booking-cell{
+    padding: 1rem;
+    font-size: 0.85rem;
 }
-/* Favorites */
+/* .container-booking-history{
+    display: flex;
+    flex-wrap: wrap;
+} */
 
+/* Favorites */
+.favorites-container{
+  padding: 10rem 0rem;
+}
+.h3-no-favorites{
+  margin-top: 3rem;
+}
 .booking-item {
   padding: 10px;
   border-radius: 5px;
@@ -1902,26 +2081,20 @@ footer {
   }
 }
 
-._modal-close {
+.modal-close {
   position: absolute;
   top: 0;
   right: 0;
   padding: 0.5em;
   line-height: 1;
-  background: #f6f6f7;
   border: 0;
   box-shadow: 0;
   cursor: pointer;
+  
 }
 
-._modal-close-icon {
-  width: 25px;
-  height: 25px;
-  fill: transparent;
-  stroke: black;
-  stroke-linecap: round;
-  stroke-width: 2;
-}
+
+
 
 .modal-body {
   padding-top: 0.25em;
@@ -1968,11 +2141,12 @@ footer {
 .rating-value {
   font-weight: bold;
   font-size: 0.9rem;
+  padding-top: -10px;
 }
 
 .rating-value-star {
   font-weight: bold;
-  font-size: 1.5rem !important;
+  font-size: 1.1rem !important;
 }
 
 .space-content {
@@ -1984,7 +2158,13 @@ footer {
 }
 
 .card-favorite-icon {
-  color: var(--color8);
+  z-index: 3;
+  cursor: pointer;
+  /* color: var(--color4); */
+  position: absolute;
+  margin-left: 200px;
+  margin-top: 10px;
+ 
 }
 
 .no-top-padding {
