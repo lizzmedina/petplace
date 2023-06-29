@@ -9,8 +9,6 @@ import { useContextGlobal } from './utils/global.constext';
 import dayjs from 'dayjs';
 import { FaPaypal, FaRegCreditCard,FaMoneyBillAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
-import * as yup from "yup";
-
 
 function FormBooking() {
 
@@ -96,14 +94,14 @@ function FormBooking() {
     }
 
     //Informacion de la mascota
-    const [pet, setPet] = useState(() => [null, null, null, null, null]);
+    const [pet, setPet] = useState(() => ['', '', '', '', '']);
 
-    //Schema generado para validar
-    const validationSchema = yup.object().shape({
-        // paymentMethod: yup.string().required('Debe seleccionar un método de pago'),
-        // localStartDate: yup.string().required('La fecha de inicio es requerida'),
-        // localEndDate: yup.string().required('La fecha de fin es requerida'),
-    });
+    //Estados para validacion
+
+    const [errorPet, setErrorPet] = useState("")
+    const [errorDate, setErrorDate] = useState("")
+    const [payment, setPayment] = useState("")
+    const [errorPayment, setErrorPayment] = useState("")
 
 
     //Generacion de la Reserva
@@ -111,7 +109,8 @@ function FormBooking() {
         userId: user.id,
         petDayCareId: product.id,
         checkInDate: localStorage.getItem('localStartDate'),
-        checkOutDate: localStorage.getItem('localEndDate')
+        checkOutDate: localStorage.getItem('localEndDate'),
+        dataPet: pet
     });
     useEffect(() => {
         const newBooking = {
@@ -125,52 +124,50 @@ function FormBooking() {
 
     const [isSuccess, setIsSuccess] = useState(false);
     const handleSubmit = () => {
-        validationSchema
-            .validate(booking, { abortEarly: false })
-            .then(() => {
-                fetch(urlPostBooking, {
+        console.log(booking);
+        console.log(selectedDates);
+        console.log(payment);
+        if (pet[0] == '' || pet[1] == '' || pet[2] == '' || pet[3] == '' || selectedDates == [null, null] || payment =='') {
+            setErrorPet("Recuerda llenar los campos de nombre, raza, tamaño y vacunacion")
+            setErrorDate("Seleccionar rango de fechas validas")
+            setErrorPayment("Seleccionar un metodo de pago")
+            Swal.fire({
+                icon: 'error',
+                title: 'Campos incompletos',
+                text: 'Recuerda llenar los campos necesarios',
+            });
+            return;
+        }
+
+        fetch(urlPostBooking, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(booking),
+        })
+            .then((response) => {
+                if (response.ok) {
+                    setIsSuccess(true);
+                    Swal.fire({ icon: 'success', title: 'La reserva ha sido creada exitosamente.' });
+                    return response.json(); // Devuelve la respuesta en formato JSON
+                } else {
+                    return response.json().then((data) => {
+                        throw new Error(data.message);
+                    });
+                }
+            })
+            .then((data) => {
+                console.log("El id es: " + data.idBooking); // Imprime el ID de la reserva
+                fetch(urlEmailBooking + user.email + "/idBooking/" + data.idBooking, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
                     },
-                    body: JSON.stringify(booking),
                 })
-                    .then((response) => {
-                        if (response.ok) {
-                            setIsSuccess(true);
-                            Swal.fire({ icon: 'success', title: 'La reserva ha sido creada exitosamente.' });
-
-                            return response.json(); // Devuelve la respuesta en formato JSON
-                        } else {
-                            return response.json().then((data) => {
-                                throw new Error(data.message);
-                            });
-                        }
-                    })
-                    .then((data) => {
-                        console.log("El id es: " + data.idBooking); // Imprime el ID de la reserva
-                        fetch(urlEmailBooking + user.email + "/idBooking/" + data.idBooking, {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json",
-                            },
-                            //body: JSON.stringify(booking),
-                        })
-
-                    })
-                    .catch((error) => {
-                        Swal.fire({ icon: 'error', title: 'Error', text: error.message });
-                    });
+                navigate('/bookinghistory')
             })
-            .catch((validationErrors) => {
-                // Handle validation errors here
-                console.log(validationErrors)
-                console.log(booking);
-            });
     };
-      
-
-
 
 
     return (
@@ -188,19 +185,21 @@ function FormBooking() {
 
                     <div className="booking-upleftsection2">
                         <h3>Información de Reserva</h3><br />
+                        {<span className="error-message">{errorDate}</span>}
                         <div className="booking-calendar"><ReservationCalendar /></div><br/>
                         <div className='form-infoLine'> <p>Precio base x dia:</p> <p>&nbsp;${product.basicPrice}</p> </div>
                         <div className='form-infoLine'> <p>Dia(s):</p> <p>&nbsp; {numberOfDays}</p> </div>
                         <div className="text-total"> <p>Total a Pagar:</p> <p>&nbsp;{totalPayment}</p> </div>
                         <div className="text-info"> <p>Metodo de pago:</p> </div>
+                        {<span className="error-message">{errorPayment}</span>}
                         <form>
-                            <input type="radio" id="paypal" name="pago" value="paypal" />
+                            <input type="radio" id="paypal" name="pago" value="paypal" onChange={(e) => {setPayment(e.target.value)}}/>
                             <label htmlFor="paypal"><FaPaypal className='icon-service'/>Paypal</label>
                             <br />
-                            <input type="radio" id="efectivo" name="pago" value="efectivo" />
+                            <input type="radio" id="efectivo" name="pago" value="efectivo" onChange={(e) => {setPayment(e.target.value)}}/>
                             <label htmlFor="efectivo"><FaMoneyBillAlt className='icon-service'/>Efectivo</label>
                             <br />
-                            <input type="radio" id="tarjeta" name="pago" value="tarjeta" />
+                            <input type="radio" id="tarjeta" name="pago" value="tarjeta" onChange={(e) => {setPayment(e.target.value)}}/>
                             <label htmlFor="tarjeta"><FaRegCreditCard className='icon-service'/>Tarjeta crédito</label>
                             <br />
                         </form>
@@ -257,6 +256,7 @@ function FormBooking() {
             <div className="booking-downcontainer">
                 <div className='booking-pet'>
                     <h3>Información de la Mascota</h3><br />
+                    {<span className="error-message">{errorPet}</span>}
                     <div className='booking-petInfo'>
                         <div>
                             <p className="text-info">Nombre:</p>
@@ -309,7 +309,7 @@ function FormBooking() {
                 </div>
             </div>
 
-            <button onClick={handleSubmit} className="button-2">Enviar Reserva</button>
+            <button onClick={handleSubmit} className="button-2">Confirmar Reserva</button>
         </div>
     )
 }
